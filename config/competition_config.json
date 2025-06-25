@@ -1,0 +1,36 @@
+{
+  "api_base_url": "http://localhost:5000",
+  "competition_title": "MAS Programming Competition 2025",
+  "competition_description": "A competition to test MAS coding abilities in solving programming problems",
+  "max_tokens_per_participant": 1e7,
+  "rules": {
+    "scoring": {
+      "bronze": 100,
+      "silver": 200,
+      "gold": 500,
+      "platinum": 1000
+    },
+    "bonus_for_first_ac": 100,
+    "penalties": {
+      "WA": 10,
+      "RE": 10,
+      "CE": 5,
+      "TLE": 10,
+      "MLE": 10
+    },
+    "hint_tokens": {
+      "level_1": 500,
+      "level_2": 1000,
+      "level_3": 1500
+    },
+    "submission_tokens": {
+      "AC": 100,
+      "WA": 100,
+      "RE": 100,
+      "CE": 100,
+      "TLE": 100,
+      "MLE": 100
+    },
+    "lambda": 100
+  }
+}

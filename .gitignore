@@ -1,0 +1,11 @@
+test.py
+__pycache__/
+*.pyc
+.venv/
+data/
+
+
+
+
+
+

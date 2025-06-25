@@ -1,0 +1,18 @@
+{
+  "glm-4v-flash": {
+    "final_score": 100.0,
+    "termination_reason": "error",
+    "hint_tokens": 0,
+    "remaining_tokens": 10000000.0,
+    "participant_id": "1e8775aa-5c05-4668-93fc-024f37329534",
+    "solved_problems": [],
+    "submission_trial": {},
+    "tokens_score": [
+      [
+        0.0,
+        100.0
+      ]
+    ]
+  },
+  "competition_id": "31761239-6168-4b91-98d8-d7cfbeb4bea2"
+}

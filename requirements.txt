@@ -1,0 +1,8 @@
+flask==2.3.3
+requests==2.31.0
+pytest==7.4.0
+pytest-flask==1.2.0
+rank_bm25==0.2.2
+json-repair==0.44.1
+matplotlib==3.10.3
+seaborn==0.13.2
