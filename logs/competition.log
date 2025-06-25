@@ -878,3 +878,508 @@ Analyze the current situation, think about your strategy, and pay attention to t
 2025-06-24 16:29:45,256 - llm_agents - ERROR - [agents.py:278] - Try 13 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
 2025-06-24 16:29:55,913 - llm_agents - ERROR - [agents.py:278] - Try 14 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
 2025-06-24 16:30:05,917 - competition_runner - INFO - [run_competition.py:243] - Competition interrupted by user
+2025-06-25 19:27:09,767 - competition_runner - INFO - [run_competition.py:178] - Loading competition configuration...
+2025-06-25 19:27:09,767 - competition_runner - INFO - [run_competition.py:184] - Initializing competition organizer...
+2025-06-25 19:27:09,767 - competition_runner - INFO - [run_competition.py:188] - Creating competitors...
+2025-06-25 19:27:09,767 - competition_runner - INFO - [run_competition.py:121] - Created competitor: glm-4v-flash
+2025-06-25 19:27:09,767 - competition - INFO - [competition.py:94] - Added competitor: glm-4v-flash
+2025-06-25 19:27:09,767 - competition_runner - INFO - [run_competition.py:192] - Added competitor: glm-4v-flash
+2025-06-25 19:27:09,767 - competition_runner - INFO - [run_competition.py:195] - Creating competition...
+2025-06-25 19:27:09,978 - competition - INFO - [competition.py:151] - Created competition: f5c890e7-9345-4faa-985f-b83330fed60c
+2025-06-25 19:27:09,979 - competition_runner - INFO - [run_competition.py:208] - Created competition with ID: f5c890e7-9345-4faa-985f-b83330fed60c
+2025-06-25 19:27:09,979 - competition_runner - INFO - [run_competition.py:211] - Joining competition...
+2025-06-25 19:27:10,391 - competition - INFO - [competition.py:204] - Competitor glm-4v-flash joined competition f5c890e7-9345-4faa-985f-b83330fed60c
+2025-06-25 19:27:10,391 - competition_runner - INFO - [run_competition.py:216] - Successfully joined competition
+2025-06-25 19:27:10,391 - competition_runner - INFO - [run_competition.py:219] - Starting competition...
+2025-06-25 19:27:10,391 - competition - INFO - [competition.py:370] - Competitors: [<competition.Competitor object at 0x7da32bee0c80>]
+2025-06-25 19:27:10,391 - competition - INFO - [competition.py:371] - Running 1 competitors
+2025-06-25 19:27:10,391 - competition - INFO - [competition.py:225] - Starting competition for glm-4v-flash
+2025-06-25 19:27:10,491 - competition - INFO - [competition.py:260] - Competitor glm-4v-flash
+2025-06-25 19:27:10,492 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:20,111 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:20,120 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:20,120 - competition - INFO - [competition.py:263] - glm-4v-flash choose Action: VIEW_PROBLEM, Tokens remaining: 10000000.0, Score: 100.0
+2025-06-25 19:27:20,305 - competition - INFO - [competition.py:310] - glm-4v-flash finish Action: VIEW_PROBLEM, Tokens remaining: 9998275.0, Score: 99.98275
+2025-06-25 19:27:20,305 - competition - INFO - [competition.py:260] - Competitor glm-4v-flash
+2025-06-25 19:27:20,306 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:28,058 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:28,067 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:28,067 - competition - INFO - [competition.py:263] - glm-4v-flash choose Action: VIEW_PROBLEM, Tokens remaining: 9998275.0, Score: 99.98275
+2025-06-25 19:27:28,255 - competition - INFO - [competition.py:310] - glm-4v-flash finish Action: VIEW_PROBLEM, Tokens remaining: 9994268.0, Score: 99.94268
+2025-06-25 19:27:28,255 - competition - INFO - [competition.py:260] - Competitor glm-4v-flash
+2025-06-25 19:27:28,255 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:36,103 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:36,112 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:36,112 - competition - INFO - [competition.py:263] - glm-4v-flash choose Action: VIEW_PROBLEM, Tokens remaining: 9994268.0, Score: 99.94268
+2025-06-25 19:27:36,294 - competition - INFO - [competition.py:310] - glm-4v-flash finish Action: VIEW_PROBLEM, Tokens remaining: 9987990.0, Score: 99.87989999999999
+2025-06-25 19:27:36,294 - competition - INFO - [competition.py:260] - Competitor glm-4v-flash
+2025-06-25 19:27:36,295 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:44,879 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:44,888 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:44,888 - competition - INFO - [competition.py:263] - glm-4v-flash choose Action: VIEW_PROBLEM, Tokens remaining: 9987990.0, Score: 99.87989999999999
+2025-06-25 19:27:45,073 - competition - INFO - [competition.py:310] - glm-4v-flash finish Action: VIEW_PROBLEM, Tokens remaining: 9979431.0, Score: 99.79431
+2025-06-25 19:27:45,073 - competition - INFO - [competition.py:260] - Competitor glm-4v-flash
+2025-06-25 19:27:45,074 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:49,667 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:49,678 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:49,678 - competition - INFO - [competition.py:263] - glm-4v-flash choose Action: VIEW_PROBLEM, Tokens remaining: 9979431.0, Score: 99.79431
+2025-06-25 19:27:49,860 - competition - INFO - [competition.py:310] - glm-4v-flash finish Action: VIEW_PROBLEM, Tokens remaining: 9968913.0, Score: 99.68913
+2025-06-25 19:27:49,860 - competition - INFO - [competition.py:260] - Competitor glm-4v-flash
+2025-06-25 19:27:49,860 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:54,045 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:54,054 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:54,054 - competition - INFO - [competition.py:263] - glm-4v-flash choose Action: <action_name>, Tokens remaining: 9968913.0, Score: 99.68913
+2025-06-25 19:27:54,142 - competition - INFO - [competition.py:310] - glm-4v-flash finish Action: <action_name>, Tokens remaining: 9956444.0, Score: 99.56444
+2025-06-25 19:27:54,142 - competition - INFO - [competition.py:260] - Competitor glm-4v-flash
+2025-06-25 19:27:54,143 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:58,516 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:58,526 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:27:58,527 - competition - INFO - [competition.py:263] - glm-4v-flash choose Action: <action_name>, Tokens remaining: 9956444.0, Score: 99.56444
+2025-06-25 19:27:58,618 - competition - INFO - [competition.py:310] - glm-4v-flash finish Action: <action_name>, Tokens remaining: 9942725.0, Score: 99.42725
+2025-06-25 19:27:58,618 - competition - INFO - [competition.py:260] - Competitor glm-4v-flash
+2025-06-25 19:27:58,619 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:28:24,998 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:28:24,998 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:28:24,998 - competition - INFO - [competition.py:263] - glm-4v-flash choose Action: <action_name>, Tokens remaining: 9942725.0, Score: 99.42725
+2025-06-25 19:28:25,089 - competition - INFO - [competition.py:310] - glm-4v-flash finish Action: <action_name>, Tokens remaining: 9926801.0, Score: 99.26800999999999
+2025-06-25 19:28:25,089 - competition - INFO - [competition.py:260] - Competitor glm-4v-flash
+2025-06-25 19:28:25,090 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/glm-4v-flash/glm-4v-flash_20250625_192709.json
+2025-06-25 19:28:25,521 - llm_agents - ERROR - [agents.py:278] - Try 1 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:28:35,831 - llm_agents - ERROR - [agents.py:278] - Try 2 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:28:46,061 - llm_agents - ERROR - [agents.py:278] - Try 3 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:28:56,279 - llm_agents - ERROR - [agents.py:278] - Try 4 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:29:06,509 - llm_agents - ERROR - [agents.py:278] - Try 5 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:29:16,737 - llm_agents - ERROR - [agents.py:278] - Try 6 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:29:26,976 - llm_agents - ERROR - [agents.py:278] - Try 7 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:29:37,187 - llm_agents - ERROR - [agents.py:278] - Try 8 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:29:47,430 - llm_agents - ERROR - [agents.py:278] - Try 9 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:29:57,661 - llm_agents - ERROR - [agents.py:278] - Try 10 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:30:07,890 - llm_agents - ERROR - [agents.py:278] - Try 11 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:30:18,111 - llm_agents - ERROR - [agents.py:278] - Try 12 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:30:28,330 - llm_agents - ERROR - [agents.py:278] - Try 13 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:30:38,546 - llm_agents - ERROR - [agents.py:278] - Try 14 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:30:48,761 - llm_agents - ERROR - [agents.py:278] - Try 15 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:30:59,006 - llm_agents - ERROR - [agents.py:278] - Try 16 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:31:09,227 - llm_agents - ERROR - [agents.py:278] - Try 17 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:31:19,463 - llm_agents - ERROR - [agents.py:278] - Try 18 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:31:29,697 - llm_agents - ERROR - [agents.py:278] - Try 19 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:31:39,948 - llm_agents - ERROR - [agents.py:278] - Try 20 Error generating response with glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:31:49,949 - competition - ERROR - [competition.py:320] - Error in competition loop for glm-4v-flash: Error: 400 Client Error: Bad Request for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:31:49,950 - competition - INFO - [competition.py:349] - Saved competition results for glm-4v-flash to competitor_results/glm-4v-flash_20250625_193149.json
+2025-06-25 19:31:49,951 - competition_runner - INFO - [run_competition.py:230] - Results saved to competition_results/MAS Programming Competition 2025_20250625_193149.json
+2025-06-25 19:35:33,440 - competition_runner - INFO - [run_competition.py:178] - Loading competition configuration...
+2025-06-25 19:35:33,440 - competition_runner - INFO - [run_competition.py:184] - Initializing competition organizer...
+2025-06-25 19:35:33,440 - competition_runner - INFO - [run_competition.py:188] - Creating competitors...
+2025-06-25 19:35:33,440 - competition_runner - INFO - [run_competition.py:121] - Created competitor: sf-deepseek-v3
+2025-06-25 19:35:33,440 - competition - INFO - [competition.py:94] - Added competitor: sf-deepseek-v3
+2025-06-25 19:35:33,440 - competition_runner - INFO - [run_competition.py:192] - Added competitor: sf-deepseek-v3
+2025-06-25 19:35:33,440 - competition_runner - INFO - [run_competition.py:195] - Creating competition...
+2025-06-25 19:35:33,653 - competition - INFO - [competition.py:151] - Created competition: 1741ecbf-0125-4642-a61c-a5d16f7fc782
+2025-06-25 19:35:33,653 - competition_runner - INFO - [run_competition.py:208] - Created competition with ID: 1741ecbf-0125-4642-a61c-a5d16f7fc782
+2025-06-25 19:35:33,653 - competition_runner - INFO - [run_competition.py:211] - Joining competition...
+2025-06-25 19:35:34,097 - competition - INFO - [competition.py:204] - Competitor sf-deepseek-v3 joined competition 1741ecbf-0125-4642-a61c-a5d16f7fc782
+2025-06-25 19:35:34,097 - competition_runner - INFO - [run_competition.py:216] - Successfully joined competition
+2025-06-25 19:35:34,097 - competition_runner - INFO - [run_competition.py:219] - Starting competition...
+2025-06-25 19:35:34,097 - competition - INFO - [competition.py:370] - Competitors: [<competition.Competitor object at 0x7bbc57f88a40>]
+2025-06-25 19:35:34,097 - competition - INFO - [competition.py:371] - Running 1 competitors
+2025-06-25 19:35:34,097 - competition - INFO - [competition.py:225] - Starting competition for sf-deepseek-v3
+2025-06-25 19:35:34,198 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:35:34,198 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:35:42,247 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:35:42,256 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:35:42,256 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: VIEW_PROBLEM, Tokens remaining: 10000000.0, Score: 100.0
+2025-06-25 19:35:42,446 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: VIEW_PROBLEM, Tokens remaining: 9998615.0, Score: 99.98615
+2025-06-25 19:35:42,446 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:35:42,447 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:01,734 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:01,743 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:01,744 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9998615.0, Score: 99.98615
+2025-06-25 19:36:02,538 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:36:02,645 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9994752.0, Score: 89.94752
+2025-06-25 19:36:02,645 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:36:02,645 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:08,206 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:08,218 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:08,218 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: GET_HINT, Tokens remaining: 9994752.0, Score: 89.94752
+2025-06-25 19:36:08,765 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: GET_HINT, Tokens remaining: 9988690.0, Score: 89.8869
+2025-06-25 19:36:08,765 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:36:08,766 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:10,115 - llm_agents - ERROR - [agents.py:278] - Try 1 Error generating response with sf-deepseek-v3: Error: 403 Client Error: Forbidden for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:36:37,250 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:37,259 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:37,259 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9988690.0, Score: 89.8869
+2025-06-25 19:36:38,003 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:36:38,037 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9974999.0, Score: 79.74999
+2025-06-25 19:36:38,037 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:36:38,038 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:45,283 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:45,284 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:36:45,284 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: GET_HINT, Tokens remaining: 9974999.0, Score: 79.74999
+2025-06-25 19:36:45,708 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: GET_HINT, Tokens remaining: 9958609.0, Score: 79.58609
+2025-06-25 19:36:45,708 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:36:45,709 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:37:20,371 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:37:20,372 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:37:20,372 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9958609.0, Score: 79.58609
+2025-06-25 19:37:21,009 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:37:21,118 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9929261.0, Score: 69.29261
+2025-06-25 19:37:21,118 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:37:21,119 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:37:30,299 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:37:30,311 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:37:30,311 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: GET_HINT, Tokens remaining: 9929261.0, Score: 69.29261
+2025-06-25 19:37:30,843 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: GET_HINT, Tokens remaining: 9897715.0, Score: 68.97715000000001
+2025-06-25 19:37:30,843 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:37:30,845 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:37:56,677 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:37:56,687 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:37:56,687 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9897715.0, Score: 68.97715000000001
+2025-06-25 19:37:57,439 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:37:57,477 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9858524.0, Score: 58.58524
+2025-06-25 19:37:57,477 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:37:57,478 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:38:08,623 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:38:08,635 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:38:08,635 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: VIEW_PROBLEM, Tokens remaining: 9858524.0, Score: 58.58524
+2025-06-25 19:38:08,698 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: VIEW_PROBLEM, Tokens remaining: 9818142.0, Score: 58.18142
+2025-06-25 19:38:08,698 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:38:08,699 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:38:09,651 - llm_agents - ERROR - [agents.py:278] - Try 1 Error generating response with sf-deepseek-v3: Error: 429 Client Error: Too Many Requests for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:38:44,447 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:38:44,448 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:38:44,448 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9818142.0, Score: 58.18142
+2025-06-25 19:38:45,080 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:38:45,187 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9775216.0, Score: 47.75216
+2025-06-25 19:38:45,187 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:38:45,189 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:38:57,583 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:38:57,593 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:38:57,594 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: GET_HINT, Tokens remaining: 9775216.0, Score: 47.75216
+2025-06-25 19:38:58,173 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: GET_HINT, Tokens remaining: 9729591.0, Score: 47.29590999999999
+2025-06-25 19:38:58,173 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:38:58,175 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:39:47,350 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:39:47,362 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:39:47,362 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9729591.0, Score: 47.29590999999999
+2025-06-25 19:39:48,088 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:39:48,130 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9672102.0, Score: 36.721019999999996
+2025-06-25 19:39:48,130 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:39:48,131 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:40:25,097 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:40:25,107 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:40:25,107 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9672102.0, Score: 36.721019999999996
+2025-06-25 19:40:25,761 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:40:25,868 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9615121.0, Score: 26.151209999999992
+2025-06-25 19:40:25,868 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:40:25,870 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:40:25,882 - llm_agents - ERROR - [agents.py:278] - Try 1 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:40:35,895 - llm_agents - ERROR - [agents.py:278] - Try 2 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:40:45,904 - llm_agents - ERROR - [agents.py:278] - Try 3 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:40:55,917 - llm_agents - ERROR - [agents.py:278] - Try 4 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:41:05,931 - llm_agents - ERROR - [agents.py:278] - Try 5 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:41:15,946 - llm_agents - ERROR - [agents.py:278] - Try 6 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:41:25,956 - llm_agents - ERROR - [agents.py:278] - Try 7 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:41:35,969 - llm_agents - ERROR - [agents.py:278] - Try 8 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:41:45,979 - llm_agents - ERROR - [agents.py:278] - Try 9 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:41:55,988 - llm_agents - ERROR - [agents.py:278] - Try 10 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:42:06,004 - llm_agents - ERROR - [agents.py:278] - Try 11 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:42:16,013 - llm_agents - ERROR - [agents.py:278] - Try 12 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:42:26,027 - llm_agents - ERROR - [agents.py:278] - Try 13 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:42:36,039 - llm_agents - ERROR - [agents.py:278] - Try 14 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:42:46,054 - llm_agents - ERROR - [agents.py:278] - Try 15 Error generating response with sf-deepseek-v3: Error: 401 Client Error: Unauthorized for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:43:41,212 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:43:41,223 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:43:41,223 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9615121.0, Score: 26.151209999999992
+2025-06-25 19:43:41,976 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:43:42,018 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9557460.0, Score: 15.574600000000004
+2025-06-25 19:43:42,018 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:43:42,019 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:44:18,396 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:44:18,410 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:44:18,410 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9557460.0, Score: 15.574600000000004
+2025-06-25 19:44:19,044 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:44:19,148 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9506387.0, Score: 5.063869999999994
+2025-06-25 19:44:19,149 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:44:19,150 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:45:05,981 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:45:05,991 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:45:05,992 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9506387.0, Score: 5.063869999999994
+2025-06-25 19:45:06,812 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:45:06,853 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9454455.0, Score: -5.455449999999999
+2025-06-25 19:45:06,853 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:45:06,854 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:45:51,292 - competition_runner - INFO - [run_competition.py:178] - Loading competition configuration...
+2025-06-25 19:45:51,292 - competition_runner - INFO - [run_competition.py:184] - Initializing competition organizer...
+2025-06-25 19:45:51,292 - competition_runner - INFO - [run_competition.py:188] - Creating competitors...
+2025-06-25 19:45:51,292 - competition_runner - INFO - [run_competition.py:121] - Created competitor: sf-deepseek-v3
+2025-06-25 19:45:51,292 - competition_runner - INFO - [run_competition.py:121] - Created competitor: sf-deepseek-v32
+2025-06-25 19:45:51,292 - competition - INFO - [competition.py:94] - Added competitor: sf-deepseek-v3
+2025-06-25 19:45:51,292 - competition_runner - INFO - [run_competition.py:192] - Added competitor: sf-deepseek-v3
+2025-06-25 19:45:51,292 - competition - INFO - [competition.py:94] - Added competitor: sf-deepseek-v32
+2025-06-25 19:45:51,292 - competition_runner - INFO - [run_competition.py:192] - Added competitor: sf-deepseek-v32
+2025-06-25 19:45:51,292 - competition_runner - INFO - [run_competition.py:195] - Creating competition...
+2025-06-25 19:45:51,456 - competition - INFO - [competition.py:151] - Created competition: a81ce432-a2d2-4625-9449-e0c20dfa31f2
+2025-06-25 19:45:51,456 - competition_runner - INFO - [run_competition.py:208] - Created competition with ID: a81ce432-a2d2-4625-9449-e0c20dfa31f2
+2025-06-25 19:45:51,456 - competition_runner - INFO - [run_competition.py:211] - Joining competition...
+2025-06-25 19:45:51,845 - competition - INFO - [competition.py:204] - Competitor sf-deepseek-v3 joined competition a81ce432-a2d2-4625-9449-e0c20dfa31f2
+2025-06-25 19:45:52,139 - competition - INFO - [competition.py:204] - Competitor sf-deepseek-v32 joined competition a81ce432-a2d2-4625-9449-e0c20dfa31f2
+2025-06-25 19:45:52,139 - competition_runner - INFO - [run_competition.py:216] - Successfully joined competition
+2025-06-25 19:45:52,139 - competition_runner - INFO - [run_competition.py:219] - Starting competition...
+2025-06-25 19:45:52,139 - competition - INFO - [competition.py:370] - Competitors: [<competition.Competitor object at 0x70cd62a68e30>, <competition.Competitor object at 0x70cd62a69100>]
+2025-06-25 19:45:52,139 - competition - INFO - [competition.py:371] - Running 2 competitors
+2025-06-25 19:45:52,139 - competition - INFO - [competition.py:225] - Starting competition for sf-deepseek-v3
+2025-06-25 19:45:52,236 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:45:52,237 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:45:52,238 - competition - INFO - [competition.py:225] - Starting competition for sf-deepseek-v32
+2025-06-25 19:45:52,295 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:45:52,295 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:45:56,476 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:45:56,486 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:45:56,487 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9454455.0, Score: -5.455449999999999
+2025-06-25 19:45:56,980 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:45:56,980 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:45:56,980 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: VIEW_PROBLEM, Tokens remaining: 10000000.0, Score: 100.0
+2025-06-25 19:45:57,091 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: VIEW_PROBLEM, Tokens remaining: 9998615.0, Score: 99.98615
+2025-06-25 19:45:57,091 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:45:57,092 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:45:57,093 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:45:57,094 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:45:57,094 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: VIEW_PROBLEM, Tokens remaining: 10000000.0, Score: 100.0
+2025-06-25 19:45:57,267 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: VIEW_PROBLEM, Tokens remaining: 9998615.0, Score: 99.98615
+2025-06-25 19:45:57,267 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:45:57,268 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:45:57,320 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:45:57,431 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9414682.0, Score: -15.853180000000009
+2025-06-25 19:45:57,431 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:45:57,433 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:46:01,619 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:01,629 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:01,630 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: GET_HINT, Tokens remaining: 9998615.0, Score: 99.98615
+2025-06-25 19:46:01,880 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: GET_HINT, Tokens remaining: 9994650.0, Score: 99.9465
+2025-06-25 19:46:01,880 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:46:01,881 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:01,882 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:01,890 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:01,890 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: GET_HINT, Tokens remaining: 9998615.0, Score: 99.98615
+2025-06-25 19:46:02,468 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: GET_HINT, Tokens remaining: 9994150.0, Score: 99.9415
+2025-06-25 19:46:02,469 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:46:02,469 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:07,127 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:07,138 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:07,138 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: GET_HINT, Tokens remaining: 9994650.0, Score: 99.9465
+2025-06-25 19:46:07,720 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: GET_HINT, Tokens remaining: 9983181.0, Score: 99.83181
+2025-06-25 19:46:07,720 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:46:07,721 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:19,809 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:19,820 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:19,821 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9994150.0, Score: 99.9415
+2025-06-25 19:46:20,584 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:46:20,695 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9982046.0, Score: 89.82046
+2025-06-25 19:46:20,695 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:46:20,696 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:26,024 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:26,035 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:26,035 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9983181.0, Score: 99.83181
+2025-06-25 19:46:26,760 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v32 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:46:26,806 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9964081.0, Score: 89.64081
+2025-06-25 19:46:26,807 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:46:26,808 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:26,810 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:26,810 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:26,810 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: GET_HINT, Tokens remaining: 9982046.0, Score: 89.82046
+2025-06-25 19:46:27,271 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: GET_HINT, Tokens remaining: 9967230.0, Score: 89.6723
+2025-06-25 19:46:27,271 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:46:27,272 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:29,753 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:46:29,766 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:46:29,766 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9414682.0, Score: -15.853180000000009
+2025-06-25 19:46:30,394 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:46:30,498 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9374332.0, Score: -26.256680000000003
+2025-06-25 19:46:30,498 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:46:30,499 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:46:34,890 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:34,900 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:34,901 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: GET_HINT, Tokens remaining: 9964081.0, Score: 89.64081
+2025-06-25 19:46:35,428 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: GET_HINT, Tokens remaining: 9942269.0, Score: 89.42269
+2025-06-25 19:46:35,429 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:46:35,430 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:47,930 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:47,941 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:47,941 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9967230.0, Score: 89.6723
+2025-06-25 19:46:48,631 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:46:48,702 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9939517.0, Score: 79.39517
+2025-06-25 19:46:48,702 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:46:48,703 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:55,614 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:46:55,625 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:46:55,625 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: GET_HINT, Tokens remaining: 9374332.0, Score: -26.256680000000003
+2025-06-25 19:46:56,246 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: GET_HINT, Tokens remaining: 9339532.0, Score: -26.604680000000002
+2025-06-25 19:46:56,246 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:46:56,247 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:46:56,688 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:56,698 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:56,698 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: GET_HINT, Tokens remaining: 9939517.0, Score: 79.39517
+2025-06-25 19:46:56,948 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: GET_HINT, Tokens remaining: 9910092.0, Score: 79.10092
+2025-06-25 19:46:56,948 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:46:56,949 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:46:58,843 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:58,857 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:46:58,857 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9942269.0, Score: 89.42269
+2025-06-25 19:46:59,732 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v32 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:46:59,840 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9907596.0, Score: 79.07596
+2025-06-25 19:46:59,840 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:46:59,842 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:47:12,725 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:47:12,736 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:47:12,736 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: GET_HINT, Tokens remaining: 9907596.0, Score: 79.07596
+2025-06-25 19:47:12,937 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: GET_HINT, Tokens remaining: 9871211.0, Score: 78.71211
+2025-06-25 19:47:12,937 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:47:12,938 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:47:19,708 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:47:19,719 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:47:19,719 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9910092.0, Score: 79.10092
+2025-06-25 19:47:20,444 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:47:20,542 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9873691.0, Score: 68.73691
+2025-06-25 19:47:20,542 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:47:20,543 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:47:31,198 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:47:31,211 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:47:31,211 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: GET_HINT, Tokens remaining: 9873691.0, Score: 68.73691
+2025-06-25 19:47:31,652 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: GET_HINT, Tokens remaining: 9835079.0, Score: 68.35079
+2025-06-25 19:47:31,652 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:47:31,653 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:47:34,805 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:47:34,817 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:47:34,817 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9339532.0, Score: -26.604680000000002
+2025-06-25 19:47:35,418 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:47:35,419 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:47:35,419 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9871211.0, Score: 78.71211
+2025-06-25 19:47:35,565 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:47:35,737 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9292923.0, Score: -37.07077000000001
+2025-06-25 19:47:35,737 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:47:35,738 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:47:36,367 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v32 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:47:36,472 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9827895.0, Score: 68.27895
+2025-06-25 19:47:36,472 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:47:36,474 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:47:47,129 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:47:47,140 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:47:47,140 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: GET_HINT, Tokens remaining: 9827895.0, Score: 68.27895
+2025-06-25 19:47:47,726 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: GET_HINT, Tokens remaining: 9782366.0, Score: 67.82366
+2025-06-25 19:47:47,726 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:47:47,728 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:47:56,799 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:47:56,812 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:47:56,812 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9835079.0, Score: 68.35079
+2025-06-25 19:47:57,579 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:47:57,688 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9788790.0, Score: 57.8879
+2025-06-25 19:47:57,689 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:47:57,690 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:48:20,206 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:48:20,218 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:48:20,218 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9782366.0, Score: 67.82366
+2025-06-25 19:48:20,746 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:48:20,747 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:48:20,748 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9292923.0, Score: -37.07077000000001
+2025-06-25 19:48:21,091 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v32 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:48:21,150 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9729189.0, Score: 57.29189000000001
+2025-06-25 19:48:21,150 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:48:21,151 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:48:21,439 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:48:21,482 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9246668.0, Score: -47.53332
+2025-06-25 19:48:21,482 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:48:21,484 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:48:26,995 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:48:27,006 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:48:27,006 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9788790.0, Score: 57.8879
+2025-06-25 19:48:27,815 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:48:27,881 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9740761.0, Score: 47.407610000000005
+2025-06-25 19:48:27,881 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:48:27,883 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:48:44,030 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:48:44,043 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_194551.json
+2025-06-25 19:48:44,043 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: TERMINATE, Tokens remaining: 9740761.0, Score: 47.407610000000005
+2025-06-25 19:48:44,102 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: TERMINATE, Tokens remaining: 9691440.0, Score: 46.9144
+2025-06-25 19:48:44,102 - competition - INFO - [competition.py:349] - Saved competition results for sf-deepseek-v3 to competitor_results/sf-deepseek-v3_20250625_194844.json
+2025-06-25 19:49:00,047 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:49:00,057 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:49:00,058 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9729189.0, Score: 57.29189000000001
+2025-06-25 19:49:00,780 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v32 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:49:00,823 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9674235.0, Score: 46.74235
+2025-06-25 19:49:00,823 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v32
+2025-06-25 19:49:00,824 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:49:11,576 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:49:11,586 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:49:11,586 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9246668.0, Score: -47.53332
+2025-06-25 19:49:12,307 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:49:12,354 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9199629.0, Score: -58.00371
+2025-06-25 19:49:12,354 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:49:12,355 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:49:22,605 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:49:22,619 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v32/sf-deepseek-v32_20250625_194551.json
+2025-06-25 19:49:22,620 - competition - INFO - [competition.py:263] - sf-deepseek-v32 choose Action: TERMINATE, Tokens remaining: 9674235.0, Score: 46.74235
+2025-06-25 19:49:22,653 - competition - INFO - [competition.py:310] - sf-deepseek-v32 finish Action: TERMINATE, Tokens remaining: 9619150.0, Score: 46.19149999999999
+2025-06-25 19:49:22,653 - competition - INFO - [competition.py:349] - Saved competition results for sf-deepseek-v32 to competitor_results/sf-deepseek-v32_20250625_194922.json
+2025-06-25 19:49:22,654 - competition_runner - INFO - [run_competition.py:230] - Results saved to competition_results/MAS Programming Competition 2025_20250625_194922.json
+2025-06-25 19:49:37,195 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:49:37,206 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:49:37,207 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9199629.0, Score: -58.00371
+2025-06-25 19:49:37,898 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/16 tests, scored 0 points with penalty 10 for problem 1324_bronze_moo_language
+2025-06-25 19:49:37,940 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9165407.0, Score: -68.34593
+2025-06-25 19:49:37,940 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:49:37,941 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:50:08,483 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:50:08,484 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:50:08,484 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9165407.0, Score: -68.34593
+2025-06-25 19:50:09,109 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/20 tests, scored 0 points with penalty 10 for problem 1323_bronze_feb
+2025-06-25 19:50:09,155 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9131338.0, Score: -78.68662
+2025-06-25 19:50:09,155 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:50:09,156 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:50:49,926 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:50:49,940 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:50:49,940 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9131338.0, Score: -78.68662
+2025-06-25 19:50:50,622 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:50:50,668 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9097188.0, Score: -89.02812
+2025-06-25 19:50:50,668 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:50:50,669 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:51:19,290 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:51:19,303 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:51:19,303 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9097188.0, Score: -89.02812
+2025-06-25 19:51:19,922 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/16 tests, scored 0 points with penalty 10 for problem 1324_bronze_moo_language
+2025-06-25 19:51:19,964 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9063174.0, Score: -99.36825999999999
+2025-06-25 19:51:19,964 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:51:19,965 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:52:10,456 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:52:10,465 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:52:10,465 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 9063174.0, Score: -99.36825999999999
+2025-06-25 19:52:11,122 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/13 tests, scored 0 points with penalty 10 for problem 1325_bronze_rotate_and_shift
+2025-06-25 19:52:11,165 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 9029132.0, Score: -109.70868
+2025-06-25 19:52:11,165 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:52:11,166 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:52:12,594 - llm_agents - ERROR - [agents.py:278] - Try 1 Error generating response with sf-deepseek-v3: Error: 429 Client Error: Too Many Requests for url: http://100.76.8.43:10086/v1/chat/completions
+2025-06-25 19:52:52,395 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:52:52,406 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:52:52,406 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: GET_HINT, Tokens remaining: 9029132.0, Score: -109.70868
+2025-06-25 19:52:52,836 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: GET_HINT, Tokens remaining: 8994348.0, Score: -110.05652
+2025-06-25 19:52:52,836 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:52:52,837 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:53:20,813 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:53:20,824 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:53:20,824 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 8994348.0, Score: -110.05652
+2025-06-25 19:53:21,434 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/20 tests, scored 0 points with penalty 10 for problem 1323_bronze_feb
+2025-06-25 19:53:21,478 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 8948496.0, Score: -120.51504
+2025-06-25 19:53:21,478 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:53:21,481 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:53:55,757 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:53:55,768 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:53:55,768 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: SUBMIT_SOLUTION, Tokens remaining: 8948496.0, Score: -120.51504
+2025-06-25 19:53:56,472 - competition - INFO - [competition.py:741] - Competitor sf-deepseek-v3 passed 0/16 tests, scored 0 points with penalty 10 for problem 1324_bronze_moo_language
+2025-06-25 19:53:56,517 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: SUBMIT_SOLUTION, Tokens remaining: 8902422.0, Score: -130.97578
+2025-06-25 19:53:56,518 - competition - INFO - [competition.py:260] - Competitor sf-deepseek-v3
+2025-06-25 19:53:56,518 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:54:19,639 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:54:19,650 - conversation_logger - INFO - [conversation_logger.py:61] - Saved conversation log to logs/sf-deepseek-v3/sf-deepseek-v3_20250625_193533.json
+2025-06-25 19:54:19,650 - competition - INFO - [competition.py:263] - sf-deepseek-v3 choose Action: TERMINATE, Tokens remaining: 8902422.0, Score: -130.97578
+2025-06-25 19:54:19,684 - competition - INFO - [competition.py:310] - sf-deepseek-v3 finish Action: TERMINATE, Tokens remaining: 8869393.0, Score: -131.30607
+2025-06-25 19:54:19,685 - competition - INFO - [competition.py:349] - Saved competition results for sf-deepseek-v3 to competitor_results/sf-deepseek-v3_20250625_195419.json
+2025-06-25 19:54:19,685 - competition_runner - INFO - [run_competition.py:230] - Results saved to competition_results/MAS Programming Competition 2025_20250625_195419.json

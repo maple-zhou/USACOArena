@@ -53,7 +53,7 @@ def main():
     else:
         logger.warning(f"USACO problem library empty or not found at {usaco_loader.data_path}")
         logger.warning("Please check that the USACO dataset is correctly installed")
-        logger.warning("Expected location: data/datasets/usaco_v2_dict.json")
+        logger.warning("Expected location: data/datasets/usaco_2025_dict.json")
     
     # Start API server in a separate thread
     api_thread = threading.Thread(target=run_api_server, args=(args,))

@@ -12,8 +12,8 @@ class USACOProblemLoader:
             # Try to find the path relative to the current file
             current_dir = os.path.dirname(os.path.abspath(__file__))
             possible_paths = [
-                os.path.join(current_dir, "..", "data", "datasets", "usaco_v3"),
-                "data/datasets/usaco_v3"  # Fallback to the original path
+                os.path.join(current_dir, "..", "data", "datasets", "usaco_2025"),
+                "data/datasets/usaco_2025"  # Fallback to the original path
             ]
             
             for path in possible_paths:
@@ -21,7 +21,7 @@ class USACOProblemLoader:
                     self.data_path = path
                     break
             else:
-                self.data_path = "data/datasets/usaco_v3"  # Use as default if nothing found
+                self.data_path = "data/datasets/usaco_2025"  # Use as default if nothing found
         else:
             self.data_path = data_path
             
@@ -30,7 +30,7 @@ class USACOProblemLoader:
     
     def _load_problem_dict(self):
         """Load the USACO problem dictionary"""
-        problem_dict_path = os.path.join(self.data_path, '..', "usaco_v2_dict.json")
+        problem_dict_path = os.path.join(self.data_path, '..', "usaco_2025_dict.json")
         if os.path.exists(problem_dict_path):
             try:
                 with open(problem_dict_path, 'r') as f:

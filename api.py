@@ -386,7 +386,7 @@ def get_similar_problems():
             return error_response("Problem ID is required")
         
         # Load problem dictionary
-        problem_dict_path = os.path.join("data", "datasets", "usaco_v2_dict.json")
+        problem_dict_path = os.path.join("data", "datasets", "usaco_2025_dict.json")
         try:
             with open(problem_dict_path, 'r') as f:
                 problem_dict = json.load(f)
