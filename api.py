@@ -491,7 +491,7 @@ def search_textbook():
 def get_text_from_path(data: Dict, path: str) -> str:
         """Extract value from nested dictionary using dot notation path"""
         if not path:
-            return data
+            return str(data)
         
         parts = path.split('.')
         current = data
@@ -500,57 +500,100 @@ def get_text_from_path(data: Dict, path: str) -> str:
             if '[' in part:
                 key, index = part.split('[')
                 index = int(index.rstrip(']'))
+                if key not in current or not isinstance(current[key], (list, tuple)) or index >= len(current[key]):
+                    raise KeyError(f"Invalid array access: {key}[{index}]")
                 current = current[key][index]
             else:
+                if part not in current:
+                    raise KeyError(f"Key '{part}' not found in data")
                 current = current[part]
         
-        return current
+        return str(current) if current is not None else ""
 
 # GenericAPIAgent HTTP 请求端点
 @app.route("/api/agent/request", methods=["POST"])
 def agent_request():
-    """处理 GenericAPIAgent 的 HTTP 请求"""
+    """处理 GenericAPIAgent 的 HTTP 请求并计算 token 使用量 * 应用 token 乘数"""
     try:
         data = request.get_json()
         if not data:
             return error_response("No data provided")
+        
 
         # 提取请求参数
+        competition_id = data.get("competition_id")
+        if not competition_id:
+            return error_response("Competition ID is required")
+        
+        competition = data_storage.get_competition(competition_id)
+        if not competition:
+            return error_response(f"Competition with ID {competition_id} not found", 404)
+        
         method = data.get('method')
         url = data.get('url')
         headers = data.get('headers', {})
-        json_data = data.get('json')
+        json_data = data.get('json', {})
         timeout = data.get('timeout', 30)
         response_format = data.get('response_format', {})
+        # print(f"--- DIAGNOSTIC: Response format: {response_format} ---")
 
         # 验证必需参数
         if not all([method, url]):
             return error_response("Missing required parameters: method and url")
 
         # 发送HTTP请求
-        response = requests.request(
-            method=method,
-            url=url,
-            headers=headers,
-            json=json_data,
-            timeout=timeout
-        )
-        # Parse response
-        result = response.json()
+        try:
+            response = requests.request(
+                method=method,
+                url=url,
+                headers=headers,
+                json=json_data,
+                timeout=timeout
+            )
+            response.raise_for_status()  # 检查HTTP状态码
+        except requests.exceptions.RequestException as req_err:
+            print(f"LLM API请求失败: {req_err}")
+            raise Exception(f"LLM API请求失败: {req_err}")
         
+        # Parse response
+        try:
+            result = response.json()
+        except json.JSONDecodeError as json_err:
+            print(f"LLM API响应解析失败: {json_err} - 响应内容: {response.text[:200]}")
+            raise Exception(f"LLM API响应解析失败: {json_err} - 响应内容: {response.text[:200]}")
+        
+        # print(f"--- DIAGNOSTIC: Result: {result}000{response_format['response_path']} ---")
         # Extract response text using configured path
         response_text = get_text_from_path(result, response_format["response_path"])
-        # response_text = self._get_value_from_path(result, response_format["response_path"])
-        # Add assistant response to conversation history
-        # self.add_to_conversation("assistant", response_text)
-        # self.save_conversation()
-        # self.conversation_history.pop()
-        # action = self.action_parser.parse_action(response_text)
         
+        # Extract token usage information
         prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
         completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
         reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
         completion_tokens += reasoning_tokens
+
+        # Apply token multipliers if competition rules exist
+        if competition_id:
+            competition = data_storage.get_competition(competition_id)
+            if competition and competition.rules:
+                model = json_data.get("model")
+                # print(f"--- DIAGNOSTIC: Checking multipliers for model_id: {model} ---")
+                
+                # Apply input token multiplier
+                input_multiplier = competition.rules.get("input_token_multipliers", {}).get(model)
+                if input_multiplier is not None:
+                    prompt_tokens = int(prompt_tokens * input_multiplier)
+                    print(f"Applied input token multiplier {input_multiplier} for model {model}, adjusted prompt tokens: {prompt_tokens}")
+                else:
+                    print(f"No input token multiplier found for model {model}")
+                
+                # Apply output token multiplier
+                output_multiplier = competition.rules.get("output_token_multipliers", {}).get(model)
+                if output_multiplier is not None:
+                    completion_tokens = int(completion_tokens * output_multiplier)
+                    print(f"Applied output token multiplier {output_multiplier} for model {model}, adjusted completion tokens: {completion_tokens}")
+                else:
+                    print(f"No output token multiplier found for model {model}")
 
         # 构建并返回新的结构化响应
         structured_response = [
@@ -560,11 +603,14 @@ def agent_request():
         ]
 
         return jsonify(structured_response), response.status_code
-         
     except requests.exceptions.HTTPError as http_err:
-        return error_response(f"HTTP error occurred: {http_err} - {response.text}", response.status_code)
+        import traceback
+        error_line = traceback.extract_tb(http_err.__traceback__)[-1].lineno
+        return error_response(f"HTTP error occurred: {http_err} - {response.text} (line {error_line})", response.status_code)
     except Exception as e:
-        return error_response(f"Failed to make request: {str(e)}")
+        import traceback
+        error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
+        return error_response(f"Failed to make request: {str(e)} (line {error_line})")
 
 
 @app.route("/api/agent/stream_request", methods=["POST"])
@@ -581,7 +627,6 @@ def agent_stream_request():
         headers = data.get('headers', {})
         json_data = data.get('json')
         timeout = data.get('timeout', 30)
-        # response_format = data.get('response_format', {})
 
         # 验证必需参数
         if not all([method, url]):
@@ -595,17 +640,6 @@ def agent_stream_request():
             json=json_data,
             timeout=timeout
         )
-        # # Parse response
-        # result = response.json()
-        
-        # # Extract response text using configured path
-        # response_text = get_text_from_path(result, response_format["response_path"])
-        # response_text = self._get_value_from_path(result, response_format["response_path"])
-        # Add assistant response to conversation history
-        # self.add_to_conversation("assistant", response_text)
-        # self.save_conversation()
-        # self.conversation_history.pop()
-        # action = self.action_parser.parse_action(response_text)
 
         # Process streaming response
         reasoning_content = ""
@@ -658,9 +692,12 @@ def agent_stream_request():
         return jsonify(structured_response), response.status_code
          
     except requests.exceptions.HTTPError as http_err:
-        return error_response(f"HTTP error occurred: {http_err} - {response.text}", response.status_code)
+        import traceback
+        error_line = traceback.extract_tb(http_err.__traceback__)[-1].lineno
+        return error_response(f"HTTP error occurred: {http_err} - {response.text} (line {error_line})", response.status_code)
     except Exception as e:
-        return error_response(f"Failed to make request: {str(e)}")
+        error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
+        return error_response(f"Failed to make request: {str(e)} (line {error_line})")
 
 # Main entrypoint
 def run_api(host: str = "0.0.0.0", port: int = 5000, debug: bool = False):

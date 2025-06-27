@@ -35,6 +35,28 @@
       "TLE": 100,
       "MLE": 100
     },
-    "lambda": 100
+    "lambda": 100,
+    "output_token_multipliers": {
+      "gemini-2.5-pro": 10,
+      "gpt-4.1": 8,
+      "gpt-4o": 10,
+      "gpt-4o-mini": 0.6,
+      "claude-3.7-sonnet": 15,
+      "grok-3-beta": 15,
+      "qwen3": 0.6,
+      "deepseek-v3": 1.1,
+      "sf-deepseek-v3": 1.77777777
+    },
+    "input_token_multipliers": {
+      "gemini-2.5-pro": 1.25,
+      "gpt-4.1": 2,
+      "gpt-4o": 2.5,
+      "gpt-4o-mini": 0.15,
+      "claude-3.7-sonnet": 3,
+      "grok-3-beta": 3,
+      "qwen3": 0.2,
+      "deepseek-v3": 0.27,
+      "sf-deepseek-v3": 1.77777777
+    }
   }
 }

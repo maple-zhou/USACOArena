@@ -115,7 +115,7 @@ class Agent(ABC):
         
         # logger.info(f"Prompt: {prompt}")
         # Generate response
-        response, tokens_used = await self.generate_response(prompt)
+        response, tokens_used = await self.generate_response(state,prompt)
         
         # Parse action using the action parser
         action = self.action_parser.parse_action(response)
@@ -210,7 +210,7 @@ class GenericAPIAgent(Agent):
         
         return current
     
-    async def generate_response(self, prompt: str) -> tuple[str, int]:
+    async def generate_response(self, state: Dict, prompt: str) -> tuple[str, int]:
         """Generate a response using the configured API"""
         response = None
         # Add user message to conversation history
@@ -257,9 +257,11 @@ class GenericAPIAgent(Agent):
                         "headers": headers,
                         "json": formatted_body,
                         "timeout": self.request_timeout,
-                        "response_format": self.response_format
+                        "response_format": self.response_format,
+                        "competition_id": state.get("competition_id")
                     }
                 )
+
                 response.raise_for_status()
 
                 # Directly unpack the list from the JSON response
@@ -357,7 +359,7 @@ class StreamingGenericAPIAgent(Agent):
             "error_path": "error.message"
         }
     
-    async def generate_response(self, prompt: str) -> tuple[str, int]:
+    async def generate_response(self, state: Dict, prompt: str) -> tuple[str, int]:
         """Generate a response using the configured API with streaming support"""
         response = None
         # Add user message to conversation history
@@ -406,7 +408,7 @@ class StreamingGenericAPIAgent(Agent):
 
                 response = await asyncio.to_thread(
                     requests.post,
-                    url="http://localhost:5000/api/agent/stream_request",
+                    url="http://localhost:5000/api/agent/request",
                     json={
                         "method": self.request_format['method'],
                         "url": url,
@@ -414,7 +416,8 @@ class StreamingGenericAPIAgent(Agent):
                         "json": formatted_body,
                         "stream": True,
                         "timeout": self.request_timeout,
-                        # "response_format": self.response_format
+                        "response_format": self.response_format,
+                        "competition_id": state.get("competition_id")
                     }
                 )
 

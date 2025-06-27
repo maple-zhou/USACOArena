@@ -169,6 +169,20 @@ class Competition:
                 "CE": 5,
                 "TLE": 10,
                 "MLE": 10
+            },
+            "input_token_multipliers": {
+                "gemini-2.5-pro": 1.25,
+                "gpt-4.1": 2,
+                "gpt-4o": 2.5,
+                "gpt-4o-mini": 0.15,
+                "claude-3.7-sonnet": 3,
+            },
+            "output_token_multipliers": {
+                "gemini-2.5-pro": 10,
+                "gpt-4.1": 8,
+                "gpt-4o": 10,
+                "gpt-4o-mini": 0.6,
+                "claude-3.7-sonnet": 15,
             }
         }
     

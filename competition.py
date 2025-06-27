@@ -67,31 +67,31 @@ class CompetitionOrganizer:
         self.competitors: List[Competitor] = []
         self.competition_id: Optional[str] = None
         self.competition_data: Optional[Dict] = None
-        self.output_token_multipliers: Dict[str, float] = {}
-        self.input_token_multipliers: Dict[str, float] = {}
+        # self.output_token_multipliers: Dict[str, float] = {}
+        # self.input_token_multipliers: Dict[str, float] = {}
 
-        self.output_token_multipliers['gemini-2.5-pro'] = 10
-        self.output_token_multipliers['gpt-4.1'] = 8
-        self.output_token_multipliers['gpt-4o'] = 10
-        self.output_token_multipliers['gpt-4o-mini'] = 0.6
-        self.output_token_multipliers['claude-3.7-sonnet'] = 15
-        self.output_token_multipliers['grok-3-beta'] = 15
-        self.output_token_multipliers['qwen3'] = 0.6
-        self.output_token_multipliers['deepseek-v3'] = 1.1
+        # self.output_token_multipliers['gemini-2.5-pro'] = 10
+        # self.output_token_multipliers['gpt-4.1'] = 8
+        # self.output_token_multipliers['gpt-4o'] = 10
+        # self.output_token_multipliers['gpt-4o-mini'] = 0.6
+        # self.output_token_multipliers['claude-3.7-sonnet'] = 15
+        # self.output_token_multipliers['grok-3-beta'] = 15
+        # self.output_token_multipliers['qwen3'] = 0.6
+        # self.output_token_multipliers['deepseek-v3'] = 1.1
 
-        self.input_token_multipliers['gemini-2.5-pro'] = 1.25
-        self.input_token_multipliers['gpt-4.1'] = 2
-        self.input_token_multipliers['gpt-4o'] = 2.5
-        self.input_token_multipliers['gpt-4o-mini'] = 0.15
-        self.input_token_multipliers['claude-3.7-sonnet'] = 3
-        self.input_token_multipliers['grok-3-beta'] = 3
-        self.input_token_multipliers['qwen3'] = 0.2
-        self.input_token_multipliers['deepseek-v3'] = 0.27
+        # self.input_token_multipliers['gemini-2.5-pro'] = 1.25
+        # self.input_token_multipliers['gpt-4.1'] = 2
+        # self.input_token_multipliers['gpt-4o'] = 2.5
+        # self.input_token_multipliers['gpt-4o-mini'] = 0.15
+        # self.input_token_multipliers['claude-3.7-sonnet'] = 3
+        # self.input_token_multipliers['grok-3-beta'] = 3
+        # self.input_token_multipliers['qwen3'] = 0.2
+        # self.input_token_multipliers['deepseek-v3'] = 0.27
     
     def add_competitor(self, competitor: Competitor) -> None:
         """Add a competitor to the competition"""
         self.competitors.append(competitor)
-        logger.info(f"Added competitor: {competitor.name}")
+        # logger.info(f"Added competitor: {competitor.name}")
     
     def create_competition(
         self,
@@ -148,7 +148,7 @@ class CompetitionOrganizer:
             if not_found_problems:
                 logger.warning(f"Some problems not found: {not_found_problems}")
             
-            logger.info(f"Created competition: {self.competition_id}")
+            # logger.info(f"Created competition: {self.competition_id}")
             return self.competition_id
             
         except requests.exceptions.RequestException as e:
@@ -265,14 +265,14 @@ class CompetitionOrganizer:
                 # Check if action contains token usage information
                 prompt_tokens, completion_tokens = action.get("tokens_used", (0, 0))
                 
-                # Apply token multiplier if set for this competitor
-                if competitor.name in self.input_token_multipliers:
-                    prompt_tokens = int(prompt_tokens * self.input_token_multipliers[competitor.name])
-                    logger.info(f"Applied input token multiplier {self.input_token_multipliers[competitor.name]} for {competitor.name}, adjusted prompt tokens: {prompt_tokens}")
+                # # Apply token multiplier if set for this competitor
+                # if competitor.name in self.input_token_multipliers:
+                #     prompt_tokens = int(prompt_tokens * self.input_token_multipliers[competitor.name])
+                #     logger.info(f"Applied input token multiplier {self.input_token_multipliers[competitor.name]} for {competitor.name}, adjusted prompt tokens: {prompt_tokens}")
                 
-                if competitor.name in self.output_token_multipliers:
-                    completion_tokens = int(completion_tokens * self.output_token_multipliers[competitor.name])
-                    logger.info(f"Applied output token multiplier {self.output_token_multipliers[competitor.name]} for {competitor.name}, adjusted completion tokens: {completion_tokens}")
+                # if competitor.name in self.output_token_multipliers:
+                #     completion_tokens = int(completion_tokens * self.output_token_multipliers[competitor.name])
+                #     logger.info(f"Applied output token multiplier {self.output_token_multipliers[competitor.name]} for {competitor.name}, adjusted completion tokens: {completion_tokens}")
                 
                 competitor.remaining_tokens -= (prompt_tokens + completion_tokens)
                 if competitor.remaining_tokens < 0:
