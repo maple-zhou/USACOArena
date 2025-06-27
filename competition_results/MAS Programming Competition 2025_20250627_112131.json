@@ -1,0 +1,33 @@
+{
+  "sf-deepseek-v3": {
+    "final_score": 100.0,
+    "termination_reason": "error",
+    "hint_tokens": 0,
+    "remaining_tokens": 10000000.0,
+    "participant_id": "81d07901-b246-4ae3-af52-97428c80b4bb",
+    "solved_problems": [],
+    "submission_trial": {},
+    "tokens_score": [
+      [
+        0.0,
+        100.0
+      ]
+    ]
+  },
+  "sf-deepseek-v32": {
+    "final_score": 100.0,
+    "termination_reason": "error",
+    "hint_tokens": 0,
+    "remaining_tokens": 10000000.0,
+    "participant_id": "2715bdf1-4577-47f0-beda-9a97aa85c8b9",
+    "solved_problems": [],
+    "submission_trial": {},
+    "tokens_score": [
+      [
+        0.0,
+        100.0
+      ]
+    ]
+  },
+  "competition_id": "331ce447-7944-4318-8b4c-e189a3ee1330"
+}

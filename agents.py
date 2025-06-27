@@ -249,49 +249,44 @@ class GenericAPIAgent(Agent):
                 # logger.info(f"Formatted body: {formatted_body}")
                 # Make the request
                 response = await asyncio.to_thread(
-                    requests.request,
-                    method=self.request_format['method'],
-                    url=url,
-                    headers=headers,
-                    json=formatted_body,
-                    timeout=self.request_timeout
+                    requests.post,
+                    url="http://localhost:5000/api/agent/request",
+                    json={
+                        "method": self.request_format['method'],
+                        "url": url,
+                        "headers": headers,
+                        "json": formatted_body,
+                        "timeout": self.request_timeout,
+                        "response_format": self.response_format
+                    }
                 )
                 response.raise_for_status()
-                
-                # Parse response
-                result = response.json()
-                
-                # Extract response text using configured path
-                response_text = self._get_value_from_path(result, self.response_format["response_path"])
+
+                # Directly unpack the list from the JSON response
+                response_text, prompt_tokens, completion_tokens = response.json()
+
                 # Add assistant response to conversation history
                 self.add_to_conversation("assistant", response_text)
                 self.save_conversation()
                 self.conversation_history.pop()
                 action = self.action_parser.parse_action(response_text)
                 
-                
-                prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
-                completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
-                reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
-                completion_tokens += reasoning_tokens
-
                 self.add_to_conversation("assistant", response_text)
                 self.save_conversation()
                 
                 return response_text, (prompt_tokens, completion_tokens)
                 
             except Exception as e:
+                error_message = f"Error: {str(e)}"
                 if response:
-                    error_message = f"Error: {response.json()}"
-                    if response.status_code == 429:
-                        logger.error(f"Rate limit exceeded.")
-                        time.sleep(self.retry_delay*2)
-                else:
-                    error_message = f"Error: {str(e)}"
+                    try:
+                        error_message = f"Error: {response.json()}"
+                    except json.JSONDecodeError:
+                        error_message = f"Error: {response.text}"
+                
                 logger.error(f"Try {_ + 1} Error generating response with {self.name}: {error_message}")
                 time.sleep(self.retry_delay)
         
-        # return error_message, 0
         raise Exception(error_message)
 
 

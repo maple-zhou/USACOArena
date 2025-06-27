@@ -6,6 +6,8 @@ import threading
 from queue import Queue
 import time
 import os
+import asyncio
+import requests
 
 from models import Competition, Participant, Problem, Submission, TestCase, SubmissionStatus, Level, generate_id
 from storage import DataStorage
@@ -485,6 +487,84 @@ def search_textbook():
         
     except Exception as e:
         return error_response(f"Failed to search textbook: {str(e)}")
+
+def get_text_from_path(data: Dict, path: str) -> str:
+        """Extract value from nested dictionary using dot notation path"""
+        if not path:
+            return data
+        
+        parts = path.split('.')
+        current = data
+        
+        for part in parts:
+            if '[' in part:
+                key, index = part.split('[')
+                index = int(index.rstrip(']'))
+                current = current[key][index]
+            else:
+                current = current[part]
+        
+        return current
+
+# GenericAPIAgent HTTP 请求端点
+@app.route("/api/agent/request", methods=["POST"])
+def agent_request():
+    """处理 GenericAPIAgent 的 HTTP 请求"""
+    try:
+        data = request.get_json()
+        if not data:
+            return error_response("No data provided")
+
+        # 提取请求参数
+        method = data.get('method')
+        url = data.get('url')
+        headers = data.get('headers', {})
+        json_data = data.get('json')
+        timeout = data.get('timeout', 30)
+        response_format = data.get('response_format', {})
+
+        # 验证必需参数
+        if not all([method, url]):
+            return error_response("Missing required parameters: method and url")
+
+        # 发送HTTP请求
+        response = requests.request(
+            method=method,
+            url=url,
+            headers=headers,
+            json=json_data,
+            timeout=timeout
+        )
+        # Parse response
+        result = response.json()
+        
+        # Extract response text using configured path
+        response_text = get_text_from_path(result, response_format["response_path"])
+        # response_text = self._get_value_from_path(result, response_format["response_path"])
+        # Add assistant response to conversation history
+        # self.add_to_conversation("assistant", response_text)
+        # self.save_conversation()
+        # self.conversation_history.pop()
+        # action = self.action_parser.parse_action(response_text)
+        
+        prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
+        completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
+        reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
+        completion_tokens += reasoning_tokens
+
+        # 构建并返回新的结构化响应
+        structured_response = [
+            response_text,
+            prompt_tokens,
+            completion_tokens
+        ]
+
+        return jsonify(structured_response), response.status_code
+         
+    except requests.exceptions.HTTPError as http_err:
+        return error_response(f"HTTP error occurred: {http_err} - {response.text}", response.status_code)
+    except Exception as e:
+        return error_response(f"Failed to make request: {str(e)}")
 
 # Main entrypoint
 def run_api(host: str = "0.0.0.0", port: int = 5000, debug: bool = False):
