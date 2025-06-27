@@ -18,9 +18,6 @@ from conversation_logger import ConversationLogger
 # )
 logger = logging.getLogger("llm_agents")
 
-max_retries = 20
-retry_delay = 10
-
 
 class Agent(ABC):
     """Base class for Multi-Agent Systems"""
@@ -37,6 +34,23 @@ class Agent(ABC):
         self.action_parser = ActionParser(prompt_config_path)
         self.logger = ConversationLogger(log_dir)
         self.session_id = session_id
+        
+        # 从配置文件加载 API 配置
+        self.max_retries, self.retry_delay = self._load_api_config()
+    
+    def _load_api_config(self) -> tuple[int, int]:
+        """从配置文件加载 API 配置"""
+        try:
+            with open('config/competition_config.json', 'r') as f:
+                config = json.load(f)
+                api_config = config.get('api_config', {})
+                return (
+                    api_config.get('max_retries', 20),
+                    api_config.get('retry_delay', 10)
+                )
+        except Exception as e:
+            logger.warning(f"无法加载配置文件，使用默认值: {e}")
+            return 20, 10
     
     def truncate_conversation_history(self, max_turns: int = 10) -> None:
         """Truncate conversation history to keep only the latest turns and system prompt"""
@@ -198,17 +212,16 @@ class GenericAPIAgent(Agent):
     
     async def generate_response(self, prompt: str) -> tuple[str, int]:
         """Generate a response using the configured API"""
-        global max_retries, retry_delay
         response = None
         # Add user message to conversation history
         self.add_to_conversation("user", prompt)
         self.save_conversation()
-        for _ in range(max_retries):
+        for _ in range(self.max_retries):
             try:
                 
                 # Prepare request URL
                 url = f"{self.api_base}{self.request_format['url']}"
-                
+                print(f"GenericAPIAgent,url: {url}")
                 # Prepare request headers
                 headers = {
                     k: v.format(api_key=self.api_key)
@@ -272,11 +285,11 @@ class GenericAPIAgent(Agent):
                     error_message = f"Error: {response.json()}"
                     if response.status_code == 429:
                         logger.error(f"Rate limit exceeded.")
-                        time.sleep(retry_delay*2)
+                        time.sleep(self.retry_delay*2)
                 else:
                     error_message = f"Error: {str(e)}"
                 logger.error(f"Try {_ + 1} Error generating response with {self.name}: {error_message}")
-                time.sleep(retry_delay)
+                time.sleep(self.retry_delay)
         
         # return error_message, 0
         raise Exception(error_message)
@@ -351,17 +364,16 @@ class StreamingGenericAPIAgent(Agent):
     
     async def generate_response(self, prompt: str) -> tuple[str, int]:
         """Generate a response using the configured API with streaming support"""
-        global max_retries, retry_delay
         response = None
         # Add user message to conversation history
         self.add_to_conversation("user", prompt)
         self.save_conversation()
-        for _ in range(max_retries):
+        for _ in range(self.max_retries):
             try:
                 
                 # Prepare request URL
                 url = f"{self.api_base}{self.request_format['url']}"
-                
+                print(f"StreamingGenericAPIAgent,url: {url}")
                 # Prepare request headers
                 headers = {
                     k: v.format(api_key=self.api_key)
@@ -457,10 +469,10 @@ class StreamingGenericAPIAgent(Agent):
                     error_message = f"Error: {response.json()}"
                     if response.status_code == 429:
                         logger.error(f"Rate limit exceeded.")
-                        time.sleep(retry_delay*2)
+                        time.sleep(self.retry_delay*2)
                 else:
                     error_message = f"Error: {str(e)}"
                 logger.error(f"Try {_ + 1} Error generating response with {self.name}: {error_message}")
-                time.sleep(retry_delay)
+                time.sleep(self.retry_delay)
         
         raise Exception(error_message)

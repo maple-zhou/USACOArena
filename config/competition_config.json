@@ -3,6 +3,10 @@
   "competition_title": "MAS Programming Competition 2025",
   "competition_description": "A competition to test MAS coding abilities in solving programming problems",
   "max_tokens_per_participant": 1e7,
+  "api_config": {
+    "max_retries": 20,
+    "retry_delay": 10
+  },
   "rules": {
     "scoring": {
       "bronze": 100,

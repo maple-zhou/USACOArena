@@ -23,7 +23,6 @@ problem_loader = USACOProblemLoader()
 # Create Flask app
 app = Flask(__name__)
 
-
 # Helper functions
 def success_response(data: Any = None, message: str = "Success") -> Response:
     """Create a success response"""

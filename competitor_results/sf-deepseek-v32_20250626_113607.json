@@ -1,0 +1,53 @@
+{
+  "final_score": 95.50325,
+  "termination_reason": "error",
+  "hint_tokens": 7000,
+  "remaining_tokens": 9550325,
+  "participant_id": "2d4a616d-2a94-40e8-bae2-799f8149502f",
+  "solved_problems": [],
+  "submission_trial": {
+    "1325_bronze_rotate_and_shift": [
+      [
+        "RE",
+        0,
+        10
+      ],
+      [
+        "RE",
+        0,
+        10
+      ],
+      [
+        "RE",
+        0,
+        10
+      ],
+      [
+        "RE",
+        0,
+        10
+      ],
+      [
+        "RE",
+        0,
+        10
+      ],
+      [
+        "RE",
+        0,
+        10
+      ],
+      [
+        "RE",
+        0,
+        10
+      ]
+    ]
+  },
+  "tokens_score": [
+    [
+      449675.0,
+      95.50325
+    ]
+  ]
+}

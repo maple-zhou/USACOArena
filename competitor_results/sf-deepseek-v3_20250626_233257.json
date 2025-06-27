@@ -1,0 +1,15 @@
+{
+  "final_score": 100.0,
+  "termination_reason": "error",
+  "hint_tokens": 0,
+  "remaining_tokens": 10000000.0,
+  "participant_id": "77b4e858-5aa4-4ef3-b354-87f1595c4978",
+  "solved_problems": [],
+  "submission_trial": {},
+  "tokens_score": [
+    [
+      0.0,
+      100.0
+    ]
+  ]
+}
