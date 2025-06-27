@@ -566,6 +566,102 @@ def agent_request():
     except Exception as e:
         return error_response(f"Failed to make request: {str(e)}")
 
+
+@app.route("/api/agent/stream_request", methods=["POST"])
+def agent_stream_request():
+    """处理 StreamingGenericAPIAgent 的 HTTP 请求"""
+    try:
+        data = request.get_json()
+        if not data:
+            return error_response("No data provided")
+
+        # 提取请求参数
+        method = data.get('method')
+        url = data.get('url')
+        headers = data.get('headers', {})
+        json_data = data.get('json')
+        timeout = data.get('timeout', 30)
+        # response_format = data.get('response_format', {})
+
+        # 验证必需参数
+        if not all([method, url]):
+            return error_response("Missing required parameters: method and url")
+
+        # 发送HTTP请求
+        response = requests.request(
+            method=method,
+            url=url,
+            headers=headers,
+            json=json_data,
+            timeout=timeout
+        )
+        # # Parse response
+        # result = response.json()
+        
+        # # Extract response text using configured path
+        # response_text = get_text_from_path(result, response_format["response_path"])
+        # response_text = self._get_value_from_path(result, response_format["response_path"])
+        # Add assistant response to conversation history
+        # self.add_to_conversation("assistant", response_text)
+        # self.save_conversation()
+        # self.conversation_history.pop()
+        # action = self.action_parser.parse_action(response_text)
+
+        # Process streaming response
+        reasoning_content = ""
+        content = ""
+        usage_info = None
+        
+        for line in response.iter_lines():
+            if line:
+                # Skip "data: " prefix
+                if line.startswith(b"data: "):
+                    line = line[6:]
+                
+                # Skip heartbeat message
+                if line == b"[DONE]":
+                    break
+                
+                try:
+                    # Parse JSON data
+                    chunk = json.loads(line.decode('utf-8'))
+                    
+                    # Check for usage information
+                    if "usage" in chunk:
+                        usage_info = chunk["usage"]
+                    
+                    # Extract reasoning_content and content
+                    if "choices" in chunk and len(chunk["choices"]) > 0:
+                        delta = chunk["choices"][0].get("delta", {})
+                        if "reasoning_content" in delta and delta["reasoning_content"]:
+                            reasoning_content += delta["reasoning_content"]
+                        elif "content" in delta and delta["content"] is not None:
+                            content += delta["content"]
+                except json.JSONDecodeError:
+                    continue
+        
+        # Calculate tokens
+        prompt_tokens = usage_info.get("prompt_tokens", 0) if usage_info else 0
+        completion_tokens = usage_info.get("completion_tokens", 0) if usage_info else 0
+        reasoning_tokens = usage_info.get("completion_tokens_details", {}).get("reasoning_tokens", 0) if usage_info else 0
+        completion_tokens += reasoning_tokens
+
+        # 构建并返回新的结构化响应
+        structured_response = [
+                reasoning_content,
+                content,
+                usage_info,
+                prompt_tokens,
+                completion_tokens
+        ]
+
+        return jsonify(structured_response), response.status_code
+         
+    except requests.exceptions.HTTPError as http_err:
+        return error_response(f"HTTP error occurred: {http_err} - {response.text}", response.status_code)
+    except Exception as e:
+        return error_response(f"Failed to make request: {str(e)}")
+
 # Main entrypoint
 def run_api(host: str = "0.0.0.0", port: int = 5000, debug: bool = False):
     """Run the API server"""

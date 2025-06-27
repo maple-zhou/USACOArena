@@ -221,7 +221,7 @@ class GenericAPIAgent(Agent):
                 
                 # Prepare request URL
                 url = f"{self.api_base}{self.request_format['url']}"
-                print(f"GenericAPIAgent,url: {url}")
+                # print(f"GenericAPIAgent,url: {url}")
                 # Prepare request headers
                 headers = {
                     k: v.format(api_key=self.api_key)
@@ -368,7 +368,7 @@ class StreamingGenericAPIAgent(Agent):
                 
                 # Prepare request URL
                 url = f"{self.api_base}{self.request_format['url']}"
-                print(f"StreamingGenericAPIAgent,url: {url}")
+                # print(f"StreamingGenericAPIAgent,url: {url}")
                 # Prepare request headers
                 headers = {
                     k: v.format(api_key=self.api_key)
@@ -394,50 +394,67 @@ class StreamingGenericAPIAgent(Agent):
                 if "messages" in formatted_body:
                     formatted_body["messages"] = json.loads(formatted_body["messages"])
                 
-                # Make the streaming request
+                # # Make the streaming request
+                # response = await asyncio.to_thread(
+                #     requests.post,
+                #     url=url,
+                #     headers=headers,
+                #     json=formatted_body,
+                #     stream=True,
+                #     timeout=self.request_timeout
+                # )
+
                 response = await asyncio.to_thread(
                     requests.post,
-                    url=url,
-                    headers=headers,
-                    json=formatted_body,
-                    stream=True,
-                    timeout=self.request_timeout
+                    url="http://localhost:5000/api/agent/stream_request",
+                    json={
+                        "method": self.request_format['method'],
+                        "url": url,
+                        "headers": headers,
+                        "json": formatted_body,
+                        "stream": True,
+                        "timeout": self.request_timeout,
+                        # "response_format": self.response_format
+                    }
                 )
+
                 response.raise_for_status()
                 
-                # Process streaming response
-                reasoning_content = ""
-                content = ""
-                usage_info = None
+                # # Process streaming response
+                # reasoning_content = ""
+                # content = ""
+                # usage_info = None
                 
-                for line in response.iter_lines():
-                    if line:
-                        # Skip "data: " prefix
-                        if line.startswith(b"data: "):
-                            line = line[6:]
+                # for line in response.iter_lines():
+                #     if line:
+                #         # Skip "data: " prefix
+                #         if line.startswith(b"data: "):
+                #             line = line[6:]
                         
-                        # Skip heartbeat message
-                        if line == b"[DONE]":
-                            break
+                #         # Skip heartbeat message
+                #         if line == b"[DONE]":
+                #             break
                         
-                        try:
-                            # Parse JSON data
-                            chunk = json.loads(line.decode('utf-8'))
+                #         try:
+                #             # Parse JSON data
+                #             chunk = json.loads(line.decode('utf-8'))
                             
-                            # Check for usage information
-                            if "usage" in chunk:
-                                usage_info = chunk["usage"]
+                #             # Check for usage information
+                #             if "usage" in chunk:
+                #                 usage_info = chunk["usage"]
                             
-                            # Extract reasoning_content and content
-                            if "choices" in chunk and len(chunk["choices"]) > 0:
-                                delta = chunk["choices"][0].get("delta", {})
-                                if "reasoning_content" in delta and delta["reasoning_content"]:
-                                    reasoning_content += delta["reasoning_content"]
-                                elif "content" in delta and delta["content"] is not None:
-                                    content += delta["content"]
-                        except json.JSONDecodeError:
-                            continue
-                
+                #             # Extract reasoning_content and content
+                #             if "choices" in chunk and len(chunk["choices"]) > 0:
+                #                 delta = chunk["choices"][0].get("delta", {})
+                #                 if "reasoning_content" in delta and delta["reasoning_content"]:
+                #                     reasoning_content += delta["reasoning_content"]
+                #                 elif "content" in delta and delta["content"] is not None:
+                #                     content += delta["content"]
+                #         except json.JSONDecodeError:
+                #             continue
+
+                reasoning_content, content, usage_info, prompt_tokens, completion_tokens = response.json()
+
                 # Add assistant response to conversation history
                 self.add_to_conversation("assistant", "<thinking>" + reasoning_content + "</thinking>\n\n" + content)
                 self.save_conversation()
@@ -448,15 +465,12 @@ class StreamingGenericAPIAgent(Agent):
                 #     idx = reasoning_content.find("```json")
                 action = self.action_parser.parse_action(content)
                 
-                # Calculate tokens
-                prompt_tokens = usage_info.get("prompt_tokens", 0) if usage_info else 0
-                completion_tokens = usage_info.get("completion_tokens", 0) if usage_info else 0
-                reasoning_tokens = usage_info.get("completion_tokens_details", {}).get("reasoning_tokens", 0) if usage_info else 0
-                completion_tokens += reasoning_tokens
+                # # Calculate tokens
+                # prompt_tokens = usage_info.get("prompt_tokens", 0) if usage_info else 0
+                # completion_tokens = usage_info.get("completion_tokens", 0) if usage_info else 0
+                # reasoning_tokens = usage_info.get("completion_tokens_details", {}).get("reasoning_tokens", 0) if usage_info else 0
+                # completion_tokens += reasoning_tokens
 
-                self.add_to_conversation("assistant", "<thinking>" + reasoning_content + "</thinking>\n\n" + content)
-                self.save_conversation()
-                
                 return content, (prompt_tokens, completion_tokens)
             
             except Exception as e:
