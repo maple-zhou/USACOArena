@@ -510,17 +510,17 @@ def get_text_from_path(data: Dict, path: str) -> str:
         
         return str(current) if current is not None else ""
 
-# GenericAPIAgent HTTP 请求端点
+# HTTP request endpoint for GenericAPIAgent
 @app.route("/api/agent/request", methods=["POST"])
 def agent_request():
-    """处理 GenericAPIAgent 的 HTTP 请求并计算 token 使用量 * 应用 token 乘数"""
+    """Handle HTTP requests from GenericAPIAgent and calculate token usage with multipliers applied"""
     try:
         data = request.get_json()
         if not data:
             return error_response("No data provided")
         
 
-        # 提取请求参数
+        # Extract request parameters from the incoming data
         competition_id = data.get("competition_id")
         if not competition_id:
             return error_response("Competition ID is required")
@@ -537,11 +537,11 @@ def agent_request():
         response_format = data.get('response_format', {})
         # print(f"--- DIAGNOSTIC: Response format: {response_format} ---")
 
-        # 验证必需参数
+        # Validate required parameters before making the request
         if not all([method, url]):
             return error_response("Missing required parameters: method and url")
 
-        # 发送HTTP请求
+        # Send HTTP request to the LLM API
         try:
             response = requests.request(
                 method=method,
@@ -550,17 +550,17 @@ def agent_request():
                 json=json_data,
                 timeout=timeout
             )
-            response.raise_for_status()  # 检查HTTP状态码
+            response.raise_for_status()  # Check HTTP status code for errors
         except requests.exceptions.RequestException as req_err:
-            print(f"LLM API请求失败: {req_err}")
-            raise Exception(f"LLM API请求失败: {req_err}")
+            print(f"LLM API request failed: {req_err}")
+            raise Exception(f"LLM API request failed: {req_err}")
         
         # Parse response
         try:
             result = response.json()
         except json.JSONDecodeError as json_err:
-            print(f"LLM API响应解析失败: {json_err} - 响应内容: {response.text[:200]}")
-            raise Exception(f"LLM API响应解析失败: {json_err} - 响应内容: {response.text[:200]}")
+            print(f"LLM API response parsing failed: {json_err} - Response content: {response.text[:200]}")
+            raise Exception(f"LLM API response parsing failed: {json_err} - Response content: {response.text[:200]}")
         
         # print(f"--- DIAGNOSTIC: Result: {result}000{response_format['response_path']} ---")
         # Extract response text using configured path
@@ -595,7 +595,7 @@ def agent_request():
                 else:
                     print(f"No output token multiplier found for model {model}")
 
-        # 构建并返回新的结构化响应
+        # Build and return the new structured response format
         structured_response = [
             response_text,
             prompt_tokens,
@@ -615,24 +615,24 @@ def agent_request():
 
 @app.route("/api/agent/stream_request", methods=["POST"])
 def agent_stream_request():
-    """处理 StreamingGenericAPIAgent 的 HTTP 请求"""
+    """Handle HTTP requests from StreamingGenericAPIAgent with streaming support"""
     try:
         data = request.get_json()
         if not data:
             return error_response("No data provided")
 
-        # 提取请求参数
+        # Extract request parameters for streaming request
         method = data.get('method')
         url = data.get('url')
         headers = data.get('headers', {})
         json_data = data.get('json')
         timeout = data.get('timeout', 30)
 
-        # 验证必需参数
+        # Validate required parameters for streaming request
         if not all([method, url]):
             return error_response("Missing required parameters: method and url")
 
-        # 发送HTTP请求
+        # Send streaming HTTP request to the LLM API
         response = requests.request(
             method=method,
             url=url,
@@ -680,7 +680,7 @@ def agent_stream_request():
         reasoning_tokens = usage_info.get("completion_tokens_details", {}).get("reasoning_tokens", 0) if usage_info else 0
         completion_tokens += reasoning_tokens
 
-        # 构建并返回新的结构化响应
+        # Build and return the new structured response for streaming
         structured_response = [
                 reasoning_content,
                 content,

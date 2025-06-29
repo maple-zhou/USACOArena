@@ -1,3 +1,23 @@
+"""
+LLM Agent System for Programming Competition
+
+This module implements various agent classes that can interact with different LLM providers
+and participate in programming competitions. The agents handle conversation management,
+API requests, response parsing, and action execution.
+
+Main Components:
+- Agent: Abstract base class defining the agent interface
+- GenericAPIAgent: Generic agent that can work with any LLM API
+- StreamingGenericAPIAgent: Agent with streaming support for real-time responses
+
+The agents support:
+- Multiple LLM providers (OpenAI, Anthropic, Google, etc.)
+- Conversation history management and truncation
+- Token usage tracking and multipliers
+- Retry logic with exponential backoff
+- Response parsing and action extraction
+"""
+
 import json
 import logging
 import asyncio
@@ -7,11 +27,11 @@ from abc import ABC, abstractmethod
 import os
 import time
 
-
 from prompts import PromptSystem, ActionParser
 from conversation_logger import ConversationLogger
 
-# # Configure logging
+# Configure logging for agent operations
+# Uncomment the following lines to enable detailed logging
 # logging.basicConfig(
 #     level=logging.INFO,
 #     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -20,7 +40,19 @@ logger = logging.getLogger("llm_agents")
 
 
 class Agent(ABC):
-    """Base class for Multi-Agent Systems"""
+    """
+    Abstract base class for LLM agents in programming competitions.
+    
+    This class provides the foundation for all agent implementations, handling:
+    - Conversation history management
+    - Prompt generation and response parsing
+    - Logging and session management
+    - API configuration loading
+    
+    Subclasses must implement the generate_response method to handle
+    communication with specific LLM providers.
+    """
+    
     def __init__(
         self,
         name: str,
@@ -28,18 +60,27 @@ class Agent(ABC):
         log_dir: str = "logs",
         session_id: Optional[str] = None
     ):
-        self.name = name
-        self.conversation_history: List[Dict] = []
-        self.prompt_system = PromptSystem(prompt_config_path)
-        self.action_parser = ActionParser(prompt_config_path)
-        self.logger = ConversationLogger(log_dir)
-        self.session_id = session_id
+        """
+        Initialize the agent with basic configuration.
         
-        # 从配置文件加载 API 配置
+        Args:
+            name: Unique identifier for this agent
+            prompt_config_path: Path to JSON file containing prompt templates
+            log_dir: Directory for storing conversation logs
+            session_id: Optional session identifier for tracking conversations
+        """
+        self.name = name
+        self.conversation_history: List[Dict] = []  # Stores conversation messages
+        self.prompt_system = PromptSystem(prompt_config_path)  # Handles prompt generation
+        self.action_parser = ActionParser(prompt_config_path)  # Parses LLM responses into actions
+        self.logger = ConversationLogger(log_dir)  # Manages conversation logging
+        self.session_id = session_id  # Session tracking for conversation continuity
+        
+        # Load API configuration from configuration file
         self.max_retries, self.retry_delay = self._load_api_config()
     
     def _load_api_config(self) -> tuple[int, int]:
-        """从配置文件加载 API 配置"""
+        """Load API configuration from configuration file"""
         try:
             with open('config/competition_config.json', 'r') as f:
                 config = json.load(f)
@@ -49,28 +90,38 @@ class Agent(ABC):
                     api_config.get('retry_delay', 10)
                 )
         except Exception as e:
-            logger.warning(f"无法加载配置文件，使用默认值: {e}")
+            logger.warning(f"Unable to load configuration file, using default values: {e}")
             return 20, 10
     
     def truncate_conversation_history(self, max_turns: int = 10) -> None:
-        """Truncate conversation history to keep only the latest turns and system prompt"""
+        """
+        Truncate conversation history to prevent context length overflow.
+        
+        Keeps the system prompt (if exists) and the most recent conversation turns
+        to stay within token limits while maintaining conversation context.
+        
+        Args:
+            max_turns: Maximum number of user/assistant conversation pairs to keep
+        """
+        # If history is already short enough, no truncation needed
         if len(self.conversation_history) <= max_turns * 2 + 1:  # +1 for system prompt
             return
             
-        # Keep system prompt if it exists
+        # Preserve the system prompt if it exists at the beginning
         system_prompt = None
         if self.conversation_history and self.conversation_history[0]["role"] == "system":
             system_prompt = self.conversation_history[0]
             
         # Keep only the latest max_turns pairs of user/assistant messages
+        # This ensures we don't exceed the context window while maintaining recent context
         self.conversation_history = self.conversation_history[-(max_turns * 2):]
         
-        # Add back system prompt if it existed
+        # Restore the system prompt at the beginning if it existed
         if system_prompt:
             self.conversation_history.insert(0, system_prompt)
     
     @abstractmethod
-    async def generate_response(self, prompt: str) -> str:
+    async def generate_response(self, state: Dict, prompt: str) -> tuple[str, tuple[int, int]]:
         """Generate a response from the MAS"""
         pass
     
@@ -93,35 +144,51 @@ class Agent(ABC):
     
     async def process(self, state: Dict) -> Dict:
         """
-        Process the competition state and action result, and return the next action.
+        Process the current competition state and generate the next action.
+        
+        This is the main method that orchestrates the agent's decision-making process:
+        1. Create a prompt based on the current competition state
+        2. Initialize system prompt if this is the first interaction
+        3. Manage conversation history to stay within context limits
+        4. Generate a response from the LLM
+        5. Parse the response into a structured action
+        6. Track token usage for billing and limits
         
         Args:
-            state: Dictionary containing the current competition state
-            action_result: Optional dictionary containing the result of the last action
+            state: Dictionary containing the current competition state, including:
+                   - competition details
+                   - available problems
+                   - participant status
+                   - rankings
+                   - last action result
         
         Returns:
-            Dictionary containing the next action to take
+            Dictionary containing the next action to take, with fields:
+            - action: The action type (e.g., "VIEW_PROBLEM", "SUBMIT_SOLUTION")
+            - parameters: Action-specific parameters
+            - tokens_used: Tuple of (prompt_tokens, completion_tokens)
         """
-        # Create prompt using the prompt system
+        # Create contextual prompt using the current competition state
         prompt = self.prompt_system.create_prompt(state)
         
-        # logger.info(f"Prompt: {prompt}")
-        # If this is the first message, add system prompt
+        # Initialize system prompt on first interaction to establish agent behavior
         if not self.conversation_history:
-            self.add_to_conversation("system", self.prompt_system.config.get("system_prompt", ""))
+            system_prompt = self.prompt_system.config.get("system_prompt", "")
+            self.add_to_conversation("system", system_prompt)
         
-        # Truncate conversation history before generating response
+        # Truncate conversation history to prevent context length overflow
+        # This maintains recent context while staying within token limits
         self.truncate_conversation_history()
         
-        # logger.info(f"Prompt: {prompt}")
-        # Generate response
-        response, tokens_used = await self.generate_response(state,prompt)
+        # Generate response from the LLM using the current state and prompt
+        response, tokens_used = await self.generate_response(state, prompt)
         
-        # Parse action using the action parser
+        # Parse the LLM response into a structured action that the competition system can execute
         action = self.action_parser.parse_action(response)
-        action["tokens_used"] = tokens_used
+        action["tokens_used"] = tokens_used  # Track token usage for billing and limits
         
-        # # Save conversation after each interaction
+        # Optional: Save conversation for debugging and analysis
+        # Uncomment the following lines to enable conversation logging
         # self.save_conversation({
         #     "state": state,
         #     "action": action
@@ -131,7 +198,24 @@ class Agent(ABC):
 
 
 class GenericAPIAgent(Agent):
-    """Agent using any LLM service via API"""
+    """
+    Generic agent that can communicate with any LLM API provider.
+    
+    This agent is designed to work with various LLM services by allowing
+    customizable request and response formats. It supports:
+    - Configurable API endpoints and authentication
+    - Flexible request/response format templates
+    - Token usage tracking and multipliers
+    - Retry logic with exponential backoff
+    - Conversation history management
+    
+    Common use cases:
+    - OpenAI GPT models (gpt-4, gpt-3.5-turbo)
+    - Anthropic Claude models
+    - Google Gemini models
+    - Custom or local LLM endpoints
+    """
+    
     def __init__(
         self,
         name: str,
@@ -141,8 +225,8 @@ class GenericAPIAgent(Agent):
         prompt_config_path: Optional[str] = None,
         log_dir: str = "logs",
         session_id: Optional[str] = None,
-        request_format: Dict = None,
-        response_format: Dict = None,
+        request_format: Optional[Dict] = None,
+        response_format: Optional[Dict] = None,
         request_timeout: Optional[float] = 300
     ):
         """
@@ -210,7 +294,7 @@ class GenericAPIAgent(Agent):
         
         return current
     
-    async def generate_response(self, state: Dict, prompt: str) -> tuple[str, int]:
+    async def generate_response(self, state: Dict, prompt: str) -> tuple[str, tuple[int, int]]:
         """Generate a response using the configured API"""
         response = None
         # Add user message to conversation history
@@ -293,7 +377,24 @@ class GenericAPIAgent(Agent):
 
 
 class StreamingGenericAPIAgent(Agent):
-    """Agent using any LLM service via API with streaming support"""
+    """
+    Generic agent with streaming support for real-time LLM responses.
+    
+    This agent extends GenericAPIAgent to support streaming responses, which provides:
+    - Real-time response generation as tokens are produced
+    - Lower perceived latency for users
+    - Ability to process reasoning content separately from final output
+    - Support for models with thinking/reasoning capabilities
+    
+    Streaming is particularly useful for:
+    - Interactive applications requiring immediate feedback
+    - Long-form responses where partial content is valuable
+    - Models that expose internal reasoning (like Claude with thinking)
+    - Reducing time-to-first-token in user interfaces
+    
+    The agent handles the complexity of streaming protocols and provides
+    the same interface as the non-streaming version.
+    """
     def __init__(
         self,
         name: str,
@@ -303,8 +404,8 @@ class StreamingGenericAPIAgent(Agent):
         prompt_config_path: Optional[str] = None,
         log_dir: str = "logs",
         session_id: Optional[str] = None,
-        request_format: Dict = None,
-        response_format: Dict = None,
+        request_format: Optional[Dict] = None,
+        response_format: Optional[Dict] = None,
         request_timeout: Optional[float] = 300
     ):
         """
@@ -359,7 +460,7 @@ class StreamingGenericAPIAgent(Agent):
             "error_path": "error.message"
         }
     
-    async def generate_response(self, state: Dict, prompt: str) -> tuple[str, int]:
+    async def generate_response(self, state: Dict, prompt: str) -> tuple[str, tuple[int, int]]:
         """Generate a response using the configured API with streaming support"""
         response = None
         # Add user message to conversation history

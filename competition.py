@@ -4,7 +4,7 @@ import requests
 import logging
 import asyncio
 import os
-from typing import Dict, List, Optional, Any, Callable
+from typing import Dict, List, Optional, Any, Callable, Tuple
 from datetime import datetime, timedelta
 
 from agents import Agent, GenericAPIAgent
@@ -20,7 +20,7 @@ logger = logging.getLogger("competition")
 
 class Competitor:
     """Base class for competitors"""
-    def __init__(self, name: str, agent: Agent, max_tokens: int = 1e7):
+    def __init__(self, name: str, agent: Agent, max_tokens: int = 10000000):
         self.name = name
         self.agent = agent
         self.participant_id: Optional[str] = None
@@ -33,7 +33,7 @@ class Competitor:
         self.final_score: int = 0
         self.submission_trial: Dict[str, List] = {}
         self.hint_tokens: int = 0
-        self.tokens_score: List[(int, float)] = []
+        self.tokens_score: List[Tuple[int, float]] = []
     
     def get_competition_state(self) -> Dict:
         """Get the current state of the competition"""
@@ -98,7 +98,7 @@ class CompetitionOrganizer:
         title: str,
         description: str,
         problem_ids: List[str],
-        max_tokens_per_participant: int = 1e7,
+        max_tokens_per_participant: int = 100000,
         rules: Optional[Dict] = None
     ) -> Optional[str]:
         """
