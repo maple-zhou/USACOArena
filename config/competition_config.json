@@ -1,5 +1,5 @@
 {
-  "api_base_url": "http://localhost:5000",
+  "api_base": "http://localhost:5000",
   "competition_title": "MAS Programming Competition 2025",
   "competition_description": "A competition to test MAS coding abilities in solving programming problems",
   "max_tokens_per_participant": 1e7,

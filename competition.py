@@ -34,6 +34,7 @@ class Competitor:
         self.submission_trial: Dict[str, List] = {}
         self.hint_tokens: int = 0
         self.tokens_score: List[Tuple[int, float]] = []
+            
     
     def get_competition_state(self) -> Dict:
         """Get the current state of the competition"""
@@ -56,37 +57,17 @@ class Competitor:
 class CompetitionOrganizer:
     """Organizer for LLM programming competition"""
     
-    def __init__(self, api_base_url: str):
+    def __init__(self, api_base: str):
         """
         Initialize the competition organizer
         
         Args:
-            api_base_url: Base URL for the competition API
+            api_base: Base URL for the competition API
         """
-        self.api_base_url = api_base_url
+        self.api_base = api_base
         self.competitors: List[Competitor] = []
         self.competition_id: Optional[str] = None
         self.competition_data: Optional[Dict] = None
-        # self.output_token_multipliers: Dict[str, float] = {}
-        # self.input_token_multipliers: Dict[str, float] = {}
-
-        # self.output_token_multipliers['gemini-2.5-pro'] = 10
-        # self.output_token_multipliers['gpt-4.1'] = 8
-        # self.output_token_multipliers['gpt-4o'] = 10
-        # self.output_token_multipliers['gpt-4o-mini'] = 0.6
-        # self.output_token_multipliers['claude-3.7-sonnet'] = 15
-        # self.output_token_multipliers['grok-3-beta'] = 15
-        # self.output_token_multipliers['qwen3'] = 0.6
-        # self.output_token_multipliers['deepseek-v3'] = 1.1
-
-        # self.input_token_multipliers['gemini-2.5-pro'] = 1.25
-        # self.input_token_multipliers['gpt-4.1'] = 2
-        # self.input_token_multipliers['gpt-4o'] = 2.5
-        # self.input_token_multipliers['gpt-4o-mini'] = 0.15
-        # self.input_token_multipliers['claude-3.7-sonnet'] = 3
-        # self.input_token_multipliers['grok-3-beta'] = 3
-        # self.input_token_multipliers['qwen3'] = 0.2
-        # self.input_token_multipliers['deepseek-v3'] = 0.27
     
     def add_competitor(self, competitor: Competitor) -> None:
         """Add a competitor to the competition"""
@@ -126,7 +107,7 @@ class CompetitionOrganizer:
             
             # Make API request
             response = requests.post(
-                f"{self.api_base_url}/api/competitions",
+                f"{self.api_base}/api/competitions",
                 json=data,
                 headers={"Content-Type": "application/json"}
             )
@@ -171,7 +152,7 @@ class CompetitionOrganizer:
         try:
             # Get competition details first
             response = requests.get(
-                f"{self.api_base_url}/api/competitions/{competition_id}",
+                f"{self.api_base}/api/competitions/{competition_id}",
                 params={"include_details": "true"}
             )
             response.raise_for_status()
@@ -185,23 +166,44 @@ class CompetitionOrganizer:
             self.competition_data = result["data"]
             self.competition_data["problem_ids"] = [p["id"] for p in self.competition_data["problems"]]
             
-            # Register each competitor
+            # Register each participant
             for competitor in self.competitors:
                 # Add participant
                 participant_response = requests.post(
-                    f"{self.api_base_url}/api/competitions/{competition_id}/participants",
-                    json={"name": competitor.name},
+                    f"{self.api_base}/api/competitions/{competition_id}/participants",
+                    json={"name": competitor.name, "api_base_url": competitor.agent.api_base_url, "api_key": competitor.agent.api_key, "max_tokens": competitor.token_limit, "lambda": self.competition_data.get("rules", {}).get("lambda", 100) if self.competition_data and self.competition_data.get("rules") else 100}, 
                     headers={"Content-Type": "application/json"}
                 )
                 participant_response.raise_for_status()
-                
+
                 participant_result = participant_response.json()
                 if participant_result["status"] != "success":
                     raise ValueError(f"Failed to register {competitor.name}: {participant_result.get('message', 'Unknown error')}")
                 
                 competitor.is_running = True
                 competitor.participant_id = participant_result["data"]["id"]
-                logger.info(f"Competitor {competitor.name} joined competition {competition_id}")
+                logger.info(f"Competitor {competitor.name} joined competition {competition_id} with participant_id: {competitor.participant_id}")
+                
+                # Immediately verify if the participant can be found after creation
+                import time
+                time.sleep(1)  # Wait 1 second to ensure data has been properly saved to storage
+                
+                verification_response = requests.get(
+                    f"{self.api_base}/api/competitions/{competition_id}/participants/{competitor.participant_id}",
+                    params={"include_submissions": "false"}
+                )
+                
+                if verification_response.status_code == 200:
+                    verification_data = verification_response.json()
+                    if verification_data.get("status") == "success":
+                        logger.info(f"✓ Verification successful: Participant {competitor.participant_id} found")
+                    else:
+                        logger.error(f"✗ Verification failed: {verification_data.get('message', 'Unknown error')}")
+                        raise ValueError(f"Participant verification failed for {competitor.name}")
+                else:
+                    logger.error(f"✗ Verification failed: HTTP {verification_response.status_code}")
+                    logger.error(f"Response: {verification_response.text}")
+                    raise ValueError(f"Cannot verify participant {competitor.participant_id} was created successfully")
             
             return True
             
@@ -229,11 +231,15 @@ class CompetitionOrganizer:
         problems = problems_result.get("problems", []) if "error" not in problems_result else []
         
         # Initialize competitor state
-        competitor.final_score = competitor.score + competitor.remaining_tokens / competitor.token_limit * self.competition_data.get("rules", {}).get("lambda", 100)
+        # competitor.final_score = competitor.score + competitor.remaining_tokens / competitor.token_limit * self.competition_data.get("rules", {}).get("lambda", 100)
+
+
+        
         state = {
             "competition_id": self.competition_id,
             "competition_details": self.competition_data,
             "competitor_state": competitor.get_competition_state(),
+            "participant_id": competitor.participant_id,
             "problems": problems,
             "rankings": [],
             "last_action_result": None,
@@ -260,23 +266,49 @@ class CompetitionOrganizer:
                 logger.info(f"Competitor {competitor.name}")
                 action = await competitor.agent.process(state)
 
+                participant_response = requests.get(
+                    f"{self.api_base}/api/competitions/{self.competition_id}/participants/{competitor.participant_id}",
+                    params={"include_submissions": "false"}
+                )
+                
+                logger.info(f"000000[DEBUG] Response Status Code: {participant_response.status_code}")
+                logger.info(f"000000[DEBUG] Response Content: {participant_response.json()}")
+                if participant_response.status_code == 200:
+                    participant_data = participant_response.json()
+                    if participant_data.get("status") == "success":
+                        competitor.remaining_tokens = participant_data["data"]["remaining_tokens"]
+                        competitor.score = participant_data["data"]["score"]
+                        competitor.final_score = participant_data["data"].get("final_score", competitor.score)
+                        logger.info(f"[API STATE] {competitor.name} - Tokens: {competitor.remaining_tokens}, Score: {competitor.score}, Final: {competitor.final_score}")
+                    else:
+                        raise Exception(f"API error: {participant_data.get('message', 'Unknown error')}")
+                else:
+                    raise Exception(f"Failed to get participant data: {participant_response.status_code}")
+                
                 logger.info(f"{competitor.name} choose Action: {action['action']}, Tokens remaining: {competitor.remaining_tokens}, Score: {competitor.final_score}")
                 
-                # Check if action contains token usage information
-                prompt_tokens, completion_tokens = action.get("tokens_used", (0, 0))
+                # Token calculation and multiplier application are now handled on the API side
+                # Synchronize participant state before executing actions
+                def sync_participant_state(phase="unknown"):
+                    response = requests.get(
+                        f"{self.api_base}/api/competitions/{self.competition_id}/participants/{competitor.participant_id}",
+                        params={"include_submissions": "false"}
+                    )
+                    
+                    if response.status_code == 200:
+                        data = response.json()
+                        if data.get("status") == "success":
+                            competitor.remaining_tokens = data["data"]["remaining_tokens"]
+                            competitor.score = data["data"]["score"]
+                            competitor.final_score = data["data"].get("final_score", competitor.score)
+                            logger.info(f"[{phase}] {competitor.name} - Tokens: {competitor.remaining_tokens}, Score: {competitor.score}, Final: {competitor.final_score}")
+                        else:
+                            raise Exception(f"API error: {data.get('message', 'Unknown error')}")
+                    else:
+                        raise Exception(f"Failed to get participant data: {response.status_code}")
                 
-                # # Apply token multiplier if set for this competitor
-                # if competitor.name in self.input_token_multipliers:
-                #     prompt_tokens = int(prompt_tokens * self.input_token_multipliers[competitor.name])
-                #     logger.info(f"Applied input token multiplier {self.input_token_multipliers[competitor.name]} for {competitor.name}, adjusted prompt tokens: {prompt_tokens}")
-                
-                # if competitor.name in self.output_token_multipliers:
-                #     completion_tokens = int(completion_tokens * self.output_token_multipliers[competitor.name])
-                #     logger.info(f"Applied output token multiplier {self.output_token_multipliers[competitor.name]} for {competitor.name}, adjusted completion tokens: {completion_tokens}")
-                
-                competitor.remaining_tokens -= (prompt_tokens + completion_tokens)
-                if competitor.remaining_tokens < 0:
-                    competitor.remaining_tokens = 0
+                # Synchronize state before action execution
+                sync_participant_state("PRE-ACTION")
                 
                 # Stop if out of tokens
                 if competitor.remaining_tokens <= 0:
@@ -287,12 +319,16 @@ class CompetitionOrganizer:
                 # Process action and update state
                 action_result = self._process_action(action, competitor)
                 
+
+                # print(f"0000000000000000000")
                 # Update rankings
                 rankings_result = self._view_rankings()
                 if "error" not in rankings_result:
                     state["rankings"] = rankings_result.get("rankings", [])
+                # Synchronize state after action execution
+                sync_participant_state("POST-ACTION")
                 
-                competitor.final_score = competitor.score + competitor.remaining_tokens / competitor.token_limit * self.competition_data.get("rules", {}).get("lambda", 100)
+                # Final score calculation has been migrated to the API side
                 competitor.tokens_score.append((competitor.token_limit - competitor.remaining_tokens, competitor.final_score))
                 
                 # Update state for next iteration
@@ -318,11 +354,36 @@ class CompetitionOrganizer:
                 
             except Exception as e:
                 logger.error(f"Error in competition loop for {competitor.name}: {e}")
+                logger.error(f"Error type: {type(e).__name__}")
+                import traceback
+                logger.error(f"Full traceback: {traceback.format_exc()}")
                 competitor.terminate("error")
                 break
         
-        # Return final results
-        competitor.final_score = competitor.score + competitor.remaining_tokens / competitor.token_limit * self.competition_data.get("rules", {}).get("lambda", 100)
+        # Get final state - all calculations are completed by the API side
+        logger.info(f"Getting final state for {competitor.name}")
+        
+        # Reuse the sync_participant_state function for final state synchronization 
+        def sync_final_state():
+            response = requests.get(
+                f"{self.api_base}/api/competitions/{self.competition_id}/participants/{competitor.participant_id}",
+                params={"include_submissions": "false"}
+            )
+            
+            if response.status_code == 200:
+                data = response.json()
+                if data.get("status") == "success":
+                    competitor.remaining_tokens = data["data"]["remaining_tokens"]
+                    competitor.score = data["data"]["score"]
+                    competitor.final_score = data["data"].get("final_score", competitor.score)
+                    logger.info(f"[FINAL STATE] {competitor.name} - Tokens: {competitor.remaining_tokens}, Score: {competitor.score}, Final: {competitor.final_score}")
+                else:
+                    raise Exception(f"API error: {data.get('message', 'Unknown error')}")
+            else:
+                raise Exception(f"Failed to get participant data: {response.status_code}")
+        
+        sync_final_state()
+
         competitor.tokens_score.append((competitor.token_limit - competitor.remaining_tokens, competitor.final_score))
         
         # Save results to file
@@ -462,7 +523,7 @@ class CompetitionOrganizer:
         """Handle VIEW_PROBLEMS action"""
         try:
             response = requests.get(
-                f"{self.api_base_url}/api/competitions/{self.competition_id}/problems"
+                f"{self.api_base}/api/competitions/{self.competition_id}/problems"
             )
             response.raise_for_status()
             
@@ -490,7 +551,7 @@ class CompetitionOrganizer:
         
         try:
             response = requests.get(
-                f"{self.api_base_url}/api/competitions/{self.competition_id}/problems/{problem_id}"
+                f"{self.api_base}/api/competitions/{self.competition_id}/problems/{problem_id}"
             )
             response.raise_for_status()
             
@@ -548,7 +609,7 @@ class CompetitionOrganizer:
         try:
             # Get problem details
             response = requests.get(
-                f"{self.api_base_url}/api/competitions/{self.competition_id}/problems/{problem_id}"
+                f"{self.api_base}/api/competitions/{self.competition_id}/problems/{problem_id}"
             )
             response.raise_for_status()
             
@@ -569,18 +630,37 @@ class CompetitionOrganizer:
             else:
                 hint_data = self._generate_combined_hint(problem_data, num_problems=3)
             
-            # Deduct tokens
-            competitor.remaining_tokens -= token_cost
+            # Token deduction is handled by the API side, here we only record hint_tokens for statistics tracking
             competitor.hint_tokens += token_cost
             
-            # Return structured hint data
+            # Get the latest remaining_tokens from API after getting hint
+            try:
+                participant_response = requests.get(
+                    f"{self.api_base}/api/competitions/{self.competition_id}/participants/{competitor.participant_id}",
+                    params={"include_submissions": "false"}
+                )
+                
+                current_remaining_tokens = competitor.remaining_tokens  # Default value as fallback
+                if participant_response.status_code == 200:
+                    participant_data = participant_response.json()
+                    if participant_data.get("status") == "success":
+                        current_remaining_tokens = participant_data["data"]["remaining_tokens"]
+                        # Synchronously update competitor state with latest data from API
+                        competitor.remaining_tokens = current_remaining_tokens
+                        competitor.score = participant_data["data"]["score"]
+                        competitor.final_score = participant_data["data"].get("final_score", competitor.score)
+            except Exception as e:
+                logger.warning(f"Failed to get updated token count after hint: {e}")
+                current_remaining_tokens = competitor.remaining_tokens
+            
+            # Return structured hint data with the most up-to-date remaining_tokens count
             return {
                 "hint": {
                     "problem_id": problem_id,
                     "hint_level": hint_level,
                     "hint_data": hint_data,
                     "tokens_cost": token_cost,
-                    "remaining_tokens": competitor.remaining_tokens
+                    "remaining_tokens": current_remaining_tokens
                 }
             }
             
@@ -594,7 +674,7 @@ class CompetitionOrganizer:
         try:
             # Get similar problems
             response = requests.get(
-                f"{self.api_base_url}/api/problems/similar",
+                f"{self.api_base}/api/problems/similar",
                 params={
                     "problem_id": problem_data["id"],
                     "num_problems": num_problems,
@@ -633,7 +713,7 @@ class CompetitionOrganizer:
         try:
             # Get relevant textbook content
             response = requests.get(
-                f"{self.api_base_url}/api/textbook/search",
+                f"{self.api_base}/api/textbook/search",
                 params={
                     "query": problem_data["title"] + " " + problem_data.get("description", ""),
                     "max_results": 2
@@ -699,7 +779,7 @@ class CompetitionOrganizer:
         try:
             # Submit the solution
             response = requests.post(
-                f"{self.api_base_url}/api/competitions/{self.competition_id}/submit",
+                f"{self.api_base}/api/competitions/{self.competition_id}/submit",
                 json={
                     "participant_id": competitor.participant_id,
                     "problem_id": problem_id,
@@ -723,26 +803,17 @@ class CompetitionOrganizer:
                 if problem_id not in competitor.solved_problems:
                     competitor.solved_problems.append(problem_id)
             
-            # Get submission token cost from rules
-            submission_tokens = self.competition_data.get("rules", {}).get("submission_tokens", {})
-            token_cost = submission_tokens.get(submission_data["status"], 100)
-            
-            # Deduct tokens
-            competitor.remaining_tokens -= token_cost
-            if competitor.remaining_tokens < 0:
-                competitor.remaining_tokens = 0
-
+            # Record submission trials for statistical tracking purposes
             if problem_id not in competitor.submission_trial:
                 competitor.submission_trial[problem_id] = []
             competitor.submission_trial[problem_id].append((submission_data["status"], submission_data["score"], submission_data["penalty"]))
 
-            # Update competitor score
-            competitor.score = submission_data["participant_score"]
+            # All token deduction and score calculation are handled by the API side, here we only need to log the results
             logger.info(f"Competitor {competitor.name} passed {submission_data['passed_tests']}/{submission_data['total_tests']} tests, scored {submission_data['score']} points with penalty {submission_data['penalty']} for problem {problem_id}")
             
             return {
                 "submission": submission_data,
-                "participant_score": competitor.score
+                "participant_score": submission_data["participant_score"]  # Use the latest score returned by the API
             }
             
             # Original polling implementation (commented out)
@@ -806,7 +877,7 @@ class CompetitionOrganizer:
         """Handle VIEW_RANKINGS action"""
         try:
             response = requests.get(
-                f"{self.api_base_url}/api/competitions/{self.competition_id}/rankings"
+                f"{self.api_base}/api/competitions/{self.competition_id}/rankings"
             )
             response.raise_for_status()
             

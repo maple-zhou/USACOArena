@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+import re
 from typing import Dict, List, Optional, Any, Tuple
 from flask import Flask, request, jsonify, Response
 import threading
@@ -126,11 +127,15 @@ def add_participant(competition_id: str):
     try:
         data = request.get_json()
         name = data.get("name", "")
+        api_base_url = data.get("api_base_url", "")
+        api_key = data.get("api_key", "")
+        max_tokens = data.get("max_tokens", 100000)
+        lambda_ = data.get("lambda", 100)
         
         if not name:
             return error_response("Participant name is required")
         
-        participant = data_storage.add_participant(competition_id, name)
+        participant = data_storage.add_participant(competition_id, name, api_base_url, api_key, max_tokens, lambda_)
         if not participant:
             return error_response(f"Competition with ID {competition_id} not found", 404)
         
@@ -140,18 +145,28 @@ def add_participant(competition_id: str):
         )
     
     except Exception as e:
-        return error_response(f"Failed to add participant: {str(e)}")
+        import traceback
+        error_msg = f"Failed to add participant: {str(e)}"
+        print(f"[ERROR] {error_msg}")
+        print(f"[ERROR] Traceback:")
+        traceback.print_exc()
+        print(f"[ERROR] Request data: {data}")
+        return error_response(error_msg)
 
 
 @app.route("/api/competitions/<competition_id>/participants/<participant_id>", methods=["GET"])
 def get_participant(competition_id: str, participant_id: str):
     """Get details of a specific participant"""
-    participant = data_storage.get_participant(competition_id, participant_id)
-    if not participant:
-        return error_response(f"Participant not found", 404)
-    
-    include_submissions = request.args.get("include_submissions", "false").lower() == "true"
-    return success_response(participant.to_dict(include_submissions=include_submissions))
+    try:
+        participant = data_storage.get_participant(competition_id, participant_id)
+        if not participant:
+            return error_response(f"Participant not found", 404)
+        
+        include_submissions = request.args.get("include_submissions", "false").lower() == "true"
+        print(participant_id, success_response(participant.to_dict(include_submissions=include_submissions)))
+        return success_response(participant.to_dict(include_submissions=include_submissions))
+    except Exception as e:
+        return error_response(f"Failed to get participant data: {str(e)}", 500)
 
 
 # API Routes for Problems
@@ -511,23 +526,28 @@ def get_text_from_path(data: Dict, path: str) -> str:
         return str(current) if current is not None else ""
 
 # HTTP request endpoint for GenericAPIAgent
-@app.route("/api/agent/request", methods=["POST"])
-def agent_request():
+@app.route("/api/agent/<competition_id>/<participant_id>/request", methods=["POST"])
+def agent_request(competition_id: str, participant_id: str):
     """Handle HTTP requests from GenericAPIAgent and calculate token usage with multipliers applied"""
     try:
         data = request.get_json()
         if not data:
             return error_response("No data provided")
         
-
-        # Extract request parameters from the incoming data
-        competition_id = data.get("competition_id")
+        # competition_id and participant_id come from URL path parameters
         if not competition_id:
             return error_response("Competition ID is required")
         
         competition = data_storage.get_competition(competition_id)
         if not competition:
             return error_response(f"Competition with ID {competition_id} not found", 404)
+
+        if not participant_id:
+            return error_response("Participant ID is required")
+
+        participant = data_storage.get_participant(competition_id, participant_id)
+        if not participant:
+            return error_response(f"Participant with ID {participant_id} not found", 404)
         
         method = data.get('method')
         url = data.get('url')
@@ -550,6 +570,7 @@ def agent_request():
                 json=json_data,
                 timeout=timeout
             )
+            print(f"--- DIAGNOSTIC: Response: {response} ---")
             response.raise_for_status()  # Check HTTP status code for errors
         except requests.exceptions.RequestException as req_err:
             print(f"LLM API request failed: {req_err}")
@@ -558,13 +579,10 @@ def agent_request():
         # Parse response
         try:
             result = response.json()
+            # print(f"--- DIAGNOSTIC: Result: {result} ---")DIAGNOSTIC: Remaining tokensDIAGNOSTIC: Remaining tokens
         except json.JSONDecodeError as json_err:
             print(f"LLM API response parsing failed: {json_err} - Response content: {response.text[:200]}")
             raise Exception(f"LLM API response parsing failed: {json_err} - Response content: {response.text[:200]}")
-        
-        # print(f"--- DIAGNOSTIC: Result: {result}000{response_format['response_path']} ---")
-        # Extract response text using configured path
-        response_text = get_text_from_path(result, response_format["response_path"])
         
         # Extract token usage information
         prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
@@ -573,35 +591,44 @@ def agent_request():
         completion_tokens += reasoning_tokens
 
         # Apply token multipliers if competition rules exist
-        if competition_id:
-            competition = data_storage.get_competition(competition_id)
-            if competition and competition.rules:
-                model = json_data.get("model")
-                # print(f"--- DIAGNOSTIC: Checking multipliers for model_id: {model} ---")
-                
-                # Apply input token multiplier
-                input_multiplier = competition.rules.get("input_token_multipliers", {}).get(model)
-                if input_multiplier is not None:
-                    prompt_tokens = int(prompt_tokens * input_multiplier)
-                    print(f"Applied input token multiplier {input_multiplier} for model {model}, adjusted prompt tokens: {prompt_tokens}")
-                else:
-                    print(f"No input token multiplier found for model {model}")
-                
-                # Apply output token multiplier
-                output_multiplier = competition.rules.get("output_token_multipliers", {}).get(model)
-                if output_multiplier is not None:
-                    completion_tokens = int(completion_tokens * output_multiplier)
-                    print(f"Applied output token multiplier {output_multiplier} for model {model}, adjusted completion tokens: {completion_tokens}")
-                else:
-                    print(f"No output token multiplier found for model {model}")
+        
+        if competition and competition.rules:
+            model = json_data.get("model")
+            # print(f"--- DIAGNOSTIC: Checking multipliers for model_id: {model} ---")
+            
+            # Apply input token multiplier
+            input_multiplier = competition.rules.get("input_token_multipliers", {}).get(model)
+            if input_multiplier is not None:
+                prompt_tokens = int(prompt_tokens * input_multiplier)
+                print(f"Applied input token multiplier {input_multiplier} for model {model}, adjusted prompt tokens: {prompt_tokens}")
+            else:
+                print(f"No input token multiplier found for model {model}")
+            
+            # Apply output token multiplier
+            output_multiplier = competition.rules.get("output_token_multipliers", {}).get(model)
+            if output_multiplier is not None:
+                completion_tokens = int(completion_tokens * output_multiplier)
+                print(f"Applied output token multiplier {output_multiplier} for model {model}, adjusted completion tokens: {completion_tokens}")
+            else:
+                print(f"No output token multiplier found for model {model}")
 
+        print(f"--- DIAGNOSTIC: Prompt tokens: {prompt_tokens}, Completion tokens: {completion_tokens} ---")
+        participant.remaining_tokens -= (prompt_tokens + completion_tokens)
+        if participant.remaining_tokens < 0:
+            participant.remaining_tokens = 0
+        print(f"--- DIAGNOSTIC: Remaining tokens: {participant.id} {participant.remaining_tokens} ---")
+        
+        # Save the updated participant data to storage
+        data_storage.update_competition(competition)
+
+
+        time.sleep(2)
         # Build and return the new structured response format
         structured_response = [
-            response_text,
-            prompt_tokens,
-            completion_tokens
+            result
         ]
 
+        print(f"--- DIAGNOSTIC: Structured response: {response.status_code} ---")
         return jsonify(structured_response), response.status_code
     except requests.exceptions.HTTPError as http_err:
         import traceback

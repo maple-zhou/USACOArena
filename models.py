@@ -22,12 +22,19 @@ class Level(str, Enum):
 
 
 class Participant:
-    def __init__(self, id: str, name: str):
+    def __init__(self, id: str, name: str, api_base_url: str, api_key: str, max_tokens: int, lambda_: int):
+        print(f"[*******] API base URL: {api_base_url}")
         self.id = id
         self.name = name
         self.submissions: List[Submission] = []
         self.score = 0
-    
+        self.final_score = lambda_
+        self.remaining_tokens = max_tokens
+        self.api_base_url = api_base_url
+        self.api_key = api_key
+        self.max_tokens = max_tokens
+        self.lambda_ = lambda_
+        
     def calculate_score(self) -> None:
         """Calculate the participant's total score based on their submissions"""
         # Calculate best scores per problem
@@ -47,7 +54,9 @@ class Participant:
         result = {
             "id": self.id,
             "name": self.name,
-            "score": self.score
+            "score": self.score,
+            "final_score": self.final_score,
+            "remaining_tokens": self.remaining_tokens
         }
         
         if include_submissions:
@@ -145,9 +154,9 @@ class Competition:
         title: str,
         description: str,
         problems: List[Problem],
-        participants: List[Participant] = None,
+        participants: Optional[List[Participant]] = None,
         max_tokens_per_participant: int = 100000,
-        rules: Dict[str, Any] = None
+        rules: Optional[Dict[str, Any]] = None
     ):
         self.id = id
         self.title = title
@@ -266,7 +275,7 @@ class Submission:
         language: str,
         submitted_at: datetime,
         status: SubmissionStatus = SubmissionStatus.PENDING,
-        test_results: List[TestResult] = None,
+        test_results: Optional[List[TestResult]] = None,
         score: int = 0,
         penalty: int = 0
     ):

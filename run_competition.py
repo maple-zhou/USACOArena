@@ -88,25 +88,25 @@ def create_competitors(competitors_config: Dict, competition_config: Dict) -> Li
             agent = StreamingGenericAPIAgent(
                 name=competitor["name"],
                 model_id=competitor["model_id"],
-                api_base=competitor["api_base"],
+                api_base_url=competitor["api_base_url"],
                 api_key=competitor["api_key"],
                 prompt_config_path=competitor.get("prompt_config_path"),
                 log_dir=f"logs/{competitor['name']}",
                 session_id=datetime.now().strftime("%Y%m%d_%H%M%S"),
                 request_format=competitor.get("request_format"),
-                response_format=competitor.get("response_format")
+                response_format=competitor.get("response_format"),
             )
         elif competitor["type"] == "generic":
             agent = GenericAPIAgent(
                 name=competitor["name"],
                 model_id=competitor["model_id"],
-                api_base=competitor["api_base"],
+                api_base_url=competitor["api_base_url"],
                 api_key=competitor["api_key"],
                 prompt_config_path=competitor.get("prompt_config_path"),
                 log_dir=f"logs/{competitor['name']}",
                 session_id=datetime.now().strftime("%Y%m%d_%H%M%S"),
                 request_format=competitor.get("request_format"),
-                response_format=competitor.get("response_format")
+                response_format=competitor.get("response_format"),
             )
         else:
             raise ValueError(f"Invalid competitor type: {competitor['type']}")
@@ -182,7 +182,7 @@ async def main():
         
         # Initialize competition organizer
         logger.info("Initializing competition organizer...")
-        organizer = CompetitionOrganizer(api_base_url=competition_config["api_base_url"])
+        organizer = CompetitionOrganizer(api_base=competition_config["api_base"])
         
         # Create competitors
         logger.info("Creating competitors...")

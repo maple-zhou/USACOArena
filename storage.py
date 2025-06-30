@@ -118,8 +118,8 @@ class DataStorage:
             filename = os.path.join(self.data_dir, "competitions", f"{competition_id}.pickle")
             with open(filename, "rb") as f:
                 return pickle.load(f)
-        except (FileNotFoundError, pickle.UnpicklingError) as e:
-            print(f"Error reading competition data: {e}")
+        except (FileNotFoundError, pickle.UnpicklingError, EOFError) as e:
+            print(f"Error reading competition data for {competition_id}: {e}")
             return None
     
     def list_competitions(self, active_only: bool = False) -> List[Competition]:
@@ -133,24 +133,67 @@ class DataStorage:
         self.competitions[competition.id] = competition
         self._save_competition(competition)
     
-    def add_participant(self, competition_id: str, name: str) -> Optional[Participant]:
+    def add_participant(self, competition_id: str, name: str, api_base_url: str, api_key: str, max_tokens: int, lambda_: int) -> Optional[Participant]:
         """Add a participant to a competition"""
-        competition = self.get_competition(competition_id)
-        if not competition:
+        try:
+            print(f"[*******] Adding participant '{name}' to competition '{competition_id}'")
+            print(f"[*******] API base URL: {api_base_url}")
+            print(f"[*******] Max tokens: {max_tokens}, Lambda: {lambda_}")
+            
+            competition = self.get_competition(competition_id)
+            if not competition:
+                print(f"[*******] Competition '{competition_id}' not found")
+                return None
+
+            participant_id = generate_id()
+            print(f"[*******] Generated participant ID: {participant_id}")
+            
+            print(f"[*******] Creating participant object...")
+            participant = Participant(id=participant_id, name=name, api_base_url=api_base_url, api_key=api_key, max_tokens=max_tokens, lambda_=lambda_)
+            print(f"[*******] Created participant object: {participant.to_dict()}")
+            
+            print(f"[*******] Adding participant to competition...")
+            competition.add_participant(participant)
+            print(f"[*******] Added participant to competition")
+            
+            print(f"[*******] Saving competition data...")
+            self._save_competition(competition)
+            print(f"[*******] Saved competition data")
+            
+            print(f"[*******] Successfully added participant '{name}' with ID '{participant_id}'")
+            return participant
+            
+        except Exception as e:
+            import traceback
+            print(f"[*******] ERROR in add_participant: {str(e)}")
+            print(f"[*******] Traceback:")
+            traceback.print_exc()
             return None
-        
-        participant_id = generate_id()
-        participant = Participant(id=participant_id, name=name)
-        competition.add_participant(participant)
-        self._save_competition(competition)
-        return participant
+
     
     def get_participant(self, competition_id: str, participant_id: str) -> Optional[Participant]:
         """Get a participant by ID"""
+        # print(f"[STORAGE DEBUG] Getting participant: competition_id={competition_id}, participant_id={participant_id}")
+        
         competition = self.get_competition(competition_id)
+        # print(f"[STORAGE DEBUG] Competition found: {competition is not None}")
+        
         if not competition:
+            print(f"[STORAGE DEBUG] ✗ Competition {competition_id} not found")
             return None
-        return competition.get_participant(participant_id)
+        
+        # print(f"[STORAGE DEBUG] Competition has {len(competition.participants)} participants")
+        # print(f"[STORAGE DEBUG] Available participant IDs: {[p.id for p in competition.participants]}")
+        
+        participant = competition.get_participant(participant_id)
+        # print(f"[STORAGE DEBUG] Participant found: {participant is not None}")
+        
+        if participant:
+            print(f"[STORAGE DEBUG] ✓ Found participant: {participant.name} (ID: {participant.id})")
+        else:
+            print(f"[STORAGE DEBUG] ✗ Participant {participant_id} not found in competition {competition_id}")
+            
+        return participant
     
     def create_submission(
         self,
@@ -219,7 +262,7 @@ class DataStorage:
                         self._save_submission(submission)
                     break
             
-            # # Update participant's score
+            # # Update participant's score - this logic has been moved to API side
             # participant = competition.get_participant(submission.participant_id)
             # if participant:
             #     participant.calculate_score()

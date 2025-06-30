@@ -18,10 +18,12 @@ The agents support:
 - Response parsing and action extraction
 """
 
+from cgitb import reset
 import json
 import logging
 import asyncio
 import requests
+import traceback
 from typing import Dict, List, Optional, Any
 from abc import ABC, abstractmethod
 import os
@@ -75,6 +77,8 @@ class Agent(ABC):
         self.action_parser = ActionParser(prompt_config_path)  # Parses LLM responses into actions
         self.logger = ConversationLogger(log_dir)  # Manages conversation logging
         self.session_id = session_id  # Session tracking for conversation continuity
+        self.api_base_url = ""
+        self.api_key = ""
         
         # Load API configuration from configuration file
         self.max_retries, self.retry_delay = self._load_api_config()
@@ -220,7 +224,7 @@ class GenericAPIAgent(Agent):
         self,
         name: str,
         model_id: str,
-        api_base: str,
+        api_base_url: str,
         api_key: str,
         prompt_config_path: Optional[str] = None,
         log_dir: str = "logs",
@@ -235,7 +239,7 @@ class GenericAPIAgent(Agent):
         Args:
             name: Name of the agent
             model_id: Model ID to use
-            api_base: Base URL of the API
+            api_base_url: Base URL of the API
             api_key: API key for authentication
             prompt_config_path: Path to prompt configuration file
             log_dir: Directory to store conversation logs
@@ -251,7 +255,7 @@ class GenericAPIAgent(Agent):
         """
         super().__init__(name, prompt_config_path, log_dir, session_id)
         self.model_id = model_id
-        self.api_base = api_base.rstrip('/')
+        self.api_base_url = api_base_url.rstrip('/')
         self.api_key = api_key
         self.request_timeout = request_timeout
         
@@ -304,7 +308,7 @@ class GenericAPIAgent(Agent):
             try:
                 
                 # Prepare request URL
-                url = f"{self.api_base}{self.request_format['url']}"
+                url = f"{self.api_base_url}{self.request_format['url']}"
                 # print(f"GenericAPIAgent,url: {url}")
                 # Prepare request headers
                 headers = {
@@ -334,7 +338,7 @@ class GenericAPIAgent(Agent):
                 # Make the request
                 response = await asyncio.to_thread(
                     requests.post,
-                    url="http://localhost:5000/api/agent/request",
+                    url=f"http://localhost:5000/api/agent/{state.get('competition_id')}/{state.get('participant_id')}/request",
                     json={
                         "method": self.request_format['method'],
                         "url": url,
@@ -342,23 +346,45 @@ class GenericAPIAgent(Agent):
                         "json": formatted_body,
                         "timeout": self.request_timeout,
                         "response_format": self.response_format,
-                        "competition_id": state.get("competition_id")
                     }
                 )
+                # print(f"00000000000000000000000000000{response} ---")
+                # response = await asyncio.to_thread(
+                #     requests.request,
+                #     method=self.request_format['method'],
+                #     url=url,
+                #     headers=headers,
+                #     json=formatted_body,
+                #     timeout=self.request_timeout
+                # )
 
+                # print(f"--- DIAGNOSTIC: Response: {response} ---")
+                # print(f"--- DIAGNOSTIC: Response: {response.json()} ---")
+                # print(f"--- DIAGNOSTIC: Response: {response.json()[0]} ---")
+                # print(f"--- DIAGNOSTIC: Response: {response.json()[0]['choices'][0]['message']['content']} ---")
+                # print(f"--- DIAGNOSTIC: Response: {response.json()[0]['choices'][0]['message']['content']} ---")
                 response.raise_for_status()
 
-                # Directly unpack the list from the JSON response
-                response_text, prompt_tokens, completion_tokens = response.json()
+                # Get the first element from the array response
+                result_array = response.json()
+                result = result_array[0]  # Extract the actual response object from the array
+
+                # print(f"--- DIAGNOSTIC: Result: {result} ---")
+
+                # Extract response text using configured path
+                # print("\n\n")
+                response_text = self._get_value_from_path(result, self.response_format["response_path"])
+                # print("\n\n")
+                prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
+                completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
+                reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
+                completion_tokens += reasoning_tokens
 
                 # Add assistant response to conversation history
                 self.add_to_conversation("assistant", response_text)
                 self.save_conversation()
                 self.conversation_history.pop()
                 action = self.action_parser.parse_action(response_text)
-                
-                self.add_to_conversation("assistant", response_text)
-                self.save_conversation()
                 
                 return response_text, (prompt_tokens, completion_tokens)
                 
@@ -369,6 +395,13 @@ class GenericAPIAgent(Agent):
                         error_message = f"Error: {response.json()}"
                     except json.JSONDecodeError:
                         error_message = f"Error: {response.text}"
+                
+                # Print detailed traceback information
+                traceback_str = traceback.format_exc()
+                print(f"\n=== DETAILED ERROR TRACEBACK for {self.name} (Try {_ + 1}) ===")
+                print(f"Error Message: {error_message}")
+                print(f"Full Traceback:\n{traceback_str}")
+                print("=" * 60)
                 
                 logger.error(f"Try {_ + 1} Error generating response with {self.name}: {error_message}")
                 time.sleep(self.retry_delay)
@@ -399,7 +432,7 @@ class StreamingGenericAPIAgent(Agent):
         self,
         name: str,
         model_id: str,
-        api_base: str,
+        api_base_url: str,
         api_key: str,
         prompt_config_path: Optional[str] = None,
         log_dir: str = "logs",
@@ -414,7 +447,7 @@ class StreamingGenericAPIAgent(Agent):
         Args:
             name: Name of the agent
             model_id: Model ID to use
-            api_base: Base URL of the API
+            api_base_url: Base URL of the API
             api_key: API key for authentication
             prompt_config_path: Path to prompt configuration file
             log_dir: Directory to store conversation logs
@@ -430,7 +463,7 @@ class StreamingGenericAPIAgent(Agent):
         """
         super().__init__(name, prompt_config_path, log_dir, session_id)
         self.model_id = model_id
-        self.api_base = api_base.rstrip('/')
+        self.api_base_url = api_base_url.rstrip('/')
         self.api_key = api_key
         self.request_timeout = request_timeout
         
@@ -460,6 +493,24 @@ class StreamingGenericAPIAgent(Agent):
             "error_path": "error.message"
         }
     
+    def _get_value_from_path(self, data: Dict, path: str) -> Any:
+        """Extract value from nested dictionary using dot notation path"""
+        if not path:
+            return data
+        
+        parts = path.split('.')
+        current = data
+        
+        for part in parts:
+            if '[' in part:
+                key, index = part.split('[')
+                index = int(index.rstrip(']'))
+                current = current[key][index]
+            else:
+                current = current[part]
+        
+        return current
+    
     async def generate_response(self, state: Dict, prompt: str) -> tuple[str, tuple[int, int]]:
         """Generate a response using the configured API with streaming support"""
         response = None
@@ -470,7 +521,7 @@ class StreamingGenericAPIAgent(Agent):
             try:
                 
                 # Prepare request URL
-                url = f"{self.api_base}{self.request_format['url']}"
+                url = f"{self.api_base_url}{self.request_format['url']}"
                 # print(f"StreamingGenericAPIAgent,url: {url}")
                 # Prepare request headers
                 headers = {
@@ -509,7 +560,7 @@ class StreamingGenericAPIAgent(Agent):
 
                 response = await asyncio.to_thread(
                     requests.post,
-                    url="http://localhost:5000/api/agent/request",
+                    url=f"http://localhost:5000/api/agent/{state.get('competition_id')}/{state.get('participant_id')}/request",
                     json={
                         "method": self.request_format['method'],
                         "url": url,
@@ -518,7 +569,6 @@ class StreamingGenericAPIAgent(Agent):
                         "stream": True,
                         "timeout": self.request_timeout,
                         "response_format": self.response_format,
-                        "competition_id": state.get("competition_id")
                     }
                 )
 
@@ -557,27 +607,29 @@ class StreamingGenericAPIAgent(Agent):
                 #         except json.JSONDecodeError:
                 #             continue
 
-                reasoning_content, content, usage_info, prompt_tokens, completion_tokens = response.json()
+                # Parse response similar to GenericAPIAgent  
+                result_array = response.json()
+                result = result_array[0]  # Extract the actual response object from the array
+                
+                # Extract response text using configured path
+                response_text = self._get_value_from_path(result, self.response_format["response_path"])
+                
+                # Extract token usage information
+                prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
+                completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
+                reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
+                completion_tokens += reasoning_tokens
 
                 # Add assistant response to conversation history
-                self.add_to_conversation("assistant", "<thinking>" + reasoning_content + "</thinking>\n\n" + content)
+                self.add_to_conversation("assistant", response_text)
                 self.save_conversation()
                 self.conversation_history.pop()
 
-                # if not content:
-                #     # try to parse content from reasoning_content
-                #     idx = reasoning_content.find("```json")
-                action = self.action_parser.parse_action(content)
+                action = self.action_parser.parse_action(response_text)
                 
-                # # Calculate tokens
-                # prompt_tokens = usage_info.get("prompt_tokens", 0) if usage_info else 0
-                # completion_tokens = usage_info.get("completion_tokens", 0) if usage_info else 0
-                # reasoning_tokens = usage_info.get("completion_tokens_details", {}).get("reasoning_tokens", 0) if usage_info else 0
-                # completion_tokens += reasoning_tokens
-
-                return content, (prompt_tokens, completion_tokens)
+                return response_text, (prompt_tokens, completion_tokens)
             
-            except Exception as e:
+            except ValueError as e:
                 if response:
                     error_message = f"Error: {response.json()}"
                     if response.status_code == 429:
@@ -585,6 +637,14 @@ class StreamingGenericAPIAgent(Agent):
                         time.sleep(self.retry_delay*2)
                 else:
                     error_message = f"Error: {str(e)}"
+                
+                # Print detailed traceback information
+                # traceback_str = traceback.format_exc()
+                # print(f"\n=== DETAILED ERROR TRACEBACK for {self.name} (Try {_ + 1}) ===")
+                # print(f"Error Message: {error_message}")
+                # print(f"Full Traceback:\n{traceback_str}")
+                # print("=" * 60)
+                
                 logger.error(f"Try {_ + 1} Error generating response with {self.name}: {error_message}")
                 time.sleep(self.retry_delay)
         
