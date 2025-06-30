@@ -9,15 +9,18 @@ import time
 import os
 import asyncio
 import requests
+import traceback
 
 from ..core.models import Competition, Participant, Problem, Submission, TestCase, SubmissionStatus, Level, generate_id
+# from ..core.storage import DataStorage
+from ..core.json_storage import JSONDataStorage
 from ..core.storage import DataStorage
 from ..core.judge import Judge
 from ..utils.problem_loader import USACOProblemLoader
 from rank_bm25 import BM25Okapi
 
 # Initialize data storage and judge
-data_storage = DataStorage()
+data_storage = JSONDataStorage()
 judge = Judge()
 
 # Initialize problem library loader
@@ -145,7 +148,6 @@ def add_participant(competition_id: str):
         )
     
     except Exception as e:
-        import traceback
         error_msg = f"Failed to add participant: {str(e)}"
         print(f"[ERROR] {error_msg}")
         print(f"[ERROR] Traceback:")
@@ -631,11 +633,9 @@ def agent_request(competition_id: str, participant_id: str):
         print(f"--- DIAGNOSTIC: Structured response: {response.status_code} ---")
         return jsonify(structured_response), response.status_code
     except requests.exceptions.HTTPError as http_err:
-        import traceback
         error_line = traceback.extract_tb(http_err.__traceback__)[-1].lineno
         return error_response(f"HTTP error occurred: {http_err} - {response.text} (line {error_line})", response.status_code)
     except Exception as e:
-        import traceback
         error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
         return error_response(f"Failed to make request: {str(e)} (line {error_line})")
 

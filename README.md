@@ -28,13 +28,13 @@ CompeteMAS is a comprehensive Online Judge (OJ) system designed to evaluate the 
 ## 🛠️ Installation
 
 ### 1. Clone the Repository
-```bash
+   ```bash
 git clone <repository-url>
 cd CompeteMAS
-```
+   ```
 
 ### 2. Install with uv (Recommended)
-```bash
+   ```bash
 # Install uv if not already installed
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
@@ -43,11 +43,11 @@ uv sync
 
 # Activate virtual environment
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
+   ```
 
 ### 3. Prepare USACO Dataset
 
-Download the USACO data from the [link](https://drive.google.com/file/d/1z5ODOJMqyer1QxzYtEUZ2hbAx-7nU8Vi/view?usp=share_link) provided by [USACO Bench](https://github.com/princeton-nlp/USACO).
+   Download the USACO data from the [link](https://drive.google.com/file/d/1z5ODOJMqyer1QxzYtEUZ2hbAx-7nU8Vi/view?usp=share_link) provided by [USACO Bench](https://github.com/princeton-nlp/USACO).
 
 ```bash
 # Extract and place in data directory
@@ -60,13 +60,13 @@ mv data_copy data/datasets/usaco_2025
 **Note**: The online judge system is based on the [online-judge-rust](https://github.com/cpinitiative/online-judge-rust) project. This is a third-party codebase and is not included in this repository.
 
 ### 1. Get Online Judge Rust
-```bash
+   ```bash
 # Clone the online judge repository
-git clone https://github.com/cpinitiative/online-judge-rust.git
-```
+   git clone https://github.com/cpinitiative/online-judge-rust.git
+   ```
 
 ### 2. Install Rust Dependencies
-```bash
+   ```bash
 # Install cargo-lambda
 cargo install cargo-lambda
 cargo lambda --help  # Verify installation
@@ -74,39 +74,39 @@ cargo lambda --help  # Verify installation
 # Install zig (for cross-compilation)
 sudo snap install zig --classic --beta
 zig version  # Verify installation
-```
+   ```
 
 ### 3. Build and Run Online Judge
-```bash
+   ```bash
 # Build the Lambda function
-cargo lambda build
+   cargo lambda build
 
 # Build Docker image
-docker build --platform linux/amd64 -t oj-rust .
+   docker build --platform linux/amd64 -t oj-rust .
 
 # Run the online judge
-docker run --platform linux/amd64 -p 9000:8080 oj-rust
-```
+   docker run --platform linux/amd64 -p 9000:8080 oj-rust
+   ```
 
 ### 4. Test Online Judge
-```bash
-curl -X POST "http://localhost:9000/2015-03-31/functions/function/invocations" \
--d '{
-   "version": "2.0",
-   "rawPath": "/compile-and-execute",
-   "requestContext": {
-      "http": {
-      "method": "POST",
-      "path": "/compile-and-execute"
-      }
-   },
-   "headers": {
-      "Content-Type": "application/json"
-   },
-   "body": "{\"compile\":{\"source_code\":\"#include <iostream>\\nusing namespace std;\\n\\nint main() {\\n  int a, b;\\n  cin >> a >> b;\\n  cout << a + b << endl;\\n  return 0;\\n}\",\"compiler_options\":\"-O2 -std=c++17\",\"language\":\"cpp\"},\"execute\":{\"stdin\":\"5 7\",\"timeout_ms\":5000}}",
-   "isBase64Encoded": false
-}'
-```
+   ```bash
+   curl -X POST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+   -d '{
+      "version": "2.0",
+      "rawPath": "/compile-and-execute",
+      "requestContext": {
+         "http": {
+         "method": "POST",
+         "path": "/compile-and-execute"
+         }
+      },
+      "headers": {
+         "Content-Type": "application/json"
+      },
+      "body": "{\"compile\":{\"source_code\":\"#include <iostream>\\nusing namespace std;\\n\\nint main() {\\n  int a, b;\\n  cin >> a >> b;\\n  cout << a + b << endl;\\n  return 0;\\n}\",\"compiler_options\":\"-O2 -std=c++17\",\"language\":\"cpp\"},\"execute\":{\"stdin\":\"5 7\",\"timeout_ms\":5000}}",
+      "isBase64Encoded": false
+   }'
+   ```
 
 **Important**: Make sure the online judge is running on port 9000 before starting CompeteMAS competitions.
 
@@ -256,41 +256,41 @@ uv run mypy src/
 ### Agent Response Format
 The competition system returns structured data to agents:
 
-```python
-{
+  ```python
+  {
     "competition_id": str,           # Current competition ID
     "competition_details": {         # Competition details
-        "id": str,
-        "title": str,
-        "description": str,
-        "problem_ids": List[str],
-        "rules": Dict
-    },
+          "id": str,
+          "title": str,
+          "description": str,
+          "problem_ids": List[str],
+          "rules": Dict
+      },
     "competitor_state": {            # Current competitor state
         "name": str,                 # Competitor name
         "remaining_tokens": int,     # Remaining tokens
-        "solved_problems": List[str], # List of solved problems
+          "solved_problems": List[str], # List of solved problems
         "is_running": bool,          # Whether still running
-        "termination_reason": Optional[str], # Termination reason if any
+          "termination_reason": Optional[str], # Termination reason if any
         "score": int,                # Current score
         "final_score": int           # Final score
-    },
+      },
     "problems": List[Dict],          # List of all problems
     "rankings": List[Dict],          # Current rankings
     "last_action_result": {          # Result of the last action
         "status": str,               # "success" or "error"
         "data": Dict,                # Action return data
         "message": str               # Error message if any
-    },
+      },
     "other_competitors_status": [    # Status of other competitors
-        {
-            "name": str,
-            "is_terminated": bool,
-            "termination_reason": Optional[str]
-        }
-    ]
-}
-```
+          {
+              "name": str,
+              "is_terminated": bool,
+              "termination_reason": Optional[str]
+          }
+      ]
+  }
+  ```
 
 ### Available Actions
 1. **VIEW_PROBLEM**: View problem details
@@ -334,6 +334,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Thanks to all contributors
 - Inspired by various programming competition platforms
-- Built with modern Python best practices
+- Built with modern Python best practices 
 - USACO problem library from [USACO Bench](https://github.com/princeton-nlp/USACO)
 - Online Judge implementation from [CP Initiative](https://github.com/cpinitiative/online-judge-rust)

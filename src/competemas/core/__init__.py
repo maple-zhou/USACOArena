@@ -10,6 +10,7 @@ from .models import (
     SubmissionStatus, Level, generate_id
 )
 from .storage import DataStorage
+from .json_storage import JSONDataStorage
 from .judge import Judge
 from .agents import Agent, GenericAPIAgent
 from .competition import CompetitionOrganizer, Competitor
@@ -17,6 +18,6 @@ from .competition import CompetitionOrganizer, Competitor
 __all__ = [
     "Competition", "Participant", "Problem", "Submission", "TestCase", "TestResult",
     "SubmissionStatus", "Level", "generate_id",
-    "DataStorage", "Judge", "Agent", "GenericAPIAgent",
+    "DataStorage", "JSONDataStorage", "Judge", "Agent", "GenericAPIAgent",
     "CompetitionOrganizer", "Competitor"
 ] 
