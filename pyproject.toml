@@ -1,0 +1,72 @@
+[project]
+name = "competemas"
+version = "0.1.0"
+description = "CompeteMAS: Cost-Aware Evaluation of Agentic Coding Capabilities of Multi-Agent Systems"
+readme = "README.md"
+authors = [
+    {name = "CompeteMAS Team", email = "example@example.com"}
+]
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = [
+    "flask>=2.3.3",
+    "requests>=2.31.0",
+    "rank-bm25>=0.2.2",
+    "json-repair>=0.44.1",
+    "matplotlib>=3.10.3",
+    "seaborn>=0.13.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-flask>=1.2.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[project.scripts]
+competemas = "competemas.main:main"
+competemas_run = "competemas.cli.run_competition:main_sync"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.4.0",
+    "pytest-flask>=1.2.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+extend-exclude = ["data/", "logs/", "competition_results/", "competitor_results/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+extend-exclude = '''
+/(
+    data
+  | logs  
+  | competition_results
+  | competitor_results
+)/
+'''
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+exclude = ["data/", "logs/", "competition_results/", "competitor_results/"] 
