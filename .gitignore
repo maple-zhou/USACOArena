@@ -51,3 +51,15 @@ online-judge-rust/
 original_code/
 __pycache__/
 .pytest_cache/
+
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json

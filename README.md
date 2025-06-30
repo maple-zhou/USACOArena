@@ -1,196 +1,324 @@
 # CompeteMAS (Competition Multi-Agent System)
 
-This repository contains the supplementary code for NeurIPS 2025 paper under review: "CompeteMAS: Cost-Aware Evaluation of Agentic Coding Capabilities of Multi-Agent Systems", and is for review only.
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![uv](https://img.shields.io/badge/package%20manager-uv-orange.svg)](https://docs.astral.sh/uv/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+This repository contains the supplementary code for NeurIPS 2025 paper under review: **"CompeteMAS: Cost-Aware Evaluation of Agentic Coding Capabilities of Multi-Agent Systems"**, and is for review only.
 
-## Installation
+CompeteMAS is a comprehensive Online Judge (OJ) system designed to evaluate the coding capabilities of Multi-Agent Systems (MAS) in competitive programming environments. It features cost-aware evaluation, real-time competition management, and integration with modern LLM APIs.
 
-> We recommand to use [uv](https://docs.astral.sh/uv/) to manage the environment.
+## 🚀 Features
 
-1. Create and activate a virtual environment:
+- **🏆 Multi-Agent Competition**: Support for multiple LLM agents competing simultaneously
+- **💰 Cost-Aware Evaluation**: Token-based resource management and cost tracking
+- **⚡ Real-time API**: RESTful API for competition management and monitoring
+- **🔍 Intelligent Hints**: Multi-level hint system with semantic and episodic knowledge
+- **📊 Comprehensive Analytics**: Detailed scoring, rankings, and performance metrics
+- **🐳 Container Ready**: Docker support for easy deployment
+- **🛡️ Secure Execution**: Sandboxed code execution via Rust-based judge
+
+## 📋 Prerequisites
+
+- **Python 3.10+**
+- **uv** (recommended package manager)
+- **Rust & Cargo** (for online judge)
+- **Docker** (for containerized deployment)
+
+## 🛠️ Installation
+
+### 1. Clone the Repository
+```bash
+git clone <repository-url>
+cd CompeteMAS
+```
+
+### 2. Install with uv (Recommended)
+```bash
+# Install uv if not already installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Create virtual environment and install dependencies
+uv sync
+
+# Activate virtual environment
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+### 3. Prepare USACO Dataset
+
+Download the USACO data from the [link](https://drive.google.com/file/d/1z5ODOJMqyer1QxzYtEUZ2hbAx-7nU8Vi/view?usp=share_link) provided by [USACO Bench](https://github.com/princeton-nlp/USACO).
+
+```bash
+# Extract and place in data directory
+unzip usaco_data.zip
+mv data_copy data/datasets/usaco_2025
+```
+
+## 🔧 Online Judge Setup
+
+### 1. Install Rust Dependencies
+```bash
+# Install cargo-lambda
+cargo install cargo-lambda
+cargo lambda --help  # Verify installation
+
+# Install zig (for cross-compilation)
+sudo snap install zig --classic --beta
+zig version  # Verify installation
+```
+
+### 2. Build and Run Online Judge
+```bash
+cd online-judge-rust
+cargo lambda build
+docker build --platform linux/amd64 -t oj-rust .
+docker run --platform linux/amd64 -p 9000:8080 oj-rust
+```
+
+### 3. Test Online Judge
+```bash
+curl -X POST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+-d '{
+   "version": "2.0",
+   "rawPath": "/compile-and-execute",
+   "requestContext": {
+      "http": {
+      "method": "POST",
+      "path": "/compile-and-execute"
+      }
+   },
+   "headers": {
+      "Content-Type": "application/json"
+   },
+   "body": "{\"compile\":{\"source_code\":\"#include <iostream>\\nusing namespace std;\\n\\nint main() {\\n  int a, b;\\n  cin >> a >> b;\\n  cout << a + b << endl;\\n  return 0;\\n}\",\"compiler_options\":\"-O2 -std=c++17\",\"language\":\"cpp\"},\"execute\":{\"stdin\":\"5 7\",\"timeout_ms\":5000}}",
+   "isBase64Encoded": false
+}'
+```
+
+## 🎯 Usage
+
+### Quick Start
+
+1. **Start the API Server**
    ```bash
-   uv venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   uv run competemas --host 0.0.0.0 --port 5000
    ```
 
-2. Install dependencies:
-   ```bash
-   uv pip install -r requirements.txt
+2. **Configure Competitors**
+   Edit `config/competitors_config.json`:
+   ```json
+   {
+     "competitors": [
+       {
+         "name": "gpt-4",
+         "model_id": "gpt-4",
+         "api_base": "https://api.openai.com/v1",
+         "api_key": "your-api-key",
+         "max_tokens": 100000
+       }
+     ]
+   }
    ```
 
-3. Prepare USACO data:
-
-   Download the USACO data from the [link](https://drive.google.com/file/d/1z5ODOJMqyer1QxzYtEUZ2hbAx-7nU8Vi/view?usp=share_link) provided by [USACO Bench](https://github.com/princeton-nlp/USACO).
-
-   Then unzip the zip file, modify the name of the extracted folder from `data_copy` to `data`, and place it in the root directory of this repository.
-
-
-## Prepare the Online Judge Emulator
-
-1. Clone the repository (can be placed in any directory)
+3. **Run Competition**
    ```bash
-   git clone https://github.com/cpinitiative/online-judge-rust.git
+   uv run competemas_run
    ```
 
-2. Install dependencies
+### API Usage
 
-   ```bash
-   cargo install cargo-lambda  # install cargo-lambda
-   cargo lambda --help  # verify the success of installing cargo-lambda
-   sudo snap install zig --classic --beta  # install zig
-   zig version  # verify the success of installing zig
-   ```
+The system provides a comprehensive REST API:
 
-   If rust and cargo are not installed (generally installed by defult):
+```bash
+# List competitions
+curl http://localhost:5000/api/competitions
 
-   ```bash
-   curl https://sh.rustup.rs -sSf | sh
-   rustc --version
-   cargo --version
-   ```
+# Create competition
+curl -X POST http://localhost:5000/api/competitions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Test Competition",
+    "description": "A test competition",
+    "problem_ids": ["1323_bronze_feb"],
+    "max_tokens_per_participant": 100000
+  }'
 
-3. Put up OJ Emuator
+# Get competition details
+curl http://localhost:5000/api/competitions/{competition_id}
 
-   ```bash
-   cd online-judge-rust
-   cargo lambda build
-   docker build --platform linux/amd64 -t oj-rust .
-   docker run --platform linux/amd64 -p 9000:8080 oj-rust
-   ```
+# View rankings
+curl http://localhost:5000/api/competitions/{competition_id}/rankings
+```
 
-   Then the OJ Emulator will be waiting at port 9000. You can use the following command to test its health:
+## 🏗️ Architecture
 
-   ```bash
-   curl -X POST "http://localhost:9000/2015-03-31/functions/function/invocations" \
-   -d '{
-      "version": "2.0",
-      "rawPath": "/compile-and-execute",
-      "requestContext": {
-         "http": {
-         "method": "POST",
-         "path": "/compile-and-execute"
-         }
-      },
-      "headers": {
-         "Content-Type": "application/json"
-      },
-      "body": "{\"compile\":{\"source_code\":\"#include <iostream>\\nusing namespace std;\\n\\nint main() {\\n  int a, b;\\n  cin >> a >> b;\\n  cout << a + b << endl;\\n  return 0;\\n}\",\"compiler_options\":\"-O2 -std=c++17\",\"language\":\"cpp\"},\"execute\":{\"stdin\":\"5 7\",\"timeout_ms\":5000}}",
-      "isBase64Encoded": false
-   }'
-   ```
-
-
-## Usage
-
-### Basic Workflow
-
-1. Start the system:
-   ```bash
-   source .venv/bin/activate
-   python main.py
-   ```
-
-2. Configure the competition:
-   - Configure LLM API in `config/competitors_config.json`, especially `model_id`, `api_base` and `api_key`.
-   - If you want to add or delete competitors, just add or delete elements in the list of competitors.
-
-3. Run the competition:
-   ```bash
-   source .venv/bin/activate
-   python run_competition.py
-   ```
-
-
-## System Components
-
-### Core Components
-
-- **Competition Management** (`competition.py`): Handles competition lifecycle and rules
-- **Multi-Agent Framework** (`agents.py`): Manages LLM agent interactions
-- **Problem Management** (`problem_loader.py`): Handles problem loading and distribution
-- **Evaluation System** (`judge.py`): Evaluates submitted solutions
-- **API Server** (`api.py`): Provides RESTful interface
-
-### Supporting Components
-
-- **Storage Layer** (`storage.py`): Manages data persistence
-- **Configuration Management** (`config/`): Handles system configuration
-- **Logging System** (`conversation_logger.py`): Tracks system events
-
-### Project Structure
 ```
 CompeteMAS/
-├── config/            # Configuration files
-├── agents.py          # Multi-agent framework
-├── api.py             # API server
-├── competition.py     # Competition management
-├── judge.py           # Evaluation system
-├── main.py            # System entry point
-├── problem_loader.py  # Problem management
-├── storage.py         # Data persistence
-└── requirements.txt   # Dependencies
+├── 📁 src/                          # 源代码目录
+│   └── 📁 competemas/               # 主包
+│       ├── 📄 __init__.py           # 包初始化
+│       ├── 📄 main.py               # 主程序入口
+│       ├── 📁 api/                  # API服务模块
+│       │   ├── 📄 __init__.py       # API模块初始化
+│       │   └── 📄 server.py         # Flask API服务器
+│       ├── 📁 cli/                  # 命令行工具模块
+│       │   ├── 📄 __init__.py       # CLI模块初始化
+│       │   └── 📄 run_competition.py # 竞赛运行工具
+│       ├── 📁 core/                 # 核心业务逻辑
+│       │   ├── 📄 __init__.py       # 核心模块初始化
+│       │   ├── 📄 agents.py         # 智能体实现
+│       │   ├── 📄 competition.py    # 竞赛管理逻辑
+│       │   ├── 📄 judge.py          # 评测系统
+│       │   ├── 📄 models.py         # 数据模型
+│       │   └── 📄 storage.py        # 数据存储
+│       └── 📁 utils/                # 工具函数模块
+│           ├── 📄 __init__.py       # 工具模块初始化
+│           ├── 📄 conversation_logger.py # 对话日志工具
+│           ├── 📄 problem_loader.py # 问题加载器
+│           └── 📄 prompts.py        # 提示词管理
+├── 📁 config/                       # 配置文件目录
+│   ├── 📄 all_problems.json        # 所有问题配置
+│   ├── 📄 competition_config.json  # 竞赛配置
+│   ├── 📄 competitors_config.json  # 参赛者配置
+│   ├── 📄 problem_ids.json         # 问题ID列表
+│   └── 📄 prompts.json             # 提示词配置
+├── 📁 data/                         # 数据目录
+│   ├── 📁 competitions/            # 竞赛数据
+│   ├── 📁 corpuses/                # 语料库数据
+│   ├── 📁 datasets/                # 数据集
+│   ├── 📁 datasets_original/       # 原始数据集
+│   └── 📁 submissions/             # 提交记录
+├── 📁 logs/                         # 日志目录
+├── 📁 tests/                        # 测试代码目录
+├── 📁 online-judge-rust/            # Rust在线评测系统
+├── 📄 pyproject.toml               # uv项目配置
+└── 📄 README.md                    # 项目说明文档
 ```
 
+## 🔧 Development
 
-## For Reviewers
+### Setup Development Environment
+```bash
+# Install development dependencies
+uv sync --extra dev
 
-We warmly welcome reviewers to explore and experiment with our system! Here are some suggestions for your review:
+# Run tests
+uv run pytest
+
+# Format code
+uv run black src/ tests/
+
+# Lint code
+uv run ruff check src/ tests/
+
+# Type checking
+uv run mypy src/
+```
+
+### Project Structure
+
+- **`src/competemas/core/`**: Core business logic
+  - `competition.py`: Competition lifecycle management
+  - `agents.py`: Multi-agent framework implementation
+  - `judge.py`: Code evaluation and scoring
+  - `models.py`: Data models and schemas
+  - `storage.py`: Data persistence layer
+
+- **`src/competemas/api/`**: REST API interface
+  - `server.py`: Flask API server with comprehensive endpoints
+
+- **`src/competemas/cli/`**: Command-line tools
+  - `run_competition.py`: Competition execution tool
+
+- **`src/competemas/utils/`**: Utility functions
+  - `problem_loader.py`: USACO problem loading
+  - `prompts.py`: LLM prompt management
+  - `conversation_logger.py`: Logging utilities
+
+## 📊 Competition System
+
+### Agent Response Format
+The competition system returns structured data to agents:
+
+```python
+{
+    "competition_id": str,           # Current competition ID
+    "competition_details": {         # Competition details
+        "id": str,
+        "title": str,
+        "description": str,
+        "problem_ids": List[str],
+        "rules": Dict
+    },
+    "competitor_state": {            # Current competitor state
+        "name": str,                 # Competitor name
+        "remaining_tokens": int,     # Remaining tokens
+        "solved_problems": List[str], # List of solved problems
+        "is_running": bool,          # Whether still running
+        "termination_reason": Optional[str], # Termination reason if any
+        "score": int,                # Current score
+        "final_score": int           # Final score
+    },
+    "problems": List[Dict],          # List of all problems
+    "rankings": List[Dict],          # Current rankings
+    "last_action_result": {          # Result of the last action
+        "status": str,               # "success" or "error"
+        "data": Dict,                # Action return data
+        "message": str               # Error message if any
+    },
+    "other_competitors_status": [    # Status of other competitors
+        {
+            "name": str,
+            "is_terminated": bool,
+            "termination_reason": Optional[str]
+        }
+    ]
+}
+```
+
+### Available Actions
+1. **VIEW_PROBLEM**: View problem details
+2. **GET_HINT**: Request hints (consumes tokens)
+3. **SUBMIT_SOLUTION**: Submit code solution
+4. **TERMINATE**: End participation
+
+## 🔬 For Reviewers
+
+We warmly welcome reviewers to explore and experiment with our system!
 
 ### Model Configuration
-- You can try different LLM models by configuring them in `config/competitors_config.json`
-- Key parameters to set:
-  - model_id: the model_name for API call
-  - api_base/api_key: set to your API configuration
-- Token mapping relationships should be supplemented in `competition.py` line 73 to reflect different pricing models. You can refer to [Artificial Analysis](https://artificialanalysis.ai/) for model price factors.
+- Configure different LLM models in `config/competitors_config.json`
+- Key parameters: `model_id`, `api_base`, `api_key`
+- Token pricing can be adjusted in `competition.py` line 73
+- Reference [Artificial Analysis](https://artificialanalysis.ai/) for model pricing
 
 ### Competition Parameters
-- Feel free to adjust competition parameters to test different scenarios.
-- You can also adjust `config/problem_ids.json` to import different problems to observe how agents perform on different types of challenges. All problem IDs are available in `config/all_problems.json`.
-- Have fun experimenting! 😊
+- Adjust competition parameters in `config/competition_config.json`
+- Modify `config/problem_ids.json` to test different problem sets
+- All available problems are listed in `config/all_problems.json`
 
 ### Custom MAS Development
-- You can modify the prompts and agent behaviors in `prompts.py` and `agents.py` to test different strategies.
-- Agents and competition are connected through the function `Agent.process`.
-- The competition system returns a dictionary to agents with the following structure:
-  ```python
-  {
-      "competition_id": str,      # Current competition ID
-      "competition_details": {    # Competition details
-          "id": str,
-          "title": str,
-          "description": str,
-          "problem_ids": List[str],
-          "rules": Dict
-      },
-      "competitor_state": {       # Current competitor state
-          "name": str,           # Competitor name
-          "remaining_tokens": int, # Remaining tokens
-          "solved_problems": List[str], # List of solved problems
-          "is_running": bool,    # Whether still running
-          "termination_reason": Optional[str], # Termination reason if any
-          "score": int,          # Current score
-          "final_score": int     # Final score
-      },
-      "problems": List[Dict],    # List of all problems
-      "rankings": List[Dict],    # Current rankings
-      "last_action_result": {    # Result of the last action
-          "status": str,         # "success" or "error"
-          "data": Dict,          # Action return data
-          "message": str         # Error message if any
-      },
-      "other_competitors_status": [  # Status of other competitors
-          {
-              "name": str,
-              "is_terminated": bool,
-              "termination_reason": Optional[str]
-          }
-      ]
-  }
-  ```
+- Modify prompts in `prompts.py` and agent behaviors in `agents.py`
+- Agents connect through `Agent.process` function
+- Experiment with different strategies and approaches! 😊
 
+## 🤝 Contributing
 
-## Acknowledgments
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests and linting
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
 
 - Thanks to all contributors
 - Inspired by various programming competition platforms
-- Built with modern Python best practices 
+- Built with modern Python best practices
+- USACO problem library from [USACO Bench](https://github.com/princeton-nlp/USACO)
+- Online Judge implementation from [CP Initiative](https://github.com/cpinitiative/online-judge-rust)
