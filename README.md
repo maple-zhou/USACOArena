@@ -57,7 +57,15 @@ mv data_copy data/datasets/usaco_2025
 
 ## 🔧 Online Judge Setup
 
-### 1. Install Rust Dependencies
+**Note**: The online judge system is based on the [online-judge-rust](https://github.com/cpinitiative/online-judge-rust) project. This is a third-party codebase and is not included in this repository.
+
+### 1. Get Online Judge Rust
+```bash
+# Clone the online judge repository
+git clone https://github.com/cpinitiative/online-judge-rust.git
+```
+
+### 2. Install Rust Dependencies
 ```bash
 # Install cargo-lambda
 cargo install cargo-lambda
@@ -68,15 +76,19 @@ sudo snap install zig --classic --beta
 zig version  # Verify installation
 ```
 
-### 2. Build and Run Online Judge
+### 3. Build and Run Online Judge
 ```bash
-cd online-judge-rust
+# Build the Lambda function
 cargo lambda build
+
+# Build Docker image
 docker build --platform linux/amd64 -t oj-rust .
+
+# Run the online judge
 docker run --platform linux/amd64 -p 9000:8080 oj-rust
 ```
 
-### 3. Test Online Judge
+### 4. Test Online Judge
 ```bash
 curl -X POST "http://localhost:9000/2015-03-31/functions/function/invocations" \
 -d '{
@@ -95,6 +107,8 @@ curl -X POST "http://localhost:9000/2015-03-31/functions/function/invocations" \
    "isBase64Encoded": false
 }'
 ```
+
+**Important**: Make sure the online judge is running on port 9000 before starting CompeteMAS competitions.
 
 ## 🎯 Usage
 
@@ -191,10 +205,11 @@ CompeteMAS/
 │   └── 📁 submissions/             # 提交记录
 ├── 📁 logs/                         # 日志目录
 ├── 📁 tests/                        # 测试代码目录
-├── 📁 online-judge-rust/            # Rust在线评测系统
 ├── 📄 pyproject.toml               # uv项目配置
 └── 📄 README.md                    # 项目说明文档
 ```
+
+**Note**: The online judge system (`online-judge-rust`) is a separate third-party dependency that needs to be cloned and set up separately. See the [Online Judge Setup](#-online-judge-setup) section for details.
 
 ## 🔧 Development
 
