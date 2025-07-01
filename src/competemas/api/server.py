@@ -12,15 +12,13 @@ import requests
 import traceback
 
 from ..core.models import Competition, Participant, Problem, Submission, TestCase, SubmissionStatus, Level, generate_id
-# from ..core.storage import DataStorage
-from ..core.json_storage import JSONDataStorage
-from ..core.storage import DataStorage
+from ..core.duckdb_storage import DuckDBStorage
 from ..core.judge import Judge
 from ..utils.problem_loader import USACOProblemLoader
 from rank_bm25 import BM25Okapi
 
 # Initialize data storage and judge
-data_storage = JSONDataStorage()
+data_storage = DuckDBStorage()
 judge = Judge()
 
 # Initialize problem library loader
@@ -150,6 +148,7 @@ def add_participant(competition_id: str):
     except Exception as e:
         error_msg = f"Failed to add participant: {str(e)}"
         print(f"[ERROR] {error_msg}")
+        import traceback
         print(f"[ERROR] Traceback:")
         traceback.print_exc()
         print(f"[ERROR] Request data: {data}")
@@ -263,8 +262,7 @@ def create_submission(competition_id: str):
                         bonus = competition.rules.get("bonus_for_first_ac", 100)
                         submission.score += bonus
                     break
-        data_storage.submissions[submission.id] = submission
-        data_storage._save_submission(submission)
+        data_storage.update_submission(submission)
 
         # Get participant and update their submissions
         participant = competition.get_participant(participant_id)

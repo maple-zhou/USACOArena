@@ -156,7 +156,8 @@ class Competition:
         problems: List[Problem],
         participants: Optional[List[Participant]] = None,
         max_tokens_per_participant: int = 100000,
-        rules: Optional[Dict[str, Any]] = None
+        rules: Optional[Dict[str, Any]] = None,
+        created_at: Optional[datetime] = None
     ):
         self.id = id
         self.title = title
@@ -164,6 +165,7 @@ class Competition:
         self.problems = problems
         self.participants = participants or []
         self.max_tokens_per_participant = max_tokens_per_participant
+        self.created_at = created_at
         self.rules = rules or {
             "scoring": {
                 "bronze": 100,
@@ -241,7 +243,8 @@ class Competition:
             "rules": self.rules,
             "is_active": self.is_active(),
             "participant_count": len(self.participants),
-            "problem_count": len(self.problems)
+            "problem_count": len(self.problems),
+            "created_at": self.created_at.isoformat() if self.created_at else None
         }
         
         if include_details:

@@ -37,6 +37,10 @@ class DuckDBStorage:
         # Create schema
         self._create_schema()
         
+        # Initialize problem loader for dynamic test case loading
+        # Use lazy import to avoid circular import
+        self.problem_loader = None
+        
         # In-memory cache for objects
         self.competitions_cache: Dict[str, Competition] = {}
         self.submissions_cache: Dict[str, Submission] = {}
@@ -60,10 +64,10 @@ class DuckDBStorage:
             )
         """)
         
-        # Problems table
+        # Problems table (test_cases removed - loaded dynamically from files)
         self.conn.execute("""
             CREATE TABLE IF NOT EXISTS problems (
-                id VARCHAR PRIMARY KEY,
+                id VARCHAR NOT NULL,
                 competition_id VARCHAR NOT NULL,
                 title VARCHAR NOT NULL,
                 description TEXT,
@@ -71,8 +75,8 @@ class DuckDBStorage:
                 time_limit_ms INTEGER,
                 memory_limit_mb INTEGER,
                 first_to_solve VARCHAR,
-                test_cases JSON,
                 sample_cases JSON,
+                PRIMARY KEY (id, competition_id),
                 FOREIGN KEY (competition_id) REFERENCES competitions(id)
             )
         """)
@@ -114,7 +118,7 @@ class DuckDBStorage:
                 test_results JSON,
                 FOREIGN KEY (competition_id) REFERENCES competitions(id),
                 FOREIGN KEY (participant_id) REFERENCES participants(id),
-                FOREIGN KEY (problem_id) REFERENCES problems(id)
+                FOREIGN KEY (problem_id, competition_id) REFERENCES problems(id, competition_id)
             )
         """)
         
@@ -173,12 +177,11 @@ class DuckDBStorage:
             self.conn.execute("""
                 INSERT INTO problems 
                 (id, competition_id, title, description, level, time_limit_ms, memory_limit_mb, 
-                 test_cases, sample_cases)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 sample_cases)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """, [
                 problem.id, competition_id, problem.title, problem.description,
                 problem.level.value, problem.time_limit_ms, problem.memory_limit_mb,
-                json.dumps([tc.to_dict() for tc in problem.test_cases]),
                 json.dumps([tc.to_dict() for tc in getattr(problem, 'sample_cases', [])])
             ])
         
@@ -194,63 +197,160 @@ class DuckDBStorage:
         if competition_id in self.competitions_cache:
             return self.competitions_cache[competition_id]
         
-        # Query from database
-        result = self.conn.execute("""
-            SELECT c.*, 
-                   array_agg(p.id) as problem_ids,
-                   array_agg(part.id) as participant_ids
-            FROM competitions c
-            LEFT JOIN problems p ON c.id = p.competition_id
-            LEFT JOIN participants part ON c.id = part.competition_id
-            WHERE c.id = ?
-            GROUP BY c.id, c.title, c.description, c.created_at, c.start_time, c.end_time,
-                     c.max_tokens_per_participant, c.rules, c.is_active, c.participant_count, c.problem_count
+        # Query competition from database
+        comp_result = self.conn.execute("""
+            SELECT * FROM competitions WHERE id = ?
         """, [competition_id]).fetchone()
         
-        if not result:
+        if not comp_result:
             return None
         
-        # Reconstruct competition object
-        # (This would involve loading problems and participants)
-        # For brevity, returning None here - full implementation would reconstruct the object
-        return None
-    
-    def add_participant(self, competition_id: str, name: str, api_base_url: str, 
-                       api_key: str, max_tokens: int, lambda_: int) -> Optional[Participant]:
-        """Add participant to competition"""
-        participant_id = generate_id()
+        # Query problems for this competition
+        problems_results = self.conn.execute("""
+            SELECT * FROM problems WHERE competition_id = ?
+        """, [competition_id]).fetchall()
         
-        participant = Participant(
-            id=participant_id,
-            name=name,
-            api_base_url=api_base_url,
-            api_key=api_key,
-            max_tokens=max_tokens,
-            lambda_=lambda_
+        # Query participants for this competition
+        participants_results = self.conn.execute("""
+            SELECT * FROM participants WHERE competition_id = ?
+        """, [competition_id]).fetchall()
+        
+        # Reconstruct Problem objects
+        problems = []
+        for prob_row in problems_results:
+            problem_id = prob_row[0]
+            
+            # 动态加载测试用例，而不是从数据库读取
+            if self.problem_loader is None:
+                # Lazy import to avoid circular import
+                from ..utils.problem_loader import USACOProblemLoader
+                self.problem_loader = USACOProblemLoader()
+            
+            loaded_problem = self.problem_loader.load_problem(problem_id)
+            if loaded_problem:
+                # 使用从文件加载的完整测试用例
+                test_cases = loaded_problem.test_cases
+                sample_cases = loaded_problem.sample_cases
+            else:
+                # 如果加载失败，使用空的测试用例列表
+                test_cases = []
+                sample_cases = []
+            
+            problem = Problem(
+                id=problem_id,
+                title=prob_row[2],
+                description=prob_row[3] or "",
+                level=Level(prob_row[4]) if prob_row[4] else Level.BRONZE,
+                test_cases=test_cases,
+                sample_cases=sample_cases,
+                time_limit_ms=prob_row[5] or 1000,
+                memory_limit_mb=prob_row[6] or 256
+            )
+            if prob_row[7]:  # first_to_solve
+                problem.first_to_solve = prob_row[7]
+            problems.append(problem)
+        
+        # Reconstruct Participant objects
+        participants = []
+        for part_row in participants_results:
+            participant = Participant(
+                id=part_row[0],
+                name=part_row[2],
+                api_base_url=part_row[3] or "",
+                api_key=part_row[4] or "",
+                max_tokens=part_row[5] or 100000,
+                lambda_=part_row[6] or 100
+            )
+            participant.score = part_row[7] or 0
+            participant.final_score = part_row[8] or 0
+            participant.remaining_tokens = part_row[9] or participant.max_tokens
+            participant.submissions = []  # Will be loaded on demand
+            participants.append(participant)
+        
+        # Create Competition object
+        competition = Competition(
+            id=comp_result[0],
+            title=comp_result[1],
+            description=comp_result[2] or "",
+            problems=problems,
+            participants=[],  # Start with empty list
+            max_tokens_per_participant=comp_result[6] or 100000,
+            rules=json.loads(comp_result[7]) if comp_result[7] else {}
         )
         
-        # Insert into database
-        self.conn.execute("""
-            INSERT INTO participants 
-            (id, competition_id, name, api_base_url, api_key, max_tokens, lambda_value, remaining_tokens)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """, [
-            participant_id, competition_id, name, api_base_url, 
-            api_key, max_tokens, lambda_, max_tokens
-        ])
+        # Add participants to competition
+        for participant in participants:
+            competition.add_participant(participant)
         
-        # Update competition participant count
+        # Set additional attributes
+        if comp_result[3]:  # created_at
+            competition.created_at = comp_result[3]
+        if comp_result[4]:  # start_time
+            competition.start_time = comp_result[4]
+        if comp_result[5]:  # end_time
+            competition.end_time = comp_result[5]
+        
+        # Cache the competition
+        self.competitions_cache[competition_id] = competition
+        
+        return competition
+    
+    def list_competitions(self, active_only: bool = False) -> List[Competition]:
+        """List all competitions"""
+        if active_only:
+            results = self.conn.execute("""
+                SELECT id FROM competitions WHERE is_active = true
+            """).fetchall()
+        else:
+            results = self.conn.execute("""
+                SELECT id FROM competitions
+            """).fetchall()
+        
+        competitions = []
+        for result in results:
+            competition = self.get_competition(result[0])
+            if competition:
+                competitions.append(competition)
+        
+        return competitions
+
+    def update_competition(self, competition: Competition) -> None:
+        """Update a competition"""
+        # Update competition in database
         self.conn.execute("""
             UPDATE competitions 
-            SET participant_count = participant_count + 1 
+            SET title = ?, description = ?, max_tokens_per_participant = ?, 
+                rules = ?, is_active = ?, participant_count = ?, problem_count = ?
             WHERE id = ?
-        """, [competition_id])
+        """, [
+            competition.title, competition.description, competition.max_tokens_per_participant,
+            json.dumps(competition.rules), competition.is_active(), 
+            len(competition.participants), len(competition.problems), competition.id
+        ])
+        
+        # Update participants
+        for participant in competition.participants:
+            self.conn.execute("""
+                UPDATE participants 
+                SET score = ?, final_score = ?, remaining_tokens = ?, 
+                    submission_count = ?, accepted_count = ?
+                WHERE id = ?
+            """, [
+                participant.score, participant.final_score, participant.remaining_tokens,
+                len(participant.submissions), 
+                sum(1 for s in participant.submissions if s.status == SubmissionStatus.ACCEPTED),
+                participant.id
+            ])
+        
+        # Update cache
+        self.competitions_cache[competition.id] = competition
         
         # Backup
-        self._backup_to_json('participant', participant.to_dict())
-        
-        return participant
-    
+        self._backup_to_json('competition', competition.to_dict(include_details=True))
+
+
+
+
     def create_submission(self, competition_id: str, participant_id: str, 
                          problem_id: str, code: str, language: str) -> Optional[Submission]:
         """Create a new submission"""
@@ -304,6 +404,164 @@ class DuckDBStorage:
         # Update cache
         self.submissions_cache[submission.id] = submission
     
+    def get_submission(self, submission_id: str) -> Optional[Submission]:
+        """Get submission by ID"""
+        # Check cache first
+        if submission_id in self.submissions_cache:
+            return self.submissions_cache[submission_id]
+        
+        # Query from database
+        result = self.conn.execute("""
+            SELECT * FROM submissions WHERE id = ?
+        """, [submission_id]).fetchone()
+        
+        if not result:
+            return None
+        
+        # Reconstruct submission object
+        test_results_data = json.loads(result[12]) if result[12] else []
+        test_results = [
+            TestResult(
+                test_case_id=tr.get('test_case_id', ''),
+                status=SubmissionStatus(tr.get('status', 'PENDING')),
+                execution_time_ms=tr.get('execution_time_ms'),
+                memory_used_kb=tr.get('memory_used_kb'),
+                output=tr.get('output'),
+                error_message=tr.get('error_message')
+            )
+            for tr in test_results_data
+        ]
+        
+        submission = Submission(
+            id=result[0],
+            competition_id=result[1],
+            participant_id=result[2],
+            problem_id=result[3],
+            code=result[4],
+            language=result[5],
+            submitted_at=result[6],
+            status=SubmissionStatus(result[7]),
+            test_results=test_results,
+            score=result[8] or 0,
+            penalty=result[9] or 0
+        )
+        
+        # Set optional attributes
+        if result[10]:  # execution_time_ms
+            submission.execution_time_ms = result[10]
+        if result[11]:  # memory_used_kb
+            submission.memory_used_kb = result[11]
+        
+        # Cache the submission
+        self.submissions_cache[submission_id] = submission
+        
+        return submission
+    
+    def list_submissions(
+        self,
+        competition_id: Optional[str] = None,
+        participant_id: Optional[str] = None,
+        problem_id: Optional[str] = None
+    ) -> List[Submission]:
+        """List submissions with optional filters"""
+        where_conditions = []
+        params = []
+        
+        if competition_id:
+            where_conditions.append("competition_id = ?")
+            params.append(competition_id)
+        
+        if participant_id:
+            where_conditions.append("participant_id = ?")
+            params.append(participant_id)
+        
+        if problem_id:
+            where_conditions.append("problem_id = ?")
+            params.append(problem_id)
+        
+        query = "SELECT id FROM submissions"
+        if where_conditions:
+            query += " WHERE " + " AND ".join(where_conditions)
+        
+        results = self.conn.execute(query, params).fetchall()
+        
+        submissions = []
+        for result in results:
+            submission = self.get_submission(result[0])
+            if submission:
+                submissions.append(submission)
+        
+        return submissions
+        
+
+    def add_participant(self, competition_id: str, name: str, api_base_url: str, 
+                       api_key: str, max_tokens: int, lambda_: int) -> Optional[Participant]:
+        """Add participant to competition"""
+        participant_id = generate_id()
+        
+        participant = Participant(
+            id=participant_id,
+            name=name,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            max_tokens=max_tokens,
+            lambda_=lambda_
+        )
+        
+        # Insert into database
+        self.conn.execute("""
+            INSERT INTO participants 
+            (id, competition_id, name, api_base_url, api_key, max_tokens, lambda_value, remaining_tokens)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """, [
+            participant_id, competition_id, name, api_base_url, 
+            api_key, max_tokens, lambda_, max_tokens
+        ])
+        
+        # Update competition participant count
+        self.conn.execute("""
+            UPDATE competitions 
+            SET participant_count = participant_count + 1 
+            WHERE id = ?
+        """, [competition_id])
+        
+        # Clear competition cache to force reload with new participant
+        if competition_id in self.competitions_cache:
+            del self.competitions_cache[competition_id]
+        
+        # Backup
+        self._backup_to_json('participant', participant.to_dict())
+        
+        # Force reload the competition to ensure the new participant is included
+        self.get_competition(competition_id)
+        
+        return participant
+
+    def get_participant(self, competition_id: str, participant_id: str) -> Optional[Participant]:
+        """Get a participant by ID"""
+        competition = self.get_competition(competition_id)
+        if not competition:
+            print(f"[DUCKDB_STORAGE] Competition {competition_id} not found")
+            return None
+        
+        participant = competition.get_participant(participant_id)
+        if participant:
+            print(f"[DUCKDB_STORAGE] Found participant: {participant.name} (ID: {participant.id})")
+        else:
+            print(f"[DUCKDB_STORAGE] Participant {participant_id} not found in competition {competition_id}")
+            
+        return participant
+    
+
+
+    def calculate_rankings(self, competition_id: str) -> List[Dict]:
+        """Calculate rankings for a competition"""
+        competition = self.get_competition(competition_id)
+        if not competition:
+            return []
+        
+        return competition.calculate_rankings()   
+
     # Analytics and Reporting Methods
     def get_competition_rankings(self, competition_id: str) -> List[Dict]:
         """Get competition rankings using SQL"""
@@ -371,18 +629,13 @@ class DuckDBStorage:
             return f"Data exported to Parquet file"
         
         else:
-            # Return as JSON
-            competition_data = self.conn.execute("""
-                SELECT * FROM competitions WHERE id = ?
-            """, [competition_id]).fetchone()
-            
-            submissions_data = self.conn.execute("""
-                SELECT * FROM submissions WHERE competition_id = ?
-            """, [competition_id]).fetchall()
+            # Use the existing methods to get properly formatted data
+            competition = self.get_competition(competition_id)
+            submissions = self.list_submissions(competition_id=competition_id)
             
             return {
-                "competition": dict(competition_data) if competition_data else {},
-                "submissions": [dict(row) for row in submissions_data]
+                "competition": competition.to_dict(include_details=True) if competition else {},
+                "submissions": [s.to_dict(include_code=False) for s in submissions]
             }
     
     def close(self) -> None:
@@ -392,4 +645,70 @@ class DuckDBStorage:
     
     def __del__(self):
         """Cleanup on deletion"""
-        self.close() 
+        self.close()
+    
+    # JSONDataStorage compatibility methods
+    def save_submission(self, submission: Submission) -> None:
+        """Save a submission (compatibility method)"""
+        self.update_submission(submission)
+        # Update compatibility dict
+        self.submissions_cache[submission.id] = submission
+    
+    def save_competition(self, competition: Competition) -> None:
+        """Save a competition (compatibility method)"""
+        self.update_competition(competition)
+        # Update compatibility dict
+        self.competitions_cache[competition.id] = competition
+    
+    def get_storage_info(self) -> Dict[str, Any]:
+        """Get storage system information"""
+        # Get database size
+        db_size = self.db_path.stat().st_size if self.db_path.exists() else 0
+        
+        # Get counts
+        comp_count = self.conn.execute("SELECT COUNT(*) FROM competitions").fetchone()[0]
+        sub_count = self.conn.execute("SELECT COUNT(*) FROM submissions").fetchone()[0]
+        part_count = self.conn.execute("SELECT COUNT(*) FROM participants").fetchone()[0]
+        
+        return {
+            "version": 1,
+            "storage_format": "duckdb",
+            "database_size_bytes": db_size,
+            "total_competitions": comp_count,
+            "total_submissions": sub_count,
+            "total_participants": part_count,
+            "last_modified": datetime.now().isoformat(),
+            "backup_enabled": self.backup_json
+        }
+    
+    def get_storage_stats(self) -> Dict[str, Any]:
+        """Get detailed storage statistics"""
+        info = self.get_storage_info()
+        
+        # Calculate averages
+        comp_count = max(info["total_competitions"], 1)
+        sub_count = max(info["total_submissions"], 1)
+        
+        return {
+            "total_size_bytes": info["database_size_bytes"],
+            "competitions_count": info["total_competitions"], 
+            "submissions_count": info["total_submissions"],
+            "participants_count": info["total_participants"],
+            "average_competition_size": info["database_size_bytes"] / comp_count,
+            "average_submission_size": info["database_size_bytes"] / sub_count,
+            "last_backup": None
+        }
+    
+    def create_backup(self, backup_name: str = None) -> str:
+        """Create a backup of the current data"""
+        if backup_name is None:
+            backup_name = f"backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        
+        backup_path = self.backup_dir / f"{backup_name}.duckdb"
+        
+        # Copy database file
+        import shutil
+        shutil.copy2(self.db_path, backup_path)
+        
+        print(f"DuckDB backup created: {backup_path}")
+        return str(backup_path) 
