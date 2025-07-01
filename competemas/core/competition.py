@@ -7,7 +7,7 @@ import os
 from typing import Dict, List, Optional, Any, Callable, Tuple
 from datetime import datetime, timedelta
 
-from .agents import Agent, GenericAPIAgent
+from .agent_interface import AgentInterface
 from .models import SubmissionStatus
 
 # # Configure logging
@@ -20,7 +20,7 @@ logger = logging.getLogger("competition")
 
 class Competitor:
     """Base class for competitors"""
-    def __init__(self, name: str, agent: Agent, max_tokens: int = 10000000):
+    def __init__(self, name: str, agent: AgentInterface, max_tokens: int = 10000000):
         self.name = name
         self.agent = agent
         self.participant_id: Optional[str] = None

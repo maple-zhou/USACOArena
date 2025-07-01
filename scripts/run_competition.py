@@ -7,8 +7,8 @@ import argparse
 from datetime import datetime, timedelta
 from typing import Dict, List
 
-from ..core.agents import GenericAPIAgent, StreamingGenericAPIAgent
-from ..core.competition import CompetitionOrganizer, Competitor
+from scripts.agents.custom_agents import GenericAPIAgent, StreamingGenericAPIAgent
+from competemas.core.competition import CompetitionOrganizer, Competitor
 
 
 os.makedirs('logs', exist_ok=True)

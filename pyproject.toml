@@ -1,6 +1,6 @@
 [project]
 name = "competemas"
-version = "0.1.0"
+version = "0.2.0"
 description = "CompeteMAS: Cost-Aware Evaluation of Agentic Coding Capabilities of Multi-Agent Systems"
 readme = "README.md"
 authors = [
@@ -29,7 +29,7 @@ dev = [
 
 [project.scripts]
 competemas = "competemas.main:main"
-competemas_run = "competemas.cli.run_competition:main_sync"
+competemas_run = "scripts.run_competition:main_sync"
 
 [build-system]
 requires = ["hatchling"]

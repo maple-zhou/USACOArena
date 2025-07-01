@@ -29,8 +29,9 @@ from abc import ABC, abstractmethod
 import os
 import time
 
-from ..utils.prompts import PromptSystem, ActionParser
-from ..utils.conversation_logger import ConversationLogger
+from scripts.prompts.custom_prompts import PromptSystem, ActionParser
+from competemas.utils.conversation_logger import ConversationLogger
+from competemas.core.agent_interface import AgentInterface
 
 # Configure logging for agent operations
 # Uncomment the following lines to enable detailed logging
@@ -41,7 +42,7 @@ from ..utils.conversation_logger import ConversationLogger
 logger = logging.getLogger("llm_agents")
 
 
-class Agent(ABC):
+class Agent(AgentInterface, ABC):
     """
     Abstract base class for LLM agents in programming competitions.
     
@@ -71,17 +72,47 @@ class Agent(ABC):
             log_dir: Directory for storing conversation logs
             session_id: Optional session identifier for tracking conversations
         """
-        self.name = name
+        self._name = name
         self.conversation_history: List[Dict] = []  # Stores conversation messages
         self.prompt_system = PromptSystem(prompt_config_path)  # Handles prompt generation
         self.action_parser = ActionParser(prompt_config_path)  # Parses LLM responses into actions
         self.logger = ConversationLogger(log_dir)  # Manages conversation logging
         self.session_id = session_id  # Session tracking for conversation continuity
-        self.api_base_url = ""
-        self.api_key = ""
+        self._api_base_url = ""
+        self._api_key = ""
         
         # Load API configuration from configuration file
         self.max_retries, self.retry_delay = self._load_api_config()
+    
+    @property
+    def name(self) -> str:
+        """Get the agent name"""
+        return self._name
+    
+    @name.setter 
+    def name(self, value: str) -> None:
+        """Set the agent name"""
+        self._name = value
+    
+    @property
+    def api_base_url(self) -> str:
+        """Get the agent's API base URL"""
+        return self._api_base_url
+    
+    @api_base_url.setter
+    def api_base_url(self, value: str) -> None:
+        """Set the agent's API base URL"""
+        self._api_base_url = value
+    
+    @property
+    def api_key(self) -> str:
+        """Get the agent's API key"""
+        return self._api_key
+    
+    @api_key.setter
+    def api_key(self, value: str) -> None:
+        """Set the agent's API key"""
+        self._api_key = value
     
     def _load_api_config(self) -> tuple[int, int]:
         """Load API configuration from configuration file"""

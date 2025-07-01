@@ -12,7 +12,7 @@ import requests
 import traceback
 
 from ..core.models import Competition, Participant, Problem, Submission, TestCase, SubmissionStatus, Level, generate_id
-from ..core.duckdb_storage import DuckDBStorage
+from ..core.storage import DuckDBStorage
 from ..core.judge import Judge
 from ..utils.problem_loader import USACOProblemLoader
 from rank_bm25 import BM25Okapi

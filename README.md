@@ -15,8 +15,9 @@ CompeteMAS is a comprehensive Online Judge (OJ) system designed to evaluate the 
 - **⚡ Real-time API**: RESTful API for competition management and monitoring
 - **🔍 Intelligent Hints**: Multi-level hint system with semantic and episodic knowledge
 - **📊 Comprehensive Analytics**: Detailed scoring, rankings, and performance metrics
-- **🐳 Container Ready**: Docker support for easy deployment
 - **🛡️ Secure Execution**: Sandboxed code execution via Rust-based judge
+- **🏗️ Modular Architecture**: Clean separation of core framework and user customizations
+- **📈 High Performance**: Optimized storage system with 99.8% space savings
 
 ## 📋 Prerequisites
 
@@ -110,45 +111,123 @@ zig version  # Verify installation
 
 **Important**: Make sure the online judge is running on port 9000 before starting CompeteMAS competitions.
 
+## 🏗️ Architecture
+
+CompeteMAS v0.2.0 采用模块化设计，实现了**核心框架**与**用户自定义内容**的清晰分离：
+
+```
+CompeteMAS/
+├── 🏗️ 核心框架包
+│   ├── core/                     # 核心业务逻辑
+│   │   ├── models.py            # 数据模型定义
+│   │   ├── storage.py           # DuckDB存储系统
+│   │   ├── judge.py             # 代码评判系统
+│   │   ├── competition.py       # 竞赛核心逻辑
+│   │   └── agent_interface.py   # 智能体接口抽象
+│   ├── REST API服务
+│   │   └── server.py            # Flask API服务器
+│   ├── utils/                   # 工具模块
+│   │   ├── problem_loader.py    # USACO问题加载器
+│   │   └── conversation_logger.py # 对话日志记录
+│   └── main.py                  # 框架主入口
+├── 🛠️ 用户自定义脚本
+│   ├── agents/                  # 自定义智能体实现
+│   │   └── custom_agents.py     # LLM智能体类
+│   ├── prompts/                 # 自定义提示词模板
+│   │   └── custom_prompts.py    # 提示词系统
+│   └── run_competition.py       # 竞赛运行主脚本
+├── 📋 示例和配置模板
+│   └── sample_configs/          # 示例配置文件
+├── 配置文件目录
+├── 📊 数据存储目录
+└── logs/                        # 日志目录
+```
+
+### 模块化设计优势
+
+#### 1. 清晰的职责分离
+- **核心框架** (`competemas/`) - 稳定的业务逻辑和基础设施
+- **用户脚本** (`scripts/`) - 可自定义的智能体、提示词和运行脚本
+- **示例配置** (`examples/`) - 配置模板和文档
+
+#### 2. 智能体接口设计
+创建了`AgentInterface`抽象接口，实现松耦合：
+
+```python
+# competemas/core/agent_interface.py
+class AgentInterface(ABC):
+    @abstractmethod
+    async def process(self, state: Dict) -> Dict:
+        """处理竞赛状态，生成下一步行动"""
+        pass
+```
+
+#### 3. 性能优化
+- **存储优化**：DuckDB数据库大小从972MB降至2.3MB (99.8%节省)
+- **动态加载**：测试用例按需从文件系统加载，首次访问仅+10-50ms
+- **模块化架构**：支持并行开发，易于维护和扩展
+
 ## 🎯 Usage
 
 ### Quick Start
 
-1. **Start the API Server**
-   ```bash
-   uv run competemas --host 0.0.0.0 --port 5000
-   ```
+#### 1. 启动API服务器
+```bash
+# 使用新的框架入口
+python -m competemas.main --host 0.0.0.0 --port 5000
 
-2. **Configure Competitors**
-   Edit `config/competitors_config.json`:
-   ```json
-   {
-     "competitors": [
-       {
-         "name": "gpt-4",
-         "model_id": "gpt-4",
-         "api_base": "https://api.openai.com/v1",
-         "api_key": "your-api-key",
-         "max_tokens": 100000
-       }
-     ]
-   }
-   ```
+# 或者直接运行
+cd competemas
+python main.py --debug
+```
 
-3. **Run Competition**
-   ```bash
-   uv run competemas_run
-   ```
+#### 2. 配置参赛者
+编辑 `examples/sample_configs/competitors_config.json`:
+```json
+{
+  "competitors": [
+    {
+      "name": "gpt-4",
+      "type": "generic",
+      "model_id": "gpt-4",
+      "api_base_url": "https://api.openai.com/v1",
+      "api_key": "your-api-key"
+    }
+  ]
+}
+```
+
+#### 3. 运行竞赛
+```bash
+# 使用用户自定义脚本
+python scripts/run_competition.py \
+    --competition-config examples/sample_configs/competition_config.json \
+    --competitors-config examples/sample_configs/competitors_config.json \
+    --problem-ids examples/sample_configs/problem_ids.json
+```
+
+### 自定义智能体开发
+
+在`scripts/agents/custom_agents.py`中实现您的智能体：
+
+```python
+from competemas.core.agent_interface import AgentInterface
+
+class MyCustomAgent(AgentInterface):
+    async def process(self, state: Dict) -> Dict:
+        # 实现您的智能体逻辑
+        return {"action": "VIEW_PROBLEMS"}
+```
 
 ### API Usage
 
-The system provides a comprehensive REST API:
+系统提供全面的REST API：
 
 ```bash
-# List competitions
+# 列出所有竞赛
 curl http://localhost:5000/api/competitions
 
-# Create competition
+# 创建竞赛
 curl -X POST http://localhost:5000/api/competitions \
   -H "Content-Type: application/json" \
   -d '{
@@ -158,58 +237,12 @@ curl -X POST http://localhost:5000/api/competitions \
     "max_tokens_per_participant": 100000
   }'
 
-# Get competition details
+# 获取竞赛详情
 curl http://localhost:5000/api/competitions/{competition_id}
 
-# View rankings
+# 查看排名
 curl http://localhost:5000/api/competitions/{competition_id}/rankings
 ```
-
-## 🏗️ Architecture
-
-```
-CompeteMAS/
-├── 📁 src/                          # 源代码目录
-│   └── 📁 competemas/               # 主包
-│       ├── 📄 __init__.py           # 包初始化
-│       ├── 📄 main.py               # 主程序入口
-│       ├── 📁 api/                  # API服务模块
-│       │   ├── 📄 __init__.py       # API模块初始化
-│       │   └── 📄 server.py         # Flask API服务器
-│       ├── 📁 cli/                  # 命令行工具模块
-│       │   ├── 📄 __init__.py       # CLI模块初始化
-│       │   └── 📄 run_competition.py # 竞赛运行工具
-│       ├── 📁 core/                 # 核心业务逻辑
-│       │   ├── 📄 __init__.py       # 核心模块初始化
-│       │   ├── 📄 agents.py         # 智能体实现
-│       │   ├── 📄 competition.py    # 竞赛管理逻辑
-│       │   ├── 📄 judge.py          # 评测系统
-│       │   ├── 📄 models.py         # 数据模型
-│       │   └── 📄 storage.py        # 数据存储
-│       └── 📁 utils/                # 工具函数模块
-│           ├── 📄 __init__.py       # 工具模块初始化
-│           ├── 📄 conversation_logger.py # 对话日志工具
-│           ├── 📄 problem_loader.py # 问题加载器
-│           └── 📄 prompts.py        # 提示词管理
-├── 📁 config/                       # 配置文件目录
-│   ├── 📄 all_problems.json        # 所有问题配置
-│   ├── 📄 competition_config.json  # 竞赛配置
-│   ├── 📄 competitors_config.json  # 参赛者配置
-│   ├── 📄 problem_ids.json         # 问题ID列表
-│   └── 📄 prompts.json             # 提示词配置
-├── 📁 data/                         # 数据目录
-│   ├── 📁 competitions/            # 竞赛数据
-│   ├── 📁 corpuses/                # 语料库数据
-│   ├── 📁 datasets/                # 数据集
-│   ├── 📁 datasets_original/       # 原始数据集
-│   └── 📁 submissions/             # 提交记录
-├── 📁 logs/                         # 日志目录
-├── 📁 tests/                        # 测试代码目录
-├── 📄 pyproject.toml               # uv项目配置
-└── 📄 README.md                    # 项目说明文档
-```
-
-**Note**: The online judge system (`online-judge-rust`) is a separate third-party dependency that needs to be cloned and set up separately. See the [Online Judge Setup](#-online-judge-setup) section for details.
 
 ## 🔧 Development
 
@@ -222,101 +255,134 @@ uv sync --extra dev
 uv run pytest
 
 # Format code
-uv run black src/ tests/
+uv run black competemas/ scripts/ tests/
 
 # Lint code
-uv run ruff check src/ tests/
+uv run ruff check competemas/ scripts/ tests/
 
 # Type checking
-uv run mypy src/
+uv run mypy competemas/
 ```
 
-### Project Structure
+### 项目结构详解
 
-- **`src/competemas/core/`**: Core business logic
-  - `competition.py`: Competition lifecycle management
-  - `agents.py`: Multi-agent framework implementation
-  - `judge.py`: Code evaluation and scoring
-  - `models.py`: Data models and schemas
-  - `storage.py`: Data persistence layer
+#### 核心框架 (`competemas/`)
+- **`core/`**: 核心业务逻辑
+  - `models.py`: 数据模型和类型定义
+  - `storage.py`: DuckDB存储系统，支持高性能查询
+  - `judge.py`: 代码评判和执行系统
+  - `competition.py`: 竞赛生命周期管理
+  - `agent_interface.py`: 智能体抽象接口
 
-- **`src/competemas/api/`**: REST API interface
-  - `server.py`: Flask API server with comprehensive endpoints
+- **`api/`**: REST API接口
+  - `server.py`: Flask API服务器，提供完整的RESTful接口
 
-- **`src/competemas/cli/`**: Command-line tools
-  - `run_competition.py`: Competition execution tool
+- **`utils/`**: 工具函数
+  - `problem_loader.py`: USACO问题动态加载
+  - `conversation_logger.py`: 对话日志记录
 
-- **`src/competemas/utils/`**: Utility functions
-  - `problem_loader.py`: USACO problem loading
-  - `prompts.py`: LLM prompt management
-  - `conversation_logger.py`: Logging utilities
+#### 用户自定义 (`scripts/`)
+- **`agents/`**: 智能体实现
+  - `custom_agents.py`: 支持多种LLM提供商的通用智能体
+
+- **`prompts/`**: 提示词管理
+  - `custom_prompts.py`: 提示词模板和解析系统
+
+- **`run_competition.py`**: 竞赛执行脚本
+
+#### 配置和示例 (`examples/`)
+- **`sample_configs/`**: 配置文件模板
+  - 竞赛配置、参赛者配置、问题列表等
 
 ## 📊 Competition System
 
 ### Agent Response Format
-The competition system returns structured data to agents:
+竞赛系统向智能体返回结构化数据：
 
-  ```python
-  {
-    "competition_id": str,           # Current competition ID
-    "competition_details": {         # Competition details
-          "id": str,
-          "title": str,
-          "description": str,
-          "problem_ids": List[str],
-          "rules": Dict
-      },
-    "competitor_state": {            # Current competitor state
-        "name": str,                 # Competitor name
-        "remaining_tokens": int,     # Remaining tokens
-          "solved_problems": List[str], # List of solved problems
-        "is_running": bool,          # Whether still running
-          "termination_reason": Optional[str], # Termination reason if any
-        "score": int,                # Current score
-        "final_score": int           # Final score
-      },
-    "problems": List[Dict],          # List of all problems
-    "rankings": List[Dict],          # Current rankings
-    "last_action_result": {          # Result of the last action
-        "status": str,               # "success" or "error"
-        "data": Dict,                # Action return data
-        "message": str               # Error message if any
-      },
-    "other_competitors_status": [    # Status of other competitors
-          {
-              "name": str,
-              "is_terminated": bool,
-              "termination_reason": Optional[str]
-          }
-      ]
-  }
-  ```
+```python
+{
+  "competition_id": str,           # 当前竞赛ID
+  "competition_details": {         # 竞赛详情
+        "id": str,
+        "title": str,
+        "description": str,
+        "problem_ids": List[str],
+        "rules": Dict
+    },
+  "competitor_state": {            # 当前参赛者状态
+      "name": str,                 # 参赛者名称
+      "remaining_tokens": int,     # 剩余令牌数
+        "solved_problems": List[str], # 已解决问题列表
+      "is_running": bool,          # 是否仍在运行
+        "termination_reason": Optional[str], # 终止原因（如果有）
+      "score": int,                # 当前得分
+      "final_score": int           # 最终得分
+    },
+  "problems": List[Dict],          # 所有问题列表
+  "rankings": List[Dict],          # 当前排名
+  "last_action_result": {          # 上次操作结果
+      "status": str,               # "success" 或 "error"
+      "data": Dict,                # 操作返回数据
+      "message": str               # 错误消息（如果有）
+    },
+  "other_competitors_status": [    # 其他参赛者状态
+        {
+            "name": str,
+            "is_terminated": bool,
+            "termination_reason": Optional[str]
+        }
+    ]
+}
+```
 
 ### Available Actions
-1. **VIEW_PROBLEM**: View problem details
-2. **GET_HINT**: Request hints (consumes tokens)
-3. **SUBMIT_SOLUTION**: Submit code solution
-4. **TERMINATE**: End participation
+1. **VIEW_PROBLEM**: 查看问题详情
+2. **GET_HINT**: 请求提示（消耗令牌）
+3. **SUBMIT_SOLUTION**: 提交代码解决方案
+4. **TERMINATE**: 结束参与
+
+## 🔄 迁移指南
+
+如果您有基于旧结构（src/目录）的代码，请按以下步骤迁移：
+
+### 1. 更新导入路径
+```python
+# 旧的导入方式
+from src.competemas.core.agents import GenericAPIAgent
+
+# 新的导入方式  
+from scripts.agents.custom_agents import GenericAPIAgent
+```
+
+### 2. 移动自定义代码
+- 自定义智能体 → `scripts/agents/`
+- 自定义提示词 → `scripts/prompts/`
+- 运行脚本 → `scripts/`
+
+### 3. 更新配置文件
+- 复制配置模板：`examples/sample_configs/`
+- 根据需要调整配置参数
 
 ## 🔬 For Reviewers
 
-We warmly welcome reviewers to explore and experiment with our system!
+我们热烈欢迎审稿人探索和试验我们的系统！
 
 ### Model Configuration
-- Configure different LLM models in `config/competitors_config.json`
-- Key parameters: `model_id`, `api_base`, `api_key`
-- Token pricing can be adjusted in `competition.py` line 73
-- Reference [Artificial Analysis](https://artificialanalysis.ai/) for model pricing
+- 在 `examples/sample_configs/competitors_config.json` 中配置不同的LLM模型
+- 关键参数: `model_id`, `api_base_url`, `api_key`
+- 可在 `scripts/agents/custom_agents.py` 中调整令牌定价
+- 参考 [Artificial Analysis](https://artificialanalysis.ai/) 获取模型定价信息
 
 ### Competition Parameters
-- Adjust competition parameters in `config/competition_config.json`
-- Modify `config/problem_ids.json` to test different problem sets
-- All available problems are listed in `config/all_problems.json`
+- 在 `examples/sample_configs/competition_config.json` 中调整竞赛参数
+- 修改 `examples/sample_configs/problem_ids.json` 测试不同问题集
+- 所有可用问题列在 `config/all_problems.json` 中
 
 ### Custom MAS Development
-- Modify prompts in `prompts.py` and agent behaviors in `agents.py`
-- Agents connect through `Agent.process` function
-- Experiment with different strategies and approaches! 😊
+- 在 `scripts/prompts/custom_prompts.py` 中修改提示词
+- 在 `scripts/agents/custom_agents.py` 中调整智能体行为
+- 智能体通过 `Agent.process` 函数连接
+- 欢迎尝试不同的策略和方法！😊
 
 ## 🤝 Contributing
 
@@ -337,3 +403,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Built with modern Python best practices 
 - USACO problem library from [USACO Bench](https://github.com/princeton-nlp/USACO)
 - Online Judge implementation from [CP Initiative](https://github.com/cpinitiative/online-judge-rust)
+
+---
+
+**CompeteMAS v0.2.0** - 更模块化、更高效、更易扩展的多智能体竞赛框架 🎉
