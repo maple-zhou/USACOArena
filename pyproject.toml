@@ -71,3 +71,4 @@ python_version = "3.10"
 warn_return_any = true
 warn_unused_configs = true
 exclude = ["data/", "logs/", "competition_results/", "competitor_results/"] 
+ 

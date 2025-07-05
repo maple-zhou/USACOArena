@@ -2,12 +2,12 @@
 import json
 import os
 from typing import Dict, List, Optional
-from ..core.models import Problem, TestCase, Level, generate_id
+from ..models.models import Problem, Case, Level, generate_id
 
 class USACOProblemLoader:
     """Load problems from the USACO problem library"""
     
-    def __init__(self, data_path: str = None):
+    def __init__(self, data_path: Optional[str] = None):
         if data_path is None:
             # Try to find the path relative to the current file
             current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -53,22 +53,50 @@ class USACOProblemLoader:
         
         problem_data = self.problems_dict[problem_id]
         
-        # Create test cases
-        test_cases = []
+        # Create sample cases only
         sample_cases = []
         
-        # Load sample test cases
+        # Load sample cases
         if 'samples' in problem_data:
-            for i, sample in enumerate(problem_data['samples']):
-                case = TestCase(
+            for sample in problem_data['samples']:
+                case = Case(
                     id=generate_id(),
                     input_data=sample.get('input', ''),
                     expected_output=sample.get('output', '')
                 )
                 sample_cases.append(case)
-                # test_cases.append(case)  # Samples are also included as test cases
         
-        # Load all test cases - be careful with directory access
+        # Determine difficulty level
+        level_str = problem_data.get('problem_level', 'bronze').lower()
+        if level_str == 'bronze':
+            level = Level.BRONZE
+        elif level_str == 'silver':
+            level = Level.SILVER
+        elif level_str == 'gold':
+            level = Level.GOLD
+        elif level_str == 'platinum':
+            level = Level.PLATINUM
+        else:
+            level = Level.BRONZE
+        
+        # Create Problem object (without test_cases)
+        problem = Problem(
+            id=problem_id,
+            title=problem_data.get('name', ''),
+            description=problem_data.get('description', ''),
+            level=level,
+            sample_cases=sample_cases,
+            time_limit_ms=problem_data.get('runtime_limit', 1)*1000,
+            memory_limit_mb=problem_data.get('memory_limit', 256)
+        )
+        
+        return problem
+    
+    def load_test_cases(self, problem_id: str) -> List[Case]:
+        """Load test cases for a specific problem (on-demand loading)"""
+        test_cases = []
+        
+        # Load all test cases from file system
         test_dir = os.path.join(self.data_path, "tests", problem_id)
         if os.path.exists(test_dir) and os.path.isdir(test_dir):
             try:
@@ -92,7 +120,7 @@ class USACOProblemLoader:
                             with open(os.path.join(test_dir, output_file), 'r') as f_out:
                                 output_data = f_out.read()
                             
-                            case = TestCase(
+                            case = Case(
                                 id=generate_id(),
                                 input_data=input_data,
                                 expected_output=output_data
@@ -104,43 +132,58 @@ class USACOProblemLoader:
                 # Just skip loading additional test cases if directory doesn't exist
                 pass
         
-        # Determine difficulty level
-        level_str = problem_data.get('problem_level', 'bronze').lower()
-        if level_str == 'bronze':
-            level = Level.BRONZE
-        elif level_str == 'silver':
-            level = Level.SILVER
-        elif level_str == 'gold':
-            level = Level.GOLD
-        elif level_str == 'platinum':
-            level = Level.PLATINUM
-        else:
-            level = Level.BRONZE
+        return test_cases
+    
+
+    # do not use this method
+    def get_problem_with_test_cases(self, problem_id: str) -> Optional[Dict]:
+        """Get problem data with test cases for evaluation purposes"""
+        problem = self.load_problem(problem_id)
+        if not problem:
+            return None
         
-        # Ensure we have at least one test case
-        if not test_cases and sample_cases:
-            test_cases = sample_cases.copy()  # Use samples as test cases if no other test cases
+        # Load test cases on demand
+        test_cases = self.load_test_cases(problem_id)
         
-        # Create Problem object
-        problem = Problem(
-            id=problem_id,
-            title=problem_data.get('name', ''),
-            description=problem_data.get('description', ''),
-            level=level,
-            test_cases=test_cases,
-            sample_cases=sample_cases,
-            time_limit_ms=problem_data.get('runtime_limit', 1)*1000,
-            memory_limit_mb=problem_data.get('memory_limit', 256)
-        )
+        # If no test cases found, use sample cases as fallback
+        if not test_cases and problem.sample_cases:
+            test_cases = problem.sample_cases.copy()
         
-        return problem
+        return {
+            "problem": problem,
+            "test_cases": test_cases
+        }
     
     def import_problems_to_competition(self, competition, problem_ids: List[str]) -> int:
-        """Import multiple problems to a competition"""
+        """Import multiple problems to a competition (without test cases)"""
         count = 0
         for pid in problem_ids:
             problem = self.load_problem(pid)
             if problem:
-                competition.problems.append(problem)
+                # Note: This method is deprecated. Problems should be added directly to database
+                # through data_storage.create_competition() or similar methods
                 count += 1
         return count
+    
+    def get_problem_info(self, problem_id: str) -> Optional[Dict]:
+        """Get basic problem information without loading test cases"""
+        if problem_id not in self.problems_dict:
+            return None
+        
+        problem_data = self.problems_dict[problem_id]
+        
+        return {
+            "id": problem_id,
+            "title": problem_data.get('name', ''),
+            "description": problem_data.get('description', ''),
+            "level": problem_data.get('problem_level', 'bronze'),
+            "runtime_limit": problem_data.get('runtime_limit', 1),
+            "memory_limit": problem_data.get('memory_limit', 256),
+            "sample_count": len(problem_data.get('samples', [])),
+            "has_test_files": self._has_test_files(problem_id)
+        }
+    
+    def _has_test_files(self, problem_id: str) -> bool:
+        """Check if test files exist for a problem"""
+        test_dir = os.path.join(self.data_path, "tests", problem_id)
+        return os.path.exists(test_dir) and os.path.isdir(test_dir)

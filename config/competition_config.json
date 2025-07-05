@@ -16,6 +16,7 @@
     },
     "bonus_for_first_ac": 100,
     "penalties": {
+      "AC": 0,
       "WA": 10,
       "RE": 10,
       "CE": 5,

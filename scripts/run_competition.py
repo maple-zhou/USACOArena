@@ -8,7 +8,8 @@ from datetime import datetime, timedelta
 from typing import Dict, List
 
 from scripts.agents.custom_agents import GenericAPIAgent, StreamingGenericAPIAgent
-from competemas.core.competition import CompetitionOrganizer, Competitor
+from scripts.competition_organizer import CompetitionOrganizer
+from competemas.engine.competition import Competitor
 
 
 os.makedirs('logs', exist_ok=True)
@@ -179,6 +180,11 @@ async def main():
         competition_config = load_config(args.competition_config)
         competitors_config = load_config(args.competitors_config)
         problem_ids = load_config(args.problem_ids)
+        
+        # Validate problem_ids is a list
+        if not isinstance(problem_ids, list):
+            logger.error("problem_ids must be a list in the configuration file")
+            return
         
         # Initialize competition organizer
         logger.info("Initializing competition organizer...")

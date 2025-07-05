@@ -2,7 +2,7 @@ import json
 import subprocess
 import requests
 from typing import Dict, List, Optional, Any
-from .models import Submission, Problem, TestCase, TestResult, SubmissionStatus, Competition
+from ..models.models import Submission, Problem, Case, TestResult, SubmissionStatus, Competition
 
 
 class Judge:
@@ -12,17 +12,21 @@ class Judge:
     def __init__(self, oj_endpoint: str = "http://localhost:9000/2015-03-31/functions/function/invocations"):
         self.oj_endpoint = oj_endpoint
     
-    def evaluate_submission(self, submission: Submission, problem: Problem, competition: Optional[Competition] = None) -> Submission:
+    def evaluate_submission(self, submission: Submission, problem: Problem, competition: Optional[Competition] = None, first_one: bool = False) -> Submission:
         """
         Evaluate a submission against all test cases of a problem.
         Updates the submission with test results, final status, and score.
         """
+        from ..utils.problem_loader import USACOProblemLoader
+        problem_loader = USACOProblemLoader()
+        test_cases = problem_loader.load_test_cases(problem.id)
+
         # Set initial values
-        total_tests = len(problem.test_cases)
+        total_tests = len(test_cases)
         
         try:
             # Run the code against each test case
-            for test_case in problem.test_cases:
+            for test_case in test_cases:
                 test_result = self._run_test(
                     submission.code,
                     submission.language,
@@ -38,12 +42,21 @@ class Judge:
             else:
                 submission.status = SubmissionStatus.ACCEPTED
             
+            # Calculate pass_score
             # Calculate score (proportion of test cases passed * max score)
             passed_tests = sum(1 for result in submission.test_results if result.status == SubmissionStatus.ACCEPTED)
-            max_score = competition.get_problem_max_score(problem)
-            submission.score = int((passed_tests / total_tests) * max_score) if total_tests > 0 else 0
+            base_score = problem.get_problem_base_score(competition) if competition else 0
+            submission.pass_score = int((passed_tests / total_tests) * base_score) if total_tests > 0 else 0
+            # Calculate first AC bonus  
+            first_ac_bonus = problem.get_problem_firstAC_bonus(competition) if competition else 0
+            if submission.status == SubmissionStatus.ACCEPTED and first_ac_bonus > 0 and first_one:
+                submission.pass_score += first_ac_bonus
+
+
+            # Calculate submission tokens
+            submission.submission_tokens = submission.calculate_submission_tokens(competition)
             
-            # Calculate penalty based on submission status and competition rules
+            # Calculate penalty
             submission.penalty = submission.calculate_penalty(competition)
             
             return submission
@@ -58,7 +71,7 @@ class Judge:
                     error_message=str(e)
                 )
             ]
-            submission.score = 0
+            submission.pass_score = 0
             submission.penalty = submission.calculate_penalty(competition)
             return submission
     
@@ -146,8 +159,8 @@ class Judge:
                 return TestResult(
                     test_case_id="execution",
                     status=status,
-                    execution_time_ms=self._parse_time(execute_result.get("wall_time", "0")),
-                    memory_used_kb=self._parse_memory(execute_result.get("memory_usage", "0")),
+                    runtime_ms=self._parse_time(execute_result.get("wall_time", "0")),
+                    memory_kb=self._parse_memory(execute_result.get("memory_usage", "0")),
                     output=execute_result.get("stdout", ""),
                     error_message=stderr
                 )
@@ -162,8 +175,8 @@ class Judge:
                 return TestResult(
                     test_case_id="execution",
                     status=SubmissionStatus.MEMORY_LIMIT_EXCEEDED,
-                    execution_time_ms=self._parse_time(execute_result.get("wall_time", "0")),
-                    memory_used_kb=memory_used,
+                    runtime_ms=self._parse_time(execute_result.get("wall_time", "0")),
+                    memory_kb=memory_used,
                     output=actual_output
                 )
             
@@ -173,8 +186,8 @@ class Judge:
             return TestResult(
                 test_case_id="execution",
                 status=status,
-                execution_time_ms=self._parse_time(execute_result.get("wall_time", "0")),
-                memory_used_kb=memory_used,
+                runtime_ms=self._parse_time(execute_result.get("wall_time", "0")),
+                memory_kb=memory_used,
                 output=actual_output
             )
             

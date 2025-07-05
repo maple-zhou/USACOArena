@@ -172,14 +172,14 @@ class AgentInterface(ABC):
 ### Quick Start
 
 #### 1. 启动API服务器
-```bash
+   ```bash
 # 使用新的框架入口
 python -m competemas.main --host 0.0.0.0 --port 5000
 
 # 或者直接运行
 cd competemas
 python main.py --debug
-```
+   ```
 
 #### 2. 配置参赛者
 编辑 `examples/sample_configs/competitors_config.json`:
@@ -198,7 +198,7 @@ python main.py --debug
 ```
 
 #### 3. 运行竞赛
-```bash
+   ```bash
 # 使用用户自定义脚本
 python scripts/run_competition.py \
     --competition-config examples/sample_configs/competition_config.json \
@@ -299,16 +299,16 @@ uv run mypy competemas/
 ### Agent Response Format
 竞赛系统向智能体返回结构化数据：
 
-```python
-{
+  ```python
+  {
   "competition_id": str,           # 当前竞赛ID
   "competition_details": {         # 竞赛详情
-        "id": str,
-        "title": str,
-        "description": str,
-        "problem_ids": List[str],
-        "rules": Dict
-    },
+          "id": str,
+          "title": str,
+          "description": str,
+          "problem_ids": List[str],
+          "rules": Dict
+      },
   "competitor_state": {            # 当前参赛者状态
       "name": str,                 # 参赛者名称
       "remaining_tokens": int,     # 剩余令牌数
@@ -317,28 +317,28 @@ uv run mypy competemas/
         "termination_reason": Optional[str], # 终止原因（如果有）
       "score": int,                # 当前得分
       "final_score": int           # 最终得分
-    },
+      },
   "problems": List[Dict],          # 所有问题列表
   "rankings": List[Dict],          # 当前排名
   "last_action_result": {          # 上次操作结果
       "status": str,               # "success" 或 "error"
       "data": Dict,                # 操作返回数据
       "message": str               # 错误消息（如果有）
-    },
+      },
   "other_competitors_status": [    # 其他参赛者状态
-        {
-            "name": str,
-            "is_terminated": bool,
-            "termination_reason": Optional[str]
-        }
-    ]
-}
-```
+          {
+              "name": str,
+              "is_terminated": bool,
+              "termination_reason": Optional[str]
+          }
+      ]
+  }
+  ```
 
 ### Available Actions
 1. **VIEW_PROBLEM**: 查看问题详情
 2. **GET_HINT**: 请求提示（消耗令牌）
-3. **SUBMIT_SOLUTION**: 提交代码解决方案
+3. **submission_SOLUTION**: 提交代码解决方案
 4. **TERMINATE**: 结束参与
 
 ## 🔄 迁移指南
@@ -390,7 +390,7 @@ from scripts.agents.custom_agents import GenericAPIAgent
 2. Create a feature branch
 3. Make your changes
 4. Run tests and linting
-5. Submit a pull request
+5. submission a pull request
 
 ## 📄 License
 

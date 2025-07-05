@@ -31,7 +31,7 @@ import time
 
 from scripts.prompts.custom_prompts import PromptSystem, ActionParser
 from competemas.utils.conversation_logger import ConversationLogger
-from competemas.core.agent_interface import AgentInterface
+from competemas.engine.agent_interface import AgentInterface
 
 # Configure logging for agent operations
 # Uncomment the following lines to enable detailed logging
@@ -199,7 +199,7 @@ class Agent(AgentInterface, ABC):
         
         Returns:
             Dictionary containing the next action to take, with fields:
-            - action: The action type (e.g., "VIEW_PROBLEM", "SUBMIT_SOLUTION")
+            - action: The action type (e.g., "VIEW_PROBLEM", "submission_SOLUTION")
             - parameters: Action-specific parameters
             - tokens_used: Tuple of (prompt_tokens, completion_tokens)
         """
