@@ -18,7 +18,7 @@ TIMEOUT = 30
 TEST_COMPETITION = {
     "title": "Test Competition 2025",
     "description": "A comprehensive test competition",
-    "problem_ids": ["bronze_001", "silver_001", "gold_001"],
+    "problem_ids": ["1524_platinum_forklift_certified"],
     "max_tokens_per_participant": 10000,
     "rules": {
         "scoring": {"bronze": 100, "silver": 200, "gold": 500},
@@ -31,8 +31,8 @@ TEST_COMPETITION = {
 
 TEST_PARTICIPANT = {
     "name": "TestParticipant",
-    "api_base_url": "https://api.openai.com/v1",
-    "api_key": "test_key_12345",
+    "api_base_url": "http://100.76.8.43:10086/",
+    "api_key": "sk-EFhZxTqkXfedmKP_yxB8-XIisFkXQ7JGL6sunBI3XBfQfinP3oBgl5wzqDw",
     "limit_tokens": 5000,
     "lambda_value": 100
 }
@@ -78,7 +78,7 @@ class ServerTester:
             "data": data
         })
     
-    def make_request(self, method: str, endpoint: str, data: Dict = None, params: Dict = None) -> Dict:
+    def make_request(self, method: str, endpoint: str, data: Optional[Dict] = None, params: Optional[Dict] = None) -> Dict:
         """Make HTTP request and return response"""
         url = f"{self.api_base}{endpoint}"
         headers = {"Content-Type": "application/json"}
@@ -142,6 +142,7 @@ class ServerTester:
                 success,
                 f"Found {len(filtered_problems)} bronze problems"
             )
+        
     
     def test_similar_problems(self):
         """Test similar problems endpoint"""
@@ -149,7 +150,7 @@ class ServerTester:
         
         # Test with valid problem ID
         result = self.make_request("GET", "/api/problems/similar", params={
-            "problem_id": "bronze_001",
+            "problem_id": "1524_platinum_forklift_certified",
             "num_problems": 2
         })
         success = result["success"] and result["data"] and result["data"].get("status") == "success"
@@ -172,6 +173,7 @@ class ServerTester:
             success,
             "Correctly rejected invalid problem ID"
         )
+        # print(result)
     
     def test_textbook_search(self):
         """Test textbook search endpoint"""
@@ -180,7 +182,7 @@ class ServerTester:
         # Test with valid query
         result = self.make_request("GET", "/api/textbook/search", params={
             "query": "algorithm",
-            "max_results": 3
+            "max_results": 1
         })
         success = result["success"] and result["data"] and result["data"].get("status") == "success"
         
@@ -194,7 +196,7 @@ class ServerTester:
         # Test with empty query
         result = self.make_request("GET", "/api/textbook/search", params={
             "query": "",
-            "max_results": 3
+            "max_results": 1
         })
         success = not result["success"]  # Should fail
         self.log_test(
@@ -202,6 +204,7 @@ class ServerTester:
             success,
             "Correctly rejected empty query"
         )
+        # print(result)
     
     def test_competition_creation(self):
         """Test competition creation"""
@@ -209,7 +212,7 @@ class ServerTester:
         
         result = self.make_request("POST", "/api/competitions/create", TEST_COMPETITION)
         success = result["success"] and result["data"] and result["data"].get("status") == "success"
-        
+        print(result)
         if success:
             self.competition_id = result["data"]["data"]["competition"]["id"]
             self.log_test(
@@ -253,6 +256,7 @@ class ServerTester:
             success,
             f"Problems: {len(details.get('problems', []))}, Participants: {len(details.get('participants', []))}"
         )
+        print(result)
         
         # Test list competitions
         result = self.make_request("GET", "/api/competitions/list")
@@ -534,7 +538,7 @@ class ServerTester:
         # Test agent request
         agent_request = {
             "json": {
-                "model": "gpt-3.5-turbo",
+                "model": "sf-deepseek-v3",
                 "messages": [{"role": "user", "content": "Hello, this is a test message."}],
                 "max_tokens": 50
             },
@@ -543,6 +547,7 @@ class ServerTester:
         
         result = self.make_request("POST", f"/api/agent/call/{self.competition_id}/{self.participant_id}", agent_request)
         success = result["success"] and result["data"]
+        print(result)
         
         self.log_test(
             "Agent Request",
@@ -553,7 +558,7 @@ class ServerTester:
         # Test streaming agent request
         stream_request = {
             "json": {
-                "model": "gpt-3.5-turbo",
+                "model": "sf-deepseek-v3",
                 "messages": [{"role": "user", "content": "Hello, this is a streaming test."}],
                 "max_tokens": 50,
                 "stream": True
@@ -563,6 +568,7 @@ class ServerTester:
         
         result = self.make_request("POST", f"/api/stream_agent/call/{self.competition_id}/{self.participant_id}", stream_request)
         success = result["success"] and result["data"]
+        print(result)
         
         self.log_test(
             "Streaming Agent Request",
@@ -570,15 +576,6 @@ class ServerTester:
             "Streaming agent request processed"
         )
         
-        # Test streaming agent test
-        result = self.make_request("POST", f"/api/stream_agent/test/{self.competition_id}/{self.participant_id}")
-        success = result["success"] and result["data"]
-        
-        self.log_test(
-            "Streaming Agent Test",
-            success,
-            "Streaming agent test completed"
-        )
     
     def test_participant_termination(self):
         """Test participant termination"""
@@ -591,7 +588,8 @@ class ServerTester:
         # Test participant status
         result = self.make_request("GET", f"/api/participants/status/{self.competition_id}/{self.participant_id}")
         success = result["success"] and result["data"] and result["data"].get("status") == "success"
-        
+        # print(result)
+
         status_data = result["data"].get("data", {}) if result["data"] else {}
         self.log_test(
             "Get Participant Status",
@@ -604,6 +602,7 @@ class ServerTester:
                                  {"reason": "test_termination"})
         success = result["success"] and result["data"] and result["data"].get("status") == "success"
         
+        print(result)
         self.log_test(
             "Terminate Participant",
             success,

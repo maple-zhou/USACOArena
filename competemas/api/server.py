@@ -1,15 +1,16 @@
 import json
-from typing import Dict, List, Optional, Any, Tuple
-from flask import Flask, request, jsonify, Response
-import requests
 import traceback
+from typing import Any, Dict, List, Optional, Tuple
+import requests
 
-from ..models.models import Competition, Participant, Problem, Submission, Case, SubmissionStatus, Level, generate_id
-from ..engine.storage import DuckDBStorage
+from flask import Flask, Response, jsonify, request
+from rank_bm25 import BM25Okapi
+
 from ..engine.agent_interface import AgentRequest, AgentResponse, TokenUsage
+from ..engine.storage import DuckDBStorage
+from ..models.models import (Case, Competition, Level, Participant, Problem, Submission, SubmissionStatus, generate_id)
 from ..utils.problem_loader import USACOProblemLoader
 from ..utils.textbook_loader import TextbookLoader
-from rank_bm25 import BM25Okapi
 
 # Initialize data storage
 data_storage = DuckDBStorage()
@@ -25,31 +26,54 @@ app = Flask(__name__)
 
 
 def get_text_from_path(data: Dict, path: str) -> str:
-        if not path:
-            return str(data)
+    """
+    Extract text value from nested dictionary using dot notation path.
+    
+    Args:
+        data: Dictionary to extract value from
+        path: Dot notation path (e.g., "choices[0].message.content")
         
-        parts = path.split('.')
-        current = data
+    Returns:
+        Extracted text value as string
         
-        for part in parts:
-            if '[' in part:
-                key, index = part.split('[')
-                index = int(index.rstrip(']'))
-                if key not in current or not isinstance(current[key], (list, tuple)) or index >= len(current[key]):
-                    raise KeyError(f"Invalid array access: {key}[{index}]")
-                current = current[key][index]
-            else:
-                if part not in current:
-                    raise KeyError(f"Key '{part}' not found in data")
-                current = current[part]
-        
-        return str(current) if current is not None else ""
+    Raises:
+        KeyError: If path is invalid or key not found
+    """
+    if not path:
+        return str(data)
+    
+    parts = path.split('.')
+    current = data
+    
+    for part in parts:
+        if '[' in part:
+            key, index = part.split('[')
+            index = int(index.rstrip(']'))
+            if key not in current or not isinstance(current[key], (list, tuple)) or index >= len(current[key]):
+                raise KeyError(f"Invalid array access: {key}[{index}]")
+            current = current[key][index]
+        else:
+            if part not in current:
+                raise KeyError(f"Key '{part}' not found in data")
+            current = current[part]
+    
+    return str(current) if current is not None else ""
 
 
 
 
 # Helper functions
 def success_response(data: Any = None, message: str = "Success") -> Response:
+    """
+    Create a standardized success response.
+    
+    Args:
+        data: Optional data to include in response
+        message: Success message string
+        
+    Returns:
+        Flask Response object with success status
+    """
     response = {
         "status": "success",
         "message": message
@@ -60,6 +84,16 @@ def success_response(data: Any = None, message: str = "Success") -> Response:
 
 
 def error_response(message: str, status_code: int = 400) -> Tuple[Response, int]:
+    """
+    Create a standardized error response.
+    
+    Args:
+        message: Error message string
+        status_code: HTTP status code (default: 400)
+        
+    Returns:
+        Tuple of (Flask Response object, status code)
+    """
     response = {
         "status": "error",
         "message": message
@@ -69,6 +103,21 @@ def error_response(message: str, status_code: int = 400) -> Tuple[Response, int]
 
 @app.route("/api/competitions/create", methods=["POST"])
 def create_competition():
+    """
+    Create a new competition with specified problems.
+    
+    Request format:
+    {
+        "title": "Competition Title",
+        "description": "Competition Description", 
+        "problem_ids": ["problem_1", "problem_2"],
+        "max_tokens_per_participant": 100000,
+        "rules": {...}
+    }
+    
+    Returns:
+        Success response with competition details and any not found problems
+    """
     try:
         # Get JSON data from client request
         data = request.get_json()
@@ -122,6 +171,18 @@ def create_competition():
 
 @app.route("/api/competitions/get/<competition_id>", methods=["GET"])
 def get_competition(competition_id: str):
+    """
+    Get competition details by ID.
+    
+    Args:
+        competition_id: Unique competition identifier
+        
+    Query Parameters:
+        include_details: If "true", includes problems, participants, and rankings
+        
+    Returns:
+        Competition details with optional extended information
+    """
     try:
         competition = data_storage.get_competition(competition_id)
         if not competition:
@@ -150,6 +211,15 @@ def get_competition(competition_id: str):
 # API Routes for Competitions
 @app.route("/api/competitions/list", methods=["GET"])
 def list_competitions():
+    """
+    List all competitions or active competitions only.
+    
+    Query Parameters:
+        active_only: If "true", returns only active competitions
+        
+    Returns:
+        List of competition objects
+    """
     try:
         active_only = request.args.get("active_only", "false").lower() == "true"
         competitions = data_storage.list_competitions(active_only=active_only)
@@ -162,6 +232,24 @@ def list_competitions():
 
 @app.route("/api/participants/create/<competition_id>", methods=["POST"])
 def create_participant(competition_id: str):
+    """
+    Create a new participant in a competition.
+    
+    Args:
+        competition_id: Competition to add participant to
+        
+    Request format:
+    {
+        "name": "Participant Name",
+        "api_base_url": "http://api.example.com/",
+        "api_key": "sk-...",
+        "limit_tokens": 100000,
+        "lambda_value": 100
+    }
+    
+    Returns:
+        Participant details on success
+    """
     try:
         data = request.get_json()
         name = data.get("name", "")
@@ -194,6 +282,19 @@ def create_participant(competition_id: str):
 
 @app.route("/api/participants/get/<competition_id>/<participant_id>", methods=["GET"])
 def get_participant(competition_id: str, participant_id: str):
+    """
+    Get participant details by ID.
+    
+    Args:
+        competition_id: Competition identifier
+        participant_id: Participant identifier
+        
+    Query Parameters:
+        include_submissions: If "true", includes submission history
+        
+    Returns:
+        Participant details with optional submission history
+    """
     try:
         participant = data_storage.get_participant(competition_id, participant_id)
         if not participant:
@@ -221,6 +322,15 @@ def get_participant(competition_id: str, participant_id: str):
 # API Routes for Participants
 @app.route("/api/participants/list/<competition_id>", methods=["GET"])
 def list_participants(competition_id: str):
+    """
+    List all participants in a competition.
+    
+    Args:
+        competition_id: Competition identifier
+        
+    Returns:
+        List of participant objects
+    """
     try:
         participants = data_storage.list_participants(competition_id)
         return success_response([p.to_dict() for p in participants])
@@ -229,6 +339,16 @@ def list_participants(competition_id: str):
 
 @app.route("/api/problems/get/<competition_id>/<problem_id>", methods=["GET"])
 def get_problem(competition_id: str, problem_id: str):
+    """
+    Get problem details by ID.
+    
+    Args:
+        competition_id: Competition identifier
+        problem_id: Problem identifier
+        
+    Returns:
+        Problem details including description, test cases, and constraints
+    """
     try:
         problem = data_storage.get_problem(competition_id, problem_id)
         if not problem:
@@ -240,6 +360,15 @@ def get_problem(competition_id: str, problem_id: str):
 
 @app.route("/api/problems/list/<competition_id>", methods=["GET"])
 def list_problems(competition_id: str):
+    """
+    List all problems in a competition.
+    
+    Args:
+        competition_id: Competition identifier
+        
+    Returns:
+        List of problem objects with basic information
+    """
     try:
         problems = data_storage.list_problems(competition_id)
         return success_response([p.to_dict() for p in problems])
@@ -251,6 +380,23 @@ def list_problems(competition_id: str):
 # API Routes for Submissions
 @app.route("/api/submissions/create/<competition_id>/<participant_id>/<problem_id>", methods=["POST"])
 def create_submission(competition_id: str, participant_id: str, problem_id: str):
+    """
+    Create and evaluate a code submission.
+    
+    Args:
+        competition_id: Competition identifier
+        participant_id: Participant identifier
+        problem_id: Problem identifier
+        
+    Request format:
+    {
+        "code": "Source code to submit",
+        "language": "cpp"  // Optional, defaults to "cpp"
+    }
+    
+    Returns:
+        Submission evaluation results including status, score, and test results
+    """
     try:
         data = request.get_json()
         if not data:
@@ -296,6 +442,20 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
 
 @app.route("/api/submissions/list/<competition_id>", methods=["GET"])
 def list_submissions(competition_id: str):
+    """
+    List submissions in a competition with optional filtering.
+    
+    Args:
+        competition_id: Competition identifier
+        
+    Query Parameters:
+        participant_id: Filter by specific participant (optional)
+        problem_id: Filter by specific problem (optional)
+        include_code: If "true", includes source code in response
+        
+    Returns:
+        List of submission objects with optional source code
+    """
     # participant_id and problem_id are optional, different from the ones in the URL path
     participant_id = request.args.get("participant_id")
     problem_id = request.args.get("problem_id")
@@ -311,6 +471,18 @@ def list_submissions(competition_id: str):
 
 @app.route("/api/submissions/get/<submission_id>", methods=["GET"])
 def get_submission(submission_id: str):
+    """
+    Get submission details by ID.
+    
+    Args:
+        submission_id: Submission identifier
+        
+    Query Parameters:
+        include_code: If "true", includes source code in response
+        
+    Returns:
+        Submission details with optional source code
+    """
     include_code = request.args.get("include_code", "false").lower() == "true"
     if include_code:
         submission = data_storage.get_submission(submission_id, include_code=True)
@@ -326,6 +498,15 @@ def get_submission(submission_id: str):
 # API Routes for Rankings
 @app.route("/api/rankings/get/<competition_id>", methods=["GET"])
 def get_rankings(competition_id: str):
+    """
+    Get competition rankings sorted by score.
+    
+    Args:
+        competition_id: Competition identifier
+        
+    Returns:
+        List of participants ranked by score with detailed statistics
+    """
     try:
         rankings = data_storage.calculate_competition_rankings(competition_id)
         if not rankings:
@@ -339,6 +520,12 @@ def get_rankings(competition_id: str):
 # API Route for checking OJ status
 @app.route("/api/system/oj-status", methods=["GET"])
 def check_oj_status():
+    """
+    Check online judge connection status.
+    
+    Returns:
+        Connection status and any error information
+    """
     try:
         from ..engine.judge import Judge
         judge = Judge()
@@ -352,6 +539,15 @@ def check_oj_status():
 # Problem library API routes
 @app.route("/api/problem-library", methods=["GET"])
 def list_problem_library():
+    """
+    List available problems in the problem library.
+    
+    Query Parameters:
+        level: Filter by problem level (bronze, silver, gold, platinum)
+        
+    Returns:
+        List of problem objects with basic information
+    """
     try:
         level = request.args.get("level")
         problem_ids = problem_loader.get_problem_ids(level)
@@ -374,41 +570,20 @@ def list_problem_library():
     except Exception as e:
         return error_response(f"Failed to list problem library: {str(e)}")
 
-# @app.route("/api/problem-library/<problem_id>", methods=["GET"])
-# def get_problem_from_library(problem_id: str):
-#     problem = problem_loader.load_problem(problem_id)
-#     if not problem:
-#         return error_response(f"Problem with ID {problem_id} not found in library", 404)
-    
-#     return success_response(problem.to_dict())
-
-# @app.route("/api/competitions/<competition_id>/import-problems", methods=["POST"])
-# def import_problems_to_competition(competition_id: str):
-#     try:
-#         data = request.get_json()
-#         problem_ids = data.get("problem_ids", [])
-        
-#         if not problem_ids:
-#             return error_response("No problem IDs provided for import")
-        
-#         competition = data_storage.get_competition(competition_id)
-#         if not competition:
-#             return error_response(f"Competition with ID {competition_id} not found", 404)
-        
-#         count = problem_loader.import_problems_to_competition(competition, problem_ids)
-#         # data_storage.update_competition(competition)
-        
-#         return success_response(
-#             {"imported_count": count},
-#             f"Successfully imported {count} problems to the competition"
-#         )
-    
-#     except Exception as e:
-#         return error_response(f"Failed to import problems: {str(e)}")
-
 # Problem retrieval API routes
 @app.route("/api/problems/similar", methods=["GET"])
 def get_similar_problems():
+    """
+    Find similar problems using BM25 similarity search.
+    
+    Query Parameters:
+        problem_id: Target problem to find similar problems for
+        num_problems: Number of similar problems to return (default: 2)
+        competition_id: Competition ID to exclude its problems from search
+        
+    Returns:
+        List of similar problems with similarity scores
+    """
     try:
         problem_id = request.args.get('problem_id')
         num_problems = int(request.args.get('num_problems', 2))
@@ -486,6 +661,16 @@ def get_similar_problems():
 
 @app.route("/api/textbook/search", methods=["GET"])
 def search_textbook():
+    """
+    Search textbook content for relevant information.
+    
+    Query Parameters:
+        query: Search query string
+        max_results: Maximum number of results to return (default: 5)
+        
+    Returns:
+        List of relevant textbook sections matching the query
+    """
     try:
         query = request.args.get('query')
         max_results = int(request.args.get('max_results', 5))
@@ -638,142 +823,15 @@ def stream_generate_response(competition_id: str, participant_id: str):
         error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
         return error_response(f"Streaming agent request failed: {str(e)} (line {error_line})")
 
-
-@app.route("/api/stream_agent/test/<competition_id>/<participant_id>", methods=["POST"])
-def stream_agent_test_request(competition_id: str, participant_id: str):
-    """
-    Test endpoint for streaming agent API to verify configuration.
-    
-    This endpoint sends a simple test message to verify that the participant's
-    API configuration is working correctly with streaming.
-    """
-    try:
-        # Create a simple test request
-        test_request = {
-            "json": {
-                "model": "gpt-3.5-turbo",  # Default test model
-                "messages": [{"role": "user", "content": "Hello, this is a streaming test message."}],
-                "max_tokens": 100,
-                "stream": True
-            },
-            "timeout": 15.0
-        }
-        
-        # Process streaming request using data storage layer
-        result = data_storage.process_stream_agent_request(competition_id, participant_id, test_request)
-        
-        # Return streaming response in expected format (array wrapper for compatibility)
-        structured_response = [
-            result["reasoning_content"],
-            result["content"],
-            result["usage_info"],
-            result["usage"]["prompt_tokens"],
-            result["usage"]["completion_tokens"]
-        ]
-        
-        return jsonify(structured_response), result["status_code"]
-        
-    except ValueError as e:
-        return error_response(str(e), 404)
-    except Exception as e:
-        return error_response(f"Streaming test request failed: {str(e)}")
-
-
-# @app.route("/api/agent/stream_request", methods=["POST"])
-# def agent_stream_request():
-#     try:
-#         data = request.get_json()
-#         if not data:
-#             return error_response("No data provided")
-
-#         # Extract request parameters for streaming request
-#         method = data.get('method')
-#         url = data.get('url')
-#         headers = data.get('headers', {})
-#         json_data = data.get('json')
-#         timeout = data.get('timeout', 30)
-
-#         # Validate required parameters for streaming request
-#         if not all([method, url]):
-#             return error_response("Missing required parameters: method and url")
-
-#         # Send streaming HTTP request to the LLM API
-#         response = requests.request(
-#             method=method,
-#             url=url,
-#             headers=headers,
-#             json=json_data,
-#             timeout=timeout
-#         )
-
-#         # Process streaming response
-#         reasoning_content = ""
-#         content = ""
-#         usage_info = None
-        
-#         for line in response.iter_lines():
-#             if line:
-#                 # Skip "data: " prefix
-#                 if line.startswith(b"data: "):
-#                     line = line[6:]
-                
-#                 # Skip heartbeat message
-#                 if line == b"[DONE]":
-#                     break
-                
-#                 try:
-#                     # Parse JSON data
-#                     chunk = json.loads(line.decode('utf-8'))
-                    
-#                     # Check for usage information
-#                     if "usage" in chunk:
-#                         usage_info = chunk["usage"]
-                    
-#                     # Extract reasoning_content and content
-#                     if "choices" in chunk and len(chunk["choices"]) > 0:
-#                         delta = chunk["choices"][0].get("delta", {})
-#                         if "reasoning_content" in delta and delta["reasoning_content"]:
-#                             reasoning_content += delta["reasoning_content"]
-#                         elif "content" in delta and delta["content"] is not None:
-#                             content += delta["content"]
-#                 except json.JSONDecodeError:
-#                     continue
-        
-#         # Calculate tokens
-#         prompt_tokens = usage_info.get("prompt_tokens", 0) if usage_info else 0
-#         completion_tokens = usage_info.get("completion_tokens", 0) if usage_info else 0
-#         reasoning_tokens = usage_info.get("completion_tokens_details", {}).get("reasoning_tokens", 0) if usage_info else 0
-#         completion_tokens += reasoning_tokens
-
-#         # Build and return the new structured response for streaming
-#         structured_response = [
-#                 reasoning_content,
-#                 content,
-#                 usage_info,
-#                 prompt_tokens,
-#                 completion_tokens
-#         ]
-
-#         return jsonify(structured_response), response.status_code
-         
-#     except requests.exceptions.HTTPError as http_err:
-#         import traceback
-#         error_line = traceback.extract_tb(http_err.__traceback__)[-1].lineno
-#         return error_response(f"HTTP error occurred: {http_err} - {response.text} (line {error_line})", response.status_code)
-#     except Exception as e:
-#         import traceback
-#         error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
-#         return error_response(f"Failed to make request: {str(e)} (line {error_line})")
-
 @app.route("/api/participants/terminate/<competition_id>/<participant_id>", methods=["POST"])
 def terminate_participant(competition_id: str, participant_id: str):
     """
     Terminate a participant in a competition.
     
-    This endpoint allows terminating a participant with a specific reason.
-    The participant will be marked as not running and the termination reason
-    will be recorded for analysis and reporting.
-    
+    Args:
+        competition_id: Competition identifier
+        participant_id: Participant identifier
+        
     Request format:
     {
         "reason": "Termination reason (optional, defaults to 'manual_termination')"
@@ -785,6 +843,9 @@ def terminate_participant(competition_id: str, participant_id: str):
     - "error": System error occurred
     - "timeout": Participant exceeded time limits
     - "violation": Rule violation
+    
+    Returns:
+        Success response with termination reason
     """
     try:
         data = request.get_json() or {}
@@ -816,8 +877,12 @@ def get_participant_status(competition_id: str, participant_id: str):
     """
     Get participant termination status and reason.
     
-    This endpoint provides information about whether a participant
-    has been terminated and the reason for termination.
+    Args:
+        competition_id: Competition identifier
+        participant_id: Participant identifier
+        
+    Returns:
+        Participant status including running state, termination reason, tokens, and score
     """
     try:
         participant = data_storage.get_participant(competition_id, participant_id)
@@ -842,8 +907,11 @@ def list_terminated_participants(competition_id: str):
     """
     Get list of terminated participants in a competition.
     
-    This endpoint returns all participants that have been terminated,
-    along with their termination reasons and final scores.
+    Args:
+        competition_id: Competition identifier
+        
+    Returns:
+        List of terminated participants with termination reasons and final statistics
     """
     try:
         participants = data_storage.list_participants(competition_id)
@@ -870,6 +938,14 @@ def list_terminated_participants(competition_id: str):
 
 # Main entrypoint
 def run_api(host: str = "0.0.0.0", port: int = 5000, debug: bool = False):
+    """
+    Start the Flask API server.
+    
+    Args:
+        host: Host address to bind to (default: "0.0.0.0")
+        port: Port number to bind to (default: 5000)
+        debug: Enable debug mode (default: False)
+    """
     app.run(host=host, port=port, debug=debug)
 
 

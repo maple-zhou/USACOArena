@@ -866,7 +866,7 @@ class DuckDBStorage:
         # score = problem_pass_score - submission_penalty + lambda_value * max(0, remaining_tokens)
         self.conn.execute("""
             UPDATE participants 
-            SET score = problem_pass_score - submission_penalty + lambda_value * max(0, remaining_tokens)
+            SET score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens
             WHERE competition_id = ?
         """, [competition_id])
         
@@ -1288,7 +1288,7 @@ class DuckDBStorage:
         # Update database
         self.conn.execute("""
             UPDATE participants 
-            SET LLM_tokens = ?, remaining_tokens = max(0, remaining_tokens - ?)    
+            SET LLM_tokens = ?, remaining_tokens = remaining_tokens - ?   
             WHERE competition_id = ? AND id = ?
         """, [llm_tokens, llm_tokens, competition_id, participant_id])
         
@@ -1618,7 +1618,7 @@ class DuckDBStorage:
         # Update competition status
         self.conn.execute("""
             UPDATE competitions 
-            SET participants_count = participants_count - 1
+            SET participant_count = participant_count - 1
             WHERE id = ?
         """, [competition_id])
         
