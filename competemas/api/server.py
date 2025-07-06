@@ -11,18 +11,34 @@ from ..engine.storage import DuckDBStorage
 from ..models.models import (Case, Competition, Level, Participant, Problem, Submission, SubmissionStatus, generate_id)
 from ..utils.problem_loader import USACOProblemLoader
 from ..utils.textbook_loader import TextbookLoader
+from ..utils.logger_config import get_logger, setup_logging
+import logging
+import os
+
+# 确保日志目录存在
+os.makedirs('logs', exist_ok=True)
+
+# 设置日志配置
+setup_logging(level="DEBUG", log_file="logs/competition_system.log")
+
+# 获取logger
+logger = get_logger("server")
 
 # Initialize data storage
 data_storage = DuckDBStorage()
+logger.info("Initialized DuckDB storage")
 
 # Initialize problem library loader
 problem_loader = USACOProblemLoader()
+logger.info("Initialized USACO problem loader")
 
 # Initialize textbook loader
 textbook_loader = TextbookLoader()
+logger.info("Initialized textbook loader")
 
 # Create Flask app
 app = Flask(__name__)
+logger.info("Created Flask application")
 
 
 def get_text_from_path(data: Dict, path: str) -> str:
@@ -831,7 +847,7 @@ def terminate_participant(competition_id: str, participant_id: str):
     Args:
         competition_id: Competition identifier
         participant_id: Participant identifier
-        
+    
     Request format:
     {
         "reason": "Termination reason (optional, defaults to 'manual_termination')"

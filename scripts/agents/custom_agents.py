@@ -20,7 +20,6 @@ The agents support:
 
 from cgitb import reset
 import json
-import logging
 import asyncio
 import requests
 import traceback
@@ -32,14 +31,9 @@ import time
 from scripts.prompts.custom_prompts import PromptSystem, ActionParser
 from competemas.utils.conversation_logger import ConversationLogger
 from competemas.engine.agent_interface import AgentInterface
+from competemas.utils.logger_config import get_logger
 
-# Configure logging for agent operations
-# Uncomment the following lines to enable detailed logging
-# logging.basicConfig(
-#     level=logging.INFO,
-#     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-# )
-logger = logging.getLogger("llm_agents")
+logger = get_logger("llm_agents")
 
 
 class Agent(AgentInterface, ABC):

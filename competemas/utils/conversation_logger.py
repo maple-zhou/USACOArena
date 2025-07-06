@@ -1,10 +1,10 @@
 import json
 import os
-import logging
 from typing import List, Dict, Optional
 from datetime import datetime
+from competemas.utils.logger_config import get_logger
 
-logger = logging.getLogger("conversation_logger")
+logger = get_logger("conversation_logger")
 
 
 class ConversationLogger:

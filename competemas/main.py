@@ -8,7 +8,11 @@ start the CompeteMAS API server and manage competitions.
 import argparse
 import sys
 from .api.server import run_api
+from .utils.logger_config import setup_logging, get_logger
 
+# Setup logging
+setup_logging(level="DEBUG", log_file="logs/competition_system.log")
+logger = get_logger("main")
 
 def main():
     """Main entry point for CompeteMAS CLI"""
@@ -19,17 +23,17 @@ def main():
     
     args = parser.parse_args()
     
-    print(f"Starting CompeteMAS API server on {args.host}:{args.port}")
+    logger.info(f"Starting CompeteMAS API server on {args.host}:{args.port}")
     if args.debug:
-        print("Debug mode enabled")
+        logger.debug("Debug mode enabled")
     
     try:
         run_api(host=args.host, port=args.port, debug=args.debug)
     except KeyboardInterrupt:
-        print("\nShutting down CompeteMAS API server...")
+        logger.info("\nShutting down CompeteMAS API server...")
         sys.exit(0)
     except Exception as e:
-        print(f"Error starting API server: {e}")
+        logger.error(f"Error starting API server: {e}", exc_info=True)
         sys.exit(1)
 
 

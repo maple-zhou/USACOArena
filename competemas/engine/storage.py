@@ -16,7 +16,9 @@ from ..models.models import (
 )
 from .judge import Judge
 import requests
+from ..utils.logger_config import get_logger
 
+logger = get_logger("storage")
 
 class DuckDBStorage:
     """
@@ -24,6 +26,7 @@ class DuckDBStorage:
     """
     
     def __init__(self, db_path: str = "data/competemas.duckdb", backup_json: bool = True):
+        logger.info(f"Initializing DuckDB storage at {db_path}")
         self.db_path = Path(db_path)
         self.backup_json = backup_json
         self.backup_dir = self.db_path.parent / "json_backup"
@@ -32,9 +35,11 @@ class DuckDBStorage:
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         if self.backup_json:
             self.backup_dir.mkdir(parents=True, exist_ok=True)
+            logger.debug("Created backup directory for JSON files")
         
         # Initialize DuckDB connection
         self.conn = duckdb.connect(str(self.db_path))
+        logger.debug("Connected to DuckDB database")
         
         # Create schema
         self._create_schema()

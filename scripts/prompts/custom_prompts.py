@@ -3,9 +3,9 @@ import json
 import json_repair
 import re
 import os
-import logging
+from competemas.utils.logger_config import get_logger
 
-logger = logging.getLogger("prompts")
+logger = get_logger("prompts")
 
 
 class PromptSystem:

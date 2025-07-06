@@ -1,7 +1,6 @@
 import json
 import time
 import requests
-import logging
 import asyncio
 import os
 from typing import Dict, List, Optional, Any, Callable, Tuple
@@ -10,8 +9,9 @@ from datetime import datetime, timedelta
 from competemas.engine.agent_interface import AgentInterface
 from competemas.models.models import SubmissionStatus
 from competemas.engine.competition import Competitor
+from competemas.utils.logger_config import get_logger
 
-logger = logging.getLogger("competition")
+logger = get_logger("competition_organizer")
 
 
 class CompetitionOrganizer:
@@ -28,6 +28,7 @@ class CompetitionOrganizer:
         self.competitors: List[Competitor] = []
         self.competition_id: Optional[str] = None
         self.competition_data: Optional[Dict] = None
+        logger.info(f"Initialized CompetitionOrganizer with API base: {api_base}")
     
     def add_competitor(self, competitor: Competitor) -> None:
         """Add a competitor to the competition"""
@@ -65,9 +66,11 @@ class CompetitionOrganizer:
                 "rules": rules or {}
             }
             
-            # Make API request
+            logger.debug(f"Creating competition with data: {data}")
+            
+            # Make API request - 使用正确的端点
             response = requests.post(
-                f"{self.api_base}/api/competitions",
+                f"{self.api_base}/api/competitions/create",
                 json=data,
                 headers={"Content-Type": "application/json"}
             )
@@ -75,31 +78,52 @@ class CompetitionOrganizer:
             
             # Parse response
             result = response.json()
-            if result["status"] != "success":
-                raise ValueError(f"API error: {result.get('message', 'Unknown error')}")
+            if not isinstance(result, dict):
+                logger.error("Invalid API response: not a JSON object")
+                return None
+                
+            if result.get("status") != "success":
+                error_msg = result.get('message', 'Unknown error')
+                logger.error(f"API error: {error_msg}")
+                return None
             
             # Store competition data
-            competition_data = result["data"]["competition"]
-            self.competition_id = competition_data["id"]
+            result_data = result.get("data", {})
+            if not result_data or not result_data.get("competition"):
+                logger.error("Invalid API response: missing competition data")
+                return None
+                
+            competition_data = result_data["competition"]
+            if not isinstance(competition_data, dict):
+                logger.error("Invalid API response: competition data is not a JSON object")
+                return None
+                
+            self.competition_id = competition_data.get("id")
+            if not self.competition_id:
+                logger.error("Invalid API response: missing competition ID")
+                return None
+                
             self.competition_data = competition_data
+            
+            # Extract problem IDs if available
             if competition_data and "problems" in competition_data:
-                self.competition_data["problem_ids"] = [p["id"] for p in competition_data["problems"]]
+                self.competition_data["problem_ids"] = [p.get("id") for p in competition_data["problems"] if isinstance(p, dict)]
             else:
                 self.competition_data["problem_ids"] = []
             
             # Log any problems that were not found
-            not_found_problems = result["data"].get("not_found_problems", [])
+            not_found_problems = result_data.get("not_found_problems", [])
             if not_found_problems:
                 logger.warning(f"Some problems not found: {not_found_problems}")
             
-            logger.info(f"Created competition: {self.competition_id}")
+            logger.info(f"Successfully created competition: {self.competition_id}")
             return self.competition_id
             
         except requests.exceptions.RequestException as e:
             logger.error(f"API request failed: {e}")
             return None
         except Exception as e:
-            logger.error(f"Failed to create competition: {e}")
+            logger.error(f"Failed to create competition: {e}", exc_info=True)
             return None
     
     def join_competition(self, competition_id: str) -> bool:
@@ -121,17 +145,37 @@ class CompetitionOrganizer:
             response.raise_for_status()
             
             result = response.json()
-            if result["status"] != "success":
-                raise ValueError(f"API error: {result.get('message', 'Unknown error')}")
+            if not isinstance(result, dict):
+                logger.error("Invalid API response: not a JSON object")
+                return False
+                
+            if result.get("status") != "success":
+                error_msg = result.get('message', 'Unknown error')
+                logger.error(f"API error: {error_msg}")
+                return False
             
             # Store competition data
+            competition_data = result.get("data")
+            if not isinstance(competition_data, dict):
+                logger.error("Invalid API response: missing or invalid competition data")
+                return False
+                
             self.competition_id = competition_id
-            self.competition_data = result["data"]
-            if self.competition_data and "problems" in self.competition_data:
-                self.competition_data["problem_ids"] = [p["id"] for p in self.competition_data["problems"]]
+            self.competition_data = competition_data
+            
+            # Extract problem IDs if available
+            if "problems" in competition_data:
+                problems = competition_data.get("problems", [])
+                self.competition_data["problem_ids"] = [
+                    p.get("id") for p in problems 
+                    if isinstance(p, dict) and p.get("id")
+                ]
             else:
                 self.competition_data["problem_ids"] = []
-            lambda_ = self.competition_data.get("rules", {}).get("lambda", 100) if self.competition_data and self.competition_data.get("rules") else 100
+                
+            # Get lambda value from rules
+            rules = competition_data.get("rules", {})
+            lambda_ = rules.get("lambda", 100) if isinstance(rules, dict) else 100
 
             # Register each participant
             for competitor in self.competitors:
@@ -176,17 +220,18 @@ class CompetitionOrganizer:
         Returns:
             Dictionary containing competitor results
         """
-        logger.info(f"Starting competition for {competitor.name}")
+        logger.info(f"Starting competition for competitor: {competitor.name}")
         
         # Initialize problems list using competitor API
         problems_result = competitor.view_problems()
         problems = problems_result.get("problems", []) if "error" not in problems_result else []
+        logger.debug(f"Loaded {len(problems)} problems for competitor {competitor.name}")
         
-        # print(f"problems: {problems}")  
         # Initialize state using competitor API
         # First sync all competitors to get latest state
         for c in self.competitors:
             c.sync_from_api()
+            logger.debug(f"Synced state for competitor: {c.name}")
         
         # Build state with cached data to avoid multiple API calls
         state = {
@@ -194,37 +239,36 @@ class CompetitionOrganizer:
             "other_competitors_status": [
                 {
                     "name": c.name,
-                    "is_terminated": not c.is_running,  # 现在是API属性
-                    "termination_reason": c.termination_reason  # 现在是API属性
+                    "is_terminated": not c.is_running,
+                    "termination_reason": c.termination_reason
                 }
                 for c in self.competitors if c.name != competitor.name
             ]
         }
-        print(f"    competitor.is_running: {competitor.is_running}")
+        logger.debug(f"Initial state for {competitor.name}: running={competitor.is_running}")
         
-        # print(f"state: {state}")
         # Run competition loop
         while competitor.is_running:
             try:
                 # Stop if out of tokens
                 if competitor.remaining_tokens <= 0:
                     competitor.terminate("out_of_tokens")
-                    logger.info(f"{competitor.name} ran out of tokens")
+                    logger.info(f"Competitor {competitor.name} ran out of tokens")
                     break
                 
                 # Get next action from competitor
-                logger.info(f"Competitor {competitor.name}")
+                logger.info(f"Getting next action for competitor {competitor.name}")
                 action = await competitor.agent.process(state)
                 
                 # Sync state from API before processing action
                 competitor.sync_from_api()
                 
-                logger.info(f"{competitor.name} choose Action: {action['action']}, Tokens remaining: {competitor.remaining_tokens}, Score: {competitor.final_score}")
+                logger.info(f"Competitor {competitor.name} - Action: {action['action']}, Tokens: {competitor.remaining_tokens}, Score: {competitor.final_score}")
                 
                 # Stop if out of tokens after sync
                 if competitor.remaining_tokens <= 0:
                     competitor.terminate("out_of_tokens")
-                    logger.info(f"{competitor.name} ran out of tokens")
+                    logger.info(f"Competitor {competitor.name} ran out of tokens after state sync")
                     break
                 
                 # Process action using competitor API
@@ -250,23 +294,21 @@ class CompetitionOrganizer:
                     for c in self.competitors if c.name != competitor.name
                 ]
                 
-                logger.info(f"{competitor.name} finish Action: {action['action']}, Tokens remaining: {competitor.remaining_tokens}, Score: {competitor.final_score}")
+                logger.info(f"Competitor {competitor.name} completed action: {action['action']}, Tokens: {competitor.remaining_tokens}, Score: {competitor.final_score}")
                 
                 # Check if should terminate
                 if action_result["should_terminate"]:
                     competitor.terminate(action_result["termination_reason"])
+                    logger.info(f"Competitor {competitor.name} terminated: {action_result['termination_reason']}")
                     break
                 
             except Exception as e:
-                logger.error(f"Error in competition loop for {competitor.name}: {e}")
-                logger.error(f"Error type: {type(e).__name__}")
-                import traceback
-                logger.error(f"Full traceback: {traceback.format_exc()}")
+                logger.error(f"Error in competition loop for {competitor.name}: {e}", exc_info=True)
                 competitor.terminate("error")
                 break
         
         # Get final state
-        logger.info(f"Getting final state for {competitor.name}")
+        logger.info(f"Competition ended for {competitor.name}, getting final state")
         competitor.sync_from_api()
         
         # Get final state from competitor
@@ -292,7 +334,7 @@ class CompetitionOrganizer:
                 json.dump(results, f, indent=2, ensure_ascii=False)
             logger.info(f"Saved competition results for {competitor.name} to {result_file}")
         except Exception as e:
-            logger.error(f"Failed to save competition results for {competitor.name}: {e}")
+            logger.error(f"Failed to save competition results for {competitor.name}: {e}", exc_info=True)
         
         return results
 

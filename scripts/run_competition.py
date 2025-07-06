@@ -1,6 +1,5 @@
 import os
 import json
-import logging
 import asyncio
 import copy
 import argparse
@@ -10,20 +9,14 @@ from typing import Dict, List
 from scripts.agents.custom_agents import GenericAPIAgent, StreamingGenericAPIAgent
 from scripts.competition_organizer import CompetitionOrganizer
 from competemas.engine.competition import Competitor
+from competemas.utils.logger_config import setup_logging, get_logger
 
 
 os.makedirs('logs', exist_ok=True)
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - [%(filename)s:%(lineno)d] - %(message)s',
-    handlers=[
-        logging.FileHandler('logs/competition.log', mode='a', encoding='utf-8'),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger("competition_runner")
+# Setup beautiful logging
+setup_logging(level="DEBUG", log_file="logs/run_competition.log")
+logger = get_logger("run_competition")
 
 def load_config(config_path: str) -> Dict:
     """Load configuration from JSON file"""

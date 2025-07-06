@@ -6,11 +6,11 @@ for convenient API interactions during competitions.
 """
 
 import requests
-import logging
 from typing import Dict, List, Optional, Tuple
 from competemas.engine.agent_interface import AgentInterface
+from competemas.utils.logger_config import get_logger
 
-logger = logging.getLogger("competition")
+logger = get_logger("competition")
 
 
 class Competitor:
@@ -41,13 +41,13 @@ class Competitor:
         
         try:
             participant_response = requests.post(
-                f"{self.api_base}/api/competitions/{competition_id}/participants",
+                f"{self.api_base}/api/participants/create/{competition_id}",
                 json={
                     "name": self.name, 
                     "api_base_url": self.agent.api_base_url, 
                     "api_key": self.agent.api_key, 
-                    "max_tokens": self._init_max_tokens, 
-                    "lambda": lambda_
+                    "limit_tokens": self._init_max_tokens,  # 使用正确的参数名
+                    "lambda_value": lambda_  # 使用正确的参数名
                 }, 
                 headers={"Content-Type": "application/json"}
             )
@@ -71,13 +71,12 @@ class Competitor:
         self._ensure_participant()
         
         try:
-            # get_participant
+            # 使用正确的API端点: /api/participants/get/{competition_id}/{participant_id}
             response = requests.get(
-                f"{self.api_base}/api/competitions/{self.competition_id}/participants/{self.participant_id}",
+                f"{self.api_base}/api/participants/get/{self.competition_id}/{self.participant_id}",
                 params={"include_submissions": "false"}
             )
             response.raise_for_status()
-            print(f"response: {response.json()}")
             
             result = response.json()
             if result["status"] == "success":
@@ -120,28 +119,30 @@ class Competitor:
     def final_score(self) -> int:
         """Get final score from cached state or API"""
         if self._cached_state:
-            return self._cached_state.get("final_score", 0)
+            # 计算最终分数：score - penalty
+            score = self._cached_state.get("problem_pass_score", 0)
+            penalty = self._cached_state.get("submission_penalty", 0)
+            return max(0, score - penalty)
         if self.participant_id is None:
             return 0
         state = self._get_participant_state()
-        return state.get("final_score", 0)
+        score = state.get("problem_pass_score", 0)
+        penalty = state.get("submission_penalty", 0)
+        return max(0, score - penalty)
     
     @property
     def solved_problems(self) -> List[str]:
         """Get solved problems from cached state or API"""
-        if self._cached_state:
-            return self._cached_state.get("solved_problems", [])
-        if self.participant_id is None:
-            return []
-        state = self._get_participant_state()
-        return state.get("solved_problems", [])
+        # 这个需要从submissions中计算，暂时返回空列表
+        # TODO: 实现从submissions API获取已解决的问题
+        return []
     
     @property
     def is_running(self) -> bool:
         """Get running status from cached state or API"""
         if self._cached_state:
             return self._cached_state.get("is_running", True)
-        if self.participant_id is not None:
+        if self.participant_id is None:
             return True
         state = self._get_participant_state()
         return state.get("is_running", True)
@@ -161,12 +162,11 @@ class Competitor:
         self._ensure_participant()
         
         try:
-            # Update participant state to terminated
-            response = requests.put(
-                f"{self.api_base}/api/competitions/{self.competition_id}/participants/{self.participant_id}",
+            # 使用正确的API端点: /api/participants/terminate/{competition_id}/{participant_id}
+            response = requests.post(
+                f"{self.api_base}/api/participants/terminate/{self.competition_id}/{self.participant_id}",
                 json={
-                    "is_running": False,
-                    "termination_reason": reason
+                    "reason": reason
                 },
                 headers={"Content-Type": "application/json"}
             )
@@ -196,8 +196,9 @@ class Competitor:
         self._ensure_participant()
         
         try:
+            # 使用正确的API端点: /api/problems/list/{competition_id}
             response = requests.get(
-                f"{self.api_base}/api/competitions/{self.competition_id}/problems"
+                f"{self.api_base}/api/problems/list/{self.competition_id}"
             )
             response.raise_for_status()
             
@@ -215,8 +216,9 @@ class Competitor:
         self._ensure_participant()
         
         try:
+            # 使用正确的API端点: /api/problems/get/{competition_id}/{problem_id}
             response = requests.get(
-                f"{self.api_base}/api/competitions/{self.competition_id}/problems/{problem_id}"
+                f"{self.api_base}/api/problems/get/{self.competition_id}/{problem_id}"
             )
             response.raise_for_status()
             
@@ -234,6 +236,7 @@ class Competitor:
         self._ensure_participant()
         
         try:
+            # API端点正确: /api/hints/get/{competition_id}/{participant_id}/{problem_id}
             response = requests.post(
                 f"{self.api_base}/api/hints/get/{self.competition_id}/{self.participant_id}/{problem_id}",
                 json={
@@ -255,15 +258,14 @@ class Competitor:
             return {"error": f"Failed to get hint: {str(e)}"}
     
     def submission_solution(self, problem_id: str, code: str, language: str = "cpp") -> Dict:
-        """submission a solution for a problem"""
+        """Submit a solution for a problem"""
         self._ensure_participant()
         
         try:
+            # 使用正确的API端点: /api/submissions/create/{competition_id}/{participant_id}/{problem_id}
             response = requests.post(
-                f"{self.api_base}/api/competitions/{self.competition_id}/submissions",
+                f"{self.api_base}/api/submissions/create/{self.competition_id}/{self.participant_id}/{problem_id}",
                 json={
-                    "participant_id": self.participant_id,
-                    "problem_id": problem_id,
                     "code": code,
                     "language": language
                 }
@@ -280,15 +282,16 @@ class Competitor:
             return {"submission": result["data"]}
             
         except requests.exceptions.RequestException as e:
-            return {"error": f"Failed to submission solution: {str(e)}"}
+            return {"error": f"Failed to submit solution: {str(e)}"}
     
     def view_rankings(self) -> Dict:
         """Get current competition rankings"""
         self._ensure_participant()
         
         try:
+            # 使用正确的API端点: /api/rankings/get/{competition_id}
             response = requests.get(
-                f"{self.api_base}/api/competitions/{self.competition_id}/rankings"
+                f"{self.api_base}/api/rankings/get/{self.competition_id}"
             )
             response.raise_for_status()
             
