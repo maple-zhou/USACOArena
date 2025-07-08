@@ -12,10 +12,12 @@ from competemas.engine.competition import Competitor
 from competemas.utils.logger_config import setup_logging, get_logger
 
 
-os.makedirs('logs', exist_ok=True)
+os.makedirs('logs/competition', exist_ok=True)
 
 # Setup beautiful logging
-setup_logging(level="INFO", log_file="logs/run_competition.log")
+# 根据当前时间创建日志文件名
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+setup_logging(level="INFO", log_file=f"logs/competition/run_competition_{timestamp}.log")
 logger = get_logger("run_competition")
 
 def load_config(config_path: str) -> Dict:

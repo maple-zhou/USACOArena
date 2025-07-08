@@ -53,7 +53,7 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```bash
 # Extract and place in data directory
 unzip usaco_data.zip
-mv data_copy data/datasets/usaco_2025
+mv data_copy dataset/datasets/usaco_2025
 ```
 
 ## 🔧 Online Judge Setup

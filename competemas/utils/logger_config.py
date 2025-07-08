@@ -107,7 +107,7 @@ def setup_logging(
     
     # 如果指定了日志文件，创建文件处理器
     if log_file:
-        file_handler = logging.FileHandler(log_file, mode='a', encoding='utf-8')
+        file_handler = logging.FileHandler(log_file, mode='w', encoding='utf-8')
         file_handler.setLevel(logging.DEBUG)  # 文件记录所有级别的日志
         file_formatter = NoColorFormatter(base_format, datefmt=date_format)
         file_handler.setFormatter(file_formatter)

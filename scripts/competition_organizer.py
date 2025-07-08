@@ -263,36 +263,49 @@ class CompetitionOrganizer:
                 for c in self.competitors if c.name != competitor.name
             ]
         }
-        logger.info(f"Initial state for {competitor.name}: running={competitor.is_running},state={state}")
+        logger.debug(f"Initial state for {competitor.name}: running={competitor.is_running},state={state}")
         
         # Run competition loop
         while competitor.is_running:
             try:
                 # Check tokens before action (using cached data)
-                if competitor.remaining_tokens <= 0:
-                    competitor.terminate("out_of_tokens")
-                    logger.info(f"Competitor {competitor.name} ran out of tokens")
-                    break
+                # if competitor.remaining_tokens <= 0:
+                #     competitor.terminate("out_of_tokens")
+                #     logger.info(f"Competitor {competitor.name} ran out of tokens")
+                #     break
                 
                 # Get next action from competitor
                 logger.info(f"Begin call LLM for next action for competitor {competitor.name}")
                 action = await competitor.agent.process(state)
-                logger.warning(f"After LLM call: LLM_tokens:{competitor.get_participant_state()['LLM_tokens']}\n hint_tokens:{competitor.get_participant_state()['hint_tokens']}\n submission_tokens:{competitor.get_participant_state()['submission_tokens']}\n remaining_tokens:{competitor.get_participant_state()['remaining_tokens']}\n submission_count:{competitor.get_participant_state()['submission_count']}\n accepted_count:{competitor.get_participant_state()['accepted_count']}\n submission_penalty:{competitor.get_participant_state()['submission_penalty']}\n problem_pass_score:{competitor.get_participant_state()['problem_pass_score']}\n score:{competitor.get_participant_state()['score']}\n is_running:{competitor.get_participant_state()['is_running']}\n termination_reason:{competitor.get_participant_state()['termination_reason']}")
 
-                logger.error(f"action: {action['action']}")
+                # Add safety check for participant state
+                participant_state = competitor.get_participant_state()
+                if participant_state:
+                    logger.warning(f"After LLM call:\n LLM_tokens:{participant_state.get('LLM_tokens', 0)}\n hint_tokens:{participant_state.get('hint_tokens', 0)}\n submission_tokens:{participant_state.get('submission_tokens', 0)}\n remaining_tokens:{participant_state.get('remaining_tokens', 0)}\n submission_count:{participant_state.get('submission_count', 0)}\n accepted_count:{participant_state.get('accepted_count', 0)}\n submission_penalty:{participant_state.get('submission_penalty', 0)}\n problem_pass_score:{participant_state.get('problem_pass_score', 0)}\n score:{participant_state.get('score', 0)}\n is_running:{participant_state.get('is_running', True)}\n termination_reason:{participant_state.get('termination_reason', 'unknown')}")
+                else:
+                    logger.warning(f"After LLM call: Failed to get participant state for {competitor.name}")
+
+                logger.error(f"Action: {action['action']}")
                 
                 logger.info(f"Competitor {competitor.name} choose the next action: {action['action']}, remaining_tokens: {competitor.remaining_tokens}, score: {competitor.score}")
                 
                 # Process action (this will trigger sync_from_api if needed)
                 action_result = self._process_action(action, competitor)
                 # print(f"11111111111action_result: {action_result}")
-                logger.warning(f"After action_result: LLM_tokens:{competitor.get_participant_state()['LLM_tokens']}\n hint_tokens:{competitor.get_participant_state()['hint_tokens']}\n submission_tokens:{competitor.get_participant_state()['submission_tokens']}\n remaining_tokens:{competitor.get_participant_state()['remaining_tokens']}\n submission_count:{competitor.get_participant_state()['submission_count']}\n accepted_count:{competitor.get_participant_state()['accepted_count']}\n submission_penalty:{competitor.get_participant_state()['submission_penalty']}\n problem_pass_score:{competitor.get_participant_state()['problem_pass_score']}\n score:{competitor.get_participant_state()['score']}\n is_running:{competitor.get_participant_state()['is_running']}\n termination_reason:{competitor.get_participant_state()['termination_reason']}")
+
+                # Add safety check for participant state after action
+                participant_state_after = competitor.get_participant_state()
+                if participant_state_after:
+                    logger.warning(f"After action_result:\n LLM_tokens:{participant_state_after.get('LLM_tokens', 0)}\n hint_tokens:{participant_state_after.get('hint_tokens', 0)}\n submission_tokens:{participant_state_after.get('submission_tokens', 0)}\n remaining_tokens:{participant_state_after.get('remaining_tokens', 0)}\n submission_count:{participant_state_after.get('submission_count', 0)}\n accepted_count:{participant_state_after.get('accepted_count', 0)}\n submission_penalty:{participant_state_after.get('submission_penalty', 0)}\n problem_pass_score:{participant_state_after.get('problem_pass_score', 0)}\n score:{participant_state_after.get('score', 0)}\n is_running:{participant_state_after.get('is_running', True)}\n termination_reason:{participant_state_after.get('termination_reason', 'unknown')}")
+                else:
+                    logger.warning(f"After action_result: Failed to get participant state for {competitor.name}")
 
                 # logger.error(f"Action_result: {action_result}")
                 
                 
                 # Update rankings (only when needed)
                 rankings_result = competitor.view_rankings()
+                logger.warning(f"Time: {datetime.now().strftime('%m-%d %H:%M:%S')}, rankings_result: {rankings_result}")
                 if "error" not in rankings_result:
                     state["rankings"] = rankings_result.get("rankings", [])
                 
@@ -315,17 +328,18 @@ class CompetitionOrganizer:
 
                 # logger.info(f"last_action_result: {state['last_action_result']}")
                 
-                # Check if should terminate
-                if action_result["should_terminate"]:
-                    competitor.terminate(action_result["termination_reason"])
-                    logger.info(f"Competitor {competitor.name} terminated: {action_result['termination_reason']}")
-                    break
+                # # Check if should terminate
+                # if action_result["should_terminate"]:
+                #     competitor.terminate(action_result["termination_reason"])
+                #     logger.info(f"Competitor {competitor.name} terminated: {action_result['termination_reason']}")
+                #     break
                 
             except Exception as e:
                 logger.error(f"Error in competition loop for {competitor.name}: {e}", exc_info=True)
                 competitor.terminate("error")
                 break
         
+        logger.info(f"Competitor {competitor.name} terminated: {competitor.termination_reason}")
         # Get final state (force sync for accurate final results)
         logger.info(f"Competition ended for {competitor.name}, getting final state")
         # competitor.sync_from_api(force=True)
@@ -501,6 +515,7 @@ class CompetitionOrganizer:
                     }
                 
                 result = competitor.submission_solution(problem_id, code, language)
+                # logger.error(f"submission_solution result: {result}")
                 return {
                     "status": "success",
                     "data": {
@@ -524,6 +539,7 @@ class CompetitionOrganizer:
                 }
             
             elif action_type == "terminate":
+                # logger.error(f"terminate action: {action}")
                 reason = action.get("parameters", {}).get("reason", "manual_termination")
                 competitor.terminate(reason)
                 return {

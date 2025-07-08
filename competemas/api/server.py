@@ -2,7 +2,8 @@ import json
 import traceback
 from typing import Any, Dict, List, Optional, Tuple
 import requests
-
+from datetime import datetime
+import os
 from flask import Flask, Response, jsonify, request
 from rank_bm25 import BM25Okapi
 
@@ -13,13 +14,15 @@ from ..utils.problem_loader import USACOProblemLoader
 from ..utils.textbook_loader import TextbookLoader
 from ..utils.logger_config import get_logger, setup_logging
 import logging
-import os
+
 
 # 确保日志目录存在
-os.makedirs('logs', exist_ok=True)
+os.makedirs('logs/competition_system', exist_ok=True)
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+log_filename = f"logs/competition_system/competition_system_{timestamp}.log"
 
 # 设置日志配置
-setup_logging(level="DEBUG", log_file="logs/competition_system.log")
+setup_logging(level="DEBUG", log_file=log_filename)
 
 # 获取logger
 logger = get_logger("server")
@@ -388,6 +391,14 @@ def get_participant_solved_problems(competition_id: str, participant_id: str):
     except Exception as e:
         return error_response(f"Failed to get participant data: {str(e)}", 500)
 
+def check_termination(competition_id: str, participant_id: str):
+    participant = data_storage.get_participant(competition_id, participant_id)
+    if not participant:
+        return error_response("Participant not found")
+    if not participant.is_running:
+        return error_response(f"Participant is not running, termination_reason: {participant.termination_reason}")
+    
+    return None
         
 # API Routes for Participants
 @app.route("/api/participants/list/<competition_id>", methods=["GET"])
@@ -468,6 +479,9 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
         Submission evaluation results including status, score, and test results
     """
     try:
+        if check_termination(competition_id, participant_id):
+            return error_response("Participant is not running, termination_reason: {participant.termination_reason}")
+        
         data = request.get_json()
         if not data:
             return error_response("No data provided")
@@ -497,7 +511,7 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
         return success_response({
             "submission_id": submission.id,
             "status": submission.status.value,
-            "score": submission.pass_score,
+            "pass_score": submission.pass_score,
             "penalty": submission.penalty,
             # "participant_score": new_score,
             "message": "Submission has been evaluated",
@@ -785,6 +799,9 @@ def get_hint(competition_id: str, participant_id: str, problem_id: str):
     }
     """
     try:
+        if check_termination(competition_id, participant_id):
+            return error_response("Participant is not running, termination_reason: {participant.termination_reason}")
+
         data = request.get_json()
         if not data:
             return error_response("No data provided")
@@ -829,12 +846,8 @@ def generate_response(competition_id: str, participant_id: str):
     Note: API base URL and key are automatically retrieved from participant configuration.
     """
     try:
-        # TODO: check partticipant status
-        # participant = data_storage.get_participant(competition_id, participant_id)
-        # if not participant:
-        #     return error_response(f"Participant not found", 404)
-        # if not participant.is_running:
-        #     return error_response(f"Participant is not running", 404)
+        if check_termination(competition_id, participant_id):
+            return error_response("Participant is not running, termination_reason: {participant.termination_reason}")
         
         data = request.get_json()
         if not data:
@@ -881,6 +894,9 @@ def stream_generate_response(competition_id: str, participant_id: str):
     Note: API base URL and key are automatically retrieved from participant configuration.
     """
     try:
+        if check_termination(competition_id, participant_id):
+            return error_response("Participant is not running, termination_reason: {participant.termination_reason}")
+        
         data = request.get_json()
         if not data:
             return error_response("No data provided")

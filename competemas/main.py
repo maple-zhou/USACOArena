@@ -11,7 +11,17 @@ from .api.server import run_api
 from .utils.logger_config import setup_logging, get_logger
 
 # Setup logging
-setup_logging(level="DEBUG", log_file="logs/competition_system.log")
+import os
+from datetime import datetime
+
+# 确保logs目录存在
+os.makedirs('logs/competition_system', exist_ok=True)
+
+# 根据当前时间创建日志文件名
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+log_filename = f"logs/competition_system/competition_system_{timestamp}.log"
+
+setup_logging(level="DEBUG", log_file=log_filename)
 logger = get_logger("main")
 
 def main():

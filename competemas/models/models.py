@@ -66,17 +66,17 @@ class Participant:
         # Calculate score using the formula
         self.score = self.problem_pass_score - self.submission_penalty + self.lambda_value * max(0, self.remaining_tokens)
     
-    def get_competition_state(self) -> Dict:
-        """Get the current state of the competition"""
-        return {
-            "name": self.name,
-            "remaining_tokens": self.remaining_tokens,
-            "solved_problems": self.solved_problems,
-            "is_running": self.is_running,
-            "termination_reason": self.termination_reason,
-            "score": self.score,
-            "problem_pass_score": self.problem_pass_score
-        }
+    # def get_competition_state(self) -> Dict:
+    #     """Get the current state of the competition"""
+    #     return {
+    #         "name": self.name,
+    #         "remaining_tokens": self.remaining_tokens,
+    #         "solved_problems": self.solved_problems,
+    #         "is_running": self.is_running,
+    #         "termination_reason": self.termination_reason,
+    #         "score": self.score,
+    #         "problem_pass_score": self.problem_pass_score
+    #     }
     
     def terminate(self, reason: str) -> None:
         """Terminate the participant with a reason"""
@@ -422,7 +422,7 @@ class Submission:
             "submitted_at": self.submitted_at.isoformat(),
             "status": self.status.value,  # Use .value for enum serialization
             "test_results": [tr.to_dict() for tr in self.test_results],
-            "score": self.pass_score,
+            "pass_score": self.pass_score,
             "penalty": self.penalty,
             "submission_tokens": self.submission_tokens
         }

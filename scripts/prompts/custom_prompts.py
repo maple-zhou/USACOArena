@@ -33,7 +33,7 @@ class PromptSystem:
                 "problems": "## Available Problems\n{problems}\n\n",
                 "rankings": "## Current Rankings\n{rankings}\n\n",
                 "other_competitors": "## Other Competitors Status\n{other_competitors}\n\n",
-                "actions": "## Available Actions\n\n1. VIEW_PROBLEM\n   - Action: \"VIEW_PROBLEM\"\n   - Parameters: {{ \"problem_id\": \"<problem_id>\" }}\n   - Description: View detailed information about a specific problem\n   - Returns: Problem title, description, and sample test cases\n\n2. GET_HINT\n   - Action: \"GET_HINT\"\n   - Parameters: {{ \"problem_id\": \"<problem_id>\", \"hint_level\": <level> }}\n   - Description: Get a hint for a problem (consumes tokens)\n   - Hint Levels:\n     1. Basic Hint ({level_1_cost} tokens):\n        - Provides relevant textbook knowledge\n        - Explains theoretical concepts and solution strategies\n     2. Detailed Hint ({level_2_cost} tokens):\n        - Shows similar problems and their solutions\n        - Helps understand the problem type and basic approach\n     3. Comprehensive Hint ({level_3_cost} tokens):\n        - Combines similar problems and textbook knowledge\n        - Includes integration guide for applying concepts\n   - Returns: Hint content and token cost\n\n3. submission_SOLUTION\n   - Action: \"submission_SOLUTION\"\n   - Parameters: {{\n     \"problem_id\": \"<problem_id>\",\n     \"solution\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\"\n   }}\n   - Description: submission a solution for a problem (consumes tokens)\n   - Token Cost:\n     - Each submission consumes tokens based on the submission status\n     - Cost varies depending on whether the solution is accepted or rejected\n     - Default cost is 100 tokens if not specified in competition rules\n   - Returns: Submission status, score, and test case results\n\n4. TERMINATE\n   - Action: \"TERMINATE\"\n   - Parameters: {{}}\n   - Description: End your participation in the competition\n   - Returns: Final score and ranking\n\nPlease respond using the following JSON format:\n```json\n{{\n  \"action\": \"<action_name>\",\n  \"parameters\": {{\n    // Fill in parameters according to the action type\n  }}\n}}\n```\n"
+                "actions": "## Available Actions\n\n1. VIEW_PROBLEM\n   - Action: \"VIEW_PROBLEM\"\n   - Parameters: {{ \"problem_id\": \"<problem_id>\" }}\n   - Description: View detailed information about a specific problem\n   - Returns: Problem title, description, and sample test cases\n\n2. GET_HINT\n   - Action: \"GET_HINT\"\n   - Parameters: {{ \"problem_id\": \"<problem_id>\", \"hint_level\": <level> }}\n   - Description: Get a hint for a problem (consumes tokens)\n   - Hint Levels:\n     1. Basic Hint ({level_1_cost} tokens):\n        - Provides relevant textbook knowledge\n        - Explains theoretical concepts and solution strategies\n     2. Detailed Hint ({level_2_cost} tokens):\n        - Shows similar problems and their solutions\n        - Helps understand the problem type and basic approach\n     3. Comprehensive Hint ({level_3_cost} tokens):\n        - Combines similar problems and textbook knowledge\n        - Includes integration guide for applying concepts\n   - Returns: Hint content and token cost\n\n3. submission_SOLUTION\n   - Action: \"submission_SOLUTION\"\n   - Parameters: {{\n     \"problem_id\": \"<problem_id>\",\n     \"solution\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\"\n   }}\n   - Description: submission a solution for a problem (consumes tokens)\n   - Token Cost:\n     - Each submission consumes tokens based on the submission status\n     - Cost varies depending on whether the solution is accepted or rejected\n     - Default cost is 100 tokens if not specified in competition rules\n   - Returns: Submission status, score, and test case results\n\n4. TERMINATE\n   - Action: \"TERMINATE\"\n   - Parameters: {{ \"reason\": \"<reason>\" }}\n   - Description: End your participation in the competition and give your reason\n   - Returns: Final score and ranking\n\nPlease respond using the following JSON format:\n```json\n{{\n  \"action\": \"<action_name>\",\n  \"parameters\": {{\n    // Fill in parameters according to the action type\n  }}\n}}\n```\n"
             },
             "action_result_template": {
                 "header": "# Last Action Result\n\n",
@@ -188,7 +188,7 @@ Important Notes:
         )
         prompt += actions
         
-        # print(f"state_prompt: {prompt}")
+        # print(f"ffffffffstate_prompt: {actions}")  
         return prompt
     
     def _truncate_hint_content(self, content: str, max_length: int = 20000) -> str:
@@ -358,7 +358,7 @@ Important Notes:
         
         prompt += "\nAnalyze the current situation, think about your strategy, and pay attention to the output token limit. Then respond with a JSON object containing 'action' and 'parameters' fields."
         
-        # print(f"create_action_result_prompt: {prompt}")
+        # print(f"89982y3752528523598325: {prompt}")
         return prompt
 
 
@@ -407,7 +407,7 @@ class ActionParser:
     def parse_action(self, response: str) -> Dict:
         """Parse the agent's response into an action"""
         try:
-            # print("pasre_action response: ", response)
+            # logger.error(f"pasre_action response: {response}")
             # Try to parse as JSON first
             pattern = r"```(?:json)?\s*(.+?)\s*```"
             matches = re.findall(pattern, response, re.DOTALL)

@@ -13,7 +13,7 @@ class USACOProblemLoader:
             current_dir = os.path.dirname(os.path.abspath(__file__))
             possible_paths = [
                 os.path.join(current_dir, "..", "data", "datasets", "usaco_2025"),
-                "data/datasets/usaco_2025"  # Fallback to the original path
+                "dataset/datasets/usaco_2025"  # Fallback to the original path
             ]
             
             for path in possible_paths:
@@ -21,7 +21,7 @@ class USACOProblemLoader:
                     self.data_path = path
                     break
             else:
-                self.data_path = "data/datasets/usaco_2025"  # Use as default if nothing found
+                self.data_path = "dataset/datasets/usaco_2025"  # Use as default if nothing found
         else:
             self.data_path = data_path
             

@@ -13,14 +13,14 @@ class Judge:
     """
     def __init__(self, oj_endpoint: str = "http://localhost:9000/2015-03-31/functions/function/invocations"):
         self.oj_endpoint = oj_endpoint
-        logger.info(f"Initialized Judge with OJ service at {oj_endpoint}")
+        logger.debug(f"Initialized Judge with OJ service at {oj_endpoint}")
     
     def evaluate_submission(self, submission: Submission, problem: Problem, competition: Optional[Competition] = None, first_one: bool = False) -> Submission:
         """
         Evaluate a submission against all test cases of a problem.
         Updates the submission with test results, final status, and score.
         """
-        logger.info(f"Evaluating submission {submission.id} for problem {problem.id}")
+        logger.debug(f"Evaluating submission {submission.id} for problem {problem.id}")
         
         from ..utils.problem_loader import USACOProblemLoader
         problem_loader = USACOProblemLoader()
@@ -46,11 +46,11 @@ class Judge:
                 
                 if test_result.status != SubmissionStatus.ACCEPTED:
                     submission.status = test_result.status
-                    logger.info(f"Submission failed on test case {test_case.id} with status {test_result.status}")
+                    logger.error(f"Submission failed on test case {test_case.id} with status {test_result.status}")
                     break
             else:
                 submission.status = SubmissionStatus.ACCEPTED
-                logger.info("Submission passed all test cases")
+                logger.debug("Submission passed all test cases")
             
             # Calculate pass_score
             # Calculate score (proportion of test cases passed * max score)
@@ -61,7 +61,7 @@ class Judge:
             first_ac_bonus = problem.get_problem_firstAC_bonus(competition) if competition else 0
             if submission.status == SubmissionStatus.ACCEPTED and first_ac_bonus > 0 and first_one:
                 submission.pass_score += first_ac_bonus
-                logger.info(f"Added first AC bonus of {first_ac_bonus} points")
+                logger.debug(f"Added first AC bonus of {first_ac_bonus} points")
 
 
             # Calculate submission tokens
@@ -70,7 +70,7 @@ class Judge:
             # Calculate penalty
             submission.penalty = submission.calculate_penalty(competition)
             
-            logger.info(f"Final submission score: {submission.pass_score}, Penalty: {submission.penalty}")
+            logger.info(f"Submission pass score: {submission.pass_score}, Penalty: {submission.penalty}")
             return submission
         
         except Exception as e:

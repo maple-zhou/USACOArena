@@ -2,7 +2,7 @@
     "competitors": [
         {
             "type": "generic",
-            "name": "sf-deepseek-v3",
+            "name": "agent1",
             "model_id": "sf-deepseek-v3",
             "api_base_url": "http://100.76.8.43:10086/",
             "api_key": "sk-EFhZxTqkXfedmKP_yxB8-XIisFkXQ7JGL6sunBI3XBfQfinP3oBgl5wzqDw",

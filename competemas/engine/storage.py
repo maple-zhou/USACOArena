@@ -665,7 +665,9 @@ class DuckDBStorage:
             submission.pass_score, submission.penalty, submission.submission_tokens,
             json.dumps([tr.to_dict() for tr in submission.test_results])
         ])
-
+        
+        # logger.error(f"submission: {submission.to_dict()}")
+        
         # Get current best score for this problem
         current_best_score_result = self.conn.execute("""
             SELECT MAX(pass_score) FROM submissions 
@@ -673,11 +675,16 @@ class DuckDBStorage:
         """, [competition_id, participant_id, problem_id]).fetchone()
         
         current_best_score = current_best_score_result[0] if current_best_score_result and current_best_score_result[0] else 0
-        
+        # logger.error(f"current_best_score: {current_best_score}")
+
         # Only update problem_pass_score if new score is higher
-        score_increment = 0
-        if submission.pass_score > current_best_score:
-            score_increment = submission.pass_score - current_best_score
+        
+        if submission.pass_score >= current_best_score:
+            new_problem_pass_score = submission.pass_score 
+        else:
+            new_problem_pass_score = current_best_score
+        
+        # logger.error(f"new_problem_pass_score: {new_problem_pass_score}")
         
         # Update participant statistics
         self.conn.execute("""
@@ -687,14 +694,14 @@ class DuckDBStorage:
                 submission_count = submission_count + 1,
                 accepted_count = accepted_count + ?,
                 submission_penalty = submission_penalty + ?,
-                problem_pass_score = problem_pass_score + ?
+                problem_pass_score =  ?
             WHERE competition_id = ? AND id = ?
         """, [
             submission.submission_tokens, 
             submission.submission_tokens, 
             1 if submission.status == SubmissionStatus.ACCEPTED else 0,
             submission.penalty, 
-            score_increment, 
+            new_problem_pass_score, 
             competition_id, 
             participant_id
         ])
@@ -715,6 +722,7 @@ class DuckDBStorage:
         # Cache and backup
         # self.submissions_cache[submission_id] = submission
         self._backup_to_json('submission', submission.to_dict(include_code=False))
+        # logger.error(f"endddddddddd submission: {submission.pass_score}")
         
         return submission
     
@@ -1559,7 +1567,7 @@ class DuckDBStorage:
                             hint_content["episodic_data"]["similar_problems"].append({
                                 "title": p.title,
                                 "description": p.description[:150] + "...",
-                                "solution": p.solution,
+                                "solution": problem_loader.load_solution(pid),
                                 "similarity_score": scores[idx]
                             })
                             
@@ -1643,7 +1651,7 @@ class DuckDBStorage:
         """, [competition_id])
         
         # Log termination
-        print(f"Participant {participant_id} terminated: {reason}")
+        logger.warning(f"Participant {participant_id} terminated: {reason}")
         
         # Backup the updated participant data
         updated_participant = self.get_participant(competition_id, participant_id)

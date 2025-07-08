@@ -199,6 +199,7 @@ class Agent(AgentInterface, ABC):
         """
         # Create contextual prompt using the current competition state
         prompt = self.prompt_system.create_prompt(state)
+        # logger.error(f"prompt: {prompt}")
         
         # Initialize system prompt on first interaction to establish agent behavior
         if not self.conversation_history:
@@ -212,7 +213,7 @@ class Agent(AgentInterface, ABC):
         
         # Generate response from the LLM using the current state and prompt
         response = await self.generate_response(state, prompt)
-        
+        # logger.error(f"0000000response: {response}")
         # Parse the LLM response into a structured action that the competition system can execute
         action = self.action_parser.parse_action(response)
         # print(f"action: {action}")
@@ -326,86 +327,85 @@ class GenericAPIAgent(Agent):
                 current = current[part]
         
         return current
-    
+
+    async def _make_request(self, *, state: Dict, model: str, messages: List[Dict], **kwargs) -> requests.Response:
+        """
+        Makes a request to the local server with an OpenAI-like signature.
+        It constructs the OpenAI-style request body from its arguments.
+        """
+        # 1. Construct the OpenAI-style request body from the function arguments.
+        openai_input = {
+            "model": model,
+            "messages": messages,
+            **kwargs
+        }
+
+        # 2. Wrap the OpenAI-style body in the payload for our local server.
+        # This info points to the real LLM endpoint.
+        target_url = f"{self.api_base_url}{self.request_format['url']}"
+        target_headers = {
+            k: v.format(api_key=self.api_key)
+            for k, v in self.request_format['headers'].items()
+        }
+
+        # Get competition/participant IDs for the local server's URL.
+        competition_id = state.get('competitor_state', {}).get('competition_id')
+        participant_id = state.get('competitor_state', {}).get('id')
+        
+        # This is the final payload for our local proxy server.
+        server_payload = {
+            "method": self.request_format['method'],
+            "url": target_url,
+            "headers": target_headers,
+            "json": openai_input,  # The OpenAI-style body is nested here.
+            "timeout": self.request_timeout,
+            "response_format": self.response_format,
+        }
+        
+        # The URL for our local proxy server.
+        server_url = f"http://localhost:5000/api/agent/call/{competition_id}/{participant_id}"
+        
+        # 3. Make the async request to the local proxy server.
+        response = await asyncio.to_thread(
+            requests.post,
+            url=server_url,
+            json=server_payload
+        )
+        
+        response.raise_for_status()
+        return response
+
     async def generate_response(self, state: Dict, prompt: str) -> str:
-        """Generate a response using the configured API"""
+        """Generate a response using the configured API."""
         response = None
-        # Add user message to conversation history
+        # Add user message to conversation history.
         self.add_to_conversation("user", prompt)
         self.save_conversation()
         for _ in range(self.max_retries):
             try:
-                
-                # Prepare request URL
-                url = f"{self.api_base_url}{self.request_format['url']}"
-                # print(f"GenericAPIAgent,url: {url}")
-                # Prepare request headers
-                headers = {
-                    k: v.format(api_key=self.api_key)
-                    for k, v in self.request_format['headers'].items()
-                }
-                
-                # Prepare request body
-                body = self.request_format['body_template'].copy()
-                # Format the template values
-                formatted_body = {}
-                for key, value in body.items():
-                    if isinstance(value, str):
-                        # If the value is a template string, format it
-                        formatted_body[key] = value.format(
-                            messages=json.dumps(self.conversation_history),
-                            model_id=self.model_id
-                        )
-                    else:
-                        # If the value is not a string (e.g., temperature), keep it as is
-                        formatted_body[key] = value
-                
-                # Parse the formatted messages back to JSON
-                if "messages" in formatted_body:
-                    formatted_body["messages"] = json.loads(formatted_body["messages"])
-                # logger.info(f"Formatted body: {formatted_body}")
-                # Make the request
-                
-                # print(f"formatted_body: {formatted_body}")
-                competition_id = state.get('competitor_state', {}).get('competition_id')
-                participant_id = state.get('competitor_state', {}).get('id')
-                response = await asyncio.to_thread(
-                    requests.post,
-                    url=f"http://localhost:5000/api/agent/call/{competition_id}/{participant_id}",
-                    json={
-                        "method": self.request_format['method'],
-                        "url": url,
-                        "headers": headers,
-                        "json": formatted_body,
-                        "timeout": self.request_timeout,
-                        "response_format": self.response_format,
-                    }
+                # 1. Get any extra OpenAI parameters from the template (e.g., temperature).
+                extra_params = self.request_format['body_template'].copy()
+                extra_params.pop("model", None)
+                extra_params.pop("messages", None)
+
+                # 2. Call _make_request with an OpenAI-like signature.
+                response = await self._make_request(
+                    state=state,
+                    model=self.model_id,
+                    messages=self.conversation_history,
+                    **extra_params  # Pass other params like temperature.
                 )
-                response.raise_for_status()
 
-
-                # print(f"LLMresponse: {response.json()}")
-                # Get the first element from the array response
+                # 3. Process the response from the server.
                 result_array = response.json()
-                result = result_array[0]  # Extract the actual response object from the array
-
-                
-                # print("\ngenerate_response result: ", result)
+                result = result_array[0]  # The server wraps the real response in an array.
                 response_text = self._get_value_from_path(result, self.response_format["response_path"])
-
-                # print(f"response_text: {response_text}")
-                # print("\n\n")
-                # prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
-                # completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
-                # reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
-                # completion_tokens += reasoning_tokens
                 
-
-                # Add assistant response to conversation history
+                # Add assistant response to conversation history and then remove it 
+                # to keep the history clean for the next turn.
                 self.add_to_conversation("assistant", response_text)
                 self.save_conversation()
                 self.conversation_history.pop()
-                # action = self.action_parser.parse_action(response_text)
                 
                 return response_text
                 
@@ -417,11 +417,11 @@ class GenericAPIAgent(Agent):
                     except json.JSONDecodeError:
                         error_message = f"Error: {response.text}"
                 
-                # Print detailed traceback information
+                # Print detailed traceback information.
                 traceback_str = traceback.format_exc()
                 print(f"\n=== DETAILED ERROR TRACEBACK for {self.name} (Try {_ + 1}) ===")
                 print(f"Error Message: {error_message}")
-                print(f"Full Traceback:\n{traceback_str}")
+                # print(f"Full Traceback:\n{traceback_str}")
                 print("=" * 60)
                 
                 logger.error(f"Try {_ + 1} Error generating response with {self.name}: {error_message}")
