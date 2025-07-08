@@ -28,7 +28,7 @@ class PromptSystem:
             "state_template": {
                 "header": "# Competition State\n\n",
                 "competition": "## Competition: {title}\nDescription: {description}\n\n",
-                "rules": "## Competition Rules\n\n### Token Budget:\n- Each participant has a maximum of {max_tokens} tokens\n- Tokens are used for:\n  1. Limiting the length of your output responses\n  2. Purchasing hints (cost increases with hint level)\n  3. submissionting solutions (cost varies based on submission status)\n- Running out of tokens will terminate your participation\n- Remaining tokens at the end of competition will be converted to bonus points\n  - Bonus points = (remaining_tokens / initial_tokens) * lambda\n  - Lambda is a multiplier defined in competition rules (default: 100)\n\n### Scoring Rules:\n{scoring_rules}\n\n### Penalties:\n{penalties}\n\n### Bonus:\n{bonus_rules}\n\n### Final Score Calculation:\n- Base Score: Sum of points from solved problems\n- Token Bonus: (remaining_tokens / initial_tokens) * lambda\n- Final Score = Base Score + Token Bonus\n\n",
+                "rules": "## Competition Rules\n\n### Token Budget:\n- Each participant has a maximum of {limit_tokens} tokens\n- Tokens are used for:\n  1. Limiting the length of your output responses\n  2. Purchasing hints (cost increases with hint level)\n  3. submissionting solutions (cost varies based on submission status)\n- Running out of tokens will terminate your participation\n- Remaining tokens at the end of competition will be converted to bonus points\n  - Bonus points = (remaining_tokens / initial_tokens) * lambda\n  - Lambda is a multiplier defined in competition rules (default: 100)\n\n### Scoring Rules:\n{scoring_rules}\n\n### Penalties:\n{penalties}\n\n### Bonus:\n{bonus_rules}\n\n### Final Score Calculation:\n- Base Score: Sum of points from solved problems\n- Token Bonus: (remaining_tokens / initial_tokens) * lambda\n- Final Score = Base Score + Token Bonus\n\n",
                 "competitor": "## Your Status\n- Name: {name}\n- Remaining Tokens: {tokens}\n- Solved Problems: {solved}\n- Current Score: {score}\n\n",
                 "problems": "## Available Problems\n{problems}\n\n",
                 "rankings": "## Current Rankings\n{rankings}\n\n",
@@ -37,7 +37,7 @@ class PromptSystem:
             },
             "action_result_template": {
                 "header": "# Last Action Result\n\n",
-                "success": "## Success\n{content}\n\n",
+                "success": "## Success {action}\n{content}\n\n",
                 "error": "## Error\n{message}\n\n",
                 "problem": "### Problem: {title}\nDescription:\n{description}\n\nSample Cases:\n{cases}",
                 "hint": {
@@ -100,48 +100,68 @@ Important Notes:
 - Choose your programming language wisely based on the problem requirements\n\n"""
     
     def create_state_prompt(self, state: Dict) -> str:
-        """Create a prompt from the competition state"""
-        config = self.config["state_template"]
+        """Create a prompt from the state"""
+        state_template = self.config["state_template"]
+        # print(f"11111111111111111111create_state_prompt: {state}")
         
         # Competition details
         details = state["competition_details"]
-        prompt = config["header"]
-        prompt += config["competition"].format(
+        prompt = state_template["header"]
+        prompt += state_template["competition"].format(
             title=details.get("title", ""),
             description=details.get("description", "")
         )
         
         # Competition rules
         rules = details.get("rules", {})
-        prompt += config["rules"].format(
+        prompt += state_template["rules"].format(
             scoring_rules=self._format_scoring_rules(rules),
             penalties=self._format_penalties(rules),
             bonus_rules=self._format_bonus_rules(rules),
-            max_tokens=details.get("max_tokens_per_participant", 1e7)
+            limit_tokens=details.get("max_tokens_per_participant", 100000)
         )
         
         # Add programming language rules
         prompt += self._format_language_rules(rules)
-        
+        # print(f"prompt: {prompt}")
         # Competitor state
         competitor = state["competitor_state"]
-        prompt += config["competitor"].format(
+        prompt += state_template["competitor"].format(
             name=competitor["name"],
             tokens=competitor["remaining_tokens"],
             solved=", ".join(competitor["solved_problems"]) or "None",
-            score=competitor["final_score"] or 0
+            score=competitor["score"] or 0
         )
         
         # Available problems
-        problems = "\n".join(
-            f"- problem_id: {p['id']}, first_to_solve: {p.get('first_to_solve', 'None')}"
-            for p in state["problems"]
-        )
-        prompt += config["problems"].format(problems=problems)
+        if isinstance(state["problems"], dict) and "problems_id" in state["problems"]:
+            # Handle the case where problems is a dict with lists
+            problem_ids = state["problems"]["problems_id"]
+            first_to_solve = state["problems"].get("problems_first_to_solve", [None] * len(problem_ids))
+            problems = "\n".join(
+                f"- problem_id: {pid}, first_to_solve: {first_to_solve[i] or 'None'}"
+                for i, pid in enumerate(problem_ids)
+            )
+        else:
+            # Handle the case where problems is a list of objects
+            problems = "\n".join(
+                f"- problem_id: {p['id']}, first_to_solve: {p.get('first_to_solve', 'None')}"
+                for p in state["problems"]
+            )
+        prompt += state_template["problems"].format(problems=problems)
         
         # Rankings
-        rankings = "\n".join(f"{r['rank']}. {r['name']}: {r['score']} points" for r in state["rankings"])
-        prompt += config["rankings"].format(rankings=rankings)
+        if isinstance(state["rankings"], dict) and "rankings" in state["rankings"]:
+            # Handle the case where rankings is a dict with a list
+            rankings_list = state["rankings"]["rankings"]
+            rankings = "\n".join(f"{i+1}. {r[0]}: {r[1]} points" for i, r in enumerate(rankings_list))
+        elif isinstance(state["rankings"], list):
+            # Handle the case where rankings is a list of lists
+            rankings = "\n".join(f"{i+1}. {r[0]}: {r[1]} points" for i, r in enumerate(state["rankings"]))
+        else:
+            # Handle the case where rankings is a list of objects
+            rankings = "\n".join(f"{r['rank']}. {r['name']}: {r['score']} points" for r in state["rankings"])
+        prompt += state_template["rankings"].format(rankings=rankings)
 
         # Other competitors status
         if "other_competitors_status" in state:
@@ -152,7 +172,7 @@ Important Notes:
             ]
             if terminated_competitors:
                 other_competitors = "\n".join(terminated_competitors)
-                prompt += config["other_competitors"].format(other_competitors=other_competitors)
+                prompt += state_template["other_competitors"].format(other_competitors=other_competitors)
 
         # Get hint token costs from rules
         hint_tokens = rules.get("hint_tokens", {})
@@ -161,13 +181,14 @@ Important Notes:
         level_3_cost = hint_tokens.get("level_3", 600)
 
         # Available actions with dynamic hint costs
-        actions = config["actions"].format(
+        actions = state_template["actions"].format(
             level_1_cost=level_1_cost,
             level_2_cost=level_2_cost,
             level_3_cost=level_3_cost
         )
         prompt += actions
         
+        # print(f"state_prompt: {prompt}")
         return prompt
     
     def _truncate_hint_content(self, content: str, max_length: int = 20000) -> str:
@@ -186,112 +207,128 @@ Important Notes:
         
         return truncated
 
-    def create_action_result_prompt(self, action_result: Dict) -> str:
+    def create_action_result_prompt(self, last_action_result: Dict) -> str:
         """Create a prompt from the action result"""
-        if not action_result:
+        if not last_action_result:
             return ""
         
-        config = self.config["action_result_template"]
-        prompt = config["header"]
+        action_result_template = self.config["action_result_template"]
+        prompt = action_result_template["header"]
         
-        if action_result["status"] == "success":
-            data = action_result["data"]
+        if last_action_result["status"] == "success":
+            data = last_action_result["data"]
+            action = data["action"]
+            action_result = data["action_result"]
             content = ""
+            # print(f"data: {data}")
             
-            if "problem" in data:
-                problem = data["problem"]
+            if "problem" in action_result:
+                problem = action_result["problem"]
+                # print(f"problem: {problem}")
                 cases = "\n".join(
                     f"Case {i+1}:\nInput:\n{case['input_data']}\nExpected Output:\n{case['expected_output']}\n"
                     for i, case in enumerate(problem.get("sample_cases", []))
                 )
-                content = config["problem"].format(
+                content = action_result_template["problem"].format(
                     title=problem["title"],
                     description=problem["description"],
                     cases=cases
                 )
+                # print(f"content: {content}")
             
-            elif "hint" in data:
-                hint = data["hint"]
-                hint_data = hint["hint_data"]
+            elif "hint" in action_result:
+                hint = action_result["hint"]
+                hint_content = hint["hint_content"]
+                hint_level = hint["hint_level"]
+                # print(f"hint_content type: {type(hint_content)}, value: {hint_content}")
                 
-                if hint_data["type"] == "episodic":
-                    similar_problems = "\n".join(
-                        f"Problem {i+1}: {p['title']}\n"
-                        f"Description: {p['description']}\n"
-                        f"Solution: {p['solution']}\n"
-                        f"Similarity Score: {p['similarity_score']:.2f}\n"
-                        for i, p in enumerate(hint_data["similar_problems"])
-                    )
-                    similar_problems = self._truncate_hint_content(similar_problems)
-                    content = config["hint"]["episodic"].format(
-                        level=hint["hint_level"],
-                        current_problem=hint_data["current_problem"]["title"],
-                        similar_problems=similar_problems,
-                        cost=hint["tokens_cost"],
-                        remaining=hint["remaining_tokens"]
-                    )
-                
-                elif hint_data["type"] == "semantic":
-                    textbook_sections = "\n".join(
-                        f"Section {i+1}: {s['title']}\n"
-                        f"Content: {s['content']}\n"
-                        f"Relevance Score: {s['relevance_score']:.2f}\n"
-                        for i, s in enumerate(hint_data["textbook_sections"])
-                    )
-                    textbook_sections = self._truncate_hint_content(textbook_sections)
-                    content = config["hint"]["semantic"].format(
-                        level=hint["hint_level"],
-                        current_problem=hint_data["current_problem"]["title"],
-                        textbook_sections=textbook_sections,
-                        cost=hint["tokens_cost"],
-                        remaining=hint["remaining_tokens"]
-                    )
-                
-                else:  # combined
-                    # Format episodic content
-                    episodic_content = "\n".join(
-                        f"Problem {i+1}: {p['title']}\n"
-                        f"Description: {p['description']}\n"
-                        f"Solution: {p['solution']}\n"
-                        f"Similarity Score: {p['similarity_score']:.2f}\n"
-                        for i, p in enumerate(hint_data["episodic_data"]["similar_problems"])
-                    )
-                    episodic_content = self._truncate_hint_content(episodic_content)
+                # Handle both string and dict formats for backward compatibility
+                if isinstance(hint_content, str):
+                    # Legacy format - return early with simple content
+                    content = f"### Hint (Level {hint_level})\n{hint_content}\n\nToken Cost: {hint.get('tokens_cost', hint.get('token_cost', 0))}\nRemaining Tokens: {hint.get('remaining_tokens', 0)}\n\n"
+                elif isinstance(hint_content, dict):
+                    # New structured format
+                    if hint_level == 2:
+                        similar_problems = "\n".join(
+                            f"Problem {i+1}: {p['title']}\n"
+                            f"Description: {p['description']}\n"
+                            f"Solution: {p['solution']}\n"
+                            f"Similarity Score: {p['similarity_score']:.2f}\n"
+                            for i, p in enumerate(hint_content["similar_problems"])
+                        )
+                        similar_problems = self._truncate_hint_content(similar_problems)
+                        content = action_result_template["hint"]["episodic"].format(
+                            level=hint["hint_level"],
+                            current_problem=hint_content["current_problem"]["title"],
+                            similar_problems=similar_problems,
+                            cost=hint["tokens_cost"],
+                            remaining=hint["remaining_tokens"]
+                        )
                     
-                    # Format semantic content
-                    semantic_content = "\n".join(
-                        f"Section {i+1}: {s['title']}\n"
-                        f"Content: {s['content']}\n"
-                        f"Relevance Score: {s['relevance_score']:.2f}\n"
-                        for i, s in enumerate(hint_data["semantic_data"]["textbook_sections"])
-                    )
-                    semantic_content = self._truncate_hint_content(semantic_content)
+                    elif hint_level == 1:
+                        textbook_sections = "\n".join(
+                            f"Section {i+1}: {s['title']}\n"
+                            f"Content: {s['content']}\n"
+                            f"Relevance Score: {s['relevance_score']:.2f}\n"
+                            for i, s in enumerate(hint_content["textbook_sections"])
+                        )
+                        textbook_sections = self._truncate_hint_content(textbook_sections)
+                        content = action_result_template["hint"]["semantic"].format(
+                            level=hint["hint_level"],
+                            current_problem=hint_content["current_problem"]["title"],
+                            textbook_sections=textbook_sections,
+                            cost=hint["tokens_cost"],
+                            remaining=hint["remaining_tokens"]
+                        )
                     
-                    # Format integration points
-                    integration_points = "\n".join(
-                        f"{i+1}. {point}"
-                        for i, point in enumerate(hint_data["integration_points"])
-                    )
-                    integration_points = self._truncate_hint_content(integration_points)
-                    
-                    content = config["hint"]["combined"].format(
-                        level=hint["hint_level"],
-                        current_problem=hint_data["current_problem"]["title"],
-                        episodic_content=episodic_content,
-                        semantic_content=semantic_content,
-                        integration_points=integration_points,
-                        cost=hint["tokens_cost"],
-                        remaining=hint["remaining_tokens"]
-                    )
+                    else:  # combined
+                        # Format episodic content
+                        episodic_content = "\n".join(
+                            f"Problem {i+1}: {p['title']}\n"
+                            f"Description: {p['description']}\n"
+                            f"Solution: {p['solution']}\n"
+                            f"Similarity Score: {p['similarity_score']:.2f}\n"
+                            for i, p in enumerate(hint_content["episodic_data"]["similar_problems"])
+                        )
+                        episodic_content = self._truncate_hint_content(episodic_content)
+                        
+                        # Format semantic content
+                        semantic_content = "\n".join(
+                            f"Section {i+1}: {s['title']}\n"
+                            f"Content: {s['content']}\n"
+                            f"Relevance Score: {s['relevance_score']:.2f}\n"
+                            for i, s in enumerate(hint_content["semantic_data"]["textbook_sections"])
+                        )
+                        semantic_content = self._truncate_hint_content(semantic_content)
+                        
+                        # Format integration points
+                        integration_points = "\n".join(
+                            f"{i+1}. {point}"
+                            for i, point in enumerate(hint_content["integration_points"])
+                        )
+                        integration_points = self._truncate_hint_content(integration_points)
+                        
+                        content = action_result_template["hint"]["combined"].format(
+                            level=hint["hint_level"],
+                            current_problem=hint_content["current_problem"]["title"],
+                            episodic_content=episodic_content,
+                            semantic_content=semantic_content,
+                            integration_points=integration_points,
+                            cost=hint["tokens_cost"],
+                            remaining=hint["remaining_tokens"]
+                        )
+                else:
+                    # Fallback for unknown format
+                    content = f"### Hint (Level {hint_level})\nUnknown hint format\n\nToken Cost: {hint.get('tokens_cost', hint.get('token_cost', 0))}\nRemaining Tokens: {hint.get('remaining_tokens', 0)}\n\n"
             
-            elif "submission" in data:
-                submission = data["submission"]
+            elif "submission" in action_result:
+                submission = action_result["submission"]
                 # Format test case results
                 test_results = "\n".join(
                     f"Test {i+1}: {tr['status']}"
                     for i, tr in enumerate(submission.get("test_results", []))
                 )
-                content = config["submission"].format(
+                content = action_result_template["submission"].format(
                     status=submission["status"],
                     score=submission.get("score", 0),
                     penalty=submission.get("penalty", 0),
@@ -300,18 +337,20 @@ Important Notes:
                     total_tests=submission.get("total_tests", 0)
                 )
             
-            prompt += config["success"].format(content=content)
+            prompt += action_result_template["success"].format(action=action, content=content)
+            # print(f"action_result_prompt: {prompt}")
         
         else:
-            prompt += config["error"].format(message=action_result["message"])
-        
+            prompt += action_result_template["error"].format(message=last_action_result["data"]["action_result"]["error"])
+            # print(f"action_result_prompt2222222222: {prompt}")
+        # print(f"111111111111111111111111111111111111111111111111111action_result_prompt: {prompt}")
         return prompt
     
     def create_prompt(self, state: Dict) -> str:
         """Create a complete prompt from state and action result"""
-        action_result = state["last_action_result"]
+        last_action_result = state.get("last_action_result")
         state_prompt = self.create_state_prompt(state)
-        result_prompt = self.create_action_result_prompt(action_result) if action_result else ""
+        result_prompt = self.create_action_result_prompt(last_action_result) if last_action_result else ""
         
         prompt = state_prompt
         if result_prompt:
@@ -319,6 +358,7 @@ Important Notes:
         
         prompt += "\nAnalyze the current situation, think about your strategy, and pay attention to the output token limit. Then respond with a JSON object containing 'action' and 'parameters' fields."
         
+        # print(f"create_action_result_prompt: {prompt}")
         return prompt
 
 
@@ -367,6 +407,7 @@ class ActionParser:
     def parse_action(self, response: str) -> Dict:
         """Parse the agent's response into an action"""
         try:
+            # print("pasre_action response: ", response)
             # Try to parse as JSON first
             pattern = r"```(?:json)?\s*(.+?)\s*```"
             matches = re.findall(pattern, response, re.DOTALL)
@@ -383,8 +424,10 @@ class ActionParser:
                 raise ValueError("Missing 'action' field")
             if "parameters" not in action:
                 raise ValueError("Missing 'parameters' field")
-            
+        
+            # print("pasre_action action: ", action)
             return action
+            
         
         except json.JSONDecodeError:
             # If not JSON, try to extract action from text

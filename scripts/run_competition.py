@@ -15,7 +15,7 @@ from competemas.utils.logger_config import setup_logging, get_logger
 os.makedirs('logs', exist_ok=True)
 
 # Setup beautiful logging
-setup_logging(level="DEBUG", log_file="logs/run_competition.log")
+setup_logging(level="INFO", log_file="logs/run_competition.log")
 logger = get_logger("run_competition")
 
 def load_config(config_path: str) -> Dict:
@@ -109,7 +109,7 @@ def create_competitors(competitors_config: Dict, competition_config: Dict) -> Li
         competitor_obj = Competitor(
             name=competitor["name"],
             agent=agent,
-            max_tokens=competition_config.get("max_tokens_per_participant", 1e7)
+            limit_tokens=competition_config.get("max_tokens_per_participant", 100000)
         )
         competitors.append(competitor_obj)
         logger.info(f"Created competitor: {competitor_obj.name}")
@@ -124,7 +124,7 @@ def print_competition_results(results: Dict, competition_id: str):
         # Sort competitors by total score
         sorted_results = sorted(
             results.items(),
-            key=lambda x: x[1].get("final_score", 0),
+            key=lambda x: x[1].get("score", 0),
             reverse=True
         )
         
@@ -133,13 +133,13 @@ def print_competition_results(results: Dict, competition_id: str):
         print("-" * 50)
         
         for rank, (name, data) in enumerate(sorted_results, 1):
-            print(f"{rank:<5} {name:<20} {data.get('final_score', 0):<10} "
+            print(f"{rank:<5} {name:<20} {data.get('score', 0):<10} "
                   f"{len(data.get('solved_problems', [])):<10}")
         
         print("\n=== Detailed Results ===\n")
         for name, data in sorted_results:
             print(f"\n{name}:")
-            print(f"  Final Score: {data.get('final_score', 0)}")
+            print(f"  Final Score: {data.get('score', 0)}")
             print(f"  Solved Problems: {', '.join(data.get('solved_problems', [])) if data.get('solved_problems') else 'None'}")
             if data.get('termination_reason'):
                 print(f"  Termination Reason: {data['termination_reason']}")
@@ -196,7 +196,7 @@ async def main():
             title=competition_config.get("competition_title", ""),
             description=competition_config.get("competition_description", ""),
             problem_ids=problem_ids,
-            max_tokens_per_participant=competition_config.get("max_tokens_per_participant", 1e7),
+            max_tokens_per_participant=competition_config.get("max_tokens_per_participant", 100000),
             rules=competition_config.get("rules", {})
         )
         

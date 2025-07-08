@@ -46,7 +46,16 @@ class USACOProblemLoader:
         return [pid for pid, p in self.problems_dict.items() 
                 if p.get('problem_level', '').lower() == level.lower()]
     
-    def load_problem(self, problem_id: str) -> Optional[Problem]:
+    def load_solution(self, problem_id: str) -> Optional[str]:
+        """Load the solution for a specific problem"""
+        if problem_id not in self.problems_dict:
+            return None
+
+        problem_data = self.problems_dict[problem_id]
+        
+        return problem_data.get('solution', '')
+
+    def  load_problem(self, problem_id: str) -> Optional[Problem]:
         """Load a problem from the USACO problem library"""
         if problem_id not in self.problems_dict:
             return None

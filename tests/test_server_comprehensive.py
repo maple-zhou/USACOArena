@@ -508,7 +508,7 @@ class ServerTester:
             self.log_test(
                 "Get Hint (Level 1)",
                 success,
-                f"Token cost: {hint_data.get('token_cost')}, Remaining: {hint_data.get('remaining_tokens')}"
+                f"Token cost: {hint_data.get('tokens_cost')}, Remaining: {hint_data.get('remaining_tokens')}"
             )
         else:
             self.log_test(
@@ -540,7 +540,7 @@ class ServerTester:
             "json": {
                 "model": "sf-deepseek-v3",
                 "messages": [{"role": "user", "content": "Hello, this is a test message."}],
-                "max_tokens": 50
+                "limit_tokens": 50
             },
             "timeout": 10.0
         }
@@ -560,7 +560,7 @@ class ServerTester:
             "json": {
                 "model": "sf-deepseek-v3",
                 "messages": [{"role": "user", "content": "Hello, this is a streaming test."}],
-                "max_tokens": 50,
+                "limit_tokens": 50,
                 "stream": True
             },
             "timeout": 10.0

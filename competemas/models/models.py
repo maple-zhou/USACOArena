@@ -86,19 +86,22 @@ class Participant:
     def to_dict(self, include_submissions: bool = False) -> Dict:
         result = {
             "id": self.id,
+            "competition_id": self.competition_id,
             "name": self.name,
-            "score": self.score,
-            "problem_pass_score": self.problem_pass_score,
+            "LLM_tokens": self.LLM_tokens,
+            "hint_tokens": self.hint_tokens,
+            "submission_tokens": self.submission_tokens,
+            "limit_tokens": self.limit_tokens,
             "remaining_tokens": self.remaining_tokens,
+            "lambda_value": self.lambda_value,
+            "submission_count": self.submission_count,
+            "accepted_count": self.accepted_count,
+            "submission_penalty": self.submission_penalty,
+            "problem_pass_score": self.problem_pass_score,
+            "score": self.score,    
             # "solved_problems": self.solved_problems,    
             "is_running": self.is_running,
             "termination_reason": self.termination_reason,
-            "hint_tokens": self.hint_tokens,
-            "LLM_tokens": self.LLM_tokens,
-            "submission_tokens": self.submission_tokens,
-            "submission_count": self.submission_count,
-            "submission_penalty": self.submission_penalty,
-            "accepted_count": self.accepted_count
         }
         
         # if include_submissions:
@@ -319,6 +322,7 @@ class Problem:
             # "test_cases": [case.to_dict() for case in self.test_cases]
         }
         return result
+    
     
     def get_problem_base_score(self, competition: Competition) -> int:
         """Get the maximum possible score for a problem based on competition rules"""

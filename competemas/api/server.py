@@ -315,7 +315,8 @@ def get_participant(competition_id: str, participant_id: str):
         participant = data_storage.get_participant(competition_id, participant_id)
         if not participant:
             return error_response(f"Participant not found", 404)
-        
+
+        # print(f"participant: {participant.to_dict()}")
         include_submissions = request.args.get("include_submissions", "false").lower() == "true"
         
         if include_submissions:
@@ -334,7 +335,60 @@ def get_participant(competition_id: str, participant_id: str):
             return success_response(participant.to_dict(include_submissions=False))
     except Exception as e:
         return error_response(f"Failed to get participant data: {str(e)}", 500)
-              
+
+
+@app.route("/api/participants/get_solved_problems/<competition_id>/<participant_id>", methods=["GET"])
+def get_participant_solved_problems(competition_id: str, participant_id: str):
+    """
+    Get participant details by ID.
+    
+    Args:
+        competition_id: Competition identifier
+        participant_id: Participant identifier
+        
+    Query Parameters:
+        include_submissions: If "true", includes submission history
+        
+    Returns:
+        Participant details with optional submission history
+    """
+    try:
+        participant = data_storage.get_participant(competition_id, participant_id)
+        if not participant:
+            return error_response(f"Participant not found", 404)
+
+        submissions = data_storage.list_submissions(
+            competition_id=competition_id, 
+            participant_id=participant_id
+        )
+        
+        # Extract solved problems from submissions
+        solved_problems = []
+        for submission in submissions:
+            if submission.status == SubmissionStatus.ACCEPTED:
+                # Check if this problem is already in solved_problems
+                problem_already_solved = any(p["problem_id"] == submission.problem_id for p in solved_problems)
+                if not problem_already_solved:
+                    solved_problems.append({
+                        "problem_id": submission.problem_id,
+                        "submission_id": submission.id,
+                        "solved_at": submission.submitted_at.isoformat(),
+                        "language": submission.language,
+                        "score": submission.pass_score
+                    })
+        
+        # Build detailed response
+        response_data = participant.to_dict(include_submissions=False)
+        response_data["submissions"] = [s.to_dict() for s in submissions]
+        response_data["solved_problems"] = solved_problems
+        # print(f"response_data: {response_data}")
+        
+        return success_response(response_data)
+       
+    except Exception as e:
+        return error_response(f"Failed to get participant data: {str(e)}", 500)
+
+        
 # API Routes for Participants
 @app.route("/api/participants/list/<competition_id>", methods=["GET"])
 def list_participants(competition_id: str):
@@ -725,7 +779,7 @@ def get_hint(competition_id: str, participant_id: str, problem_id: str):
     {
         "hint_content": "Generated hint content",
         "hint_level": 1,
-        "token_cost": 500,
+        "tokens_cost": 500,
         "remaining_tokens": 9500,
         "problem_id": "problem_001"
     }
@@ -775,9 +829,19 @@ def generate_response(competition_id: str, participant_id: str):
     Note: API base URL and key are automatically retrieved from participant configuration.
     """
     try:
+        # TODO: check partticipant status
+        # participant = data_storage.get_participant(competition_id, participant_id)
+        # if not participant:
+        #     return error_response(f"Participant not found", 404)
+        # if not participant.is_running:
+        #     return error_response(f"Participant is not running", 404)
+        
         data = request.get_json()
         if not data:
             return error_response("No data provided")
+        
+        # print(f"DEBUG: Received request data: {data}")
+        print(f"DEBUG: Competition ID: {competition_id}, Participant ID: {participant_id}")
         
         # Process request using data storage layer
         result = data_storage.process_agent_request(competition_id, participant_id, data)
@@ -786,10 +850,13 @@ def generate_response(competition_id: str, participant_id: str):
         return jsonify([result["content"]]), result["status_code"]
         
     except ValueError as e:
+        print(f"DEBUG: ValueError in generate_response: {str(e)}")
         return error_response(str(e), 404)
     except Exception as e:
         import traceback
         error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
+        print(f"DEBUG: Exception in generate_response: {str(e)} at line {error_line}")
+        print(f"DEBUG: Full traceback: {traceback.format_exc()}")
         return error_response(f"Agent request failed: {str(e)} (line {error_line})")
 
 
@@ -938,7 +1005,7 @@ def list_terminated_participants(competition_id: str):
                 "id": p.id,
                 "name": p.name,
                 "termination_reason": p.termination_reason,
-                "final_score": p.score,
+                "score": p.score,
                 "remaining_tokens": p.remaining_tokens,
                 "submission_count": p.submission_count,
                 "accepted_count": p.accepted_count

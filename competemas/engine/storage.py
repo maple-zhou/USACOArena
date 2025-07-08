@@ -292,11 +292,11 @@ class DuckDBStorage:
         #     name = part_row[2]                # name
         #     api_base_url = part_row[3] or ""  # api_base_url
         #     api_key = part_row[4] or ""       # api_key
-        #     max_tokens = part_row[5] or 100000  # max_tokens
+        #     limit_tokens = part_row[5] or 100000  # limit_tokens
         #     lambda_value = part_row[6] or 100   # lambda_value
         #     score = part_row[7] or 0          # score
-        #     final_score = part_row[8] or lambda_value  # final_score
-        #     remaining_tokens = part_row[9] or max_tokens  # remaining_tokens
+        #     score = part_row[8] or lambda_value  # score
+        #     remaining_tokens = part_row[9] or limit_tokens  # remaining_tokens
             
         #     # 创建Participant对象
         #     participant = Participant(
@@ -305,13 +305,13 @@ class DuckDBStorage:
         #         name=name,
         #         api_base_url=api_base_url,
         #         api_key=api_key,
-        #         limit_tokens=max_tokens,
+        #         limit_tokens=limit_tokens,
         #         lambda_value=lambda_value
         #     )
             
         #     # 设置从数据库读取的状态
         #     participant.score = score
-        #     # participant.final_score = final_score
+        #     # participant.score = score
         #     participant.remaining_tokens = remaining_tokens
         #     participant.submissions = []  # 提交记录按需加载
         #     participants.append(participant)
@@ -434,6 +434,8 @@ class DuckDBStorage:
 
     def get_participant(self, competition_id: str, participant_id: str) -> Optional[Participant]:
         """Get a participant by ID"""
+        self.update_participant_score(competition_id, participant_id)
+        
         result = self.conn.execute("""
             SELECT * FROM participants WHERE competition_id = ? AND id = ?
         """, [competition_id, participant_id]).fetchone()
@@ -517,7 +519,14 @@ class DuckDBStorage:
             WHERE competition_id = ? AND id = ?
         """, [is_running, competition_id, participant_id])
 
-     
+    def update_participant_score(self, competition_id: str, participant_id: str) -> None:
+        """Update participant's score"""
+        self.conn.execute("""
+            UPDATE participants 
+            SET score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens
+            WHERE competition_id = ? AND id = ? 
+        """, [competition_id, participant_id])   
+
     def get_problem(self, competition_id: str, problem_id: str) -> Optional[Problem]:
         """Get a problem by ID"""
         result = self.conn.execute("""
@@ -1142,7 +1151,7 @@ class DuckDBStorage:
         # Update database
         self.conn.execute("""
             UPDATE participants 
-            SET LLM_tokens = ?, remaining_tokens = remaining_tokens - ?   
+            SET LLM_tokens = LLM_tokens + ?, remaining_tokens = remaining_tokens - ?   
             WHERE competition_id = ? AND id = ?
         """, [llm_tokens, llm_tokens, competition_id, participant_id])
         
@@ -1374,12 +1383,12 @@ class DuckDBStorage:
         return {
             "hint_content": hint_content,
             "hint_level": hint_level,
-            "token_cost": hint_cost,
+            "tokens_cost": hint_cost,
             "remaining_tokens": new_remaining_tokens,
             "problem_id": problem_id
         }
     
-    def _generate_hint_content(self, problem: Problem, hint_level: int, competition_id: str) -> str:
+    def _generate_hint_content(self, problem: Problem, hint_level: int, competition_id: str) -> Dict[str, Any]:
         """
         Generate hint content based on hint level.
         
@@ -1389,7 +1398,7 @@ class DuckDBStorage:
             competition_id: Competition ID for excluding current problems
             
         Returns:
-            Generated hint content
+            Dictionary containing structured hint content
         """
         from competemas.utils.problem_loader import USACOProblemLoader
         from competemas.utils.textbook_loader import TextbookLoader
@@ -1397,10 +1406,17 @@ class DuckDBStorage:
         problem_loader = USACOProblemLoader()
         textbook_loader = TextbookLoader()
         
-        hint_content = f"# Hint for Problem: {problem.title}\n\n"
+        # Base structure
+        hint_content: Dict[str, Any] = {
+            "current_problem": {
+                "title": problem.title,
+                "id": problem.id
+            }
+        }
+        
         if hint_level == 1:
             # Basic Hint: Textbook knowledge
-            hint_content += "## Level 1: Basic Hint - Textbook Knowledge\n\n"
+            hint_content["textbook_sections"] = []
             
             # Search textbook for relevant content
             if textbook_loader.is_loaded():
@@ -1409,23 +1425,16 @@ class DuckDBStorage:
                 textbook_results = textbook_loader.search(" ".join(search_terms), max_results=3)
                 
                 if textbook_results:
-                    hint_content += "### Relevant Textbook Sections:\n\n"
-                    for i, result in enumerate(textbook_results, 1):
-                        hint_content += f"{i}. **{result.get('title', 'Section')}**\n"
-                        hint_content += f"   {result.get('content', '')[:300]}...\n\n"
-                else:
-                    hint_content += "No specific textbook sections found for this problem.\n\n"
-            else:
-                hint_content += "Textbook content not available.\n\n"
-            
-            hint_content += "### Theoretical Concepts:\n"
-            hint_content += "- Focus on understanding the problem type\n"
-            hint_content += "- Consider basic algorithms and data structures\n"
-            hint_content += "- Think about time and space complexity\n\n"
+                    for result in textbook_results:
+                        hint_content["textbook_sections"].append({
+                            "title": result.get('title', 'Section'),
+                            "content": result.get('content', '')[:300] + "...",
+                            "relevance_score": result.get('score', 0.0)
+                        })
             
         elif hint_level == 2:
             # Detailed Hint: Similar problems
-            hint_content += "## Level 2: Detailed Hint - Similar Problems\n\n"
+            hint_content["similar_problems"] = []
             
             # Get similar problems
             try:
@@ -1465,43 +1474,54 @@ class DuckDBStorage:
                     scores = bm25.get_scores(tokenized_query)
                     top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:2]
                     
-                    hint_content += "### Similar Problems:\n\n"
                     for idx in top_indices:
                         pid = problem_ids[idx]
                         p = problem_loader.load_problem(pid)
+                        solution = problem_loader.load_solution(pid)
+                        # print(f"solution: {solution}")
                         if p:
-                            hint_content += f"**{p.title}** (Similarity: {scores[idx]:.2f})\n"
-                            hint_content += f"Level: {p.level.value}\n"
-                            hint_content += f"Description: {p.description[:200]}...\n\n"
-                else:
-                    hint_content += "No similar problems found.\n\n"
-                    
+                            hint_content["similar_problems"].append({
+                                "title": p.title,
+                                "description": p.description[:200] + "...",
+                                "solution": solution,
+                                "similarity_score": scores[idx]
+                            })
+                            
             except Exception as e:
-                hint_content += f"Error finding similar problems: {str(e)}\n\n"
-            
-            hint_content += "### Problem Type Analysis:\n"
-            hint_content += "- Identify the core algorithm or technique needed\n"
-            hint_content += "- Consider edge cases and constraints\n"
-            hint_content += "- Plan your approach step by step\n\n"
+                # Add error information
+                hint_content["similar_problems"] = [{
+                    "title": "Error",
+                    "description": f"Error finding similar problems: {str(e)}",
+                    "solution": "Please try again later",
+                    "similarity_score": 0.0
+                }]
             
         elif hint_level == 3:
             # Comprehensive Hint: Combined approach
-            hint_content += "## Level 3: Comprehensive Hint - Combined Knowledge\n\n"
+            hint_content["episodic_data"] = {"similar_problems": []}
+            hint_content["semantic_data"] = {"textbook_sections": []}
+            hint_content["integration_points"] = [
+                "Understand the Problem Type: Use textbook knowledge to identify the core concept",
+                "Learn from Examples: Study similar problems to understand the approach",
+                "Apply Concepts: Combine theoretical knowledge with practical examples",
+                "Consider Constraints: Pay attention to time and memory limits",
+                "Test Your Understanding: Try to solve the problem step by step"
+            ]
             
             # Get textbook knowledge
-            textbook_sections = ""
             if textbook_loader.is_loaded():
                 search_terms = self._extract_search_terms(problem.description)
                 textbook_results = textbook_loader.search(" ".join(search_terms), max_results=2)
                 
                 if textbook_results:
-                    textbook_sections += "### Textbook Knowledge:\n\n"
-                    for i, result in enumerate(textbook_results, 1):
-                        textbook_sections += f"{i}. **{result.get('title', 'Section')}**\n"
-                        textbook_sections += f"   {result.get('content', '')[:200]}...\n\n"
+                    for result in textbook_results:
+                        hint_content["semantic_data"]["textbook_sections"].append({
+                            "title": result.get('title', 'Section'),
+                            "content": result.get('content', '')[:200] + "...",
+                            "relevance_score": result.get('score', 0.0)
+                        })
             
             # Get similar problems
-            similar_problems = ""
             try:
                 all_problem_ids = problem_loader.get_problem_ids()
                 competition_problems = self.list_problems(competition_id)
@@ -1532,29 +1552,24 @@ class DuckDBStorage:
                     scores = bm25.get_scores(tokenized_query)
                     top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:2]
                     
-                    similar_problems += "### Similar Problems:\n\n"
                     for idx in top_indices:
                         pid = problem_ids[idx]
                         p = problem_loader.load_problem(pid)
                         if p:
-                            similar_problems += f"**{p.title}** (Similarity: {scores[idx]:.2f})\n"
-                            similar_problems += f"Level: {p.level.value}\n"
-                            similar_problems += f"Description: {p.description[:150]}...\n\n"
+                            hint_content["episodic_data"]["similar_problems"].append({
+                                "title": p.title,
+                                "description": p.description[:150] + "...",
+                                "solution": p.solution,
+                                "similarity_score": scores[idx]
+                            })
                             
             except Exception as e:
-                similar_problems += f"Error finding similar problems: {str(e)}\n\n"
-            
-            # Combine content
-            hint_content += textbook_sections
-            hint_content += similar_problems
-            
-            # Add integration guide
-            hint_content += "### Integration Guide:\n"
-            hint_content += "1. **Understand the Problem Type**: Use textbook knowledge to identify the core concept\n"
-            hint_content += "2. **Learn from Examples**: Study similar problems to understand the approach\n"
-            hint_content += "3. **Apply Concepts**: Combine theoretical knowledge with practical examples\n"
-            hint_content += "4. **Consider Constraints**: Pay attention to time and memory limits\n"
-            hint_content += "5. **Test Your Understanding**: Try to solve the problem step by step\n\n"
+                hint_content["episodic_data"]["similar_problems"] = [{
+                    "title": "Error",
+                    "description": f"Error finding similar problems: {str(e)}",
+                    "solution": "Please try again later",
+                    "similarity_score": 0.0
+                }]
             
         else:
             raise ValueError(f"Invalid hint level: {hint_level}. Must be 1, 2, or 3.")

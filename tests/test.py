@@ -9,7 +9,7 @@ response = openai.OpenAI(base_url="http://100.76.8.43:10086/v1").chat.completion
         # model="claude-3-sonnet-20240229",
         messages = messages,
         # timeout=30,
-        # max_tokens=200,
+        # limit_tokens=200,
         # temperature=0.1,
         # logprobs=True,
         # top_logprobs=5,
@@ -109,7 +109,7 @@ ChatCompletion(
 #     api_base: str = "https://api.openai.com/v1",
 #     api_key: str = None,
 #     temperature: float = 0.7,
-#     max_tokens: int = 1000,
+#     limit_tokens: int = 1000,
 #     timeout: int = 30,
 #     **kwargs
 # ) -> Tuple[str, int]:
@@ -122,7 +122,7 @@ ChatCompletion(
 #         api_base: API 基础 URL
 #         api_key: API 密钥
 #         temperature: 温度参数
-#         max_tokens: 最大 token 数
+#         limit_tokens: 最大 token 数
 #         timeout: 超时时间（秒）
 #         **kwargs: 其他参数
     
@@ -145,7 +145,7 @@ ChatCompletion(
 #             model=model,
 #             messages=messages,
 #             temperature=temperature,
-#             max_tokens=max_tokens,
+#             limit_tokens=limit_tokens,
 #             timeout=timeout,
 #             **kwargs
 #         )
@@ -172,7 +172,7 @@ ChatCompletion(
 #     api_base: str = "https://api.openai.com/v1",
 #     api_key: str = None,
 #     temperature: float = 0.7,
-#     max_tokens: int = 1000,
+#     limit_tokens: int = 1000,
 #     **kwargs
 # ) -> Tuple[str, int]:
 #     """
@@ -184,7 +184,7 @@ ChatCompletion(
 #         api_base: API 基础 URL
 #         api_key: API 密钥
 #         temperature: 温度参数
-#         max_tokens: 最大 token 数
+#         limit_tokens: 最大 token 数
 #         **kwargs: 其他参数
     
 #     Returns:
@@ -200,7 +200,7 @@ ChatCompletion(
 #             model=model,
 #             messages=messages,
 #             temperature=temperature,
-#             max_tokens=max_tokens,
+#             limit_tokens=limit_tokens,
 #             api_base=api_base,
 #             **kwargs
 #         )
@@ -227,7 +227,7 @@ ChatCompletion(
 #     headers: Dict[str, str] = None,
 #     model: str = None,
 #     temperature: float = 0.7,
-#     max_tokens: int = 1000,
+#     limit_tokens: int = 1000,
 #     timeout: int = 30,
 #     **kwargs
 # ) -> Tuple[str, int]:
@@ -240,7 +240,7 @@ ChatCompletion(
 #         headers: HTTP 请求头
 #         model: 模型名称
 #         temperature: 温度参数
-#         max_tokens: 最大 token 数
+#         limit_tokens: 最大 token 数
 #         timeout: 超时时间（秒）
 #         **kwargs: 其他参数
     
@@ -252,7 +252,7 @@ ChatCompletion(
 #         payload = {
 #             "messages": messages,
 #             "temperature": temperature,
-#             "max_tokens": max_tokens,
+#             "limit_tokens": limit_tokens,
 #             **kwargs
 #         }
         

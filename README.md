@@ -316,7 +316,7 @@ uv run mypy competemas/
       "is_running": bool,          # 是否仍在运行
         "termination_reason": Optional[str], # 终止原因（如果有）
       "score": int,                # 当前得分
-      "final_score": int           # 最终得分
+      "score": int           # 最终得分
       },
   "problems": List[Dict],          # 所有问题列表
   "rankings": List[Dict],          # 当前排名

@@ -150,7 +150,7 @@ class Agent(AgentInterface, ABC):
             self.conversation_history.insert(0, system_prompt)
     
     @abstractmethod
-    async def generate_response(self, state: Dict, prompt: str) -> tuple[str, tuple[int, int]]:
+    async def generate_response(self, state: Dict, prompt: str) -> str:
         """Generate a response from the MAS"""
         pass
     
@@ -209,12 +209,16 @@ class Agent(AgentInterface, ABC):
         # This maintains recent context while staying within token limits
         self.truncate_conversation_history()
         
+        
         # Generate response from the LLM using the current state and prompt
-        response, tokens_used = await self.generate_response(state, prompt)
+        response = await self.generate_response(state, prompt)
         
         # Parse the LLM response into a structured action that the competition system can execute
         action = self.action_parser.parse_action(response)
-        action["tokens_used"] = tokens_used  # Track token usage for billing and limits
+        # print(f"action: {action}")
+        # action: {'action': 'VIEW_PROBLEM', 'parameters': {'problem_id': '1323_bronze_feb'}}
+    
+        # action["tokens_used"] = tokens_used  # Track token usage for billing and limits
         
         # Optional: Save conversation for debugging and analysis
         # Uncomment the following lines to enable conversation logging
@@ -323,7 +327,7 @@ class GenericAPIAgent(Agent):
         
         return current
     
-    async def generate_response(self, state: Dict, prompt: str) -> tuple[str, tuple[int, int]]:
+    async def generate_response(self, state: Dict, prompt: str) -> str:
         """Generate a response using the configured API"""
         response = None
         # Add user message to conversation history
@@ -361,9 +365,13 @@ class GenericAPIAgent(Agent):
                     formatted_body["messages"] = json.loads(formatted_body["messages"])
                 # logger.info(f"Formatted body: {formatted_body}")
                 # Make the request
+                
+                # print(f"formatted_body: {formatted_body}")
+                competition_id = state.get('competitor_state', {}).get('competition_id')
+                participant_id = state.get('competitor_state', {}).get('id')
                 response = await asyncio.to_thread(
                     requests.post,
-                    url=f"http://localhost:5000/api/agent/{state.get('competition_id')}/{state.get('participant_id')}/request",
+                    url=f"http://localhost:5000/api/agent/call/{competition_id}/{participant_id}",
                     json={
                         "method": self.request_format['method'],
                         "url": url,
@@ -373,45 +381,33 @@ class GenericAPIAgent(Agent):
                         "response_format": self.response_format,
                     }
                 )
-                # print(f"00000000000000000000000000000{response} ---")
-                # response = await asyncio.to_thread(
-                #     requests.request,
-                #     method=self.request_format['method'],
-                #     url=url,
-                #     headers=headers,
-                #     json=formatted_body,
-                #     timeout=self.request_timeout
-                # )
-
-                # print(f"--- DIAGNOSTIC: Response: {response} ---")
-                # print(f"--- DIAGNOSTIC: Response: {response.json()} ---")
-                # print(f"--- DIAGNOSTIC: Response: {response.json()[0]} ---")
-                # print(f"--- DIAGNOSTIC: Response: {response.json()[0]['choices'][0]['message']['content']} ---")
-                # print(f"--- DIAGNOSTIC: Response: {response.json()[0]['choices'][0]['message']['content']} ---")
                 response.raise_for_status()
 
+
+                # print(f"LLMresponse: {response.json()}")
                 # Get the first element from the array response
                 result_array = response.json()
                 result = result_array[0]  # Extract the actual response object from the array
 
-                # print(f"--- DIAGNOSTIC: Result: {result} ---")
-
-                # Extract response text using configured path
-                # print("\n\n")
+                
+                # print("\ngenerate_response result: ", result)
                 response_text = self._get_value_from_path(result, self.response_format["response_path"])
+
+                # print(f"response_text: {response_text}")
                 # print("\n\n")
-                prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
-                completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
-                reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
-                completion_tokens += reasoning_tokens
+                # prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
+                # completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
+                # reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
+                # completion_tokens += reasoning_tokens
+                
 
                 # Add assistant response to conversation history
                 self.add_to_conversation("assistant", response_text)
                 self.save_conversation()
                 self.conversation_history.pop()
-                action = self.action_parser.parse_action(response_text)
+                # action = self.action_parser.parse_action(response_text)
                 
-                return response_text, (prompt_tokens, completion_tokens)
+                return response_text
                 
             except Exception as e:
                 error_message = f"Error: {str(e)}"

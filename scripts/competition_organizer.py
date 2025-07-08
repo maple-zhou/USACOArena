@@ -1,5 +1,6 @@
 import json
 import time
+from numpy.char import lower
 import requests
 import asyncio
 import os
@@ -29,6 +30,18 @@ class CompetitionOrganizer:
         self.competition_id: Optional[str] = None
         self.competition_data: Optional[Dict] = None
         logger.info(f"Initialized CompetitionOrganizer with API base: {api_base}")
+    
+    @property
+    def problem_ids(self) -> List[str]:
+        """Dynamically get problem IDs from competition data"""
+        if not self.competition_data:
+            return []
+        
+        problems = self.competition_data.get("problems", [])
+        return [
+            str(p.get("id")) for p in problems 
+            if isinstance(p, dict) and p.get("id") is not None
+        ]
     
     def add_competitor(self, competitor: Competitor) -> None:
         """Add a competitor to the competition"""
@@ -66,7 +79,7 @@ class CompetitionOrganizer:
                 "rules": rules or {}
             }
             
-            logger.debug(f"Creating competition with data: {data}")
+            # logger.debug(f"Creating competition with data: {data}")
             
             # Make API request - 使用正确的端点
             response = requests.post(
@@ -105,11 +118,7 @@ class CompetitionOrganizer:
                 
             self.competition_data = competition_data
             
-            # Extract problem IDs if available
-            if competition_data and "problems" in competition_data:
-                self.competition_data["problem_ids"] = [p.get("id") for p in competition_data["problems"] if isinstance(p, dict)]
-            else:
-                self.competition_data["problem_ids"] = []
+            # Note: problem_ids are now available via the property, no need to store separately
             
             # Log any problems that were not found
             not_found_problems = result_data.get("not_found_problems", [])
@@ -137,44 +146,39 @@ class CompetitionOrganizer:
             True if successful, False otherwise
         """
         try:
-            # Get competition details
-            response = requests.get(
-                f"{self.api_base}/api/competitions/get/{competition_id}",
-                params={"include_details": "true"}
-            )
-            response.raise_for_status()
-            
-            result = response.json()
-            if not isinstance(result, dict):
-                logger.error("Invalid API response: not a JSON object")
-                return False
+            # print(f"competition_id: {competition_id} competition_data: {self.competition_data}")
+            if not self.competition_id and not self.competition_data:
+                # Get competition details
+                response = requests.get(
+                    f"{self.api_base}/api/competitions/get/{competition_id}",
+                    params={"include_details": "true"}
+                )
+                response.raise_for_status()
                 
-            if result.get("status") != "success":
-                error_msg = result.get('message', 'Unknown error')
-                logger.error(f"API error: {error_msg}")
-                return False
-            
-            # Store competition data
-            competition_data = result.get("data")
-            if not isinstance(competition_data, dict):
-                logger.error("Invalid API response: missing or invalid competition data")
-                return False
+                result = response.json()
+                if not isinstance(result, dict):
+                    logger.error("Invalid API response: not a JSON object")
+                    return False
+                    
+                if result.get("status") != "success":
+                    error_msg = result.get('message', 'Unknown error')
+                    logger.error(f"API error: {error_msg}")
+                    return False
                 
-            self.competition_id = competition_id
-            self.competition_data = competition_data
+                # Store competition data
+                competition_data = result.get("data")
+                if not isinstance(competition_data, dict):
+                    logger.error("Invalid API response: missing or invalid competition data")
+                    return False
+                    
+                self.competition_id = competition_id
+                self.competition_data = competition_data
             
-            # Extract problem IDs if available
-            if "problems" in competition_data:
-                problems = competition_data.get("problems", [])
-                self.competition_data["problem_ids"] = [
-                    p.get("id") for p in problems 
-                    if isinstance(p, dict) and p.get("id")
-                ]
-            else:
-                self.competition_data["problem_ids"] = []
+            # Note: problem_ids are now dynamically available via property
+            # No need to extract and store separately
                 
             # Get lambda value from rules
-            rules = competition_data.get("rules", {})
+            rules = self.competition_data.get("rules", {}) if self.competition_data else {}
             lambda_ = rules.get("lambda", 100) if isinstance(rules, dict) else 100
 
             # Register each participant
@@ -188,6 +192,7 @@ class CompetitionOrganizer:
                     f"{self.api_base}/api/participants/get/{competition_id}/{participant_id}",
                     params={"include_submissions": "false"}
                 )
+                # print(f"verification_response: {verification_response.json()}")
                 
                 if verification_response.status_code == 200:
                     verification_data = verification_response.json()
@@ -212,7 +217,7 @@ class CompetitionOrganizer:
     
     async def _run_competitor(self, competitor: Competitor) -> Dict:
         """
-        Run competition for a single competitor
+        Run competition for a single competitor with optimized API usage
         
         Args:
             competitor: The competitor to run
@@ -222,20 +227,33 @@ class CompetitionOrganizer:
         """
         logger.info(f"Starting competition for competitor: {competitor.name}")
         
-        # Initialize problems list using competitor API
+        # Initialize problems list using competitor API (cached)
         problems_result = competitor.view_problems()
         problems = problems_result.get("problems", []) if "error" not in problems_result else []
         logger.debug(f"Loaded {len(problems)} problems for competitor {competitor.name}")
+        # print(f"problems: {problems}")
         
-        # Initialize state using competitor API
-        # First sync all competitors to get latest state
+        problems_state = {
+            "problems_id": [p.get("id") for p in problems],
+            # "problems_title": [p.get("title") for p in problems],
+            # "problems_description": [p.get("description") for p in problems],
+            # "problems_level": [p.get("level") for p in problems],
+            # "problems_time_limit_ms": [p.get("time_limit_ms") for p in problems],
+            # "problems_memory_limit_mb": [p.get("memory_limit_mb") for p in problems],
+            # "problems_sample_cases": [p.get("sample_cases") for p in problems],
+            "problems_first_to_solve": [p.get("first_to_solve") for p in problems],
+            # "problems_level": [p.get("level") for p in problems],
+        }
+        # Initialize competitors state
         for c in self.competitors:
-            c.sync_from_api()
-            logger.debug(f"Synced state for competitor: {c.name}")
+            logger.debug(f"Initialized competitor: {c.name}")
         
-        # Build state with cached data to avoid multiple API calls
+        # Build initial state
         state = {
-            "competitor_state": competitor.get_competition_state(),
+            "competition_details": self.competition_data,
+            "competitor_state": competitor.get_participant_state(),
+            "problems": problems_state,
+            "rankings": competitor.view_rankings(),
             "other_competitors_status": [
                 {
                     "name": c.name,
@@ -245,46 +263,45 @@ class CompetitionOrganizer:
                 for c in self.competitors if c.name != competitor.name
             ]
         }
-        logger.debug(f"Initial state for {competitor.name}: running={competitor.is_running}")
+        logger.info(f"Initial state for {competitor.name}: running={competitor.is_running},state={state}")
         
         # Run competition loop
         while competitor.is_running:
             try:
-                # Stop if out of tokens
+                # Check tokens before action (using cached data)
                 if competitor.remaining_tokens <= 0:
                     competitor.terminate("out_of_tokens")
                     logger.info(f"Competitor {competitor.name} ran out of tokens")
                     break
                 
                 # Get next action from competitor
-                logger.info(f"Getting next action for competitor {competitor.name}")
+                logger.info(f"Begin call LLM for next action for competitor {competitor.name}")
                 action = await competitor.agent.process(state)
+                logger.warning(f"After LLM call: LLM_tokens:{competitor.get_participant_state()['LLM_tokens']}\n hint_tokens:{competitor.get_participant_state()['hint_tokens']}\n submission_tokens:{competitor.get_participant_state()['submission_tokens']}\n remaining_tokens:{competitor.get_participant_state()['remaining_tokens']}\n submission_count:{competitor.get_participant_state()['submission_count']}\n accepted_count:{competitor.get_participant_state()['accepted_count']}\n submission_penalty:{competitor.get_participant_state()['submission_penalty']}\n problem_pass_score:{competitor.get_participant_state()['problem_pass_score']}\n score:{competitor.get_participant_state()['score']}\n is_running:{competitor.get_participant_state()['is_running']}\n termination_reason:{competitor.get_participant_state()['termination_reason']}")
+
+                logger.error(f"action: {action['action']}")
                 
-                # Sync state from API before processing action
-                competitor.sync_from_api()
+                logger.info(f"Competitor {competitor.name} choose the next action: {action['action']}, remaining_tokens: {competitor.remaining_tokens}, score: {competitor.score}")
                 
-                logger.info(f"Competitor {competitor.name} - Action: {action['action']}, Tokens: {competitor.remaining_tokens}, Score: {competitor.final_score}")
-                
-                # Stop if out of tokens after sync
-                if competitor.remaining_tokens <= 0:
-                    competitor.terminate("out_of_tokens")
-                    logger.info(f"Competitor {competitor.name} ran out of tokens after state sync")
-                    break
-                
-                # Process action using competitor API
+                # Process action (this will trigger sync_from_api if needed)
                 action_result = self._process_action(action, competitor)
+                # print(f"11111111111action_result: {action_result}")
+                logger.warning(f"After action_result: LLM_tokens:{competitor.get_participant_state()['LLM_tokens']}\n hint_tokens:{competitor.get_participant_state()['hint_tokens']}\n submission_tokens:{competitor.get_participant_state()['submission_tokens']}\n remaining_tokens:{competitor.get_participant_state()['remaining_tokens']}\n submission_count:{competitor.get_participant_state()['submission_count']}\n accepted_count:{competitor.get_participant_state()['accepted_count']}\n submission_penalty:{competitor.get_participant_state()['submission_penalty']}\n problem_pass_score:{competitor.get_participant_state()['problem_pass_score']}\n score:{competitor.get_participant_state()['score']}\n is_running:{competitor.get_participant_state()['is_running']}\n termination_reason:{competitor.get_participant_state()['termination_reason']}")
+
+                # logger.error(f"Action_result: {action_result}")
                 
-                # Update rankings using competitor API
+                
+                # Update rankings (only when needed)
                 rankings_result = competitor.view_rankings()
                 if "error" not in rankings_result:
                     state["rankings"] = rankings_result.get("rankings", [])
                 
-                # Sync state after action execution
-                competitor.sync_from_api()
+                # Update state for next iteration (competitor state is automatically fresh after action)
+                state["competitor_state"] = competitor.get_participant_state()
+                state["last_action_result"] = action_result
+
                 
-                # Update state for next iteration
-                state["competitor_state"] = competitor.get_competition_state()
-                state["last_action_result"] = action_result["action_result"]
+                # Update other competitors status (minimal sync)
                 state["other_competitors_status"] = [
                     {
                         "name": c.name,
@@ -294,7 +311,9 @@ class CompetitionOrganizer:
                     for c in self.competitors if c.name != competitor.name
                 ]
                 
-                logger.info(f"Competitor {competitor.name} completed action: {action['action']}, Tokens: {competitor.remaining_tokens}, Score: {competitor.final_score}")
+                logger.info(f"Competitor {competitor.name} completed the action: {action['action']}, remaining_tokens: {competitor.remaining_tokens}, score: {competitor.score}")
+
+                # logger.info(f"last_action_result: {state['last_action_result']}")
                 
                 # Check if should terminate
                 if action_result["should_terminate"]:
@@ -307,20 +326,30 @@ class CompetitionOrganizer:
                 competitor.terminate("error")
                 break
         
-        # Get final state
+        # Get final state (force sync for accurate final results)
         logger.info(f"Competition ended for {competitor.name}, getting final state")
-        competitor.sync_from_api()
+        # competitor.sync_from_api(force=True)
         
         # Get final state from competitor
-        final_state = competitor.get_competition_state()
+        final_state = competitor.get_participant_state()
         
         # Save results to file
         results = {
-            "final_score": final_state["final_score"],
-            "termination_reason": final_state["termination_reason"],
+            "participant_id": final_state["id"],
+            "competition_id": final_state["competition_id"],
+            "name": final_state["name"],
+            "LLM_tokens": final_state["LLM_tokens"],
+            "hint_tokens": final_state["hint_tokens"],
+            "submission_tokens": final_state["submission_tokens"],
+            "limit_tokens": final_state["limit_tokens"],
             "remaining_tokens": final_state["remaining_tokens"],
+            "score": final_state["score"],
+            "termination_reason": final_state["termination_reason"],
             "solved_problems": final_state["solved_problems"],
-            "score": final_state["score"]
+            "is_running": final_state["is_running"],
+            "termination_reason": final_state["termination_reason"],
+            "score": final_state["score"],
+            "problem_pass_score": final_state["problem_pass_score"]
         }
         
         # Create results directory if it doesn't exist
@@ -378,65 +407,106 @@ class CompetitionOrganizer:
             Dictionary containing action result and termination info
         """
         action_type = action.get("action")
+        if action_type is None:
+            return {
+                "status": "error",
+                "data": {
+                    "action": "unknown",
+                    "action_result": {"error": "Missing action"},
+                },
+                "should_terminate": False,
+                "termination_reason": None
+            }
+        action_type = action_type.lower()
         
         try:
             if action_type == "view_problems":
                 result = competitor.view_problems()
                 return {
-                    "action_result": result,
+                    "status": "success",
+                    "data": {
+                        "action": "view_problems",
+                        "action_result": result,
+                    },
                     "should_terminate": False,
                     "termination_reason": None
                 }
             
             elif action_type == "view_problem":
-                problem_id = action.get("problem_id")
+                problem_id = action.get("parameters", {}).get("problem_id")
                 if not problem_id:
                     return {
-                        "action_result": {"error": "Missing problem_id"},
+                        "status": "error",
+                        "data": {
+                            "action": "view_problem",
+                            "action_result": {"error": "Missing problem_id"},
+                        },
                         "should_terminate": False,
                         "termination_reason": None
                     }
                 
                 result = competitor.view_problem(problem_id)
                 return {
-                    "action_result": result,
+                    "status": "success",
+                    "data": {
+                        "action": "view_problem",
+                        "action_result": result,
+                    },
                     "should_terminate": False,
                     "termination_reason": None
                 }
             
             elif action_type == "get_hint":
-                problem_id = action.get("problem_id")
-                hint_level = action.get("hint_level", 1)
+                problem_id = action.get("parameters", {}).get("problem_id")
+                hint_level = action.get("parameters", {}).get("hint_level", 1)
                 
                 if not problem_id:
                     return {
-                        "action_result": {"error": "Missing problem_id"},
+                        "status": "error",
+                        "data": {
+                            "action": "get_hint",
+                            "action_result": {"error": "Missing problem_id"},
+                        },
                         "should_terminate": False,
                         "termination_reason": None
                     }
                 
                 result = competitor.get_hint(problem_id, hint_level)
+                # print(f"get_hint result: {result}")
                 return {
-                    "action_result": result,
+                    "status": "success",
+                    "data": {
+                        "action": "get_hint",
+                        "action_result": result,
+                    },
                     "should_terminate": False,
                     "termination_reason": None
                 }
+                
             
             elif action_type == "submission_solution":
-                problem_id = action.get("problem_id")
-                code = action.get("code")
-                language = action.get("language", "cpp")
+                problem_id = action.get("parameters", {}).get("problem_id")
+                code = action.get("parameters", {}).get("solution")
+                language = action.get("parameters", {}).get("language", "cpp")
                 
                 if not problem_id or not code:
                     return {
-                        "action_result": {"error": "Missing problem_id or code"},
+                        "status": "error",
+                        "data": {
+                            "action": "submission_solution",
+                            "action_result": {"error": "Missing problem_id or code"},
+                        },
                         "should_terminate": False,
                         "termination_reason": None
                     }
                 
                 result = competitor.submission_solution(problem_id, code, language)
                 return {
-                    "action_result": result,
+                    "status": "success",
+                    "data": {
+                        "action": "submission_solution",
+                        "action_result": result,
+                    },
                     "should_terminate": False,
                     "termination_reason": None
                 }
@@ -444,23 +514,35 @@ class CompetitionOrganizer:
             elif action_type == "view_rankings":
                 result = competitor.view_rankings()
                 return {
-                    "action_result": result,
+                    "status": "success",
+                    "data": {
+                        "action": "view_rankings",
+                        "action_result": result,
+                    },
                     "should_terminate": False,
                     "termination_reason": None
                 }
             
             elif action_type == "terminate":
-                reason = action.get("reason", "manual_termination")
+                reason = action.get("parameters", {}).get("reason", "manual_termination")
                 competitor.terminate(reason)
                 return {
-                    "action_result": {"message": f"Competitor terminated: {reason}"},
+                    "action": "terminate",
+                    "data": {
+                        "action": "terminate",
+                        "action_result": {"message": f"Competitor terminated: {reason}"},
+                    },
                     "should_terminate": True,
                     "termination_reason": reason
                 }
             
             else:
                 return {
-                    "action_result": {"error": f"Unknown action: {action_type}"},
+                    "status": "error",
+                    "data": {
+                        "action": "unknown",
+                        "action_result": {"error": f"Unknown action: {action_type}"},
+                    },
                     "should_terminate": False,
                     "termination_reason": None
                 }
@@ -468,7 +550,11 @@ class CompetitionOrganizer:
         except Exception as e:
             logger.error(f"Error processing action {action_type} for {competitor.name}: {e}")
             return {
-                "action_result": {"error": f"Action processing failed: {str(e)}"},
+                "status": "error",
+                "data": {
+                    "action": "unknown",
+                    "action_result": {"error": f"Action processing failed: {str(e)}"},
+                },
                 "should_terminate": True,
                 "termination_reason": "action_error"
             } 
