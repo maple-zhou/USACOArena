@@ -1100,25 +1100,26 @@ class DuckDBStorage:
 
         # Build complete request using participant's API configuration
         api_path = request_data.get('api_path', '/v1/chat/completions')
+        # print(f"request_data: {request_data}")
         complete_request = {
             'method': 'POST',
-            'url': f"{participant.api_base_url}{api_path}",
+            'url': f"{participant.api_base_url.rstrip('/')}{api_path}",
             'headers': {
                 'Content-Type': 'application/json',
                 'Authorization': f'Bearer {participant.api_key}'
             },
-            'json': request_data.get('json', {}),
-            'timeout': request_data.get('timeout', 30.0)
+            'json': request_data,
+            # 'timeout': request_data.get('timeout', 30.0)
         }
-        
+        # print(f"complete_request: {complete_request['json']}")
         # Make HTTP request to LLM API
         try:
             response = requests.request(
                 method=complete_request['method'],
                 url=complete_request['url'],
                 headers=complete_request['headers'],
-                json=complete_request['json'],
-                timeout=complete_request['timeout']
+                json=complete_request['json']
+                # timeout=complete_request['timeout']
             )
             response.raise_for_status()
             

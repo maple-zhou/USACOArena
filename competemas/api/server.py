@@ -828,22 +828,10 @@ def get_hint(competition_id: str, participant_id: str, problem_id: str):
 @app.route("/api/agent/call/<competition_id>/<participant_id>", methods=["POST"])
 def generate_response(competition_id: str, participant_id: str):
     """
-    Standardized agent API endpoint for LLM requests.
+    Direct request forwarding endpoint for debugging.
     
-    This endpoint provides a unified interface for agent API calls with:
-    - Automatic token tracking and multiplier application
-    - Standardized request/response formats
-    - Error handling and validation
-    - Participant token management
-    
-    Request format:
-    {
-        "json": {"model": "gpt-3.5-turbo", "messages": [...]},
-        "api_path": "/v1/chat/completions",  // optional, defaults to OpenAI format
-        "timeout": 30.0  // optional
-    }
-    
-    Note: API base URL and key are automatically retrieved from participant configuration.
+    This endpoint directly forwards the received request to the target LLM API
+    without any processing, useful for debugging request format issues.
     """
     try:
         if check_termination(competition_id, participant_id):
@@ -854,7 +842,7 @@ def generate_response(competition_id: str, participant_id: str):
             return error_response("No data provided")
         
         # print(f"DEBUG: Received request data: {data}")
-        print(f"DEBUG: Competition ID: {competition_id}, Participant ID: {participant_id}")
+        # print(f"DEBUG: Competition ID: {competition_id}, Participant ID: {participant_id}, data: {data}")
         
         # Process request using data storage layer
         result = data_storage.process_agent_request(competition_id, participant_id, data)
