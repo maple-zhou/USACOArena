@@ -14,11 +14,11 @@ class ColoredFormatter(logging.Formatter):
     """为控制台输出添加颜色的格式化器"""
     
     COLORS = {
-        'DEBUG': '\033[32m',      # 绿色
-        'INFO': '\033[36m',       # 青色
-        'WARNING': '\033[33m',    # 黄色
-        'ERROR': '\033[31m',      # 红色
-        'CRITICAL': '\033[41m\033[97m', # 红色背景+白字
+        'DEBUG': '\033[32m',      # 绿色字
+        'INFO': '\033[36m',       # 青色字
+        'WARNING': '\033[33m',    # 黄色字
+        'ERROR': '\033[31m',      # 红色字
+        'CRITICAL': '\033[41m\033[97m', # 红色背景+白色字
         'RESET': '\033[0m'
     }
 

@@ -87,7 +87,7 @@ class Competitor:
                 return {}
                 
         except Exception as e:
-            logger.warning(f"Error getting participant state: {e}")
+            logger.error(f"Error getting participant state: {e}")
             return {}
     
     def join_competition(self, api_base: str, competition_id: str, lambda_: int):

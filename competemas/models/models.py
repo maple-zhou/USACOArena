@@ -59,12 +59,12 @@ class Participant:
         self.is_running: bool = True
         self.termination_reason: Optional[str] = None
         
-    def calculate_score(self) -> None:
-        """Calculate the participant's total score based on the formula:
-        score = problem_pass_score - submission_penalty + lambda_value * max(0, remaining_tokens)
-        """
-        # Calculate score using the formula
-        self.score = self.problem_pass_score - self.submission_penalty + self.lambda_value * max(0, self.remaining_tokens)
+    # def calculate_score(self) -> None:
+    #     """Calculate the participant's total score based on the formula:
+    #     score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens / limit_tokens
+    #     """
+    #     # Calculate score using the formula
+    #     self.score = self.problem_pass_score - self.submission_penalty + self.lambda_value * self.remaining_tokens / self.limit_tokens
     
     # def get_competition_state(self) -> Dict:
     #     """Get the current state of the competition"""

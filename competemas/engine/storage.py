@@ -9,6 +9,7 @@ from typing import Dict, List, Optional, Any, Union
 from datetime import datetime
 from pathlib import Path
 import gzip
+import threading
 
 from ..models.models import (
     Competition, Participant, Problem, Submission, Case, TestResult, 
@@ -441,7 +442,7 @@ class DuckDBStorage:
         """, [competition_id, participant_id]).fetchone()
         
         if not result:
-            print(f"[DUCKDB_STORAGE] Participant {participant_id} not found in competition {competition_id}")
+            logger.error(f"[DUCKDB_STORAGE] Participant {participant_id} not found in competition {competition_id}")
             return None
         
         # 从数据库字段直接读取
@@ -493,7 +494,7 @@ class DuckDBStorage:
 
         # participant.submissions = []  # 提交记录按需加载
         
-        print(f"[DUCKDB_STORAGE] Found participant: {participant.name} (ID: {participant.id})")
+        logger.debug(f"[DUCKDB_STORAGE] Found participant: {participant.name} (ID: {participant.id})")
         return participant
 
     def list_participants(self, competition_id: str) -> List[Participant]:
@@ -521,9 +522,17 @@ class DuckDBStorage:
 
     def update_participant_score(self, competition_id: str, participant_id: str) -> None:
         """Update participant's score"""
+        # result = self.conn.execute("""
+        #     SELECT * FROM participants WHERE competition_id = ? AND id = ?
+        # """, [competition_id, participant_id]).fetchone()
+        
+        # logger.critical(f"[DUCKDB_STORAGE] result: {result}")
+        
+        # score = result[14] - result[13] + result[10] * result[9] / result[8]
+        
         self.conn.execute("""
             UPDATE participants 
-            SET score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens
+            SET score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens / limit_tokens
             WHERE competition_id = ? AND id = ? 
         """, [competition_id, participant_id])   
 
@@ -888,7 +897,7 @@ class DuckDBStorage:
         # score = problem_pass_score - submission_penalty + lambda_value * max(0, remaining_tokens)
         self.conn.execute("""
             UPDATE participants 
-            SET score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens
+            SET score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens / limit_tokens
             WHERE competition_id = ?
         """, [competition_id])
         

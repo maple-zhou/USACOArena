@@ -1,5 +1,7 @@
 import json
 import traceback
+import time
+import threading
 from typing import Any, Dict, List, Optional, Tuple
 import requests
 from datetime import datetime
@@ -42,6 +44,34 @@ logger.info("Initialized textbook loader")
 # Create Flask app
 app = Flask(__name__)
 logger.info("Created Flask application")
+
+# 添加全局请求频率控制
+class GlobalRateLimiter:
+    """全局请求频率限制器"""
+    def __init__(self):
+        self._last_request_time = 0  # 记录最后一次请求时间
+        self._lock = threading.Lock()
+        self._min_interval = 0.05  # 最小请求间隔（秒）
+    
+    def should_rate_limit(self) -> bool:
+        """检查是否需要限制请求频率"""
+        with self._lock:
+            current_time = time.time()
+            
+            if current_time - self._last_request_time < self._min_interval:
+                return True
+            
+            self._last_request_time = current_time
+            return False
+    
+    def get_wait_time(self) -> float:
+        """获取需要等待的时间"""
+        with self._lock:
+            current_time = time.time()
+            return max(0, self._min_interval - (current_time - self._last_request_time))
+
+# 全局请求限制器
+global_rate_limiter = GlobalRateLimiter()
 
 
 def get_text_from_path(data: Dict, path: str) -> str:
@@ -255,34 +285,47 @@ def create_participant(competition_id: str):
     Create a new participant in a competition.
     
     Args:
-        competition_id: Competition to add participant to
+        competition_id: Competition identifier
         
-    Request format:
-    {
-        "name": "Participant Name",
-        "api_base_url": "http://api.example.com/",
-        "api_key": "sk-...",
-        "limit_tokens": 100000,
-        "lambda_value": 100
-    }
-    
+    Request Body:
+        name: Participant name
+        api_base_url: Base URL for participant's API
+        
     Returns:
-        Participant details on success
+        Participant details with generated ID
     """
+    # 全局频率控制
+    if global_rate_limiter.should_rate_limit():
+        wait_time = global_rate_limiter.get_wait_time()
+        logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
+        time.sleep(wait_time)
+    
     try:
         data = request.get_json()
-        name = data.get("name", "")
+        if not data:
+            return error_response("No JSON data provided", 400)
+        
+        name = data.get("name")
         api_base_url = data.get("api_base_url", "")
         api_key = data.get("api_key", "")
         limit_tokens = data.get("limit_tokens", 100000)
         lambda_value = data.get("lambda_value", 100)
         
         if not name:
-            return error_response("Participant name is required")
+            return error_response("Name is required", 400)
         
-        participant = data_storage.create_participant(competition_id, name, api_base_url, api_key, limit_tokens, lambda_value)
+        # Create participant
+        participant = data_storage.create_participant(
+            competition_id=competition_id,
+            name=name,
+            api_base_url=api_base_url,
+            api_key=api_key,
+            limit_tokens=limit_tokens,
+            lambda_value=lambda_value
+        )
+        
         if not participant:
-            return error_response(f"Competition with ID {competition_id} not found", 404)
+            return error_response("Failed to create participant", 500)
         
         return success_response(
             participant.to_dict(),
@@ -355,6 +398,12 @@ def get_participant_solved_problems(competition_id: str, participant_id: str):
     Returns:
         Participant details with optional submission history
     """
+    # 全局频率控制
+    if global_rate_limiter.should_rate_limit():
+        wait_time = global_rate_limiter.get_wait_time()
+        logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
+        time.sleep(wait_time)
+    
     try:
         participant = data_storage.get_participant(competition_id, participant_id)
         if not participant:
@@ -389,6 +438,7 @@ def get_participant_solved_problems(competition_id: str, participant_id: str):
         return success_response(response_data)
        
     except Exception as e:
+        logger.error(f"Failed to get participant data: {e}", exc_info=True)
         return error_response(f"Failed to get participant data: {str(e)}", 500)
 
 def check_termination(competition_id: str, participant_id: str):
@@ -421,15 +471,21 @@ def list_participants(competition_id: str):
 @app.route("/api/problems/get/<competition_id>/<problem_id>", methods=["GET"])
 def get_problem(competition_id: str, problem_id: str):
     """
-    Get problem details by ID.
+    Get detailed problem information by ID.
     
     Args:
         competition_id: Competition identifier
         problem_id: Problem identifier
         
     Returns:
-        Problem details including description, test cases, and constraints
+        Complete problem details including content and test cases
     """
+    # 全局频率控制
+    if global_rate_limiter.should_rate_limit():
+        wait_time = global_rate_limiter.get_wait_time()
+        logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
+        time.sleep(wait_time)
+    
     try:
         problem = data_storage.get_problem(competition_id, problem_id)
         if not problem:
@@ -437,24 +493,32 @@ def get_problem(competition_id: str, problem_id: str):
         
         return success_response(problem.to_dict())
     except Exception as e:
-        return error_response(f"Failed to get problem: {str(e)}")
+        logger.error(f"Failed to get problem: {e}", exc_info=True)
+        return error_response(f"Failed to fetch problem: {str(e)}", 500)
 
 @app.route("/api/problems/list/<competition_id>", methods=["GET"])
 def list_problems(competition_id: str):
     """
-    List all problems in a competition.
+    List all problems for a competition.
     
     Args:
         competition_id: Competition identifier
         
     Returns:
-        List of problem objects with basic information
+        List of problems with basic information
     """
+    # 全局频率控制
+    if global_rate_limiter.should_rate_limit():
+        wait_time = global_rate_limiter.get_wait_time()
+        logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
+        time.sleep(wait_time)
+    
     try:
         problems = data_storage.list_problems(competition_id)
         return success_response([p.to_dict() for p in problems])
     except Exception as e:
-        return error_response(f"Failed to list problems: {str(e)}")
+        logger.error(f"Failed to list problems: {e}", exc_info=True)
+        return error_response(f"Failed to list problems: {str(e)}", 500)
 
 
 
@@ -462,29 +526,33 @@ def list_problems(competition_id: str):
 @app.route("/api/submissions/create/<competition_id>/<participant_id>/<problem_id>", methods=["POST"])
 def create_submission(competition_id: str, participant_id: str, problem_id: str):
     """
-    Create and evaluate a code submission.
+    Create a new submission for a problem.
     
     Args:
         competition_id: Competition identifier
         participant_id: Participant identifier
         problem_id: Problem identifier
         
-    Request format:
-    {
-        "code": "Source code to submit",
-        "language": "cpp"  // Optional, defaults to "cpp"
-    }
-    
+    Request Body:
+        code: Source code for the solution
+        language: Programming language (default: "cpp")
+        
     Returns:
-        Submission evaluation results including status, score, and test results
+        Submission details with evaluation results
     """
+    # 全局频率控制
+    if global_rate_limiter.should_rate_limit():
+        wait_time = global_rate_limiter.get_wait_time()
+        logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
+        time.sleep(wait_time)
+    
     try:
         if check_termination(competition_id, participant_id):
             return error_response("Participant is not running, termination_reason: {participant.termination_reason}")
         
         data = request.get_json()
         if not data:
-            return error_response("No data provided")
+            return error_response("No JSON data provided", 400)
         
         code = data.get("code")
         language = data.get("language", "cpp")
@@ -502,7 +570,7 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
         )
         
         if not submission:
-            return error_response("Failed to create submission")
+            return error_response("Failed to create submission", 500)
         
         # # Get participant for response
         # participant = data_storage.get_participant(competition_id, participant_id)
@@ -522,7 +590,8 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
         })
     
     except Exception as e:
-        return error_response(f"Failed to process submission: {str(e)}")
+        logger.error(f"Failed to create submission: {e}", exc_info=True)
+        return error_response(f"Failed to create submission: {str(e)}", 500)
 
 @app.route("/api/submissions/list/<competition_id>", methods=["GET"])
 def list_submissions(competition_id: str):
@@ -583,14 +652,20 @@ def get_submission(submission_id: str):
 @app.route("/api/rankings/get/<competition_id>", methods=["GET"])
 def get_rankings(competition_id: str):
     """
-    Get competition rankings sorted by score.
+    Get current competition rankings.
     
     Args:
         competition_id: Competition identifier
         
     Returns:
-        List of participants ranked by score with detailed statistics
+        List of participants ranked by score
     """
+    # 全局频率控制
+    if global_rate_limiter.should_rate_limit():
+        wait_time = global_rate_limiter.get_wait_time()
+        logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
+        time.sleep(wait_time)
+    
     try:
         rankings = data_storage.calculate_competition_rankings(competition_id)
         if not rankings:
@@ -598,7 +673,8 @@ def get_rankings(competition_id: str):
         
         return success_response(rankings)
     except Exception as e:
-        return error_response(f"Failed to get rankings: {str(e)}")
+        logger.error(f"Failed to get rankings: {e}", exc_info=True)
+        return error_response(f"Failed to get rankings: {str(e)}", 500)
 
 
 # API Route for checking OJ status
@@ -777,34 +853,32 @@ def search_textbook():
 @app.route("/api/hints/get/<competition_id>/<participant_id>/<problem_id>", methods=["POST"])
 def get_hint(competition_id: str, participant_id: str, problem_id: str):
     """
-    Get hint for a specific problem.
+    Get a hint for a specific problem.
     
-    This endpoint provides multi-level hints for problems:
-    - Level 1: Basic hint with textbook knowledge (500 tokens)
-    - Level 2: Detailed hint with similar problems (1000 tokens)
-    - Level 3: Comprehensive hint combining both (1500 tokens)
-    
-    Request format:
-    {
-        "hint_level": 1  // 1, 2, or 3
-    }
-    
+    Args:
+        competition_id: Competition identifier
+        participant_id: Participant identifier
+        problem_id: Problem identifier
+        
+    Request Body:
+        hint_level: Level of hint to get (1-3)
+        
     Returns:
-    {
-        "hint_content": "Generated hint content",
-        "hint_level": 1,
-        "tokens_cost": 500,
-        "remaining_tokens": 9500,
-        "problem_id": "problem_001"
-    }
+        Hint content and token usage information
     """
+    # 全局频率控制
+    if global_rate_limiter.should_rate_limit():
+        wait_time = global_rate_limiter.get_wait_time()
+        logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
+        time.sleep(wait_time)
+    
     try:
         if check_termination(competition_id, participant_id):
             return error_response("Participant is not running, termination_reason: {participant.termination_reason}")
 
         data = request.get_json()
         if not data:
-            return error_response("No data provided")
+            return error_response("No JSON data provided", 400)
         
         hint_level = data.get("hint_level", 1)
         
@@ -820,9 +894,8 @@ def get_hint(competition_id: str, participant_id: str, problem_id: str):
     except ValueError as e:
         return error_response(str(e), 404)
     except Exception as e:
-        import traceback
-        error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
-        return error_response(f"Hint request failed: {str(e)} (line {error_line})")
+        logger.error(f"Failed to get hint: {e}", exc_info=True)
+        return error_response(f"Failed to get hint: {str(e)}", 500)
         
 # HTTP request endpoint for GenericAPIAgent
 @app.route("/api/agent/call/<competition_id>/<participant_id>", methods=["POST"])
@@ -833,13 +906,19 @@ def generate_response(competition_id: str, participant_id: str):
     This endpoint directly forwards the received request to the target LLM API
     without any processing, useful for debugging request format issues.
     """
+    # 全局频率控制
+    if global_rate_limiter.should_rate_limit():
+        wait_time = global_rate_limiter.get_wait_time()
+        logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
+        time.sleep(wait_time)
+    
     try:
         if check_termination(competition_id, participant_id):
             return error_response("Participant is not running, termination_reason: {participant.termination_reason}")
         
         data = request.get_json()
         if not data:
-            return error_response("No data provided")
+            return error_response("No JSON data provided", 400)
         
         # print(f"DEBUG: Received request data: {data}")
         # print(f"DEBUG: Competition ID: {competition_id}, Participant ID: {participant_id}, data: {data}")
@@ -864,23 +943,24 @@ def generate_response(competition_id: str, participant_id: str):
 @app.route("/api/stream_agent/call/<competition_id>/<participant_id>", methods=["POST"])
 def stream_generate_response(competition_id: str, participant_id: str):
     """
-    Streaming agent API endpoint for LLM requests.
+    Call the streaming agent with a request.
     
-    This endpoint provides a streaming interface for agent API calls with:
-    - Automatic token tracking and multiplier application
-    - Streaming response processing
-    - Error handling and validation
-    - Participant token management
-    
-    Request format:
-    {
-        "json": {"model": "gpt-3.5-turbo", "messages": [...]},
-        "api_path": "/v1/chat/completions",  // optional, defaults to OpenAI format
-        "timeout": 30.0  // optional
-    }
-    
-    Note: API base URL and key are automatically retrieved from participant configuration.
+    Args:
+        competition_id: Competition identifier
+        participant_id: Participant identifier
+        
+    Request Body:
+        request_data: Data to send to the agent
+        
+    Returns:
+        Streaming agent response
     """
+    # 全局频率控制
+    if global_rate_limiter.should_rate_limit():
+        wait_time = global_rate_limiter.get_wait_time()
+        logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
+        time.sleep(wait_time)
+    
     try:
         if check_termination(competition_id, participant_id):
             return error_response("Participant is not running, termination_reason: {participant.termination_reason}")

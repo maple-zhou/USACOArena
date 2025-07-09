@@ -46,7 +46,7 @@ class Judge:
                 
                 if test_result.status != SubmissionStatus.ACCEPTED:
                     submission.status = test_result.status
-                    logger.error(f"Submission failed on test case {test_case.id} with status {test_result.status}")
+                    logger.critical(f"Submission failed on test case {test_case.id} with status {test_result.status}")
                     break
             else:
                 submission.status = SubmissionStatus.ACCEPTED

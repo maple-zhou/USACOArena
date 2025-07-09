@@ -281,11 +281,11 @@ class CompetitionOrganizer:
                 # Add safety check for participant state
                 participant_state = competitor.get_participant_state()
                 if participant_state:
-                    logger.warning(f"After LLM call:\n LLM_tokens:{participant_state.get('LLM_tokens', 0)}\n hint_tokens:{participant_state.get('hint_tokens', 0)}\n submission_tokens:{participant_state.get('submission_tokens', 0)}\n remaining_tokens:{participant_state.get('remaining_tokens', 0)}\n submission_count:{participant_state.get('submission_count', 0)}\n accepted_count:{participant_state.get('accepted_count', 0)}\n submission_penalty:{participant_state.get('submission_penalty', 0)}\n problem_pass_score:{participant_state.get('problem_pass_score', 0)}\n score:{participant_state.get('score', 0)}\n is_running:{participant_state.get('is_running', True)}\n termination_reason:{participant_state.get('termination_reason', 'unknown')}")
+                    logger.warning(f"After LLM call:\n Name:{participant_state.get('name', 'unknown')}\n LLM_tokens:{participant_state.get('LLM_tokens', 0)}\n hint_tokens:{participant_state.get('hint_tokens', 0)}\n submission_tokens:{participant_state.get('submission_tokens', 0)}\n remaining_tokens:{participant_state.get('remaining_tokens', 0)}\n submission_count:{participant_state.get('submission_count', 0)}\n accepted_count:{participant_state.get('accepted_count', 0)}\n submission_penalty:{participant_state.get('submission_penalty', 0)}\n problem_pass_score:{participant_state.get('problem_pass_score', 0)}\n score:{participant_state.get('score', 0)}\n is_running:{participant_state.get('is_running', True)}\n termination_reason:{participant_state.get('termination_reason', 'unknown')}")
                 else:
                     logger.warning(f"After LLM call: Failed to get participant state for {competitor.name}")
 
-                logger.error(f"Action: {action['action']}")
+                logger.critical(f"Action: {action['action']}")
                 
                 logger.info(f"Competitor {competitor.name} choose the next action: {action['action']}, remaining_tokens: {competitor.remaining_tokens}, score: {competitor.score}")
                 
@@ -296,7 +296,7 @@ class CompetitionOrganizer:
                 # Add safety check for participant state after action
                 participant_state_after = competitor.get_participant_state()
                 if participant_state_after:
-                    logger.warning(f"After action_result:\n LLM_tokens:{participant_state_after.get('LLM_tokens', 0)}\n hint_tokens:{participant_state_after.get('hint_tokens', 0)}\n submission_tokens:{participant_state_after.get('submission_tokens', 0)}\n remaining_tokens:{participant_state_after.get('remaining_tokens', 0)}\n submission_count:{participant_state_after.get('submission_count', 0)}\n accepted_count:{participant_state_after.get('accepted_count', 0)}\n submission_penalty:{participant_state_after.get('submission_penalty', 0)}\n problem_pass_score:{participant_state_after.get('problem_pass_score', 0)}\n score:{participant_state_after.get('score', 0)}\n is_running:{participant_state_after.get('is_running', True)}\n termination_reason:{participant_state_after.get('termination_reason', 'unknown')}")
+                    logger.warning(f"After action_result:\n Name:{participant_state_after.get('name', 'unknown')}\n LLM_tokens:{participant_state_after.get('LLM_tokens', 0)}\n hint_tokens:{participant_state_after.get('hint_tokens', 0)}\n submission_tokens:{participant_state_after.get('submission_tokens', 0)}\n remaining_tokens:{participant_state_after.get('remaining_tokens', 0)}\n submission_count:{participant_state_after.get('submission_count', 0)}\n accepted_count:{participant_state_after.get('accepted_count', 0)}\n submission_penalty:{participant_state_after.get('submission_penalty', 0)}\n problem_pass_score:{participant_state_after.get('problem_pass_score', 0)}\n score:{participant_state_after.get('score', 0)}\n is_running:{participant_state_after.get('is_running', True)}\n termination_reason:{participant_state_after.get('termination_reason', 'unknown')}")
                 else:
                     logger.warning(f"After action_result: Failed to get participant state for {competitor.name}")
 
