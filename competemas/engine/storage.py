@@ -38,12 +38,18 @@ class DuckDBStorage:
             self.backup_dir.mkdir(parents=True, exist_ok=True)
             logger.debug("Created backup directory for JSON files")
         
-        # Initialize DuckDB connection
-        self.conn = duckdb.connect(str(self.db_path))
-        logger.debug("Connected to DuckDB database")
+        # Check if the database file already exists before we establish a connection,
+        # as duckdb.connect() creates the file if it's missing.
+        db_exists = self.db_path.exists()
         
-        # Create schema
-        self._create_schema()
+        # Initialize DuckDB connection management
+        self._thread_local = threading.local()
+        logger.debug("Initialized DuckDB connection manager")
+        
+        # Create schema only if the database is new.
+        if not db_exists:
+            logger.info(f"Database file not found at {self.db_path}, creating new schema.")
+            self._create_schema()
         
         # Initialize problem loader for dynamic test case loading
         # Use lazy import to avoid circular import
@@ -52,11 +58,19 @@ class DuckDBStorage:
         # In-memory cache for objects
         self.competitions_cache: Dict[str, Competition] = {}
         self.submissions_cache: Dict[str, Submission] = {}
+        logger.info("DuckDBStorage initialized")
     
+    def _get_conn(self) -> duckdb.DuckDBPyConnection:
+        """为当前线程获取或创建一个新的数据库连接"""
+        if not hasattr(self._thread_local, 'conn'):
+            self._thread_local.conn = duckdb.connect(str(self.db_path))
+        return self._thread_local.conn
+
     def _create_schema(self) -> None:
         """Create the database schema"""
+        conn = self._get_conn() # 获取当前线程的连接
         # Competitions table
-        self.conn.execute("""
+        conn.execute("""
             CREATE TABLE IF NOT EXISTS competitions (
                 id VARCHAR PRIMARY KEY,
                 title VARCHAR NOT NULL,
@@ -72,7 +86,7 @@ class DuckDBStorage:
         """)
         
         # Problems table (test_cases removed - loaded dynamically from files)
-        self.conn.execute("""
+        conn.execute("""
             CREATE TABLE IF NOT EXISTS problems (
                 id VARCHAR NOT NULL,
                 competition_id VARCHAR NOT NULL,
@@ -89,7 +103,7 @@ class DuckDBStorage:
         """)
         
         # Participants table
-        self.conn.execute("""
+        conn.execute("""
             CREATE TABLE IF NOT EXISTS participants (
                 id VARCHAR PRIMARY KEY,                    -- 参赛者唯一标识符
                 competition_id VARCHAR NOT NULL,           -- 所属竞赛ID
@@ -118,7 +132,7 @@ class DuckDBStorage:
         """)
         
         # Submissions table
-        self.conn.execute("""
+        conn.execute("""
             CREATE TABLE IF NOT EXISTS submissions (
                 id VARCHAR PRIMARY KEY,
                 competition_id VARCHAR NOT NULL,
@@ -139,12 +153,12 @@ class DuckDBStorage:
         """)
         
         # Create indexes for better performance
-        self.conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_competition ON submissions(competition_id)")
-        self.conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_participant ON submissions(participant_id)")
-        self.conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_problem ON submissions(problem_id)")
-        self.conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_status ON submissions(status)")
-        self.conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_submitted_at ON submissions(submitted_at)")
-        self.conn.execute("CREATE INDEX IF NOT EXISTS idx_participants_competition ON participants(competition_id)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_competition ON submissions(competition_id)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_participant ON submissions(participant_id)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_problem ON submissions(problem_id)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_status ON submissions(status)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_submitted_at ON submissions(submitted_at)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_participants_competition ON participants(competition_id)")
     
     def _backup_to_json(self, table_name: str, data: Dict) -> None:
         """Backup data to JSON for reliability"""
@@ -182,7 +196,8 @@ class DuckDBStorage:
         )
         
         # Insert into database
-        self.conn.execute("""
+        conn = self._get_conn()
+        conn.execute("""
             INSERT INTO competitions 
             (id, title, description, start_time, end_time, max_tokens_per_participant, rules, is_active, participant_count, problem_count)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -194,7 +209,7 @@ class DuckDBStorage:
         
         # Insert problems
         for problem in problems:
-            self.conn.execute("""
+            conn.execute("""
                 INSERT INTO problems 
                 (id, competition_id, title, description, level, time_limit_ms, memory_limit_mb, 
                  sample_cases)
@@ -213,8 +228,9 @@ class DuckDBStorage:
     
     def get_competition(self, competition_id: str) -> Optional[Competition]:
         """Get competition by ID"""
+        conn = self._get_conn()
         # Query competition from database
-        comp_result = self.conn.execute("""
+        comp_result = conn.execute("""
             SELECT * FROM competitions WHERE id = ?
         """, [competition_id]).fetchone()
         
@@ -337,12 +353,13 @@ class DuckDBStorage:
       
     def list_competitions(self, active_only: bool = False) -> List[Competition]:
         """List all competitions"""
+        conn = self._get_conn()
         if active_only:
-            results = self.conn.execute("""
+            results = conn.execute("""
                 SELECT id FROM competitions WHERE is_active = true
             """).fetchall()
         else:
-            results = self.conn.execute("""
+            results = conn.execute("""
                 SELECT id FROM competitions
             """).fetchall()
         
@@ -402,7 +419,8 @@ class DuckDBStorage:
         )
         
         # Insert into database
-        self.conn.execute("""
+        conn = self._get_conn()
+        conn.execute("""
             INSERT INTO participants 
             (id, competition_id, name, api_base_url, api_key, 
             LLM_tokens, hint_tokens, submission_tokens, limit_tokens, remaining_tokens, lambda_value,
@@ -415,7 +433,7 @@ class DuckDBStorage:
         ])
         
         # Update competition participant count
-        self.conn.execute("""
+        conn.execute("""
             UPDATE competitions 
             SET participant_count = participant_count + 1 
             WHERE id = ?
@@ -437,7 +455,8 @@ class DuckDBStorage:
         """Get a participant by ID"""
         self.update_participant_score(competition_id, participant_id)
         
-        result = self.conn.execute("""
+        conn = self._get_conn()
+        result = conn.execute("""
             SELECT * FROM participants WHERE competition_id = ? AND id = ?
         """, [competition_id, participant_id]).fetchone()
         
@@ -499,7 +518,8 @@ class DuckDBStorage:
 
     def list_participants(self, competition_id: str) -> List[Participant]:
         """List all participants in a competition"""
-        results = self.conn.execute("""
+        conn = self._get_conn()
+        results = conn.execute("""
             SELECT id FROM participants WHERE competition_id = ?
         """, [competition_id]).fetchall()
         
@@ -514,7 +534,8 @@ class DuckDBStorage:
     
     def update_participant_running_status(self, competition_id: str, participant_id: str, is_running: bool) -> None:
         """Update participant's running status"""
-        self.conn.execute("""
+        conn = self._get_conn()
+        conn.execute("""
             UPDATE participants 
             SET is_running = ?
             WHERE competition_id = ? AND id = ?
@@ -522,14 +543,6 @@ class DuckDBStorage:
 
     def update_participant_score(self, competition_id: str, participant_id: str) -> None:
         """Update participant's score"""
-        # result = self.conn.execute("""
-        #     SELECT * FROM participants WHERE competition_id = ? AND id = ?
-        # """, [competition_id, participant_id]).fetchone()
-        
-        # logger.critical(f"[DUCKDB_STORAGE] result: {result}")
-        
-        # score = result[14] - result[13] + result[10] * result[9] / result[8]
-        
         self.conn.execute("""
             UPDATE participants 
             SET score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens / limit_tokens
@@ -538,7 +551,8 @@ class DuckDBStorage:
 
     def get_problem(self, competition_id: str, problem_id: str) -> Optional[Problem]:
         """Get a problem by ID"""
-        result = self.conn.execute("""
+        conn = self._get_conn()
+        result = conn.execute("""
             SELECT * FROM problems WHERE competition_id = ? AND id = ?
         """, [competition_id, problem_id]).fetchone()
         
@@ -598,7 +612,8 @@ class DuckDBStorage:
     
     def list_problems(self, competition_id: str) -> List[Problem]:
         """List all problems in a competition"""
-        results = self.conn.execute("""
+        conn = self._get_conn()
+        results = conn.execute("""
             SELECT id FROM problems WHERE competition_id = ?
         """, [competition_id]).fetchall()
         
@@ -614,7 +629,8 @@ class DuckDBStorage:
 
     def _update_problem_first_to_solve(self, competition_id: str, problem_id: str, participant_id: str) -> None:
         """Update problem's first_to_solve in database"""
-        self.conn.execute("""
+        conn = self._get_conn()
+        conn.execute("""
             UPDATE problems 
             SET first_to_solve = ? 
             WHERE competition_id = ? AND id = ?
@@ -663,7 +679,8 @@ class DuckDBStorage:
             self._update_problem_first_to_solve(competition_id, problem_id, participant_id)
         
         # Insert submission into database
-        self.conn.execute("""
+        conn = self._get_conn()
+        conn.execute("""
             INSERT INTO submissions 
             (id, competition_id, participant_id, problem_id, code, language, 
              submitted_at, status, pass_score, penalty, submission_tokens, test_results)
@@ -678,7 +695,7 @@ class DuckDBStorage:
         # logger.error(f"submission: {submission.to_dict()}")
         
         # Get current best score for this problem
-        current_best_score_result = self.conn.execute("""
+        current_best_score_result = conn.execute("""
             SELECT MAX(pass_score) FROM submissions 
             WHERE competition_id = ? AND participant_id = ? AND problem_id = ?
         """, [competition_id, participant_id, problem_id]).fetchone()
@@ -689,14 +706,14 @@ class DuckDBStorage:
         # Only update problem_pass_score if new score is higher
         
         if submission.pass_score >= current_best_score:
-            new_problem_pass_score = submission.pass_score 
+            new_problem_pass_score = submission.pass_score
         else:
             new_problem_pass_score = current_best_score
         
         # logger.error(f"new_problem_pass_score: {new_problem_pass_score}")
         
         # Update participant statistics
-        self.conn.execute("""
+        conn.execute("""
             UPDATE participants 
             SET submission_tokens = submission_tokens + ?,
                 remaining_tokens = remaining_tokens - ?,
@@ -715,7 +732,7 @@ class DuckDBStorage:
             participant_id
         ])
         
-        new_remaining_tokens = self.conn.execute("""
+        new_remaining_tokens = conn.execute("""
             SELECT remaining_tokens FROM participants WHERE competition_id = ? AND id = ?
         """, [competition_id, participant_id]).fetchone()
         
@@ -779,6 +796,7 @@ class DuckDBStorage:
         problem_id: Optional[str] = None
     ) -> List[Submission]:
         """List submissions with optional filters"""
+        conn = self._get_conn()
         where_conditions = []
         params = []
         
@@ -798,7 +816,7 @@ class DuckDBStorage:
         if where_conditions:
             query += " WHERE " + " AND ".join(where_conditions)
         
-        results = self.conn.execute(query, params).fetchall()
+        results = conn.execute(query, params).fetchall()
         
         submissions = []
         for result in results:
@@ -815,7 +833,8 @@ class DuckDBStorage:
         #     return self.submissions_cache[submission_id]
         
         # Query from database
-        result = self.conn.execute("""
+        conn = self._get_conn()
+        result = conn.execute("""
             SELECT * FROM submissions WHERE id = ?
         """, [submission_id]).fetchone()
         
@@ -893,16 +912,17 @@ class DuckDBStorage:
     # Analytics and Reporting Methods
     def calculate_competition_rankings(self, competition_id: str) -> List[Dict]:
         """Get competition rankings using SQL"""
+        conn = self._get_conn()
         # First, update all participants' scores based on the formula:
         # score = problem_pass_score - submission_penalty + lambda_value * max(0, remaining_tokens)
-        self.conn.execute("""
+        conn.execute("""
             UPDATE participants 
             SET score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens / limit_tokens
             WHERE competition_id = ?
         """, [competition_id])
         
         # Then, get rankings based on updated scores
-        return self.conn.execute("""
+        return conn.execute("""
             SELECT 
                 p.name,
                 p.score,
@@ -922,7 +942,8 @@ class DuckDBStorage:
     
     def get_submission_statistics(self, competition_id: str) -> Dict:
         """Get detailed submission statistics"""
-        stats = self.conn.execute("""
+        conn = self._get_conn()
+        stats = conn.execute("""
             SELECT 
                 COUNT(*) as total_submissions,
                 COUNT(DISTINCT participant_id) as unique_participants,
@@ -944,15 +965,16 @@ class DuckDBStorage:
     
     def export_competition_data(self, competition_id: str, format: str = "json") -> Union[str, Dict]:
         """Export competition data in various formats"""
+        conn = self._get_conn()
         if format.lower() == "csv":
             # Export to CSV files
-            self.conn.execute(f"""
+            conn.execute(f"""
                 COPY (
                     SELECT * FROM competitions WHERE id = '{competition_id}'
                 ) TO 'competition_{competition_id}.csv' WITH (HEADER, DELIMITER ',')
             """)
             
-            self.conn.execute(f"""
+            conn.execute(f"""
                 COPY (
                     SELECT * FROM submissions WHERE competition_id = '{competition_id}'
                 ) TO 'submissions_{competition_id}.csv' WITH (HEADER, DELIMITER ',')
@@ -962,7 +984,7 @@ class DuckDBStorage:
         
         elif format.lower() == "parquet":
             # Export to Parquet (columnar format)
-            self.conn.execute(f"""
+            conn.execute(f"""
                 COPY (
                     SELECT * FROM submissions WHERE competition_id = '{competition_id}'
                 ) TO 'submissions_{competition_id}.parquet'
@@ -982,11 +1004,15 @@ class DuckDBStorage:
     
     def close(self) -> None:
         """Close database connection"""
-        if self.conn:
-            self.conn.close()
+        if hasattr(self._thread_local, 'conn'):
+            self._thread_local.conn.close()
     
-    def __del__(self):
-        """Cleanup on deletion"""
+    def __enter__(self):
+        """进入上下文管理器时调用"""
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """退出上下文管理器时调用，确保关闭连接"""
         self.close()
     
     # JSONDataStorage compatibility methods
@@ -1004,17 +1030,18 @@ class DuckDBStorage:
     
     def get_storage_info(self) -> Dict[str, Any]:
         """Get storage system information"""
+        conn = self._get_conn()
         # Get database size
         db_size = self.db_path.stat().st_size if self.db_path.exists() else 0
         
         # Get counts
-        comp_result = self.conn.execute("SELECT COUNT(*) FROM competitions").fetchone()
+        comp_result = conn.execute("SELECT COUNT(*) FROM competitions").fetchone()
         comp_count = comp_result[0] if comp_result else 0
         
-        sub_result = self.conn.execute("SELECT COUNT(*) FROM submissions").fetchone()
+        sub_result = conn.execute("SELECT COUNT(*) FROM submissions").fetchone()
         sub_count = sub_result[0] if sub_result else 0
         
-        part_result = self.conn.execute("SELECT COUNT(*) FROM participants").fetchone()
+        part_result = conn.execute("SELECT COUNT(*) FROM participants").fetchone()
         part_count = part_result[0] if part_result else 0
         
         return {
@@ -1167,13 +1194,14 @@ class DuckDBStorage:
         # new_remaining_tokens = max(0, participant.remaining_tokens - llm_tokens)
         
         # Update database
-        self.conn.execute("""
+        conn = self._get_conn()
+        conn.execute("""
             UPDATE participants 
             SET LLM_tokens = LLM_tokens + ?, remaining_tokens = remaining_tokens - ?   
             WHERE competition_id = ? AND id = ?
         """, [llm_tokens, llm_tokens, competition_id, participant_id])
         
-        new_remaining_tokens = self.conn.execute("""
+        new_remaining_tokens = conn.execute("""
             SELECT remaining_tokens FROM participants WHERE competition_id = ? AND id = ?
         """, [competition_id, participant_id]).fetchone()
         
@@ -1318,7 +1346,8 @@ class DuckDBStorage:
         new_remaining_tokens = max(0, participant.remaining_tokens - llm_tokens)
         
         # Update database
-        self.conn.execute("""
+        conn = self._get_conn()
+        conn.execute("""
             UPDATE participants 
             SET LLM_tokens = ?, remaining_tokens = remaining_tokens - ?   
             WHERE competition_id = ? AND id = ?
@@ -1389,7 +1418,8 @@ class DuckDBStorage:
         new_remaining_tokens = participant.remaining_tokens - hint_cost
         
         # Update database
-        self.conn.execute("""
+        conn = self._get_conn()
+        conn.execute("""
             UPDATE participants 
             SET hint_tokens = hint_tokens + ?, remaining_tokens = ?
             WHERE competition_id = ? AND id = ?
@@ -1647,14 +1677,15 @@ class DuckDBStorage:
             raise ValueError(f"Participant with ID {participant_id} not found in competition {competition_id}")
         
         # Update participant status in database
-        self.conn.execute("""
+        conn = self._get_conn()
+        conn.execute("""
             UPDATE participants 
             SET is_running = ?, termination_reason = ?
             WHERE competition_id = ? AND id = ?
         """, [False, reason, competition_id, participant_id])
 
         # Update competition status
-        self.conn.execute("""
+        conn.execute("""
             UPDATE competitions 
             SET participant_count = participant_count - 1
             WHERE id = ?
