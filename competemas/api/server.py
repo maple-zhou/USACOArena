@@ -9,7 +9,7 @@ import os
 from flask import Flask, Response, jsonify, request
 from rank_bm25 import BM25Okapi
 
-from ..engine.agent_interface import AgentRequest, AgentResponse, TokenUsage
+# AgentRequest, AgentResponse, TokenUsage classes were removed with agent_interface.py
 from ..engine.storage import DuckDBStorage
 from ..models.models import (Case, Competition, Level, Participant, Problem, Submission, SubmissionStatus, generate_id)
 from ..utils.problem_loader import USACOProblemLoader

@@ -6,7 +6,6 @@ and participate in programming competitions. The agents handle conversation mana
 API requests, response parsing, and action execution.
 
 Main Components:
-- Agent: Abstract base class defining the agent interface
 - GenericAPIAgent: Generic agent that can work with any LLM API
 - StreamingGenericAPIAgent: Agent with streaming support for real-time responses
 
@@ -18,218 +17,19 @@ The agents support:
 - Response parsing and action extraction
 """
 
-from cgitb import reset
 import json
 import asyncio
 import requests
 import traceback
-from typing import Dict, List, Optional, Any
-from abc import ABC, abstractmethod
-import os
 import time
+from typing import Dict, List, Optional, Any
+import os
+from datetime import datetime
 
-from scripts.prompts.custom_prompts import PromptSystem, ActionParser
-from competemas.utils.conversation_logger import ConversationLogger
-from competemas.engine.agent_interface import AgentInterface
+from competemas.models.agent import Agent
 from competemas.utils.logger_config import get_logger
 
 logger = get_logger("llm_agents")
-
-
-class Agent(AgentInterface, ABC):
-    """
-    Abstract base class for LLM agents in programming competitions.
-    
-    This class provides the foundation for all agent implementations, handling:
-    - Conversation history management
-    - Prompt generation and response parsing
-    - Logging and session management
-    - API configuration loading
-    
-    Subclasses must implement the generate_response method to handle
-    communication with specific LLM providers.
-    """
-    
-    def __init__(
-        self,
-        name: str,
-        prompt_config_path: Optional[str] = None,
-        log_dir: str = "logs",
-        session_id: Optional[str] = None
-    ):
-        """
-        Initialize the agent with basic configuration.
-        
-        Args:
-            name: Unique identifier for this agent
-            prompt_config_path: Path to JSON file containing prompt templates
-            log_dir: Directory for storing conversation logs
-            session_id: Optional session identifier for tracking conversations
-        """
-        self._name = name
-        self.conversation_history: List[Dict] = []  # Stores conversation messages
-        self.prompt_system = PromptSystem(prompt_config_path)  # Handles prompt generation
-        self.action_parser = ActionParser(prompt_config_path)  # Parses LLM responses into actions
-        self.logger = ConversationLogger(log_dir)  # Manages conversation logging
-        self.session_id = session_id  # Session tracking for conversation continuity
-        self._api_base_url = ""
-        self._api_key = ""
-        
-        # Load API configuration from configuration file
-        self.max_retries, self.retry_delay = self._load_api_config()
-    
-    @property
-    def name(self) -> str:
-        """Get the agent name"""
-        return self._name
-    
-    @name.setter 
-    def name(self, value: str) -> None:
-        """Set the agent name"""
-        self._name = value
-    
-    @property
-    def api_base_url(self) -> str:
-        """Get the agent's API base URL"""
-        return self._api_base_url
-    
-    @api_base_url.setter
-    def api_base_url(self, value: str) -> None:
-        """Set the agent's API base URL"""
-        self._api_base_url = value
-    
-    @property
-    def api_key(self) -> str:
-        """Get the agent's API key"""
-        return self._api_key
-    
-    @api_key.setter
-    def api_key(self, value: str) -> None:
-        """Set the agent's API key"""
-        self._api_key = value
-    
-    def _load_api_config(self) -> tuple[int, int]:
-        """Load API configuration from configuration file"""
-        try:
-            with open('config/competition_config.json', 'r') as f:
-                config = json.load(f)
-                api_config = config.get('api_config', {})
-                return (
-                    api_config.get('max_retries', 20),
-                    api_config.get('retry_delay', 10)
-                )
-        except Exception as e:
-            logger.warning(f"Unable to load configuration file, using default values: {e}")
-            return 20, 10
-    
-    def truncate_conversation_history(self, max_turns: int = 10) -> None:
-        """
-        Truncate conversation history to prevent context length overflow.
-        
-        Keeps the system prompt (if exists) and the most recent conversation turns
-        to stay within token limits while maintaining conversation context.
-        
-        Args:
-            max_turns: Maximum number of user/assistant conversation pairs to keep
-        """
-        # If history is already short enough, no truncation needed
-        if len(self.conversation_history) <= max_turns * 2 + 1:  # +1 for system prompt
-            return
-            
-        # Preserve the system prompt if it exists at the beginning
-        system_prompt = None
-        if self.conversation_history and self.conversation_history[0]["role"] == "system":
-            system_prompt = self.conversation_history[0]
-            
-        # Keep only the latest max_turns pairs of user/assistant messages
-        # This ensures we don't exceed the context window while maintaining recent context
-        self.conversation_history = self.conversation_history[-(max_turns * 2):]
-        
-        # Restore the system prompt at the beginning if it existed
-        if system_prompt:
-            self.conversation_history.insert(0, system_prompt)
-    
-    @abstractmethod
-    async def generate_response(self, state: Dict, prompt: str) -> str:
-        """Generate a response from the MAS"""
-        pass
-    
-    def add_to_conversation(self, role: str, content: str) -> None:
-        """Add a message to the conversation history"""
-        self.conversation_history.append({"role": role, "content": content})
-    
-    def get_conversation_history(self) -> List[Dict]:
-        """Get the conversation history"""
-        return self.conversation_history
-    
-    def save_conversation(self, metadata: Optional[Dict] = None) -> str:
-        """Save the current conversation history"""
-        return self.logger.save_conversation(
-            self.name,
-            self.conversation_history,
-            self.session_id,
-            metadata
-        )
-    
-    async def process(self, state: Dict) -> Dict:
-        """
-        Process the current competition state and generate the next action.
-        
-        This is the main method that orchestrates the agent's decision-making process:
-        1. Create a prompt based on the current competition state
-        2. Initialize system prompt if this is the first interaction
-        3. Manage conversation history to stay within context limits
-        4. Generate a response from the LLM
-        5. Parse the response into a structured action
-        6. Track token usage for billing and limits
-        
-        Args:
-            state: Dictionary containing the current competition state, including:
-                   - competition details
-                   - available problems
-                   - participant status
-                   - rankings
-                   - last action result
-        
-        Returns:
-            Dictionary containing the next action to take, with fields:
-            - action: The action type (e.g., "VIEW_PROBLEM", "submission_SOLUTION")
-            - parameters: Action-specific parameters
-            - tokens_used: Tuple of (prompt_tokens, completion_tokens)
-        """
-        # Create contextual prompt using the current competition state
-        prompt = self.prompt_system.create_prompt(state)
-        # logger.warning(f"Agent:{self.name}, Prompt: {prompt}")
-        
-        # Initialize system prompt on first interaction to establish agent behavior
-        if not self.conversation_history:
-            system_prompt = self.prompt_system.config.get("system_prompt", "")
-            self.add_to_conversation("system", system_prompt)
-        
-        # Truncate conversation history to prevent context length overflow
-        # This maintains recent context while staying within token limits
-        self.truncate_conversation_history()
-        
-        
-        # Generate response from the LLM using the current state and prompt
-        response = await self.generate_response(state, prompt)
-        logger.warning(f"Agent:{self.name}, Response: {response}")
-        # logger.error(f"0000000response: {response}")
-        # Parse the LLM response into a structured action that the competition system can execute
-        action = self.action_parser.parse_action(response)
-        # print(f"action: {action}")
-        # action: {'action': 'VIEW_PROBLEM', 'parameters': {'problem_id': '1323_bronze_feb'}}
-    
-        # action["tokens_used"] = tokens_used  # Track token usage for billing and limits
-        
-        # Optional: Save conversation for debugging and analysis
-        # Uncomment the following lines to enable conversation logging
-        # self.save_conversation({
-        #     "state": state,
-        #     "action": action
-        # })
-        
-        return action
 
 
 class GenericAPIAgent(Agent):
@@ -286,8 +86,8 @@ class GenericAPIAgent(Agent):
         """
         super().__init__(name, prompt_config_path, log_dir, session_id)
         self.model_id = model_id
-        self.api_base_url = api_base_url.rstrip('/')
-        self.api_key = api_key
+        self._api_base_url = api_base_url.rstrip('/')
+        self._api_key = api_key
         self.request_timeout = request_timeout
         
         # Default request format
@@ -310,6 +110,37 @@ class GenericAPIAgent(Agent):
             "response_path": "choices[0].message.content",
             "error_path": "error.message"
         }
+    
+    @property
+    def name(self) -> str:
+        """Get the agent name"""
+        return self._name
+    
+    @property
+    def api_base_url(self) -> str:
+        """Get the API base URL"""
+        return self._api_base_url
+    
+    @property
+    def api_key(self) -> str:
+        """Get the API key"""
+        return self._api_key
+    
+    async def process(self, state: Dict[str, Any]) -> Dict[str, Any]:
+        """Process the current state and return actions"""
+        if not self.prompt_system or not self.action_parser:
+            raise RuntimeError("PromptSystem and ActionParser must be initialized with prompt_config_path")
+        # Generate prompt based on current state
+        prompt = self.prompt_system.create_prompt(state)
+        
+        # Generate response from LLM
+        response_text = await self.generate_response(state, prompt)
+        logger.critical(f"\nNAME: {self.name}, response_text: {response_text}\n")
+        
+        # Parse action from response
+        action = self.action_parser.parse_action(response_text)
+        
+        return action
     
     def _get_value_from_path(self, data: Dict, path: str) -> Any:
         """Extract value from nested dictionary using dot notation path"""
@@ -381,13 +212,11 @@ class GenericAPIAgent(Agent):
 
                 # logger.error(f"LLM response: {response.json()}")
 
-
                 # print(f"LLMresponse: {response.json()}")
                 # Get the first element from the array response
                 result_array = response.json()
                 result = result_array[0]  # Extract the actual response object from the array
 
-                
                 # print("\ngenerate_response result: ", result)
                 response_text = self._get_value_from_path(result, self.response_format["response_path"])
 
@@ -397,7 +226,6 @@ class GenericAPIAgent(Agent):
                 # completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
                 # reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
                 # completion_tokens += reasoning_tokens
-                
 
                 # Add assistant response to conversation history
                 self.add_to_conversation("assistant", response_text)
@@ -482,8 +310,8 @@ class StreamingGenericAPIAgent(Agent):
         """
         super().__init__(name, prompt_config_path, log_dir, session_id)
         self.model_id = model_id
-        self.api_base_url = api_base_url.rstrip('/')
-        self.api_key = api_key
+        self._api_base_url = api_base_url.rstrip('/')
+        self._api_key = api_key
         self.request_timeout = request_timeout
         
         # Default request format with streaming enabled
@@ -506,11 +334,40 @@ class StreamingGenericAPIAgent(Agent):
             }
         }
         
-        # Default response format
+        # Default response format for streaming
         self.response_format = response_format or {
             "response_path": "choices[0].message.content",
-            "error_path": "error.message"
+            "error_path": "error.message",
+            "reasoning_path": "choices[0].message.reasoning",
+            "usage_path": "usage"
         }
+    
+    @property
+    def name(self) -> str:
+        """Get the agent name"""
+        return self._name
+    
+    @property
+    def api_base_url(self) -> str:
+        """Get the API base URL"""
+        return self._api_base_url
+    
+    @property
+    def api_key(self) -> str:
+        """Get the API key"""
+        return self._api_key
+    
+    async def process(self, state: Dict[str, Any]) -> Dict[str, Any]:
+        """Process the current state and return actions"""
+        if not self.prompt_system or not self.action_parser:
+            raise RuntimeError("PromptSystem and ActionParser must be initialized with prompt_config_path")
+        # Generate prompt based on current state
+        prompt = self.prompt_system.create_prompt(state)
+        # Generate response from LLM (returns content, (prompt_tokens, completion_tokens))
+        content, _ = await self.generate_response(state, prompt)
+        # Parse action from response content
+        action = self.action_parser.parse_action(content)
+        return action
     
     def _get_value_from_path(self, data: Dict, path: str) -> Any:
         """Extract value from nested dictionary using dot notation path"""
@@ -531,17 +388,19 @@ class StreamingGenericAPIAgent(Agent):
         return current
     
     async def generate_response(self, state: Dict, prompt: str) -> tuple[str, tuple[int, int]]:
-        """Generate a response using the configured API with streaming support"""
-        response = None
+        """Generate a streaming response using the configured API"""
         # Add user message to conversation history
         self.add_to_conversation("user", prompt)
         self.save_conversation()
+        
         for _ in range(self.max_retries):
             try:
+                competition_id = state.get('competitor_state', {}).get('competition_id')
+                participant_id = state.get('competitor_state', {}).get('id')
                 
-                # Prepare request URL
-                url = f"{self.api_base_url}{self.request_format['url']}"
-                # print(f"StreamingGenericAPIAgent,url: {url}")
+                # Prepare request URL for streaming
+                url = f"http://localhost:5000/api/stream_agent/call/{competition_id}/{participant_id}"
+                
                 # Prepare request headers
                 headers = {
                     k: v.format(api_key=self.api_key)
@@ -550,121 +409,51 @@ class StreamingGenericAPIAgent(Agent):
                 
                 # Prepare request body
                 body = self.request_format['body_template'].copy()
-                # Format the template values
                 formatted_body = {}
                 for key, value in body.items():
                     if isinstance(value, str):
-                        # If the value is a template string, format it
                         formatted_body[key] = value.format(
                             messages=json.dumps(self.conversation_history),
                             model_id=self.model_id
                         )
                     else:
-                        # If the value is not a string (e.g., temperature), keep it as is
                         formatted_body[key] = value
                 
                 # Parse the formatted messages back to JSON
                 if "messages" in formatted_body:
                     formatted_body["messages"] = json.loads(formatted_body["messages"])
-                
-                # # Make the streaming request
-                # response = await asyncio.to_thread(
-                #     requests.post,
-                #     url=url,
-                #     headers=headers,
-                #     json=formatted_body,
-                #     stream=True,
-                #     timeout=self.request_timeout
-                # )
 
+                # Make the streaming request
                 response = await asyncio.to_thread(
-                    requests.post,
-                    url=f"http://localhost:5000/api/agent/{state.get('competition_id')}/{state.get('participant_id')}/request",
-                    json={
-                        "method": self.request_format['method'],
-                        "url": url,
-                        "headers": headers,
-                        "json": formatted_body,
-                        "stream": True,
-                        "timeout": self.request_timeout,
-                        "response_format": self.response_format,
-                    }
+                    requests.request,
+                    method=self.request_format['method'],
+                    url=url,
+                    headers=headers,
+                    json=formatted_body,
+                    timeout=self.request_timeout
                 )
-
                 response.raise_for_status()
-                
-                # # Process streaming response
-                # reasoning_content = ""
-                # content = ""
-                # usage_info = None
-                
-                # for line in response.iter_lines():
-                #     if line:
-                #         # Skip "data: " prefix
-                #         if line.startswith(b"data: "):
-                #             line = line[6:]
-                        
-                #         # Skip heartbeat message
-                #         if line == b"[DONE]":
-                #             break
-                        
-                #         try:
-                #             # Parse JSON data
-                #             chunk = json.loads(line.decode('utf-8'))
-                            
-                #             # Check for usage information
-                #             if "usage" in chunk:
-                #                 usage_info = chunk["usage"]
-                            
-                #             # Extract reasoning_content and content
-                #             if "choices" in chunk and len(chunk["choices"]) > 0:
-                #                 delta = chunk["choices"][0].get("delta", {})
-                #                 if "reasoning_content" in delta and delta["reasoning_content"]:
-                #                     reasoning_content += delta["reasoning_content"]
-                #                 elif "content" in delta and delta["content"] is not None:
-                #                     content += delta["content"]
-                #         except json.JSONDecodeError:
-                #             continue
 
-                # Parse response similar to GenericAPIAgent  
+                # Parse streaming response
                 result_array = response.json()
-                result = result_array[0]  # Extract the actual response object from the array
                 
-                # Extract response text using configured path
-                response_text = self._get_value_from_path(result, self.response_format["response_path"])
-                
-                # Extract token usage information
-                prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
-                completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
-                reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
-                completion_tokens += reasoning_tokens
+                # Extract components from the array response
+                reasoning_content = result_array[0] if len(result_array) > 0 else ""
+                content = result_array[1] if len(result_array) > 1 else ""
+                usage_info = result_array[2] if len(result_array) > 2 else {}
+                prompt_tokens = result_array[3] if len(result_array) > 3 else 0
+                completion_tokens = result_array[4] if len(result_array) > 4 else 0
 
                 # Add assistant response to conversation history
-                self.add_to_conversation("assistant", response_text)
+                self.add_to_conversation("assistant", content)
                 self.save_conversation()
                 self.conversation_history.pop()
-
-                action = self.action_parser.parse_action(response_text)
                 
-                return response_text, (prompt_tokens, completion_tokens)
-            
-            except ValueError as e:
-                if response:
-                    error_message = f"Error: {response.json()}"
-                    if response.status_code == 429:
-                        logger.error(f"Rate limit exceeded.")
-                        time.sleep(self.retry_delay*2)
-                else:
-                    error_message = f"Error: {str(e)}"
+                return content, (prompt_tokens, completion_tokens)
                 
-                # Print detailed traceback information
-                # traceback_str = traceback.format_exc()
-                # print(f"\n=== DETAILED ERROR TRACEBACK for {self.name} (Try {_ + 1}) ===")
-                # print(f"Error Message: {error_message}")
-                # print(f"Full Traceback:\n{traceback_str}")
-                # print("=" * 60)
-                
-                logger.error(f"Try {_ + 1} Error generating response with {self.name}: {error_message}")
+            except Exception as e:
+                error_message = f"Error: {str(e)}"
+                logger.error(f"Try {_ + 1} Error generating streaming response with {self.name}: {error_message}")
                 time.sleep(self.retry_delay)
         
-        raise Exception(error_message)
+        raise Exception(f"Failed to generate streaming response after {self.max_retries} attempts")

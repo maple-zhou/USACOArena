@@ -6,7 +6,7 @@ import argparse
 from datetime import datetime, timedelta
 from typing import Dict, List
 
-from scripts.agents.custom_agents import GenericAPIAgent, StreamingGenericAPIAgent
+from scripts.agents.single_agent import GenericAPIAgent, StreamingGenericAPIAgent
 from scripts.competition_organizer import CompetitionOrganizer
 from competemas.engine.competition import Competitor
 from competemas.utils.logger_config import setup_logging, get_logger
@@ -80,19 +80,19 @@ def create_competitors(competitors_config: Dict, competition_config: Dict) -> Li
     
     # Create competitors based on their type
     for competitor in competitors_config["competitors"]:
-        if competitor["type"] == "streaming":
-            agent = StreamingGenericAPIAgent(
-                name=competitor["name"],
-                model_id=competitor["model_id"],
-                api_base_url=competitor["api_base_url"],
-                api_key=competitor["api_key"],
-                prompt_config_path=competitor.get("prompt_config_path"),
-                log_dir=f"logs/{competitor['name']}",
-                session_id=datetime.now().strftime("%Y%m%d_%H%M%S"),
-                request_format=competitor.get("request_format"),
-                response_format=competitor.get("response_format"),
-            )
-        elif competitor["type"] == "generic":
+        # if competitor["type"] == "streaming":
+        #     agent = StreamingGenericAPIAgent(
+        #         name=competitor["name"],
+        #         model_id=competitor["model_id"],
+        #         api_base_url=competitor["api_base_url"],
+        #         api_key=competitor["api_key"],
+        #         prompt_config_path=competitor.get("prompt_config_path"),
+        #         log_dir=f"logs/{competitor['name']}",
+        #         session_id=datetime.now().strftime("%Y%m%d_%H%M%S"),
+        #         request_format=competitor.get("request_format"),
+        #         response_format=competitor.get("response_format"),
+        #     )
+        if competitor["type"] == "generic":
             agent = GenericAPIAgent(
                 name=competitor["name"],
                 model_id=competitor["model_id"],

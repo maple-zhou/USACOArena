@@ -12,11 +12,11 @@ from .models.models import (
 from .engine.storage import DuckDBStorage
 from .engine.judge import Judge
 from .engine.competition import Competitor
-from .engine.agent_interface import AgentInterface
+# from .engine.agent_interface import AgentInterface
 
 __version__ = "0.2.0"
 __all__ = [
     "Competition", "Participant", "Problem", "Submission", "Case", "TestResult",
     "SubmissionStatus", "Level", "generate_id",
-    "DuckDBStorage", "Judge", "AgentInterface", "Competitor"
+    "DuckDBStorage", "Judge", "Competitor"
 ] 

@@ -679,8 +679,68 @@ class DuckDBStorage:
             # Update problem's first_to_solve in database
             self._update_problem_first_to_solve(competition_id, problem_id, participant_id)
         
+        logger.error(f"333333submission: {submission.pass_score}")
         # Insert submission into database
         conn = self._get_conn()
+        
+        
+        # logger.error(f"submission: {submission.to_dict()}")
+        
+        # Get current best score for this problem
+        current_best_score_result = conn.execute("""
+            SELECT MAX(pass_score) FROM submissions 
+            WHERE competition_id = ? AND participant_id = ? AND problem_id = ?
+        """, [competition_id, participant_id, problem_id]).fetchone()
+        logger.error(f"00000current_best_score_result: {current_best_score_result}")
+        
+        if current_best_score_result is None:
+            # 如果当前没有提交过，则直接加上当前提交的分数
+            add_problem_pass_score = submission.pass_score
+        else:
+            current_best_score = current_best_score_result[0] if current_best_score_result[0] else 0
+            # 如果当前提交的分数大于当前最佳分数，则加上当前提交的分数与当前最佳分数的差值
+            if submission.pass_score >= current_best_score:
+                add_problem_pass_score = submission.pass_score - current_best_score
+                logger.error(f"1111111add_problem_pass_score: {add_problem_pass_score}")
+            else:
+                add_problem_pass_score = 0
+        logger.error(f"222222add_problem_pass_score: {add_problem_pass_score}")
+
+        # Only update problem_pass_score if new score is higher
+        
+        # if submission.pass_score >= current_best_score:
+        #     add_problem_pass_score = submission.pass_score
+        # else:
+        #     add_problem_pass_score = current_best_score
+        
+        # logger.error(f"11111new_problem_pass_score: {add_problem_pass_score}")
+        
+        # Update participant statistics
+
+        
+        conn.execute("""
+            UPDATE participants 
+            SET submission_tokens = submission_tokens + ?,
+                remaining_tokens = remaining_tokens - ?,
+                submission_count = submission_count + 1,
+                accepted_count = accepted_count + ?,
+                submission_penalty = submission_penalty + ?,
+                problem_pass_score = problem_pass_score + ?
+            WHERE competition_id = ? AND id = ?
+        """, [
+            submission.submission_tokens, 
+            submission.submission_tokens, 
+            1 if submission.status == SubmissionStatus.ACCEPTED else 0,
+            submission.penalty, 
+            add_problem_pass_score, 
+            competition_id, 
+            participant_id
+        ])
+        
+        new_remaining_tokens = conn.execute("""
+            SELECT remaining_tokens FROM participants WHERE competition_id = ? AND id = ?
+        """, [competition_id, participant_id]).fetchone()
+
         conn.execute("""
             INSERT INTO submissions 
             (id, competition_id, participant_id, problem_id, code, language, 
@@ -692,50 +752,6 @@ class DuckDBStorage:
             submission.pass_score, submission.penalty, submission.submission_tokens,
             json.dumps([tr.to_dict() for tr in submission.test_results])
         ])
-        
-        # logger.error(f"submission: {submission.to_dict()}")
-        
-        # Get current best score for this problem
-        current_best_score_result = conn.execute("""
-            SELECT MAX(pass_score) FROM submissions 
-            WHERE competition_id = ? AND participant_id = ? AND problem_id = ?
-        """, [competition_id, participant_id, problem_id]).fetchone()
-        
-        current_best_score = current_best_score_result[0] if current_best_score_result and current_best_score_result[0] else 0
-        logger.error(f"current_best_score: {current_best_score}")
-
-        # Only update problem_pass_score if new score is higher
-        
-        if submission.pass_score >= current_best_score:
-            new_problem_pass_score = submission.pass_score
-        else:
-            new_problem_pass_score = current_best_score
-        
-        # logger.error(f"11111new_problem_pass_score: {new_problem_pass_score}")
-        
-        # Update participant statistics
-        conn.execute("""
-            UPDATE participants 
-            SET submission_tokens = submission_tokens + ?,
-                remaining_tokens = remaining_tokens - ?,
-                submission_count = submission_count + 1,
-                accepted_count = accepted_count + ?,
-                submission_penalty = submission_penalty + ?,
-                problem_pass_score =  ?
-            WHERE competition_id = ? AND id = ?
-        """, [
-            submission.submission_tokens, 
-            submission.submission_tokens, 
-            1 if submission.status == SubmissionStatus.ACCEPTED else 0,
-            submission.penalty, 
-            new_problem_pass_score, 
-            competition_id, 
-            participant_id
-        ])
-        
-        new_remaining_tokens = conn.execute("""
-            SELECT remaining_tokens FROM participants WHERE competition_id = ? AND id = ?
-        """, [competition_id, participant_id]).fetchone()
         
         if new_remaining_tokens is None:
             raise ValueError(f"Participant {participant_id} not found in competition {competition_id}")
@@ -781,14 +797,14 @@ class DuckDBStorage:
             
             # Calculate total score: best scores per problem minus total penalties
             new_score = sum(problem_best_scores.values()) - total_penalty
-            new_problem_pass_score = sum(problem_best_scores.values())
+            add_problem_pass_score = sum(problem_best_scores.values())
             
             # Update participant in database
             self.conn.execute("""
                 UPDATE participants 
                 SET score = ?, problem_pass_score = ?, submission_count = ?, submission_penalty = ?, accepted_count = ?
                 WHERE competition_id = ? AND id = ?
-            """, [new_score, new_problem_pass_score, submission_count, total_penalty, accepted_count, competition_id, participant_id])
+            """, [new_score, add_problem_pass_score, submission_count, total_penalty, accepted_count, competition_id, participant_id])
     
     def list_submissions(
         self,
@@ -1409,7 +1425,7 @@ class DuckDBStorage:
         else:
             problem = None
 
-        if competition and participant and problem:
+        if competition and participant:
         # Get hint token cost from competition rules
             hint_tokens_config = competition.rules.get("hint_tokens", {})
             hint_cost = hint_tokens_config.get(f"level_{hint_level}")  # Default to 500
@@ -1423,7 +1439,7 @@ class DuckDBStorage:
 
             # Generate hint content based on level
             hint_content = self._generate_hint_content(problem, hint_level, competition_id, hint_knowledge, problem_difficulty)
-
+            logger.critical(f"\nNAME: {participant.name}, hint_content: {hint_content}\n")
             # Update participant token usage
             new_remaining_tokens = participant.remaining_tokens - hint_cost
         
@@ -1446,7 +1462,7 @@ class DuckDBStorage:
             "problem_id": problem_id
         }
     
-    def _generate_hint_content(self, problem: Problem, hint_level: int, competition_id: str, hint_knowledge: Optional[str] = None, problem_difficulty: Optional[str] = None) -> Dict[str, Any]:
+    def _generate_hint_content(self, problem: Optional[Problem], hint_level: int, competition_id: str, hint_knowledge: Optional[str] = None, problem_difficulty: Optional[str] = None) -> Dict[str, Any]:
         """
         Generate hint content based on hint level.
         
@@ -1494,7 +1510,7 @@ class DuckDBStorage:
                 hint_content["textbook_sections"] = []
                 
                 # Search textbook for relevant content
-                if textbook_loader.is_loaded():
+                if textbook_loader.is_loaded() and problem is not None:
                     # Extract key concepts from problem description
                     search_terms = self._extract_search_terms(problem.description)
                     textbook_results = textbook_loader.search_content(" ".join(search_terms), max_results=3)
@@ -1511,7 +1527,7 @@ class DuckDBStorage:
             hint_content["textbook_sections"] = []
             
             # Search textbook for relevant content
-            if textbook_loader.is_loaded():
+            if textbook_loader.is_loaded() and problem is not None:
                 
                 search_terms = hint_knowledge
                 if search_terms is None:
@@ -1534,52 +1550,52 @@ class DuckDBStorage:
             try:
                 # Get all available problem IDs
                 all_problem_ids = problem_loader.get_problem_ids()
-                
-                # Get competition problems to exclude
-                competition_problems = self.list_problems(competition_id)
-                excluded_problems = set([p.id for p in competition_problems])
-                
-                # Create corpus for similarity search
-                corpus = []
-                problem_ids = []
-                for pid in all_problem_ids:
-                    if pid not in excluded_problems and pid != problem.id:
-                        p = problem_loader.load_problem(pid)
-                        if p:
-                            text = f"{p.description}\n"
-                            for case in p.sample_cases:
-                                text += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
-                            corpus.append(text)
-                            problem_ids.append(pid)
-                
-                if corpus:
-                    # Use BM25 for similarity search
-                    from rank_bm25 import BM25Okapi
-                    tokenized_corpus = [doc.split() for doc in corpus]
-                    bm25 = BM25Okapi(tokenized_corpus)
+                if problem is not None:
+                    # Get competition problems to exclude
+                    competition_problems = self.list_problems(competition_id)
+                    excluded_problems = set([p.id for p in competition_problems])
                     
-                    # Create query from current problem
-                    query = f"{problem.description}\n"
-                    for case in problem.sample_cases:
-                        query += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
-                    tokenized_query = query.split()
+                    # Create corpus for similarity search
+                    corpus = []
+                    problem_ids = []
+                    for pid in all_problem_ids:
+                        if pid not in excluded_problems and pid != problem.id:
+                            p = problem_loader.load_problem(pid)
+                            if p:
+                                text = f"{p.description}\n"
+                                for case in p.sample_cases:
+                                    text += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
+                                corpus.append(text)
+                                problem_ids.append(pid)
                     
-                    # Get top similar problems
-                    scores = bm25.get_scores(tokenized_query)
-                    top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:2]
-                    
-                    for idx in top_indices:
-                        pid = problem_ids[idx]
-                        p = problem_loader.load_problem(pid)
-                        solution = problem_loader.load_solution(pid)
-                        # print(f"solution: {solution}")
-                        if p:
-                            hint_content["similar_problems"].append({
-                                "title": p.title,
-                                "description": p.description[:200] + "...",
-                                "solution": solution,
-                                "similarity_score": scores[idx]
-                            })
+                    if corpus:
+                        # Use BM25 for similarity search
+                        from rank_bm25 import BM25Okapi
+                        tokenized_corpus = [doc.split() for doc in corpus]
+                        bm25 = BM25Okapi(tokenized_corpus)
+                        
+                        # Create query from current problem
+                        query = f"{problem.description}\n"
+                        for case in problem.sample_cases:
+                            query += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
+                        tokenized_query = query.split()
+                        
+                        # Get top similar problems
+                        scores = bm25.get_scores(tokenized_query)
+                        top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:2]
+                        
+                        for idx in top_indices:
+                            pid = problem_ids[idx]
+                            p = problem_loader.load_problem(pid)
+                            solution = problem_loader.load_solution(pid)
+                            # print(f"solution: {solution}")
+                            if p:
+                                hint_content["similar_problems"].append({
+                                    "title": p.title,
+                                    "description": p.description[:200] + "...",
+                                    "solution": solution,
+                                    "similarity_score": scores[idx]
+                                })
             except Exception as e:
                 # Add error information
                 hint_content["similar_problems"] = [{
@@ -1627,7 +1643,7 @@ class DuckDBStorage:
             ]
             
             # Get textbook knowledge
-            if textbook_loader.is_loaded():
+            if textbook_loader.is_loaded() and problem is not None:
                 search_terms = self._extract_search_terms(problem.description)
                 textbook_results = textbook_loader.search_content(" ".join(search_terms), max_results=2)
                 
@@ -1644,42 +1660,43 @@ class DuckDBStorage:
                 all_problem_ids = problem_loader.get_problem_ids()
                 competition_problems = self.list_problems(competition_id)
                 excluded_problems = set([p.id for p in competition_problems])
+                if problem is not None:
                 
-                corpus = []
-                problem_ids = []
-                for pid in all_problem_ids:
-                    if pid not in excluded_problems and pid != problem.id:
-                        p = problem_loader.load_problem(pid)
-                        if p:
-                            text = f"{p.description}\n"
-                            for case in p.sample_cases:
-                                text += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
-                            corpus.append(text)
-                            problem_ids.append(pid)
-                
-                if corpus:
-                    from rank_bm25 import BM25Okapi
-                    tokenized_corpus = [doc.split() for doc in corpus]
-                    bm25 = BM25Okapi(tokenized_corpus)
+                    corpus = []
+                    problem_ids = []
+                    for pid in all_problem_ids:
+                        if pid not in excluded_problems and pid != problem.id:
+                            p = problem_loader.load_problem(pid)
+                            if p:
+                                text = f"{p.description}\n"
+                                for case in p.sample_cases:
+                                    text += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
+                                corpus.append(text)
+                                problem_ids.append(pid)
                     
-                    query = f"{problem.description}\n"
-                    for case in problem.sample_cases:
-                        query += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
-                    tokenized_query = query.split()
-                    
-                    scores = bm25.get_scores(tokenized_query)
-                    top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:2]
-                    
-                    for idx in top_indices:
-                        pid = problem_ids[idx]
-                        p = problem_loader.load_problem(pid)
-                        if p:
-                            hint_content["episodic_data"]["similar_problems"].append({
-                                "title": p.title,
-                                "description": p.description[:150] + "...",
-                                "solution": problem_loader.load_solution(pid),
-                                "similarity_score": scores[idx]
-                            })
+                    if corpus:
+                        from rank_bm25 import BM25Okapi
+                        tokenized_corpus = [doc.split() for doc in corpus]
+                        bm25 = BM25Okapi(tokenized_corpus)
+                        
+                        query = f"{problem.description}\n"
+                        for case in problem.sample_cases:
+                            query += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
+                        tokenized_query = query.split()
+                        
+                        scores = bm25.get_scores(tokenized_query)
+                        top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:2]
+                        
+                        for idx in top_indices:
+                            pid = problem_ids[idx]
+                            p = problem_loader.load_problem(pid)
+                            if p:
+                                hint_content["episodic_data"]["similar_problems"].append({
+                                    "title": p.title,
+                                    "description": p.description[:150] + "...",
+                                    "solution": problem_loader.load_solution(pid),
+                                    "similarity_score": scores[idx]
+                                })
                             
             except Exception as e:
                 hint_content["episodic_data"]["similar_problems"] = [{

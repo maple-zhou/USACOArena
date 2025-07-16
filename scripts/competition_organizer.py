@@ -7,7 +7,7 @@ import os
 from typing import Dict, List, Optional, Any, Callable, Tuple
 from datetime import datetime, timedelta
 
-from competemas.engine.agent_interface import AgentInterface
+# AgentInterface已被删除，现在直接使用Agent类
 from competemas.models.models import SubmissionStatus
 from competemas.engine.competition import Competitor
 from competemas.utils.logger_config import get_logger

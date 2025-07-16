@@ -2,21 +2,23 @@
 Competition-related classes for CompeteMAS platform.
 
 This module contains the Competitor class which serves as an optimized bridge
-between AgentInterface and Participant data, minimizing API calls and state management overhead.
+between Agent and Participant data, minimizing API calls and state management overhead.
 """
 
 import requests
-from typing import Dict, List, Optional, Tuple, Any
-from competemas.engine.agent_interface import AgentInterface
+from typing import Dict, List, Optional, Tuple, Any, TYPE_CHECKING
 from competemas.utils.logger_config import get_logger
+
+if TYPE_CHECKING:
+    from scripts.agents.single_agent import Agent
 
 logger = get_logger("competition")
 
 
 class Competitor:
-    """Optimized bridge between AgentInterface and Participant data"""
+    """Optimized bridge between Agent and Participant data"""
     
-    def __init__(self, name: str, agent: AgentInterface, limit_tokens: int = 10000000):
+    def __init__(self, name: str, agent: "Agent", limit_tokens: int = 10000000):
         self.name = name
         self.api_base: Optional[str] = None
         self.agent = agent
