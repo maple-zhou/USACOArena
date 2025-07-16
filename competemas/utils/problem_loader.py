@@ -55,7 +55,7 @@ class USACOProblemLoader:
         
         return problem_data.get('solution', '')
 
-    def  load_problem(self, problem_id: str) -> Optional[Problem]:
+    def load_problem(self, problem_id: str) -> Optional[Problem]:
         """Load a problem from the USACO problem library"""
         if problem_id not in self.problems_dict:
             return None

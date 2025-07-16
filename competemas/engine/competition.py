@@ -6,7 +6,7 @@ between AgentInterface and Participant data, minimizing API calls and state mana
 """
 
 import requests
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Any
 from competemas.engine.agent_interface import AgentInterface
 from competemas.utils.logger_config import get_logger
 
@@ -217,23 +217,38 @@ class Competitor:
         except requests.exceptions.RequestException as e:
             return {"error": f"Failed to fetch problem: {str(e)}"}
     
-    def get_hint(self, problem_id: str, hint_level: int) -> Dict:
+    def get_hint(self, problem_id: str, hint_level: int, hint_knowledge: Optional[str] = None, problem_difficulty: Optional[str] = None) -> Dict:
         """Get a hint for a specific problem"""
         self._ensure_participant()
         
         try:
-            response = requests.post(
-                f"{self.api_base}/api/hints/get/{self.competition_id}/{self.participant_id}/{problem_id}",
-                json={"hint_level": hint_level}
-            )
+            request_data: Dict[str, Any] = {"hint_level": hint_level}
+            if problem_id is not None:
+                request_data["problem_id"] = problem_id
+            
+            # Add optional parameters based on hint level
+            if hint_knowledge is not None:
+                request_data["hint_knowledge"] = hint_knowledge
+            if problem_difficulty is not None:
+                request_data["problem_difficulty"] = problem_difficulty
+            
+            # # Build URL based on whether problem_id is needed
+            # if problem_id:
+            #     url = f"{self.api_base}/api/hints/get/{self.competition_id}/{self.participant_id}/{problem_id}"
+            # else:
+            # For hint levels that don't require problem_id (like level 0 strategy hints)
+            url = f"{self.api_base}/api/hints/get/{self.competition_id}/{self.participant_id}"
+            
+            response = requests.post(url, json=request_data)
+            # logger.critical(f"Hint request: {url}, {request_data}000000000000000000")
             response.raise_for_status()
             
             result = response.json()
             if result["status"] != "success":
                 return {"error": f"API error: {result.get('message', 'Unknown error')}"}
             
-            return {"hint": result["data"]}
-            
+            return result["data"]
+
         except requests.exceptions.RequestException as e:
             return {"error": f"Failed to get hint: {str(e)}"}
     

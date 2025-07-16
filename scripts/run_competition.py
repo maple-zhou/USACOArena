@@ -153,6 +153,52 @@ def print_competition_results(results: Dict, competition_id: str):
         logger.error(f"Error printing competition results: {str(e)}")
         raise
 
+def log_competition_results(results: Dict, competition_id: str):
+    """Log competition results using logger.critical with character limit"""
+    try:
+        # Build the result string
+        result_lines = []
+        result_lines.append(f"=== Competition Results of {competition_id} ===")
+        
+        # Sort competitors by total score
+        sorted_results = sorted(
+            results.items(),
+            key=lambda x: x[1].get("score", 0),
+            reverse=True
+        )
+        
+        # Add results table
+        result_lines.append(f"{'Rank':<5} {'Name':<20} {'Score':<10} {'Solved':<10}")
+        result_lines.append("-" * 50)
+        
+        for rank, (name, data) in enumerate(sorted_results, 1):
+            result_lines.append(f"{rank:<5} {name:<20} {data.get('score', 0):<10} "
+                              f"{len(data.get('solved_problems', [])):<10}")
+        
+        # Add detailed results
+        result_lines.append("=== Detailed Results ===")
+        for name, data in sorted_results:
+            result_lines.append(f"{name}:")
+            result_lines.append(f"  Final Score: {data.get('score', 0)}")
+            result_lines.append(f"  Solved Problems: {', '.join(data.get('solved_problems', [])) if data.get('solved_problems') else 'None'}")
+            if data.get('termination_reason'):
+                result_lines.append(f"  Termination Reason: {data['termination_reason']}")
+            if data.get('remaining_tokens'):
+                result_lines.append(f"  Remaining Tokens: {data['remaining_tokens']}")
+            if data.get('participant_id'):
+                result_lines.append(f"  Participant ID: {data['participant_id']}")
+        
+        # Join all lines and apply character limit
+        result_str = "\n".join(result_lines)
+        if len(result_str) > 5000:
+            result_str = result_str[:5000] + "... (truncated)"
+        
+        logger.critical(f"Competition Results:\n{result_str}")
+        
+    except Exception as e:
+        logger.error(f"Error logging competition results: {str(e)}")
+        raise
+
 async def main():
     """Main function to run the competition"""
     try:
@@ -231,7 +277,8 @@ async def main():
         logger.info(f"Results saved to {results_file}")
 
         # Print results
-        print_competition_results(results_to_print, competition_id)
+        # print_competition_results(results_to_print, competition_id)
+        log_competition_results(results_to_print, competition_id)
         
     except Exception as e:
         logger.error(f"Error running competition: {str(e)}", exc_info=True)

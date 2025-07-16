@@ -543,7 +543,8 @@ class DuckDBStorage:
 
     def update_participant_score(self, competition_id: str, participant_id: str) -> None:
         """Update participant's score"""
-        self.conn.execute("""
+        conn = self._get_conn()
+        conn.execute("""
             UPDATE participants 
             SET score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens / limit_tokens
             WHERE competition_id = ? AND id = ? 
@@ -701,7 +702,7 @@ class DuckDBStorage:
         """, [competition_id, participant_id, problem_id]).fetchone()
         
         current_best_score = current_best_score_result[0] if current_best_score_result and current_best_score_result[0] else 0
-        # logger.error(f"current_best_score: {current_best_score}")
+        logger.error(f"current_best_score: {current_best_score}")
 
         # Only update problem_pass_score if new score is higher
         
@@ -710,7 +711,7 @@ class DuckDBStorage:
         else:
             new_problem_pass_score = current_best_score
         
-        # logger.error(f"new_problem_pass_score: {new_problem_pass_score}")
+        # logger.error(f"11111new_problem_pass_score: {new_problem_pass_score}")
         
         # Update participant statistics
         conn.execute("""
@@ -1211,7 +1212,8 @@ class DuckDBStorage:
 
         if new_remaining_tokens <= 0:
             self.terminate_participant(competition_id, participant_id, "out_of_tokens")
-
+        
+        # logger.info(f"999999999process_agent_request: {result}")
         return {
             "content": result,
             "usage": {
@@ -1371,8 +1373,10 @@ class DuckDBStorage:
         self, 
         competition_id: str, 
         participant_id: str, 
-        problem_id: str, 
-        hint_level: int
+        hint_level: int,
+        problem_id: Optional[str] = None,
+        hint_knowledge: Optional[str] = None,
+        problem_difficulty: Optional[str] = None
     ) -> Dict[str, Any]:
         """
         Process hint request and update participant token usage.
@@ -1381,38 +1385,45 @@ class DuckDBStorage:
             competition_id: Competition ID
             participant_id: Participant ID
             problem_id: Problem ID
-            hint_level: Hint level (1, 2, or 3)
-            
+            hint_level: Hint level (0, 1, 2, or 3)
+
         Returns:
             Dictionary containing hint content and token usage information
         """
         # Get competition and participant
+        # if hint_level == 0:
+        logger.critical(f"Hint request: {competition_id}, {participant_id}, {problem_id}, {hint_level}, {hint_knowledge}, {problem_difficulty}666666")
         competition = self.get_competition(competition_id)
         if not competition:
-            raise ValueError(f"Competition with ID {competition_id} not found")
+            logger.error(f"Competition with ID {competition_id} not found")
 
         participant = self.get_participant(competition_id, participant_id)
         if not participant:
-            raise ValueError(f"Participant with ID {participant_id} not found")
+            logger.error(f"Participant with ID {participant_id} not found")
 
         # Get problem
-        problem = self.get_problem(competition_id, problem_id)
-        if not problem:
-            raise ValueError(f"Problem with ID {problem_id} not found")
+        if problem_id is not None:
+            problem = self.get_problem(competition_id, problem_id)
+            if not problem:
+                logger.error(f"Problem with ID {problem_id} not found")
+        else:
+            problem = None
 
         # Get hint token cost from competition rules
         hint_tokens_config = competition.rules.get("hint_tokens", {})
         hint_cost = hint_tokens_config.get(f"level_{hint_level}")  # Default to 500
 
         if hint_cost is None:
-            raise ValueError(f"Hint cost not found for level {hint_level}")
+            logger.error(f"Hint cost not found for level {hint_level}")
 
         # Check if participant has enough tokens
         if participant.remaining_tokens < hint_cost:
-            raise ValueError(f"Insufficient tokens. Required: {hint_cost}, Available: {participant.remaining_tokens}")
+            logger.error(f"Insufficient tokens. Required: {hint_cost}, Available: {participant.remaining_tokens}")
+
+        logger.critical(f"Hint request: {competition_id}, {participant_id}, {problem_id}, {hint_level}, {hint_knowledge}, {problem_difficulty}55555555")
 
         # Generate hint content based on level
-        hint_content = self._generate_hint_content(problem, hint_level, competition_id)
+        hint_content = self._generate_hint_content(problem, hint_level, competition_id, hint_knowledge, problem_difficulty)
 
         # Update participant token usage
         new_remaining_tokens = participant.remaining_tokens - hint_cost
@@ -1436,7 +1447,7 @@ class DuckDBStorage:
             "problem_id": problem_id
         }
     
-    def _generate_hint_content(self, problem: Problem, hint_level: int, competition_id: str) -> Dict[str, Any]:
+    def _generate_hint_content(self, problem: Problem, hint_level: int, competition_id: str, hint_knowledge: Optional[str] = None, problem_difficulty: Optional[str] = None) -> Dict[str, Any]:
         """
         Generate hint content based on hint level.
         
@@ -1450,37 +1461,73 @@ class DuckDBStorage:
         """
         from competemas.utils.problem_loader import USACOProblemLoader
         from competemas.utils.textbook_loader import TextbookLoader
-
+        from competemas.utils.strategy_loader import StrategyLoader
+        from competemas.utils.usacoguide_loader import USACOGuideLoader
+        
         problem_loader = USACOProblemLoader()
         textbook_loader = TextbookLoader()
+        strategy_loader = StrategyLoader()
+        guide_loader = USACOGuideLoader()
         
-        # Base structure
-        hint_content: Dict[str, Any] = {
-            "current_problem": {
+        # Initialize hint content
+        hint_content: Dict[str, Any] = {}
+
+        # Add current_problem for specific conditions
+        # if (hint_level in [1, 2] and hint_knowledge is None) or hint_level == 3:
+        if problem is not None: 
+            hint_content["current_problem"] = {
                 "title": problem.title,
                 "id": problem.id
             }
-        }
-        
-        if hint_level == 1:
-            # Basic Hint: Textbook knowledge
+        if hint_knowledge is not None:
+            hint_content["hint_knowledge"] = hint_knowledge
+        # if problem_difficulty is not None:
+            # hint_content["problem_difficulty"] = problem_difficulty
+
+        if hint_level == 0:
+            # Strategy Hint: Competitive programming strategy and tips
+            if strategy_loader.is_loaded():
+                # Get formatted strategy content
+                hint_content = strategy_loader.format_strategy_for_hint()
+                
+        elif hint_level == 1:
+                # Basic Hint: Textbook knowledge
+                hint_content["textbook_sections"] = []
+                
+                # Search textbook for relevant content
+                if textbook_loader.is_loaded():
+                    # Extract key concepts from problem description
+                    search_terms = self._extract_search_terms(problem.description)
+                    textbook_results = textbook_loader.search_content(" ".join(search_terms), max_results=3)
+                    
+                    if textbook_results:
+                        for result in textbook_results:
+                            hint_content["textbook_sections"].append({
+                                "title": result.get('title', 'Section'),
+                                "content": result.get('content', '')[:300] + "...",
+                                "relevance_score": result.get('relevance_score', 0.0)
+                            })
+                            
+        elif hint_level == 2:
             hint_content["textbook_sections"] = []
             
             # Search textbook for relevant content
             if textbook_loader.is_loaded():
-                # Extract key concepts from problem description
-                search_terms = self._extract_search_terms(problem.description)
-                textbook_results = textbook_loader.search(" ".join(search_terms), max_results=3)
+                
+                search_terms = hint_knowledge
+                if search_terms is None:
+                    raise ValueError("No hint knowledge provided")
+                textbook_results = textbook_loader.search_content(str(search_terms), max_results=3)
                 
                 if textbook_results:
                     for result in textbook_results:
                         hint_content["textbook_sections"].append({
                             "title": result.get('title', 'Section'),
                             "content": result.get('content', '')[:300] + "...",
-                            "relevance_score": result.get('score', 0.0)
+                            "relevance_score": result.get('relevance_score', 0.0)
                         })
             
-        elif hint_level == 2:
+        elif hint_level == 3:
             # Detailed Hint: Similar problems
             hint_content["similar_problems"] = []
             
@@ -1534,7 +1581,6 @@ class DuckDBStorage:
                                 "solution": solution,
                                 "similarity_score": scores[idx]
                             })
-                            
             except Exception as e:
                 # Add error information
                 hint_content["similar_problems"] = [{
@@ -1543,8 +1589,33 @@ class DuckDBStorage:
                     "solution": "Please try again later",
                     "similarity_score": 0.0
                 }]
+        
+        elif hint_level == 4:
+            if hint_knowledge is None:
+                raise ValueError("No hint knowledge provided")
             
-        elif hint_level == 3:
+            if problem_difficulty is None:
+                raise ValueError("No problem difficulty provided")
+            # first level keys
+            if problem_difficulty.lower() == "bronze" or problem_difficulty.lower() == "silver" or problem_difficulty.lower() == "gold" or problem_difficulty.lower() == "platinum" or problem_difficulty.lower() == "advanced":
+                try:
+                    # section_key = guide_loader.get_second_level_keys(problem_difficulty)
+                
+                    # hint_content["example_problems"] = guide_loader.search_second_level_key(problem_difficulty, hint_knowledge)
+                    
+                    if hint_knowledge is not None:
+                        hint_content["example_problems"] = guide_loader.search_second_level_key_similar(problem_difficulty, hint_knowledge)
+                        logger.warning(f"Hint request: {hint_content['example_problems']}77777777")
+                    
+                except Exception as e:
+                    # Add error information
+                    hint_content["example_problems"] = [{
+                        "title": "Error",
+                        "description": f"Error finding second level keys: {str(e)}",
+                        "solution": "Please try again later",
+                    }]
+                    
+        elif hint_level == 5:
             # Comprehensive Hint: Combined approach
             hint_content["episodic_data"] = {"similar_problems": []}
             hint_content["semantic_data"] = {"textbook_sections": []}
@@ -1559,7 +1630,7 @@ class DuckDBStorage:
             # Get textbook knowledge
             if textbook_loader.is_loaded():
                 search_terms = self._extract_search_terms(problem.description)
-                textbook_results = textbook_loader.search(" ".join(search_terms), max_results=2)
+                textbook_results = textbook_loader.search_content(" ".join(search_terms), max_results=2)
                 
                 if textbook_results:
                     for result in textbook_results:

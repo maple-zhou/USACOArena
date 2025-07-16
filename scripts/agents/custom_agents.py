@@ -199,7 +199,7 @@ class Agent(AgentInterface, ABC):
         """
         # Create contextual prompt using the current competition state
         prompt = self.prompt_system.create_prompt(state)
-        # logger.error(f"prompt: {prompt}")
+        # logger.warning(f"Agent:{self.name}, Prompt: {prompt}")
         
         # Initialize system prompt on first interaction to establish agent behavior
         if not self.conversation_history:
@@ -213,6 +213,7 @@ class Agent(AgentInterface, ABC):
         
         # Generate response from the LLM using the current state and prompt
         response = await self.generate_response(state, prompt)
+        logger.warning(f"Agent:{self.name}, Response: {response}")
         # logger.error(f"0000000response: {response}")
         # Parse the LLM response into a structured action that the competition system can execute
         action = self.action_parser.parse_action(response)

@@ -848,8 +848,8 @@ def search_textbook():
     except Exception as e:
         return error_response(f"Failed to search textbook: {str(e)}")
 
-@app.route("/api/hints/get/<competition_id>/<participant_id>/<problem_id>", methods=["POST"])
-def get_hint(competition_id: str, participant_id: str, problem_id: str):
+@app.route("/api/hints/get/<competition_id>/<participant_id>", methods=["POST"])
+def get_hint(competition_id: str, participant_id: str):
     """
     Get a hint for a specific problem.
     
@@ -871,23 +871,29 @@ def get_hint(competition_id: str, participant_id: str, problem_id: str):
         time.sleep(wait_time)
     
     try:
+        # logger.critical(f"Hint request: {competition_id}, {participant_id}11111111")
         if check_termination(competition_id, participant_id):
             return error_response("Participant is not running, termination_reason: {participant.termination_reason}")
 
         data = request.get_json()
         if not data:
             return error_response("No JSON data provided", 400)
+        # logger.critical(f"Hint request: {competition_id}, {participant_id}22222222")
         
         hint_level = data.get("hint_level", 1)
+        hint_knowledge = data.get("hint_knowledge", None)
+        problem_id = data.get("problem_id", None)
+        problem_difficulty = data.get("problem_difficulty", None)
         
         # Validate hint level
-        if hint_level not in [1, 2, 3]:
-            return error_response("Invalid hint level. Must be 1, 2, or 3.")
-        
+        if hint_level not in [0, 1, 2, 3, 4, 5]:
+            return error_response("Invalid hint level. Must be 0, 1, 2, 3, 4, or 5.")
+        # logger.critical(f"Hint request: {competition_id}, {participant_id}, {problem_id}, {hint_level}, {hint_knowledge}, {problem_difficulty}33333333")
         # Process hint request using data storage layer
         with DuckDBStorage() as data_storage:
-            result = data_storage.process_hint_request(competition_id, participant_id, problem_id, hint_level)
+            result = data_storage.process_hint_request(competition_id, participant_id, hint_level, problem_id, hint_knowledge, problem_difficulty)
         
+        # logger.critical(f"Hint request: {competition_id}, {participant_id}44444444")
         return success_response(result)
         
     except ValueError as e:

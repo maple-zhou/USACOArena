@@ -80,6 +80,7 @@ class CompetitionOrganizer:
             }
             
             # logger.debug(f"Creating competition with data: {data}")
+            # print(f"self.api_base: {self.api_base}")
             
             # Make API request - 使用正确的端点
             response = requests.post(
@@ -281,22 +282,26 @@ class CompetitionOrganizer:
                 # Add safety check for participant state
                 participant_state = competitor.get_participant_state()
                 if participant_state:
-                    logger.warning(f"After LLM call:\n Name:{participant_state.get('name', 'unknown')}\n LLM_tokens:{participant_state.get('LLM_tokens', 0)}\n hint_tokens:{participant_state.get('hint_tokens', 0)}\n submission_tokens:{participant_state.get('submission_tokens', 0)}\n remaining_tokens:{participant_state.get('remaining_tokens', 0)}\n submission_count:{participant_state.get('submission_count', 0)}\n accepted_count:{participant_state.get('accepted_count', 0)}\n submission_penalty:{participant_state.get('submission_penalty', 0)}\n problem_pass_score:{participant_state.get('problem_pass_score', 0)}\n score:{participant_state.get('score', 0)}\n is_running:{participant_state.get('is_running', True)}\n termination_reason:{participant_state.get('termination_reason', 'unknown')}")
+                    logger.warning(f"\nAfter LLM call:\n Name:{participant_state.get('name', 'unknown')}\n LLM_tokens:{participant_state.get('LLM_tokens', 0)}\n hint_tokens:{participant_state.get('hint_tokens', 0)}\n submission_tokens:{participant_state.get('submission_tokens', 0)}\n remaining_tokens:{participant_state.get('remaining_tokens', 0)}\n submission_count:{participant_state.get('submission_count', 0)}\n accepted_count:{participant_state.get('accepted_count', 0)}\n submission_penalty:{participant_state.get('submission_penalty', 0)}\n problem_pass_score:{participant_state.get('problem_pass_score', 0)}\n score:{participant_state.get('score', 0)}\n is_running:{participant_state.get('is_running', True)}\n termination_reason:{participant_state.get('termination_reason', 'unknown')}")
                 else:
                     logger.warning(f"After LLM call: Failed to get participant state for {competitor.name}")
 
-                logger.critical(f"Action: {action['action']}")
+                # logger.critical(f"Agent:{competitor.name}, Action: {action['action']}")
                 
                 logger.info(f"Competitor {competitor.name} choose the next action: {action['action']}, remaining_tokens: {competitor.remaining_tokens}, score: {competitor.score}")
                 
                 # Process action (this will trigger sync_from_api if needed)
                 action_result = self._process_action(action, competitor)
-                # print(f"11111111111action_result: {action_result}")
+
+                action_result_str = str(action_result)
+                if len(action_result_str) > 5000:
+                    action_result_str = action_result_str[:5000] + "... (truncated)"
+                logger.warning(f"Agent:{competitor.name}, Action: {action['action']}, Action_result: {action_result_str}")
 
                 # Add safety check for participant state after action
                 participant_state_after = competitor.get_participant_state()
                 if participant_state_after:
-                    logger.warning(f"After action_result:\n Name:{participant_state_after.get('name', 'unknown')}\n LLM_tokens:{participant_state_after.get('LLM_tokens', 0)}\n hint_tokens:{participant_state_after.get('hint_tokens', 0)}\n submission_tokens:{participant_state_after.get('submission_tokens', 0)}\n remaining_tokens:{participant_state_after.get('remaining_tokens', 0)}\n submission_count:{participant_state_after.get('submission_count', 0)}\n accepted_count:{participant_state_after.get('accepted_count', 0)}\n submission_penalty:{participant_state_after.get('submission_penalty', 0)}\n problem_pass_score:{participant_state_after.get('problem_pass_score', 0)}\n score:{participant_state_after.get('score', 0)}\n is_running:{participant_state_after.get('is_running', True)}\n termination_reason:{participant_state_after.get('termination_reason', 'unknown')}")
+                    logger.warning(f"\nAfter action_result:\n Name:{participant_state_after.get('name', 'unknown')}\n LLM_tokens:{participant_state_after.get('LLM_tokens', 0)}\n hint_tokens:{participant_state_after.get('hint_tokens', 0)}\n submission_tokens:{participant_state_after.get('submission_tokens', 0)}\n remaining_tokens:{participant_state_after.get('remaining_tokens', 0)}\n submission_count:{participant_state_after.get('submission_count', 0)}\n accepted_count:{participant_state_after.get('accepted_count', 0)}\n submission_penalty:{participant_state_after.get('submission_penalty', 0)}\n problem_pass_score:{participant_state_after.get('problem_pass_score', 0)}\n score:{participant_state_after.get('score', 0)}\n is_running:{participant_state_after.get('is_running', True)}\n termination_reason:{participant_state_after.get('termination_reason', 'unknown')}")
                 else:
                     logger.warning(f"After action_result: Failed to get participant state for {competitor.name}")
 
@@ -305,7 +310,7 @@ class CompetitionOrganizer:
                 
                 # Update rankings (only when needed)
                 rankings_result = competitor.view_rankings()
-                logger.warning(f"Time: {datetime.now().strftime('%m-%d %H:%M:%S')}, rankings_result: {rankings_result}")
+                logger.critical(f"Time: {datetime.now().strftime('%m-%d %H:%M:%S')}, rankings_result: {rankings_result}")
                 if "error" not in rankings_result:
                     state["rankings"] = rankings_result.get("rankings", [])
                 
@@ -471,21 +476,87 @@ class CompetitionOrganizer:
                 }
             
             elif action_type == "get_hint":
-                problem_id = action.get("parameters", {}).get("problem_id")
                 hint_level = action.get("parameters", {}).get("hint_level", 1)
+                problem_id = action.get("parameters", {}).get("problem_id")
+                hint_knowledge = action.get("parameters", {}).get("hint_knowledge", None)
+                problem_difficulty = action.get("parameters", {}).get("problem_difficulty", None)
                 
-                if not problem_id:
+                # Validate parameters based on hint level
+                if hint_level == 0:
+                    # Strategy hint - no additional parameters required
+                    pass
+                elif hint_level == 1:
+                    # Problem relevant textbook hint - requires problem_id
+                    if not problem_id:
+                        return {
+                            "status": "error",
+                            "data": {
+                                "action": "get_hint",
+                                "action_result": {"error": "Missing problem_id for hint level 1"},
+                            },
+                            "should_terminate": False,
+                            "termination_reason": None
+                        }
+                elif hint_level == 2:
+                    # Knowledge point relevant textbook hint - requires hint_knowledge
+                    if not hint_knowledge:
+                        return {
+                            "status": "error",
+                            "data": {
+                                "action": "get_hint",
+                                "action_result": {"error": "Missing hint_knowledge for hint level 2"},
+                            },
+                            "should_terminate": False,
+                            "termination_reason": None
+                        }
+                elif hint_level == 3:
+                    # Similar problem hint - requires problem_id
+                    if not problem_id:
+                        return {
+                            "status": "error",
+                            "data": {
+                                "action": "get_hint",
+                                "action_result": {"error": "Missing problem_id for hint level 3"},
+                            },
+                            "should_terminate": False,
+                            "termination_reason": None
+                        }
+                elif hint_level == 4:
+                    # Knowledge point example problem hint - requires problem_difficulty and hint_knowledge
+                    if not problem_difficulty or not hint_knowledge:
+                        return {
+                            "status": "error",
+                            "data": {
+                                "action": "get_hint",
+                                "action_result": {"error": "Missing problem_difficulty or hint_knowledge for hint level 4"},
+                            },
+                            "should_terminate": False,
+                            "termination_reason": None
+                        }
+                elif hint_level == 5:
+                    # Comprehensive hint - requires problem_id
+                    if not problem_id:
+                        return {
+                            "status": "error",
+                            "data": {
+                                "action": "get_hint",
+                                "action_result": {"error": "Missing problem_id for hint level 5"},
+                            },
+                            "should_terminate": False,
+                            "termination_reason": None
+                        }
+                else:
                     return {
                         "status": "error",
                         "data": {
                             "action": "get_hint",
-                            "action_result": {"error": "Missing problem_id"},
+                            "action_result": {"error": f"Invalid hint level: {hint_level}. Must be 0-5"},
                         },
                         "should_terminate": False,
                         "termination_reason": None
                     }
                 
-                result = competitor.get_hint(problem_id, hint_level)
+                result = competitor.get_hint(problem_id, hint_level, hint_knowledge, problem_difficulty)
                 # print(f"get_hint result: {result}")
                 return {
                     "status": "success",
