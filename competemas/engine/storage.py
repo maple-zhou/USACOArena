@@ -1392,7 +1392,7 @@ class DuckDBStorage:
         """
         # Get competition and participant
         # if hint_level == 0:
-        logger.critical(f"Hint request: {competition_id}, {participant_id}, {problem_id}, {hint_level}, {hint_knowledge}, {problem_difficulty}666666")
+        # logger.critical(f"Hint request: {competition_id}, {participant_id}, {problem_id}, {hint_level}, {hint_knowledge}, {problem_difficulty}666666")
         competition = self.get_competition(competition_id)
         if not competition:
             logger.error(f"Competition with ID {competition_id} not found")
@@ -1409,24 +1409,23 @@ class DuckDBStorage:
         else:
             problem = None
 
+        if competition and participant and problem:
         # Get hint token cost from competition rules
-        hint_tokens_config = competition.rules.get("hint_tokens", {})
-        hint_cost = hint_tokens_config.get(f"level_{hint_level}")  # Default to 500
+            hint_tokens_config = competition.rules.get("hint_tokens", {})
+            hint_cost = hint_tokens_config.get(f"level_{hint_level}")  # Default to 500
 
-        if hint_cost is None:
-            logger.error(f"Hint cost not found for level {hint_level}")
+            if hint_cost is None:
+                logger.error(f"Hint cost not found for level {hint_level}")
+        
+            # Check if participant has enough tokens
+            if participant.remaining_tokens < hint_cost:
+                logger.error(f"Insufficient tokens. Required: {hint_cost}, Available: {participant.remaining_tokens}")
 
-        # Check if participant has enough tokens
-        if participant.remaining_tokens < hint_cost:
-            logger.error(f"Insufficient tokens. Required: {hint_cost}, Available: {participant.remaining_tokens}")
+            # Generate hint content based on level
+            hint_content = self._generate_hint_content(problem, hint_level, competition_id, hint_knowledge, problem_difficulty)
 
-        logger.critical(f"Hint request: {competition_id}, {participant_id}, {problem_id}, {hint_level}, {hint_knowledge}, {problem_difficulty}55555555")
-
-        # Generate hint content based on level
-        hint_content = self._generate_hint_content(problem, hint_level, competition_id, hint_knowledge, problem_difficulty)
-
-        # Update participant token usage
-        new_remaining_tokens = participant.remaining_tokens - hint_cost
+            # Update participant token usage
+            new_remaining_tokens = participant.remaining_tokens - hint_cost
         
         # Update database
         conn = self._get_conn()
@@ -1605,7 +1604,7 @@ class DuckDBStorage:
                     
                     if hint_knowledge is not None:
                         hint_content["example_problems"] = guide_loader.search_second_level_key_similar(problem_difficulty, hint_knowledge)
-                        logger.warning(f"Hint request: {hint_content['example_problems']}77777777")
+                        # logger.warning(f"Hint request: {hint_content['example_problems']}77777777")
                     
                 except Exception as e:
                     # Add error information

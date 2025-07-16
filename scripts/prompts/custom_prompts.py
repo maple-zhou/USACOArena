@@ -455,7 +455,6 @@ Important Notes:
                             cost=action_result["tokens_cost"],
                             remaining=action_result["remaining_tokens"]
                         )
-                        # logger.warning(f"555555555555action_result_prompt: {content}")
                     
                     else:
                         # Fallback for unknown hint level
