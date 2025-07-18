@@ -21,7 +21,7 @@ os.makedirs('logs/competition_system', exist_ok=True)
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 log_filename = f"logs/competition_system/competition_system_{timestamp}.log"
 
-setup_logging(level="DEBUG", log_file=log_filename)
+setup_logging(level="INFO", log_file=log_filename)
 logger = get_logger("main")
 
 def main():

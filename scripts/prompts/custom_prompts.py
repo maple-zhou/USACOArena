@@ -130,10 +130,20 @@ Important Notes:
         # print(f"prompt: {prompt}")
         # Competitor state
         competitor = state["competitor_state"]
+        
+        # Handle solved_problems - it can be either a list of strings or a list of dicts
+        solved_problems = competitor.get("solved_problems", [])
+        if solved_problems and isinstance(solved_problems[0], dict):
+            # If it's a list of dicts, extract problem_id from each dict
+            solved_problems_str = ", ".join([p.get("problem_id", str(p)) for p in solved_problems])
+        else:
+            # If it's already a list of strings, join them directly
+            solved_problems_str = ", ".join(solved_problems) if solved_problems else "None"
+        
         prompt += state_template["competitor"].format(
             name=competitor["name"],
             tokens=competitor["remaining_tokens"],
-            solved=", ".join(competitor["solved_problems"]) or "None",
+            solved=solved_problems_str,
             score=competitor["score"] or 0
         )
         
@@ -525,19 +535,19 @@ class ActionParser:
         return {
             "action_patterns": {
                 "view_problem": {
-                    "patterns": ["view problem", "look at problem"],
-                    "regex": r"problem_id\s*:\s*[\"']?(\w+)[\"']?"
+                    "patterns": ["view problem", "view_problem", "look at problem", "look_at_problem"],
+                    "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?"
                 },
                 "get_hint": {
-                    "patterns": ["get hint", "request hint"],
-                    "regex": r"problem_id\s*:\s*[\"']?(\w+)[\"']?.*?hint_level\s*:\s*(\d+)"
+                    "patterns": ["get hint", "request hint", "get_hint", "request_hint"],
+                    "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?hint_level\\s*:\\s*(\\d+)"
                 },
                 "submission_solution": {
-                    "patterns": ["submission solution", "submission code"],
-                    "regex": r"problem_id\s*:\s*[\"']?(\w+)[\"']?.*?solution\s*:\s*[\"']?```(?:python|cpp|java)?\n(.*?)```[\"']?.*?language\s*:\s*[\"']?(python|cpp|java)[\"']?"
+                    "patterns": ["submission solution", "submission code", "submission_solution", "submission_code"],
+                    "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?solution\\s*:\\s*[\"']?```(?:python|cpp|java)?\\n(.*?)```[\"']?.*?language\\s*:\\s*[\"']?(python|cpp|java)[\"']?"
                 },
                 "view_rankings": {
-                    "patterns": ["view rankings", "check rankings"],
+                    "patterns": ["view rankings", "check rankings","view rankings", "check rankings"],
                     "regex": None
                 },
                 "terminate": {
@@ -547,17 +557,97 @@ class ActionParser:
             }
         }
     
+    def _extract_json_smart(self, response: str) -> str:
+        """智能提取JSON，处理嵌套代码块问题"""
+        # 找到所有的```位置
+        backticks_positions = []
+        i = 0
+        while i < len(response):
+            pos = response.find('```', i)
+            if pos == -1:
+                break
+            backticks_positions.append(pos)
+            i = pos + 3
+        
+        # print(f"Found {len(backticks_positions)} backticks at positions: {backticks_positions}")
+        
+        if len(backticks_positions) < 2:
+            # 没有足够的```，直接返回整个响应
+            return response
+        
+        # 检查第二个```后是否跟着编程语言
+        second_backtick_pos = backticks_positions[1]
+        after_second = response[second_backtick_pos + 3:].strip()
+        
+        # print(f"After second backtick: '{after_second[:50]}...'")
+        
+        # 检查是否跟着编程语言标识
+        language_indicators = ['cpp', 'java', 'python', 'c++', 'javascript', 'js']
+        matched_language = None
+        for lang in language_indicators:
+            if after_second.lower().startswith(lang):
+                matched_language = lang
+                break
+        has_language = matched_language is not None
+        
+        # print(f"Has language indicator: {has_language}")
+        # if matched_language:
+        #     print(f"Matched language: '{matched_language}'")
+        
+        if has_language and len(backticks_positions) >= 4:
+            # 有编程语言标识且有足够的```，匹配第一个到第四个```
+            start_pos = backticks_positions[0] + 3  # 跳过第一个```
+            end_pos = backticks_positions[3]  # 到第四个```开始位置
+            
+            # 提取内容并去除开头的语言标识符
+            content = response[start_pos:end_pos].strip()
+            
+            # 去除可能的json标识符
+            if content.lower().startswith('json'):
+                content = content[4:].strip()
+            
+            # 删除嵌套的代码块标识符（```cpp、```等）
+            # 找到第二个```在content中的位置
+            second_backtick_in_content = content.find('```')
+            if second_backtick_in_content != -1:
+                # 找到第三个```的位置
+                third_backtick_in_content = content.find('```', second_backtick_in_content + 3)
+                if third_backtick_in_content != -1:
+                    # 删除第二个```到第三个```之间的内容（包括标识符）
+                    before_second = content[:second_backtick_in_content]
+                    middle = content[second_backtick_in_content + 3 + len(matched_language):third_backtick_in_content]
+                    after_third = content[third_backtick_in_content + 3:]
+                    # print(f"before_second: {before_second}")
+                    # print(f"middle: {middle}")
+                    # print(f"after_third: {after_third}")
+                    
+                    # 重新组合内容
+                    content = before_second + middle + after_third
+                    # print(f"Removed nested code block markers (```cpp, ```), content: {content[:100]}...")
+            
+            # print(f"Final extracted content: {content[:100]}...")
+            return content
+        else:
+            # 没有编程语言标识或```不够，使用原来的逻辑
+            pattern = r"```(?:json)?\s*(.+?)\s*```"
+            matches = re.findall(pattern, response, re.DOTALL)
+            if matches:
+                json_str = matches[-1]
+                # print(f"Using traditional extraction: {json_str[:100]}...")
+                return json_str
+            else:
+                # print("No JSON code block found, using full response")
+                return response
+
     def parse_action(self, response: str) -> Dict:
         """Parse the agent's response into an action"""
         try:
             # logger.error(f"pasre_action response: {response}")
             # Try to parse as JSON first
-            pattern = r"```(?:json)?\s*(.+?)\s*```"
-            matches = re.findall(pattern, response, re.DOTALL)
-            if matches:
-                json_str = matches[-1]
-            else:
-                json_str = response
+            # 智能处理嵌套代码块：如果第二个```后跟着编程语言，则匹配第四个```
+            json_str = self._extract_json_smart(response)
+
+            print("json_str: ", json_str)
             action = json_repair.loads(json_str)
             if not isinstance(action, dict):
                 raise ValueError("Response is not a dictionary")
@@ -568,7 +658,7 @@ class ActionParser:
             if "parameters" not in action:
                 raise ValueError("Missing 'parameters' field")
         
-            # print("pasre_action action: ", action)
+            # print("parse_action action: ", action)
             return action
             
         
@@ -577,18 +667,50 @@ class ActionParser:
             response = response.lower().strip()
             patterns = self.config["action_patterns"]
             
+            # Debug: 打印原始响应和转换后的响应
+            # print(f"=== DEBUG: Text Mode Matching ===")
+            # print(f"Original response: {response}")
+            # print(f"Lowercase response: {response}")
+            # print(f"Available patterns: {list(patterns.keys())}")
+            
             for action_type, pattern_config in patterns.items():
-                if any(p in response for p in pattern_config["patterns"]):
+                # print(f"\n--- Checking action_type: {action_type} ---")
+                # print(f"Pattern config: {pattern_config}")
+                
+                # Debug: 检查关键词匹配
+                keywords = pattern_config["patterns"]
+                # print(f"Checking keywords: {keywords}")
+                keyword_found = any(p in response for p in keywords)
+                # print(f"Keyword found: {keyword_found}")
+                
+                if keyword_found:
+                    # print(f"✅ Keywords matched for {action_type}")
+                    
                     if pattern_config["regex"]:
-                        match = re.search(pattern_config["regex"], response, re.DOTALL)
+                        regex_pattern = pattern_config["regex"]
+                        # print(f"Using regex: {regex_pattern}")
+                        
+                        match = re.search(regex_pattern, response, re.DOTALL)
+                        # print(f"Regex match result: {match}")
+                        
                         if match:
+                            # print(f"✅ Regex matched for {action_type}")
+                            # print(f"Match groups: {match.groups()}")
+                            # print(f"Match group(0): {match.group(0)}")
+                            
+                            # for i, group in enumerate(match.groups(), 1):
+                            #     # print(f"Match group({i}): '{group}'")
+                            
                             if action_type == "view_problem":
-                                return {
+                                result = {
                                     "action": "VIEW_PROBLEM",
                                     "parameters": {"problem_id": match.group(1)}
                                 }
+                                # print(f"Returning view_problem result: {result}")
+                                return result
+                                
                             elif action_type == "get_hint":
-                                return {
+                                result = {
                                     "action": "GET_HINT",
                                     "parameters": {
                                         "problem_id": match.group(1),
@@ -596,8 +718,11 @@ class ActionParser:
                                         "hint_knowledge": match.group(3)
                                     }
                                 }
+                                # print(f"Returning get_hint result: {result}")
+                                return result
+                                
                             elif action_type == "submission_solution":
-                                return {
+                                result = {
                                     "action": "submission_SOLUTION",
                                     "parameters": {
                                         "problem_id": match.group(1),
@@ -605,22 +730,29 @@ class ActionParser:
                                         "language": match.group(3).lower()
                                     }
                                 }
-                    elif action_type == "view_rankings":
-                        return {
-                            "action": "VIEW_RANKINGS",
-                            "parameters": {}
-                        }
-                    elif action_type == "terminate":
-                        return {
-                            "action": "TERMINATE",
-                            "parameters": {}
-                        }
+                                # print(f"Returning submission_solution result: {result}")
+                                return result
+                    else:
+                        # print(f"No regex defined for {action_type}, using simple action
+                        
+                        if action_type == "view_rankings":
+                            result = {
+                                "action": "VIEW_RANKINGS",
+                                "parameters": {}
+                            }
+                            # print(f"Returning view_rankings result: {result}")
+                            return result
+                            
+                        elif action_type == "terminate":
+                            result = {
+                                "action": "TERMINATE",
+                                "parameters": {}
+                            }
+                            # print(f"Returning terminate result: {result}")
+                            return result
             
-            # return {
-            #     "action": "UNKNOWN",
-            #     "parameters": {},
-            #     "error": "Could not parse action from response"
-            # }
+            # print(f"\n=== DEBUG: No action pattern matched ===")
+            # print(f"Could not parse action from response: {response}")
             raise ValueError("Could not parse action from response")
 
 

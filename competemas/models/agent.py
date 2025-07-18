@@ -65,7 +65,7 @@ class Agent(ABC):
             self.action_parser = None
         
         # API configuration
-        self.max_retries = 3
+        self.max_retries = 30
         self.retry_delay = 1.0
         
         # Load API configuration

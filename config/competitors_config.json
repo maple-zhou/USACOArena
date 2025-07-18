@@ -2,7 +2,7 @@
     "competitors": [
         {
             "type": "generic",
-            "name": "agent1",
+            "name": "sf-deepseek-v3",
             "model_id": "sf-deepseek-v3",
             "api_base_url": "http://100.76.8.43:10086/",
             "api_key": "sk-EFhZxTqkXfedmKP_yxB8-XIisFkXQ7JGL6sunBI3XBfQfinP3oBgl5wzqDw",
@@ -27,10 +27,110 @@
         },
         {
             "type": "generic",
-            "name": "agent2",
-            "model_id": "sf-deepseek-v3",
-            "api_base_url": "http://100.76.8.43:10086/",
-            "api_key": "sk-EFhZxTqkXfedmKP_yxB8-XIisFkXQ7JGL6sunBI3XBfQfinP3oBgl5wzqDw",
+            "name": "gemini-2.5-pro",
+            "model_id": "gemini-2.5-pro",
+            "api_base_url": "http://100.76.8.43:10010/",
+            "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
+            "prompt_config_path": "config/prompts.json",
+            "request_format": {
+                "url": "/v1/chat/completions",
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer {api_key}"
+                },
+                "body_template": {
+                    "messages": "{messages}",
+                    "model": "{model_id}",
+                    "temperature": 0.7
+                }
+            },
+            "response_format": {
+                "response_path": "choices[0].message.content",
+                "error_path": "error.message"
+            }
+        },
+        {
+            "type": "generic",
+            "name": "gpt-4.1",
+            "model_id": "gpt-4.1",
+            "api_base_url": "http://100.76.8.43:10010/",
+            "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
+            "prompt_config_path": "config/prompts.json",
+            "request_format": {
+                "url": "/v1/chat/completions",
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer {api_key}"
+                },
+                "body_template": {
+                    "messages": "{messages}",
+                    "model": "{model_id}",
+                    "temperature": 0.7
+                }
+            },
+            "response_format": {
+                "response_path": "choices[0].message.content",
+                "error_path": "error.message"
+            }
+        },
+        {
+            "type": "generic",
+            "name": "gemini-2.5-flash",
+            "model_id": "gemini-2.5-flash",
+            "api_base_url": "http://100.76.8.43:10010/",
+            "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
+            "prompt_config_path": "config/prompts.json",
+            "request_format": {
+                "url": "/v1/chat/completions",
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer {api_key}"
+                },
+                "body_template": {
+                    "messages": "{messages}",
+                    "model": "{model_id}",
+                    "temperature": 0.7
+                }
+            },
+            "response_format": {
+                "response_path": "choices[0].message.content",
+                "error_path": "error.message"
+            }
+        },
+        {
+            "type": "generic",
+            "name": "gpt-4o-mini",
+            "model_id": "gpt-4o-mini",
+            "api_base_url": "http://100.76.8.43:10010/",
+            "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
+            "prompt_config_path": "config/prompts.json",
+            "request_format": {
+                "url": "/v1/chat/completions",
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer {api_key}"
+                },
+                "body_template": {
+                    "messages": "{messages}",
+                    "model": "{model_id}",
+                    "temperature": 0.7
+                }
+            },
+            "response_format": {
+                "response_path": "choices[0].message.content",
+                "error_path": "error.message"
+            }
+        },
+        {
+            "type": "generic",
+            "name": "gpt-4.1-nano",
+            "model_id": "gpt-4.1-nano",
+            "api_base_url": "http://100.76.8.43:10010/",
+            "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
             "prompt_config_path": "config/prompts.json",
             "request_format": {
                 "url": "/v1/chat/completions",

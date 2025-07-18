@@ -22,6 +22,7 @@ import asyncio
 import requests
 import traceback
 import time
+import re
 from typing import Dict, List, Optional, Any
 import os
 from datetime import datetime
@@ -135,7 +136,7 @@ class GenericAPIAgent(Agent):
         
         # Generate response from LLM
         response_text = await self.generate_response(state, prompt)
-        logger.critical(f"\nNAME: {self.name}, response_text: {response_text}\n")
+        
         
         # Parse action from response
         action = self.action_parser.parse_action(response_text)
@@ -198,41 +199,74 @@ class GenericAPIAgent(Agent):
                 # Parse the formatted messages back to JSON
                 if "messages" in formatted_body:
                     formatted_body["messages"] = json.loads(formatted_body["messages"])
-
-                # Make the request
-                response = await asyncio.to_thread(
-                    requests.request,
-                    method=self.request_format['method'],
-                    url=url,
-                    headers=headers,
-                    json=formatted_body,
-                    # timeout=self.request_timeout
-                )
-                response.raise_for_status()
-
-                # logger.error(f"LLM response: {response.json()}")
-
-                # print(f"LLMresponse: {response.json()}")
-                # Get the first element from the array response
-                result_array = response.json()
-                result = result_array[0]  # Extract the actual response object from the array
-
-                # print("\ngenerate_response result: ", result)
-                response_text = self._get_value_from_path(result, self.response_format["response_path"])
-
-                # print(f"response_text: {response_text}")
-                # print("\n\n")
-                # prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
-                # completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
-                # reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
-                # completion_tokens += reasoning_tokens
-
-                # Add assistant response to conversation history
-                self.add_to_conversation("assistant", response_text)
-                self.save_conversation()
-                self.conversation_history.pop()
-                # action = self.action_parser.parse_action(response_text)
                 
+                has_json_block = False
+                # Make the request
+                json_retry_count = 0
+                while not has_json_block and json_retry_count < 5:
+                    response = await asyncio.to_thread(
+                        requests.request,
+                        method=self.request_format['method'],
+                        url=url,
+                        headers=headers,
+                        json=formatted_body,
+                        # timeout=self.request_timeout
+                    )
+                    response.raise_for_status()
+
+                    # logger.error(f"LLM response: {response.json()}")
+
+                    # print(f"LLMresponse: {response.json()}")
+                    # Get the first element from the array response
+                    result_array = response.json()
+                    result = result_array[0]  # Extract the actual response object from the array
+
+                    # print("\ngenerate_response result: ", result)
+                    response_text = self._get_value_from_path(result, self.response_format["response_path"])
+                    
+                    logger.critical(f"\nNAME: {self.name}, response_text: {response_text}\n")
+                    
+                    # 检查response_text中是否包含```json标记或直接是JSON格式
+                    def is_valid_json_or_has_markdown(text):
+                        if not text:
+                            return False
+                        
+                        # 检查是否包含```json标记
+                        if re.search(r'```json', text, re.IGNORECASE):
+                            return True
+                        
+                        # 检查是否直接是JSON格式
+                        try:
+                            json.loads(text.strip())
+                            return True
+                        except (json.JSONDecodeError, ValueError):
+                            return False
+                    
+                    if response_text and not is_valid_json_or_has_markdown(response_text):
+                        logger.error(f"NOT FOUND ```json markdown block or valid JSON in response for {self.name}")
+                        json_retry_count += 1
+                        time.sleep(self.retry_delay)
+                    else:
+                        has_json_block = True
+                        if re.search(r'```json', response_text, re.IGNORECASE):
+                            logger.info(f"Found ```json markdown block in response for {self.name}")
+                        else:
+                            logger.info(f"Found valid JSON format in response for {self.name}")
+                    
+                    # print(f"response_text: {response_text}")
+                    # print("\n\n")
+                    # prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
+                    # completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
+                    # reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
+                    # completion_tokens += reasoning_tokens
+
+                    # Add assistant response to conversation history
+                    self.add_to_conversation("assistant", response_text)
+                    self.save_conversation()
+                    self.conversation_history.pop()
+                    # action = self.action_parser.parse_action(response_text)
+                    
+
                 return response_text
                 
             except Exception as e:

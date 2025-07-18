@@ -1,11 +1,11 @@
 import openai,os
 messages = [
-    {"role": "user", "content": "今天阳光正正好，从书架上随机抽了一本书，读了三个小时"}
+    {"role": "user", "content": "hello"}
 ]
 os.environ["OPENAI_API_KEY"] = "sk-EFhZxTqkXfedmKP_yxB8-XIisFkXQ7JGL6sunBI3XBfQfinP3oBgl5wzqDw"
 # client = OpenAI(api_key=OPENAI_API_KEY)
 response = openai.OpenAI(base_url="http://100.76.8.43:10086/v1").chat.completions.create(
-        model="sf-deepseek-v3",
+        model="sf-deepseek-r1",
         # model="claude-3-sonnet-20240229",
         messages = messages,
         # timeout=30,

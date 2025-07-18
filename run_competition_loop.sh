@@ -43,6 +43,7 @@ for ((i=1; i<=N; i++)); do
     echo "启动competemas服务器..." | tee -a "$log_file"
     
     # 直接启动服务器（后台运行）
+    source .venv/bin/activate
     competemas > "logs/competition_loops/server_round_${i}.log" 2>&1 &
     server_pid=$!
     
@@ -81,6 +82,7 @@ for ((i=1; i<=N; i++)); do
     echo "运行competemas_run客户端..."
     echo "运行competemas_run客户端..." | tee -a "$log_file"
     
+    source .venv/bin/activate
     competemas_run > "logs/competition_loops/client_round_${i}.log" 2>&1
     client_exit_code=$?
     

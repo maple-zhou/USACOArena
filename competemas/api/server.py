@@ -24,7 +24,7 @@ timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 log_filename = f"logs/competition_system/competition_system_{timestamp}.log"
 
 # 设置日志配置
-setup_logging(level="DEBUG", log_file=log_filename)
+setup_logging(level="INFO", log_file=log_filename)
 
 # 获取logger
 logger = get_logger("server")

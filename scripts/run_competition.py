@@ -142,7 +142,15 @@ def print_competition_results(results: Dict, competition_id: str):
         for name, data in sorted_results:
             print(f"\n{name}:")
             print(f"  Final Score: {data.get('score', 0)}")
-            print(f"  Solved Problems: {', '.join(data.get('solved_problems', [])) if data.get('solved_problems') else 'None'}")
+            # Handle solved_problems - it can be either a list of strings or a list of dicts
+            solved_problems = data.get('solved_problems', [])
+            if solved_problems and isinstance(solved_problems[0], dict):
+                # If it's a list of dicts, extract problem_id from each dict
+                solved_problems_str = ", ".join([p.get("problem_id", str(p)) for p in solved_problems])
+            else:
+                # If it's already a list of strings, join them directly
+                solved_problems_str = ", ".join(solved_problems) if solved_problems else "None"
+            print(f"  Solved Problems: {solved_problems_str}")
             if data.get('termination_reason'):
                 print(f"  Termination Reason: {data['termination_reason']}")
             if data.get('remaining_tokens'):
@@ -180,7 +188,15 @@ def log_competition_results(results: Dict, competition_id: str):
         for name, data in sorted_results:
             result_lines.append(f"{name}:")
             result_lines.append(f"  Final Score: {data.get('score', 0)}")
-            result_lines.append(f"  Solved Problems: {', '.join(data.get('solved_problems', [])) if data.get('solved_problems') else 'None'}")
+            # Handle solved_problems - it can be either a list of strings or a list of dicts
+            solved_problems = data.get('solved_problems', [])
+            if solved_problems and isinstance(solved_problems[0], dict):
+                # If it's a list of dicts, extract problem_id from each dict
+                solved_problems_str = ", ".join([p.get("problem_id", str(p)) for p in solved_problems])
+            else:
+                # If it's already a list of strings, join them directly
+                solved_problems_str = ", ".join(solved_problems) if solved_problems else "None"
+            result_lines.append(f"  Solved Problems: {solved_problems_str}")
             if data.get('termination_reason'):
                 result_lines.append(f"  Termination Reason: {data['termination_reason']}")
             if data.get('remaining_tokens'):

@@ -691,7 +691,7 @@ class DuckDBStorage:
             SELECT MAX(pass_score) FROM submissions 
             WHERE competition_id = ? AND participant_id = ? AND problem_id = ?
         """, [competition_id, participant_id, problem_id]).fetchone()
-        logger.error(f"00000current_best_score_result: {current_best_score_result}")
+        # logger.error(f"00000current_best_score_result: {current_best_score_result}")
         
         if current_best_score_result is None:
             # 如果当前没有提交过，则直接加上当前提交的分数
@@ -701,10 +701,10 @@ class DuckDBStorage:
             # 如果当前提交的分数大于当前最佳分数，则加上当前提交的分数与当前最佳分数的差值
             if submission.pass_score >= current_best_score:
                 add_problem_pass_score = submission.pass_score - current_best_score
-                logger.error(f"1111111add_problem_pass_score: {add_problem_pass_score}")
+                # logger.error(f"1111111add_problem_pass_score: {add_problem_pass_score}")
             else:
                 add_problem_pass_score = 0
-        logger.error(f"222222add_problem_pass_score: {add_problem_pass_score}")
+        # logger.error(f"222222add_problem_pass_score: {add_problem_pass_score}")
 
         # Only update problem_pass_score if new score is higher
         

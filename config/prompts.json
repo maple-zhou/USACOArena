@@ -32,19 +32,19 @@
     },
     "action_patterns": {
         "view_problem": {
-            "patterns": ["view problem", "look at problem"],
+            "patterns": ["view problem", "view_problem", "look at problem", "look_at_problem"],
             "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?"
         },
         "get_hint": {
-            "patterns": ["get hint", "request hint"],
+            "patterns": ["get hint", "request hint", "get_hint", "request_hint"],
             "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?hint_level\\s*:\\s*(\\d+)"
         },
         "submission_solution": {
-            "patterns": ["submission solution", "submission code"],
+            "patterns": ["submission solution", "submission code", "submission_solution", "submission_code"],
             "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?solution\\s*:\\s*[\"']?```(?:python|cpp|java)?\\n(.*?)```[\"']?.*?language\\s*:\\s*[\"']?(python|cpp|java)[\"']?"
         },
         "view_rankings": {
-            "patterns": ["view rankings", "check rankings"],
+            "patterns": ["view rankings", "check rankings","view rankings", "check rankings"],
             "regex": null
         },
         "terminate": {
