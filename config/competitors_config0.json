@@ -6,7 +6,7 @@
             "model_id": "gpt-4o-mini",
             "api_base_url": "http://100.76.8.43:10010/",
             "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
-            "prompt_config_path": "config/prompts.json",
+            "prompt_config_path": "agents/single_agent/prompts.json",
             "request_format": {
                 "url": "/v1/chat/completions",
                 "method": "POST",

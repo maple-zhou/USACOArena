@@ -57,7 +57,7 @@ class Agent(ABC):
         
         # Load prompt system and action parser
         if prompt_config_path:
-            from scripts.prompts.custom_prompts import PromptSystem, ActionParser
+            from scripts.prompts.prompt_manager import PromptSystem, ActionParser
             self.prompt_system = PromptSystem(prompt_config_path)
             self.action_parser = ActionParser(prompt_config_path)
         else:

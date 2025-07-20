@@ -6,7 +6,7 @@ import argparse
 from datetime import datetime, timedelta
 from typing import Dict, List
 
-from scripts.agents.single_agent import GenericAPIAgent, StreamingGenericAPIAgent
+from agents import GenericAPIAgent, StreamingGenericAPIAgent
 from scripts.competition_organizer import CompetitionOrganizer
 from competemas.engine.competition import Competitor
 from competemas.utils.logger_config import setup_logging, get_logger

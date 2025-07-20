@@ -10,7 +10,7 @@ from typing import Dict, List, Optional, Tuple, Any, TYPE_CHECKING
 from competemas.utils.logger_config import get_logger
 
 if TYPE_CHECKING:
-    from scripts.agents.single_agent import Agent
+    from agents import Agent
 
 logger = get_logger("competition")
 

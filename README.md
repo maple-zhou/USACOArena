@@ -134,7 +134,7 @@ CompeteMAS/
 │   ├── agents/                  # 自定义智能体实现
 │   │   └── single_agent.py     # LLM智能体类
 │   ├── prompts/                 # 自定义提示词模板
-│   │   └── custom_prompts.py    # 提示词系统
+│   │   └── prompt_manager.py    # 提示词系统
 │   └── run_competition.py       # 竞赛运行主脚本
 ├── 📋 示例和配置模板
 │   └── sample_configs/          # 示例配置文件
@@ -208,7 +208,7 @@ python scripts/run_competition.py \
 
 ### 自定义智能体开发
 
-在`scripts/agents/single_agent.py`中实现您的智能体：
+在`agents/single_agent/single_agent.py`中实现您的智能体：
 
 ```python
 from competemas.core.agent_interface import AgentInterface
@@ -286,7 +286,7 @@ uv run mypy competemas/
   - `single_agent.py`: 支持多种LLM提供商的通用智能体
 
 - **`prompts/`**: 提示词管理
-  - `custom_prompts.py`: 提示词模板和解析系统
+  - `prompt_manager.py`: 提示词模板和解析系统
 
 - **`run_competition.py`**: 竞赛执行脚本
 
@@ -351,11 +351,11 @@ uv run mypy competemas/
 from src.competemas.core.agents import GenericAPIAgent
 
 # 新的导入方式  
-from scripts.agents.single_agent import GenericAPIAgent
+from agents import GenericAPIAgent
 ```
 
 ### 2. 移动自定义代码
-- 自定义智能体 → `scripts/agents/`
+- 自定义智能体 → `agents/`
 - 自定义提示词 → `scripts/prompts/`
 - 运行脚本 → `scripts/`
 
@@ -370,7 +370,7 @@ from scripts.agents.single_agent import GenericAPIAgent
 ### Model Configuration
 - 在 `examples/sample_configs/competitors_config.json` 中配置不同的LLM模型
 - 关键参数: `model_id`, `api_base_url`, `api_key`
-- 可在 `scripts/agents/single_agent.py` 中调整令牌定价
+- 可在 `agents/single_agent/single_agent.py` 中调整令牌定价
 - 参考 [Artificial Analysis](https://artificialanalysis.ai/) 获取模型定价信息
 
 ### Competition Parameters
@@ -379,8 +379,8 @@ from scripts.agents.single_agent import GenericAPIAgent
 - 所有可用问题列在 `config/all_problems.json` 中
 
 ### Custom MAS Development
-- 在 `scripts/prompts/custom_prompts.py` 中修改提示词
-- 在 `scripts/agents/single_agent.py` 中调整智能体行为
+- 在 `scripts/prompts/prompt_manager.py` 中修改提示词
+- 在 `agents/single_agent/single_agent.py` 中调整智能体行为
 - 智能体通过 `Agent.process` 函数连接
 - 欢迎尝试不同的策略和方法！😊
 
