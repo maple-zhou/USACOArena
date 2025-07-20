@@ -7,6 +7,5 @@ strategies and algorithms here.
 """
 
 from .single_agent import GenericAPIAgent, StreamingGenericAPIAgent
-from .mapcoder import MapCoderAgent
 
-__all__ = ["GenericAPIAgent", "StreamingGenericAPIAgent", "MapCoderAgent"] 
+__all__ = ["GenericAPIAgent", "StreamingGenericAPIAgent"] 
