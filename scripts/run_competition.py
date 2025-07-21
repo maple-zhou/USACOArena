@@ -174,6 +174,7 @@ def log_competition_results(results: Dict, competition_id: str):
             key=lambda x: x[1].get("score", 0),
             reverse=True
         )
+        print(f"sorted_results: {sorted_results}")
         
         # Add results table
         result_lines.append(f"{'Rank':<5} {'Name':<20} {'Score':<10} {'Solved':<10}")
@@ -203,6 +204,8 @@ def log_competition_results(results: Dict, competition_id: str):
                 result_lines.append(f"  Remaining Tokens: {data['remaining_tokens']}")
             if data.get('participant_id'):
                 result_lines.append(f"  Participant ID: {data['participant_id']}")
+            if data.get('LLM_tokens'):
+                result_lines.append(f"  LLM Tokens: {data['LLM_tokens']}")
         
         # Join all lines and apply character limit
         result_str = "\n".join(result_lines)

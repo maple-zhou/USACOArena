@@ -38,13 +38,13 @@ for ((i=1; i<=N; i++)); do
     echo "==================================" | tee -a "$log_file"
     echo "第 $i 轮运行开始时间: $(date)" | tee -a "$log_file"
     
-    # 启动competemas服务器
-    echo "启动competemas服务器..."
-    echo "启动competemas服务器..." | tee -a "$log_file"
+    # 启动competition_server服务器
+    echo "启动competition_server服务器..."
+    echo "启动competition_server服务器..." | tee -a "$log_file"
     
     # 直接启动服务器（后台运行）
     source .venv/bin/activate
-    competemas > "logs/competition_loops/server_round_${i}.log" 2>&1 &
+    competition_server > "logs/competition_loops/server_round_${i}.log" 2>&1 &
     server_pid=$!
     
     echo "服务器进程ID: $server_pid"
@@ -75,15 +75,15 @@ for ((i=1; i<=N; i++)); do
         continue
     fi
     
-    echo "服务器已启动，开始运行competemas_run..."
-    echo "服务器已启动，开始运行competemas_run..." | tee -a "$log_file"
+    echo "服务器已启动，开始运行competition_run..."
+    echo "服务器已启动，开始运行competition_run..." | tee -a "$log_file"
     
-    # 启动competemas_run客户端（前台运行）
-    echo "运行competemas_run客户端..."
-    echo "运行competemas_run客户端..." | tee -a "$log_file"
+    # 启动competition_run客户端（前台运行）
+    echo "运行competition_run客户端..."
+    echo "运行competition_run客户端..." | tee -a "$log_file"
     
     source .venv/bin/activate
-    competemas_run > "logs/competition_loops/client_round_${i}.log" 2>&1
+    competition_run > "logs/competition_loops/client_round_${i}.log" 2>&1
     client_exit_code=$?
     
     echo "客户端运行完成，退出代码: $client_exit_code"

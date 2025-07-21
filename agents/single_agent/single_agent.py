@@ -226,13 +226,13 @@ class GenericAPIAgent(Agent):
                     
                     logger.critical(f"\nNAME: {self.name}, response_text: {response_text}\n")
                     
-                    # 检查response_text中是否包含```json标记或直接是JSON格式
+                    # 检查response_text中是否包含完整的```json ... ```代码块或直接是JSON格式
                     def is_valid_json_or_has_markdown(text):
                         if not text:
                             return False
                         
-                        # 检查是否包含```json标记
-                        if re.search(r'```json', text, re.IGNORECASE):
+                        # 检查是否有完整的```json ... ```代码块
+                        if re.search(r'```json\s*(.+?)\s*```', text, re.DOTALL | re.IGNORECASE):
                             return True
                         
                         # 检查是否直接是JSON格式
@@ -243,7 +243,7 @@ class GenericAPIAgent(Agent):
                             return False
                     
                     if response_text and not is_valid_json_or_has_markdown(response_text):
-                        logger.error(f"NOT FOUND ```json markdown block or valid JSON in response for {self.name}")
+                        logger.error(f"NOT FOUND ```json ... ``` markdown block or valid JSON in response for {self.name}")
                         json_retry_count += 1
                         time.sleep(self.retry_delay)
                     else:

@@ -28,8 +28,8 @@ dev = [
 ]
 
 [project.scripts]
-competemas = "competemas.main:main"
-competemas_run = "scripts.run_competition:main_sync"
+competition_server = "competemas.main:main"
+competition_run = "scripts.run_competition:main_sync"
 
 [build-system]
 requires = ["hatchling"]

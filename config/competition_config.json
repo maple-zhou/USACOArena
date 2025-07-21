@@ -24,12 +24,12 @@
       "MLE": 10
     },
     "hint_tokens": {
-      "level_0": 300,
-      "level_1": 500,
-      "level_2": 10,
+      "level_0": 500,
+      "level_1": 1000,
+      "level_2": 1000,
       "level_3": 1500,
-      "level_4": 20,
-      "level_5": 2500
+      "level_4": 1500,
+      "level_5": 2000
     },
     "submission_tokens": {
       "AC": 100,

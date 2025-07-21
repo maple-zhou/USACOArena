@@ -18,14 +18,6 @@ from ..utils.logger_config import get_logger, setup_logging
 import logging
 
 
-# 确保日志目录存在
-os.makedirs('logs/competition_system', exist_ok=True)
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-log_filename = f"logs/competition_system/competition_system_{timestamp}.log"
-
-# 设置日志配置
-setup_logging(level="INFO", log_file=log_filename)
-
 # 获取logger
 logger = get_logger("server")
 
@@ -33,11 +25,10 @@ logger = get_logger("server")
 # data_storage = DuckDBStorage()
 # logger.info("Initialized DuckDB storage")
 
-# Initialize problem library loader
+# Initialize problem library loader and textbook loader
 problem_loader = USACOProblemLoader()
 logger.info("Initialized USACO problem loader")
 
-# Initialize textbook loader
 textbook_loader = TextbookLoader()
 logger.info("Initialized textbook loader")
 
@@ -48,10 +39,10 @@ logger.info("Created Flask application")
 # 添加全局请求频率控制
 class GlobalRateLimiter:
     """全局请求频率限制器"""
-    def __init__(self):
+    def __init__(self, min_interval: float = 0.05):
         self._last_request_time = 0  # 记录最后一次请求时间
         self._lock = threading.Lock()
-        self._min_interval = 0.05  # 最小请求间隔（秒）
+        self._min_interval = min_interval  # 最小请求间隔（秒）
     
     def should_rate_limit(self) -> bool:
         """检查是否需要限制请求频率"""
@@ -70,7 +61,7 @@ class GlobalRateLimiter:
             current_time = time.time()
             return max(0, self._min_interval - (current_time - self._last_request_time))
 
-# 全局请求限制器
+# 全局请求限制器（将在初始化时配置）
 global_rate_limiter = GlobalRateLimiter()
 
 
@@ -662,16 +653,30 @@ def get_rankings(competition_id: str):
         logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
         time.sleep(wait_time)
     
-    try:
-        with DuckDBStorage() as data_storage:
-            rankings = data_storage.calculate_competition_rankings(competition_id)
-        if not rankings:
-            return error_response(f"Competition with ID {competition_id} not found", 404)
-        
-        return success_response(rankings)
-    except Exception as e:
-        logger.error(f"Failed to get rankings: {e}", exc_info=True)
-        return error_response(f"Failed to get rankings: {str(e)}", 500)
+    max_retries = 3
+    retry_delay = 0.5
+    
+    for attempt in range(max_retries):
+        try:
+            with DuckDBStorage() as data_storage:
+                rankings = data_storage.calculate_competition_rankings(competition_id)
+                logger.critical(f"rankings: {rankings}")
+            if not rankings:
+                return error_response(f"Competition with ID {competition_id} not found", 404)
+            
+            return success_response(rankings)
+            
+        except Exception as e:
+            if "TransactionContext Error: Conflict on update" in str(e) and attempt < max_retries - 1:
+                logger.warning(f"Database conflict on rankings request (attempt {attempt + 1}/{max_retries}): {str(e)}")
+                time.sleep(retry_delay)
+                retry_delay *= 2  # 指数退避
+            else:
+                logger.error(f"Failed to get rankings after {attempt + 1} attempts: {e}", exc_info=True)
+                return error_response(f"Failed to get rankings: {str(e)}", 500)
+    
+    # 如果所有重试都失败了，返回错误
+    return error_response("Failed to get rankings after all retries", 500)
 
 
 # API Route for checking OJ status
@@ -1114,7 +1119,7 @@ def list_terminated_participants(competition_id: str):
 
 
 # Main entrypoint
-def run_api(host: str = "0.0.0.0", port: int = 5000, debug: bool = False):
+def run_api(host: str = "0.0.0.0", port: int = 5000, debug: bool = False, config=None):
     """
     Start the Flask API server.
     
@@ -1122,7 +1127,34 @@ def run_api(host: str = "0.0.0.0", port: int = 5000, debug: bool = False):
         host: Host address to bind to (default: "0.0.0.0")
         port: Port number to bind to (default: 5000)
         debug: Enable debug mode (default: False)
+        config: Configuration manager instance (optional)
     """
+    global global_rate_limiter, problem_loader, textbook_loader
+    
+    # Initialize configuration if provided
+    if config:
+        # Configure rate limiter
+        rate_limit_config = config.get_section("rate_limiting")
+        min_interval = rate_limit_config.get("min_interval", 0.05)
+        global_rate_limiter = GlobalRateLimiter(min_interval)
+        logger.info(f"Configured rate limiter with interval: {min_interval}s")
+        
+        # Configure problem loader with custom data directory
+        data_sources_config = config.get_section("data_sources")
+        problem_data_dir = data_sources_config.get("problem_data_dir", "dataset/datasets/usaco_2025")
+        textbook_data_dir = data_sources_config.get("textbook_data_dir", "dataset/textbooks")
+        
+        # Reinitialize loaders with custom paths if different from defaults
+        if problem_data_dir != "dataset/datasets/usaco_2025":
+            problem_loader = USACOProblemLoader(data_path=problem_data_dir)
+            logger.info(f"Reinitialized problem loader with data path: {problem_data_dir}")
+        
+        if textbook_data_dir != "dataset/textbooks":
+            textbook_loader = TextbookLoader(data_path=textbook_data_dir)
+            logger.info(f"Reinitialized textbook loader with data path: {textbook_data_dir}")
+        
+        logger.info("Server configuration applied successfully")
+    
     app.run(host=host, port=port, debug=debug)
 
 

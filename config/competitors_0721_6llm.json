@@ -2,10 +2,10 @@
     "competitors": [
         {
             "type": "generic",
-            "name": "sf-deepseek-v3",
-            "model_id": "sf-deepseek-v3",
-            "api_base_url": "http://100.76.8.43:10086/",
-            "api_key": "sk-EFhZxTqkXfedmKP_yxB8-XIisFkXQ7JGL6sunBI3XBfQfinP3oBgl5wzqDw",
+            "name": "qwen3-235b",
+            "model_id": "qwen3-235b",
+            "api_base_url": "http://100.76.8.43:10010/",
+            "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
             "prompt_config_path": "agents/single_agent/prompts.json",
             "request_format": {
                 "url": "/v1/chat/completions",
@@ -52,8 +52,8 @@
         },
         {
             "type": "generic",
-            "name": "gpt-4.1",
-            "model_id": "gpt-4.1",
+            "name": "deepseek-v3",
+            "model_id": "deepseek-v3",
             "api_base_url": "http://100.76.8.43:10010/",
             "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
             "prompt_config_path": "agents/single_agent/prompts.json",
@@ -102,8 +102,8 @@
         },
         {
             "type": "generic",
-            "name": "gpt-4o-mini",
-            "model_id": "gpt-4o-mini",
+            "name": "deepseek-r1",
+            "model_id": "deepseek-r1",
             "api_base_url": "http://100.76.8.43:10010/",
             "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
             "prompt_config_path": "agents/single_agent/prompts.json",
@@ -127,8 +127,8 @@
         },
         {
             "type": "generic",
-            "name": "gpt-4.1-nano",
-            "model_id": "gpt-4.1-nano",
+            "name": "kimi-k2",
+            "model_id": "kimi-k2",
             "api_base_url": "http://100.76.8.43:10010/",
             "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
             "prompt_config_path": "agents/single_agent/prompts.json",

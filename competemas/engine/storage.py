@@ -679,7 +679,7 @@ class DuckDBStorage:
             # Update problem's first_to_solve in database
             self._update_problem_first_to_solve(competition_id, problem_id, participant_id)
         
-        logger.error(f"333333submission: {submission.pass_score}")
+        # logger.error(f"333333submission: {submission.pass_score}")
         # Insert submission into database
         conn = self._get_conn()
         
@@ -1207,6 +1207,8 @@ class DuckDBStorage:
         # Calculate total LLM tokens
         llm_tokens = prompt_tokens + completion_tokens + reasoning_tokens
         
+        
+        
         # Update participant token usage
         # new_remaining_tokens = max(0, participant.remaining_tokens - llm_tokens)
         
@@ -1359,6 +1361,8 @@ class DuckDBStorage:
         
         # Calculate total LLM tokens
         llm_tokens = prompt_tokens + completion_tokens + reasoning_tokens
+
+        logger.critical(f"\nparticipant: {participant.name}, llm_tokens: {llm_tokens}\n")
         
         # Update participant token usage
         new_remaining_tokens = max(0, participant.remaining_tokens - llm_tokens)

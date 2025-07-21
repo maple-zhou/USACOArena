@@ -1,0 +1,21 @@
+{
+  "logging": {
+    "level": "INFO",
+    "directory": "logs/competition_system",
+    "enable_colors": true
+  },
+  "online_judge": {
+    "endpoint": "http://localhost:9000/2015-03-31/functions/function/invocations"
+  },
+  "rate_limiting": {
+    "min_interval": 0.05
+  },
+  "database": {
+    "path": "data/competemas.duckdb",
+    "backup_json": true
+  },
+  "data_sources": {
+    "problem_data_dir": "dataset/datasets/usaco_2025",
+    "textbook_data_dir": "dataset/textbooks"
+  }
+} 
