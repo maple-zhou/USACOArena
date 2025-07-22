@@ -52,22 +52,26 @@ class ConfigManager:
     def _get_default_config(self) -> Dict[str, Any]:
         """Get default configuration values"""
         return {
-            "logging": {
+            "server": {
+                "port": 5000,
+                "host": "0.0.0.0"
+            },
+            "log": {
                 "level": "INFO",
-                "directory": "logs/competition_system",
+                "dir": "logs/server_logs",
                 "enable_colors": True
             },
-            "online_judge": {
+            "oj": {
                 "endpoint": "http://localhost:9000/2015-03-31/functions/function/invocations"
             },
-            "rate_limiting": {
+            "rate_limit": {
                 "min_interval": 0.05
             },
-            "database": {
-                "path": "data/competemas.duckdb",
+            "db": {
+                "path": "data/competition_5000.duckdb",
                 "backup_json": True
             },
-            "data_sources": {
+            "data": {
                 "problem_data_dir": "dataset/datasets/usaco_2025",
                 "textbook_data_dir": "dataset/textbooks"
             }
@@ -87,14 +91,17 @@ class ConfigManager:
     def _load_from_env(self) -> None:
         """Load configuration from environment variables"""
         env_mappings = {
-            "COMPETEMAS_LOG_LEVEL": ("logging", "level"),
-            "COMPETEMAS_LOG_DIR": ("logging", "directory"),
-            "COMPETEMAS_OJ_ENDPOINT": ("online_judge", "endpoint"),
-            "COMPETEMAS_RATE_LIMIT_INTERVAL": ("rate_limiting", "min_interval"),
-            "COMPETEMAS_DB_PATH": ("database", "path"),
-            "COMPETEMAS_DB_BACKUP_JSON": ("database", "backup_json"),
-            "COMPETEMAS_PROBLEM_DATA_DIR": ("data_sources", "problem_data_dir"),
-            "COMPETEMAS_TEXTBOOK_DATA_DIR": ("data_sources", "textbook_data_dir"),
+            "COMPETEMAS_SERVER_HOST": ("server", "host"),
+            "COMPETEMAS_SERVER_PORT": ("server", "port"),
+            "COMPETEMAS_LOG_LEVEL": ("log", "level"),
+            "COMPETEMAS_LOG_DIR": ("log", "dir"),
+            "COMPETEMAS_LOG_ENABLE_COLORS": ("log", "enable_colors"),
+            "COMPETEMAS_OJ_ENDPOINT": ("oj", "endpoint"),
+            "COMPETEMAS_RATE_LIMIT_INTERVAL": ("rate_limit", "min_interval"),
+            "COMPETEMAS_DB_PATH": ("db", "path"),
+            "COMPETEMAS_DB_BACKUP_JSON": ("db", "backup_json"),
+            "COMPETEMAS_PROBLEM_DATA_DIR": ("data", "problem_data_dir"),
+            "COMPETEMAS_TEXTBOOK_DATA_DIR": ("data", "textbook_data_dir"),
         }
         
         for env_var, config_path in env_mappings.items():
@@ -143,11 +150,11 @@ class ConfigManager:
         Get configuration value using dot notation
         
         Args:
-            key: Configuration key (e.g., "logging.level")
+            key: Configuration key (e.g., "log.level")
             default: Default value if key not found
             
         Returns:
-            Configuration value
+            Configuration value or default
         """
         keys = key.split('.')
         current = self._config
@@ -165,7 +172,7 @@ class ConfigManager:
         Set configuration value using dot notation
         
         Args:
-            key: Configuration key (e.g., "logging.level")
+            key: Configuration key (e.g., "log.level")
             value: Value to set
         """
         keys = key.split('.')

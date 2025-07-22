@@ -15,15 +15,17 @@ from .utils.config_manager import get_config
 
 def setup_logging_from_config(config):
     """Setup logging based on configuration"""
-    log_config = config.get_section("logging")
+    log_config = config.get_section("log")
+    server_config = config.get_section("server")
     
     # Create log directory
-    log_dir = log_config.get("directory", "logs/competition_system")
+    log_dir = log_config.get("dir", "logs/server_logs")
+    port = server_config.get("port", 5000)  # 从server配置获取端口
     os.makedirs(log_dir, exist_ok=True)
     
     # Generate log filename
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_filename = os.path.join(log_dir, f"competition_system_{timestamp}.log")
+    log_filename = os.path.join(log_dir, f"server_{port}_{timestamp}.log")
     
     # Setup logging
     setup_logging(
@@ -69,20 +71,24 @@ def main():
     config = get_config(args.config)
     
     # Override configuration with command line arguments
+    if args.host:
+        config.set("server.host", args.host)
+    if args.port:
+        config.set("server.port", args.port)
     if args.log_level:
-        config.set("logging.level", args.log_level)
+        config.set("log.level", args.log_level)
     if args.log_dir:
-        config.set("logging.directory", args.log_dir)
+        config.set("log.dir", args.log_dir)
     if args.oj_endpoint:
-        config.set("online_judge.endpoint", args.oj_endpoint)
+        config.set("oj.endpoint", args.oj_endpoint)
     if args.rate_limit_interval:
-        config.set("rate_limiting.min_interval", args.rate_limit_interval)
+        config.set("rate_limit.min_interval", args.rate_limit_interval)
     if args.db_path:
-        config.set("database.path", args.db_path)
+        config.set("db.path", args.db_path)
     if args.problem_data_dir:
-        config.set("data_sources.problem_data_dir", args.problem_data_dir)
+        config.set("data.problem_data_dir", args.problem_data_dir)
     if args.textbook_data_dir:
-        config.set("data_sources.textbook_data_dir", args.textbook_data_dir)
+        config.set("data.textbook_data_dir", args.textbook_data_dir)
     
     # Setup logging
     setup_logging_from_config(config)
@@ -93,7 +99,7 @@ def main():
     
     if args.debug:
         logger.debug("Debug mode enabled")
-        config.set("logging.level", "DEBUG")
+        config.set("log.level", "DEBUG")
     
     try:
         run_api(host=args.host, port=args.port, debug=args.debug, config=config)

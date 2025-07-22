@@ -2,13 +2,17 @@
 Beautiful logging configuration for CompeteMAS
 
 This module provides a unified logging configuration that creates
-beautiful, colored output similar to loguru library.
+beautiful, colored output similar to loguru library, and includes
+conversation logging functionality.
 """
 
 import logging
 import sys
 import re
-from typing import Optional
+import json
+import os
+from typing import Optional, List, Dict
+from datetime import datetime
 
 class ColoredFormatter(logging.Formatter):
     """为控制台输出添加颜色的格式化器"""
@@ -71,6 +75,107 @@ class NoColorFormatter(ColoredFormatter):
         return self.format_without_color(record)
 
 
+class ConversationLogger:
+    """Logger for saving and loading conversation histories"""
+    
+    def __init__(self, log_dir: str = "logs"):
+        """
+        Initialize the conversation logger
+        
+        Args:
+            log_dir: Directory to store conversation logs
+        """
+        self.log_dir = log_dir
+        os.makedirs(log_dir, exist_ok=True)
+        self._logger = get_logger("conversation_logger")
+    
+    def _get_log_path(self, agent_name: str, session_id: Optional[str] = None) -> str:
+        """Get the path for the log file"""
+        if session_id is None:
+            session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        # 为每个Agent创建子目录
+        agent_dir = os.path.join(self.log_dir, agent_name)
+        os.makedirs(agent_dir, exist_ok=True)
+        
+        return os.path.join(agent_dir, f"{agent_name}_log_{session_id}.json")
+    
+    def save_conversation(
+        self,
+        agent_name: str,
+        conversation_history: List[Dict],
+        session_id: Optional[str] = None,
+        metadata: Optional[Dict] = None
+    ) -> str:
+        """
+        Save conversation history to a file
+        
+        Args:
+            agent_name: Name of the agent
+            conversation_history: List of conversation messages
+            session_id: Optional session identifier
+            metadata: Optional metadata about the conversation
+        
+        Returns:
+            Path to the saved log file
+        """
+        log_path = self._get_log_path(agent_name, session_id)
+        
+        log_data = {
+            "agent_name": agent_name,
+            "session_id": session_id,
+            "timestamp": datetime.now().isoformat(),
+            "conversation": conversation_history,
+            "metadata": metadata or {}
+        }
+        
+        try:
+            with open(log_path, 'w', encoding='utf-8') as f:
+                json.dump(log_data, f, indent=2, ensure_ascii=False)
+            self._logger.info(f"Saved conversation log to {log_path}")
+            return log_path
+        except Exception as e:
+            self._logger.error(f"Failed to save conversation log: {e}")
+            raise
+    
+    def load_conversation(self, log_path: str) -> Dict:
+        """
+        Load conversation history from a file
+        
+        Args:
+            log_path: Path to the log file
+        
+        Returns:
+            Dictionary containing the conversation data
+        """
+        try:
+            with open(log_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            self._logger.error(f"Failed to load conversation log from {log_path}: {e}")
+            raise
+    
+    def list_conversations(self, agent_name: Optional[str] = None) -> List[str]:
+        """
+        List available conversation logs
+        
+        Args:
+            agent_name: Optional agent name to filter logs
+        
+        Returns:
+            List of log file paths
+        """
+        if not os.path.exists(self.log_dir):
+            return []
+            
+        pattern = f"{agent_name}_*.json" if agent_name else "*.json"
+        return sorted([
+            os.path.join(self.log_dir, f)
+            for f in os.listdir(self.log_dir)
+            if f.endswith('.json') and (not agent_name or f.startswith(f"{agent_name}_"))
+        ])
+
+
 def setup_logging(
     level: str = "INFO",
     log_file: Optional[str] = None,
@@ -128,6 +233,19 @@ def get_logger(name: str) -> logging.Logger:
         Configured logger instance
     """
     return logging.getLogger(name)
+
+
+def get_conversation_logger(log_dir: str = "logs") -> ConversationLogger:
+    """
+    Get a conversation logger instance
+    
+    Args:
+        log_dir: Directory to store conversation logs
+        
+    Returns:
+        ConversationLogger instance
+    """
+    return ConversationLogger(log_dir)
 
 
 # Default setup when module is imported

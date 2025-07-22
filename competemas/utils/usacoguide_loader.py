@@ -203,14 +203,14 @@ class USACOGuideLoader:
                     "relevance_score": float(scores[idx])
                 })
             
-            print(results)
+            # print(results)
             return results
             
         except ImportError:
-            print("BM25 library not available, falling back to simple search")
+            # print("BM25 library not available, falling back to simple search")
             return self._simple_search_second_level_key(hint_knowledge, problem_difficulty, max_results)
         except Exception as e:
-            print(f"Error in BM25 search: {e}")
+            # print(f"Error in BM25 search: {e}")
             return self._simple_search_second_level_key(hint_knowledge, problem_difficulty, max_results)
     
     def _simple_search_second_level_key(self, search_key: str, problem_difficulty: str, max_results: int = 3) -> List[Dict[str, Any]]:

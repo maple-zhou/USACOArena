@@ -11,8 +11,7 @@ import json
 import os
 import time
 from datetime import datetime
-from competemas.utils.logger_config import get_logger
-from competemas.utils.conversation_logger import ConversationLogger
+from competemas.utils.logger_config import get_logger, get_conversation_logger
 
 logger = get_logger("agent")
 
@@ -53,11 +52,11 @@ class Agent(ABC):
         self.session_id = session_id or datetime.now().strftime("%Y%m%d_%H%M%S")
         
         # Initialize conversation logger
-        self.conversation_logger = ConversationLogger(log_dir=log_dir)
+        self.conversation_logger = get_conversation_logger(log_dir=log_dir)
         
         # Load prompt system and action parser
         if prompt_config_path:
-            from scripts.prompts.prompt_manager import PromptSystem, ActionParser
+            from agents.single_agent.prompts.prompt_manager import PromptSystem, ActionParser
             self.prompt_system = PromptSystem(prompt_config_path)
             self.action_parser = ActionParser(prompt_config_path)
         else:

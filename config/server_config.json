@@ -1,20 +1,24 @@
 {
-  "logging": {
+  "server": {
+    "port": 5000,
+    "host": "0.0.0.0"
+  },
+  "log": {
     "level": "INFO",
-    "directory": "logs/competition_system",
+    "dir": "logs/server_logs",
     "enable_colors": true
   },
-  "online_judge": {
+  "oj": {
     "endpoint": "http://localhost:9000/2015-03-31/functions/function/invocations"
   },
-  "rate_limiting": {
+  "rate_limit": {
     "min_interval": 0.05
   },
-  "database": {
-    "path": "data/competemas.duckdb",
+  "db": {
+    "path": "data/competition_5000.duckdb",
     "backup_json": true
   },
-  "data_sources": {
+  "data": {
     "problem_data_dir": "dataset/datasets/usaco_2025",
     "textbook_data_dir": "dataset/textbooks"
   }

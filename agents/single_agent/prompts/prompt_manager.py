@@ -111,10 +111,10 @@ Important Notes:
         # Competition details
         details = state["competition_details"]
         prompt = state_template["header"]
-        prompt += state_template["competition"].format(
-            title=details.get("title", ""),
-            description=details.get("description", "")
-        )
+        # prompt += state_template["competition"].format(
+        #     title=details.get("title", ""),
+        #     description=details.get("description", "")
+        # )
         
         # Competition rules
         rules = details.get("rules", {})
@@ -195,7 +195,7 @@ Important Notes:
         level_2_cost = hint_tokens.get("level_2", 300)
         level_3_cost = hint_tokens.get("level_3", 600)
         level_4_cost = hint_tokens.get("level_4", 1000)
-        level_5_cost = hint_tokens.get("level_5", 1500)
+        # level_5_cost = hint_tokens.get("level_5", 1500)
 
         # Available actions with dynamic hint costs
         actions = state_template["actions"].format(
@@ -204,7 +204,7 @@ Important Notes:
             level_2_cost=level_2_cost,
             level_3_cost=level_3_cost,
             level_4_cost=level_4_cost,
-            level_5_cost=level_5_cost
+            # level_5_cost=level_5_cost
         )
         prompt += actions
         
@@ -265,6 +265,7 @@ Important Notes:
                 # Handle both string and dict formats for backward compatibility
                 if isinstance(hint_content, str):
                     # Legacy format - return early with simple content
+                    hint_content = self._truncate_hint_content(hint_content)
                     content = f"### Hint (Level {hint_level})\n{hint_content}\n\nToken Cost: {action_result.get('tokens_cost', action_result.get('token_cost', 0))}\nRemaining Tokens: {action_result.get('remaining_tokens', 0)}\n\n"
                 elif isinstance(hint_content, dict):
                     # New structured format
@@ -495,7 +496,7 @@ Important Notes:
         else:
             prompt += action_result_template["error"].format(message=last_action_result["data"]["action_result"]["error"])
             # print(f"action_result_prompt2222222222: {prompt}")
-        # print(f"111111111111111111111111111111111111111111111111111action_result_prompt: {prompt}")
+        # logger.critical(f"00000000000000000action_result_prompt: {prompt}")
         return prompt
     
     def create_prompt(self, state: Dict) -> str:
@@ -511,7 +512,7 @@ Important Notes:
         
         prompt += "\nAnalyze the current situation, think about your strategy, and pay attention to the output token limit. Then respond with a JSON object containing 'action' and 'parameters' fields."
         
-        # print(f"89982y3752528523598325: {prompt}")
+        # logger.critical(f"11111111111111: {prompt}")
         return prompt
 
 
@@ -647,16 +648,30 @@ class ActionParser:
             # 智能处理嵌套代码块：如果第二个```后跟着编程语言，则匹配第四个```
             json_str = self._extract_json_smart(response)
 
-            print("json_str: ", json_str)
+            # print("json_str: ", json_str)
             action = json_repair.loads(json_str)
             if not isinstance(action, dict):
-                raise ValueError("Response is not a dictionary")
-            
+                return {
+                    "action": "InvalidFormat",
+                    "parameters": {
+                    "message": "Response is not vaild"
+                    }
+                }
             # Validate action format
             if "action" not in action:
-                raise ValueError("Missing 'action' field")
+                return {
+                    "action": "MissingField",
+                    "parameters": {
+                    "message": "Missing 'action' field"
+                    }
+                }
             if "parameters" not in action:
-                raise ValueError("Missing 'parameters' field")
+                return {
+                    'action': 'MissingField', 
+                    'parameters': {
+                    "message": "Missing 'parameters' field",
+                    }
+                }
         
             # print("parse_action action: ", action)
             return action

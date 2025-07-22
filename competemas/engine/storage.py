@@ -26,7 +26,7 @@ class DuckDBStorage:
     High-performance DuckDB-based storage for competition data with analytics capabilities.
     """
     
-    def __init__(self, db_path: str = "data/competemas.duckdb", backup_json: bool = True):
+    def __init__(self, db_path: str = "data/competition.duckdb", backup_json: bool = True):
         logger.info(f"Initializing DuckDB storage at {db_path}")
         self.db_path = Path(db_path)
         self.backup_json = backup_json
@@ -1517,7 +1517,7 @@ class DuckDBStorage:
                 if textbook_loader.is_loaded() and problem is not None:
                     # Extract key concepts from problem description
                     search_terms = self._extract_search_terms(problem.description)
-                    textbook_results = textbook_loader.search_content(" ".join(search_terms), max_results=3)
+                    textbook_results = textbook_loader.search_content(" ".join(search_terms), max_results=1)
                     
                     if textbook_results:
                         for result in textbook_results:
@@ -1536,7 +1536,7 @@ class DuckDBStorage:
                 search_terms = hint_knowledge
                 if search_terms is None:
                     raise ValueError("No hint knowledge provided")
-                textbook_results = textbook_loader.search_content(str(search_terms), max_results=3)
+                textbook_results = textbook_loader.search_content(str(search_terms), max_results=1)
                 
                 if textbook_results:
                     for result in textbook_results:
@@ -1586,7 +1586,7 @@ class DuckDBStorage:
                         
                         # Get top similar problems
                         scores = bm25.get_scores(tokenized_query)
-                        top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:2]
+                        top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:1]
                         
                         for idx in top_indices:
                             pid = problem_ids[idx]
@@ -1634,81 +1634,81 @@ class DuckDBStorage:
                         "solution": "Please try again later",
                     }]
                     
-        elif hint_level == 5:
-            # Comprehensive Hint: Combined approach
-            hint_content["episodic_data"] = {"similar_problems": []}
-            hint_content["semantic_data"] = {"textbook_sections": []}
-            hint_content["integration_points"] = [
-                "Understand the Problem Type: Use textbook knowledge to identify the core concept",
-                "Learn from Examples: Study similar problems to understand the approach",
-                "Apply Concepts: Combine theoretical knowledge with practical examples",
-                "Consider Constraints: Pay attention to time and memory limits",
-                "Test Your Understanding: Try to solve the problem step by step"
-            ]
+        # elif hint_level == 5:
+        #     # Comprehensive Hint: Combined approach
+        #     hint_content["episodic_data"] = {"similar_problems": []}
+        #     hint_content["semantic_data"] = {"textbook_sections": []}
+        #     hint_content["integration_points"] = [
+        #         "Understand the Problem Type: Use textbook knowledge to identify the core concept",
+        #         "Learn from Examples: Study similar problems to understand the approach",
+        #         "Apply Concepts: Combine theoretical knowledge with practical examples",
+        #         "Consider Constraints: Pay attention to time and memory limits",
+        #         "Test Your Understanding: Try to solve the problem step by step"
+        #     ]
             
-            # Get textbook knowledge
-            if textbook_loader.is_loaded() and problem is not None:
-                search_terms = self._extract_search_terms(problem.description)
-                textbook_results = textbook_loader.search_content(" ".join(search_terms), max_results=2)
+        #     # Get textbook knowledge
+        #     if textbook_loader.is_loaded() and problem is not None:
+        #         search_terms = self._extract_search_terms(problem.description)
+        #         textbook_results = textbook_loader.search_content(" ".join(search_terms), max_results=2)
                 
-                if textbook_results:
-                    for result in textbook_results:
-                        hint_content["semantic_data"]["textbook_sections"].append({
-                            "title": result.get('title', 'Section'),
-                            "content": result.get('content', '')[:200] + "...",
-                            "relevance_score": result.get('score', 0.0)
-                        })
+        #         if textbook_results:
+        #             for result in textbook_results:
+        #                 hint_content["semantic_data"]["textbook_sections"].append({
+        #                     "title": result.get('title', 'Section'),
+        #                     "content": result.get('content', '')[:200] + "...",
+        #                     "relevance_score": result.get('score', 0.0)
+        #                 })
             
-            # Get similar problems
-            try:
-                all_problem_ids = problem_loader.get_problem_ids()
-                competition_problems = self.list_problems(competition_id)
-                excluded_problems = set([p.id for p in competition_problems])
-                if problem is not None:
+        #     # Get similar problems
+        #     try:
+        #         all_problem_ids = problem_loader.get_problem_ids()
+        #         competition_problems = self.list_problems(competition_id)
+        #         excluded_problems = set([p.id for p in competition_problems])
+        #         if problem is not None:
                 
-                    corpus = []
-                    problem_ids = []
-                    for pid in all_problem_ids:
-                        if pid not in excluded_problems and pid != problem.id:
-                            p = problem_loader.load_problem(pid)
-                            if p:
-                                text = f"{p.description}\n"
-                                for case in p.sample_cases:
-                                    text += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
-                                corpus.append(text)
-                                problem_ids.append(pid)
+        #             corpus = []
+        #             problem_ids = []
+        #             for pid in all_problem_ids:
+        #                 if pid not in excluded_problems and pid != problem.id:
+        #                     p = problem_loader.load_problem(pid)
+        #                     if p:
+        #                         text = f"{p.description}\n"
+        #                         for case in p.sample_cases:
+        #                             text += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
+        #                         corpus.append(text)
+        #                         problem_ids.append(pid)
                     
-                    if corpus:
-                        from rank_bm25 import BM25Okapi
-                        tokenized_corpus = [doc.split() for doc in corpus]
-                        bm25 = BM25Okapi(tokenized_corpus)
+        #             if corpus:
+        #                 from rank_bm25 import BM25Okapi
+        #                 tokenized_corpus = [doc.split() for doc in corpus]
+        #                 bm25 = BM25Okapi(tokenized_corpus)
                         
-                        query = f"{problem.description}\n"
-                        for case in problem.sample_cases:
-                            query += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
-                        tokenized_query = query.split()
+        #                 query = f"{problem.description}\n"
+        #                 for case in problem.sample_cases:
+        #                     query += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
+        #                 tokenized_query = query.split()
                         
-                        scores = bm25.get_scores(tokenized_query)
-                        top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:2]
+        #                 scores = bm25.get_scores(tokenized_query)
+        #                 top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:2]
                         
-                        for idx in top_indices:
-                            pid = problem_ids[idx]
-                            p = problem_loader.load_problem(pid)
-                            if p:
-                                hint_content["episodic_data"]["similar_problems"].append({
-                                    "title": p.title,
-                                    "description": p.description[:150] + "...",
-                                    "solution": problem_loader.load_solution(pid),
-                                    "similarity_score": scores[idx]
-                                })
+        #                 for idx in top_indices:
+        #                     pid = problem_ids[idx]
+        #                     p = problem_loader.load_problem(pid)
+        #                     if p:
+        #                         hint_content["episodic_data"]["similar_problems"].append({
+        #                             "title": p.title,
+        #                             "description": p.description[:150] + "...",
+        #                             "solution": problem_loader.load_solution(pid),
+        #                             "similarity_score": scores[idx]
+        #                         })
                             
-            except Exception as e:
-                hint_content["episodic_data"]["similar_problems"] = [{
-                    "title": "Error",
-                    "description": f"Error finding similar problems: {str(e)}",
-                    "solution": "Please try again later",
-                    "similarity_score": 0.0
-                }]
+        #     except Exception as e:
+        #         hint_content["episodic_data"]["similar_problems"] = [{
+        #             "title": "Error",
+        #             "description": f"Error finding similar problems: {str(e)}",
+        #             "solution": "Please try again later",
+        #             "similarity_score": 0.0
+        #         }]
             
         else:
             raise ValueError(f"Invalid hint level: {hint_level}. Must be 1, 2, or 3.")

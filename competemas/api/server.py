@@ -27,10 +27,10 @@ logger = get_logger("server")
 
 # Initialize problem library loader and textbook loader
 problem_loader = USACOProblemLoader()
-logger.info("Initialized USACO problem loader")
+# logger.info("Initialized USACO problem loader")
 
 textbook_loader = TextbookLoader()
-logger.info("Initialized textbook loader")
+# logger.info("Initialized textbook loader")
 
 # Create Flask app
 app = Flask(__name__)
@@ -159,17 +159,21 @@ def create_competition():
         Success response with competition details and any not found problems
     """
     try:
-        # Get JSON data from client request
         data = request.get_json()
+        # logger.info(f"Received competition data: {data}")
+        # Get JSON data from client request
         
         # Parse problems: Load specified problems from problem library
         problems = []                    # List of successfully loaded problems
         not_found_problems = []          # List of problem IDs not found
-        
+
+        # logger.critical(f"data: {data}")
         # Iterate through problem IDs in the request
         for problem_id in data.get("problem_ids", []):
             # Load problem from problem library
+            # logging.critical(f"problem_id: {problem_id}")
             problem = problem_loader.load_problem(problem_id)
+            # logger.critical(f"problem: {problem}")
             if not problem:
                 # If problem doesn't exist, add to not found list
                 not_found_problems.append(problem_id)
@@ -180,9 +184,11 @@ def create_competition():
         # Validation: At least one valid problem is required
         if not problems:
             return error_response("No valid problems found in library", 404)
+
+        # logger.critical(f"data: {data}")
         
         # Create competition: Call data storage layer to create competition object
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             competition = data_storage.create_competition(
                 title=data.get("title", ""),                                    # Competition title
                 description=data.get("description", ""),                        # Competition description
@@ -207,6 +213,7 @@ def create_competition():
         return success_response(response_data, message)
     
     except Exception as e:
+        logger.error(f"Error creating competition: {e}")
         # Catch all exceptions and return error response
         return error_response(f"Failed to create competition: {str(e)}")
 
@@ -225,7 +232,7 @@ def get_competition(competition_id: str):
         Competition details with optional extended information
     """
     try:
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             competition = data_storage.get_competition(competition_id)
         if not competition:
             return error_response(f"Competition with ID {competition_id} not found", 404)
@@ -234,7 +241,7 @@ def get_competition(competition_id: str):
         
         if include_details:
             # Get detailed information from database
-            with DuckDBStorage() as data_storage:
+            with DuckDBStorage(db_path=db_path) as data_storage:
                 problems = data_storage.list_problems(competition_id)
                 participants = data_storage.list_participants(competition_id)
                 rankings = data_storage.calculate_competition_rankings(competition_id)
@@ -265,7 +272,7 @@ def list_competitions():
     """
     try:
         active_only = request.args.get("active_only", "false").lower() == "true"
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             competitions = data_storage.list_competitions(active_only=active_only)
         return success_response([comp.to_dict() for comp in competitions])
     except Exception as e:
@@ -310,7 +317,7 @@ def create_participant(competition_id: str):
             return error_response("Name is required", 400)
         
         # Create participant
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             participant = data_storage.create_participant(
             competition_id=competition_id,
             name=name,
@@ -354,7 +361,7 @@ def get_participant(competition_id: str, participant_id: str):
         Participant details with optional submission history
     """
     try:
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             participant = data_storage.get_participant(competition_id, participant_id)
         if not participant:
             return error_response(f"Participant not found", 404)
@@ -364,7 +371,7 @@ def get_participant(competition_id: str, participant_id: str):
         
         if include_submissions:
             # Get submissions from database
-            with DuckDBStorage() as data_storage:
+            with DuckDBStorage(db_path=db_path) as data_storage:
                 submissions = data_storage.list_submissions(
                     competition_id=competition_id, 
                     participant_id=participant_id
@@ -397,12 +404,12 @@ def get_participant_solved_problems(competition_id: str, participant_id: str):
         Participant details with optional submission history
     """
     try:
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             participant = data_storage.get_participant(competition_id, participant_id)
         if not participant:
             return error_response(f"Participant not found", 404)
 
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             submissions = data_storage.list_submissions(
                 competition_id=competition_id, 
                 participant_id=participant_id
@@ -436,7 +443,7 @@ def get_participant_solved_problems(competition_id: str, participant_id: str):
         return error_response(f"Failed to get participant data: {str(e)}", 500)
 
 def check_termination(competition_id: str, participant_id: str):
-    with DuckDBStorage() as data_storage:
+    with DuckDBStorage(db_path=db_path) as data_storage:
         participant = data_storage.get_participant(competition_id, participant_id)
     if not participant:
         return error_response("Participant not found")
@@ -458,7 +465,7 @@ def list_participants(competition_id: str):
         List of participant objects
     """
     try:
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             participants = data_storage.list_participants(competition_id)
         return success_response([p.to_dict() for p in participants])
     except Exception as e:
@@ -477,7 +484,7 @@ def get_problem(competition_id: str, problem_id: str):
         Problem details including description, test cases, and constraints
     """
     try:
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             problem = data_storage.get_problem(competition_id, problem_id)
         if not problem:
             return error_response(f"Problem with ID {problem_id} not found", 404)
@@ -499,7 +506,7 @@ def list_problems(competition_id: str):
         List of problems with basic information
     """
     try:
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             problems = data_storage.list_problems(competition_id)
         return success_response([p.to_dict() for p in problems])
     except Exception as e:
@@ -547,7 +554,7 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
             return error_response("Missing required fields")
         
         # Create submission with evaluation (handled in storage layer)
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             submission = data_storage.create_submission(
                 competition_id=competition_id,
                 participant_id=participant_id,
@@ -600,7 +607,7 @@ def list_submissions(competition_id: str):
     participant_id = request.args.get("participant_id")
     problem_id = request.args.get("problem_id")
     
-    with DuckDBStorage() as data_storage:
+    with DuckDBStorage(db_path=db_path) as data_storage:
         submissions = data_storage.list_submissions(
             competition_id=competition_id,
             participant_id=participant_id,
@@ -625,7 +632,7 @@ def get_submission(submission_id: str):
         Submission details with optional source code
     """
     include_code = request.args.get("include_code", "false").lower() == "true"
-    with DuckDBStorage() as data_storage:
+    with DuckDBStorage(db_path=db_path) as data_storage:
         submission = data_storage.get_submission(submission_id, include_code=include_code)
 
     if not submission:
@@ -658,7 +665,7 @@ def get_rankings(competition_id: str):
     
     for attempt in range(max_retries):
         try:
-            with DuckDBStorage() as data_storage:
+            with DuckDBStorage(db_path=db_path) as data_storage:
                 rankings = data_storage.calculate_competition_rankings(competition_id)
                 logger.critical(f"rankings: {rankings}")
             if not rankings:
@@ -762,7 +769,7 @@ def get_similar_problems():
         # Get competition problems to exclude
         excluded_problems = set()
         if competition_id:
-            with DuckDBStorage() as data_storage:
+            with DuckDBStorage(db_path=db_path) as data_storage:
                 problems = data_storage.list_problems(competition_id)
             excluded_problems = set([problem.id for problem in problems])
         
@@ -895,7 +902,7 @@ def get_hint(competition_id: str, participant_id: str):
             return error_response("Invalid hint level. Must be 0, 1, 2, 3, 4, or 5.")
         # logger.critical(f"Hint request: {competition_id}, {participant_id}, {problem_id}, {hint_level}, {hint_knowledge}, {problem_difficulty}33333333")
         # Process hint request using data storage layer
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             result = data_storage.process_hint_request(competition_id, participant_id, hint_level, problem_id, hint_knowledge, problem_difficulty)
         
         # logger.critical(f"Hint request: {competition_id}, {participant_id}44444444")
@@ -934,7 +941,7 @@ def generate_response(competition_id: str, participant_id: str):
         # print(f"DEBUG: Competition ID: {competition_id}, Participant ID: {participant_id}, data: {data}")
         
         # Process request using data storage layer
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             result = data_storage.process_agent_request(competition_id, participant_id, data)
         
         # Return response in expected format (array wrapper for compatibility)
@@ -981,7 +988,7 @@ def stream_generate_response(competition_id: str, participant_id: str):
             return error_response("No data provided")
 
         # Process streaming request using data storage layer
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             result = data_storage.process_stream_agent_request(competition_id, participant_id, data)
         
         # Return streaming response in expected format (array wrapper for compatibility)
@@ -1036,7 +1043,7 @@ def terminate_participant(competition_id: str, participant_id: str):
         
         
         # Terminate participant using data storage layer
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             data_storage.terminate_participant(competition_id, participant_id, reason)
         
         return success_response(
@@ -1065,7 +1072,7 @@ def get_participant_status(competition_id: str, participant_id: str):
         Participant status including running state, termination reason, tokens, and score
     """
     try:
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             participant = data_storage.get_participant(competition_id, participant_id)
         if not participant:
             return error_response(f"Participant not found", 404)
@@ -1095,7 +1102,7 @@ def list_terminated_participants(competition_id: str):
         List of terminated participants with termination reasons and final statistics
     """
     try:
-        with DuckDBStorage() as data_storage:
+        with DuckDBStorage(db_path=db_path) as data_storage:
             participants = data_storage.list_participants(competition_id)
         
         # Filter terminated participants
@@ -1129,29 +1136,38 @@ def run_api(host: str = "0.0.0.0", port: int = 5000, debug: bool = False, config
         debug: Enable debug mode (default: False)
         config: Configuration manager instance (optional)
     """
-    global global_rate_limiter, problem_loader, textbook_loader
+    global global_rate_limiter, problem_loader, textbook_loader, db_path
     
+    if port:
+        db_path = f"data/competition_{port}.duckdb"
+    else:
+        db_path = "data/competition_5000.duckdb"
+
     # Initialize configuration if provided
     if config:
         # Configure rate limiter
-        rate_limit_config = config.get_section("rate_limiting")
+        rate_limit_config = config.get_section("rate_limit")
         min_interval = rate_limit_config.get("min_interval", 0.05)
         global_rate_limiter = GlobalRateLimiter(min_interval)
         logger.info(f"Configured rate limiter with interval: {min_interval}s")
         
         # Configure problem loader with custom data directory
-        data_sources_config = config.get_section("data_sources")
-        problem_data_dir = data_sources_config.get("problem_data_dir", "dataset/datasets/usaco_2025")
-        textbook_data_dir = data_sources_config.get("textbook_data_dir", "dataset/textbooks")
+        data_config = config.get_section("data")
+        problem_data_dir = data_config.get("problem_data_dir", "dataset/datasets/usaco_2025")
+        textbook_data_dir = data_config.get("textbook_data_dir", "dataset/textbooks")
         
-        # Reinitialize loaders with custom paths if different from defaults
-        if problem_data_dir != "dataset/datasets/usaco_2025":
-            problem_loader = USACOProblemLoader(data_path=problem_data_dir)
-            logger.info(f"Reinitialized problem loader with data path: {problem_data_dir}")
+        # Always reinitialize loaders with configured paths
+        problem_loader = USACOProblemLoader(data_path=problem_data_dir)
+        logger.info(f"Initialized problem loader with data path: {problem_data_dir}")
         
-        if textbook_data_dir != "dataset/textbooks":
-            textbook_loader = TextbookLoader(data_path=textbook_data_dir)
-            logger.info(f"Reinitialized textbook loader with data path: {textbook_data_dir}")
+        # Verify problem loader initialization
+        problem_count = len(problem_loader.problems_dict)
+        logger.info(f"Loaded {problem_count} problems from problem library")
+        if problem_count == 0:
+            logger.warning("No problems loaded! Check data path and file permissions")
+        
+        textbook_loader = TextbookLoader(data_path=textbook_data_dir)
+        logger.info(f"Initialized textbook loader with data path: {textbook_data_dir}")
         
         logger.info("Server configuration applied successfully")
     

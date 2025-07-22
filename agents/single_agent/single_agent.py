@@ -172,8 +172,9 @@ class GenericAPIAgent(Agent):
                 
                 competition_id = state.get('competitor_state', {}).get('competition_id')
                 participant_id = state.get('competitor_state', {}).get('id')
+                api_base = state.get('api_base',"http://localhost:5000")
                 # Prepare request URL
-                url = f"http://localhost:5000/api/agent/call/{competition_id}/{participant_id}"
+                url = f"{api_base}/api/agent/call/{competition_id}/{participant_id}"
                 # print(f"GenericAPIAgent,url: {url}")
                 # Prepare request headers
                 headers = {
@@ -203,7 +204,7 @@ class GenericAPIAgent(Agent):
                 has_json_block = False
                 # Make the request
                 json_retry_count = 0
-                while not has_json_block and json_retry_count < 5:
+                while not has_json_block and json_retry_count < 10:
                     response = await asyncio.to_thread(
                         requests.request,
                         method=self.request_format['method'],

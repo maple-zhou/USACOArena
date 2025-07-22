@@ -3,6 +3,9 @@ import json
 import os
 from typing import Dict, List, Optional
 from ..models.models import Problem, Case, Level, generate_id
+from ..utils.logger_config import get_logger
+
+logger = get_logger("usaco_problem_loader")
 
 class USACOProblemLoader:
     """Load problems from the USACO problem library"""
@@ -24,6 +27,7 @@ class USACOProblemLoader:
                 self.data_path = "dataset/datasets/usaco_2025"  # Use as default if nothing found
         else:
             self.data_path = data_path
+        # logger.info(f"Initialized USACO problem loader with data path: {self.data_path}")
             
         self.problems_dict = {}
         self._load_problem_dict()
@@ -35,8 +39,13 @@ class USACOProblemLoader:
             try:
                 with open(problem_dict_path, 'r') as f:
                     self.problems_dict = json.load(f)
+                # logger.info(f"Successfully loaded {len(self.problems_dict)} problems from {problem_dict_path}")
             except Exception as e:
-                print(f"Error loading problem dictionary: {e}")
+                # logger.error(f"Error loading problem dictionary from {problem_dict_path}: {e}")
+                self.problems_dict = {}
+        else:
+            # logger.error(f"Problem dictionary not found at: {problem_dict_path}")
+            self.problems_dict = {}
     
     def get_problem_ids(self, level: Optional[str] = None) -> List[str]:
         """Get a list of problem IDs for the specified difficulty level"""

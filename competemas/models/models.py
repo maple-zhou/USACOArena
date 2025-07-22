@@ -216,7 +216,7 @@ class Competition:
                 "grok-3-beta": 15,
                 "qwen3": 0.6,
                 "deepseek-v3": 1.1,
-                "sf-deepseek-v3": 1
+                "deepseek-v3": 1
             },
             "input_token_multipliers": {
                 "gemini-2.5-pro": 1.25,
@@ -227,7 +227,7 @@ class Competition:
                 "grok-3-beta": 3,
                 "qwen3": 0.2,
                 "deepseek-v3": 0.27,
-                "sf-deepseek-v3": 1
+                "deepseek-v3": 1
             }
         }
     

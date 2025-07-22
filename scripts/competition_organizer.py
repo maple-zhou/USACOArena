@@ -18,18 +18,20 @@ logger = get_logger("competition_organizer")
 class CompetitionOrganizer:
     """Organizer for LLM programming competition"""
     
-    def __init__(self, api_base: str):
+    def __init__(self, api_base: str, log_dir: Optional[str] = None):
         """
         Initialize the competition organizer
         
         Args:
             api_base: Base URL for the competition API
+            log_dir: Directory for saving competitor results (optional)
         """
         self.api_base = api_base
+        self.log_dir = log_dir
         self.competitors: List[Competitor] = []
         self.competition_id: Optional[str] = None
         self.competition_data: Optional[Dict] = None
-        logger.info(f"Initialized CompetitionOrganizer with API base: {api_base}")
+        logger.info(f"Initialized CompetitionOrganizer with API base: {api_base}, log_dir: {log_dir}")
     
     @property
     def problem_ids(self) -> List[str]:
@@ -251,6 +253,7 @@ class CompetitionOrganizer:
         
         # Build initial state
         state = {
+            "api_base": self.api_base,
             "competition_details": self.competition_data,
             "competitor_state": competitor.get_participant_state(),
             "problems": problems_state,
@@ -310,7 +313,20 @@ class CompetitionOrganizer:
                 
                 # Update rankings (only when needed)
                 rankings_result = competitor.view_rankings()
-                logger.critical(f"Time: {datetime.now().strftime('%m-%d %H:%M:%S')}, rankings_result: {rankings_result}")
+                
+                # Format rankings for better readability
+                if "rankings" in rankings_result and isinstance(rankings_result["rankings"], list):
+                    formatted_rankings = "{\n  'rankings': [\n"
+                    for i, ranking in enumerate(rankings_result["rankings"]):
+                        formatted_rankings += f"    {ranking}"
+                        if i < len(rankings_result["rankings"]) - 1:
+                            formatted_rankings += ","
+                        formatted_rankings += "\n"
+                    formatted_rankings += "  ]\n}"
+                    logger.critical(f"Time: {datetime.now().strftime('%m-%d %H:%M:%S')}, rankings_result: {formatted_rankings}")
+                else:
+                    logger.critical(f"Time: {datetime.now().strftime('%m-%d %H:%M:%S')}, rankings_result: {rankings_result}")
+                
                 if "error" not in rankings_result:
                     state["rankings"] = rankings_result.get("rankings", [])
                 
@@ -372,11 +388,17 @@ class CompetitionOrganizer:
         }
         
         # Create results directory if it doesn't exist
-        os.makedirs("competitor_results", exist_ok=True)
-        
-        # Save results with timestamp
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        result_file = f"competitor_results/{competitor.name}_{timestamp}.json"
+        if self.log_dir:
+            # 使用传入的log_dir，在agent子目录中保存结果
+            agent_result_dir = os.path.join(self.log_dir, competitor.name)
+            os.makedirs(agent_result_dir, exist_ok=True)
+            result_file = os.path.join(agent_result_dir, f"{final_state['name']}_results_{timestamp}.json")
+        else:
+            # 使用默认的competitor_results目录
+            os.makedirs("competitor_results", exist_ok=True)
+            result_file = f"competitor_results/{competitor.name}_{timestamp}.json"
+        
         try:
             with open(result_file, "w", encoding="utf-8") as f:
                 json.dump(results, f, indent=2, ensure_ascii=False)
@@ -628,7 +650,7 @@ class CompetitionOrganizer:
                     "status": "error",
                     "data": {
                         "action": "unknown",
-                        "action_result": {"error": f"Unknown action: {action_type}"},
+                        "action_result": {"error": f"Unknown action: {action_type}, message: {action.get('message', {})}"},
                     },
                     "should_terminate": False,
                     "termination_reason": None

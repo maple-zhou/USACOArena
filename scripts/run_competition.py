@@ -3,22 +3,40 @@ import json
 import asyncio
 import copy
 import argparse
+import re
 from datetime import datetime, timedelta
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from agents import GenericAPIAgent, StreamingGenericAPIAgent
 from scripts.competition_organizer import CompetitionOrganizer
 from competemas.engine.competition import Competitor
 from competemas.utils.logger_config import setup_logging, get_logger
 
-
-os.makedirs('logs/competition', exist_ok=True)
-
-# Setup beautiful logging
-# 根据当前时间创建日志文件名
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-setup_logging(level="INFO", log_file=f"logs/competition/run_competition_{timestamp}.log")
 logger = get_logger("run_competition")
+
+def setup_logging_from_config(competiton_config,competitors_config,problem_ids):
+    log_config = competiton_config.get("log")
+    api_base = competiton_config.get("api_base")
+
+    match = re.search(r':(\d{4})$', api_base)
+    if match:
+        port = match.group(1)  # "5000"
+    else:
+        port = "5000"  # 默认端口
+
+    # Generate log filename
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    competitors_config_name = os.path.splitext(os.path.basename(competitors_config))[0]
+    problem_ids_name = os.path.splitext(os.path.basename(problem_ids))[0]
+
+    log_dir = log_config.get("dir", "logs/run_logs")
+    log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_{timestamp}")
+    os.makedirs(log_dir, exist_ok=True)
+    
+    # Setup logging
+    setup_logging(level="INFO", log_file=f"{log_dir}/run_competition.log")
+    
+    return log_dir  # 返回创建的log_dir
 
 def load_config(config_path: str) -> Dict:
     """Load configuration from JSON file"""
@@ -74,7 +92,7 @@ def create_sample_problems() -> List[Dict]:
         }
     ]
 
-def create_competitors(competitors_config: Dict, competition_config: Dict) -> List[Competitor]:
+def create_competitors(competitors_config: Dict, competition_config: Dict, log_dir: Optional[str] = None) -> List[Competitor]:
     """Create competitors based on configuration"""
     competitors = []
     
@@ -87,19 +105,22 @@ def create_competitors(competitors_config: Dict, competition_config: Dict) -> Li
         #         api_base_url=competitor["api_base_url"],
         #         api_key=competitor["api_key"],
         #         prompt_config_path=competitor.get("prompt_config_path"),
-        #         log_dir=f"logs/{competitor['name']}",
+        #         log_dir=log_dir or f"logs/{competitor['name']}",
         #         session_id=datetime.now().strftime("%Y%m%d_%H%M%S"),
         #         request_format=competitor.get("request_format"),
         #         response_format=competitor.get("response_format"),
         #     )
         if competitor["type"] == "generic":
+            # 使用传入的log_dir，如果没有则使用默认的logs/{competitor_name}
+            agent_log_dir = log_dir if log_dir is not None else f"logs/{competitor['name']}"
+            
             agent = GenericAPIAgent(
                 name=competitor["name"],
                 model_id=competitor["model_id"],
                 api_base_url=competitor["api_base_url"],
                 api_key=competitor["api_key"],
                 prompt_config_path=competitor.get("prompt_config_path"),
-                log_dir=f"logs/{competitor['name']}",
+                log_dir=agent_log_dir,
                 session_id=datetime.now().strftime("%Y%m%d_%H%M%S"),
                 request_format=competitor.get("request_format"),
                 response_format=competitor.get("response_format"),
@@ -209,8 +230,8 @@ def log_competition_results(results: Dict, competition_id: str):
         
         # Join all lines and apply character limit
         result_str = "\n".join(result_lines)
-        if len(result_str) > 5000:
-            result_str = result_str[:5000] + "... (truncated)"
+        # if len(result_str) > 5000:
+        #     result_str = result_str[:5000] + "... (truncated)"
         
         logger.critical(f"Competition Results:\n{result_str}")
         
@@ -226,39 +247,87 @@ async def main():
         parser.add_argument('--competition-config', 
                           default='config/competition_config.json',
                           help='Path to competition configuration file')
+        parser.add_argument('--api-base',
+                          default='http://localhost:5000',
+                          help='API base URL for the competition')
+        parser.add_argument('--port',
+                          default=5000,
+                          help='Port for the competition')
+        parser.add_argument('--competition-title',
+                          default='MAS Programming Competition 2025',
+                          help='Title of the competition')
+        parser.add_argument('--competition-description',
+                          default='A competition to test MAS coding abilities in solving programming problems',
+                          help='Description of the competition')
+        parser.add_argument('--max-tokens-per-participant',
+                          default=10000000,
+                          help='Maximum tokens per participant')
+        parser.add_argument('--log-level',
+                          default='INFO',
+                          help='Log level')
+        parser.add_argument('--log-dir',
+                          default='logs/run_logs',
+                          help='Log directory')
+
+
         parser.add_argument('--competitors-config',
                           default='config/competitors_config.json',
                           help='Path to competitors configuration file')
+
+
         parser.add_argument('--problem-ids',
-                          default='config/problem_ids.json',
+                          default='config/problems.json',
                           help='Path to problem IDs configuration file')
-        
+
+
         args = parser.parse_args()
         
         # Load configuration
-        logger.info("Loading competition configuration...")
+        # logger.info("Loading competition configuration...")
+
         competition_config = load_config(args.competition_config)
         competitors_config = load_config(args.competitors_config)
         problem_ids = load_config(args.problem_ids)
         
         # Validate problem_ids is a list
+        
+        
+        if args.api_base:
+            competition_config["api_base"] = args.api_base
+        if args.port:
+            competition_config["api_base"] = f"http://localhost:{args.port}"
+        if args.competition_title:
+            competition_config["competition_title"] = args.competition_title
+        if args.competition_description:
+            competition_config["competition_description"] = args.competition_description
+        if args.log_level:
+            competition_config["log_level"] = args.log_level
+        if args.log_dir:
+            competition_config["log_dir"] = args.log_dir
+        if args.max_tokens_per_participant:
+            competition_config["max_tokens_per_participant"] = args.max_tokens_per_participant
+
+        log_dir = setup_logging_from_config(competition_config,args.competitors_config,args.problem_ids)
+
         if not isinstance(problem_ids, list):
             logger.error("problem_ids must be a list in the configuration file")
             return
-        
+
         # Initialize competition organizer
         logger.info("Initializing competition organizer...")
-        organizer = CompetitionOrganizer(api_base=competition_config["api_base"])
+        organizer = CompetitionOrganizer(api_base=competition_config["api_base"], log_dir=log_dir)
         
         # Create competitors
         logger.info("Creating competitors...")
-        competitors = create_competitors(competitors_config, competition_config)
+        competitors = create_competitors(competitors_config, competition_config, log_dir)
+
         for competitor in competitors:
             organizer.add_competitor(competitor)
             logger.info(f"Added competitor: {competitor.name}")
         
         # Create competition
         logger.info("Creating competition...")
+        # logger.critical(f"problem_ids: {problem_ids}")
         competition_id = organizer.create_competition(
             title=competition_config.get("competition_title", ""),
             description=competition_config.get("competition_description", ""),
@@ -289,8 +358,14 @@ async def main():
         # Save results to file
         results["competition_id"] = competition_id
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        os.makedirs("competition_results", exist_ok=True)
-        results_file = f"competition_results/{competition_config.get('competition_title', '')}_{timestamp}.json"
+        
+        # 将competition_results保存到log_dir中
+        if log_dir:
+            results_file = os.path.join(log_dir, f"competition_results_{timestamp}.json")
+        else:
+            os.makedirs("competition_results", exist_ok=True)
+            results_file = f"competition_results/{competition_config.get('competition_title', '')}_{timestamp}.json"
+            
         with open(results_file, 'w') as f:
             json.dump(results, f, indent=2)
         logger.info(f"Results saved to {results_file}")
@@ -314,4 +389,5 @@ def main_sync():
 
 
 if __name__ == "__main__":
+    
     main_sync() 
