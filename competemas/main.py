@@ -9,7 +9,7 @@ import argparse
 import sys
 import os
 from datetime import datetime
-from .api.server import run_api
+from .server.server import run_api
 from .utils.logger_config import setup_logging, get_logger
 from .utils.config_manager import get_config
 
@@ -52,6 +52,7 @@ def main():
     parser.add_argument('--log-dir', help='Override log directory')
     
     # Online Judge configuration
+    parser.add_argument('--oj-port', help='Override online judge port')
     parser.add_argument('--oj-endpoint', help='Override online judge endpoint')
     
     # Rate limiting configuration
@@ -75,6 +76,7 @@ def main():
         config.set("server.host", args.host)
     if args.port:
         config.set("server.port", args.port)
+        config.set("oj.endpoint", f"http://localhost:{args.port+4000}/2015-03-31/functions/function/invocations")
     if args.log_level:
         config.set("log.level", args.log_level)
     if args.log_dir:

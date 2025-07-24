@@ -266,6 +266,7 @@ class Competitor:
             response.raise_for_status()
             
             result = response.json()
+            # logger.critical(f"000000000result: {result}")
             if result["status"] != "success":
                 return {"error": f"API error: {result.get('message', 'Unknown error')}"}
             

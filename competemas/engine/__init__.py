@@ -12,7 +12,7 @@ from ..models.models import (
 from .storage import DuckDBStorage
 # from .agent_interface import AgentInterface
 from .judge import Judge
-from .competition import Competitor
+from scripts.competitors import Competitor
 
 __all__ = [
     "Competition", "Participant", "Problem", "Submission", "Case", "TestResult",

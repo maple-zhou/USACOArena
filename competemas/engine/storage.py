@@ -5,7 +5,7 @@ Provides high-performance analytics and SQL querying capabilities.
 
 import duckdb
 import json
-from typing import Dict, List, Optional, Any, Union
+from typing import Dict, List, Optional, Any, Tuple, Union
 from datetime import datetime
 from pathlib import Path
 import gzip
@@ -26,17 +26,18 @@ class DuckDBStorage:
     High-performance DuckDB-based storage for competition data with analytics capabilities.
     """
     
-    def __init__(self, db_path: str = "data/competition.duckdb", backup_json: bool = True):
+    def __init__(self, db_path: str = "data/competition.duckdb", backup_json: bool = True, judge: Optional[Judge] = None):
         logger.info(f"Initializing DuckDB storage at {db_path}")
         self.db_path = Path(db_path)
         self.backup_json = backup_json
         self.backup_dir = self.db_path.parent / "json_backup"
-        
+        self.judge = judge
+
         # Create directories
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         if self.backup_json:
             self.backup_dir.mkdir(parents=True, exist_ok=True)
-            logger.debug("Created backup directory for JSON files")
+            # logger.debug("Created backup directory for JSON files")
         
         # Check if the database file already exists before we establish a connection,
         # as duckdb.connect() creates the file if it's missing.
@@ -44,7 +45,7 @@ class DuckDBStorage:
         
         # Initialize DuckDB connection management
         self._thread_local = threading.local()
-        logger.debug("Initialized DuckDB connection manager")
+        # logger.debug("Initialized DuckDB connection manager")
         
         # Create schema only if the database is new.
         if not db_exists:
@@ -58,7 +59,7 @@ class DuckDBStorage:
         # In-memory cache for objects
         self.competitions_cache: Dict[str, Competition] = {}
         self.submissions_cache: Dict[str, Submission] = {}
-        logger.info("DuckDBStorage initialized")
+        # logger.info("DuckDBStorage initialized")
     
     def _get_conn(self) -> duckdb.DuckDBPyConnection:
         """为当前线程获取或创建一个新的数据库连接"""
@@ -639,17 +640,19 @@ class DuckDBStorage:
     
 
     def create_submission(self, competition_id: str, participant_id: str, 
-                         problem_id: str, code: str, language: str) -> Optional[Submission]:
+                         problem_id: str, code: str, language: str) -> Tuple[Optional[Submission], Optional[str]]:
         """Create a new submission with evaluation and scoring"""
         # Validate competition exists
         competition = self.get_competition(competition_id)
         if not competition:
-            return None
+            return None, None
         
         # Validate problem exists
         problem = self.get_problem(competition_id, problem_id)
         if not problem:
-            return None
+            return None, None
+        
+        # logger.critical(f"44444444problem: {problem.title}")
         
         # Create submission
         submission_id = generate_id()
@@ -670,7 +673,10 @@ class DuckDBStorage:
         first_one = problem.first_to_solve is None
        
         # Evaluate submission and calculate score
-        judge = Judge()
+        judge = self.judge
+        if judge is None:
+            raise ValueError("Judge is not initialized")
+        logger.critical(f"judge: {judge}")
         submission = judge.evaluate_submission(submission, problem, competition, first_one)
         
         
@@ -767,7 +773,7 @@ class DuckDBStorage:
         self._backup_to_json('submission', submission.to_dict(include_code=False))
         # logger.error(f"endddddddddd submission: {submission.pass_score}")
         
-        return submission
+        return submission, problem.title
     
     # def _update_participant_score(self, competition_id: str, participant_id: str) -> None:
         """Update participant's score based on all their submissions"""
@@ -1523,7 +1529,7 @@ class DuckDBStorage:
                         for result in textbook_results:
                             hint_content["textbook_sections"].append({
                                 "title": result.get('title', 'Section'),
-                                "content": result.get('content', '')[:300] + "...",
+                                "content": result.get('content', '')[:1000] + "...",
                                 "relevance_score": result.get('relevance_score', 0.0)
                             })
                             
@@ -1542,7 +1548,7 @@ class DuckDBStorage:
                     for result in textbook_results:
                         hint_content["textbook_sections"].append({
                             "title": result.get('title', 'Section'),
-                            "content": result.get('content', '')[:300] + "...",
+                            "content": result.get('content', '')[:1000] + "...",
                             "relevance_score": result.get('relevance_score', 0.0)
                         })
             
@@ -1596,7 +1602,7 @@ class DuckDBStorage:
                             if p:
                                 hint_content["similar_problems"].append({
                                     "title": p.title,
-                                    "description": p.description[:200] + "...",
+                                    "description": p.description[:500] + "...",
                                     "solution": solution,
                                     "similarity_score": scores[idx]
                                 })

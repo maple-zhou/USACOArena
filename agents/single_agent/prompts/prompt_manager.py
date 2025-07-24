@@ -482,12 +482,13 @@ Important Notes:
                     for i, tr in enumerate(submission.get("test_results", []))
                 )
                 content = action_result_template["submission"].format(
+                    problem_name=submission.get("problem_name", "Unknown Problem"),
                     status=submission["status"],
-                    score=submission.get("score", 0),
+                    score=submission.get("pass_score", 0),
                     penalty=submission.get("penalty", 0),
                     cases=test_results,
                     passed_tests=submission.get("passed_tests", 0),
-                    total_tests=submission.get("total_tests", 0)
+                    # total_tests=submission.get("total_tests", 0)
                 )
             
             prompt += action_result_template["success"].format(action=action, content=content)

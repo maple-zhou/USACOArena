@@ -207,27 +207,37 @@ class Competition:
                 "MLE": 100
             },
             "lambda": 100,
-            "output_token_multipliers": {
-                "gemini-2.5-pro": 10,
-                "gpt-4.1": 8,
-                "gpt-4o": 10,
-                "gpt-4o-mini": 0.6,
-                "claude-3.7-sonnet": 15,
-                "grok-3-beta": 15,
-                "qwen3": 0.6,
-                "deepseek-v3": 1.1,
-                "deepseek-v3": 1
-            },
             "input_token_multipliers": {
-                "gemini-2.5-pro": 1.25,
-                "gpt-4.1": 2,
-                "gpt-4o": 2.5,
-                "gpt-4o-mini": 0.15,
-                "claude-3.7-sonnet": 3,
-                "grok-3-beta": 3,
-                "qwen3": 0.2,
-                "deepseek-v3": 0.27,
-                "deepseek-v3": 1
+            "qwen3-235b": 0.7,
+            "gemini-2.5-pro": 1.25,
+            "gemini-2.5-flash": 0.15,
+            "deepseek-v3": 0.27,
+            "deepseek-r1": 0.55,
+            "kimi-k2": 1,
+            "gpt-4o": 2.5,
+            "gpt-4.1": 2,
+            "gpt-4.1-mini": 0.4,
+            "gpt-4.1-nano": 0.1,
+            "gpt-4o-mini": 0.15,
+            "claude-3.7-sonnet": 3,
+            "claude-sonnet-4-20250514": 3,
+            "grok-3-beta": 3
+            },
+            "output_token_multipliers": {
+            "qwen3-235b": 2.8,
+            "gemini-2.5-pro": 10,
+            "gemini-2.5-flash": 0.6,
+            "deepseek-v3": 1.1,
+            "deepseek-r1": 2.19,
+            "kimi-k2": 3,
+            "gpt-4o": 10,
+            "gpt-4.1": 8,
+            "gpt-4.1-mini": 1.6,
+            "gpt-4.1-nano": 0.4,
+            "gpt-4o-mini": 0.6,
+            "claude-3.7-sonnet": 15,
+            "claude-sonnet-4-20250514": 15,
+            "grok-3-beta": 15
             }
         }
     

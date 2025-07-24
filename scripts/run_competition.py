@@ -9,7 +9,7 @@ from typing import Dict, List, Optional
 
 from agents import GenericAPIAgent, StreamingGenericAPIAgent
 from scripts.competition_organizer import CompetitionOrganizer
-from competemas.engine.competition import Competitor
+from scripts.competitors import Competitor
 from competemas.utils.logger_config import setup_logging, get_logger
 
 logger = get_logger("run_competition")
@@ -34,7 +34,7 @@ def setup_logging_from_config(competiton_config,competitors_config,problem_ids):
     os.makedirs(log_dir, exist_ok=True)
     
     # Setup logging
-    setup_logging(level="INFO", log_file=f"{log_dir}/run_competition.log")
+    setup_logging(level="INFO", log_file=f"{log_dir}/{competitors_config_name}_run_competition.log")
     
     return log_dir  # 返回创建的log_dir
 
@@ -139,78 +139,97 @@ def create_competitors(competitors_config: Dict, competition_config: Dict, log_d
     
     return competitors
 
-def print_competition_results(results: Dict, competition_id: str):
-    """Print competition results in a formatted way"""
-    try:
-        print(f"\n=== Competition Results of {competition_id} ===\n")
+# def print_competition_results(results: Dict, competition_id: str):
+    # """Print competition results in a formatted way"""
+    # try:
+    #     print(f"\n=== Competition Results of {competition_id} ===\n")
         
-        # Sort competitors by total score
-        sorted_results = sorted(
-            results.items(),
-            key=lambda x: x[1].get("score", 0),
-            reverse=True
-        )
+    #     # Sort competitors by total score
+    #     sorted_results = sorted(
+    #         results.items(),
+    #         key=lambda x: x[1].get("score", 0),
+    #         reverse=True
+    #     )
         
-        # Print results table
-        print(f"{'Rank':<5} {'Name':<20} {'Score':<10} {'Solved':<10}")
-        print("-" * 50)
+    #     # Print results table
+    #     print(f"{'Rank':<5} {'Name':<20} {'Score':<10} {'Solved':<10}")
+    #     print("-" * 50)
         
-        for rank, (name, data) in enumerate(sorted_results, 1):
-            print(f"{rank:<5} {name:<20} {data.get('score', 0):<10} "
-                  f"{len(data.get('solved_problems', [])):<10}")
+    #     for rank, (name, data) in enumerate(sorted_results, 1):
+    #         print(f"{rank:<5} {name:<20} {data.get('score', 0):<10} "
+    #               f"{len(data.get('solved_problems', [])):<10}")
         
-        print("\n=== Detailed Results ===\n")
-        for name, data in sorted_results:
-            print(f"\n{name}:")
-            print(f"  Final Score: {data.get('score', 0)}")
-            # Handle solved_problems - it can be either a list of strings or a list of dicts
-            solved_problems = data.get('solved_problems', [])
-            if solved_problems and isinstance(solved_problems[0], dict):
-                # If it's a list of dicts, extract problem_id from each dict
-                solved_problems_str = ", ".join([p.get("problem_id", str(p)) for p in solved_problems])
-            else:
-                # If it's already a list of strings, join them directly
-                solved_problems_str = ", ".join(solved_problems) if solved_problems else "None"
-            print(f"  Solved Problems: {solved_problems_str}")
-            if data.get('termination_reason'):
-                print(f"  Termination Reason: {data['termination_reason']}")
-            if data.get('remaining_tokens'):
-                print(f"  Remaining Tokens: {data['remaining_tokens']}")
-            if data.get('participant_id'):
-                print(f"  Participant ID: {data['participant_id']}")
-    except Exception as e:
-        logger.error(f"Error printing competition results: {str(e)}")
-        raise
+    #     print("\n=== Detailed Results ===\n")
+    #     for name, data in sorted_results:
+    #         print(f"\n{name}:")
+    #         print(f"  Final Score: {data.get('score', 0)}")
+    #         # Handle solved_problems - it can be either a list of strings or a list of dicts
+    #         solved_problems = data.get('solved_problems', [])
+    #         if solved_problems and isinstance(solved_problems[0], dict):
+    #             # If it's a list of dicts, extract problem_id from each dict
+    #             solved_problems_str = ", ".join([p.get("problem_id", str(p)) for p in solved_problems])
+    #         else:
+    #             # If it's already a list of strings, join them directly
+    #             solved_problems_str = ", ".join(solved_problems) if solved_problems else "None"
+    #         print(f"  Solved Problems: {solved_problems_str}")
+    #         if data.get('termination_reason'):
+    #             print(f"  Termination Reason: {data['termination_reason']}")
+    #         if data.get('remaining_tokens'):
+    #             print(f"  Remaining Tokens: {data['remaining_tokens']}")
+    #         if data.get('participant_id'):
+    #             print(f"  Participant ID: {data['participant_id']}")
+    # except Exception as e:
+    #     logger.error(f"Error printing competition results: {str(e)}")
+    #     raise
 
 def log_competition_results(results: Dict, competition_id: str):
     """Log competition results using logger.critical with character limit"""
     try:
+        sorted_results = {
+        k: v for k, v in sorted(
+            results.items(),
+            key=lambda item: item[1].get("score", 0),
+            reverse=True
+        )
+    }
         # Build the result string
         result_lines = []
         result_lines.append(f"=== Competition Results of {competition_id} ===")
         
-        # Sort competitors by total score
-        sorted_results = sorted(
-            results.items(),
-            key=lambda x: x[1].get("score", 0),
-            reverse=True
-        )
-        print(f"sorted_results: {sorted_results}")
-        
         # Add results table
-        result_lines.append(f"{'Rank':<5} {'Name':<20} {'Score':<10} {'Solved':<10}")
-        result_lines.append("-" * 50)
+        result_lines.append(f"{'Rank':<5} {'Name':<20} {'Score':<10} {'Solved':<10} {'Status':<15}")
+        result_lines.append("-" * 65)
         
-        for rank, (name, data) in enumerate(sorted_results, 1):
+        for rank, (name, data) in enumerate(sorted_results.items(), 1):
+            status = "Running" if data.get('is_running', False) else "Terminated"
             result_lines.append(f"{rank:<5} {name:<20} {data.get('score', 0):<10} "
-                              f"{len(data.get('solved_problems', [])):<10}")
+                              f"{len(data.get('solved_problems', [])):<10} {status:<15}")
         
         # Add detailed results
-        result_lines.append("=== Detailed Results ===")
-        for name, data in sorted_results:
-            result_lines.append(f"{name}:")
+        result_lines.append("\n=== Detailed Results ===")
+        for name, data in sorted_results.items():
+            result_lines.append(f"\n{name}:")
+            # result_lines.append(f"  Participant ID: {data.get('participant_id', 'N/A')}")
             result_lines.append(f"  Final Score: {data.get('score', 0)}")
-            # Handle solved_problems - it can be either a list of strings or a list of dicts
+            # result_lines.append(f"  Status: {'Running' if data.get('is_running', False) else 'Terminated'}")
+            
+            # Token usage information
+            result_lines.append(f"  Token Usage:")
+            result_lines.append(f"    LLM Tokens: {data.get('LLM_tokens', 0)}")
+            result_lines.append(f"    Hint Tokens: {data.get('hint_tokens', 0)}")
+            result_lines.append(f"    Submission Tokens: {data.get('submission_tokens', 0)}")
+            result_lines.append(f"    Total Used: {data.get('LLM_tokens', 0) + data.get('hint_tokens', 0) + data.get('submission_tokens', 0)}")
+            result_lines.append(f"    Limit: {data.get('limit_tokens', 0)}")
+            result_lines.append(f"    Remaining: {data.get('remaining_tokens', 0)}")
+            
+            # Submission statistics
+            result_lines.append(f"  Submission Statistics:")
+            result_lines.append(f"    Total Submissions: {data.get('submission_count', 0)}")
+            result_lines.append(f"    Accepted Submissions: {data.get('accepted_count', 0)}")
+            result_lines.append(f"    Submission Penalty: {data.get('submission_penalty', 0)}")
+            result_lines.append(f"    Problem Pass Score: {data.get('problem_pass_score', 0)}")
+            
+            # Solved problems
             solved_problems = data.get('solved_problems', [])
             if solved_problems and isinstance(solved_problems[0], dict):
                 # If it's a list of dicts, extract problem_id from each dict
@@ -219,25 +238,60 @@ def log_competition_results(results: Dict, competition_id: str):
                 # If it's already a list of strings, join them directly
                 solved_problems_str = ", ".join(solved_problems) if solved_problems else "None"
             result_lines.append(f"  Solved Problems: {solved_problems_str}")
+            
+            # Termination information
             if data.get('termination_reason'):
                 result_lines.append(f"  Termination Reason: {data['termination_reason']}")
-            if data.get('remaining_tokens'):
-                result_lines.append(f"  Remaining Tokens: {data['remaining_tokens']}")
-            if data.get('participant_id'):
-                result_lines.append(f"  Participant ID: {data['participant_id']}")
-            if data.get('LLM_tokens'):
-                result_lines.append(f"  LLM Tokens: {data['LLM_tokens']}")
         
         # Join all lines and apply character limit
         result_str = "\n".join(result_lines)
-        # if len(result_str) > 5000:
-        #     result_str = result_str[:5000] + "... (truncated)"
+        # if len(result_str) > 8000:
+        #     result_str = result_str[:8000] + "... (truncated)"
         
         logger.critical(f"Competition Results:\n{result_str}")
         
     except Exception as e:
         logger.error(f"Error logging competition results: {str(e)}")
         raise
+
+def save_competition_results(results, competition_id, competition_config, log_dir=None):
+    """
+    保存竞赛结果到文件
+    
+    Args:
+        results: 竞赛结果字典
+        competition_id: 竞赛ID
+        competition_config: 竞赛配置
+        log_dir: 日志目录路径（可选）
+    
+    Returns:
+        str: 保存的文件路径
+    """
+    # Sort competitors by total score
+    sorted_results = {
+        k: v for k, v in sorted(
+            results.items(),
+            key=lambda item: item[1].get("score", 0),
+            reverse=True
+        )
+    }
+    
+    # Save results to file
+    results["competition_id"] = competition_id
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    # 将competition_results保存到log_dir中
+    if log_dir:
+        results_file = os.path.join(log_dir, f"competition_results_{timestamp}.json")
+    else:
+        os.makedirs("competition_results", exist_ok=True)
+        results_file = f"competition_results/{competition_config.get('competition_title', '')}_{timestamp}.json"
+        
+    with open(results_file, 'w') as f:
+        json.dump(sorted_results, f, indent=2)
+    logger.info(f"Results saved to {results_file}")
+    
+    return results_file
 
 async def main():
     """Main function to run the competition"""
@@ -353,26 +407,14 @@ async def main():
         # Run competition
         logger.info("Starting competition...")
         results = await organizer.run_llm_competition()
-        results_to_print = copy.deepcopy(results)
-        
+        results_to_log = copy.deepcopy(results)
+
         # Save results to file
-        results["competition_id"] = competition_id
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        
-        # 将competition_results保存到log_dir中
-        if log_dir:
-            results_file = os.path.join(log_dir, f"competition_results_{timestamp}.json")
-        else:
-            os.makedirs("competition_results", exist_ok=True)
-            results_file = f"competition_results/{competition_config.get('competition_title', '')}_{timestamp}.json"
-            
-        with open(results_file, 'w') as f:
-            json.dump(results, f, indent=2)
-        logger.info(f"Results saved to {results_file}")
+        save_competition_results(results, competition_id, competition_config, log_dir)
 
         # Print results
         # print_competition_results(results_to_print, competition_id)
-        log_competition_results(results_to_print, competition_id)
+        log_competition_results(results_to_log, competition_id)
         
     except Exception as e:
         logger.error(f"Error running competition: {str(e)}", exc_info=True)

@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 
 # AgentInterface已被删除，现在直接使用Agent类
 from competemas.models.models import SubmissionStatus
-from competemas.engine.competition import Competitor
+from scripts.competitors import Competitor
 from competemas.utils.logger_config import get_logger
 
 logger = get_logger("competition_organizer")
@@ -378,13 +378,14 @@ class CompetitionOrganizer:
             "submission_tokens": final_state["submission_tokens"],
             "limit_tokens": final_state["limit_tokens"],
             "remaining_tokens": final_state["remaining_tokens"],
+            "submission_count": final_state["submission_count"],
+            "accepted_count": final_state["accepted_count"],
+            "submission_penalty": final_state["submission_penalty"],
+            "problem_pass_score": final_state["problem_pass_score"],
             "score": final_state["score"],
-            "termination_reason": final_state["termination_reason"],
-            "solved_problems": final_state["solved_problems"],
             "is_running": final_state["is_running"],
             "termination_reason": final_state["termination_reason"],
-            "score": final_state["score"],
-            "problem_pass_score": final_state["problem_pass_score"]
+            "solved_problems": final_state["solved_problems"]
         }
         
         # Create results directory if it doesn't exist

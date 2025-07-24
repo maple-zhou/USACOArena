@@ -11,6 +11,7 @@ from rank_bm25 import BM25Okapi
 
 # AgentRequest, AgentResponse, TokenUsage classes were removed with agent_interface.py
 from ..engine.storage import DuckDBStorage
+from ..engine.judge import Judge
 from ..models.models import (Case, Competition, Level, Participant, Problem, Submission, SubmissionStatus, generate_id)
 from ..utils.problem_loader import USACOProblemLoader
 from ..utils.textbook_loader import TextbookLoader
@@ -554,8 +555,8 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
             return error_response("Missing required fields")
         
         # Create submission with evaluation (handled in storage layer)
-        with DuckDBStorage(db_path=db_path) as data_storage:
-            submission = data_storage.create_submission(
+        with DuckDBStorage(db_path=db_path, judge=judge) as data_storage:
+            submission, problem_name = data_storage.create_submission(
                 competition_id=competition_id,
                 participant_id=participant_id,
                 problem_id=problem_id,
@@ -563,6 +564,8 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
                 language=language
             )
         
+        # logger.critical(f"2222222submission: {submission}")
+        # logger.critical(f"33333333problem_name: {problem_name}")
         if not submission:
             return error_response("Failed to create submission", 500)
         
@@ -576,6 +579,7 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
             "pass_score": submission.pass_score,
             "penalty": submission.penalty,
             # "participant_score": new_score,
+            "problem_name": problem_name,
             "message": "Submission has been evaluated",
             "poll_url": f"/api/competitions/{competition_id}/submissions/{submission.id}",
             "test_results": [tr.to_dict() for tr in submission.test_results],
@@ -696,8 +700,6 @@ def check_oj_status():
         Connection status and any error information
     """
     try:
-        from ..engine.judge import Judge
-        judge = Judge()
         is_connected = judge.test_oj_connection()
         return success_response({"connected": is_connected})
     except Exception as e:
@@ -1136,7 +1138,8 @@ def run_api(host: str = "0.0.0.0", port: int = 5000, debug: bool = False, config
         debug: Enable debug mode (default: False)
         config: Configuration manager instance (optional)
     """
-    global global_rate_limiter, problem_loader, textbook_loader, db_path
+    global global_rate_limiter, problem_loader, textbook_loader, db_path, judge
+    
     
     if port:
         db_path = f"data/competition_{port}.duckdb"
@@ -1151,6 +1154,10 @@ def run_api(host: str = "0.0.0.0", port: int = 5000, debug: bool = False, config
         global_rate_limiter = GlobalRateLimiter(min_interval)
         logger.info(f"Configured rate limiter with interval: {min_interval}s")
         
+        judge = Judge(config.get_section("oj").get("endpoint"))
+
+        # logger.critical(f"config: {config.get_section('oj').get('endpoint')}")
+        # logger.critical(f"judge: {judge}")
         # Configure problem loader with custom data directory
         data_config = config.get_section("data")
         problem_data_dir = data_config.get("problem_data_dir", "dataset/datasets/usaco_2025")

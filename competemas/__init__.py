@@ -11,7 +11,7 @@ from .models.models import (
 )
 from .engine.storage import DuckDBStorage
 from .engine.judge import Judge
-from .engine.competition import Competitor
+from scripts.competitors import Competitor
 # from .engine.agent_interface import AgentInterface
 
 __version__ = "0.2.0"

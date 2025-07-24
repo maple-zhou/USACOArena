@@ -28,7 +28,7 @@
 
             "comprehensive": "### Hint (Level {level}) - Comprehensive Hint\n\nCurrent Problem: {current_problem}\n\n=== Problem Relevant Textbook ===\n{textbook_sections}\n\n=== Similar Problems ===\n{similar_problems}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n"
         },
-        "submission": "### Submission Result\nStatus: {status}\nPassed Tests: {passed_tests}/{total_tests}\nScore: {score}\nPenalty: {penalty}\n\nTest Results:\n{cases}\n\n"
+        "submission": "### Submission Result\nProblem: {problem_name}\nStatus: {status}\nPassed Tests: {passed_tests}\nScore: {score}\nPenalty: {penalty}\n\nTest Results:\n{cases}\n\n"   
     },
     "action_patterns": {
         "view_problem": {
