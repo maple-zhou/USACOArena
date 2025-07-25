@@ -618,6 +618,8 @@ class DuckDBStorage:
         results = conn.execute("""
             SELECT id FROM problems WHERE competition_id = ?
         """, [competition_id]).fetchall()
+
+        # logger.critical(f"11111111results: {results}")
         
         problems = []
         for row in results:
@@ -625,6 +627,7 @@ class DuckDBStorage:
             problem = self.get_problem(competition_id, problem_id)
             if problem:
                 problems.append(problem)
+                # logger.critical(f"22222222problems: {problem.first_to_solve}")
         
         return problems
    
@@ -632,11 +635,21 @@ class DuckDBStorage:
     def _update_problem_first_to_solve(self, competition_id: str, problem_id: str, participant_id: str) -> None:
         """Update problem's first_to_solve in database"""
         conn = self._get_conn()
+        # logger.critical(f"update_problem_first_to_solve: {competition_id}, {problem_id}, {participant_id}")
+        participant = self.get_participant(competition_id, participant_id)
+        if participant is None:
+            raise ValueError(f"Participant {participant_id} not found in competition {competition_id}")
+        first_to_solve = participant.name
+        # logger.critical(f"2222222update_problem_first_to_solve: {first_to_solve}")
         conn.execute("""
             UPDATE problems 
             SET first_to_solve = ? 
             WHERE competition_id = ? AND id = ?
-        """, [participant_id, competition_id, problem_id])
+        """, [first_to_solve, competition_id, problem_id])
+        # name1 = conn.execute("""
+        #     SELECT first_to_solve FROM problems WHERE competition_id = ? AND id = ?
+        # """, [competition_id, problem_id]).fetchone()
+        # logger.critical(f"33333333name1: {name1}")
     
 
     def create_submission(self, competition_id: str, participant_id: str, 
@@ -671,7 +684,7 @@ class DuckDBStorage:
         
         # Check if this could be first AC
         first_one = problem.first_to_solve is None
-       
+        # logger.critical(f"{problem.title} problem.first_to_solve: {first_one}")
         # Evaluate submission and calculate score
         judge = self.judge
         if judge is None:
@@ -680,7 +693,10 @@ class DuckDBStorage:
         submission = judge.evaluate_submission(submission, problem, competition, first_one)
         
         
-        # Handle first AC bonus
+        # # Handle first AC bonus
+        # logger.critical(f"{problem.title} problem.first_to_solve2: {first_one}")
+        # logger.critical(f"{problem.title} submission.status: {submission.status}")
+        # logger.critical(f"{problem.title} SubmissionStatus.ACCEPTED: {SubmissionStatus.ACCEPTED}")
         if submission.status == SubmissionStatus.ACCEPTED and first_one:
             # Update problem's first_to_solve in database
             self._update_problem_first_to_solve(competition_id, problem_id, participant_id)
@@ -1417,8 +1433,6 @@ class DuckDBStorage:
             Dictionary containing hint content and token usage information
         """
         # Get competition and participant
-        # if hint_level == 0:
-        # logger.critical(f"Hint request: {competition_id}, {participant_id}, {problem_id}, {hint_level}, {hint_knowledge}, {problem_difficulty}666666")
         competition = self.get_competition(competition_id)
         if not competition:
             logger.error(f"Competition with ID {competition_id} not found")
@@ -1446,7 +1460,7 @@ class DuckDBStorage:
             # Check if participant has enough tokens
             if participant.remaining_tokens < hint_cost:
                 logger.error(f"Insufficient tokens. Required: {hint_cost}, Available: {participant.remaining_tokens}")
-
+            logger.critical(f"444444{hint_level}{hint_knowledge}{problem_difficulty}")
             # Generate hint content based on level
             hint_content = self._generate_hint_content(problem, hint_level, competition_id, hint_knowledge, problem_difficulty)
             logger.critical(f"\nNAME: {participant.name}, hint_content: {hint_content}\n")
@@ -1535,15 +1549,15 @@ class DuckDBStorage:
                             
         elif hint_level == 2:
             hint_content["textbook_sections"] = []
-            
+            logger.critical(f"555555{hint_level}{hint_knowledge}{problem_difficulty}")
             # Search textbook for relevant content
-            if textbook_loader.is_loaded() and problem is not None:
+            if textbook_loader.is_loaded():
                 
                 search_terms = hint_knowledge
-                if search_terms is None:
-                    raise ValueError("No hint knowledge provided")
+                # if search_terms is None:
+                #     raise ValueError("No hint knowledge provided")
                 textbook_results = textbook_loader.search_content(str(search_terms), max_results=1)
-                
+                logger.critical(f"666666{textbook_results}")
                 if textbook_results:
                     for result in textbook_results:
                         hint_content["textbook_sections"].append({

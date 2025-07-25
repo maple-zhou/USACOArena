@@ -892,7 +892,6 @@ def get_hint(competition_id: str, participant_id: str):
         data = request.get_json()
         if not data:
             return error_response("No JSON data provided", 400)
-        # logger.critical(f"Hint request: {competition_id}, {participant_id}22222222")
         
         hint_level = data.get("hint_level", 1)
         hint_knowledge = data.get("hint_knowledge", None)
@@ -900,9 +899,9 @@ def get_hint(competition_id: str, participant_id: str):
         problem_difficulty = data.get("problem_difficulty", None)
         
         # Validate hint level
-        if hint_level not in [0, 1, 2, 3, 4, 5]:
-            return error_response("Invalid hint level. Must be 0, 1, 2, 3, 4, or 5.")
-        # logger.critical(f"Hint request: {competition_id}, {participant_id}, {problem_id}, {hint_level}, {hint_knowledge}, {problem_difficulty}33333333")
+        if hint_level not in [0, 1, 2, 3, 4]:
+            return error_response("Invalid hint level. Must be 0, 1, 2, 3, 4.")
+        logger.critical(f"333333Hint request: {competition_id}, {participant_id}, {problem_id}, {hint_level}, {hint_knowledge}, {problem_difficulty}")
         # Process hint request using data storage layer
         with DuckDBStorage(db_path=db_path) as data_storage:
             result = data_storage.process_hint_request(competition_id, participant_id, hint_level, problem_id, hint_knowledge, problem_difficulty)

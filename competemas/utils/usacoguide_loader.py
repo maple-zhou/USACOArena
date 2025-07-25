@@ -105,10 +105,10 @@ class USACOGuideLoader:
     
     def search_second_level_key_similar(self, problem_difficulty: str, hint_knowledge: str, max_results: int = 1) -> List[Dict[str, Any]]:
         """
-        使用BM25算法在指定的problem_difficulty中查找与hint_knowledge相似的二级键
+        使用BM25算法在所有难度级别中查找与hint_knowledge相似的二级键
         
         Args:
-            problem_difficulty: 要搜索的一级键
+            problem_difficulty: 要搜索的一级键（现在用于优先级排序，但搜索范围扩展到所有难度）
             hint_knowledge: 要搜索的二级键名
             max_results: 最大返回结果数
             
@@ -118,42 +118,41 @@ class USACOGuideLoader:
         if not self.is_loaded():
             return []
         
-        if problem_difficulty not in self.guide_data:
-            return []
-        
         try:
             from rank_bm25 import BM25Okapi
             
             
-            # 收集所有二级键名用于相似度搜索
+            # 收集所有难度级别的所有二级键名用于相似度搜索
             all_second_level_keys = []
             key_info = []  # 存储键的详细信息
             
-            first_level_value = self.guide_data[problem_difficulty]
-            
-            # 如果一级键的值是字典
-            if isinstance(first_level_value, dict):
-                for second_level_key in first_level_value.keys():
-                    all_second_level_keys.append(second_level_key)
-                    key_info.append({
-                        "first_level": problem_difficulty,
-                        "second_level": second_level_key,
-                        "value": first_level_value[second_level_key],
-                        "type": "dict"
-                    })
-            
-            # 如果一级键的值是列表，且列表元素是字典
-            elif isinstance(first_level_value, list) and first_level_value:
-                for i, item in enumerate(first_level_value):
-                    if isinstance(item, dict):
-                        for second_level_key in item.keys():
-                            all_second_level_keys.append(second_level_key)
-                            key_info.append({
-                                "first_level": f"{problem_difficulty}[{i}]",
-                                "second_level": second_level_key,
-                                "value": item[second_level_key],
-                                "type": "list"
-                            })
+            # 遍历所有难度级别
+            for difficulty_level in self.guide_data.keys():
+                first_level_value = self.guide_data[difficulty_level]
+                
+                # 如果一级键的值是字典
+                if isinstance(first_level_value, dict):
+                    for second_level_key in first_level_value.keys():
+                        all_second_level_keys.append(second_level_key)
+                        key_info.append({
+                            "first_level": difficulty_level,
+                            "second_level": second_level_key,
+                            "value": first_level_value[second_level_key],
+                            "type": "dict"
+                        })
+                
+                # 如果一级键的值是列表，且列表元素是字典
+                elif isinstance(first_level_value, list) and first_level_value:
+                    for i, item in enumerate(first_level_value):
+                        if isinstance(item, dict):
+                            for second_level_key in item.keys():
+                                all_second_level_keys.append(second_level_key)
+                                key_info.append({
+                                    "first_level": f"{difficulty_level}[{i}]",
+                                    "second_level": second_level_key,
+                                    "value": item[second_level_key],
+                                    "type": "list"
+                                })
             
             if not all_second_level_keys:
                 return []
@@ -164,21 +163,47 @@ class USACOGuideLoader:
             tokenized_corpus = []
             for idx, key in enumerate(all_second_level_keys):
                 concept_value = ""
+                explanation_value = ""
+                solution_value = ""
+                
                 info = key_info[idx]
                 value = info["value"]
                 # value 可能是dict，尝试取concept字段
                 if isinstance(value, dict) and "concept" in value:
                     concept_value = str(value["concept"])
-                    explanation_value = str(value["explanation"])[:100]
+                    explanation_value = str(value["explanation"])
+                    
+                    # 提取所有示例问题的solution
+                    solutions = []
+                    names = []
+                    descriptions = []
+                    if "example_problems" in value and isinstance(value["example_problems"], list):
+                        for problem in value["example_problems"]:
+                            if isinstance(problem, dict) and "solution" in problem:
+                                solutions.append(str(problem["solution"]))
+                            if isinstance(problem, dict) and "name" in problem:
+                                names.append(str(problem["name"]))
+                            if isinstance(problem, dict) and "description" in problem:
+                                descriptions.append(str(problem["description"]))
+                    solution_value = " ".join(solutions)
+                    name_value = " ".join(names)
+                    description_value = " ".join(descriptions)
+
+                    
                     # print("000000",concept_value)
                     # print("111111",explanation_value)
-                # 拼接二级键和concept
-                combined = f"{key} {concept_value} {explanation_value}".strip()
+                    # print("222222",solution_value)
+                    print("333333",name_value)
+                    print("444444",description_value)
+                
+                # 拼接二级键、concept、explanation和solution
+                combined = f"{key} {concept_value} {explanation_value} {solution_value}{name_value}{description_value}".strip()
                 # print(combined)
                 tokenized_corpus.append(combined.split())
             
             bm25 = BM25Okapi(tokenized_corpus)
             
+            # print("222222",tokenized_corpus)
             # 搜索
             tokenized_query = hint_knowledge.split()
             

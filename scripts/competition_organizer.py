@@ -1,3 +1,4 @@
+from calendar import firstweekday
 import json
 import time
 from numpy.char import lower
@@ -334,7 +335,20 @@ class CompetitionOrganizer:
                 state["competitor_state"] = competitor.get_participant_state()
                 state["last_action_result"] = action_result
 
+                problems_result = competitor.view_problems()
+                problems = problems_result.get("problems", []) if "error" not in problems_result else []
+                # logger.debug(f"Loaded {len(problems)} problems for competitor {competitor.name}")
+                # print(f"problems: {problems}")
                 
+                problems_state = {
+                    "problems_id": [p.get("id") for p in problems],
+                    "problems_first_to_solve": [p.get("first_to_solve") for p in problems],
+                }
+
+                # logger.critical(f"11111111problems_state: {problems_state['problems_first_to_solve']}")
+                # logger.critical(f"22222222problems_state: {problems_state['problems_id']}")
+                
+                state["problems"] = problems_state
                 # Update other competitors status (minimal sync)
                 state["other_competitors_status"] = [
                     {
@@ -578,9 +592,9 @@ class CompetitionOrganizer:
                         "should_terminate": False,
                         "termination_reason": None
                     }
-                
+                # logger.critical(f"000000hint_level: {hint_level}, hint_knowledge: {hint_knowledge}, problem_difficulty: {problem_difficulty}")
                 result = competitor.get_hint(problem_id, hint_level, hint_knowledge, problem_difficulty)
-                # print(f"get_hint result: {result}")
+                # logger.critical(f"111111get_hint result: {result}")
                 return {
                     "status": "success",
                     "data": {

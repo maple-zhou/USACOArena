@@ -120,19 +120,65 @@ class ConversationLogger:
             Path to the saved log file
         """
         log_path = self._get_log_path(agent_name, session_id)
+
+        # 只保存最新的对话记录
+        message = conversation_history[-1] if conversation_history else None
         
-        log_data = {
-            "agent_name": agent_name,
-            "session_id": session_id,
-            "timestamp": datetime.now().isoformat(),
-            "conversation": conversation_history,
-            "metadata": metadata or {}
-        }
-        
+        if message:
+            log_data_full = {
+                "agent_name": agent_name,
+                "session_id": session_id,
+                "timestamp": datetime.now().isoformat(),
+                f"message{datetime.now().isoformat()}": message,  # 只保存最新的一条
+                # "metadata": metadata or {}
+            }
+            log_data = {
+                f"message{datetime.now().isoformat()}": message,  # 只保存最新的一条
+            }
         try:
-            with open(log_path, 'w', encoding='utf-8') as f:
-                json.dump(log_data, f, indent=2, ensure_ascii=False)
-            self._logger.info(f"Saved conversation log to {log_path}")
+            file_exists = os.path.exists(log_path) and os.path.getsize(log_path) > 0
+            if file_exists:
+                # 从文件末尾向前读取，找到最后一个 "}" 的位置
+                with open(log_path, 'r+', encoding='utf-8') as f:
+                    # 移动到文件末尾
+                    f.seek(0, 2)
+                    file_size = f.tell()
+                    
+                    # 从末尾向前逐个字符读取，找到最后一个 "}"
+                    pos = file_size - 1
+                    while pos >= 0:
+                        f.seek(pos)
+                        char = f.read(1)
+                        if char == '}':
+                            # 找到最后一个 "}"，在其前面插入新内容
+                            break
+                        pos -= 1
+                    
+                    if pos >= 0:
+                        # 去掉log_data的{}，只保留内容
+                        log_data_str = json.dumps(log_data, indent=2, ensure_ascii=False)
+                        # 去掉第一行和最后一行（去掉{}）
+                        log_data_lines = log_data_str.split('\n')[1:-1]
+                        log_data_content = '\n'.join(log_data_lines)
+                        
+                        # 移动到 "}" 的位置
+                        f.seek(pos)
+                        
+                        # 插入新内容
+                        f.write(',\n' + log_data_content + '\n}')
+                    else:
+                        # 如果没找到 "}"，直接追加
+                        f.seek(0, 2)  # 移动到文件末尾
+                        f.write(',\n')
+                        json.dump(log_data, f, indent=2, ensure_ascii=False)
+                        f.write('\n}')
+                
+                # self._logger.info(f"Updated conversation log to {log_path}, log_data: {log_data}")
+            else:
+                with open(log_path, 'w', encoding='utf-8') as f:
+                    json.dump(log_data_full, f, indent=2, ensure_ascii=False)
+
+                # self._logger.info(f"Saved conversation log to {log_path}, log_data_full: {log_data_full}")
             return log_path
         except Exception as e:
             self._logger.error(f"Failed to save conversation log: {e}")

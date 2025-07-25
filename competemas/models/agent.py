@@ -118,7 +118,7 @@ class Agent(ABC):
             logger.error(f"Error loading API config: {e}")
             return 100000, 1
     
-    def truncate_conversation_history(self, max_turns: int = 10) -> None:
+    def truncate_conversation_history(self, max_turns: int = 6) -> None:
         """
         Truncate conversation history to prevent token overflow
         

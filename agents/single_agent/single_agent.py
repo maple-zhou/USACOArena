@@ -170,6 +170,7 @@ class GenericAPIAgent(Agent):
         # Add user message to conversation history
         self.add_to_conversation("user", prompt)
         self.save_conversation()
+        # logger.critical(f"111111messages: {self.conversation_history}, len of conversation_history: {len(self.conversation_history)}")
         for _ in range(self.max_retries):
             try:
                 
@@ -203,6 +204,8 @@ class GenericAPIAgent(Agent):
                 # Parse the formatted messages back to JSON
                 if "messages" in formatted_body:
                     formatted_body["messages"] = json.loads(formatted_body["messages"])
+                
+                
                 
                 # has_json_block = False
                 # # Make the request
@@ -282,9 +285,11 @@ class GenericAPIAgent(Agent):
                     # Add assistant response to conversation history
                 self.add_to_conversation("assistant", response_text)
                 self.save_conversation()
-                self.conversation_history.pop()
+                # logger.critical(f"222222222conversation_history: {self.conversation_history}, len of conversation_history: {len(self.conversation_history)}")
+                # self.conversation_history.pop()
                 # action = self.action_parser.parse_action(response_text)
-                    
+                self.truncate_conversation_history(6)
+                # logger.critical(f"333333333conversation_history: {self.conversation_history}, len of conversation_history: {len(self.conversation_history)}")
 
                 return response_text
                 
@@ -298,11 +303,10 @@ class GenericAPIAgent(Agent):
                 
                 # Print detailed traceback information
                 traceback_str = traceback.format_exc()
-                print(f"\n=== DETAILED ERROR TRACEBACK for {self.name} (Try {_ + 1}) ===")
-                print(f"Error Message: {error_message}")
-                # print(f"Full Traceback:\n{traceback_str}")
-                print("=" * 60)
-                
+                # logger.error(f"\n=== DETAILED ERROR TRACEBACK for {self.name} (Try {_ + 1}) ===")
+                # logger.error(f"Error Message: {error_message}")
+                # logger.error(f"Full Traceback:\n{traceback_str}")
+                # logger.error("=" * 60)
                 logger.error(f"Try {_ + 1} Error generating response with {self.name}: {error_message}")
                 time.sleep(self.retry_delay)
         
@@ -500,7 +504,7 @@ class StreamingGenericAPIAgent(Agent):
                 # Add assistant response to conversation history
                 self.add_to_conversation("assistant", content)
                 self.save_conversation()
-                self.conversation_history.pop()
+                # self.conversation_history.pop()
                 
                 return content, (prompt_tokens, completion_tokens)
                 

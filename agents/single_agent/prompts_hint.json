@@ -1,0 +1,55 @@
+{
+    "system_prompt": "You are a competitive programming agent participating in a coding competition. You will receive the current state of the competition and results of your previous actions. Your goal is to achieve the highest score possible while managing your token budget wisely. Your token budget has two main uses: 1) Limiting the total length of your output responses, and 2) Purchasing hints for problems.\n\nBefore taking any action, you should:\n1. Analyze the current competition state and your remaining resources\n2. Evaluate the difficulty and potential score of each problem\n3. Consider the optimal strategy for token usage (e.g., when to use hints)\n4. Plan your approach to maximize score while minimizing token consumption\n\nPlease respond with a JSON object containing 'action' and 'parameters' fields.",
+    "state_template": {
+        "header": "# Competition State\n\n",
+        "competition": "## Competition: {title}\nDescription: {description}\n\n",
+        "rules": "## Competition Rules\n\n### Token Budget:\n- Each participant has a maximum of {limit_tokens} tokens\n- Tokens are used for:\n  1. Limiting the length of your output responses\n  2. Purchasing hints (cost increases with hint level)\n  3. Submitting solutions (cost varies based on submission status)\n- Running out of tokens will terminate your participation\n- Remaining tokens at the end of competition will be converted to bonus points\n  - Bonus points = (remaining_tokens / initial_tokens) * lambda\n  - Lambda is a multiplier defined in competition rules\n\n### Scoring Rules:\n{scoring_rules}\n\n### Penalties:\n{penalties}\n\n### Bonus:\n{bonus_rules}\n\n### Final Score Calculation:\n- Base Score: Sum of points from solved problems\n- Penalties: Sum of penalties from failed submissions\n- Token Bonus: (remaining_tokens / initial_tokens) * lambda\n- Final Score = Base Score - Penalties + Token Bonus\n\n",
+        "competitor": "## Your Status\n- Name: {name}\n- Remaining Tokens: {tokens}\n- Solved Problems: {solved}\n- Current Score: {score}\n\n",
+        "problems": "## Available Problems\n{problems}\n\n",
+        "rankings": "## Current Rankings\n{rankings}\n\n",
+        "other_competitors": "## Other Competitors Status\n{other_competitors}\n\n",
+        "actions": "## Available Actions\n\n1. VIEW_PROBLEM\n   - Action: \"VIEW_PROBLEM\"\n   - Parameters: {{ \"problem_id\": \"<problem_id>\" }}\n   - Description: View detailed information about a specific problem\n   - Returns: Problem title, description, and sample test cases\n\n2. GET_HINT\n   - Action: \"GET_HINT\"\n   - Description: Get a hint for a problem (consumes tokens)\n   - Hint Levels:\n     4. Knowledge Example Problem Hint ({level_4_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_difficulty\": \"<difficulty_level>\", \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 4 }}\n        - Choose problem_difficulty from Bronze, Silver, Gold, Platinum, Advanced and give the hint_knowledge you want to look up. Then I will provide you with example problems and solutions related to the knowledge points and the difficulty_level.\n\n3. submission_SOLUTION\n   - Action: \"submission_SOLUTION\"\n   - Parameters: {{\n     \"problem_id\": \"<problem_id>\",\n     \"solution\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\"\n   }}\n   - Description: submission a solution for a problem (consumes tokens)\n   - Token Cost:\n     - Each submission consumes tokens based on the submission status\n     - Cost varies depending on whether the solution is accepted or rejected\n     - Default cost is 100 tokens if not specified in competition rules\n   - Returns: Submission status, score, and test case results\n\n4. TERMINATE\n   - Action: \"TERMINATE\"\n   - Parameters: {{ \"reason\": \"<reason>\" }}\n   - Description: End your participation in the competition and give your reason\n   - Returns: Final score and ranking\n\nPlease respond using the following JSON format:\n```json\n{{\n  \"action\": \"<action_name>\",\n  \"parameters\": {{\n    // Fill in parameters according to the action type\n  }}\n}}\n```\n You MUST OFTEN Choose to GET HINT 4"
+    },
+    "action_result_template": {
+        "header": "# Last Action Result\n\n",
+        "success": "## Success {action}\n{content}\n\n",
+        "error": "## Error\n{message}\n\n",
+        "problem": "### Problem: {title}\nDescription:\n{description}\n\nSample Cases:\n{cases}",
+        "hint": {
+            "strategy": "### Hint (Level {level}) - Strategy\n\nCompetitive Programming Strategy and Tips:\n{core_philosophy}\n\nDebugging Checklist:\n{debugging_checklist}\n\nContest Strategy:\n{contest_strategy}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
+
+            "problem_textbook": "### Hint (Level {level}) - Problem Relevant Textbook\n\nCurrent Problem: {current_problem_title}\n\nRelevant Textbook Sections:\n{textbook_sections}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
+
+            "knowledge_textbook": "### Hint (Level {level}) - Knowledge Relevant Textbook\n\nKnowledge: {hint_knowledge}\n\nRelevant Textbook Sections:\n{textbook_sections}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
+
+            "similar_problems": "### Hint (Level {level}) - Similar Problems\n\nCurrent Problem: {current_problem}\n\nSimilar Problems:\n{similar_problems}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
+
+            "knowledge_examples": "### Hint (Level {level}) - Knowledge Example Problems\n\nKnowledge: {hint_knowledge}\n\nExample Problems:\n{example_problems}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
+
+            "comprehensive": "### Hint (Level {level}) - Comprehensive Hint\n\nCurrent Problem: {current_problem}\n\n=== Problem Relevant Textbook ===\n{textbook_sections}\n\n=== Similar Problems ===\n{similar_problems}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n"
+        },
+        "submission": "### Submission Result\nProblem: {problem_name}\nStatus: {status}\nPassed Tests: {passed_tests}\nScore: {score}\nPenalty: {penalty}\n\nTest Results:\n{cases}\n\n"   
+    },
+    "action_patterns": {
+        "view_problem": {
+            "patterns": ["view problem", "view_problem", "look at problem", "look_at_problem"],
+            "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?"
+        },
+        "get_hint": {
+            "patterns": ["get hint", "request hint", "get_hint", "request_hint"],
+            "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?hint_level\\s*:\\s*(\\d+)"
+        },
+        "submission_solution": {
+            "patterns": ["submission solution", "submission code", "submission_solution", "submission_code"],
+            "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?solution\\s*:\\s*[\"']?```(?:python|cpp|java)?\\n(.*?)```[\"']?.*?language\\s*:\\s*[\"']?(python|cpp|java)[\"']?"
+        },
+        "view_rankings": {
+            "patterns": ["view rankings", "check rankings","view rankings", "check rankings"],
+            "regex": null
+        },
+        "terminate": {
+            "patterns": ["terminate", "stop", "end"],
+            "regex": null
+        }
+    }
+} 

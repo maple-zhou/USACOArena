@@ -156,6 +156,7 @@ Important Notes:
                 f"- problem_id: {pid}, first_to_solve: {first_to_solve[i] or 'None'}"
                 for i, pid in enumerate(problem_ids)
             )
+            # logger.warning(f"666666666666problems: {problems}")
         else:
             # Handle the case where problems is a list of objects
             problems = "\n".join(

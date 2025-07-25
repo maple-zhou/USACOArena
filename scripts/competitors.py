@@ -29,8 +29,8 @@ class Competitor:
         self.limit_tokens = limit_tokens
         
         # Competition context (cached for efficiency)
-        self._competition_problems: Optional[List[Dict]] = None
-        self._competition_rules: Optional[Dict] = None
+        # self._competition_problems: Optional[List[Dict]] = None
+        # self._competition_rules: Optional[Dict] = None
     
     # Properties with direct API access
     @property
@@ -182,8 +182,8 @@ class Competitor:
         self._ensure_participant()
         
         # Use cached problems if available
-        if self._competition_problems:
-            return {"problems": self._competition_problems}
+        # if self._competition_problems:
+        #     return {"problems": self._competition_problems}
         
         try:
             response = requests.get(f"{self.api_base}/api/problems/list/{self.competition_id}")
@@ -194,7 +194,7 @@ class Competitor:
                 return {"error": f"API error: {result.get('message', 'Unknown error')}"}
             
             # Cache for future use
-            self._competition_problems = result["data"]
+            # self._competition_problems = result["data"]
             return {"problems": result["data"]}
             
         except requests.exceptions.RequestException as e:
@@ -240,7 +240,7 @@ class Competitor:
             # else:
             # For hint levels that don't require problem_id (like level 0 strategy hints)
             url = f"{self.api_base}/api/hints/get/{self.competition_id}/{self.participant_id}"
-            
+            # logger.critical(f"222222url: {url}, request_data: {request_data}")
             response = requests.post(url, json=request_data)
             # logger.critical(f"Hint request: {url}, {request_data}000000000000000000")
             response.raise_for_status()
