@@ -94,9 +94,6 @@ def get_text_from_path(data: Dict, path: str) -> str:
     
     return str(current) if current is not None else ""
 
-
-
-
 # Helper functions
 def success_response(data: Any = None, message: str = "Success") -> Response:
     """
@@ -136,6 +133,7 @@ def error_response(message: str, status_code: int = 400) -> Tuple[Response, int]
     return jsonify(response), status_code
 
 
+# API Routes for Competitions
 @app.route("/api/competitions/create", methods=["POST"])
 def create_competition():
     """
@@ -206,6 +204,7 @@ def create_competition():
         # Catch all exceptions and return error response
         return error_response(f"Failed to create competition: {str(e)}")
 
+# API Routes for Competitions   
 @app.route("/api/competitions/get/<competition_id>", methods=["GET"])
 def get_competition(competition_id: str):
     """
@@ -269,7 +268,7 @@ def list_competitions():
 
 
 
-
+# API Routes for Participants
 @app.route("/api/participants/create/<competition_id>", methods=["POST"])
 def create_participant(competition_id: str):
     """
@@ -375,7 +374,7 @@ def get_participant(competition_id: str, participant_id: str):
     except Exception as e:
         return error_response(f"Failed to get participant data: {str(e)}", 500)
 
-
+# API Routes for Participants
 @app.route("/api/participants/get_solved_problems/<competition_id>/<participant_id>", methods=["GET"])
 def get_participant_solved_problems(competition_id: str, participant_id: str):
     """
@@ -429,6 +428,7 @@ def get_participant_solved_problems(competition_id: str, participant_id: str):
         logger.error(f"Failed to get participant data: {e}", exc_info=True)
         return error_response(f"Failed to get participant data: {str(e)}", 500)
 
+# API Routes for Participants
 def check_termination(competition_id: str, participant_id: str):
     with DuckDBStorage(db_path=db_path) as data_storage:
         participant = data_storage.get_participant(competition_id, participant_id)
@@ -458,6 +458,126 @@ def list_participants(competition_id: str):
     except Exception as e:
         return error_response(f"Failed to list participants: {str(e)}")
 
+
+# API Routes for Participants
+@app.route("/api/participants/terminate/<competition_id>/<participant_id>", methods=["POST"])
+def terminate_participant(competition_id: str, participant_id: str):
+    """
+    Terminate a participant in a competition.
+    
+    Args:
+        competition_id: Competition identifier
+        participant_id: Participant identifier
+    
+    Request format:
+    {
+        "reason": "Termination reason (optional, defaults to 'manual_termination')"
+    }
+    
+    Common termination reasons:
+    - "manual_termination": Manual termination by admin
+    - "out_of_tokens": Participant ran out of tokens
+    - "error": System error occurred
+    - "timeout": Participant exceeded time limits
+    - "violation": Rule violation
+    
+    Returns:
+        Success response with termination reason
+    """
+    try:
+        data = request.get_json() or {}
+        reason = data.get("reason", "manual_termination")
+        
+        # Validate reason
+        if not isinstance(reason, str):
+            return error_response("Reason must be a string")
+        
+        
+        # Terminate participant using data storage layer
+        with DuckDBStorage(db_path=db_path) as data_storage:
+            data_storage.terminate_participant(competition_id, participant_id, reason)
+        
+        return success_response(
+            message=f"Participant {participant_id} terminated successfully",
+            data={"termination_reason": reason}
+        )
+        
+    except ValueError as e:
+        return error_response(str(e), 404)
+    except Exception as e:
+        import traceback
+        error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
+        return error_response(f"Failed to terminate participant: {str(e)} (line {error_line})")
+
+# API Routes for Participants
+@app.route("/api/participants/status/<competition_id>/<participant_id>", methods=["GET"])
+def get_participant_status(competition_id: str, participant_id: str):
+    """
+    Get participant termination status and reason.
+    
+    Args:
+        competition_id: Competition identifier
+        participant_id: Participant identifier
+        
+    Returns:
+        Participant status including running state, termination reason, tokens, and score
+    """
+    try:
+        with DuckDBStorage(db_path=db_path) as data_storage:
+            participant = data_storage.get_participant(competition_id, participant_id)
+        if not participant:
+            return error_response(f"Participant not found", 404)
+        
+        status_data = {
+            "is_running": participant.is_running,
+            "termination_reason": participant.termination_reason,
+            "remaining_tokens": participant.remaining_tokens,
+            "score": participant.score
+        }
+        
+        return success_response(status_data)
+        
+    except Exception as e:
+        return error_response(f"Failed to get participant status: {str(e)}")
+
+# API Routes for Participants
+@app.route("/api/participants/terminated/<competition_id>", methods=["GET"])
+def list_terminated_participants(competition_id: str):
+    """
+    Get list of terminated participants in a competition.
+    
+    Args:
+        competition_id: Competition identifier
+        
+    Returns:
+        List of terminated participants with termination reasons and final statistics
+    """
+    try:
+        with DuckDBStorage(db_path=db_path) as data_storage:
+            participants = data_storage.list_participants(competition_id)
+        
+        # Filter terminated participants
+        terminated_participants = [
+            {
+                "id": p.id,
+                "name": p.name,
+                "termination_reason": p.termination_reason,
+                "score": p.score,
+                "remaining_tokens": p.remaining_tokens,
+                "submission_count": p.submission_count,
+                "accepted_count": p.accepted_count
+            }
+            for p in participants if not p.is_running
+        ]
+        
+        return success_response(terminated_participants)
+        
+    except Exception as e:
+        return error_response(f"Failed to get terminated participants: {str(e)}")
+
+
+
+# API Routes for Problems
 @app.route("/api/problems/get/<competition_id>/<problem_id>", methods=["GET"])
 def get_problem(competition_id: str, problem_id: str):
     """
@@ -481,6 +601,7 @@ def get_problem(competition_id: str, problem_id: str):
         logger.error(f"Failed to get problem: {e}", exc_info=True)
         return error_response(f"Failed to fetch problem: {str(e)}", 500)
 
+# API Routes for Problems
 @app.route("/api/problems/list/<competition_id>", methods=["GET"])
 def list_problems(competition_id: str):
     """
@@ -573,6 +694,7 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
         logger.error(f"Failed to create submission: {e}", exc_info=True)
         return error_response(f"Failed to create submission: {str(e)}", 500)
 
+# API Routes for Submissions
 @app.route("/api/submissions/list/<competition_id>", methods=["GET"])
 def list_submissions(competition_id: str):
     """
@@ -603,6 +725,7 @@ def list_submissions(competition_id: str):
     include_code = request.args.get("include_code", "false").lower() == "true"
     return success_response([s.to_dict(include_code=include_code) for s in submissions])
 
+# API Routes for Submissions
 @app.route("/api/submissions/get/<submission_id>", methods=["GET"])
 def get_submission(submission_id: str):
     """
@@ -813,6 +936,7 @@ def get_similar_problems():
     except Exception as e:
         return error_response(f"Failed to get similar problems: {str(e)}")
 
+# API Routes for Textbook
 @app.route("/api/textbook/search", methods=["GET"])
 def search_textbook():
     """
@@ -844,6 +968,7 @@ def search_textbook():
     except Exception as e:
         return error_response(f"Failed to search textbook: {str(e)}")
 
+# API Routes for Hints
 @app.route("/api/hints/get/<competition_id>/<participant_id>", methods=["POST"])
 def get_hint(competition_id: str, participant_id: str):
     """
@@ -894,7 +1019,7 @@ def get_hint(competition_id: str, participant_id: str):
         logger.error(f"Failed to get hint: {e}", exc_info=True)
         return error_response(f"Failed to get hint: {str(e)}", 500)
         
-# HTTP request endpoint for GenericAPIAgent
+# API Routes for Agent
 @app.route("/api/agent/call/<competition_id>/<participant_id>", methods=["POST"])
 def generate_response(competition_id: str, participant_id: str):
     """
@@ -934,7 +1059,7 @@ def generate_response(competition_id: str, participant_id: str):
         logger.error(f"Full traceback: {traceback.format_exc()}")
         return error_response(f"Agent request failed: {str(e)} (line {error_line})")
 
-
+# API Routes for Agent
 @app.route("/api/stream_agent/call/<competition_id>/<participant_id>", methods=["POST"])
 def stream_generate_response(competition_id: str, participant_id: str):
     """
@@ -985,121 +1110,6 @@ def stream_generate_response(competition_id: str, participant_id: str):
         import traceback
         error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
         return error_response(f"Streaming agent request failed: {str(e)} (line {error_line})")
-
-@app.route("/api/participants/terminate/<competition_id>/<participant_id>", methods=["POST"])
-def terminate_participant(competition_id: str, participant_id: str):
-    """
-    Terminate a participant in a competition.
-    
-    Args:
-        competition_id: Competition identifier
-        participant_id: Participant identifier
-    
-    Request format:
-    {
-        "reason": "Termination reason (optional, defaults to 'manual_termination')"
-    }
-    
-    Common termination reasons:
-    - "manual_termination": Manual termination by admin
-    - "out_of_tokens": Participant ran out of tokens
-    - "error": System error occurred
-    - "timeout": Participant exceeded time limits
-    - "violation": Rule violation
-    
-    Returns:
-        Success response with termination reason
-    """
-    try:
-        data = request.get_json() or {}
-        reason = data.get("reason", "manual_termination")
-        
-        # Validate reason
-        if not isinstance(reason, str):
-            return error_response("Reason must be a string")
-        
-        
-        # Terminate participant using data storage layer
-        with DuckDBStorage(db_path=db_path) as data_storage:
-            data_storage.terminate_participant(competition_id, participant_id, reason)
-        
-        return success_response(
-            message=f"Participant {participant_id} terminated successfully",
-            data={"termination_reason": reason}
-        )
-        
-    except ValueError as e:
-        return error_response(str(e), 404)
-    except Exception as e:
-        import traceback
-        error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
-        return error_response(f"Failed to terminate participant: {str(e)} (line {error_line})")
-
-
-@app.route("/api/participants/status/<competition_id>/<participant_id>", methods=["GET"])
-def get_participant_status(competition_id: str, participant_id: str):
-    """
-    Get participant termination status and reason.
-    
-    Args:
-        competition_id: Competition identifier
-        participant_id: Participant identifier
-        
-    Returns:
-        Participant status including running state, termination reason, tokens, and score
-    """
-    try:
-        with DuckDBStorage(db_path=db_path) as data_storage:
-            participant = data_storage.get_participant(competition_id, participant_id)
-        if not participant:
-            return error_response(f"Participant not found", 404)
-        
-        status_data = {
-            "is_running": participant.is_running,
-            "termination_reason": participant.termination_reason,
-            "remaining_tokens": participant.remaining_tokens,
-            "score": participant.score
-        }
-        
-        return success_response(status_data)
-        
-    except Exception as e:
-        return error_response(f"Failed to get participant status: {str(e)}")
-
-
-@app.route("/api/participants/terminated/<competition_id>", methods=["GET"])
-def list_terminated_participants(competition_id: str):
-    """
-    Get list of terminated participants in a competition.
-    
-    Args:
-        competition_id: Competition identifier
-        
-    Returns:
-        List of terminated participants with termination reasons and final statistics
-    """
-    try:
-        with DuckDBStorage(db_path=db_path) as data_storage:
-            participants = data_storage.list_participants(competition_id)
-        
-        # Filter terminated participants
-        terminated_participants = [
-            {
-                "id": p.id,
-                "name": p.name,
-                "termination_reason": p.termination_reason,
-                "score": p.score,
-                "remaining_tokens": p.remaining_tokens,
-                "submission_count": p.submission_count,
-                "accepted_count": p.accepted_count
-            }
-            for p in participants if not p.is_running
-        ]
-        
-        return success_response(terminated_participants)
-        
-    except Exception as e:
-        return error_response(f"Failed to get terminated participants: {str(e)}")
 
 
 # Main entrypoint

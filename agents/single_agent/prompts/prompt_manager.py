@@ -16,6 +16,7 @@ class PromptSystem:
     
     def _load_config(self, config_path: Optional[str]) -> Dict:
         """Load prompt configuration from file or use defaults"""
+        # Try to load from provided path
         if config_path and os.path.exists(config_path):
             try:
                 with open(config_path, 'r') as f:
@@ -23,7 +24,17 @@ class PromptSystem:
             except Exception as e:
                 logger.warning(f"Failed to load prompt config from {config_path}: {e}")
         
-        # Default configuration
+        # Try to load from default location in prompts folder
+        default_path = os.path.join(os.path.dirname(__file__), "prompts.json")
+        if os.path.exists(default_path):
+            try:
+                with open(default_path, 'r') as f:
+                    logger.info(f"Loaded prompt config from default location: {default_path}")
+                    return json.load(f)
+            except Exception as e:
+                logger.warning(f"Failed to load prompt config from default location {default_path}: {e}")
+        
+        # Fallback to hardcoded default configuration
         return {
             "system_prompt": "You are a competitive programming agent participating in a coding competition. You will receive the current state of the competition and results of your previous actions. Your goal is to achieve the highest score possible while managing your token budget wisely. Your token budget has two main uses: 1) Limiting the length of your output responses, and 2) Purchasing hints for problems.\n\nBefore taking any action, you should:\n1. Analyze the current competition state and your remaining resources\n2. Evaluate the difficulty and potential score of each problem\n3. Consider the optimal strategy for token usage (e.g., when to use hints)\n4. Plan your approach to maximize score while minimizing token consumption\n\nPlease respond with a JSON object containing 'action' and 'parameters' fields.",
             "state_template": {
@@ -509,6 +520,7 @@ class ActionParser:
     
     def _load_config(self, config_path: Optional[str]) -> Dict:
         """Load action pattern configuration from file or use defaults"""
+        # Try to load from provided path
         if config_path and os.path.exists(config_path):
             try:
                 with open(config_path, 'r') as f:
@@ -518,7 +530,19 @@ class ActionParser:
             except Exception as e:
                 logger.warning(f"Failed to load action config from {config_path}: {e}")
         
-        # Default configuration
+        # Try to load from default location in prompts folder
+        default_path = os.path.join(os.path.dirname(__file__), "prompts.json")
+        if os.path.exists(default_path):
+            try:
+                with open(default_path, 'r') as f:
+                    config = json.load(f)
+                    if "action_patterns" in config:
+                        logger.info(f"Loaded action config from default location: {default_path}")
+                        return {"action_patterns": config["action_patterns"]}
+            except Exception as e:
+                logger.warning(f"Failed to load action config from default location {default_path}: {e}")
+        
+        # Fallback to hardcoded default configuration
         return {
             "action_patterns": {
                 "view_problem": {
