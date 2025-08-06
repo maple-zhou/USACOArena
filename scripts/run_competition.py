@@ -104,18 +104,6 @@ def create_competitors(competitors_config: Dict, competition_config: Dict, log_d
     
     # Create competitors based on their type
     for competitor in competitors_config["competitors"]:
-        # if competitor["type"] == "streaming":
-        #     agent = StreamingGenericAPIAgent(
-        #         name=competitor["name"],
-        #         model_id=competitor["model_id"],
-        #         api_base_url=competitor["api_base_url"],
-        #         api_key=competitor["api_key"],
-        #         prompt_config_path=competitor.get("prompt_config_path"),
-        #         log_dir=log_dir or f"logs/{competitor['name']}",
-        #         session_id=datetime.now().strftime("%Y%m%d_%H%M%S"),
-        #         request_format=competitor.get("request_format"),
-        #         response_format=competitor.get("response_format"),
-        #     )
         if competitor["type"] == "generic":
             # Use the passed log_dir, if not available use default logs/{competitor_name}
             agent_log_dir = log_dir if log_dir is not None else f"logs/{competitor['name']}"
@@ -173,9 +161,7 @@ def log_competition_results(results: Dict, competition_id: str):
         result_lines.append("\n=== Detailed Results ===")
         for name, data in sorted_results.items():
             result_lines.append(f"\n{name}:")
-            # result_lines.append(f"  Participant ID: {data.get('participant_id', 'N/A')}")
             result_lines.append(f"  Final Score: {data.get('score', 0)}")
-            # result_lines.append(f"  Status: {'Running' if data.get('is_running', False) else 'Terminated'}")
             
             # Token usage information
             result_lines.append(f"  Token Usage:")
@@ -209,8 +195,6 @@ def log_competition_results(results: Dict, competition_id: str):
         
         # Join all lines and apply character limit
         result_str = "\n".join(result_lines)
-        # if len(result_str) > 8000:
-        #     result_str = result_str[:8000] + "... (truncated)"
         
         logger.critical(f"Competition Results:\n{result_str}")
         

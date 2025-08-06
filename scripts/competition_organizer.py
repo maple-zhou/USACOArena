@@ -224,7 +224,7 @@ class CompetitionOrganizer:
         """
         logger.info(f"Starting competition for competitor: {competitor.name}")
         
-        # Initialize problems list using competitor API (cached)
+
         problems_result = competitor.view_problems()
         problems = problems_result.get("problems", []) if "error" not in problems_result else []
         logger.debug(f"Loaded {len(problems)} problems for competitor {competitor.name}")
@@ -257,13 +257,7 @@ class CompetitionOrganizer:
         
         # Run competition loop
         while competitor.is_running:
-            try:
-                # Check tokens before action (using cached data)
-                # if competitor.remaining_tokens <= 0:
-                #     competitor.terminate("out_of_tokens")
-                #     logger.info(f"Competitor {competitor.name} ran out of tokens")
-                #     break
-                
+            try:               
                 # Get next action from competitor
                 logger.info(f"Begin call LLM for next action for competitor {competitor.name}")
                 action = await competitor.agent.process(state)

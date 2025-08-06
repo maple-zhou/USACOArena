@@ -371,10 +371,13 @@ class StreamingGenericAPIAgent(Agent):
             raise RuntimeError("PromptSystem and ActionParser must be initialized with prompt_config_path")
         # Generate prompt based on current state
         prompt = self.prompt_system.create_prompt(state)
-        # Generate response from LLM (returns content, (prompt_tokens, completion_tokens))
-        content, _ = await self.generate_response(state, prompt)
-        # Parse action from response content
-        action = self.action_parser.parse_action(content)
+        
+        # Generate response from LLM
+        response_text = await self.generate_response(state, prompt)
+        
+        # Parse action from response
+        action = self.action_parser.parse_action(response_text)
+        
         return action
     
     def _get_value_from_path(self, data: Dict, path: str) -> Any:
@@ -395,8 +398,9 @@ class StreamingGenericAPIAgent(Agent):
         
         return current
     
-    async def generate_response(self, state: Dict, prompt: str) -> tuple[str, tuple[int, int]]:
+    async def generate_response(self, state: Dict, prompt: str) -> str:
         """Generate a streaming response using the configured API"""
+        response = None
         # Add user message to conversation history
         self.add_to_conversation("user", prompt)
         self.save_conversation()
@@ -405,9 +409,10 @@ class StreamingGenericAPIAgent(Agent):
             try:
                 competition_id = state.get('competitor_state', {}).get('competition_id')
                 participant_id = state.get('competitor_state', {}).get('id')
+                api_base = state.get('api_base',"http://localhost:5000")
                 
                 # Prepare request URL for streaming
-                url = f"http://localhost:5000/api/stream_agent/call/{competition_id}/{participant_id}"
+                url = f"{api_base}/api/stream_agent/call/{competition_id}/{participant_id}"
                 
                 # Prepare request headers
                 headers = {
@@ -451,19 +456,45 @@ class StreamingGenericAPIAgent(Agent):
                 usage_info = result_array[2] if len(result_array) > 2 else {}
                 prompt_tokens = result_array[3] if len(result_array) > 3 else 0
                 completion_tokens = result_array[4] if len(result_array) > 4 else 0
+                
+                logger.critical(f"\nNAME: {self.name}, response_text: {content}\n")
+                
+                # Validate JSON response similar to GenericAPIAgent
+                json_str = _extract_json_smart(content)
+                
+                action = json_repair.loads(json_str)
+                if not isinstance(action, dict):
+                    logger.error(f"Response is not valid for {self.name}")
+                    raise Exception(f"Response is not valid for {self.name}")
+                # Validate action format
+                if "action" not in action:
+                    logger.error(f"Missing 'action' field for {self.name}")
+                    raise Exception(f"Missing 'action' field for {self.name}")
+                if "parameters" not in action:
+                    logger.error(f"Missing 'parameters' field for {self.name}")
+                    raise Exception(f"Missing 'parameters' field for {self.name}")
 
                 # Add assistant response to conversation history
                 self.add_to_conversation("assistant", content)
                 self.save_conversation()
+                self.truncate_conversation_history(6)
                 
-                return content, (prompt_tokens, completion_tokens)
+                return content
                 
             except Exception as e:
                 error_message = f"Error: {str(e)}"
+                if response:
+                    try:
+                        error_message = f"Error: {response.json()}"
+                    except json.JSONDecodeError:
+                        error_message = f"Error: {response.text}"
+                
+                # Print detailed traceback information
+                traceback_str = traceback.format_exc()
                 logger.error(f"Try {_ + 1} Error generating streaming response with {self.name}: {error_message}")
                 time.sleep(self.retry_delay)
         
-        raise Exception(f"Failed to generate streaming response after {self.max_retries} attempts")
+        raise Exception(error_message)
 
 
 def _extract_json_smart(response: str) -> str:

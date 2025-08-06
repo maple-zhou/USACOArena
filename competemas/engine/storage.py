@@ -39,7 +39,6 @@ class DuckDBStorage:
             self.backup_dir.mkdir(parents=True, exist_ok=True)
         
         # Check if the database file already exists before we establish a connection,
-        # as duckdb.connect() creates the file if it's missing.
         db_exists = self.db_path.exists()
         
         # Initialize DuckDB connection management
@@ -50,13 +49,6 @@ class DuckDBStorage:
             logger.info(f"Database file not found at {self.db_path}, creating new schema.")
             self._create_schema()
         
-        # Initialize problem loader for dynamic test case loading
-        # Use lazy import to avoid circular import
-        self.problem_loader = None
-        
-        # In-memory cache for objects
-        self.competitions_cache: Dict[str, Competition] = {}
-        self.submissions_cache: Dict[str, Submission] = {}
     
     def _get_conn(self) -> duckdb.DuckDBPyConnection:
         """Get or create a new database connection for the current thread"""
@@ -218,7 +210,7 @@ class DuckDBStorage:
                 json.dumps([tc.to_dict() for tc in getattr(problem, 'sample_cases', [])])
             ])
         
-        # Cache and backup
+        # Backup
         self._backup_to_json('competition', competition.to_dict())
         
         return competition
@@ -804,13 +796,6 @@ class DuckDBStorage:
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Called when exiting the context manager, ensures connection is closed"""
         self.close()
-    
-    
-    def save_competition(self, competition: Competition) -> None:
-        """Save a competition (compatibility method)"""
-        # self.update_competition(competition)
-        # Update compatibility dict
-        self.competitions_cache[competition.id] = competition
     
     def get_storage_info(self) -> Dict[str, Any]:
         """Get storage system information"""
