@@ -113,76 +113,76 @@ zig version  # Verify installation
 
 ## 🏗️ Architecture
 
-CompeteMAS v0.2.0 采用模块化设计，实现了**核心框架**与**用户自定义内容**的清晰分离：
+CompeteMAS v0.2.0 adopts a modular design that achieves clear separation between **core framework** and **user-defined content**:
 
 ```
 CompeteMAS/
-├── 🏗️ 核心框架包
-│   ├── core/                     # 核心业务逻辑
-│   │   ├── models.py            # 数据模型定义
-│   │   ├── storage.py           # DuckDB存储系统
-│   │   ├── judge.py             # 代码评判系统
-│   │   ├── competition.py       # 竞赛核心逻辑
-│   │   └── agent_interface.py   # 智能体接口抽象
-│   ├── REST API服务
-│   │   └── server.py            # Flask API服务器
-│   ├── utils/                   # 工具模块
-│   │   ├── problem_loader.py    # USACO问题加载器
-│   │   └── conversation_logger.py # 对话日志记录
-│   └── main.py                  # 框架主入口
-├── 🛠️ 用户自定义脚本
-│   ├── agents/                  # 自定义智能体实现
-│   │   └── single_agent.py     # LLM智能体类
-│   ├── prompts/                 # 自定义提示词模板
-│   │   └── prompt_manager.py    # 提示词系统
-│   └── run_competition.py       # 竞赛运行主脚本
-├── 📋 示例和配置模板
-│   └── sample_configs/          # 示例配置文件
-├── 配置文件目录
-├── 📊 数据存储目录
-└── logs/                        # 日志目录
+├── 🏗️ Core Framework Package
+│   ├── core/                     # Core business logic
+│   │   ├── models.py            # Data model definitions
+│   │   ├── storage.py           # DuckDB storage system
+│   │   ├── judge.py             # Code evaluation system
+│   │   ├── competition.py       # Competition core logic
+│   │   └── agent_interface.py   # Agent interface abstraction
+│   ├── REST API Service
+│   │   └── server.py            # Flask API server
+│   ├── utils/                   # Utility modules
+│   │   ├── problem_loader.py    # USACO problem loader
+│   │   └── conversation_logger.py # Conversation logging
+│   └── main.py                  # Framework main entry
+├── 🛠️ User Custom Scripts
+│   ├── agents/                  # Custom agent implementations
+│   │   └── single_agent.py     # LLM agent class
+│   ├── prompts/                 # Custom prompt templates
+│   │   └── prompt_manager.py    # Prompt system
+│   └── run_competition.py       # Competition run main script
+├── 📋 Examples and Config Templates
+│   └── sample_configs/          # Example configuration files
+├── Configuration directory
+├── 📊 Data storage directory
+└── logs/                        # Log directory
 ```
 
-### 模块化设计优势
+### Modular Design Advantages
 
-#### 1. 清晰的职责分离
-- **核心框架** (`competemas/`) - 稳定的业务逻辑和基础设施
-- **用户脚本** (`scripts/`) - 可自定义的智能体、提示词和运行脚本
-- **示例配置** (`examples/`) - 配置模板和文档
+#### 1. Clear Separation of Responsibilities
+- **Core Framework** (`competemas/`) - Stable business logic and infrastructure
+- **User Scripts** (`scripts/`) - Customizable agents, prompts, and run scripts
+- **Example Configurations** (`examples/`) - Configuration templates and documentation
 
-#### 2. 智能体接口设计
-创建了`AgentInterface`抽象接口，实现松耦合：
+#### 2. Agent Interface Design
+Created `AgentInterface` abstract interface for loose coupling:
 
 ```python
 # competemas/core/agent_interface.py
 class AgentInterface(ABC):
     @abstractmethod
     async def process(self, state: Dict) -> Dict:
-        """处理竞赛状态，生成下一步行动"""
+        """Process competition state, generate next action"""
         pass
 ```
 
-#### 3. 性能优化
-- **存储优化**：DuckDB数据库大小从972MB降至2.3MB (99.8%节省)
-- **动态加载**：测试用例按需从文件系统加载，首次访问仅+10-50ms
-- **模块化架构**：支持并行开发，易于维护和扩展
+#### 3. Performance Optimization
+- **Storage Optimization**: DuckDB database size reduced from 972MB to 2.3MB (99.8% savings)
+- **Dynamic Loading**: Test cases loaded on-demand from file system, first access only +10-50ms
+- **Modular Architecture**: Supports parallel development, easy to maintain and extend
 
 ## 🎯 Usage
 
 ### Quick Start
 
-#### 1. 启动API服务器
+#### 1. Start API Server
    ```bash
-# 使用新的框架入口
+# Use new framework entry
 python -m competemas.main --host 0.0.0.0 --port 5000
 
-# 或者直接运行
+# Or run directly
 cd competemas
 python main.py --debug
    ```
 
-#### 2. 配置参赛者
-编辑 `examples/sample_configs/competitors_config.json`:
+#### 2. Configure Participants
+Edit `examples/sample_configs/competitors_config.json`:
 ```json
 {
   "competitors": [
@@ -197,37 +197,37 @@ python main.py --debug
 }
 ```
 
-#### 3. 运行竞赛
+#### 3. Run Competition
    ```bash
-# 使用用户自定义脚本
+# Use user custom script
 python scripts/run_competition.py \
     --competition-config examples/sample_configs/competition_config.json \
     --competitors-config examples/sample_configs/competitors_config.json \
     --problem-ids examples/sample_configs/problem_ids.json
 ```
 
-### 自定义智能体开发
+### Custom Agent Development
 
-在`agents/single_agent/single_agent.py`中实现您的智能体：
+Implement your agent in `agents/single_agent/single_agent.py`:
 
 ```python
 from competemas.core.agent_interface import AgentInterface
 
 class MyCustomAgent(AgentInterface):
     async def process(self, state: Dict) -> Dict:
-        # 实现您的智能体逻辑
+        # Implement your agent logic
         return {"action": "VIEW_PROBLEMS"}
 ```
 
 ### API Usage
 
-系统提供全面的REST API：
+The system provides comprehensive REST API:
 
 ```bash
-# 列出所有竞赛
+# List all competitions
 curl http://localhost:5000/api/competitions
 
-# 创建竞赛
+# Create competition
 curl -X POST http://localhost:5000/api/competitions \
   -H "Content-Type: application/json" \
   -d '{
@@ -237,10 +237,10 @@ curl -X POST http://localhost:5000/api/competitions \
     "max_tokens_per_participant": 100000
   }'
 
-# 获取竞赛详情
+# Get competition details
 curl http://localhost:5000/api/competitions/{competition_id}
 
-# 查看排名
+# View rankings
 curl http://localhost:5000/api/competitions/{competition_id}/rankings
 ```
 
@@ -264,35 +264,35 @@ uv run ruff check competemas/ scripts/ tests/
 uv run mypy competemas/
 ```
 
-### 项目结构详解
+### Project Structure Details
 
-#### 核心框架 (`competemas/`)
-- **`core/`**: 核心业务逻辑
-  - `models.py`: 数据模型和类型定义
-  - `storage.py`: DuckDB存储系统，支持高性能查询
-  - `judge.py`: 代码评判和执行系统
-  - `competition.py`: 竞赛生命周期管理
-  - `agent_interface.py`: 智能体抽象接口
+#### Core Framework (`competemas/`)
+- **`core/`**: Core business logic
+  - `models.py`: Data models and type definitions
+  - `storage.py`: DuckDB storage system with high-performance queries
+  - `judge.py`: Code evaluation and execution system
+  - `competition.py`: Competition lifecycle management
+  - `agent_interface.py`: Agent abstraction interface
 
-- **`api/`**: REST API接口
-  - `server.py`: Flask API服务器，提供完整的RESTful接口
+- **`api/`**: REST API interfaces
+  - `server.py`: Flask API server providing complete RESTful interfaces
 
-- **`utils/`**: 工具函数
-  - `problem_loader.py`: USACO问题动态加载
-  - `conversation_logger.py`: 对话日志记录
+- **`utils/`**: Utility functions
+  - `problem_loader.py`: USACO problem dynamic loading
+  - `conversation_logger.py`: Conversation logging
 
-#### 用户自定义 (`scripts/`)
-- **`agents/`**: 智能体实现
-  - `single_agent.py`: 支持多种LLM提供商的通用智能体
+#### User Custom (`scripts/`)
+- **`agents/`**: Agent implementations
+  - `single_agent.py`: Universal agent supporting multiple LLM providers
 
-- **`prompts/`**: 提示词管理
-  - `prompt_manager.py`: 提示词模板和解析系统
+- **`prompts/`**: Prompt management
+  - `prompt_manager.py`: Prompt templates and parsing system
 
-- **`run_competition.py`**: 竞赛执行脚本
+- **`run_competition.py`**: Competition execution script
 
-#### 配置和示例 (`examples/`)
-- **`sample_configs/`**: 配置文件模板
-  - 竞赛配置、参赛者配置、问题列表等
+#### Configuration and Examples (`examples/`)
+- **`sample_configs/`**: Configuration file templates
+  - Competition configuration, participant configuration, problem lists, etc.
 
 ## 📊 Competition System
 
@@ -301,31 +301,31 @@ uv run mypy competemas/
 
   ```python
   {
-  "competition_id": str,           # 当前竞赛ID
-  "competition_details": {         # 竞赛详情
+  "competition_id": str,           # Current competition ID
+  "competition_details": {         # Competition details
           "id": str,
           "title": str,
           "description": str,
           "problem_ids": List[str],
           "rules": Dict
       },
-  "competitor_state": {            # 当前参赛者状态
-      "name": str,                 # 参赛者名称
-      "remaining_tokens": int,     # 剩余令牌数
-        "solved_problems": List[str], # 已解决问题列表
-      "is_running": bool,          # 是否仍在运行
-        "termination_reason": Optional[str], # 终止原因（如果有）
-      "score": int,                # 当前得分
-      "score": int           # 最终得分
+  "competitor_state": {            # Current participant state
+      "name": str,                 # Participant name
+      "remaining_tokens": int,     # Remaining tokens
+        "solved_problems": List[str], # Solved problems list
+      "is_running": bool,          # Whether still running
+        "termination_reason": Optional[str], # Termination reason (if any)
+      "score": int,                # Current score
+      "score": int           # Final score
       },
-  "problems": List[Dict],          # 所有问题列表
-  "rankings": List[Dict],          # 当前排名
-  "last_action_result": {          # 上次操作结果
-      "status": str,               # "success" 或 "error"
-      "data": Dict,                # 操作返回数据
-      "message": str               # 错误消息（如果有）
+  "problems": List[Dict],          # All problems list
+  "rankings": List[Dict],          # Current rankings
+  "last_action_result": {          # Last action result
+      "status": str,               # "success" or "error"
+      "data": Dict,                # Action return data
+      "message": str               # Error message (if any)
       },
-  "other_competitors_status": [    # 其他参赛者状态
+  "other_competitors_status": [    # Other competitors status
           {
               "name": str,
               "is_terminated": bool,
@@ -336,32 +336,32 @@ uv run mypy competemas/
   ```
 
 ### Available Actions
-1. **VIEW_PROBLEM**: 查看问题详情
-2. **GET_HINT**: 请求提示（消耗令牌）
-3. **submission_SOLUTION**: 提交代码解决方案
-4. **TERMINATE**: 结束参与
+1. **VIEW_PROBLEM**: View problem details
+2. **GET_HINT**: Request hints (consumes tokens)
+3. **submission_SOLUTION**: Submit code solution
+4. **TERMINATE**: End participation
 
-## 🔄 迁移指南
+## 🔄 Migration Guide
 
-如果您有基于旧结构（src/目录）的代码，请按以下步骤迁移：
+If you have code based on the old structure (src/ directory), please migrate following these steps:
 
-### 1. 更新导入路径
+### 1. Update Import Paths
 ```python
-# 旧的导入方式
+# Old import method
 from src.competemas.core.agents import GenericAPIAgent
 
-# 新的导入方式  
+# New import method  
 from agents import GenericAPIAgent
 ```
 
-### 2. 移动自定义代码
-- 自定义智能体 → `agents/`
-- 自定义提示词 → `scripts/prompts/`
-- 运行脚本 → `scripts/`
+### 2. Move Custom Code
+- Custom agents → `agents/`
+- Custom prompts → `scripts/prompts/`
+- Run scripts → `scripts/`
 
-### 3. 更新配置文件
-- 复制配置模板：`examples/sample_configs/`
-- 根据需要调整配置参数
+### 3. Update Configuration Files
+- Copy configuration templates: `examples/sample_configs/`
+- Adjust configuration parameters as needed
 
 ## 🔬 For Reviewers
 

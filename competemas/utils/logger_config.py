@@ -15,54 +15,54 @@ from typing import Optional, List, Dict
 from datetime import datetime
 
 class ColoredFormatter(logging.Formatter):
-    """为控制台输出添加颜色的格式化器"""
+    """Formatter that adds colors to console output"""
     
     COLORS = {
-        'DEBUG': '\033[32m',      # 绿色字
-        'INFO': '\033[36m',       # 青色字
-        'WARNING': '\033[33m',    # 黄色字
-        'ERROR': '\033[31m',      # 红色字
-        'CRITICAL': '\033[41m\033[97m', # 红色背景+白色字
+        'DEBUG': '\033[32m',      # Green text
+        'INFO': '\033[36m',       # Cyan text
+        'WARNING': '\033[33m',    # Yellow text
+        'ERROR': '\033[31m',      # Red text
+        'CRITICAL': '\033[41m\033[97m', # Red background + white text
         'RESET': '\033[0m'
     }
 
     ANSI_ESCAPE = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
 
     def format(self, record):
-        # 如果不是控制台输出，使用普通格式化
+        # If not console output, use normal formatting
         if not self.is_console_output():
             return super().format(record)
             
-        # 保存原始属性
+        # Save original attributes
         original_levelname = record.levelname
         original_msg = record.msg
         
-        # 获取颜色
+        # Get color
         color = self.COLORS.get(record.levelname, '')
         reset = self.COLORS['RESET']
         
-        # 只给日志级别和消息添加颜色
+        # Only add color to log level and message
         record.levelname = f"{color}{original_levelname}{reset}"
         record.msg = f"{color}{original_msg}{reset}"
         
-        # 格式化消息
+        # Format message
         formatted_message = super().format(record)
         
-        # 恢复原始属性
+        # Restore original attributes
         record.levelname = original_levelname
         record.msg = original_msg
         
         return formatted_message
 
     def format_without_color(self, record):
-        """格式化日志记录，但不添加颜色代码"""
+        """Format log record without adding color codes"""
         formatted = super().format(record)
-        # 移除所有ANSI转义序列
+        # Remove all ANSI escape sequences
         return self.ANSI_ESCAPE.sub('', formatted)
     
     def is_console_output(self):
-        """检查是否是控制台输出"""
-        # 通过判断handler类型来确定是否是控制台输出
+        """Check if it's console output"""
+        # Determine if it's console output by checking handler type
         for handler in logging.getLogger().handlers:
             if isinstance(handler, logging.StreamHandler) and handler.formatter == self:
                 return True
@@ -70,7 +70,7 @@ class ColoredFormatter(logging.Formatter):
 
 
 class NoColorFormatter(ColoredFormatter):
-    """不带颜色的格式化器，用于文件输出"""
+    """Formatter without colors, used for file output"""
     def format(self, record):
         return self.format_without_color(record)
 
@@ -94,7 +94,7 @@ class ConversationLogger:
         if session_id is None:
             session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
         
-        # 为每个Agent创建子目录
+        # Create subdirectory for each Agent
         agent_dir = os.path.join(self.log_dir, agent_name)
         os.makedirs(agent_dir, exist_ok=True)
         
@@ -121,7 +121,7 @@ class ConversationLogger:
         """
         log_path = self._get_log_path(agent_name, session_id)
 
-        # 只保存最新的对话记录
+        # Only save the latest conversation record
         message = conversation_history[-1] if conversation_history else None
         
         if message:
@@ -129,46 +129,46 @@ class ConversationLogger:
                 "agent_name": agent_name,
                 "session_id": session_id,
                 "timestamp": datetime.now().isoformat(),
-                f"message{datetime.now().isoformat()}": message,  # 只保存最新的一条
+                f"message{datetime.now().isoformat()}": message,  # Only save the latest one
                 # "metadata": metadata or {}
             }
             log_data = {
-                f"message{datetime.now().isoformat()}": message,  # 只保存最新的一条
+                f"message{datetime.now().isoformat()}": message,  # Only save the latest one
             }
         try:
             file_exists = os.path.exists(log_path) and os.path.getsize(log_path) > 0
             if file_exists:
-                # 从文件末尾向前读取，找到最后一个 "}" 的位置
+                # Read from end of file forward to find the last "}" position
                 with open(log_path, 'r+', encoding='utf-8') as f:
-                    # 移动到文件末尾
+                    # Move to end of file
                     f.seek(0, 2)
                     file_size = f.tell()
                     
-                    # 从末尾向前逐个字符读取，找到最后一个 "}"
+                    # Read character by character from end forward to find the last "}"
                     pos = file_size - 1
                     while pos >= 0:
                         f.seek(pos)
                         char = f.read(1)
                         if char == '}':
-                            # 找到最后一个 "}"，在其前面插入新内容
+                            # Found the last "}", insert new content before it
                             break
                         pos -= 1
                     
                     if pos >= 0:
-                        # 去掉log_data的{}，只保留内容
+                        # Remove {} from log_data, keep only content
                         log_data_str = json.dumps(log_data, indent=2, ensure_ascii=False)
-                        # 去掉第一行和最后一行（去掉{}）
+                        # Remove first and last lines (remove {})
                         log_data_lines = log_data_str.split('\n')[1:-1]
                         log_data_content = '\n'.join(log_data_lines)
                         
-                        # 移动到 "}" 的位置
+                        # Move to "}" position
                         f.seek(pos)
                         
-                        # 插入新内容
+                        # Insert new content
                         f.write(',\n' + log_data_content + '\n}')
                     else:
-                        # 如果没找到 "}"，直接追加
-                        f.seek(0, 2)  # 移动到文件末尾
+                        # If "}" not found, append directly
+                        f.seek(0, 2)  # Move to end of file
                         f.write(',\n')
                         json.dump(log_data, f, indent=2, ensure_ascii=False)
                         f.write('\n}')
@@ -239,15 +239,15 @@ def setup_logging(
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
     
-    # 基本日志格式
+    # Basic log format
     base_format = '%(asctime)s.%(msecs)03d | %(levelname)-8s | %(filename)s:%(lineno)d - %(funcName)s - %(message)s'
     date_format = '%Y-%m-%d %H:%M:%S'
     
-    # 创建控制台处理器
+    # Create console handler
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setLevel(getattr(logging, level.upper()))
     
-    # 根据enable_colors参数选择格式化器
+    # Choose formatter based on enable_colors parameter
     if enable_colors:
         console_formatter = ColoredFormatter(base_format, datefmt=date_format)
     else:
@@ -256,15 +256,15 @@ def setup_logging(
     console_handler.setFormatter(console_formatter)
     logging.root.addHandler(console_handler)
     
-    # 如果指定了日志文件，创建文件处理器
+    # If log file is specified, create file handler
     if log_file:
         file_handler = logging.FileHandler(log_file, mode='w', encoding='utf-8')
-        file_handler.setLevel(logging.DEBUG)  # 文件记录所有级别的日志
+        file_handler.setLevel(logging.DEBUG)  # File records all log levels
         file_formatter = NoColorFormatter(base_format, datefmt=date_format)
         file_handler.setFormatter(file_formatter)
         logging.root.addHandler(file_handler)
     
-    # 设置根日志记录器级别
+    # Set root logger level
     logging.root.setLevel(logging.DEBUG)
 
 

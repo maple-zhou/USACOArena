@@ -19,34 +19,28 @@ from ..utils.logger_config import get_logger, setup_logging
 import logging
 
 
-# 获取logger
+# Get logger
 logger = get_logger("server")
-
-# Initialize data storage
-# data_storage = DuckDBStorage()
-# logger.info("Initialized DuckDB storage")
 
 # Initialize problem library loader and textbook loader
 problem_loader = USACOProblemLoader()
-# logger.info("Initialized USACO problem loader")
 
 textbook_loader = TextbookLoader()
-# logger.info("Initialized textbook loader")
 
 # Create Flask app
 app = Flask(__name__)
 logger.info("Created Flask application")
 
-# 添加全局请求频率控制
+# Add global request frequency control
 class GlobalRateLimiter:
-    """全局请求频率限制器"""
+    """Global request frequency limiter"""
     def __init__(self, min_interval: float = 0.05):
-        self._last_request_time = 0  # 记录最后一次请求时间
+        self._last_request_time = 0  # Record last request time
         self._lock = threading.Lock()
-        self._min_interval = min_interval  # 最小请求间隔（秒）
+        self._min_interval = min_interval  # Minimum request interval (seconds)
     
     def should_rate_limit(self) -> bool:
-        """检查是否需要限制请求频率"""
+        """Check if request frequency should be limited"""
         with self._lock:
             current_time = time.time()
             
@@ -57,12 +51,12 @@ class GlobalRateLimiter:
             return False
     
     def get_wait_time(self) -> float:
-        """获取需要等待的时间"""
+        """Get the time to wait"""
         with self._lock:
             current_time = time.time()
             return max(0, self._min_interval - (current_time - self._last_request_time))
 
-# 全局请求限制器（将在初始化时配置）
+# Global request limiter (will be configured during initialization)
 global_rate_limiter = GlobalRateLimiter()
 
 
@@ -161,20 +155,16 @@ def create_competition():
     """
     try:
         data = request.get_json()
-        # logger.info(f"Received competition data: {data}")
         # Get JSON data from client request
         
         # Parse problems: Load specified problems from problem library
         problems = []                    # List of successfully loaded problems
         not_found_problems = []          # List of problem IDs not found
 
-        # logger.critical(f"data: {data}")
         # Iterate through problem IDs in the request
         for problem_id in data.get("problem_ids", []):
             # Load problem from problem library
-            # logging.critical(f"problem_id: {problem_id}")
             problem = problem_loader.load_problem(problem_id)
-            # logger.critical(f"problem: {problem}")
             if not problem:
                 # If problem doesn't exist, add to not found list
                 not_found_problems.append(problem_id)
@@ -186,8 +176,6 @@ def create_competition():
         if not problems:
             return error_response("No valid problems found in library", 404)
 
-        # logger.critical(f"data: {data}")
-        
         # Create competition: Call data storage layer to create competition object
         with DuckDBStorage(db_path=db_path) as data_storage:
             competition = data_storage.create_competition(
@@ -297,7 +285,7 @@ def create_participant(competition_id: str):
     Returns:
         Participant details with generated ID
     """
-    # 全局频率控制
+    # Global frequency control
     if global_rate_limiter.should_rate_limit():
         wait_time = global_rate_limiter.get_wait_time()
         logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
@@ -338,12 +326,12 @@ def create_participant(competition_id: str):
     
     except Exception as e:
         error_msg = f"Failed to add participant: {str(e)}"
-        print(f"[ERROR] {error_msg}")
+        logger.error(f"[ERROR] {error_msg}")
         import traceback
-        print(f"[ERROR] Traceback:")
+        logger.error(f"[ERROR] Traceback:")
         traceback.print_exc()
         if 'data' in locals():
-            print(f"[ERROR] Request data: {data}")
+            logger.error(f"[ERROR] Request data: {data}")
         return error_response(error_msg)
 
 @app.route("/api/participants/get/<competition_id>/<participant_id>", methods=["GET"])
@@ -367,7 +355,6 @@ def get_participant(competition_id: str, participant_id: str):
         if not participant:
             return error_response(f"Participant not found", 404)
 
-        # print(f"participant: {participant.to_dict()}")
         include_submissions = request.args.get("include_submissions", "false").lower() == "true"
         
         if include_submissions:
@@ -435,7 +422,6 @@ def get_participant_solved_problems(competition_id: str, participant_id: str):
         response_data = participant.to_dict(include_submissions=False)
         response_data["submissions"] = [s.to_dict() for s in submissions]
         response_data["solved_problems"] = solved_problems
-        # print(f"response_data: {response_data}")
         
         return success_response(response_data)
        
@@ -534,7 +520,7 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
     Returns:
         Submission details with evaluation results
     """
-    # 全局频率控制
+    # Global frequency control
     if global_rate_limiter.should_rate_limit():
         wait_time = global_rate_limiter.get_wait_time()
         logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
@@ -564,14 +550,10 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
                 language=language
             )
         
-        # logger.critical(f"2222222submission: {submission}")
-        # logger.critical(f"33333333problem_name: {problem_name}")
+
         if not submission:
             return error_response("Failed to create submission", 500)
         
-        # # Get participant for response
-        # participant = data_storage.get_participant(competition_id, participant_id)
-        # new_score = participant.score if participant else 0
         
         return success_response({
             "submission_id": submission.id,
@@ -658,7 +640,7 @@ def get_rankings(competition_id: str):
     Returns:
         List of participants ranked by score with detailed statistics
     """
-    # 全局频率控制
+    # Global frequency control
     if global_rate_limiter.should_rate_limit():
         wait_time = global_rate_limiter.get_wait_time()
         logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
@@ -681,12 +663,12 @@ def get_rankings(competition_id: str):
             if "TransactionContext Error: Conflict on update" in str(e) and attempt < max_retries - 1:
                 logger.warning(f"Database conflict on rankings request (attempt {attempt + 1}/{max_retries}): {str(e)}")
                 time.sleep(retry_delay)
-                retry_delay *= 2  # 指数退避
+                retry_delay *= 2  # Exponential backoff
             else:
                 logger.error(f"Failed to get rankings after {attempt + 1} attempts: {e}", exc_info=True)
                 return error_response(f"Failed to get rankings: {str(e)}", 500)
     
-    # 如果所有重试都失败了，返回错误
+    # If all retries failed, return error
     return error_response("Failed to get rankings after all retries", 500)
 
 
@@ -704,7 +686,7 @@ def check_oj_status():
         return success_response({"connected": is_connected})
     except Exception as e:
         # Log the error for debugging
-        print(f"Error checking OJ status: {str(e)}")
+        logger.error(f"Error checking OJ status: {str(e)}")
         return success_response({"connected": False, "error": "Unable to check OJ status"})
 
 # Problem library API routes
@@ -878,14 +860,13 @@ def get_hint(competition_id: str, participant_id: str):
     Returns:
         Hint content and token usage information
     """
-    # 全局频率控制
+    # Global frequency control
     if global_rate_limiter.should_rate_limit():
         wait_time = global_rate_limiter.get_wait_time()
         logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
         time.sleep(wait_time)
     
     try:
-        # logger.critical(f"Hint request: {competition_id}, {participant_id}11111111")
         if check_termination(competition_id, participant_id):
             return error_response("Participant is not running, termination_reason: {participant.termination_reason}")
 
@@ -901,12 +882,10 @@ def get_hint(competition_id: str, participant_id: str):
         # Validate hint level
         if hint_level not in [0, 1, 2, 3, 4]:
             return error_response("Invalid hint level. Must be 0, 1, 2, 3, 4.")
-        logger.critical(f"333333Hint request: {competition_id}, {participant_id}, {problem_id}, {hint_level}, {hint_knowledge}, {problem_difficulty}")
         # Process hint request using data storage layer
         with DuckDBStorage(db_path=db_path) as data_storage:
             result = data_storage.process_hint_request(competition_id, participant_id, hint_level, problem_id, hint_knowledge, problem_difficulty)
         
-        # logger.critical(f"Hint request: {competition_id}, {participant_id}44444444")
         return success_response(result)
         
     except ValueError as e:
@@ -924,7 +903,7 @@ def generate_response(competition_id: str, participant_id: str):
     This endpoint directly forwards the received request to the target LLM API
     without any processing, useful for debugging request format issues.
     """
-    # 全局频率控制
+    # Global frequency control
     if global_rate_limiter.should_rate_limit():
         wait_time = global_rate_limiter.get_wait_time()
         logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
@@ -938,9 +917,6 @@ def generate_response(competition_id: str, participant_id: str):
         if not data:
             return error_response("No JSON data provided", 400)
         
-        # print(f"DEBUG: Received request data: {data}")
-        # print(f"DEBUG: Competition ID: {competition_id}, Participant ID: {participant_id}, data: {data}")
-        
         # Process request using data storage layer
         with DuckDBStorage(db_path=db_path) as data_storage:
             result = data_storage.process_agent_request(competition_id, participant_id, data)
@@ -949,13 +925,13 @@ def generate_response(competition_id: str, participant_id: str):
         return jsonify([result["content"]]), result["status_code"]
         
     except ValueError as e:
-        print(f"DEBUG: ValueError in generate_response: {str(e)}")
+        logger.error(f"ValueError in generate_response: {str(e)}")
         return error_response(str(e), 404)
     except Exception as e:
         import traceback
         error_line = traceback.extract_tb(e.__traceback__)[-1].lineno
-        print(f"DEBUG: Exception in generate_response: {str(e)} at line {error_line}")
-        print(f"DEBUG: Full traceback: {traceback.format_exc()}")
+        logger.error(f"Exception in generate_response: {str(e)} at line {error_line}")
+        logger.error(f"Full traceback: {traceback.format_exc()}")
         return error_response(f"Agent request failed: {str(e)} (line {error_line})")
 
 
@@ -974,7 +950,7 @@ def stream_generate_response(competition_id: str, participant_id: str):
     Returns:
         Streaming agent response
     """
-    # 全局频率控制
+    # Global frequency control
     if global_rate_limiter.should_rate_limit():
         wait_time = global_rate_limiter.get_wait_time()
         logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
@@ -1155,8 +1131,6 @@ def run_api(host: str = "0.0.0.0", port: int = 5000, debug: bool = False, config
         
         judge = Judge(config.get_section("oj").get("endpoint"))
 
-        # logger.critical(f"config: {config.get_section('oj').get('endpoint')}")
-        # logger.critical(f"judge: {judge}")
         # Configure problem loader with custom data directory
         data_config = config.get_section("data")
         problem_data_dir = data_config.get("problem_data_dir", "dataset/datasets/usaco_2025")

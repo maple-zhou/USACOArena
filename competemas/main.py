@@ -20,7 +20,7 @@ def setup_logging_from_config(config):
     
     # Create log directory
     log_dir = log_config.get("dir", "logs/server_logs")
-    port = server_config.get("port", 5000)  # 从server配置获取端口
+    port = server_config.get("port", 5000)  # Get port from server configuration
     os.makedirs(log_dir, exist_ok=True)
     
     # Generate log filename

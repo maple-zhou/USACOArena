@@ -58,25 +58,7 @@ class Participant:
         # Runtime state
         self.is_running: bool = True
         self.termination_reason: Optional[str] = None
-        
-    # def calculate_score(self) -> None:
-    #     """Calculate the participant's total score based on the formula:
-    #     score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens / limit_tokens
-    #     """
-    #     # Calculate score using the formula
-    #     self.score = self.problem_pass_score - self.submission_penalty + self.lambda_value * self.remaining_tokens / self.limit_tokens
     
-    # def get_competition_state(self) -> Dict:
-    #     """Get the current state of the competition"""
-    #     return {
-    #         "name": self.name,
-    #         "remaining_tokens": self.remaining_tokens,
-    #         "solved_problems": self.solved_problems,
-    #         "is_running": self.is_running,
-    #         "termination_reason": self.termination_reason,
-    #         "score": self.score,
-    #         "problem_pass_score": self.problem_pass_score
-    #     }
     
     def terminate(self, reason: str) -> None:
         """Terminate the participant with a reason"""
@@ -241,36 +223,6 @@ class Competition:
             }
         }
     
-    # def add_participant(self, participant: Participant) -> None:
-    #     """Add a participant to the competition"""
-    #     self.participants.append(participant)
-    
-    # def get_participant(self, participant_id: str) -> Optional[Participant]:
-    #     """Get a participant by ID"""
-    #     for participant in self.participants:
-    #         if participant.id == participant_id:
-    #             return participant
-    #     return None
-    
-    # def get_problem(self, problem_id: str) -> Optional[Problem]:
-    #     """Get a problem by ID"""
-    #     for problem in self.problems:
-    #         if problem.id == problem_id:
-    #             return problem
-    #     return None
-
-    
-    # def calculate_rankings(self) -> List[Dict]:
-    #     """Calculate current rankings based on scores"""
-    #     rankings = [participant.to_dict() for participant in self.participants]
-    #     rankings.sort(key=lambda x: x["score"], reverse=True)
-        
-    #     for i, rank in enumerate(rankings):
-    #         rank["rank"] = i + 1
-        
-    #     return rankings
-    
-    
     def to_dict(self, include_details: bool = False) -> Dict:
         result = {
             "id": self.id,
@@ -283,15 +235,6 @@ class Competition:
             "problem_count": self.problem_count,
             "start_time": self.start_time.isoformat() if self.start_time else None,
             "end_time": self.end_time.isoformat() if self.end_time else None
-
-            #     id: str,
-            # title: str,
-            # description: str,
-            # problems: List[Problem],
-            # participants: Optional[List[Participant]] = None,
-            # max_tokens_per_participant: int = 100000,
-            # rules: Optional[Dict[str, Any]] = None,
-            # created_at: Optional[datetime] = None
             }
         
         return result
@@ -441,16 +384,3 @@ class Submission:
             result["code"] = self.code
             
         return result
-
-# class CompetitionRanking:
-#     def __init__(self, participant: Participant, score: int, penalty: int):
-#         self.participant = participant
-#         self.score = score
-#         self.penalty = penalty
-    
-#     def to_dict(self) -> Dict:
-#         return {
-#             "participant": self.participant.to_dict(),
-#             "score": self.score,
-#             "penalty": self.penalty
-#         }

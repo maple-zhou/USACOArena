@@ -134,8 +134,6 @@ class GenericAPIAgent(Agent):
             raise RuntimeError("PromptSystem and ActionParser must be initialized with prompt_config_path")
         # Generate prompt based on current state
         prompt = self.prompt_system.create_prompt(state)
-
-        # logger.critical(f"11111111111111name: {self.name}, prompt: {prompt}")
         
         # Generate response from LLM
         response_text = await self.generate_response(state, prompt)
@@ -170,7 +168,7 @@ class GenericAPIAgent(Agent):
         # Add user message to conversation history
         self.add_to_conversation("user", prompt)
         self.save_conversation()
-        # logger.critical(f"111111messages: {self.conversation_history}, len of conversation_history: {len(self.conversation_history)}")
+
         for _ in range(self.max_retries):
             try:
                 
@@ -179,7 +177,7 @@ class GenericAPIAgent(Agent):
                 api_base = state.get('api_base',"http://localhost:5000")
                 # Prepare request URL
                 url = f"{api_base}/api/agent/call/{competition_id}/{participant_id}"
-                # print(f"GenericAPIAgent,url: {url}")
+
                 # Prepare request headers
                 headers = {
                     k: v.format(api_key=self.api_key)
@@ -207,10 +205,7 @@ class GenericAPIAgent(Agent):
                 
                 
                 
-                # has_json_block = False
-                # # Make the request
-                # json_retry_count = 0
-                # while not has_json_block and json_retry_count < 10:
+
                 response = await asyncio.to_thread(
                     requests.request,
                     method=self.request_format['method'],
@@ -221,47 +216,19 @@ class GenericAPIAgent(Agent):
                 )
                 response.raise_for_status()
 
-                    # logger.error(f"LLM response: {response.json()}")
 
-                    # print(f"LLMresponse: {response.json()}")
-                    # Get the first element from the array response
+                # Get the first element from the array response
                 result_array = response.json()
                 result = result_array[0]  # Extract the actual response object from the array
 
-                # print("\ngenerate_response result: ", result)
+
                 response_text = self._get_value_from_path(result, self.response_format["response_path"])
                 
                 logger.critical(f"\nNAME: {self.name}, response_text: {response_text}\n")
                     
-                    # 检查response_text中是否包含完整的```json ... ```代码块或直接是JSON格式
-                    # def is_valid_json_or_has_markdown(text):
-                    #     if not text:
-                    #         return False
-                        
-                    #     # 检查是否有完整的```json ... ```代码块
-                    #     if re.search(r'```json\s*(.+?)\s*```', text, re.DOTALL | re.IGNORECASE):
-                    #         return True
-                        
-                    #     # 检查是否直接是JSON格式
-                    #     try:
-                    #         json.loads(text.strip())
-                    #         return True
-                    #     except (json.JSONDecodeError, ValueError):
-                    #         return False
-                    
-                    # if response_text and not is_valid_json_or_has_markdown(response_text):
-                    #     logger.error(f"NOT FOUND ```json ... ``` markdown block or valid JSON in response for {self.name}")
-                    #     json_retry_count += 1
-                    #     time.sleep(self.retry_delay)
-                    # else:
-                    #     has_json_block = True
-                    #     if re.search(r'```json', response_text, re.IGNORECASE):
-                    #         logger.info(f"Found ```json markdown block in response for {self.name}")
-                    #     else:
-                    #         logger.info(f"Found valid JSON format in response for {self.name}")
+             
                 json_str = _extract_json_smart(response_text)
 
-                # print("json_str: ", json_str)
                 action = json_repair.loads(json_str)
                 if not isinstance(action, dict):
                     logger.error(f"Response is not vaild for {self.name}")
@@ -274,22 +241,10 @@ class GenericAPIAgent(Agent):
                     logger.error(f"Missing 'parameters' field for {self.name}")
                     raise Exception(f"Missing 'parameters' field for {self.name}")
                     
-                    
-                    # print(f"response_text: {response_text}")
-                    # print("\n\n")
-                    # prompt_tokens = result.get("usage", {}).get("prompt_tokens", 0)
-                    # completion_tokens = result.get("usage", {}).get("completion_tokens", 0)
-                    # reasoning_tokens = result.get("usage", {}).get("completion_tokens_details", {}).get("reasoning_tokens", 0)
-                    # completion_tokens += reasoning_tokens
-
                     # Add assistant response to conversation history
                 self.add_to_conversation("assistant", response_text)
                 self.save_conversation()
-                # logger.critical(f"222222222conversation_history: {self.conversation_history}, len of conversation_history: {len(self.conversation_history)}")
-                # self.conversation_history.pop()
-                # action = self.action_parser.parse_action(response_text)
                 self.truncate_conversation_history(6)
-                # logger.critical(f"333333333conversation_history: {self.conversation_history}, len of conversation_history: {len(self.conversation_history)}")
 
                 return response_text
                 
@@ -303,10 +258,6 @@ class GenericAPIAgent(Agent):
                 
                 # Print detailed traceback information
                 traceback_str = traceback.format_exc()
-                # logger.error(f"\n=== DETAILED ERROR TRACEBACK for {self.name} (Try {_ + 1}) ===")
-                # logger.error(f"Error Message: {error_message}")
-                # logger.error(f"Full Traceback:\n{traceback_str}")
-                # logger.error("=" * 60)
                 logger.error(f"Try {_ + 1} Error generating response with {self.name}: {error_message}")
                 time.sleep(self.retry_delay)
         
@@ -504,7 +455,6 @@ class StreamingGenericAPIAgent(Agent):
                 # Add assistant response to conversation history
                 self.add_to_conversation("assistant", content)
                 self.save_conversation()
-                # self.conversation_history.pop()
                 
                 return content, (prompt_tokens, completion_tokens)
                 
@@ -517,8 +467,8 @@ class StreamingGenericAPIAgent(Agent):
 
 
 def _extract_json_smart(response: str) -> str:
-        """智能提取JSON，处理嵌套代码块问题"""
-        # 找到所有的```位置
+        """Intelligently extract JSON, handling nested code block issues"""
+        # Find all ``` positions
         backticks_positions = []
         i = 0
         while i < len(response):
@@ -528,19 +478,15 @@ def _extract_json_smart(response: str) -> str:
             backticks_positions.append(pos)
             i = pos + 3
         
-        # print(f"Found {len(backticks_positions)} backticks at positions: {backticks_positions}")
-        
         if len(backticks_positions) < 2:
-            # 没有足够的```，直接返回整个响应
+            # Not enough ```, return the entire response
             return response
         
-        # 检查第二个```后是否跟着编程语言
+        # Check if the second ``` is followed by a programming language
         second_backtick_pos = backticks_positions[1]
         after_second = response[second_backtick_pos + 3:].strip()
         
-        # print(f"After second backtick: '{after_second[:50]}...'")
-        
-        # 检查是否跟着编程语言标识
+        # Check if followed by programming language identifier
         language_indicators = ['cpp', 'java', 'python', 'c++', 'javascript', 'js']
         matched_language = None
         for lang in language_indicators:
@@ -549,51 +495,39 @@ def _extract_json_smart(response: str) -> str:
                 break
         has_language = matched_language is not None
         
-        # print(f"Has language indicator: {has_language}")
-        # if matched_language:
-        #     print(f"Matched language: '{matched_language}'")
-        
         if has_language and len(backticks_positions) >= 4:
-            # 有编程语言标识且有足够的```，匹配第一个到第四个```
-            start_pos = backticks_positions[0] + 3  # 跳过第一个```
-            end_pos = backticks_positions[3]  # 到第四个```开始位置
+            # Has language identifier and enough ```, match first to fourth ```
+            start_pos = backticks_positions[0] + 3  # Skip the first ```
+            end_pos = backticks_positions[3]  # To the start of fourth ```
             
-            # 提取内容并去除开头的语言标识符
+            # Extract content and remove language identifier at the beginning
             content = response[start_pos:end_pos].strip()
             
-            # 去除可能的json标识符
+            # Remove possible json identifier
             if content.lower().startswith('json'):
                 content = content[4:].strip()
             
-            # 删除嵌套的代码块标识符（```cpp、```等）
-            # 找到第二个```在content中的位置
+            # Remove nested code block identifiers (```cpp, ```, etc.)
+            # Find the second ``` position in content
             second_backtick_in_content = content.find('```')
             if second_backtick_in_content != -1:
-                # 找到第三个```的位置
+                # Find the third ``` position
                 third_backtick_in_content = content.find('```', second_backtick_in_content + 3)
                 if third_backtick_in_content != -1:
-                    # 删除第二个```到第三个```之间的内容（包括标识符）
+                    # Remove content between second and third ``` (including identifiers)
                     before_second = content[:second_backtick_in_content]
                     middle = content[second_backtick_in_content + 3 + len(matched_language):third_backtick_in_content]
                     after_third = content[third_backtick_in_content + 3:]
-                    # print(f"before_second: {before_second}")
-                    # print(f"middle: {middle}")
-                    # print(f"after_third: {after_third}")
-                    
-                    # 重新组合内容
+                    # Recombine content
                     content = before_second + middle + after_third
-                    # print(f"Removed nested code block markers (```cpp, ```), content: {content[:100]}...")
             
-            # print(f"Final extracted content: {content[:100]}...")
             return content
         else:
-            # 没有编程语言标识或```不够，使用原来的逻辑
+            # No language identifier or not enough ```, use original logic
             pattern = r"```(?:json)?\s*(.+?)\s*```"
             matches = re.findall(pattern, response, re.DOTALL)
             if matches:
                 json_str = matches[-1]
-                # print(f"Using traditional extraction: {json_str[:100]}...")
                 return json_str
             else:
-                # print("No JSON code block found, using full response")
                 return response

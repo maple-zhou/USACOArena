@@ -37,7 +37,6 @@ class DuckDBStorage:
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         if self.backup_json:
             self.backup_dir.mkdir(parents=True, exist_ok=True)
-            # logger.debug("Created backup directory for JSON files")
         
         # Check if the database file already exists before we establish a connection,
         # as duckdb.connect() creates the file if it's missing.
@@ -45,7 +44,6 @@ class DuckDBStorage:
         
         # Initialize DuckDB connection management
         self._thread_local = threading.local()
-        # logger.debug("Initialized DuckDB connection manager")
         
         # Create schema only if the database is new.
         if not db_exists:
@@ -59,17 +57,16 @@ class DuckDBStorage:
         # In-memory cache for objects
         self.competitions_cache: Dict[str, Competition] = {}
         self.submissions_cache: Dict[str, Submission] = {}
-        # logger.info("DuckDBStorage initialized")
     
     def _get_conn(self) -> duckdb.DuckDBPyConnection:
-        """为当前线程获取或创建一个新的数据库连接"""
+        """Get or create a new database connection for the current thread"""
         if not hasattr(self._thread_local, 'conn'):
             self._thread_local.conn = duckdb.connect(str(self.db_path))
         return self._thread_local.conn
 
     def _create_schema(self) -> None:
         """Create the database schema"""
-        conn = self._get_conn() # 获取当前线程的连接
+        conn = self._get_conn() # Get connection for current thread
         # Competitions table
         conn.execute("""
             CREATE TABLE IF NOT EXISTS competitions (
@@ -106,28 +103,28 @@ class DuckDBStorage:
         # Participants table
         conn.execute("""
             CREATE TABLE IF NOT EXISTS participants (
-                id VARCHAR PRIMARY KEY,                    -- 参赛者唯一标识符
-                competition_id VARCHAR NOT NULL,           -- 所属竞赛ID
-                name VARCHAR NOT NULL,                     -- 参赛者姓名
-                api_base_url VARCHAR,                      -- API基础URL
-                api_key VARCHAR,                           -- API密钥
+                id VARCHAR PRIMARY KEY,                    -- Unique identifier for participant
+                competition_id VARCHAR NOT NULL,           -- Competition ID this participant belongs to
+                name VARCHAR NOT NULL,                     -- Participant name
+                api_base_url VARCHAR,                      -- API base URL
+                api_key VARCHAR,                           -- API key
                 
-                LLM_tokens INTEGER DEFAULT 0,              -- LLM api调用消耗的 token数量
-                hint_tokens INTEGER DEFAULT 0,             -- 获得提示消耗的token数量
-                submission_tokens INTEGER DEFAULT 0,       -- submission动作消耗的token数量
-                limit_tokens INTEGER DEFAULT 0,            -- 最大上限token数量
-                remaining_tokens INTEGER DEFAULT 0,        -- 剩余token数量
-                lambda_value INTEGER DEFAULT 0,            -- lambda参数
+                LLM_tokens INTEGER DEFAULT 0,              -- Token count consumed by LLM API calls
+                hint_tokens INTEGER DEFAULT 0,             -- Token count consumed by hint requests
+                submission_tokens INTEGER DEFAULT 0,       -- Token count consumed by submission actions
+                limit_tokens INTEGER DEFAULT 0,            -- Maximum token limit
+                remaining_tokens INTEGER DEFAULT 0,        -- Remaining token count
+                lambda_value INTEGER DEFAULT 0,            -- Lambda parameter
                 
-                submission_count INTEGER DEFAULT 0,        -- 提交次数
-                accepted_count INTEGER DEFAULT 0,          -- 完全通过的次数
+                submission_count INTEGER DEFAULT 0,        -- Number of submissions
+                accepted_count INTEGER DEFAULT 0,          -- Number of fully accepted submissions
 
-                submission_penalty INTEGER DEFAULT 0,      -- 对于一道题目，如果反复提交，每一次的penalty都要计入 
-                problem_pass_score INTEGER DEFAULT 0,      -- 通过测试点的得分，对于一道题目，如果反复提交，记录最高的一次score
+                submission_penalty INTEGER DEFAULT 0,      -- For each problem, if submitted repeatedly, every penalty is counted
+                problem_pass_score INTEGER DEFAULT 0,      -- Score for passing test cases, for each problem, if submitted repeatedly, record the highest score
 
-                score INTEGER DEFAULT 0,                   -- 总分数
-                is_running BOOLEAN DEFAULT TRUE,           -- 参与者是否正在运行
-                termination_reason VARCHAR(500),           -- 终止原因
+                score INTEGER DEFAULT 0,                   -- Total score
+                is_running BOOLEAN DEFAULT TRUE,           -- Whether the participant is currently running
+                termination_reason VARCHAR(500),           -- Reason for termination
                 FOREIGN KEY (competition_id) REFERENCES competitions(id)
             )
         """)
@@ -222,7 +219,6 @@ class DuckDBStorage:
             ])
         
         # Cache and backup
-        # self.competitions_cache[competition_id] = competition
         self._backup_to_json('competition', competition.to_dict())
         
         return competition
@@ -238,103 +234,6 @@ class DuckDBStorage:
         if not comp_result:
             return None
         
-        # # Query problems for this competition
-        # problems_results = self.conn.execute("""
-        #     SELECT * FROM problems WHERE competition_id = ?
-        # """, [competition_id]).fetchall()
-        
-        # # Query participants for this competition
-        # participants_results = self.conn.execute("""
-        #     SELECT * FROM participants WHERE competition_id = ?
-        # """, [competition_id]).fetchall()
-        
-        # # Reconstruct Problem objects
-        # problems = []
-        # for prob_row in problems_results:
-        #     # 从数据库字段直接读取
-        #     problem_id = prob_row[0]      # id
-        #     title = prob_row[2]           # title
-        #     description = prob_row[3] or ""  # description
-        #     level_str = prob_row[4]       # level
-        #     time_limit_ms = prob_row[5] or 1000  # time_limit_ms
-        #     memory_limit_mb = prob_row[6] or 256  # memory_limit_mb
-        #     first_to_solve = prob_row[7]  # first_to_solve
-            
-        #     # 解析sample_cases
-        #     sample_cases = []
-        #     sample_cases_json = prob_row[8]  # sample_cases
-        #     if sample_cases_json:
-        #         try:
-        #             sample_cases_data = json.loads(sample_cases_json)
-        #             for case_data in sample_cases_data:
-        #                 case = Case(
-        #                     id=case_data.get('id', generate_id()),
-        #                     input_data=case_data.get('input_data', ''),
-        #                     expected_output=case_data.get('expected_output', '')
-        #                 )
-        #                 sample_cases.append(case)
-        #         except (json.JSONDecodeError, KeyError):
-        #             # 如果JSON解析失败，使用空列表
-        #             sample_cases = []
-            
-        #     # 确定难度等级
-        #     if level_str == 'bronze':
-        #         level = Level.BRONZE
-        #     elif level_str == 'silver':
-        #         level = Level.SILVER
-        #     elif level_str == 'gold':
-        #         level = Level.GOLD
-        #     elif level_str == 'platinum':
-        #         level = Level.PLATINUM
-        #     else:
-        #         level = Level.BRONZE  # 默认值
-            
-        #     problem = Problem(
-        #         id=problem_id,
-        #         title=title,
-        #         description=description,
-        #         level=level,
-        #         time_limit_ms=time_limit_ms,
-        #         memory_limit_mb=memory_limit_mb,
-        #         first_to_solve=first_to_solve,
-        #         sample_cases=sample_cases
-        #     )
-        #     problems.append(problem)
-        
-        # # Reconstruct Participant objects
-        # participants = []
-        # for part_row in participants_results:
-        #     # 从数据库字段直接读取
-        #     participant_id = part_row[0]      # id
-        #     comp_id = part_row[1]             # competition_id
-        #     name = part_row[2]                # name
-        #     api_base_url = part_row[3] or ""  # api_base_url
-        #     api_key = part_row[4] or ""       # api_key
-        #     limit_tokens = part_row[5] or 100000  # limit_tokens
-        #     lambda_value = part_row[6] or 100   # lambda_value
-        #     score = part_row[7] or 0          # score
-        #     score = part_row[8] or lambda_value  # score
-        #     remaining_tokens = part_row[9] or limit_tokens  # remaining_tokens
-            
-        #     # 创建Participant对象
-        #     participant = Participant(
-        #         id=participant_id,
-        #         competition_id=comp_id,
-        #         name=name,
-        #         api_base_url=api_base_url,
-        #         api_key=api_key,
-        #         limit_tokens=limit_tokens,
-        #         lambda_value=lambda_value
-        #     )
-            
-        #     # 设置从数据库读取的状态
-        #     participant.score = score
-        #     # participant.score = score
-        #     participant.remaining_tokens = remaining_tokens
-        #     participant.submissions = []  # 提交记录按需加载
-        #     participants.append(participant)
-        
-        # 6. 构建Competition对象
         competition = Competition(
             id=comp_result[0],  # id
             title=comp_result[1],  # title
@@ -348,8 +247,7 @@ class DuckDBStorage:
             problem_count=comp_result[9] if len(comp_result) > 9 else 0,  # problem_count
         )
         
-        # 7. 缓存并返回
-        # self.competitions_cache[competition_id] = competition
+
         return competition
       
     def list_competitions(self, active_only: bool = False) -> List[Competition]:
@@ -371,37 +269,6 @@ class DuckDBStorage:
                 competitions.append(competition)
         
         return competitions
-
-    # def update_competition(self, competition: Competition) -> None:
-    #     """Update a competition"""
-    #     # Get current counts from database
-    #     participant_result = self.conn.execute("""
-    #         SELECT COUNT(*) FROM participants WHERE competition_id = ?
-    #     """, [competition.id]).fetchone()
-    #     participant_count = participant_result[0] if participant_result else 0
-        
-    #     problem_result = self.conn.execute("""
-    #         SELECT COUNT(*) FROM problems WHERE competition_id = ?
-    #     """, [competition.id]).fetchone()
-    #     problem_count = problem_result[0] if problem_result else 0
-        
-    #     # Update competition in database
-    #     self.conn.execute("""
-    #         UPDATE competitions 
-    #         SET title = ?, description = ?, max_tokens_per_participant = ?, 
-    #             rules = ?, is_active = ?, participant_count = ?, problem_count = ?
-    #         WHERE id = ?
-    #     """, [
-    #         competition.title, competition.description, competition.max_tokens_per_participant,
-    #         json.dumps(competition.rules), competition.is_active, 
-    #         participant_count, problem_count, competition.id
-    #     ])
-        
-    #     # Update cache
-    #     self.competitions_cache[competition.id] = competition
-        
-    #     # Backup
-    #     self._backup_to_json('competition', competition.to_dict())
 
 
     def create_participant(self, competition_id: str, name: str, api_base_url: str, 
@@ -440,15 +307,8 @@ class DuckDBStorage:
             WHERE id = ?
         """, [competition_id])
         
-        # # Clear competition cache to force reload with new participant
-        # if competition_id in self.competitions_cache:
-        #     del self.competitions_cache[competition_id]
-        
         # Backup
         self._backup_to_json('participant', participant.to_dict())
-        
-        # # Force reload the competition to ensure the new participant is included
-        # self.get_competition(competition_id)
         
         return participant
 
@@ -465,7 +325,7 @@ class DuckDBStorage:
             logger.error(f"[DUCKDB_STORAGE] Participant {participant_id} not found in competition {competition_id}")
             return None
         
-        # 从数据库字段直接读取
+        # Read directly from database fields
         participant_id = result[0]      # id
         comp_id = result[1]             # competition_id
         name = result[2]                # name
@@ -487,7 +347,7 @@ class DuckDBStorage:
         is_running = result[16] if result[16] is not None else True  # is_running
         termination_reason = result[17]  # termination_reason
         
-        # 创建Participant对象
+        # Create Participant object
         participant = Participant(
             id=participant_id,
             competition_id=comp_id,
@@ -498,7 +358,7 @@ class DuckDBStorage:
             lambda_value=lambda_value
         )
         
-        # 设置从数据库读取的状态
+        # Set state read from database
         participant.LLM_tokens = LLM_tokens
         participant.hint_tokens = hint_tokens
         participant.submission_tokens = submission_tokens
@@ -512,8 +372,6 @@ class DuckDBStorage:
         participant.is_running = is_running
         participant.termination_reason = termination_reason
 
-        # participant.submissions = []  # 提交记录按需加载
-        
         logger.debug(f"[DUCKDB_STORAGE] Found participant: {participant.name} (ID: {participant.id})")
         return participant
 
@@ -547,7 +405,7 @@ class DuckDBStorage:
         conn = self._get_conn()
         conn.execute("""
             UPDATE participants 
-            SET score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens / limit_tokens
+            SET score = problem_pass_score - submission_penalty + lambda_value * (CAST(remaining_tokens AS DOUBLE) / CAST(limit_tokens AS DOUBLE))
             WHERE competition_id = ? AND id = ? 
         """, [competition_id, participant_id])   
 
@@ -561,7 +419,7 @@ class DuckDBStorage:
         if not result:
             return None
         
-        # 从数据库字段直接读取
+        # Read directly from database fields
         problem_id = result[0]      # id
         title = result[2]           # title
         description = result[3] or ""  # description
@@ -570,7 +428,7 @@ class DuckDBStorage:
         memory_limit_mb = result[6] or 256  # memory_limit_mb
         first_to_solve = result[7]  # first_to_solve
         
-        # 解析sample_cases
+        # Parse sample_cases
         sample_cases = []
         sample_cases_json = result[8]  # sample_cases
         if sample_cases_json:
@@ -584,10 +442,10 @@ class DuckDBStorage:
                     )
                     sample_cases.append(case)
             except (json.JSONDecodeError, KeyError):
-                # 如果JSON解析失败，使用空列表
+                # If JSON parsing fails, use empty list
                 sample_cases = []
         
-        # 确定难度等级
+        # Determine difficulty level
         if level_str == 'bronze':
             level = Level.BRONZE
         elif level_str == 'silver':
@@ -597,7 +455,7 @@ class DuckDBStorage:
         elif level_str == 'platinum':
             level = Level.PLATINUM
         else:
-            level = Level.BRONZE  # 默认值
+            level = Level.BRONZE  # Default value
         
         problem = Problem(
             id=problem_id,
@@ -619,7 +477,6 @@ class DuckDBStorage:
             SELECT id FROM problems WHERE competition_id = ?
         """, [competition_id]).fetchall()
 
-        # logger.critical(f"11111111results: {results}")
         
         problems = []
         for row in results:
@@ -627,7 +484,6 @@ class DuckDBStorage:
             problem = self.get_problem(competition_id, problem_id)
             if problem:
                 problems.append(problem)
-                # logger.critical(f"22222222problems: {problem.first_to_solve}")
         
         return problems
    
@@ -635,21 +491,18 @@ class DuckDBStorage:
     def _update_problem_first_to_solve(self, competition_id: str, problem_id: str, participant_id: str) -> None:
         """Update problem's first_to_solve in database"""
         conn = self._get_conn()
-        # logger.critical(f"update_problem_first_to_solve: {competition_id}, {problem_id}, {participant_id}")
+
         participant = self.get_participant(competition_id, participant_id)
         if participant is None:
             raise ValueError(f"Participant {participant_id} not found in competition {competition_id}")
         first_to_solve = participant.name
-        # logger.critical(f"2222222update_problem_first_to_solve: {first_to_solve}")
+
         conn.execute("""
             UPDATE problems 
             SET first_to_solve = ? 
             WHERE competition_id = ? AND id = ?
         """, [first_to_solve, competition_id, problem_id])
-        # name1 = conn.execute("""
-        #     SELECT first_to_solve FROM problems WHERE competition_id = ? AND id = ?
-        # """, [competition_id, problem_id]).fetchone()
-        # logger.critical(f"33333333name1: {name1}")
+
     
 
     def create_submission(self, competition_id: str, participant_id: str, 
@@ -664,8 +517,6 @@ class DuckDBStorage:
         problem = self.get_problem(competition_id, problem_id)
         if not problem:
             return None, None
-        
-        # logger.critical(f"44444444problem: {problem.title}")
         
         # Create submission
         submission_id = generate_id()
@@ -684,7 +535,6 @@ class DuckDBStorage:
         
         # Check if this could be first AC
         first_one = problem.first_to_solve is None
-        # logger.critical(f"{problem.title} problem.first_to_solve: {first_one}")
         # Evaluate submission and calculate score
         judge = self.judge
         if judge is None:
@@ -694,50 +544,29 @@ class DuckDBStorage:
         
         
         # # Handle first AC bonus
-        # logger.critical(f"{problem.title} problem.first_to_solve2: {first_one}")
-        # logger.critical(f"{problem.title} submission.status: {submission.status}")
-        # logger.critical(f"{problem.title} SubmissionStatus.ACCEPTED: {SubmissionStatus.ACCEPTED}")
         if submission.status == SubmissionStatus.ACCEPTED and first_one:
             # Update problem's first_to_solve in database
             self._update_problem_first_to_solve(competition_id, problem_id, participant_id)
         
-        # logger.error(f"333333submission: {submission.pass_score}")
         # Insert submission into database
         conn = self._get_conn()
-        
-        
-        # logger.error(f"submission: {submission.to_dict()}")
         
         # Get current best score for this problem
         current_best_score_result = conn.execute("""
             SELECT MAX(pass_score) FROM submissions 
             WHERE competition_id = ? AND participant_id = ? AND problem_id = ?
         """, [competition_id, participant_id, problem_id]).fetchone()
-        # logger.error(f"00000current_best_score_result: {current_best_score_result}")
         
         if current_best_score_result is None:
-            # 如果当前没有提交过，则直接加上当前提交的分数
+            # If no submission has been made yet, directly add the current submission score
             add_problem_pass_score = submission.pass_score
         else:
             current_best_score = current_best_score_result[0] if current_best_score_result[0] else 0
-            # 如果当前提交的分数大于当前最佳分数，则加上当前提交的分数与当前最佳分数的差值
+            # If current submission score is greater than current best score, add the difference
             if submission.pass_score >= current_best_score:
                 add_problem_pass_score = submission.pass_score - current_best_score
-                # logger.error(f"1111111add_problem_pass_score: {add_problem_pass_score}")
             else:
                 add_problem_pass_score = 0
-        # logger.error(f"222222add_problem_pass_score: {add_problem_pass_score}")
-
-        # Only update problem_pass_score if new score is higher
-        
-        # if submission.pass_score >= current_best_score:
-        #     add_problem_pass_score = submission.pass_score
-        # else:
-        #     add_problem_pass_score = current_best_score
-        
-        # logger.error(f"11111new_problem_pass_score: {add_problem_pass_score}")
-        
-        # Update participant statistics
 
         
         conn.execute("""
@@ -784,49 +613,10 @@ class DuckDBStorage:
         if new_remaining_tokens <= 0:
             self.terminate_participant(competition_id, participant_id, "out_of_tokens")
         
-        # Cache and backup
-        # self.submissions_cache[submission_id] = submission
+        # Backup
         self._backup_to_json('submission', submission.to_dict(include_code=False))
-        # logger.error(f"endddddddddd submission: {submission.pass_score}")
         
         return submission, problem.title
-    
-    # def _update_participant_score(self, competition_id: str, participant_id: str) -> None:
-        """Update participant's score based on all their submissions"""
-        # Get participant from database
-        participant = self.get_participant(competition_id, participant_id)
-        if participant:
-            # Calculate new score based on all submissions
-            submissions = self.list_submissions(
-                competition_id=competition_id, 
-                participant_id=participant_id
-            )
-            
-            # Calculate best scores per problem (like in models.py calculate_score)
-            problem_best_scores = {}
-            total_penalty = 0
-            submission_count = len(submissions)
-            accepted_count = sum(1 for s in submissions if s.status == SubmissionStatus.ACCEPTED)
-            
-            for submission in submissions:
-                problem_id = submission.problem_id
-                # Track best score for each problem
-                if problem_id not in problem_best_scores or submission.pass_score > problem_best_scores[problem_id]:
-                    problem_best_scores[problem_id] = submission.pass_score
-                
-                # Accumulate penalties
-                total_penalty += submission.penalty
-            
-            # Calculate total score: best scores per problem minus total penalties
-            new_score = sum(problem_best_scores.values()) - total_penalty
-            add_problem_pass_score = sum(problem_best_scores.values())
-            
-            # Update participant in database
-            self.conn.execute("""
-                UPDATE participants 
-                SET score = ?, problem_pass_score = ?, submission_count = ?, submission_penalty = ?, accepted_count = ?
-                WHERE competition_id = ? AND id = ?
-            """, [new_score, add_problem_pass_score, submission_count, total_penalty, accepted_count, competition_id, participant_id])
     
     def list_submissions(
         self,
@@ -867,10 +657,7 @@ class DuckDBStorage:
 
     def get_submission(self, submission_id: str, include_code: bool = False) -> Optional[Submission]:
         """Get submission by ID"""
-        # Check cache first
-        # if submission_id in self.submissions_cache:
-        #     return self.submissions_cache[submission_id]
-        
+
         # Query from database
         conn = self._get_conn()
         result = conn.execute("""
@@ -912,42 +699,6 @@ class DuckDBStorage:
         
         return submission
 
-    # def update_submission(self, submission: Submission) -> None:
-    #     """Update submission in database"""
-    #     self.conn.execute("""
-    #         UPDATE submissions 
-    #         SET status = ?, pass_score = ?, penalty = ?, runtime_ms = ?, 
-    #             memory_kb = ?, test_results = ?
-    #         WHERE id = ?
-    #     """, [
-    #         submission.status.value, submission.pass_score, submission.penalty,
-    #         getattr(submission, 'runtime_ms', None),
-    #         getattr(submission, 'memory_kb', None),
-    #         json.dumps([tr.to_dict() for tr in submission.test_results]),
-    #         submission.id
-    #     ])
-        
-    #     # Update cache
-    #     self.submissions_cache[submission.id] = submission
-
-
-    # def calculate_competition_rankings(self, competition_id: str) -> List[Dict]:
-    #     """Calculate rankings for a competition"""
-    #     # Get participants with their scores
-
-
-    #     participants = self.list_participants(competition_id)
-        
-    #     # Convert to rankings format
-    #     rankings = [participant.to_dict() for participant in participants]
-    #     rankings.sort(key=lambda x: x["score"], reverse=True)
-        
-    #     # Add rank numbers
-    #     for i, rank in enumerate(rankings):
-    #         rank["rank"] = i + 1
-        
-    #     return rankings   
-
     # Analytics and Reporting Methods
     def calculate_competition_rankings(self, competition_id: str) -> List[Dict]:
         """Get competition rankings using SQL"""
@@ -956,7 +707,7 @@ class DuckDBStorage:
         # score = problem_pass_score - submission_penalty + lambda_value * max(0, remaining_tokens)
         conn.execute("""
             UPDATE participants 
-            SET score = problem_pass_score - submission_penalty + lambda_value * remaining_tokens / limit_tokens
+            SET score = problem_pass_score - submission_penalty + lambda_value * (CAST(remaining_tokens AS DOUBLE) / CAST(limit_tokens AS DOUBLE))
             WHERE competition_id = ?
         """, [competition_id])
         
@@ -1047,19 +798,13 @@ class DuckDBStorage:
             self._thread_local.conn.close()
     
     def __enter__(self):
-        """进入上下文管理器时调用"""
+        """Called when entering the context manager"""
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        """退出上下文管理器时调用，确保关闭连接"""
+        """Called when exiting the context manager, ensures connection is closed"""
         self.close()
     
-    # JSONDataStorage compatibility methods
-    # def save_submission(self, submission: Submission) -> None:
-    #     """Save a submission (compatibility method)"""
-    #     self.update_submission(submission)
-    #     # Update compatibility dict
-    #     self.submissions_cache[submission.id] = submission
     
     def save_competition(self, competition: Competition) -> None:
         """Save a competition (compatibility method)"""
@@ -1123,7 +868,7 @@ class DuckDBStorage:
         import shutil
         shutil.copy2(self.db_path, backup_path)
         
-        print(f"DuckDB backup created: {backup_path}")
+        logger.info(f"DuckDB backup created: {backup_path}")
         return str(backup_path)
     
     # Agent-related methods
@@ -1175,7 +920,7 @@ class DuckDBStorage:
 
         # Build complete request using participant's API configuration
         api_path = request_data.get('api_path', '/v1/chat/completions')
-        # print(f"request_data: {request_data}")
+
         complete_request = {
             'method': 'POST',
             'url': f"{participant.api_base_url.rstrip('/')}{api_path}",
@@ -1184,9 +929,8 @@ class DuckDBStorage:
                 'Authorization': f'Bearer {participant.api_key}'
             },
             'json': request_data,
-            # 'timeout': request_data.get('timeout', 30.0)
         }
-        # print(f"complete_request: {complete_request['json']}")
+
         # Make HTTP request to LLM API
         try:
             response = requests.request(
@@ -1194,7 +938,6 @@ class DuckDBStorage:
                 url=complete_request['url'],
                 headers=complete_request['headers'],
                 json=complete_request['json']
-                # timeout=complete_request['timeout']
             )
             response.raise_for_status()
             
@@ -1229,11 +972,6 @@ class DuckDBStorage:
         # Calculate total LLM tokens
         llm_tokens = prompt_tokens + completion_tokens + reasoning_tokens
         
-        
-        
-        # Update participant token usage
-        # new_remaining_tokens = max(0, participant.remaining_tokens - llm_tokens)
-        
         # Update database
         conn = self._get_conn()
         conn.execute("""
@@ -1253,7 +991,7 @@ class DuckDBStorage:
         if new_remaining_tokens <= 0:
             self.terminate_participant(competition_id, participant_id, "out_of_tokens")
         
-        # logger.info(f"999999999process_agent_request: {result}")
+
         return {
             "content": result,
             "usage": {
@@ -1460,10 +1198,11 @@ class DuckDBStorage:
             # Check if participant has enough tokens
             if participant.remaining_tokens < hint_cost:
                 logger.error(f"Insufficient tokens. Required: {hint_cost}, Available: {participant.remaining_tokens}")
-            logger.critical(f"444444{hint_level}{hint_knowledge}{problem_difficulty}")
+
             # Generate hint content based on level
             hint_content = self._generate_hint_content(problem, hint_level, competition_id, hint_knowledge, problem_difficulty)
             logger.critical(f"\nNAME: {participant.name}, hint_content: {hint_content}\n")
+            
             # Update participant token usage
             new_remaining_tokens = participant.remaining_tokens - hint_cost
         
@@ -1511,8 +1250,6 @@ class DuckDBStorage:
         # Initialize hint content
         hint_content: Dict[str, Any] = {}
 
-        # Add current_problem for specific conditions
-        # if (hint_level in [1, 2] and hint_knowledge is None) or hint_level == 3:
         if problem is not None: 
             hint_content["current_problem"] = {
                 "title": problem.title,
@@ -1520,8 +1257,6 @@ class DuckDBStorage:
             }
         if hint_knowledge is not None:
             hint_content["hint_knowledge"] = hint_knowledge
-        # if problem_difficulty is not None:
-            # hint_content["problem_difficulty"] = problem_difficulty
 
         if hint_level == 0:
             # Strategy Hint: Competitive programming strategy and tips
@@ -1549,15 +1284,12 @@ class DuckDBStorage:
                             
         elif hint_level == 2:
             hint_content["textbook_sections"] = []
-            logger.critical(f"555555{hint_level}{hint_knowledge}{problem_difficulty}")
             # Search textbook for relevant content
             if textbook_loader.is_loaded():
                 
                 search_terms = hint_knowledge
-                # if search_terms is None:
-                #     raise ValueError("No hint knowledge provided")
                 textbook_results = textbook_loader.search_content(str(search_terms), max_results=1)
-                logger.critical(f"666666{textbook_results}")
+
                 if textbook_results:
                     for result in textbook_results:
                         hint_content["textbook_sections"].append({
@@ -1612,7 +1344,7 @@ class DuckDBStorage:
                             pid = problem_ids[idx]
                             p = problem_loader.load_problem(pid)
                             solution = problem_loader.load_solution(pid)
-                            # print(f"solution: {solution}")
+
                             if p:
                                 hint_content["similar_problems"].append({
                                     "title": p.title,
@@ -1638,13 +1370,9 @@ class DuckDBStorage:
             # first level keys
             if problem_difficulty.lower() == "bronze" or problem_difficulty.lower() == "silver" or problem_difficulty.lower() == "gold" or problem_difficulty.lower() == "platinum" or problem_difficulty.lower() == "advanced":
                 try:
-                    # section_key = guide_loader.get_second_level_keys(problem_difficulty)
-                
-                    # hint_content["example_problems"] = guide_loader.search_second_level_key(problem_difficulty, hint_knowledge)
                     
                     if hint_knowledge is not None:
                         hint_content["example_problems"] = guide_loader.search_second_level_key_similar(problem_difficulty, hint_knowledge)
-                        # logger.warning(f"Hint request: {hint_content['example_problems']}77777777")
                     
                 except Exception as e:
                     # Add error information
@@ -1653,82 +1381,6 @@ class DuckDBStorage:
                         "description": f"Error finding second level keys: {str(e)}",
                         "solution": "Please try again later",
                     }]
-                    
-        # elif hint_level == 5:
-        #     # Comprehensive Hint: Combined approach
-        #     hint_content["episodic_data"] = {"similar_problems": []}
-        #     hint_content["semantic_data"] = {"textbook_sections": []}
-        #     hint_content["integration_points"] = [
-        #         "Understand the Problem Type: Use textbook knowledge to identify the core concept",
-        #         "Learn from Examples: Study similar problems to understand the approach",
-        #         "Apply Concepts: Combine theoretical knowledge with practical examples",
-        #         "Consider Constraints: Pay attention to time and memory limits",
-        #         "Test Your Understanding: Try to solve the problem step by step"
-        #     ]
-            
-        #     # Get textbook knowledge
-        #     if textbook_loader.is_loaded() and problem is not None:
-        #         search_terms = self._extract_search_terms(problem.description)
-        #         textbook_results = textbook_loader.search_content(" ".join(search_terms), max_results=2)
-                
-        #         if textbook_results:
-        #             for result in textbook_results:
-        #                 hint_content["semantic_data"]["textbook_sections"].append({
-        #                     "title": result.get('title', 'Section'),
-        #                     "content": result.get('content', '')[:200] + "...",
-        #                     "relevance_score": result.get('score', 0.0)
-        #                 })
-            
-        #     # Get similar problems
-        #     try:
-        #         all_problem_ids = problem_loader.get_problem_ids()
-        #         competition_problems = self.list_problems(competition_id)
-        #         excluded_problems = set([p.id for p in competition_problems])
-        #         if problem is not None:
-                
-        #             corpus = []
-        #             problem_ids = []
-        #             for pid in all_problem_ids:
-        #                 if pid not in excluded_problems and pid != problem.id:
-        #                     p = problem_loader.load_problem(pid)
-        #                     if p:
-        #                         text = f"{p.description}\n"
-        #                         for case in p.sample_cases:
-        #                             text += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
-        #                         corpus.append(text)
-        #                         problem_ids.append(pid)
-                    
-        #             if corpus:
-        #                 from rank_bm25 import BM25Okapi
-        #                 tokenized_corpus = [doc.split() for doc in corpus]
-        #                 bm25 = BM25Okapi(tokenized_corpus)
-                        
-        #                 query = f"{problem.description}\n"
-        #                 for case in problem.sample_cases:
-        #                     query += f"Sample Input: {case.input_data}\nSample Output: {case.expected_output}\n"
-        #                 tokenized_query = query.split()
-                        
-        #                 scores = bm25.get_scores(tokenized_query)
-        #                 top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:2]
-                        
-        #                 for idx in top_indices:
-        #                     pid = problem_ids[idx]
-        #                     p = problem_loader.load_problem(pid)
-        #                     if p:
-        #                         hint_content["episodic_data"]["similar_problems"].append({
-        #                             "title": p.title,
-        #                             "description": p.description[:150] + "...",
-        #                             "solution": problem_loader.load_solution(pid),
-        #                             "similarity_score": scores[idx]
-        #                         })
-                            
-        #     except Exception as e:
-        #         hint_content["episodic_data"]["similar_problems"] = [{
-        #             "title": "Error",
-        #             "description": f"Error finding similar problems: {str(e)}",
-        #             "solution": "Please try again later",
-        #             "similarity_score": 0.0
-        #         }]
             
         else:
             raise ValueError(f"Invalid hint level: {hint_level}. Must be 1, 2, or 3.")

@@ -1,26 +1,26 @@
-# CompeteMAS 服务器配置指南
+# CompeteMAS Server Configuration Guide
 
-## 概述
+## Overview
 
-CompeteMAS 服务器现在支持灵活的配置系统，允许用户通过配置文件、环境变量和命令行参数来自定义服务器行为。
+The CompeteMAS server now supports a flexible configuration system that allows users to customize server behavior through configuration files, environment variables, and command line arguments.
 
-## 配置层次结构
+## Configuration Hierarchy
 
-配置按以下优先级应用（从高到低）：
+Configuration is applied in the following priority order (from high to low):
 
-1. **命令行参数** - 最高优先级
-2. **环境变量** - 中等优先级  
-3. **配置文件** - 基础配置
-4. **默认值** - 最低优先级
+1. **Command line arguments** - Highest priority
+2. **Environment variables** - Medium priority  
+3. **Configuration files** - Base configuration
+4. **Default values** - Lowest priority
 
-## 配置文件
+## Configuration Files
 
-### 默认配置文件位置
+### Default Configuration File Location
 ```
 config/server_config.json
 ```
 
-### 配置文件结构
+### Configuration File Structure
 
 ```json
 {
@@ -46,58 +46,58 @@ config/server_config.json
 }
 ```
 
-## 环境变量
+## Environment Variables
 
-所有配置项都可以通过环境变量覆盖，环境变量命名规则为：
+All configuration items can be overridden through environment variables. The environment variable naming rule is:
 
 ```
 COMPETEMAS_<SECTION>_<KEY>
 ```
 
-### 示例环境变量
+### Example Environment Variables
 
 ```bash
-# 日志配置
+# Logging configuration
 export COMPETEMAS_LOG_LEVEL=DEBUG
 export COMPETEMAS_LOG_DIR=/custom/logs
 
-# 在线评测配置
+# Online judge configuration
 export COMPETEMAS_OJ_ENDPOINT=http://custom-oj:9000/api
 
-# 速率限制配置
+# Rate limiting configuration
 export COMPETEMAS_RATE_LIMIT_INTERVAL=0.1
 
-# 数据库配置
+# Database configuration
 export COMPETEMAS_DB_PATH=/custom/data/competemas.db
 export COMPETEMAS_DB_BACKUP_JSON=false
 
-# 数据源配置
+# Data source configuration
 export COMPETEMAS_PROBLEM_DATA_DIR=/custom/problems
 export COMPETEMAS_TEXTBOOK_DATA_DIR=/custom/textbooks
 ```
 
-## 命令行参数
+## Command Line Arguments
 
-### 基本用法
+### Basic Usage
 
 ```bash
-# 使用默认配置启动
+# Start with default configuration
 competition_server
 
-# 指定配置文件
+# Specify configuration file
 competition_server --config /path/to/custom_config.json
 
-# 覆盖服务器设置
+# Override server settings
 competition_server --host 127.0.0.1 --port 8080 --debug
 ```
 
-### 所有可用参数
+### All Available Arguments
 
 ```bash
 competition_server [OPTIONS]
 
-服务器配置:
-  --config PATH              配置文件路径 (默认: config/server_config.json)
+Server configuration:
+  --config PATH              Configuration file path (default: config/server_config.json)
   --host HOST                服务器绑定地址 (默认: 0.0.0.0)
   --port PORT                服务器端口 (默认: 5000)
   --debug                    启用调试模式
@@ -117,53 +117,53 @@ competition_server [OPTIONS]
 数据库配置:
   --db-path PATH            覆盖数据库路径
 
-数据源配置:
-  --problem-data-dir PATH   覆盖问题数据目录
-  --textbook-data-dir PATH  覆盖教材数据目录
+Data source configuration:
+  --problem-data-dir PATH   Override problem data directory
+  --textbook-data-dir PATH  Override textbook data directory
 ```
 
-## 配置项详解
+## Configuration Details
 
-### 日志配置 (logging)
+### Logging Configuration (logging)
 
-| 配置项 | 类型 | 默认值 | 说明 |
-|--------|------|--------|------|
-| level | string | "INFO" | 日志级别 |
-| directory | string | "logs/competition_system" | 日志目录 |
-| enable_colors | boolean | true | 是否启用彩色日志 |
+| Configuration Item | Type | Default Value | Description |
+|-------------------|------|---------------|-------------|
+| level | string | "INFO" | Log level |
+| directory | string | "logs/competition_system" | Log directory |
+| enable_colors | boolean | true | Whether to enable colored logs |
 
-### 在线评测配置 (online_judge)
+### Online Judge Configuration (online_judge)
 
-| 配置项 | 类型 | 默认值 | 说明 |
-|--------|------|--------|------|
-| endpoint | string | "http://localhost:9000/..." | 在线评测服务端点 |
+| Configuration Item | Type | Default Value | Description |
+|-------------------|------|---------------|-------------|
+| endpoint | string | "http://localhost:9000/..." | Online judge service endpoint |
 
-### 速率限制配置 (rate_limiting)
+### Rate Limiting Configuration (rate_limiting)
 
-| 配置项 | 类型 | 默认值 | 说明 |
-|--------|------|--------|------|
-| min_interval | float | 0.05 | 最小请求间隔（秒） |
+| Configuration Item | Type | Default Value | Description |
+|-------------------|------|---------------|-------------|
+| min_interval | float | 0.05 | Minimum request interval (seconds) |
 
-### 数据库配置 (database)
+### Database Configuration (database)
 
-| 配置项 | 类型 | 默认值 | 说明 |
-|--------|------|--------|------|
-| path | string | "data/competemas.duckdb" | 数据库文件路径 |
-| backup_json | boolean | true | 是否备份为JSON格式 |
+| Configuration Item | Type | Default Value | Description |
+|-------------------|------|---------------|-------------|
+| path | string | "data/competemas.duckdb" | Database file path |
+| backup_json | boolean | true | Whether to backup as JSON format |
 
-### 数据源配置 (data_sources)
+### Data Source Configuration (data_sources)
 
-| 配置项 | 类型 | 默认值 | 说明 |
-|--------|------|--------|------|
-| problem_data_dir | string | "dataset/datasets/usaco_2025" | 问题数据目录 |
-| textbook_data_dir | string | "dataset/textbooks" | 教材数据目录 |
+| Configuration Item | Type | Default Value | Description |
+|-------------------|------|---------------|-------------|
+| problem_data_dir | string | "dataset/datasets/usaco_2025" | Problem data directory |
+| textbook_data_dir | string | "dataset/textbooks" | Textbook data directory |
 
-## 使用示例
+## Usage Examples
 
-### 开发环境配置
+### Development Environment Configuration
 
 ```bash
-# 开发环境启动
+# Development environment startup
 competition_server \
   --debug \
   --log-level DEBUG \
@@ -172,10 +172,10 @@ competition_server \
   --rate-limit-interval 0.01
 ```
 
-### 生产环境配置
+### Production Environment Configuration
 
 ```bash
-# 生产环境启动
+# Production environment startup
 competition_server \
   --host 0.0.0.0 \
   --port 5000 \
@@ -184,10 +184,10 @@ competition_server \
   --oj-endpoint https://oj.production.com/api
 ```
 
-### Docker环境配置
+### Docker Environment Configuration
 
 ```bash
-# 使用环境变量配置
+# Configure using environment variables
 docker run -d \
   -e COMPETEMAS_LOG_LEVEL=INFO \
   -e COMPETEMAS_DB_PATH=/data/competemas.db \
@@ -197,9 +197,9 @@ docker run -d \
   competemas/server
 ```
 
-## 配置验证
+## Configuration Verification
 
-启动服务器时，系统会显示加载的配置信息：
+When starting the server, the system will display loaded configuration information:
 
 ```
 2024-01-01 12:00:00 INFO main: Starting CompeteMAS API server on 0.0.0.0:5000
@@ -208,15 +208,15 @@ docker run -d \
 2024-01-01 12:00:00 INFO server: Server configuration applied successfully
 ```
 
-## 故障排除
+## Troubleshooting
 
-### 常见问题
+### Common Issues
 
-1. **配置文件不存在**
-   - 系统会使用默认配置
-   - 检查配置文件路径是否正确
+1. **Configuration file does not exist**
+   - System will use default configuration
+   - Check if configuration file path is correct
 
-2. **环境变量格式错误**
+2. **Environment variable format error**
    - 布尔值使用: true/false, 1/0, yes/no
    - 数组使用逗号分隔: "value1,value2,value3"
 

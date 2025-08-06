@@ -34,10 +34,8 @@ class USACOGuideLoader:
                 with open(self.data_path, 'r', encoding='utf-8') as f:
                     self.guide_data = json.load(f)
             except Exception as e:
-                print(f"Error loading guide: {e}")
                 self.guide_data = {}
         else:
-            print(f"Guide file not found: {self.data_path}")
             self.guide_data = {}
     
     def is_loaded(self) -> bool:
@@ -64,14 +62,14 @@ class USACOGuideLoader:
     
     def search_second_level_key(self, problem_difficulty: str, hint_knowledge: str) -> Optional[Dict[str, Any]]:
         """
-        重要方法：在指定的problem_difficulty中搜索hint_knowledge二级键的内容
+        Important method: Search for hint_knowledge second-level key content in the specified problem_difficulty
         
         Args:
-            problem_difficulty: 要搜索的一级键
-            hint_knowledge: 要搜索的二级键名
+            problem_difficulty: First-level key to search in
+            hint_knowledge: Second-level key name to search for
             
         Returns:
-            如果找到，返回包含该键值对的字典；否则返回None
+            If found, returns a dictionary containing the key-value pair; otherwise returns None
         """
         if not self.is_loaded():
             return None
@@ -81,9 +79,9 @@ class USACOGuideLoader:
             
         first_level_value = self.guide_data[problem_difficulty]
         
-        # 如果一级键的值是字典
+        # If the first level value is a dictionary
         if isinstance(first_level_value, dict):
-            # 检查二级键中是否存在搜索的键
+            # Check if the search key exists in the second level keys
             if hint_knowledge in first_level_value:
                 return {
                     problem_difficulty: {
@@ -91,7 +89,7 @@ class USACOGuideLoader:
                     }
                 }
         
-        # 如果一级键的值是列表，且列表元素是字典
+        # If the first level value is a list, and list elements are dictionaries
         elif isinstance(first_level_value, list) and first_level_value:
             for i, item in enumerate(first_level_value):
                 if isinstance(item, dict) and hint_knowledge in item:
@@ -105,15 +103,15 @@ class USACOGuideLoader:
     
     def search_second_level_key_similar(self, problem_difficulty: str, hint_knowledge: str, max_results: int = 1) -> List[Dict[str, Any]]:
         """
-        使用BM25算法在所有难度级别中查找与hint_knowledge相似的二级键
+        Use BM25 algorithm to find second-level keys similar to hint_knowledge across all difficulty levels
         
         Args:
-            problem_difficulty: 要搜索的一级键（现在用于优先级排序，但搜索范围扩展到所有难度）
-            hint_knowledge: 要搜索的二级键名
-            max_results: 最大返回结果数
+            problem_difficulty: First-level key to search in (now used for priority sorting, but search scope extends to all difficulties)
+            hint_knowledge: Second-level key name to search for
+            max_results: Maximum number of results to return
             
         Returns:
-            返回相似度排序的结果列表，每个结果包含键名、值和相似度分数
+            Returns a list of similarity-sorted results, each containing key name, value, and similarity score
         """
         if not self.is_loaded():
             return []
@@ -122,15 +120,15 @@ class USACOGuideLoader:
             from rank_bm25 import BM25Okapi
             
             
-            # 收集所有难度级别的所有二级键名用于相似度搜索
+            # Collect all second level keys from all difficulty levels for similarity search
             all_second_level_keys = []
-            key_info = []  # 存储键的详细信息
+            key_info = []  # Store key details
             
-            # 遍历所有难度级别
+            # Iterate through all difficulty levels
             for difficulty_level in self.guide_data.keys():
                 first_level_value = self.guide_data[difficulty_level]
                 
-                # 如果一级键的值是字典
+                # If the first level value is a dictionary
                 if isinstance(first_level_value, dict):
                     for second_level_key in first_level_value.keys():
                         all_second_level_keys.append(second_level_key)
@@ -141,7 +139,7 @@ class USACOGuideLoader:
                             "type": "dict"
                         })
                 
-                # 如果一级键的值是列表，且列表元素是字典
+                # If the first level value is a list, and list elements are dictionaries
                 elif isinstance(first_level_value, list) and first_level_value:
                     for i, item in enumerate(first_level_value):
                         if isinstance(item, dict):
@@ -157,9 +155,8 @@ class USACOGuideLoader:
             if not all_second_level_keys:
                 return []
             
-            # tokenized_corpus = [key.split() for key in all_second_level_keys]
-            # 创建BM25语料库
-            # 每个元素拼接上三级键concept的value
+
+            # Each element concatenates with the third level key concept value
             tokenized_corpus = []
             for idx, key in enumerate(all_second_level_keys):
                 concept_value = ""
@@ -168,12 +165,12 @@ class USACOGuideLoader:
                 
                 info = key_info[idx]
                 value = info["value"]
-                # value 可能是dict，尝试取concept字段
+                # value might be dict, try to get concept field
                 if isinstance(value, dict) and "concept" in value:
                     concept_value = str(value["concept"])
                     explanation_value = str(value["explanation"])
                     
-                    # 提取所有示例问题的solution
+                    # Extract all example problem solutions
                     solutions = []
                     names = []
                     descriptions = []
@@ -189,58 +186,39 @@ class USACOGuideLoader:
                     name_value = " ".join(names)
                     description_value = " ".join(descriptions)
 
-                    
-                    # print("000000",concept_value)
-                    # print("111111",explanation_value)
-                    # print("222222",solution_value)
-                    print("333333",name_value)
-                    print("444444",description_value)
                 
-                # 拼接二级键、concept、explanation和solution
+                # Concatenate second level key, concept, explanation and solution
                 combined = f"{key} {concept_value} {explanation_value} {solution_value}{name_value}{description_value}".strip()
-                # print(combined)
                 tokenized_corpus.append(combined.split())
             
             bm25 = BM25Okapi(tokenized_corpus)
             
-            # print("222222",tokenized_corpus)
-            # 搜索
+            # Search
             tokenized_query = hint_knowledge.split()
             
             scores = bm25.get_scores(tokenized_query)
-
-            # print(scores)
-            
-            # 获取最相似的结果
             top_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:max_results]
             
             results = []
             for idx in top_indices:
                 info = key_info[idx]
-                # print(info,type(info),"\n")
-                # print("content",info["value"]["example_problems"],"\n")
-                # print("title",info["second_level"],"\n")
-                # print("relevance_score",float(scores[idx]))    
-                # info["value"].keys()[0]
                 results.append({
                     "content": info["value"]["example_problems"],
                     "title": info["second_level"],
                     "relevance_score": float(scores[idx])
                 })
             
-            # print(results)
+
             return results
             
         except ImportError:
-            # print("BM25 library not available, falling back to simple search")
             return self._simple_search_second_level_key(hint_knowledge, problem_difficulty, max_results)
         except Exception as e:
-            # print(f"Error in BM25 search: {e}")
             return self._simple_search_second_level_key(hint_knowledge, problem_difficulty, max_results)
     
     def _simple_search_second_level_key(self, search_key: str, problem_difficulty: str, max_results: int = 3) -> List[Dict[str, Any]]:
         """
-        简单的字符串匹配搜索（BM25不可用时的备用方案）
+        Simple string matching search (fallback when BM25 is not available)
         """
         if not self.is_loaded():
             return []
@@ -253,7 +231,7 @@ class USACOGuideLoader:
         
         first_level_value = self.guide_data[problem_difficulty]
         
-        # 如果一级键的值是字典
+        # If the first level value is a dictionary
         if isinstance(first_level_value, dict):
             for second_level_key, value in first_level_value.items():
                 if search_key_lower in second_level_key.lower():
@@ -265,7 +243,7 @@ class USACOGuideLoader:
                         "type": "dict"
                     })
         
-        # 如果一级键的值是列表，且列表元素是字典
+        # If the first level value is a list, and list elements are dictionaries
         elif isinstance(first_level_value, list) and first_level_value:
             for i, item in enumerate(first_level_value):
                 if isinstance(item, dict):
@@ -279,7 +257,7 @@ class USACOGuideLoader:
                                 "type": "list"
                             })
         
-        # 按相似度排序并限制结果数量
+        # Sort by similarity and limit results
         results.sort(key=lambda x: x['similarity_score'], reverse=True)
         return results[:max_results]
     
@@ -336,5 +314,5 @@ class USACOGuideLoader:
         if not self.is_loaded():
             return {"error": "Guide data not loaded"}
         
-        # 直接返回原始指南数据，保持JSON文件的原始结构
+        # Directly return original guide data, maintaining the original structure of the JSON file
         return self.guide_data

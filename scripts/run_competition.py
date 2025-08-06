@@ -22,21 +22,27 @@ def setup_logging_from_config(competiton_config,competitors_config,problem_ids):
     if match:
         port = match.group(1)  # "5000"
     else:
-        port = "5000"  # 默认端口
+        port = "5000"  # Default port
 
     # Generate log filename
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     competitors_config_name = os.path.splitext(os.path.basename(competitors_config))[0]
     problem_ids_name = os.path.splitext(os.path.basename(problem_ids))[0]
+    
 
     log_dir = log_config.get("dir", "logs/run_logs")
-    log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_{timestamp}")
+    if "max_tokens_per_participant" in competiton_config and competiton_config["max_tokens_per_participant"] != 10000000:
+        max_tokens_per_participant = competiton_config["max_tokens_per_participant"]
+        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_limit{max_tokens_per_participant}_{timestamp}")
+    else:
+        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_{timestamp}")
+    
     os.makedirs(log_dir, exist_ok=True)
     
     # Setup logging
     setup_logging(level="INFO", log_file=f"{log_dir}/{competitors_config_name}_run_competition.log")
     
-    return log_dir  # 返回创建的log_dir
+    return log_dir  # Return the created log_dir
 
 def load_config(config_path: str) -> Dict:
     """Load configuration from JSON file"""
@@ -111,7 +117,7 @@ def create_competitors(competitors_config: Dict, competition_config: Dict, log_d
         #         response_format=competitor.get("response_format"),
         #     )
         if competitor["type"] == "generic":
-            # 使用传入的log_dir，如果没有则使用默认的logs/{competitor_name}
+            # Use the passed log_dir, if not available use default logs/{competitor_name}
             agent_log_dir = log_dir if log_dir is not None else f"logs/{competitor['name']}"
             
             agent = GenericAPIAgent(
@@ -139,48 +145,6 @@ def create_competitors(competitors_config: Dict, competition_config: Dict, log_d
     
     return competitors
 
-# def print_competition_results(results: Dict, competition_id: str):
-    # """Print competition results in a formatted way"""
-    # try:
-    #     print(f"\n=== Competition Results of {competition_id} ===\n")
-        
-    #     # Sort competitors by total score
-    #     sorted_results = sorted(
-    #         results.items(),
-    #         key=lambda x: x[1].get("score", 0),
-    #         reverse=True
-    #     )
-        
-    #     # Print results table
-    #     print(f"{'Rank':<5} {'Name':<20} {'Score':<10} {'Solved':<10}")
-    #     print("-" * 50)
-        
-    #     for rank, (name, data) in enumerate(sorted_results, 1):
-    #         print(f"{rank:<5} {name:<20} {data.get('score', 0):<10} "
-    #               f"{len(data.get('solved_problems', [])):<10}")
-        
-    #     print("\n=== Detailed Results ===\n")
-    #     for name, data in sorted_results:
-    #         print(f"\n{name}:")
-    #         print(f"  Final Score: {data.get('score', 0)}")
-    #         # Handle solved_problems - it can be either a list of strings or a list of dicts
-    #         solved_problems = data.get('solved_problems', [])
-    #         if solved_problems and isinstance(solved_problems[0], dict):
-    #             # If it's a list of dicts, extract problem_id from each dict
-    #             solved_problems_str = ", ".join([p.get("problem_id", str(p)) for p in solved_problems])
-    #         else:
-    #             # If it's already a list of strings, join them directly
-    #             solved_problems_str = ", ".join(solved_problems) if solved_problems else "None"
-    #         print(f"  Solved Problems: {solved_problems_str}")
-    #         if data.get('termination_reason'):
-    #             print(f"  Termination Reason: {data['termination_reason']}")
-    #         if data.get('remaining_tokens'):
-    #             print(f"  Remaining Tokens: {data['remaining_tokens']}")
-    #         if data.get('participant_id'):
-    #             print(f"  Participant ID: {data['participant_id']}")
-    # except Exception as e:
-    #     logger.error(f"Error printing competition results: {str(e)}")
-    #     raise
 
 def log_competition_results(results: Dict, competition_id: str):
     """Log competition results using logger.critical with character limit"""
@@ -256,16 +220,16 @@ def log_competition_results(results: Dict, competition_id: str):
 
 def save_competition_results(results, competition_id, competition_config, log_dir=None):
     """
-    保存竞赛结果到文件
+    Save competition results to file
     
     Args:
-        results: 竞赛结果字典
-        competition_id: 竞赛ID
-        competition_config: 竞赛配置
-        log_dir: 日志目录路径（可选）
+        results: Competition results dictionary
+        competition_id: Competition ID
+        competition_config: Competition configuration
+        log_dir: Log directory path (optional)
     
     Returns:
-        str: 保存的文件路径
+        str: Path to the saved file
     """
     # Sort competitors by total score
     sorted_results = {
@@ -280,7 +244,7 @@ def save_competition_results(results, competition_id, competition_config, log_di
     results["competition_id"] = competition_id
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     
-    # 将competition_results保存到log_dir中
+    # Save competition_results to log_dir
     if log_dir:
         results_file = os.path.join(log_dir, f"competition_results_{timestamp}.json")
     else:
@@ -290,6 +254,38 @@ def save_competition_results(results, competition_id, competition_config, log_di
     with open(results_file, 'w') as f:
         json.dump(sorted_results, f, indent=2)
     logger.info(f"Results saved to {results_file}")
+    
+    # Call JSON to CSV converter
+    try:
+        # Import converter module
+        import sys
+        import subprocess
+        from pathlib import Path
+        
+        # Get current script directory
+        current_dir = Path(__file__).parent.parent
+        converter_script = current_dir / "json_to_csv_converter.py"
+        
+        if converter_script.exists():
+            # Generate CSV file path (in the same directory as JSON file)
+            json_path = Path(results_file)
+            csv_file = json_path.with_suffix('.csv')
+            
+            # Call converter script
+            result = subprocess.run([
+                sys.executable, str(converter_script), 
+                str(results_file), str(csv_file)
+            ], capture_output=True, text=True)
+            
+            if result.returncode == 0:
+                logger.info(f"CSV file generated: {csv_file}")
+            else:
+                logger.warning(f"Failed to generate CSV file: {result.stderr}")
+        else:
+            logger.warning(f"Converter script not found: {converter_script}")
+            
+    except Exception as e:
+        logger.warning(f"Error generating CSV file: {e}")
     
     return results_file
 
@@ -305,7 +301,7 @@ async def main():
                           default='http://localhost:5000',
                           help='API base URL for the competition')
         parser.add_argument('--port',
-                          default=5000,
+                        #   default=5000,
                           help='Port for the competition')
         parser.add_argument('--competition-title',
                           default='MAS Programming Competition 2025',
@@ -314,7 +310,7 @@ async def main():
                           default='A competition to test MAS coding abilities in solving programming problems',
                           help='Description of the competition')
         parser.add_argument('--max-tokens-per-participant',
-                          default=10000000,
+                        #   default=10000000,
                           help='Maximum tokens per participant')
         parser.add_argument('--log-level',
                           default='INFO',
@@ -337,7 +333,6 @@ async def main():
         args = parser.parse_args()
         
         # Load configuration
-        # logger.info("Loading competition configuration...")
 
         competition_config = load_config(args.competition_config)
         competitors_config = load_config(args.competitors_config)
@@ -381,7 +376,6 @@ async def main():
         
         # Create competition
         logger.info("Creating competition...")
-        # logger.critical(f"problem_ids: {problem_ids}")
         competition_id = organizer.create_competition(
             title=competition_config.get("competition_title", ""),
             description=competition_config.get("competition_description", ""),
@@ -412,8 +406,7 @@ async def main():
         # Save results to file
         save_competition_results(results, competition_id, competition_config, log_dir)
 
-        # Print results
-        # print_competition_results(results_to_print, competition_id)
+
         log_competition_results(results_to_log, competition_id)
         
     except Exception as e:

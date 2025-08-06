@@ -27,7 +27,6 @@ class USACOProblemLoader:
                 self.data_path = "dataset/datasets/usaco_2025"  # Use as default if nothing found
         else:
             self.data_path = data_path
-        # logger.info(f"Initialized USACO problem loader with data path: {self.data_path}")
             
         self.problems_dict = {}
         self._load_problem_dict()
@@ -39,12 +38,10 @@ class USACOProblemLoader:
             try:
                 with open(problem_dict_path, 'r') as f:
                     self.problems_dict = json.load(f)
-                # logger.info(f"Successfully loaded {len(self.problems_dict)} problems from {problem_dict_path}")
             except Exception as e:
-                # logger.error(f"Error loading problem dictionary from {problem_dict_path}: {e}")
+
                 self.problems_dict = {}
         else:
-            # logger.error(f"Problem dictionary not found at: {problem_dict_path}")
             self.problems_dict = {}
     
     def get_problem_ids(self, level: Optional[str] = None) -> List[str]:
@@ -145,7 +142,7 @@ class USACOProblemLoader:
                             )
                             test_cases.append(case)
                         except Exception as e:
-                            print(f"Error reading test case {input_file}: {e}")
+                            logger.error(f"Error reading test case {input_file}: {e}")
             except FileNotFoundError:
                 # Just skip loading additional test cases if directory doesn't exist
                 pass

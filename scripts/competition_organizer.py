@@ -7,8 +7,6 @@ import asyncio
 import os
 from typing import Dict, List, Optional, Any, Callable, Tuple
 from datetime import datetime, timedelta
-
-# AgentInterface已被删除，现在直接使用Agent类
 from competemas.models.models import SubmissionStatus
 from scripts.competitors import Competitor
 from competemas.utils.logger_config import get_logger
@@ -82,10 +80,7 @@ class CompetitionOrganizer:
                 "rules": rules or {}
             }
             
-            # logger.debug(f"Creating competition with data: {data}")
-            # print(f"self.api_base: {self.api_base}")
-            
-            # Make API request - 使用正确的端点
+            # Make API request - use the correct endpoint
             response = requests.post(
                 f"{self.api_base}/api/competitions/create",
                 json=data,
@@ -150,7 +145,6 @@ class CompetitionOrganizer:
             True if successful, False otherwise
         """
         try:
-            # print(f"competition_id: {competition_id} competition_data: {self.competition_data}")
             if not self.competition_id and not self.competition_data:
                 # Get competition details
                 response = requests.get(
@@ -196,7 +190,6 @@ class CompetitionOrganizer:
                     f"{self.api_base}/api/participants/get/{competition_id}/{participant_id}",
                     params={"include_submissions": "false"}
                 )
-                # print(f"verification_response: {verification_response.json()}")
                 
                 if verification_response.status_code == 200:
                     verification_data = verification_response.json()
@@ -235,18 +228,10 @@ class CompetitionOrganizer:
         problems_result = competitor.view_problems()
         problems = problems_result.get("problems", []) if "error" not in problems_result else []
         logger.debug(f"Loaded {len(problems)} problems for competitor {competitor.name}")
-        # print(f"problems: {problems}")
         
         problems_state = {
             "problems_id": [p.get("id") for p in problems],
-            # "problems_title": [p.get("title") for p in problems],
-            # "problems_description": [p.get("description") for p in problems],
-            # "problems_level": [p.get("level") for p in problems],
-            # "problems_time_limit_ms": [p.get("time_limit_ms") for p in problems],
-            # "problems_memory_limit_mb": [p.get("memory_limit_mb") for p in problems],
-            # "problems_sample_cases": [p.get("sample_cases") for p in problems],
             "problems_first_to_solve": [p.get("first_to_solve") for p in problems],
-            # "problems_level": [p.get("level") for p in problems],
         }
         # Initialize competitors state
         for c in self.competitors:
@@ -290,8 +275,6 @@ class CompetitionOrganizer:
                 else:
                     logger.warning(f"After LLM call: Failed to get participant state for {competitor.name}")
 
-                # logger.critical(f"Agent:{competitor.name}, Action: {action['action']}")
-                
                 logger.info(f"Competitor {competitor.name} choose the next action: {action['action']}, remaining_tokens: {competitor.remaining_tokens}, score: {competitor.score}")
                 
                 # Process action (this will trigger sync_from_api if needed)
@@ -309,8 +292,6 @@ class CompetitionOrganizer:
                 else:
                     logger.warning(f"After action_result: Failed to get participant state for {competitor.name}")
 
-                # logger.error(f"Action_result: {action_result}")
-                
                 
                 # Update rankings (only when needed)
                 rankings_result = competitor.view_rankings()
@@ -337,16 +318,11 @@ class CompetitionOrganizer:
 
                 problems_result = competitor.view_problems()
                 problems = problems_result.get("problems", []) if "error" not in problems_result else []
-                # logger.debug(f"Loaded {len(problems)} problems for competitor {competitor.name}")
-                # print(f"problems: {problems}")
                 
                 problems_state = {
                     "problems_id": [p.get("id") for p in problems],
                     "problems_first_to_solve": [p.get("first_to_solve") for p in problems],
                 }
-
-                # logger.critical(f"11111111problems_state: {problems_state['problems_first_to_solve']}")
-                # logger.critical(f"22222222problems_state: {problems_state['problems_id']}")
                 
                 state["problems"] = problems_state
                 # Update other competitors status (minimal sync)
@@ -361,13 +337,6 @@ class CompetitionOrganizer:
                 
                 logger.info(f"Competitor {competitor.name} completed the action: {action['action']}, remaining_tokens: {competitor.remaining_tokens}, score: {competitor.score}")
 
-                # logger.info(f"last_action_result: {state['last_action_result']}")
-                
-                # # Check if should terminate
-                # if action_result["should_terminate"]:
-                #     competitor.terminate(action_result["termination_reason"])
-                #     logger.info(f"Competitor {competitor.name} terminated: {action_result['termination_reason']}")
-                #     break
                 
             except Exception as e:
                 logger.error(f"Error in competition loop for {competitor.name}: {e}", exc_info=True)
@@ -377,7 +346,6 @@ class CompetitionOrganizer:
         logger.info(f"Competitor {competitor.name} terminated: {competitor.termination_reason}")
         # Get final state (force sync for accurate final results)
         logger.info(f"Competition ended for {competitor.name}, getting final state")
-        # competitor.sync_from_api(force=True)
         
         # Get final state from competitor
         final_state = competitor.get_participant_state()
@@ -405,12 +373,12 @@ class CompetitionOrganizer:
         # Create results directory if it doesn't exist
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         if self.log_dir:
-            # 使用传入的log_dir，在agent子目录中保存结果
+            # Use the passed log_dir, save results in agent subdirectory
             agent_result_dir = os.path.join(self.log_dir, competitor.name)
             os.makedirs(agent_result_dir, exist_ok=True)
             result_file = os.path.join(agent_result_dir, f"{final_state['name']}_results_{timestamp}.json")
         else:
-            # 使用默认的competitor_results目录
+            # Use default competitor_results directory
             os.makedirs("competitor_results", exist_ok=True)
             result_file = f"competitor_results/{competitor.name}_{timestamp}.json"
         
@@ -592,9 +560,7 @@ class CompetitionOrganizer:
                         "should_terminate": False,
                         "termination_reason": None
                     }
-                # logger.critical(f"000000hint_level: {hint_level}, hint_knowledge: {hint_knowledge}, problem_difficulty: {problem_difficulty}")
                 result = competitor.get_hint(problem_id, hint_level, hint_knowledge, problem_difficulty)
-                # logger.critical(f"111111get_hint result: {result}")
                 return {
                     "status": "success",
                     "data": {
@@ -623,7 +589,6 @@ class CompetitionOrganizer:
                     }
                 
                 result = competitor.submission_solution(problem_id, code, language)
-                # logger.error(f"submission_solution result: {result}")
                 return {
                     "status": "success",
                     "data": {
@@ -647,7 +612,6 @@ class CompetitionOrganizer:
                 }
             
             elif action_type == "terminate":
-                # logger.error(f"terminate action: {action}")
                 reason = action.get("parameters", {}).get("reason", "manual_termination")
                 competitor.terminate(reason)
                 return {

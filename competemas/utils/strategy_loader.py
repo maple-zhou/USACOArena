@@ -34,10 +34,8 @@ class StrategyLoader:
                 with open(self.data_path, 'r', encoding='utf-8') as f:
                     self.strategy_data = json.load(f)
             except Exception as e:
-                print(f"Error loading strategy: {e}")
                 self.strategy_data = {}
         else:
-            print(f"Strategy file not found: {self.data_path}")
             self.strategy_data = {}
     
     def get_core_philosophy(self) -> Dict[str, Any]:

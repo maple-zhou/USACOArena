@@ -33,8 +33,7 @@
       "level_1": 1000,
       "level_2": 1000,
       "level_3": 1500,
-      "level_4": 1500,
-      "level_5": 2000
+      "level_4": 1500
     },
     "submission_tokens": {
       "AC": 100,

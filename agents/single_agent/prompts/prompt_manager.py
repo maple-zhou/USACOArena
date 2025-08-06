@@ -34,7 +34,7 @@ class PromptSystem:
                 "problems": "## Available Problems\n{problems}\n\n",
                 "rankings": "## Current Rankings\n{rankings}\n\n",
                 "other_competitors": "## Other Competitors Status\n{other_competitors}\n\n",
-                "actions": "## Available Actions\n\n1. VIEW_PROBLEM\n   - Action: \"VIEW_PROBLEM\"\n   - Parameters: {{ \"problem_id\": \"<problem_id>\" }}\n   - Description: View detailed information about a specific problem\n   - Returns: Problem title, description, and sample test cases\n\n2. GET_HINT\n   - Action: \"GET_HINT\"\n   - Description: Get a hint for a problem (consumes tokens)\n   - Hint Levels:\n     0. Strategy ({level_0_cost} tokens):        \n        - NOTICE, you MUST give parameters as {{ \"hint_level\": 0 }}   \n        - Then I will provide you with competitive programming strategy and tips, which includes debugging checklist and contest strategy        \n\n     1. Problem Relevant Textbook Hint ({level_1_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 1 }}\n        - Then I will provide you with textbook content relevant to the problem_id you give, which explains theoretical concepts and knowledge\n\n     2. Knowledge Relevant Textbook Hint ({level_2_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 2 }}\n        - Then I will provide you with textbook content relevant to the hint_knowledge you give, which explains theoretical concepts and knowledge\n\n     3. Similar Problem Hint ({level_3_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 3 }}\n        - Then I will provide you with problems and solutions similar to the problem_id you give, which helps understand the problem type and basic approach\n\n     4. Knowledge Example Problem Hint ({level_4_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_difficulty\": \"<difficulty_level>\", \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 4 }}\n        - Choose problem_difficulty from Bronze, Silver, Gold, Platinum, Advanced and give the hint_knowledge you want to look up. Then I will provide you with example problems and solutions related to the knowledge points and the difficulty_level.\n\n     5. Comprehensive Hint ({level_5_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 5 }}\n        - Then I will provide you with both Problem Relevant Textbook Hint(level_1) and Similar Problem Hint(level_3)\n   - Returns: Hint content and token cost\n\n3. submission_SOLUTION\n   - Action: \"submission_SOLUTION\"\n   - Parameters: {{\n     \"problem_id\": \"<problem_id>\",\n     \"solution\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\"\n   }}\n   - Description: submission a solution for a problem (consumes tokens)\n   - Token Cost:\n     - Each submission consumes tokens based on the submission status\n     - Cost varies depending on whether the solution is accepted or rejected\n     - Default cost is 100 tokens if not specified in competition rules\n   - Returns: Submission status, score, and test case results\n\n4. TERMINATE\n   - Action: \"TERMINATE\"\n   - Parameters: {{ \"reason\": \"<reason>\" }}\n   - Description: End your participation in the competition and give your reason\n   - Returns: Final score and ranking\n\nPlease respond using the following JSON format:\n```json\n{{\n  \"action\": \"<action_name>\",\n  \"parameters\": {{\n    // Fill in parameters according to the action type\n  }}\n}}\n```\n"
+                "actions": "## Available Actions\n\n1. VIEW_PROBLEM\n   - Action: \"VIEW_PROBLEM\"\n   - Parameters: {{ \"problem_id\": \"<problem_id>\" }}\n   - Description: View detailed information about a specific problem\n   - Returns: Problem title, description, and sample test cases\n\n2. GET_HINT\n   - Action: \"GET_HINT\"\n   - Description: Get a hint for a problem (consumes tokens)\n   - Hint Levels:\n     0. Strategy ({level_0_cost} tokens):        \n        - NOTICE, you MUST give parameters as {{ \"hint_level\": 0 }}   \n        - Then I will provide you with competitive programming strategy and tips, which includes debugging checklist and contest strategy        \n\n     1. Problem Relevant Textbook Hint ({level_1_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 1 }}\n        - Then I will provide you with textbook content relevant to the problem_id you give, which explains theoretical concepts and knowledge\n\n     2. Knowledge Relevant Textbook Hint ({level_2_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 2 }}\n        - Then I will provide you with textbook content relevant to the hint_knowledge you give, which explains theoretical concepts and knowledge\n\n     3. Similar Problem Hint ({level_3_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 3 }}\n        - Then I will provide you with problems and solutions similar to the problem_id you give, which helps understand the problem type and basic approach\n\n     4. Knowledge Example Problem Hint ({level_4_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_difficulty\": \"<difficulty_level>\", \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 4 }}\n        - Choose problem_difficulty from Bronze, Silver, Gold, Platinum, Advanced and give the hint_knowledge you want to look up. Then I will provide you with example problems and solutions related to the knowledge points and the difficulty_level.\n\n3. submission_SOLUTION\n   - Action: \"submission_SOLUTION\"\n   - Parameters: {{\n     \"problem_id\": \"<problem_id>\",\n     \"solution\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\"\n   }}\n   - Description: submission a solution for a problem (consumes tokens)\n   - Token Cost:\n     - Each submission consumes tokens based on the submission status\n     - Cost varies depending on whether the solution is accepted or rejected\n     - Default cost is 100 tokens if not specified in competition rules\n   - Returns: Submission status, score, and test case results\n\n4. TERMINATE\n   - Action: \"TERMINATE\"\n   - Parameters: {{ \"reason\": \"<reason>\" }}\n   - Description: End your participation in the competition and give your reason\n   - Returns: Final score and ranking\n\nPlease respond using the following JSON format:\n```json\n{{\n  \"action\": \"<action_name>\",\n  \"parameters\": {{\n    // Fill in parameters according to the action type\n  }}\n}}\n```\n"
             },
             "action_result_template": {
                 "header": "# Last Action Result\n\n",
@@ -106,15 +106,11 @@ Important Notes:
     def create_state_prompt(self, state: Dict) -> str:
         """Create a prompt from the state"""
         state_template = self.config["state_template"]
-        # print(f"11111111111111111111create_state_prompt: {state}")
         
         # Competition details
         details = state["competition_details"]
         prompt = state_template["header"]
-        # prompt += state_template["competition"].format(
-        #     title=details.get("title", ""),
-        #     description=details.get("description", "")
-        # )
+
         
         # Competition rules
         rules = details.get("rules", {})
@@ -127,7 +123,7 @@ Important Notes:
         
         # Add programming language rules
         prompt += self._format_language_rules(rules)
-        # print(f"prompt: {prompt}")
+
         # Competitor state
         competitor = state["competitor_state"]
         
@@ -156,7 +152,7 @@ Important Notes:
                 f"- problem_id: {pid}, first_to_solve: {first_to_solve[i] or 'None'}"
                 for i, pid in enumerate(problem_ids)
             )
-            # logger.warning(f"666666666666problems: {problems}")
+
         else:
             # Handle the case where problems is a list of objects
             problems = "\n".join(
@@ -196,7 +192,7 @@ Important Notes:
         level_2_cost = hint_tokens.get("level_2", 300)
         level_3_cost = hint_tokens.get("level_3", 600)
         level_4_cost = hint_tokens.get("level_4", 1000)
-        # level_5_cost = hint_tokens.get("level_5", 1500)
+
 
         # Available actions with dynamic hint costs
         actions = state_template["actions"].format(
@@ -205,11 +201,9 @@ Important Notes:
             level_2_cost=level_2_cost,
             level_3_cost=level_3_cost,
             level_4_cost=level_4_cost,
-            # level_5_cost=level_5_cost
         )
         prompt += actions
         
-        # print(f"ffffffffstate_prompt: {actions}")  
         return prompt
     
     def _truncate_hint_content(self, content: str, max_length: int = 20000) -> str:
@@ -230,7 +224,6 @@ Important Notes:
 
     def create_action_result_prompt(self, last_action_result: Dict) -> str:
         """Create a prompt from the action result"""
-        # logger.warning(f"create_action_result_prompt: {last_action_result}")
         if not last_action_result:
             return ""
         
@@ -242,11 +235,9 @@ Important Notes:
             action = data["action"]
             action_result = data["action_result"]
             content = ""
-            # print(f"data: {data}")
             
             if "problem" in action_result:
                 problem = action_result["problem"]
-                # print(f"problem: {problem}")
                 cases = "\n".join(
                     f"Case {i+1}:\nInput:\n{case['input_data']}\nExpected Output:\n{case['expected_output']}\n"
                     for i, case in enumerate(problem.get("sample_cases", []))
@@ -256,12 +247,10 @@ Important Notes:
                     description=problem["description"],
                     cases=cases
                 )
-                # print(f"content: {content}")
             
             elif "hint_level" in action_result:
                 hint_content = action_result["hint_content"]
                 hint_level = action_result["hint_level"]
-                # print(f"hint_content type: {type(hint_content)}, value: {hint_content}")
                 
                 # Handle both string and dict formats for backward compatibility
                 if isinstance(hint_content, str):
@@ -299,9 +288,9 @@ Important Notes:
                             cost=action_result["tokens_cost"],
                             remaining=action_result["remaining_tokens"]
                         )
-                        # logger.warning(f"33333333333action_result_prompt: {content}")
+
                     
-                    # ✅
+                    
                     elif hint_level == 1:
                         # Problem relevant textbook hint
                         textbook_sections = ""
@@ -331,7 +320,7 @@ Important Notes:
                         )
                         
                     
-                    # ✅
+                    
                     elif hint_level == 2:
                         # Knowledge point relevant textbook hint
                         textbook_sections = ""
@@ -355,7 +344,7 @@ Important Notes:
                             remaining=action_result["remaining_tokens"]
                         )
                     
-                    # ✅
+                    
                     elif hint_level == 4:
                         # Knowledge point example problems hint
                         example_problems = ""
@@ -405,9 +394,7 @@ Important Notes:
                             cost=action_result["tokens_cost"],
                             remaining=action_result["remaining_tokens"]
                         )
-                        # logger.warning(f"444444444444action_result_prompt: {content}")
                     
-                    # ✅
                     elif hint_level == 0:
                         # Strategy hint
                         core_philosophy = hint_content.get("core_philosophy", "No strategy content available")
@@ -424,7 +411,7 @@ Important Notes:
                         )
                         
 
-                    # ✅
+                    
                     elif hint_level == 5:
                         # Comprehensive hint (combines level 1 and 3)
                         semantic_data = hint_content.get("semantic_data", {})
@@ -493,19 +480,17 @@ Important Notes:
                 )
             
             prompt += action_result_template["success"].format(action=action, content=content)
-            # print(f"action_result_prompt: {prompt}")
         
         else:
             prompt += action_result_template["error"].format(message=last_action_result["data"]["action_result"]["error"])
-            # print(f"action_result_prompt2222222222: {prompt}")
-        # logger.critical(f"00000000000000000action_result_prompt: {prompt}")
+
         return prompt
     
     def create_prompt(self, state: Dict) -> str:
         """Create a complete prompt from state and action result"""
         last_action_result = state.get("last_action_result")
         state_prompt = self.create_state_prompt(state)
-        # logger.error(f"66666666666666666666666PromptSystem: {state_prompt}")
+
         result_prompt = self.create_action_result_prompt(last_action_result) if last_action_result else ""
         
         prompt = state_prompt
@@ -514,7 +499,6 @@ Important Notes:
         
         prompt += "\nAnalyze the current situation, think about your strategy, and pay attention to the output token limit. Then respond with a JSON object containing 'action' and 'parameters' fields."
         
-        # logger.critical(f"11111111111111: {prompt}")
         return prompt
 
 
@@ -561,8 +545,8 @@ class ActionParser:
         }
     
     def _extract_json_smart(self, response: str) -> str:
-        """智能提取JSON，处理嵌套代码块问题"""
-        # 找到所有的```位置
+        """Intelligently extract JSON, handling nested code block issues"""
+        # Find all ``` positions
         backticks_positions = []
         i = 0
         while i < len(response):
@@ -572,19 +556,15 @@ class ActionParser:
             backticks_positions.append(pos)
             i = pos + 3
         
-        # print(f"Found {len(backticks_positions)} backticks at positions: {backticks_positions}")
-        
         if len(backticks_positions) < 2:
-            # 没有足够的```，直接返回整个响应
+            # Not enough ```, return the entire response
             return response
         
-        # 检查第二个```后是否跟着编程语言
+        # Check if the second ``` is followed by a programming language
         second_backtick_pos = backticks_positions[1]
         after_second = response[second_backtick_pos + 3:].strip()
         
-        # print(f"After second backtick: '{after_second[:50]}...'")
-        
-        # 检查是否跟着编程语言标识
+        # Check if followed by programming language identifier
         language_indicators = ['cpp', 'java', 'python', 'c++', 'javascript', 'js']
         matched_language = None
         for lang in language_indicators:
@@ -593,64 +573,47 @@ class ActionParser:
                 break
         has_language = matched_language is not None
         
-        # print(f"Has language indicator: {has_language}")
-        # if matched_language:
-        #     print(f"Matched language: '{matched_language}'")
-        
         if has_language and len(backticks_positions) >= 4:
-            # 有编程语言标识且有足够的```，匹配第一个到第四个```
-            start_pos = backticks_positions[0] + 3  # 跳过第一个```
-            end_pos = backticks_positions[3]  # 到第四个```开始位置
+            # Has language identifier and enough ```, match first to fourth ```
+            start_pos = backticks_positions[0] + 3  # Skip the first ```
+            end_pos = backticks_positions[3]  # To the start of fourth ```
             
-            # 提取内容并去除开头的语言标识符
+            # Extract content and remove language identifier at the beginning
             content = response[start_pos:end_pos].strip()
             
-            # 去除可能的json标识符
+            # Remove possible json identifier
             if content.lower().startswith('json'):
                 content = content[4:].strip()
             
-            # 删除嵌套的代码块标识符（```cpp、```等）
-            # 找到第二个```在content中的位置
+            # Remove nested code block identifiers (```cpp, ```, etc.)
+            # Find the second ``` position in content
             second_backtick_in_content = content.find('```')
             if second_backtick_in_content != -1:
-                # 找到第三个```的位置
+                # Find the third ``` position
                 third_backtick_in_content = content.find('```', second_backtick_in_content + 3)
                 if third_backtick_in_content != -1:
-                    # 删除第二个```到第三个```之间的内容（包括标识符）
+                    # Remove content between second and third ``` (including identifiers)
                     before_second = content[:second_backtick_in_content]
                     middle = content[second_backtick_in_content + 3 + len(matched_language):third_backtick_in_content]
                     after_third = content[third_backtick_in_content + 3:]
-                    # print(f"before_second: {before_second}")
-                    # print(f"middle: {middle}")
-                    # print(f"after_third: {after_third}")
-                    
-                    # 重新组合内容
+                    # Recombine content
                     content = before_second + middle + after_third
-                    # print(f"Removed nested code block markers (```cpp, ```), content: {content[:100]}...")
             
-            # print(f"Final extracted content: {content[:100]}...")
             return content
         else:
-            # 没有编程语言标识或```不够，使用原来的逻辑
+            # No language identifier or not enough ```, use original logic
             pattern = r"```(?:json)?\s*(.+?)\s*```"
             matches = re.findall(pattern, response, re.DOTALL)
             if matches:
                 json_str = matches[-1]
-                # print(f"Using traditional extraction: {json_str[:100]}...")
                 return json_str
             else:
-                # print("No JSON code block found, using full response")
                 return response
 
     def parse_action(self, response: str) -> Dict:
         """Parse the agent's response into an action"""
         try:
-            # logger.error(f"pasre_action response: {response}")
-            # Try to parse as JSON first
-            # 智能处理嵌套代码块：如果第二个```后跟着编程语言，则匹配第四个```
             json_str = self._extract_json_smart(response)
-
-            # print("json_str: ", json_str)
             action = json_repair.loads(json_str)
             if not isinstance(action, dict):
                 return {
@@ -675,7 +638,6 @@ class ActionParser:
                     }
                 }
         
-            # print("parse_action action: ", action)
             return action
             
         
@@ -684,46 +646,26 @@ class ActionParser:
             response = response.lower().strip()
             patterns = self.config["action_patterns"]
             
-            # Debug: 打印原始响应和转换后的响应
-            # print(f"=== DEBUG: Text Mode Matching ===")
-            # print(f"Original response: {response}")
-            # print(f"Lowercase response: {response}")
-            # print(f"Available patterns: {list(patterns.keys())}")
-            
             for action_type, pattern_config in patterns.items():
-                # print(f"\n--- Checking action_type: {action_type} ---")
-                # print(f"Pattern config: {pattern_config}")
-                
-                # Debug: 检查关键词匹配
+                    
                 keywords = pattern_config["patterns"]
-                # print(f"Checking keywords: {keywords}")
+
                 keyword_found = any(p in response for p in keywords)
-                # print(f"Keyword found: {keyword_found}")
                 
                 if keyword_found:
-                    # print(f"✅ Keywords matched for {action_type}")
                     
                     if pattern_config["regex"]:
                         regex_pattern = pattern_config["regex"]
-                        # print(f"Using regex: {regex_pattern}")
                         
                         match = re.search(regex_pattern, response, re.DOTALL)
-                        # print(f"Regex match result: {match}")
                         
                         if match:
-                            # print(f"✅ Regex matched for {action_type}")
-                            # print(f"Match groups: {match.groups()}")
-                            # print(f"Match group(0): {match.group(0)}")
-                            
-                            # for i, group in enumerate(match.groups(), 1):
-                            #     # print(f"Match group({i}): '{group}'")
                             
                             if action_type == "view_problem":
                                 result = {
                                     "action": "VIEW_PROBLEM",
                                     "parameters": {"problem_id": match.group(1)}
                                 }
-                                # print(f"Returning view_problem result: {result}")
                                 return result
                                 
                             elif action_type == "get_hint":
@@ -735,7 +677,6 @@ class ActionParser:
                                         "hint_knowledge": match.group(3)
                                     }
                                 }
-                                # print(f"Returning get_hint result: {result}")
                                 return result
                                 
                             elif action_type == "submission_solution":
@@ -747,17 +688,14 @@ class ActionParser:
                                         "language": match.group(3).lower()
                                     }
                                 }
-                                # print(f"Returning submission_solution result: {result}")
                                 return result
                     else:
-                        # print(f"No regex defined for {action_type}, using simple action
                         
                         if action_type == "view_rankings":
                             result = {
                                 "action": "VIEW_RANKINGS",
                                 "parameters": {}
                             }
-                            # print(f"Returning view_rankings result: {result}")
                             return result
                             
                         elif action_type == "terminate":
@@ -765,11 +703,9 @@ class ActionParser:
                                 "action": "TERMINATE",
                                 "parameters": {}
                             }
-                            # print(f"Returning terminate result: {result}")
                             return result
             
-            # print(f"\n=== DEBUG: No action pattern matched ===")
-            # print(f"Could not parse action from response: {response}")
+    
             raise ValueError("Could not parse action from response")
 
 

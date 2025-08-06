@@ -3,6 +3,8 @@ import json
 import os
 from typing import Dict, List, Optional, Any
 
+from scripts.competitors import logger
+
 class TextbookLoader:
     """Load and search textbook content"""
     
@@ -34,10 +36,10 @@ class TextbookLoader:
                 with open(self.data_path, 'r', encoding='utf-8') as f:
                     self.textbook_data = json.load(f)
             except Exception as e:
-                print(f"Error loading textbook: {e}")
+                logger.error(f"Error loading textbook: {e}")
                 self.textbook_data = []
         else:
-            print(f"Textbook file not found: {self.data_path}")
+            logger.error(f"Textbook file not found: {self.data_path}")
             self.textbook_data = []
     
     def search_content(self, query: str, max_results: int = 5) -> List[Dict[str, Any]]:
@@ -71,10 +73,10 @@ class TextbookLoader:
             return results
             
         except ImportError:
-            print("BM25 library not available, falling back to simple search")
+            logger.error("BM25 library not available, falling back to simple search")
             return self._simple_search_content(query, max_results)
         except Exception as e:
-            print(f"Error in BM25 search: {e}")
+            logger.error(f"Error in BM25 search: {e}")
             return self._simple_search_content(query, max_results)
     
     def search_title(self, query: str, max_results: int = 5) -> List[Dict[str, Any]]:
@@ -108,10 +110,10 @@ class TextbookLoader:
             return results
             
         except ImportError:
-            print("BM25 library not available, falling back to simple search")
+            logger.error("BM25 library not available, falling back to simple search")
             return self._simple_search_title(query, max_results)
         except Exception as e:
-            print(f"Error in BM25 search: {e}")
+            logger.error(f"Error in BM25 search: {e}")
             return self._simple_search_title(query, max_results)
     
     def search(self, query: str, max_results: int = 5) -> List[Dict[str, Any]]:
