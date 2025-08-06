@@ -38,7 +38,7 @@ done
 echo "Starting competition loop, total runs: $N"
 echo "=================================="
 
-# Create log directory
+# Create log dir
 mkdir -p logs/competition_loops
 timestamp=$(date +"%Y%m%d_%H%M%S")
 log_file="logs/competition_loops/loop_${timestamp}.log"

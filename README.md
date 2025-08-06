@@ -30,7 +30,7 @@ CompeteMAS is a comprehensive Online Judge (OJ) system designed to evaluate the 
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/maple-zhou/CodingBench.git
 cd CompeteMAS
 ```
 
@@ -111,110 +111,49 @@ curl -X POST "http://localhost:9000/2015-03-31/functions/function/invocations" \
 
 **Important**: Make sure the online judge is running on port 9000 before starting CompeteMAS competitions.
 
-## 🏗️ Architecture
-
-CompeteMAS adopts a modular design that achieves clear separation between **core framework** and **user-defined content**:
-
-```
-CompeteMAS/
-├── 🏗️ Core Framework Package (competemas/)
-│   ├── models/                   # Data model definitions
-│   │   ├── models.py            # Core data models
-│   │   └── agent.py             # Agent base class
-│   ├── engine/                  # Core business logic
-│   │   ├── storage.py           # DuckDB storage system
-│   │   └── judge.py             # Code evaluation system
-│   ├── server/                  # REST API Service
-│   │   └── server.py            # Flask API server
-│   ├── utils/                   # Utility modules
-│   │   ├── problem_loader.py    # USACO problem loader
-│   │   ├── textbook_loader.py   # Textbook content loader
-│   │   ├── strategy_loader.py   # Strategy content loader
-│   │   ├── usacoguide_loader.py # USACO guide loader
-│   │   └── logger_config.py     # Logging configuration
-│   └── main.py                  # Framework main entry
-├── 🛠️ User Custom Scripts (scripts/)
-│   ├── run_competition.py       # Competition run main script
-│   ├── competition_organizer.py # Competition organization logic
-│   └── competitors.py           # Competitor management
-├── 🤖 Agent Implementations (agents/)
-│   └── single_agent/            # Single agent implementation
-│       ├── single_agent.py      # Generic API agent
-│       └── prompts/             # Prompt templates
-│           └── prompt_manager.py # Prompt management system
-├── ⚙️ Configuration (config/)
-│   ├── competition_config.json  # Competition configuration
-│   ├── competitors_config.json  # Participants configuration
-│   ├── problems.json           # Problem lists
-│   └── server_config.json      # Server configuration
-├── 📊 Data storage (data/)
-├── 📝 Logs (logs/)
-└── 🧪 Tests (tests/)
-```
-
-### Modular Design Advantages
-
-#### 1. Clear Separation of Responsibilities
-- **Core Framework** (`competemas/`) - Stable business logic and infrastructure
-- **User Scripts** (`scripts/`) - Customizable competition execution and management
-- **Agent Implementations** (`agents/`) - LLM agent implementations
-- **Configuration** (`config/`) - Configuration files and templates
-
-#### 2. Agent Interface Design
-The system uses a flexible agent interface for loose coupling:
-
-```python
-# competemas/models/agent.py
-class Agent(ABC):
-    @abstractmethod
-    async def generate_response(self, messages: List[Dict], **kwargs) -> Tuple[str, Dict]:
-        """Generate response from LLM"""
-        pass
-```
-
-#### 3. Performance Optimization
-- **Storage Optimization**: DuckDB database for high-performance analytics
-- **Dynamic Loading**: Test cases loaded on-demand from file system
-- **Modular Architecture**: Supports parallel development, easy to maintain and extend
-
 ## 🎯 Usage
 
 ### Quick Start
 
-#### 1. Start API Server
+Here are three different ways to run a competition:
+
+#### Method 1: Manual Control (Two Terminals)
 ```bash
-# Method 1: Using module entry point (recommended)
-python -m competemas.main --host 0.0.0.0 --port 5000
+# Terminal 1: Start the API server
+python -m competemas.main --port 5000 --debug
 
-# Method 2: Using shell command (after uv sync)
-competition_server --port 5000
-
-# Method 3: Using configuration file
-python -m competemas.main --config config/server_config.json
-
-# Method 4: With debug mode
-python -m competemas.main --debug --log-level DEBUG
-
-# Method 5: Custom port and host
-python -m competemas.main --host 127.0.0.1 --port 8080
-
-# Method 6: Direct execution
-cd competemas
-python main.py --debug
+# Terminal 2: Run a competition
+python scripts/run_competition.py \
+    --competition-title "Test Competition" \
+    --max-tokens-per-participant 50000 \
+    --port 5000
 ```
 
-**Available server options:**
-- `--config`: Path to server configuration file (default: `config/server_config.json`)
-- `--host`: Host to bind the API server (default: `0.0.0.0`)
-- `--port`: Port to bind the API server (default: `5000`)
-- `--debug`: Enable debug mode
-- `--log-level`: Override log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-- `--log-dir`: Override log directory
-- `--oj-endpoint`: Override online judge endpoint
-- `--db-path`: Override database path
+#### Method 2: Shell Commands (Single Terminal)
+```bash
+# Start server in background
+competition_server --port 5000 &
 
-#### 2. Configure Participants
+# Run competition
+competition_run --competition-title "Test Competition" --max-tokens-per-participant 50000
+
+# Stop server when done
+pkill -f competition_server
+```
+
+#### Method 3: Automated Loop (Multiple Rounds)
+```bash
+# Run 5 competitions automatically
+./run_competition_loop.sh 5 \
+    --server-args "--port 5000 --debug" \
+    --client-args "--competition-title 'Test Competition' --max-tokens-per-participant 50000"
+```
+
+### Configuration
+
+#### 1. Configure Participants
 Edit `config/competitors_config.json`:
+
 ```json
 {
   "competitors": [
@@ -229,38 +168,19 @@ Edit `config/competitors_config.json`:
 }
 ```
 
-#### 3. Run Competition
-```bash
-# Method 1: Basic competition run
-python scripts/run_competition.py
+#### 2. Available Options
 
-# Method 2: Using shell command (after uv sync)
-competition_run
+**Server Options:**
+- `--config`: Path to server configuration file (default: `config/server_config.json`)
+- `--host`: Host to bind the API server (default: `0.0.0.0`)
+- `--port`: Port to bind the API server (default: `5000`)
+- `--debug`: Enable debug mode
+- `--log-level`: Override log level (`DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`)
+- `--log-dir`: Override log directory
+- `--oj-endpoint`: Override online judge endpoint
+- `--db-path`: Override database path
 
-# Method 3: With custom configuration files
-python scripts/run_competition.py \
-    --competition-config config/competition_config.json \
-    --competitors-config config/competitors_config.json \
-    --problem-ids config/problems.json
-
-# Method 4: With custom API base URL
-python scripts/run_competition.py \
-    --api-base http://localhost:5000
-
-# Method 5: With custom port
-python scripts/run_competition.py \
-    --port 5000
-
-# Method 6: With token limits
-python scripts/run_competition.py \
-    --max-tokens-per-participant 100000
-
-# Method 7: With custom competition title
-python scripts/run_competition.py \
-    --competition-title "My Custom Competition"
-```
-
-**Available competition options:**
+**Competition Options:**
 - `--competition-config`: Path to competition configuration (default: `config/competition_config.json`)
 - `--competitors-config`: Path to competitors configuration (default: `config/competitors_config.json`)
 - `--problem-ids`: Path to problem IDs configuration (default: `config/problems.json`)
@@ -321,43 +241,8 @@ curl http://localhost:5000/api/competitions/{competition_id}/participants/{parti
 
 **Note**: Replace `{competition_id}` and `{participant_id}` with actual IDs from your competition.
 
-### Complete Example
+### Monitor Results
 
-Here's a complete example of running a competition:
-
-#### Method 1: Manual Control (Two Terminals)
-```bash
-# Terminal 1: Start the API server
-python -m competemas.main --port 5000 --debug
-
-# Terminal 2: Run a competition
-python scripts/run_competition.py \
-    --competition-title "Test Competition" \
-    --max-tokens-per-participant 50000 \
-    --port 5000
-```
-
-#### Method 2: Shell Commands (Single Terminal)
-```bash
-# Start server in background
-competition_server --port 5000 &
-
-# Run competition
-competition_run --competition-title "Test Competition" --max-tokens-per-participant 50000
-
-# Stop server when done
-pkill -f competition_server
-```
-
-#### Method 3: Automated Loop (Multiple Rounds)
-```bash
-# Run 5 competitions automatically
-./run_competition_loop.sh 5 \
-    --server-args "--port 5000 --debug" \
-    --client-args "--competition-title 'Test Competition' --max-tokens-per-participant 50000"
-```
-
-#### 4. Monitor Results
 ```bash
 # Check competition status via API
 curl http://localhost:5000/api/competitions
@@ -470,25 +355,71 @@ python json_to_csv_converter.py results.json results.csv
 ./convert_all_json_to_csv.sh
 ```
 
-## 🔧 Development
+## 🏗️ Architecture
 
-### Setup Development Environment
-```bash
-# Install development dependencies
-uv sync --extra dev
+CompeteMAS adopts a modular design that achieves clear separation between **core framework** and **user-defined content**:
 
-# Run tests
-uv run pytest
-
-# Format code
-uv run black competemas/ scripts/ agents/ tests/
-
-# Lint code
-uv run ruff check competemas/ scripts/ agents/ tests/
-
-# Type checking
-uv run mypy competemas/
 ```
+CompeteMAS/
+├── 🏗️ Core Framework Package (competemas/)
+│   ├── models/                   # Data model definitions
+│   │   ├── models.py            # Core data models
+│   │   └── agent.py             # Agent base class
+│   ├── engine/                  # Core business logic
+│   │   ├── storage.py           # DuckDB storage system
+│   │   └── judge.py             # Code evaluation system
+│   ├── server/                  # REST API Service
+│   │   └── server.py            # Flask API server
+│   ├── utils/                   # Utility modules
+│   │   ├── problem_loader.py    # USACO problem loader
+│   │   ├── textbook_loader.py   # Textbook content loader
+│   │   ├── strategy_loader.py   # Strategy content loader
+│   │   ├── usacoguide_loader.py # USACO guide loader
+│   │   └── logger_config.py     # Logging configuration
+│   └── main.py                  # Framework main entry
+├── 🛠️ User Custom Scripts (scripts/)
+│   ├── run_competition.py       # Competition run main script
+│   ├── competition_organizer.py # Competition organization logic
+│   └── competitors.py           # Competitor management
+├── 🤖 Agent Implementations (agents/)
+│   └── single_agent/            # Single agent implementation
+│       ├── single_agent.py      # Generic API agent
+│       └── prompts/             # Prompt templates
+│           └── prompt_manager.py # Prompt management system
+├── ⚙️ Configuration (config/)
+│   ├── competition_config.json  # Competition configuration
+│   ├── competitors_config.json  # Participants configuration
+│   ├── problems.json           # Problem lists
+│   └── server_config.json      # Server configuration
+├── 📊 Data storage (data/)
+├── 📝 Logs (logs/)
+└── 🧪 Tests (tests/)
+```
+
+### Modular Design Advantages
+
+#### 1. Clear Separation of Responsibilities
+- **Core Framework** (`competemas/`) - Stable business logic and infrastructure
+- **User Scripts** (`scripts/`) - Customizable competition execution and management
+- **Agent Implementations** (`agents/`) - LLM agent implementations
+- **Configuration** (`config/`) - Configuration files and templates
+
+#### 2. Agent Interface Design
+The system uses a flexible agent interface for loose coupling:
+
+```python
+# competemas/models/agent.py
+class Agent(ABC):
+    @abstractmethod
+    async def generate_response(self, messages: List[Dict], **kwargs) -> Tuple[str, Dict]:
+        """Generate response from LLM"""
+        pass
+```
+
+#### 3. Performance Optimization
+- **Storage Optimization**: DuckDB database for high-performance analytics
+- **Dynamic Loading**: Test cases loaded on-demand from file system
+- **Modular Architecture**: Supports parallel development, easy to maintain and extend
 
 ### Project Structure Details
 

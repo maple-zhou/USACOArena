@@ -12,7 +12,7 @@ ENV/
 # uv
 .uv/
 
-# Distribution / packaging
+# Distribution
 build/
 develop-eggs/
 dist/
