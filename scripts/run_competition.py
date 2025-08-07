@@ -34,8 +34,18 @@ def setup_logging_from_config(competiton_config,competitors_config,problem_ids):
     if "max_tokens_per_participant" in competiton_config and competiton_config["max_tokens_per_participant"] != 10000000:
         max_tokens_per_participant = competiton_config["max_tokens_per_participant"]
         log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_limit{max_tokens_per_participant}_{timestamp}")
+
+    elif "rules" in competiton_config and "submission_tokens" in competiton_config["rules"]:
+        submission_tokens = competiton_config["rules"]["submission_tokens"]["AC"]
+
+        if submission_tokens != 100:
+            log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_sub{submission_tokens}_{timestamp}")
+        else:
+            log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_{timestamp}")
+
     else:
         log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_{timestamp}")
+
     
     os.makedirs(log_dir, exist_ok=True)
     
