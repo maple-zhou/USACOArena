@@ -35,13 +35,30 @@ def setup_logging_from_config(competiton_config,competitors_config,problem_ids):
         max_tokens_per_participant = competiton_config["max_tokens_per_participant"]
         log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_limit{max_tokens_per_participant}_{timestamp}")
 
-    elif "rules" in competiton_config and "submission_tokens" in competiton_config["rules"]:
+    elif "rules" in competiton_config and "submission_tokens" in competiton_config["rules"] and "AC" in competiton_config["rules"]["submission_tokens"] and competiton_config["rules"]["submission_tokens"]["AC"] != 100:
         submission_tokens = competiton_config["rules"]["submission_tokens"]["AC"]
 
-        if submission_tokens != 100:
-            log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_sub{submission_tokens}_{timestamp}")
-        else:
-            log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_{timestamp}")
+        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_sub{submission_tokens}_{timestamp}")
+    
+    elif "rules" in competiton_config and "penalties" in competiton_config["rules"] and "CE" in competiton_config["rules"]["penalties"] and competiton_config["rules"]["penalties"]["CE"] != 5:
+        penalties = competiton_config["rules"]["penalties"]["CE"]
+        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_pena{penalties}_{timestamp}")
+    
+    elif "rules" in competiton_config and "bonus_for_first_ac" in competiton_config["rules"] and competiton_config["rules"]["bonus_for_first_ac"] != 100:
+        bonus_for_first_ac = competiton_config["rules"]["bonus_for_first_ac"]
+        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_bonus{bonus_for_first_ac}_{timestamp}")
+
+    elif "rules" in competiton_config and "hint_tokens" in competiton_config["rules"] and "level_0" in competiton_config["rules"]["hint_tokens"] and competiton_config["rules"]["hint_tokens"]["level_0"] != 500:
+        hint_tokens = competiton_config["rules"]["hint_tokens"]["level_0"]
+        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_hint{hint_tokens}_{timestamp}")
+
+    elif "rules" in competiton_config and "scoring" in competiton_config["rules"] and "bronze" in competiton_config["rules"]["scoring"] and competiton_config["rules"]["scoring"]["bronze"] == 10000:
+        bronze_score = competiton_config["rules"]["scoring"]["bronze"]
+        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_bronze{bronze_score}_{timestamp}")
+    
+    elif "rules" in competiton_config and "scoring" in competiton_config["rules"] and "platinum" in competiton_config["rules"]["scoring"] and competiton_config["rules"]["scoring"]["platinum"] == 10000:
+        platinum_score = competiton_config["rules"]["scoring"]["platinum"]
+        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_platinum{platinum_score}_{timestamp}")
 
     else:
         log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_{timestamp}")
@@ -68,45 +85,6 @@ def load_config(config_path: str) -> Dict:
     except Exception as e:
         logger.error(f"Unexpected error loading configuration file {config_path}: {str(e)}")
         raise
-
-def create_sample_problems() -> List[Dict]:
-    """Create sample problems for the competition"""
-    return [
-        {
-            "id": "sum_two_numbers",
-            "title": "Sum of Two Numbers",
-            "description": "Write a program that reads two integers from standard input and outputs their sum.",
-            "difficulty": "bronze",
-            "sample_cases": [
-                {
-                    "input": "5 7",
-                    "output": "12"
-                },
-                {
-                    "input": "10 -3",
-                    "output": "7"
-                }
-            ],
-            "constraints": "1 <= a, b <= 1000"
-        },
-        {
-            "id": "fibonacci",
-            "title": "Fibonacci Sequence",
-            "description": "Write a program that reads an integer n from standard input and outputs the nth Fibonacci number.",
-            "difficulty": "silver",
-            "sample_cases": [
-                {
-                    "input": "5",
-                    "output": "5"
-                },
-                {
-                    "input": "10",
-                    "output": "55"
-                }
-            ],
-            "constraints": "0 <= n <= 45"
-        }
-    ]
 
 def create_competitors(competitors_config: Dict, competition_config: Dict, log_dir: Optional[str] = None) -> List[Competitor]:
     """Create competitors based on configuration"""
@@ -176,18 +154,43 @@ def log_competition_results(results: Dict, competition_id: str):
             # Token usage information
             result_lines.append(f"  Token Usage:")
             result_lines.append(f"    LLM Tokens: {data.get('LLM_tokens', 0)}")
+            result_lines.append(f"    LLM Inference Count: {data.get('llm_inference_count', 0)}")
             result_lines.append(f"    Hint Tokens: {data.get('hint_tokens', 0)}")
             result_lines.append(f"    Submission Tokens: {data.get('submission_tokens', 0)}")
             result_lines.append(f"    Total Used: {data.get('LLM_tokens', 0) + data.get('hint_tokens', 0) + data.get('submission_tokens', 0)}")
             result_lines.append(f"    Limit: {data.get('limit_tokens', 0)}")
             result_lines.append(f"    Remaining: {data.get('remaining_tokens', 0)}")
-            
+
+            # Scoring breakdown
+            result_lines.append(f"  Scoring Breakdown:")
+            result_lines.append(f"    Bronze Score: {data.get('bronze_score', 0)}")
+            result_lines.append(f"    Silver Score: {data.get('silver_score', 0)}")
+            result_lines.append(f"    Gold Score: {data.get('gold_score', 0)}")
+            result_lines.append(f"    Platinum Score: {data.get('platinum_score', 0)}")
+            result_lines.append(f"    First AC Bonus: {data.get('bonus_score', 0)}")
+            result_lines.append(f"    Total First AC Score: {data.get('first_ac_score', 0)}")
+            result_lines.append(f"    Problem Score: {data.get('problem_score', 0)}")
+
             # Submission statistics
             result_lines.append(f"  Submission Statistics:")
             result_lines.append(f"    Total Submissions: {data.get('submission_count', 0)}")
             result_lines.append(f"    Accepted Submissions: {data.get('accepted_count', 0)}")
             result_lines.append(f"    Submission Penalty: {data.get('submission_penalty', 0)}")
             result_lines.append(f"    Problem Pass Score: {data.get('problem_pass_score', 0)}")
+
+            # Per-problem statistics
+            problem_stats = data.get('problem_stats', {})
+            if problem_stats:
+                result_lines.append(f"  Per-Problem Statistics:")
+                result_lines.append(f"    Problems Attempted: {len(problem_stats)}")
+                solved_problems = sum(1 for stats in problem_stats.values() if stats.get('solved', False))
+                result_lines.append(f"    Problems Solved: {solved_problems}")
+                total_problem_submissions = sum(stats.get('submission_count', 0) for stats in problem_stats.values())
+                result_lines.append(f"    Total Problem Submissions: {total_problem_submissions}")
+                problems_first_ac = sum(1 for stats in problem_stats.values() if stats.get('is_first_ac', False))
+                result_lines.append(f"    Problems First AC: {problems_first_ac}")
+                total_problem_penalty = sum(stats.get('penalty', 0) for stats in problem_stats.values())
+                result_lines.append(f"    Total Problem Penalty: {total_problem_penalty}")
             
             # Solved problems
             solved_problems = data.get('solved_problems', [])
@@ -288,40 +291,37 @@ async def main():
     try:
         # Parse command line arguments
         parser = argparse.ArgumentParser(description='Run an LLM competition')
+        
+        parser.add_argument('--api-base',
+                          default='http://localhost',
+                          help='API base URL for the competition')
+        parser.add_argument('--port',
+                          default=5000,
+                          help='Port for the competition')
+        
+        parser.add_argument('--competition-title',
+                          default='Programming Competition 2025',
+                          help='Title of the competition')
+        parser.add_argument('--competition-description',
+                          default='A competition to test coding abilities in solving programming problems',
+                          help='Description of the competition')
+        
         parser.add_argument('--competition-config', 
                           default='config/competition_config.json',
                           help='Path to competition configuration file')
-        parser.add_argument('--api-base',
-                          default='http://localhost:5000',
-                          help='API base URL for the competition')
-        parser.add_argument('--port',
-                        #   default=5000,
-                          help='Port for the competition')
-        parser.add_argument('--competition-title',
-                          default='MAS Programming Competition 2025',
-                          help='Title of the competition')
-        parser.add_argument('--competition-description',
-                          default='A competition to test MAS coding abilities in solving programming problems',
-                          help='Description of the competition')
-        parser.add_argument('--max-tokens-per-participant',
-                        #   default=10000000,
-                          help='Maximum tokens per participant')
+        parser.add_argument('--competitors-config',
+                          default='config/10llm.json',
+                          help='Path to competitors configuration file')
+        parser.add_argument('--problem-ids',
+                          default='config/2025problems67.json',
+                          help='Path to problem IDs configuration file')
+        
         parser.add_argument('--log-level',
                           default='INFO',
                           help='Log level')
         parser.add_argument('--log-dir',
                           default='logs/run_logs',
                           help='Log directory')
-
-
-        parser.add_argument('--competitors-config',
-                          default='config/competitors_config.json',
-                          help='Path to competitors configuration file')
-
-
-        parser.add_argument('--problem-ids',
-                          default='config/problems.json',
-                          help='Path to problem IDs configuration file')
 
 
         args = parser.parse_args()
@@ -338,17 +338,18 @@ async def main():
         if args.api_base:
             competition_config["api_base"] = args.api_base
         if args.port:
-            competition_config["api_base"] = f"http://localhost:{args.port}"
+            competition_config["api_base"] = f"{args.api_base}:{args.port}"
+        
         if args.competition_title:
             competition_config["competition_title"] = args.competition_title
         if args.competition_description:
             competition_config["competition_description"] = args.competition_description
+        
         if args.log_level:
             competition_config["log_level"] = args.log_level
         if args.log_dir:
             competition_config["log_dir"] = args.log_dir
-        if args.max_tokens_per_participant:
-            competition_config["max_tokens_per_participant"] = args.max_tokens_per_participant
+
 
         log_dir = setup_logging_from_config(competition_config,args.competitors_config,args.problem_ids)
 
@@ -419,4 +420,4 @@ def main_sync():
 
 if __name__ == "__main__":
     
-    main_sync() 
+    main_sync()

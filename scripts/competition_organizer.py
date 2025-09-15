@@ -265,7 +265,20 @@ class CompetitionOrganizer:
                 # Add safety check for participant state
                 participant_state = competitor.get_participant_state()
                 if participant_state:
-                    logger.warning(f"\nAfter LLM call:\n Name:{participant_state.get('name', 'unknown')}\n LLM_tokens:{participant_state.get('LLM_tokens', 0)}\n hint_tokens:{participant_state.get('hint_tokens', 0)}\n submission_tokens:{participant_state.get('submission_tokens', 0)}\n remaining_tokens:{participant_state.get('remaining_tokens', 0)}\n submission_count:{participant_state.get('submission_count', 0)}\n accepted_count:{participant_state.get('accepted_count', 0)}\n submission_penalty:{participant_state.get('submission_penalty', 0)}\n problem_pass_score:{participant_state.get('problem_pass_score', 0)}\n score:{participant_state.get('score', 0)}\n is_running:{participant_state.get('is_running', True)}\n termination_reason:{participant_state.get('termination_reason', 'unknown')}")
+                    logger.warning(f"\nAfter LLM call:\
+                        \n Name:{participant_state.get('name', 'unknown')}\
+                        \n LLM_tokens:{participant_state.get('LLM_tokens', 0)}\
+                        \n llm_inference_count:{participant_state.get('llm_inference_count', 0)}\
+                        \n hint_tokens:{participant_state.get('hint_tokens', 0)}\
+                        \n submission_tokens:{participant_state.get('submission_tokens', 0)}\
+                        \n remaining_tokens:{participant_state.get('remaining_tokens', 0)}\
+                        \n submission_count:{participant_state.get('submission_count', 0)}\
+                        \n accepted_count:{participant_state.get('accepted_count', 0)}\
+                        \n submission_penalty:{participant_state.get('submission_penalty', 0)}\
+                        \n problem_pass_score:{participant_state.get('problem_pass_score', 0)}\
+                        \n score:{participant_state.get('score', 0)}\
+                        \n is_running:{participant_state.get('is_running', True)}\
+                        \n termination_reason:{participant_state.get('termination_reason', 'unknown')}")
                 else:
                     logger.warning(f"After LLM call: Failed to get participant state for {competitor.name}")
 
@@ -282,7 +295,20 @@ class CompetitionOrganizer:
                 # Add safety check for participant state after action
                 participant_state_after = competitor.get_participant_state()
                 if participant_state_after:
-                    logger.warning(f"\nAfter action_result:\n Name:{participant_state_after.get('name', 'unknown')}\n LLM_tokens:{participant_state_after.get('LLM_tokens', 0)}\n hint_tokens:{participant_state_after.get('hint_tokens', 0)}\n submission_tokens:{participant_state_after.get('submission_tokens', 0)}\n remaining_tokens:{participant_state_after.get('remaining_tokens', 0)}\n submission_count:{participant_state_after.get('submission_count', 0)}\n accepted_count:{participant_state_after.get('accepted_count', 0)}\n submission_penalty:{participant_state_after.get('submission_penalty', 0)}\n problem_pass_score:{participant_state_after.get('problem_pass_score', 0)}\n score:{participant_state_after.get('score', 0)}\n is_running:{participant_state_after.get('is_running', True)}\n termination_reason:{participant_state_after.get('termination_reason', 'unknown')}")
+                    logger.warning(f"\nAfter action_result:\
+                        \n Name:{participant_state_after.get('name', 'unknown')}\
+                        \n LLM_tokens:{participant_state_after.get('LLM_tokens', 0)}\
+                        \n llm_inference_count:{participant_state_after.get('llm_inference_count', 0)}\
+                        \n hint_tokens:{participant_state_after.get('hint_tokens', 0)}\
+                        \n submission_tokens:{participant_state_after.get('submission_tokens', 0)}\
+                        \n remaining_tokens:{participant_state_after.get('remaining_tokens', 0)}\
+                        \n submission_count:{participant_state_after.get('submission_count', 0)}\
+                        \n accepted_count:{participant_state_after.get('accepted_count', 0)}\
+                        \n submission_penalty:{participant_state_after.get('submission_penalty', 0)}\
+                        \n problem_pass_score:{participant_state_after.get('problem_pass_score', 0)}\
+                        \n score:{participant_state_after.get('score', 0)}\
+                        \n is_running:{participant_state_after.get('is_running', True)}\
+                        \n termination_reason:{participant_state_after.get('termination_reason', 'unknown')}")
                 else:
                     logger.warning(f"After action_result: Failed to get participant state for {competitor.name}")
 
@@ -346,22 +372,34 @@ class CompetitionOrganizer:
         
         # Save results to file
         results = {
-            "participant_id": final_state["id"],
-            "competition_id": final_state["competition_id"],
-            "name": final_state["name"],
-            "LLM_tokens": final_state["LLM_tokens"],
-            "hint_tokens": final_state["hint_tokens"],
-            "submission_tokens": final_state["submission_tokens"],
-            "limit_tokens": final_state["limit_tokens"],
-            "remaining_tokens": final_state["remaining_tokens"],
-            "submission_count": final_state["submission_count"],
-            "accepted_count": final_state["accepted_count"],
-            "submission_penalty": final_state["submission_penalty"],
-            "problem_pass_score": final_state["problem_pass_score"],
-            "score": final_state["score"],
-            "is_running": final_state["is_running"],
-            "termination_reason": final_state["termination_reason"],
-            "solved_problems": final_state["solved_problems"]
+            "participant_id": final_state.get("id", "unknown"),
+            "competition_id": final_state.get("competition_id", "unknown"),
+            "name": final_state.get("name", "unknown"),
+            "LLM_tokens": final_state.get("LLM_tokens", 0),
+            "hint_tokens": final_state.get("hint_tokens", 0),
+            "submission_tokens": final_state.get("submission_tokens", 0),
+            "limit_tokens": final_state.get("limit_tokens", 0),
+            "remaining_tokens": final_state.get("remaining_tokens", 0),
+            "submission_count": final_state.get("submission_count", 0),
+            "accepted_count": final_state.get("accepted_count", 0),
+            "submission_penalty": final_state.get("submission_penalty", 0),
+            "problem_pass_score": final_state.get("problem_pass_score", 0),
+            "score": final_state.get("score", 0),
+            "is_running": final_state.get("is_running", False),
+            "termination_reason": final_state.get("termination_reason", "unknown"),
+            "solved_problems": final_state.get("solved_problems", []),
+
+            "llm_inference_count": final_state.get("llm_inference_count", 0),
+            "first_ac_score": final_state.get("first_ac_score", 0),
+            "problem_score": final_state.get("problem_score", 0),
+            "bronze_score": final_state.get("bronze_score", 0),
+            "silver_score": final_state.get("silver_score", 0),
+            "gold_score": final_state.get("gold_score", 0),
+            "platinum_score": final_state.get("platinum_score", 0),
+            "bonus_score": final_state.get("bonus_score", 0),
+            **final_state.get("problem_stats", {}),
+
+            **self.competition_data.get("rules", {}),
         }
         
         # Create results directory if it doesn't exist

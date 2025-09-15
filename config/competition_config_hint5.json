@@ -1,7 +1,7 @@
 {
   "api_base": "http://localhost:5000",
-  "competition_title": "Programming Competition 2025",
-  "competition_description": "A competition to test coding abilities in solving programming problems",
+  "competition_title": "MAS Programming Competition 2025",
+  "competition_description": "A competition to test MAS coding abilities in solving programming problems",
   "log": {
     "level": "INFO",
     "dir": "logs/run_logs",
@@ -29,11 +29,11 @@
       "MLE": 10
     },
     "hint_tokens": {
-      "level_0": 500,
-      "level_1": 1000,
-      "level_2": 1000,
-      "level_3": 1500,
-      "level_4": 1500
+      "level_0": 5,
+      "level_1": 10,
+      "level_2": 10,
+      "level_3": 15,
+      "level_4": 15
     },
     "submission_tokens": {
       "AC": 100,

@@ -1,7 +1,7 @@
 {
   "api_base": "http://localhost:5000",
-  "competition_title": "Programming Competition 2025",
-  "competition_description": "A competition to test coding abilities in solving programming problems",
+  "competition_title": "MAS Programming Competition 2025",
+  "competition_description": "A competition to test MAS coding abilities in solving programming problems",
   "log": {
     "level": "INFO",
     "dir": "logs/run_logs",
@@ -19,7 +19,7 @@
       "gold": 500,
       "platinum": 1000
     },
-    "bonus_for_first_ac": 100,
+    "bonus_for_first_ac": 1,
     "penalties": {
       "AC": 0,
       "WA": 10,

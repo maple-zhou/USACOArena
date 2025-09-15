@@ -1,7 +1,7 @@
 {
   "api_base": "http://localhost:5000",
-  "competition_title": "Programming Competition 2025",
-  "competition_description": "A competition to test coding abilities in solving programming problems",
+  "competition_title": "MAS Programming Competition 2025",
+  "competition_description": "A competition to test MAS coding abilities in solving programming problems",
   "log": {
     "level": "INFO",
     "dir": "logs/run_logs",
@@ -36,12 +36,12 @@
       "level_4": 1500
     },
     "submission_tokens": {
-      "AC": 100,
-      "WA": 100,
-      "RE": 100,
-      "CE": 100,
-      "TLE": 100,
-      "MLE": 100
+      "AC": 1000000,
+      "WA": 1000000,
+      "RE": 1000000,
+      "CE": 1000000,
+      "TLE": 1000000,
+      "MLE": 1000000
     },
     "lambda": 100,
     "input_token_multipliers": {

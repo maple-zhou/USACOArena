@@ -48,6 +48,9 @@ class DuckDBStorage:
         if not db_exists:
             logger.info(f"Database file not found at {self.db_path}, creating new schema.")
             self._create_schema()
+        else:
+            logger.info(f"Database file exists at {self.db_path}, checking for schema updates.")
+            self._migrate_schema()
         
     
     def _get_conn(self) -> duckdb.DuckDBPyConnection:
@@ -100,19 +103,34 @@ class DuckDBStorage:
                 name VARCHAR NOT NULL,                     -- Participant name
                 api_base_url VARCHAR,                      -- API base URL
                 api_key VARCHAR,                           -- API key
-                
+
                 LLM_tokens INTEGER DEFAULT 0,              -- Token count consumed by LLM API calls
                 hint_tokens INTEGER DEFAULT 0,             -- Token count consumed by hint requests
                 submission_tokens INTEGER DEFAULT 0,       -- Token count consumed by submission actions
                 limit_tokens INTEGER DEFAULT 0,            -- Maximum token limit
                 remaining_tokens INTEGER DEFAULT 0,        -- Remaining token count
                 lambda_value INTEGER DEFAULT 0,            -- Lambda parameter
-                
+
                 submission_count INTEGER DEFAULT 0,        -- Number of submissions
                 accepted_count INTEGER DEFAULT 0,          -- Number of fully accepted submissions
 
                 submission_penalty INTEGER DEFAULT 0,      -- For each problem, if submitted repeatedly, every penalty is counted
                 problem_pass_score INTEGER DEFAULT 0,      -- Score for passing test cases, for each problem, if submitted repeatedly, record the highest score
+
+                -- New statistics fields
+                llm_inference_count INTEGER DEFAULT 0,     -- Total LLM inference calls
+                first_ac_score INTEGER DEFAULT 0,          -- Score from being first to solve problems
+                problem_score INTEGER DEFAULT 0,           -- Score from passing problems (excluding first AC bonus)
+
+                -- Detailed rule-based scoring breakdown
+                bronze_score INTEGER DEFAULT 0,            -- Score from bronze problems
+                silver_score INTEGER DEFAULT 0,            -- Score from silver problems
+                gold_score INTEGER DEFAULT 0,              -- Score from gold problems
+                platinum_score INTEGER DEFAULT 0,          -- Score from platinum problems
+                bonus_score INTEGER DEFAULT 0,             -- First AC bonuses
+
+                -- Per-problem statistics as JSON
+                problem_stats JSON DEFAULT '{}',           -- Detailed per-problem statistics
 
                 score INTEGER DEFAULT 0,                   -- Total score
                 is_running BOOLEAN DEFAULT TRUE,           -- Whether the participant is currently running
@@ -149,7 +167,39 @@ class DuckDBStorage:
         conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_status ON submissions(status)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_submissions_submitted_at ON submissions(submitted_at)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_participants_competition ON participants(competition_id)")
-    
+
+    def _migrate_schema(self) -> None:
+        """Migrate existing database schema to add new fields"""
+        conn = self._get_conn()
+
+        # Check if new statistics fields exist and add them if they don't
+        try:
+            # Try to query the new fields - if this fails, they don't exist
+            conn.execute("SELECT llm_inference_count FROM participants LIMIT 1").fetchone()
+            logger.info("New statistics fields already exist in database")
+        except Exception:
+            logger.info("Adding new statistics fields to existing database")
+
+            # Add new statistics fields to participants table
+            new_fields = [
+                "llm_inference_count INTEGER DEFAULT 0",
+                "first_ac_score INTEGER DEFAULT 0",
+                "problem_score INTEGER DEFAULT 0",
+                "bronze_score INTEGER DEFAULT 0",
+                "silver_score INTEGER DEFAULT 0",
+                "gold_score INTEGER DEFAULT 0",
+                "platinum_score INTEGER DEFAULT 0",
+                "bonus_score INTEGER DEFAULT 0",
+                "problem_stats JSON DEFAULT '{}'"
+            ]
+
+            for field in new_fields:
+                try:
+                    conn.execute(f"ALTER TABLE participants ADD COLUMN {field}")
+                    logger.info(f"Added field: {field}")
+                except Exception as e:
+                    logger.debug(f"Field might already exist or error adding {field}: {e}")
+
     def _backup_to_json(self, table_name: str, data: Dict) -> None:
         """Backup data to JSON for reliability"""
         if not self.backup_json:
@@ -263,11 +313,11 @@ class DuckDBStorage:
         return competitions
 
 
-    def create_participant(self, competition_id: str, name: str, api_base_url: str, 
+    def create_participant(self, competition_id: str, name: str, api_base_url: str,
                        api_key: str, limit_tokens: int, lambda_value: int) -> Optional[Participant]:
         """Add participant to competition"""
         participant_id = generate_id()
-        
+
         participant = Participant(
             id=participant_id,
             competition_id=competition_id,
@@ -277,19 +327,27 @@ class DuckDBStorage:
             limit_tokens=limit_tokens,
             lambda_value=lambda_value
         )
-        
+
+        # Initialize problem statistics for all problems in the competition
+        problems = self.list_problems(competition_id)
+        problem_ids = [problem.id for problem in problems]
+        participant.initialize_all_problems_stats(problem_ids)
+
         # Insert into database
         conn = self._get_conn()
         conn.execute("""
-            INSERT INTO participants 
-            (id, competition_id, name, api_base_url, api_key, 
+            INSERT INTO participants
+            (id, competition_id, name, api_base_url, api_key,
             LLM_tokens, hint_tokens, submission_tokens, limit_tokens, remaining_tokens, lambda_value,
-            submission_count, accepted_count, submission_penalty, problem_pass_score, score, is_running, termination_reason)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            submission_count, accepted_count, submission_penalty, problem_pass_score,
+            llm_inference_count, first_ac_score, problem_score, bronze_score, silver_score,
+            gold_score, platinum_score, bonus_score, problem_stats, score, is_running, termination_reason)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, [
             participant_id, competition_id, name, api_base_url, api_key,
             0, 0, 0, limit_tokens, limit_tokens, lambda_value,
-            0, 0, 0, 0, 0, True, None
+            0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, json.dumps(participant.problem_stats), 0, True, None
         ])
         
         # Update competition participant count
@@ -307,17 +365,31 @@ class DuckDBStorage:
     def get_participant(self, competition_id: str, participant_id: str) -> Optional[Participant]:
         """Get a participant by ID"""
         self.update_participant_score(competition_id, participant_id)
-        
+
         conn = self._get_conn()
         result = conn.execute("""
-            SELECT * FROM participants WHERE competition_id = ? AND id = ?
+            SELECT
+                id, competition_id, name, api_base_url, api_key,
+                LLM_tokens, hint_tokens, submission_tokens, limit_tokens, remaining_tokens, lambda_value,
+                submission_count, accepted_count, submission_penalty, problem_pass_score,
+                COALESCE(llm_inference_count, 0) as llm_inference_count,
+                COALESCE(first_ac_score, 0) as first_ac_score,
+                COALESCE(problem_score, 0) as problem_score,
+                COALESCE(bronze_score, 0) as bronze_score,
+                COALESCE(silver_score, 0) as silver_score,
+                COALESCE(gold_score, 0) as gold_score,
+                COALESCE(platinum_score, 0) as platinum_score,
+                COALESCE(bonus_score, 0) as bonus_score,
+                COALESCE(problem_stats, '{}') as problem_stats,
+                score, is_running, termination_reason
+            FROM participants WHERE competition_id = ? AND id = ?
         """, [competition_id, participant_id]).fetchone()
-        
+
         if not result:
             logger.error(f"[DUCKDB_STORAGE] Participant {participant_id} not found in competition {competition_id}")
             return None
-        
-        # Read directly from database fields
+
+        # Parse result using named indices for clarity
         participant_id = result[0]      # id
         comp_id = result[1]             # competition_id
         name = result[2]                # name
@@ -334,10 +406,21 @@ class DuckDBStorage:
         accepted_count = result[12] or 0 # accepted_count
         submission_penalty = result[13] or 0 # submission_penalty
         problem_pass_score = result[14] or 0 # problem_pass_score
-        
-        score = result[15] or 0          # score
-        is_running = result[16] if result[16] is not None else True  # is_running
-        termination_reason = result[17]  # termination_reason
+
+        # New statistics fields (using explicit column names above ensures correct order)
+        llm_inference_count = result[15] or 0  # llm_inference_count
+        first_ac_score = result[16] or 0       # first_ac_score
+        problem_score = result[17] or 0        # problem_score
+        bronze_score = result[18] or 0         # bronze_score
+        silver_score = result[19] or 0         # silver_score
+        gold_score = result[20] or 0           # gold_score
+        platinum_score = result[21] or 0       # platinum_score
+        bonus_score = result[22] or 0          # bonus_score
+        problem_stats_json = result[23] or "{}" # problem_stats
+
+        score = result[24] or 0          # score
+        is_running = result[25] if result[25] is not None else True  # is_running
+        termination_reason = result[26]  # termination_reason
         
         # Create Participant object
         participant = Participant(
@@ -355,11 +438,28 @@ class DuckDBStorage:
         participant.hint_tokens = hint_tokens
         participant.submission_tokens = submission_tokens
         participant.remaining_tokens = remaining_tokens
-        
+
         participant.submission_count = submission_count
         participant.accepted_count = accepted_count
         participant.submission_penalty = submission_penalty
         participant.problem_pass_score = problem_pass_score
+
+        # Set new statistics fields
+        participant.llm_inference_count = llm_inference_count
+        participant.first_ac_score = first_ac_score
+        participant.problem_score = problem_score
+        participant.bronze_score = bronze_score
+        participant.silver_score = silver_score
+        participant.gold_score = gold_score
+        participant.platinum_score = platinum_score
+        participant.bonus_score = bonus_score
+
+        # Parse problem_stats from JSON
+        try:
+            participant.problem_stats = json.loads(problem_stats_json) if problem_stats_json else {}
+        except (json.JSONDecodeError, TypeError):
+            participant.problem_stats = {}
+
         participant.score = score
         participant.is_running = is_running
         participant.termination_reason = termination_reason
@@ -382,7 +482,49 @@ class DuckDBStorage:
                 participants.append(participant)
         
         return participants
-    
+
+    def _calculate_level_score_updates(self, problem: Problem, submission: Submission,
+                                     add_problem_pass_score: int, is_first_ac: bool) -> Dict[str, int]:
+        """Calculate score updates by level and type"""
+        updates = {
+            'bronze_score': 0,
+            'silver_score': 0,
+            'gold_score': 0,
+            'platinum_score': 0,
+            'bonus_score': 0,
+            'first_ac_score': 0,
+            'problem_score': 0
+        }
+
+        if submission.status == SubmissionStatus.ACCEPTED and add_problem_pass_score > 0:
+            # Calculate base problem score (excluding first AC bonus)
+            base_score = add_problem_pass_score
+            first_ac_bonus = 0
+
+            if is_first_ac:
+                # Extract first AC bonus from the total score
+                competition = self.get_competition(submission.competition_id)
+                if competition:
+                    first_ac_bonus = competition.rules.get("bonus_for_first_ac", 100)
+                    base_score = add_problem_pass_score - first_ac_bonus
+                    updates['bonus_score'] = first_ac_bonus
+                    updates['first_ac_score'] = first_ac_bonus
+
+            # Assign to appropriate level
+            level = problem.level.value
+            if level == 'bronze':
+                updates['bronze_score'] = base_score
+            elif level == 'silver':
+                updates['silver_score'] = base_score
+            elif level == 'gold':
+                updates['gold_score'] = base_score
+            elif level == 'platinum':
+                updates['platinum_score'] = base_score
+
+            updates['problem_score'] = base_score
+
+        return updates
+
     def update_participant_running_status(self, competition_id: str, participant_id: str, is_running: bool) -> None:
         """Update participant's running status"""
         conn = self._get_conn()
@@ -540,18 +682,24 @@ class DuckDBStorage:
             # Update problem's first_to_solve in database
             self._update_problem_first_to_solve(competition_id, problem_id, participant_id)
         
-        # Insert submission into database
+        # Insert submission into database and update statistics
         conn = self._get_conn()
-        
+
+        # Get current participant and their problem stats
+        participant = self.get_participant(competition_id, participant_id)
+        if not participant:
+            raise ValueError(f"Participant {participant_id} not found in competition {competition_id}")
+
         # Get current best score for this problem
         current_best_score_result = conn.execute("""
-            SELECT MAX(pass_score) FROM submissions 
+            SELECT MAX(pass_score) FROM submissions
             WHERE competition_id = ? AND participant_id = ? AND problem_id = ?
         """, [competition_id, participant_id, problem_id]).fetchone()
-        
+
         if current_best_score_result is None:
             # If no submission has been made yet, directly add the current submission score
             add_problem_pass_score = submission.pass_score
+            current_best_score = 0
         else:
             current_best_score = current_best_score_result[0] if current_best_score_result[0] else 0
             # If current submission score is greater than current best score, add the difference
@@ -560,23 +708,50 @@ class DuckDBStorage:
             else:
                 add_problem_pass_score = 0
 
-        
+        # Update per-problem statistics
+        participant.update_problem_stats(
+            problem_id,
+            submission,
+            passed_cases=len([tr for tr in submission.test_results if tr.status == SubmissionStatus.ACCEPTED]),
+            total_cases=len(submission.test_results),
+            is_first_ac=first_one and submission.status == SubmissionStatus.ACCEPTED
+        )
+
+        # Calculate detailed scoring updates
+        level_score_updates = self._calculate_level_score_updates(problem, submission, add_problem_pass_score, first_one)
+
         conn.execute("""
-            UPDATE participants 
+            UPDATE participants
             SET submission_tokens = submission_tokens + ?,
                 remaining_tokens = remaining_tokens - ?,
                 submission_count = submission_count + 1,
                 accepted_count = accepted_count + ?,
                 submission_penalty = submission_penalty + ?,
-                problem_pass_score = problem_pass_score + ?
+                problem_pass_score = problem_pass_score + ?,
+                bronze_score = bronze_score + ?,
+                silver_score = silver_score + ?,
+                gold_score = gold_score + ?,
+                platinum_score = platinum_score + ?,
+                bonus_score = bonus_score + ?,
+                first_ac_score = first_ac_score + ?,
+                problem_score = problem_score + ?,
+                problem_stats = ?
             WHERE competition_id = ? AND id = ?
         """, [
-            submission.submission_tokens, 
-            submission.submission_tokens, 
+            submission.submission_tokens,
+            submission.submission_tokens,
             1 if submission.status == SubmissionStatus.ACCEPTED else 0,
-            submission.penalty, 
-            add_problem_pass_score, 
-            competition_id, 
+            submission.penalty,
+            add_problem_pass_score,
+            level_score_updates['bronze_score'],
+            level_score_updates['silver_score'],
+            level_score_updates['gold_score'],
+            level_score_updates['platinum_score'],
+            level_score_updates['bonus_score'],
+            level_score_updates['first_ac_score'],
+            level_score_updates['problem_score'],
+            json.dumps(participant.problem_stats),
+            competition_id,
             participant_id
         ])
         
@@ -960,8 +1135,8 @@ class DuckDBStorage:
         # Update database
         conn = self._get_conn()
         conn.execute("""
-            UPDATE participants 
-            SET LLM_tokens = LLM_tokens + ?, remaining_tokens = remaining_tokens - ?   
+            UPDATE participants
+            SET LLM_tokens = LLM_tokens + ?, remaining_tokens = remaining_tokens - ?, llm_inference_count = llm_inference_count + 1
             WHERE competition_id = ? AND id = ?
         """, [llm_tokens, llm_tokens, competition_id, participant_id])
         
@@ -1115,8 +1290,8 @@ class DuckDBStorage:
         # Update database
         conn = self._get_conn()
         conn.execute("""
-            UPDATE participants 
-            SET LLM_tokens = ?, remaining_tokens = remaining_tokens - ?   
+            UPDATE participants
+            SET LLM_tokens = ?, remaining_tokens = remaining_tokens - ?, llm_inference_count = llm_inference_count + 1
             WHERE competition_id = ? AND id = ?
         """, [llm_tokens, llm_tokens, competition_id, participant_id])
         

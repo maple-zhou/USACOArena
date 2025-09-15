@@ -42,15 +42,30 @@ class Participant:
         self.limit_tokens = limit_tokens
         self.remaining_tokens = limit_tokens
         self.lambda_value = lambda_value
-        
-        # Submission tracking   
+
+        # Submission tracking
         self.submission_count = 0
         self.accepted_count = 0
-        
+
         # P_submission_count
         self.submission_penalty = 0
         # S_accepted_score
         self.problem_pass_score = 0
+
+        # New statistics fields
+        self.llm_inference_count = 0  # Total LLM inference calls
+        self.first_ac_score = 0  # Score from being first to solve problems
+        self.problem_score = 0  # Score from passing problems (excluding first AC bonus)
+
+        # Detailed rule-based scoring breakdown
+        self.bronze_score = 0
+        self.silver_score = 0
+        self.gold_score = 0
+        self.platinum_score = 0
+        self.bonus_score = 0  # First AC bonuses
+
+        # Per-problem detailed statistics (Dict[problem_id, stats])
+        self.problem_stats = {}  # Will contain detailed per-problem statistics
 
         #  total_score = S_accepted_score - P_submission_count + B_token_remaining
         self.score = 0
@@ -64,6 +79,57 @@ class Participant:
         """Terminate the participant with a reason"""
         self.is_running = False
         self.termination_reason = reason
+
+    def initialize_problem_stats(self, problem_id: str) -> None:
+        """Initialize statistics for a problem"""
+        if problem_id not in self.problem_stats:
+            self.problem_stats[problem_id] = {
+                "problem_id": problem_id,
+                "submission_count": 0,
+                "passed_test_cases": 0,
+                "total_test_cases": 0,
+                "best_score": 0,
+                "penalty": 0,
+                "solved": False,
+                "solved_at": None,
+                "first_submission_at": None,
+                "last_submission_at": None,
+                "is_first_ac": False,
+                "language_used": None
+            }
+
+    def initialize_all_problems_stats(self, problem_ids: List[str]) -> None:
+        """Initialize statistics for all problems in the competition"""
+        for problem_id in problem_ids:
+            self.initialize_problem_stats(problem_id)
+
+    def update_problem_stats(self, problem_id: str, submission: 'Submission',
+                           passed_cases: int = 0, total_cases: int = 0,
+                           is_first_ac: bool = False) -> None:
+        """Update statistics for a specific problem after a submission"""
+        self.initialize_problem_stats(problem_id)
+
+        stats = self.problem_stats[problem_id]
+        stats["submission_count"] += 1
+        stats["penalty"] += submission.penalty
+        stats["last_submission_at"] = submission.submitted_at.isoformat()
+        stats["language_used"] = submission.language
+
+        if stats["first_submission_at"] is None:
+            stats["first_submission_at"] = submission.submitted_at.isoformat()
+
+        if total_cases > 0:
+            stats["passed_test_cases"] = max(stats["passed_test_cases"], passed_cases)
+            stats["total_test_cases"] = total_cases
+
+        if submission.pass_score > stats["best_score"]:
+            stats["best_score"] = submission.pass_score
+
+        if submission.status == SubmissionStatus.ACCEPTED:
+            stats["solved"] = True
+            if stats["solved_at"] is None:
+                stats["solved_at"] = submission.submitted_at.isoformat()
+            stats["is_first_ac"] = is_first_ac
     
     def to_dict(self, include_submissions: bool = False) -> Dict:
         result = {
@@ -80,15 +146,31 @@ class Participant:
             "accepted_count": self.accepted_count,
             "submission_penalty": self.submission_penalty,
             "problem_pass_score": self.problem_pass_score,
-            "score": self.score,    
-            # "solved_problems": self.solved_problems,    
+            "score": self.score,
+
+            # New statistics fields
+            "llm_inference_count": self.llm_inference_count,
+            "first_ac_score": self.first_ac_score,
+            "problem_score": self.problem_score,
+
+            # Detailed rule-based scoring breakdown
+            "bronze_score": self.bronze_score,
+            "silver_score": self.silver_score,
+            "gold_score": self.gold_score,
+            "platinum_score": self.platinum_score,
+            "bonus_score": self.bonus_score,
+
+            # Per-problem statistics
+            "problem_stats": self.problem_stats,
+
+            # "solved_problems": self.solved_problems,
             "is_running": self.is_running,
             "termination_reason": self.termination_reason,
         }
-        
+
         # if include_submissions:
         #     result["submissions"] = [s.to_dict() for s in self.submissions]
-            
+
         return result
 
 

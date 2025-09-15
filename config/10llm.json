@@ -127,8 +127,8 @@
         },  
         {
             "type": "generic",
-            "name": "gpt-4o",
-            "model_id": "gpt-4o",
+            "name": "deepseek-v3.1",
+            "model_id": "deepseek-v3.1",
             "api_base_url": "http://100.76.8.43:10010/",
             "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
             "prompt_config_path": "agents/single_agent/prompts.json",
@@ -152,8 +152,8 @@
         }, 
         {
             "type": "generic",
-            "name": "gpt-4.1",
-            "model_id": "gpt-4.1",
+            "name": "qwen3-coder-480b",
+            "model_id": "qwen3-coder-480b",
             "api_base_url": "http://100.76.8.43:10010/",
             "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
             "prompt_config_path": "agents/single_agent/prompts.json",
@@ -177,8 +177,8 @@
         }, 
         {
             "type": "generic",
-            "name": "gpt-4.1-mini",
-            "model_id": "gpt-4.1-mini",
+            "name": "step-3",
+            "model_id": "step-3",
             "api_base_url": "http://100.76.8.43:10010/",
             "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
             "prompt_config_path": "agents/single_agent/prompts.json",
@@ -202,8 +202,8 @@
         }, 
         {
             "type": "generic",
-            "name": "gpt-4.1-nano",
-            "model_id": "gpt-4.1-nano",
+            "name": "glm-4.5",
+            "model_id": "glm-4.5",
             "api_base_url": "http://100.76.8.43:10010/",
             "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
             "prompt_config_path": "agents/single_agent/prompts.json",

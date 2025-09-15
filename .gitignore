@@ -68,4 +68,5 @@ dataset/
 tests/
 original_results/
 convert_all_json_to_csv.sh
-json_to_csv_converter.py
+# json_to_csv_converter.py
+CLAUDE.md
