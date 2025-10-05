@@ -32,11 +32,11 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 ### 3. Prepare USACO Dataset
 
-Download the USACO data from the [link](https://drive.google.com/file/d/1z5ODOJMqyer1QxzYtEUZ2hbAx-7nU8Vi/view?usp=share_link) provided by [USACO Bench](https://github.com/princeton-nlp/USACO).
+Download the USACO data from the [link](https://drive.google.com/file/d/1z5ODOJMqyer1QxzYtEUZ2hbAx-7nU8Vi/view?usp=share_link).
 
 ```bash
 # Extract and place in codebase root directory
-tar -zxvf dataset.tar.gz
+tar -xzvf dataset.tar.gz
 ```
 
 ## 🔧 Online Judge Setup
