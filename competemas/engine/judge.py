@@ -13,7 +13,7 @@ class Judge:
     """
     Judge class to handle code evaluation using the local OJ system based on online-judge-rust.
     """
-    def __init__(self, oj_endpoint: str = "http://localhost:9000/2015-03-31/functions/function/invocations"):
+    def __init__(self, oj_endpoint: str = "http://localhost:8000/usacoarena/oj/compile-and-execute"):
         self.oj_endpoint = oj_endpoint
         # Large test cases exceed AWS Lambda's payload limit; compress inputs above this size (bytes)
         self._stdin_compress_threshold = 700_000
@@ -44,7 +44,6 @@ class Judge:
                     submission.code,
                     submission.language,
                     test_case.input_data,
-                    getattr(test_case, "input_path", None),
                     test_case.expected_output,
                     problem.time_limit_ms,
                     problem.memory_limit_mb * 1024  # Convert MB to KB
@@ -109,7 +108,6 @@ class Judge:
         code: str,
         language: str,
         input_data: str,
-        input_path: Optional[str],
         expected_output: str,
         time_limit_ms: int,
         memory_limit_kb: int
@@ -121,43 +119,25 @@ class Judge:
         try:
             # Prepare the request payload for the OJ
             payload = {
-                "version": "2.0",
-                "rawPath": "/compile-and-execute",
-                "requestContext": {
-                    "http": {
-                        "method": "POST",
-                        "path": "/compile-and-execute"
-                    }
+                "compile": {
+                    "source_code": code,
+                    "compiler_options": self._get_compiler_options(language),
+                    "language": self._get_language_code(language)
                 },
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": json.dumps({
-                    "compile": {
-                        "source_code": code,
-                        "compiler_options": self._get_compiler_options(language),
-                        "language": self._get_language_code(language)
-                    },
-                    "execute": self._build_execute_payload(
-                        input_data,
-                        input_path,
-                        time_limit_ms,
-                        memory_limit_kb
-                    )
-                }),
-                "isBase64Encoded": False
+                "execute": self._build_execute_payload(
+                    input_data,
+                    time_limit_ms,
+                    memory_limit_kb
+                ),
             }
-            
-            # Send request to OJ
+
             response = requests.post(
                 self.oj_endpoint,
                 json=payload,
-                # headers={"Content-Type": "application/json"}
             )
             
             # Parse the response - handle multi-level JSON structure
             response_json = response.json()
-            # The actual result is inside 'body' as a string
             if 'body' in response_json and isinstance(response_json['body'], str):
                 result = json.loads(response_json['body'])
             else:
@@ -241,17 +221,13 @@ class Judge:
     def _build_execute_payload(
         self,
         input_data: str,
-        input_path: Optional[str],
         time_limit_ms: int,
         memory_limit_kb: int
     ) -> dict:
         execute_payload = {
             "timeout_ms": time_limit_ms,
+            "memory_limit_kb": memory_limit_kb,
         }
-
-        if input_path:
-            execute_payload["stdin_file_path"] = input_path
-            return execute_payload
 
         input_bytes = input_data.encode("utf-8")
 
@@ -361,37 +337,20 @@ int main() {
 """
         try:
             payload = {
-                "version": "2.0",
-                "rawPath": "/compile-and-execute",
-                "requestContext": {
-                    "http": {
-                        "method": "POST",
-                        "path": "/compile-and-execute"
-                    }
+                "compile": {
+                    "source_code": test_code,
+                    "compiler_options": "-O2 -std=c++17",
+                    "language": "cpp"
                 },
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": json.dumps({
-                    "compile": {
-                        "source_code": test_code,
-                        "compiler_options": "-O2 -std=c++17",
-                        "language": "cpp"
-                    },
-                    "execute": self._build_execute_payload("5 7", None, 5000, 256 * 1024)
-                }),
-                "isBase64Encoded": False
+                "execute": self._build_execute_payload("5 7", 5000, 256 * 1024)
             }
-            
+
             response = requests.post(
                 self.oj_endpoint,
                 json=payload,
-                headers={"Content-Type": "application/json"}
             )
-            
-            # Parse the response - handle multi-level JSON structure
+
             response_json = response.json()
-            # The actual result is inside 'body' as a string
             if 'body' in response_json and isinstance(response_json['body'], str):
                 result = json.loads(response_json['body'])
             else:
@@ -457,7 +416,6 @@ int main() {
                     code,
                     language,
                     test_case.input_data,
-                    getattr(test_case, "input_path", None),
                     test_case.expected_output,
                     time_limit_ms,
                     memory_limit_kb

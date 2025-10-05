@@ -5,7 +5,7 @@ set -e
 
 # 配置参数
 SERVICE_INSTANCES=10  # 默认启动2个服务实例
-OJ_BASE_PORT=9000
+OJ_BASE_PORT=8000
 SERVER_BASE_PORT=5000
 CHECK_INTERVAL=10    # 健康检查间隔（秒）
 LOG_DIR="logs/services"
@@ -30,7 +30,7 @@ show_usage() {
     echo ""
     echo "Options:"
     echo "  --instances N               Number of service instances (default: 2)"
-    echo "  --oj-base-port PORT         Base port for OJ services (default: 9000)"
+    echo "  --oj-base-port PORT         Base port for OJ services (default: 8000)"
     echo "  --server-base-port PORT     Base port for competition servers (default: 5000)"
     echo "  --check-interval SECONDS    Health check interval (default: 10)"
     echo ""
@@ -147,7 +147,7 @@ start_server_instance() {
     nohup competition_server \
         --config config/server_config.json \
         --port "$server_port" \
-        --oj-endpoint "http://localhost:${oj_port}/2015-03-31/functions/function/invocations" \
+        --oj-endpoint "http://localhost:${oj_port}/usacoarena/oj/compile-and-execute" \
         >> "$log_file" 2>&1 &
 
     echo $! > "$pid_file"

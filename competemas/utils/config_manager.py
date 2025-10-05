@@ -62,7 +62,7 @@ class ConfigManager:
                 "enable_colors": True
             },
             "oj": {
-                "endpoint": "http://localhost:9000/2015-03-31/functions/function/invocations"
+                "endpoint": "http://localhost:8000/usacoarena/oj/compile-and-execute"
             },
             "rate_limit": {
                 "min_interval": 0.05

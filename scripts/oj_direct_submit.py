@@ -223,7 +223,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--language", default="cpp", help="Programming language (default: cpp)")
     parser.add_argument(
         "--oj-endpoint",
-        default="http://localhost:9010/2015-03-31/functions/function/invocations",
+        default="http://localhost:8000/usacoarena/oj/compile-and-execute",
         help="Online judge endpoint URL",
     )
     parser.add_argument("--time-limit-ms", type=int, default=5000, help="Time limit per test case in milliseconds")

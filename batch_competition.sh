@@ -5,7 +5,7 @@ set -e
 
 # 默认参数
 CONCURRENCY=10
-BASE_OJ_PORT=9000
+BASE_OJ_PORT=8000
 BASE_SERVER_PORT=5000
 COMPETITORS_CONFIG="config/1pro.json"
 PROBLEM_IDS_LIST=""  # 将通过参数或自动发现设置
@@ -16,7 +16,7 @@ show_usage() {
     echo "Usage: $0 [OPTIONS]"
     echo "Options:"
     echo "  --concurrency N             Number of concurrent runs (default: 10)"
-    echo "  --base-oj-port PORT         Base OJ port, will increment (default: 9000)"
+    echo "  --base-oj-port PORT         Base OJ port, will increment (default: 8000)"
     echo "  --base-server-port PORT     Base server port, will increment (default: 5000)"
     echo "  --competitors-config FILE   Competitors config file (default: config/1pro.json)"
     echo "  --problem-ids-list FILES    Comma-separated list of problem ID files"

@@ -86,12 +86,12 @@ cargo lambda build
 docker build --platform linux/amd64 -t oj-rust .
 
 # Run the online judge
-docker run --platform linux/amd64 -p 9000:8080 oj-rust
+docker run --platform linux/amd64 -p 8000:8080 oj-rust
 ```
 
 ### 4. Test Online Judge
 ```bash
-curl -X POST "http://localhost:9000/2015-03-31/functions/function/invocations" \
+curl -X POST "http://localhost:8000/usacoarena/oj/compile-and-execute" \
 -d '{
    "version": "2.0",
    "rawPath": "/compile-and-execute",
@@ -109,7 +109,7 @@ curl -X POST "http://localhost:9000/2015-03-31/functions/function/invocations" \
 }'
 ```
 
-**Important**: Make sure the online judge is running on port 9000 before starting CompeteMAS competitions.
+**Important**: Make sure the online judge is running on port 8000 before starting CompeteMAS competitions.
 
 ## 🎯 Usage
 
