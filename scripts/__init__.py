@@ -1,5 +1,5 @@
 """
-User-defined scripts and customizations for CompeteMAS.
+User-defined scripts and customizations for USACOArena.
 
 This directory contains user-customizable components including:
 - Custom agents implementations

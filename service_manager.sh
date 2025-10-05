@@ -119,7 +119,7 @@ start_oj_instance() {
 
     # 启动docker容器
     docker run --platform linux/amd64 -d \
-        -v /home/ubuntu/scratch/lfzhou/CompeteMAS/dataset/datasets/usaco_2025/tests:/data/tests \
+        -v /home/ubuntu/scratch/lfzhou/USACOArena/dataset/datasets/usaco_2025/tests:/data/tests \
         --name "oj-rust-$instance_id" \
         -p "${oj_port}:8080" \
         oj-rust-v4 > "$pid_file" 2>/dev/null

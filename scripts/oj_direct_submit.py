@@ -1,6 +1,6 @@
 """Utility for submitting code and custom test cases directly to the OJ service.
 
-This script mirrors the request format used by CompeteMAS when evaluating
+This script mirrors the request format used by USACOArena when evaluating
 submissions. Provide a source file or inline code plus a path to test cases
 and the script will invoke the online judge at the configured endpoint.
 """
@@ -14,8 +14,8 @@ from typing import Iterable, List, Mapping, Optional
 
 import requests
 
-from competemas.engine.judge import Judge
-from competemas.models.models import Case, SubmissionStatus, TestResult, generate_id
+from usacoarena.engine.judge import Judge
+from usacoarena.models.models import Case, SubmissionStatus, TestResult, generate_id
 
 
 def load_test_cases(path: str, stdin_root: Optional[str] = None) -> List[Case]:
@@ -185,7 +185,7 @@ def run_tests(
     time_limit_ms: int,
     memory_limit_mb: int,
 ) -> List[TestResult]:
-    """Invoke the CompeteMAS judge to run code against custom cases."""
+    """Invoke the USACOArena judge to run code against custom cases."""
     judge = Judge(oj_endpoint=oj_endpoint)
     return judge.test_code_with_custom_cases(
         code=code,

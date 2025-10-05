@@ -209,7 +209,7 @@ def main():
         "max_tokens": competition_config.get("max_tokens_per_participant", 100000),
         "problem_count": len(problem_ids),
         "rules": competition_config.get("rules", {}),
-        "claude_code_prompt": f"""I'm participating in a CompeteMAS programming competition in AUTONOMOUS MODE. My credentials are:
+        "claude_code_prompt": f"""I'm participating in a USACOArena programming competition in AUTONOMOUS MODE. My credentials are:
 - Competition ID: {competition_id}
 - Participant ID: {participant_id}
 - Server URL: {args.api_base}

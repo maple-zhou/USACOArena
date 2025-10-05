@@ -1,5 +1,5 @@
 """
-Models package for CompeteMAS platform.
+Models package for USACOArena platform.
 
 This package contains data models and base classes used throughout the system.
 """

@@ -1,5 +1,5 @@
 """
-CompeteMAS - Multi-Agent System Competition Framework
+USACOArena - Multi-Agent System Competition Framework
 
 A high-performance framework for running programming competitions
 between AI agents with advanced analytics and evaluation capabilities.

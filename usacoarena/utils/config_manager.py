@@ -1,5 +1,5 @@
 """
-Configuration management for CompeteMAS server.
+Configuration management for USACOArena server.
 
 This module provides a centralized configuration management system
 that supports file-based configuration, environment variables, and
@@ -10,13 +10,13 @@ import json
 import os
 from typing import Dict, Any, Optional
 from pathlib import Path
-from competemas.utils.logger_config import get_logger
+from usacoarena.utils.logger_config import get_logger
 
 logger = get_logger("config_manager")
 
 
 class ConfigManager:
-    """Centralized configuration management for CompeteMAS server"""
+    """Centralized configuration management for USACOArena server"""
     
     def __init__(self, config_path: Optional[str] = None):
         """

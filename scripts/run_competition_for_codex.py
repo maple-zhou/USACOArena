@@ -11,7 +11,7 @@ from typing import Dict, List, Optional
 from agents import GenericAPIAgent, StreamingGenericAPIAgent
 from scripts.competition_organizer import CompetitionOrganizer
 from scripts.competitors import Competitor
-from competemas.utils.logger_config import setup_logging, get_logger
+from usacoarena.utils.logger_config import setup_logging, get_logger
 import requests
 
 logger = get_logger("run_competition")

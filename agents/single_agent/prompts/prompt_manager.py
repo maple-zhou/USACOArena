@@ -4,7 +4,7 @@ import json
 import json_repair
 import re
 import os
-from competemas.utils.logger_config import get_logger
+from usacoarena.utils.logger_config import get_logger
 
 logger = get_logger("prompts")
 

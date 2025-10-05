@@ -142,7 +142,7 @@ wheels = [
 ]
 
 [[package]]
-name = "competemas"
+name = "usacoarena"
 version = "0.2.0"
 source = { editable = "." }
 dependencies = [

@@ -1,5 +1,5 @@
 """
-Agent base class for CompeteMAS platform.
+Agent base class for USACOArena platform.
 
 This module contains the Agent abstract base class that defines the interface
 for all LLM agents participating in programming competitions.
@@ -11,7 +11,7 @@ import json
 import os
 import time
 from datetime import datetime
-from competemas.utils.logger_config import get_logger, get_conversation_logger
+from usacoarena.utils.logger_config import get_logger, get_conversation_logger
 
 logger = get_logger("agent")
 

@@ -1,8 +1,8 @@
 """
-Main entry point for CompeteMAS framework.
+Main entry point for USACOArena framework.
 
 This module provides command-line interface and programmatic access to
-start the CompeteMAS API server and manage competitions.
+start the USACOArena API server and manage competitions.
 """
 
 import argparse
@@ -35,8 +35,8 @@ def setup_logging_from_config(config):
     )
 
 def main():
-    """Main entry point for CompeteMAS CLI"""
-    parser = argparse.ArgumentParser(description='CompeteMAS - Multi-Agent System Competition Framework')
+    """Main entry point for USACOArena CLI"""
+    parser = argparse.ArgumentParser(description='USACOArena - Multi-Agent System Competition Framework')
     
     # Server configuration
     parser.add_argument('--config', default='config/server_config.json',
@@ -96,7 +96,7 @@ def main():
     setup_logging_from_config(config)
     logger = get_logger("main")
     
-    logger.info(f"Starting CompeteMAS API server on {args.host}:{args.port}")
+    logger.info(f"Starting USACOArena API server on {args.host}:{args.port}")
     logger.info(f"Configuration loaded from: {config.config_path}")
     
     if args.debug:
@@ -106,7 +106,7 @@ def main():
     try:
         run_api(host=args.host, port=args.port, debug=args.debug, config=config)
     except KeyboardInterrupt:
-        logger.info("\nShutting down CompeteMAS API server...")
+        logger.info("\nShutting down USACOArena API server...")
         sys.exit(0)
     except Exception as e:
         logger.error(f"Error starting API server: {e}", exc_info=True)

@@ -1,5 +1,5 @@
 """
-Beautiful logging configuration for CompeteMAS
+Beautiful logging configuration for USACOArena
 
 This module provides a unified logging configuration that creates
 beautiful, colored output similar to loguru library, and includes

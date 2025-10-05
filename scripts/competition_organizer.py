@@ -6,7 +6,7 @@ import os
 from typing import Dict, List, Optional
 from datetime import datetime
 from scripts.competitors import Competitor
-from competemas.utils.logger_config import get_logger
+from usacoarena.utils.logger_config import get_logger
 
 logger = get_logger("competition_organizer")
 

@@ -1,37 +1,21 @@
-# CompeteMAS (Competition Multi-Agent System)
+# USACOArena
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![uv](https://img.shields.io/badge/package%20manager-uv-orange.svg)](https://docs.astral.sh/uv/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This repository contains the supplementary code for NeurIPS 2025 paper under review: **"CompeteMAS: Cost-Aware Evaluation of Agentic Coding Capabilities of Multi-Agent Systems"**, and is for review only.
-
-CompeteMAS is a comprehensive Online Judge (OJ) system designed to evaluate the coding capabilities of Multi-Agent Systems (MAS) in competitive programming environments. It features cost-aware evaluation, real-time competition management, and integration with modern LLM APIs.
-
-## 🚀 Features
-
-- **🏆 Multi-Agent Competition**: Support for multiple LLM agents competing simultaneously
-- **💰 Cost-Aware Evaluation**: Token-based resource management and cost tracking
-- **⚡ Real-time API**: RESTful API for competition management and monitoring
-- **🔍 Intelligent Hints**: Multi-level hint system with semantic and episodic knowledge
-- **📊 Comprehensive Analytics**: Detailed scoring, rankings, and performance metrics
-- **🛡️ Secure Execution**: Sandboxed code execution via Rust-based judge
-- **🏗️ Modular Architecture**: Clean separation of core framework and user customizations
-- **📈 High Performance**: Optimized storage system with DuckDB backend
-
 ## 📋 Prerequisites
 
 - **Python 3.10+**
 - **uv** (recommended package manager)
-- **Rust & Cargo** (for online judge)
 - **Docker** (for containerized deployment)
 
 ## 🛠️ Installation
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/maple-zhou/CodingBench.git
-cd CompeteMAS
+git clone https://github.com/maple-zhou/USACOArena.git
+cd USACOArena
 ```
 
 ### 2. Install with uv (Recommended)
@@ -51,65 +35,47 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 Download the USACO data from the [link](https://drive.google.com/file/d/1z5ODOJMqyer1QxzYtEUZ2hbAx-7nU8Vi/view?usp=share_link) provided by [USACO Bench](https://github.com/princeton-nlp/USACO).
 
 ```bash
-# Extract and place in data directory
-unzip usaco_data.zip
-mv data_copy dataset/datasets/usaco_2025
+# Extract and place in codebase root directory
+tar -zxvf dataset.tar.gz
 ```
 
 ## 🔧 Online Judge Setup
 
-**Note**: The online judge system is based on the [online-judge-rust](https://github.com/cpinitiative/online-judge-rust) project. This is a third-party codebase and is not included in this repository.
-
 ### 1. Get Online Judge Rust
 ```bash
 # Clone the online judge repository
-git clone https://github.com/cpinitiative/online-judge-rust.git
+git clone https://github.com/maple-zhou/USACOArena_online_judge.git
 ```
 
-### 2. Install Rust Dependencies
+### 2. Build and Run Online Judge
 ```bash
-# Install cargo-lambda
-cargo install cargo-lambda
-cargo lambda --help  # Verify installation
-
-# Install zig (for cross-compilation)
-sudo snap install zig --classic --beta
-zig version  # Verify installation
-```
-
-### 3. Build and Run Online Judge
-```bash
-# Build the Lambda function
-cargo lambda build
+cd online-judge-rust
 
 # Build Docker image
 docker build --platform linux/amd64 -t oj-rust .
 
 # Run the online judge
-docker run --platform linux/amd64 -p 8000:8080 oj-rust
+docker run --platform linux/amd64 --rm -p 8000:8080 oj-rust
 ```
 
-### 4. Test Online Judge
+### 3. Test Online Judge
 ```bash
-curl -X POST "http://localhost:8000/usacoarena/oj/compile-and-execute" \
--d '{
-   "version": "2.0",
-   "rawPath": "/compile-and-execute",
-   "requestContext": {
-      "http": {
-      "method": "POST",
-      "path": "/compile-and-execute"
-      }
-   },
-   "headers": {
-      "Content-Type": "application/json"
-   },
-   "body": "{\"compile\":{\"source_code\":\"#include <iostream>\\nusing namespace std;\\n\\nint main() {\\n  int a, b;\\n  cin >> a >> b;\\n  cout << a + b << endl;\\n  return 0;\\n}\",\"compiler_options\":\"-O2 -std=c++17\",\"language\":\"cpp\"},\"execute\":{\"stdin\":\"5 7\",\"timeout_ms\":5000}}",
-   "isBase64Encoded": false
-}'
+curl -X POST http://localhost:8000/usacoarena/oj/compile-and-execute \
+  -H "Content-Type: application/json" \
+  -d '{
+    "compile": {
+      "source_code": "#include <iostream>\nusing namespace std;\n\nint main() {\n  int a, b;\n  cin >> a >> b;\n  cout << a + b << endl;\n  return 0;\n}\n",
+      "compiler_options": "-O2 -std=c++17",
+      "language": "cpp"
+    },
+    "execute": {
+      "stdin": "5 7",
+      "timeout_ms": 5000
+    }
+  }'
 ```
 
-**Important**: Make sure the online judge is running on port 8000 before starting CompeteMAS competitions.
+**Important**: Make sure the online judge is running on port 8000 before starting USACOArena competitions.
 
 ## 🎯 Usage
 
@@ -120,7 +86,7 @@ Here are three different ways to run a competition:
 #### Method 1: Manual Control (Two Terminals)
 ```bash
 # Terminal 1: Start the API server
-python -m competemas.main --port 5000 --debug
+python -m usacoarena.main --port 5000 --debug
 
 # Terminal 2: Run a competition
 python scripts/run_competition.py \
@@ -197,7 +163,7 @@ Edit `config/competitors_config.json`:
 Implement your agent by extending the base Agent class:
 
 ```python
-from competemas.models.agent import Agent
+from usacoarena.models.agent import Agent
 
 class MyCustomAgent(Agent):
     async def generate_response(self, messages: List[Dict], **kwargs) -> Tuple[str, Dict]:
@@ -357,11 +323,11 @@ python json_to_csv_converter.py results.json results.csv
 
 ## 🏗️ Architecture
 
-CompeteMAS adopts a modular design that achieves clear separation between **core framework** and **user-defined content**:
+USACOArena adopts a modular design that achieves clear separation between **core framework** and **user-defined content**:
 
 ```
-CompeteMAS/
-├── 🏗️ Core Framework Package (competemas/)
+USACOArena/
+├── 🏗️ Core Framework Package (usacoarena/)
 │   ├── models/                   # Data model definitions
 │   │   ├── models.py            # Core data models
 │   │   └── agent.py             # Agent base class
@@ -399,7 +365,7 @@ CompeteMAS/
 ### Modular Design Advantages
 
 #### 1. Clear Separation of Responsibilities
-- **Core Framework** (`competemas/`) - Stable business logic and infrastructure
+- **Core Framework** (`usacoarena/`) - Stable business logic and infrastructure
 - **User Scripts** (`scripts/`) - Customizable competition execution and management
 - **Agent Implementations** (`agents/`) - LLM agent implementations
 - **Configuration** (`config/`) - Configuration files and templates
@@ -408,7 +374,7 @@ CompeteMAS/
 The system uses a flexible agent interface for loose coupling:
 
 ```python
-# competemas/models/agent.py
+# usacoarena/models/agent.py
 class Agent(ABC):
     @abstractmethod
     async def generate_response(self, messages: List[Dict], **kwargs) -> Tuple[str, Dict]:
@@ -423,7 +389,7 @@ class Agent(ABC):
 
 ### Project Structure Details
 
-#### Core Framework (`competemas/`)
+#### Core Framework (`usacoarena/`)
 - **`models/`**: Data models and agent interfaces
   - `models.py`: Core data models (Competition, Participant, Problem, etc.)
   - `agent.py`: Agent base class and interfaces
@@ -555,4 +521,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**CompeteMAS v0.2.0** - A modular, efficient, and extensible multi-agent competition framework 🎉
+**USACOArena v0.2.0** - A modular, efficient, and extensible multi-agent competition framework 🎉

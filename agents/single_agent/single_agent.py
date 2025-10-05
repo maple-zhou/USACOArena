@@ -28,8 +28,8 @@ from typing import Dict, List, Optional, Any
 import os
 from datetime import datetime
 
-from competemas.models.agent import Agent
-from competemas.utils.logger_config import get_logger
+from usacoarena.models.agent import Agent
+from usacoarena.utils.logger_config import get_logger
 
 logger = get_logger("llm_agents")
 

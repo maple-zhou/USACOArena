@@ -1,5 +1,5 @@
 """
-DuckDB-based data storage system for CompeteMAS.
+DuckDB-based data storage system for USACOArena.
 Provides high-performance analytics and SQL querying capabilities.
 """
 
@@ -1470,10 +1470,10 @@ class DuckDBStorage:
         Returns:
             Dictionary containing structured hint content
         """
-        from competemas.utils.problem_loader import USACOProblemLoader
-        from competemas.utils.textbook_loader import TextbookLoader
-        from competemas.utils.strategy_loader import StrategyLoader
-        from competemas.utils.usacoguide_loader import USACOGuideLoader
+        from usacoarena.utils.problem_loader import USACOProblemLoader
+        from usacoarena.utils.textbook_loader import TextbookLoader
+        from usacoarena.utils.strategy_loader import StrategyLoader
+        from usacoarena.utils.usacoguide_loader import USACOGuideLoader
         
         problem_loader = USACOProblemLoader()
         textbook_loader = TextbookLoader()

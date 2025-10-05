@@ -1,5 +1,5 @@
 """
-API module for CompeteMAS platform.
+API module for USACOArena platform.
 
 This module provides REST API endpoints for competition management,
 participant interaction, and system monitoring.

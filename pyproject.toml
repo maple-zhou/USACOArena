@@ -1,10 +1,10 @@
 [project]
-name = "competemas"
+name = "usacoarena"
 version = "0.2.0"
-description = "CompeteMAS: Cost-Aware Evaluation of Agentic Coding Capabilities of Multi-Agent Systems"
+description = "USACOArena: Cost-Aware Evaluation of Agentic Coding Capabilities of Multi-Agent Systems"
 readme = "README.md"
 authors = [
-    {name = "CompeteMAS Team", email = "example@example.com"}
+    {name = "USACOArena Team", email = "example@example.com"}
 ]
 license = {text = "MIT"}
 requires-python = ">=3.10"
@@ -30,7 +30,7 @@ dev = [
 ]
 
 [project.scripts]
-competition_server = "competemas.main:main"
+competition_server = "usacoarena.main:main"
 competition_run = "scripts.run_competition:main_sync"
 
 [build-system]

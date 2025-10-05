@@ -1,5 +1,5 @@
 """
-Competition-related classes for CompeteMAS platform.
+Competition-related classes for USACOArena platform.
 
 This module contains the Competitor class which serves as an optimized bridge
 between Agent and Participant data, minimizing API calls and state management overhead.
@@ -7,7 +7,7 @@ between Agent and Participant data, minimizing API calls and state management ov
 
 import requests
 from typing import Dict, List, Optional, Tuple, Any, TYPE_CHECKING
-from competemas.utils.logger_config import get_logger
+from usacoarena.utils.logger_config import get_logger
 
 if TYPE_CHECKING:
     from agents import Agent
@@ -262,4 +262,3 @@ class Competitor:
             
         except requests.exceptions.RequestException as e:
             return {"error": f"Failed to fetch rankings: {str(e)}"}
-

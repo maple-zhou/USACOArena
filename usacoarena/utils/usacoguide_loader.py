@@ -1,4 +1,4 @@
-# competemas/utils/usacoguide_loader.py
+# usacoarena/utils/usacoguide_loader.py
 import json
 import os
 from typing import Dict, List, Optional, Any

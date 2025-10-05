@@ -1,5 +1,5 @@
 """
-Engine business logic for CompeteMAS platform.
+Engine business logic for USACOArena platform.
 
 This module contains the engine components for competition management,
 data models, storage, and judging system.

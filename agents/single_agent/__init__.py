@@ -1,5 +1,5 @@
 """
-Single Agent Implementation for CompeteMAS
+Single Agent Implementation for USACOArena
 
 This module provides generic agent implementations that can work with various LLM providers.
 """

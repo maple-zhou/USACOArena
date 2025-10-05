@@ -1,5 +1,5 @@
 """
-Utility modules for CompeteMAS platform.
+Utility modules for USACOArena platform.
 
 This module contains utility classes and functions for problem loading,
 logging, and other supporting functionality.
