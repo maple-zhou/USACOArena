@@ -196,7 +196,7 @@ class Competitor:
         except requests.exceptions.RequestException as e:
             return {"error": f"Failed to get hint: {str(e)}"}
     
-    def submission_solution(self, problem_id: str, code: str, language: str = "cpp") -> Dict:
+    def submit_solution(self, problem_id: str, code: str, language: str = "cpp") -> Dict:
         """Submit a solution for a problem"""
         self._ensure_participant()
         
@@ -215,7 +215,37 @@ class Competitor:
             
         except requests.exceptions.RequestException as e:
             return {"error": f"Failed to submit solution: {str(e)}"}
-    
+
+    def test_code(self, code: str, language: str = "cpp", test_cases: List[Dict] = None,
+                  time_limit_ms: int = 5000, memory_limit_mb: int = 256) -> Dict:
+        """Test code with custom test cases"""
+        self._ensure_participant()
+
+        try:
+            if test_cases is None:
+                test_cases = []
+
+            response = requests.post(
+                f"{self.api_base}/api/test_code/{self.competition_id}/{self.participant_id}",
+                json={
+                    "code": code,
+                    "language": language,
+                    "test_cases": test_cases,
+                    "time_limit_ms": time_limit_ms,
+                    "memory_limit_mb": memory_limit_mb
+                }
+            )
+            response.raise_for_status()
+
+            result = response.json()
+            if result["status"] != "success":
+                return {"error": f"API error: {result.get('message', 'Unknown error')}"}
+
+            return {"test_result": result["data"]}
+
+        except requests.exceptions.RequestException as e:
+            return {"error": f"Failed to test code: {str(e)}"}
+
     def view_rankings(self) -> Dict:
         """Get current competition rankings"""
         self._ensure_participant()

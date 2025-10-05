@@ -1,7 +1,9 @@
+import base64
+import gzip
 import json
-import subprocess
+import lzma
 import requests
-from typing import Dict, List, Optional, Any
+from typing import List, Optional
 from ..models.models import Submission, Problem, Case, TestResult, SubmissionStatus, Competition
 from ..utils.logger_config import get_logger
 
@@ -13,6 +15,11 @@ class Judge:
     """
     def __init__(self, oj_endpoint: str = "http://localhost:9000/2015-03-31/functions/function/invocations"):
         self.oj_endpoint = oj_endpoint
+        # Large test cases exceed AWS Lambda's payload limit; compress inputs above this size (bytes)
+        self._stdin_compress_threshold = 700_000
+        # AWS Lambda synchronous invoke hard limit is 6 MB (6,291,456 bytes);
+        # keep a small safety margin but allow large xz-encoded payloads.
+        self._stdin_base64_limit = 6_100_000
         logger.debug(f"Initialized Judge with OJ service at {oj_endpoint}")
     
     def evaluate_submission(self, submission: Submission, problem: Problem, competition: Optional[Competition] = None, first_one: bool = False) -> Submission:
@@ -37,6 +44,7 @@ class Judge:
                     submission.code,
                     submission.language,
                     test_case.input_data,
+                    getattr(test_case, "input_path", None),
                     test_case.expected_output,
                     problem.time_limit_ms,
                     problem.memory_limit_mb * 1024  # Convert MB to KB
@@ -53,11 +61,19 @@ class Judge:
                 logger.debug("Submission passed all test cases")
             
             # Calculate pass_score
-            # Calculate score (proportion of test cases passed * max score)
-            passed_tests = sum(1 for result in submission.test_results if result.status == SubmissionStatus.ACCEPTED)
+            # OLD: Calculate score (proportion of test cases passed * max score)
+            # passed_tests = sum(1 for result in submission.test_results if result.status == SubmissionStatus.ACCEPTED)
+            # base_score = problem.get_problem_base_score(competition) if competition else 0
+            # submission.pass_score = int((passed_tests / total_tests) * base_score) if total_tests > 0 else 0
+
+            # NEW: Only give score when submission is fully accepted (AC)
             base_score = problem.get_problem_base_score(competition) if competition else 0
-            submission.pass_score = int((passed_tests / total_tests) * base_score) if total_tests > 0 else 0
-            # Calculate first AC bonus  
+            if submission.status == SubmissionStatus.ACCEPTED:
+                submission.pass_score = base_score
+            else:
+                submission.pass_score = 0
+
+            # Calculate first AC bonus
             first_ac_bonus = problem.get_problem_firstAC_bonus(competition) if competition else 0
             if submission.status == SubmissionStatus.ACCEPTED and first_ac_bonus > 0 and first_one:
                 submission.pass_score += first_ac_bonus
@@ -93,6 +109,7 @@ class Judge:
         code: str,
         language: str,
         input_data: str,
+        input_path: Optional[str],
         expected_output: str,
         time_limit_ms: int,
         memory_limit_kb: int
@@ -121,10 +138,12 @@ class Judge:
                         "compiler_options": self._get_compiler_options(language),
                         "language": self._get_language_code(language)
                     },
-                    "execute": {
-                        "stdin": input_data,
-                        "timeout_ms": time_limit_ms
-                    }
+                    "execute": self._build_execute_payload(
+                        input_data,
+                        input_path,
+                        time_limit_ms,
+                        memory_limit_kb
+                    )
                 }),
                 "isBase64Encoded": False
             }
@@ -157,18 +176,25 @@ class Judge:
                 )
             
             # Check for runtime errors
-            if execute_result.get("exit_code", 0) != 0:
+            exit_code = execute_result.get("exit_code", 0)
+            if exit_code != 0:
                 stderr = execute_result.get("stderr", "")
-                
+
                 # Check for different types of runtime issues
                 verdict = execute_result.get("verdict", "").lower()
-                if verdict == "time limit exceeded" or "time limit" in stderr.lower():
+                stderr_lower = stderr.lower()
+                if (
+                    verdict == "time limit exceeded"
+                    or "time limit" in stderr_lower
+                    or exit_code in (124, 31744)
+                    or "status 124" in stderr_lower
+                ):
                     status = SubmissionStatus.TIME_LIMIT_EXCEEDED
-                elif verdict == "memory limit exceeded" or "memory limit" in stderr.lower():
+                elif verdict == "memory limit exceeded" or "memory limit" in stderr_lower:
                     status = SubmissionStatus.MEMORY_LIMIT_EXCEEDED
                 else:
                     status = SubmissionStatus.RUNTIME_ERROR
-                
+
                 return TestResult(
                     test_case_id="execution",
                     status=status,
@@ -211,7 +237,58 @@ class Judge:
                 status=SubmissionStatus.RUNTIME_ERROR,
                 error_message=str(e)
             )
-    
+
+    def _build_execute_payload(
+        self,
+        input_data: str,
+        input_path: Optional[str],
+        time_limit_ms: int,
+        memory_limit_kb: int
+    ) -> dict:
+        execute_payload = {
+            "timeout_ms": time_limit_ms,
+        }
+
+        if input_path:
+            execute_payload["stdin_file_path"] = input_path
+            return execute_payload
+
+        input_bytes = input_data.encode("utf-8")
+
+        if len(input_bytes) <= self._stdin_compress_threshold:
+            execute_payload["stdin"] = input_data
+            return execute_payload
+
+        gzip_compressed = gzip.compress(input_bytes)
+        gzip_encoded = base64.b64encode(gzip_compressed).decode("ascii")
+
+        if len(gzip_encoded) <= self._stdin_base64_limit:
+            logger.debug(
+                "Compressing stdin with gzip: original=%d bytes, compressed=%d bytes, encoded=%d bytes",
+                len(input_bytes),
+                len(gzip_compressed),
+                len(gzip_encoded),
+            )
+            execute_payload["stdin_gzip_base64"] = gzip_encoded
+            return execute_payload
+
+        xz_compressed = lzma.compress(input_bytes, format=lzma.FORMAT_XZ, preset=6)
+        xz_encoded = base64.b64encode(xz_compressed).decode("ascii")
+
+        if len(xz_encoded) <= self._stdin_base64_limit:
+            logger.debug(
+                "Compressing stdin with xz: original=%d bytes, compressed=%d bytes, encoded=%d bytes",
+                len(input_bytes),
+                len(xz_compressed),
+                len(xz_encoded),
+            )
+            execute_payload["stdin_xz_base64"] = xz_encoded
+            return execute_payload
+
+        raise ValueError(
+            "Input test case remains too large after compression; consider splitting or using stdin_id"
+        )
+
     def _get_compiler_options(self, language: str) -> str:
         """Get appropriate compiler options based on language"""
         language = language.lower()
@@ -301,10 +378,7 @@ int main() {
                         "compiler_options": "-O2 -std=c++17",
                         "language": "cpp"
                     },
-                    "execute": {
-                        "stdin": "5 7",
-                        "timeout_ms": 5000
-                    }
+                    "execute": self._build_execute_payload("5 7", None, 5000, 256 * 1024)
                 }),
                 "isBase64Encoded": False
             }
@@ -346,4 +420,62 @@ int main() {
         try:
             return int(memory_str)
         except (ValueError, TypeError):
-            return 0 
+            return 0
+
+    def test_code_with_custom_cases(
+        self,
+        code: str,
+        language: str,
+        test_cases: List[Case],
+        time_limit_ms: int = 5000,
+        memory_limit_mb: int = 256
+    ) -> List[TestResult]:
+        """
+        Test code against user-provided custom test cases.
+        This method does not affect competition scoring and is used for code verification only.
+
+        Args:
+            code: Source code to test
+            language: Programming language
+            test_cases: List of test cases with input and expected output
+            time_limit_ms: Time limit in milliseconds
+            memory_limit_mb: Memory limit in MB
+
+        Returns:
+            List of TestResult objects containing execution results
+        """
+        logger.debug(f"Testing code with {len(test_cases)} custom test cases")
+
+        test_results = []
+        memory_limit_kb = memory_limit_mb * 1024  # Convert MB to KB
+
+        try:
+            # Run the code against each custom test case
+            for i, test_case in enumerate(test_cases):
+                logger.debug(f"Running custom test case {i+1}")
+                test_result = self._run_test(
+                    code,
+                    language,
+                    test_case.input_data,
+                    getattr(test_case, "input_path", None),
+                    test_case.expected_output,
+                    time_limit_ms,
+                    memory_limit_kb
+                )
+                test_result.test_case_id = f"custom_case_{i+1}"
+                test_results.append(test_result)
+                logger.debug(f"Custom test case {i+1} result: {test_result.status}")
+
+        except Exception as e:
+            # Handle any exceptions during testing
+            logger.error(f"Error testing code with custom cases: {str(e)}", exc_info=True)
+            test_results = [
+                TestResult(
+                    test_case_id="error",
+                    status=SubmissionStatus.RUNTIME_ERROR,
+                    error_message=str(e)
+                )
+            ]
+
+        logger.info(f"Completed testing with {len(test_results)} custom test case results")
+        return test_results

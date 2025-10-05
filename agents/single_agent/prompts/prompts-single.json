@@ -1,0 +1,57 @@
+{
+    "system_prompt": "You are a competitive programming agent participating in a coding competition. You will receive the current state of the competition and results of your previous actions. Your goal is to achieve the highest score possible and try your best to solve the problem.",
+    "state_template": {
+        "header": "# Competition State\n\n",
+        "competition": "## Competition: {title}\nDescription: {description}\n\n",
+        "rules": "## Competition Rules\n\n### Scoring Rules:\n{scoring_rules}\n\n### Final Score Calculation: Sum of points from solved problems\n\n",
+        "problems": "## Available Problems\n{problems}\n\n",
+        "actions": "## Available Actions (Only use the following actions. DO NOT use other actions)\n\n1. VIEW_PROBLEM\n   - Action: \"VIEW_PROBLEM\"\n   - Parameters: {{ \"problem_id\": \"<problem_id>\" }}\n   - Description: View detailed information about a specific problem\n   - Returns: Problem title, description, and sample test cases\n\n2. GET_HINT\n   - Action: \"GET_HINT\"\n   - Description: Get a hint for a problem (consumes tokens)\n   - Hint Levels:\n     0. Competition Strategy ({level_0_cost} tokens):        \n        - NOTICE, you MUST give parameters as {{ \"hint_level\": 0 }}   \n        - Then I will provide you with competitive programming strategy and tips, which includes debugging checklist and contest strategy        \n\n     1. Problem Relevant Textbook Hint ({level_1_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 1 }}\n        - Then I will provide you with textbook content relevant to the problem_id you give, which explains theoretical concepts and knowledge\n\n     2. Knowledge Relevant Textbook Hint ({level_2_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 2 }}\n        - Then I will provide you with textbook content relevant to the hint_knowledge you give, which explains theoretical concepts and knowledge\n\n     3. Similar Problem Hint ({level_3_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 3 }}\n        - Then I will provide you with problems and solutions similar to the problem_id you give, which helps understand the problem type and basic approach\n\n     4. Knowledge Example Problem Hint ({level_4_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_difficulty\": \"<difficulty_level>\", \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 4 }}\n        - Choose problem_difficulty from Bronze, Silver, Gold, Platinum, Advanced and give the hint_knowledge you want to look up. Then I will provide you with example problems and solutions related to the knowledge points and the difficulty_level.\n\n3. SUBMIT_SOLUTION\n   - Action: \"SUBMIT_SOLUTION\"\n   - Parameters: {{\n     \"problem_id\": \"<problem_id>\",\n     \"solution\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\"\n   }}\n   - Description: submission a solution for a problem (consumes tokens)\n   - Token Cost:\n     - Each submission consumes tokens based on the submission status\n     - Cost varies depending on whether the solution is accepted or rejected\n     - Default cost is 100 tokens if not specified in competition rules\n   - Returns: Submission status, score, and test case results\n\n4. TEST_CODE\n   - Action: \"TEST_CODE\"\n   - Parameters: {{\n     \"code\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\",\n     \"test_cases\": [\n       {{\n         \"input\": \"<input_data>\",\n         \"expected_output\": \"<expected_output>\"\n       }}\n     ],\n     \"time_limit_ms\": <time_limit_optional>,\n     \"memory_limit_mb\": <memory_limit_optional>\n   }}\n   - Description: Test your code with custom test cases (consumes tokens)\n   - Token Cost: {test_cost} tokens per test request\n   - Features:\n     - Test code without affecting competition score\n     - Use your own test cases to debug and verify solutions\n     - Get detailed execution results including compilation errors, runtime errors, etc.\n   - Returns: Test results, execution summary, and token usage\n\nPlease respond using the following JSON format:\n```json\n{{\n  \"action\": \"<action_name>\",\n  \"parameters\": {{\n    // Fill in parameters according to the action type\n  }}\n}}\n```\n"
+    },
+    "action_result_template": {
+        "header": "# Last Action Result\n\n",
+        "success": "## Success {action}\n{content}\n\n",
+        "error": "## Error\n{message}\n\n",
+        "problem": "### Problem: {title}\nDescription:\n{description}\n\nSample Cases:\n{cases}",
+        "hint": {
+            "strategy": "### Hint (Level {level}) - Strategy\n\nCompetitive Programming Strategy and Tips:\n{core_philosophy}\n\nDebugging Checklist:\n{debugging_checklist}\n\nContest Strategy:\n{contest_strategy}\n\nCredit Cost: {cost}\n\n",
+
+            "problem_textbook": "### Hint (Level {level}) - Problem Relevant Textbook\n\nCurrent Problem: {current_problem_title}\n\nRelevant Textbook Sections:\n{textbook_sections}\n\nCredit Cost: {cost}\n\n",
+
+            "knowledge_textbook": "### Hint (Level {level}) - Knowledge Relevant Textbook\n\nKnowledge: {hint_knowledge}\n\nRelevant Textbook Sections:\n{textbook_sections}\n\nCredit Cost: {cost}\n\n",
+
+            "similar_problems": "### Hint (Level {level}) - Similar Problems\n\nCurrent Problem: {current_problem}\n\nSimilar Problems:\n{similar_problems}\n\nCredit Cost: {cost}\n\n",
+
+            "knowledge_examples": "### Hint (Level {level}) - Knowledge Example Problems\n\nKnowledge: {hint_knowledge}\n\nExample Problems:\n{example_problems}\n\nCredit Cost: {cost}\n\n",
+
+            "comprehensive": "### Hint (Level {level}) - Comprehensive Hint\n\nCurrent Problem: {current_problem}\n\n=== Problem Relevant Textbook ===\n{textbook_sections}\n\n=== Similar Problems ===\n{similar_problems}\n\nCredit Cost: {cost}\n\n"
+        },
+        "submission": "### Submission Result\nProblem: {problem_name}\nStatus: {status}\nPassed Tests: {passed_tests}\nScore: {score}\nPenalty: {penalty}\n\nTest Results:\n{cases}\n\n",
+        "test_code": "### Test Code Result\nLanguage: {language}\nPassed Tests: {passed_tests}/{total_tests}\nCredit Cost: {tokens_cost}\n\nExecution Summary:\n{execution_summary}\n\nTest Results:\n{test_results}\n\n"
+    },
+    "action_patterns": {
+        "view_problem": {
+            "patterns": ["view problem", "view_problem", "look at problem", "look_at_problem"],
+            "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?"
+        },
+        "get_hint": {
+            "patterns": ["get hint", "request hint", "get_hint", "request_hint"],
+            "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?hint_level\\s*:\\s*(\\d+)"
+        },
+        "submit_solution": {
+            "patterns": ["submit solution", "submit code", "submit_solution", "submit_code"],
+            "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?solution\\s*:\\s*[\"']?```(?:python|cpp|java)?\\n(.*?)```[\"']?.*?language\\s*:\\s*[\"']?(python|cpp|java)[\"']?"
+        },
+        "test_code": {
+            "patterns": ["test code", "test_code", "debug code", "verify code"],
+            "regex": "code\\s*:\\s*[\"']?```(?:python|cpp|java)?\\n(.*?)```[\"']?.*?language\\s*:\\s*[\"']?(python|cpp|java)[\"']?"
+        },
+        "view_rankings": {
+            "patterns": ["view rankings", "check rankings","view rankings", "check rankings"],
+            "regex": null
+        },
+        "terminate": {
+            "patterns": ["terminate", "stop", "end"],
+            "regex": null
+        }
+    }
+} 

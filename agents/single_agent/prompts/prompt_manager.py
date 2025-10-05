@@ -13,6 +13,7 @@ class PromptSystem:
     """System for managing competition prompts"""
     def __init__(self, config_path: Optional[str] = None):
         self.config = self._load_config(config_path)
+        self.system_prompt = self.config["system_prompt"]
     
     def _load_config(self, config_path: Optional[str]) -> Dict:
         """Load prompt configuration from file or use defaults"""
@@ -34,35 +35,37 @@ class PromptSystem:
             except Exception as e:
                 logger.warning(f"Failed to load prompt config from default location {default_path}: {e}")
         
-        # Fallback to hardcoded default configuration
-        return {
-            "system_prompt": "You are a competitive programming agent participating in a coding competition. You will receive the current state of the competition and results of your previous actions. Your goal is to achieve the highest score possible while managing your token budget wisely. Your token budget has two main uses: 1) Limiting the length of your output responses, and 2) Purchasing hints for problems.\n\nBefore taking any action, you should:\n1. Analyze the current competition state and your remaining resources\n2. Evaluate the difficulty and potential score of each problem\n3. Consider the optimal strategy for token usage (e.g., when to use hints)\n4. Plan your approach to maximize score while minimizing token consumption\n\nPlease respond with a JSON object containing 'action' and 'parameters' fields.",
-            "state_template": {
-                "header": "# Competition State\n\n",
-                "competition": "## Competition: {title}\nDescription: {description}\n\n",
-                "rules": "## Competition Rules\n\n### Token Budget:\n- Each participant has a maximum of {limit_tokens} tokens\n- Tokens are used for:\n  1. Limiting the length of your output responses\n  2. Purchasing hints (cost increases with hint level)\n  3. submissionting solutions (cost varies based on submission status)\n- Running out of tokens will terminate your participation\n- Remaining tokens at the end of competition will be converted to bonus points\n  - Bonus points = (remaining_tokens / initial_tokens) * lambda\n  - Lambda is a multiplier defined in competition rules (default: 100)\n\n### Scoring Rules:\n{scoring_rules}\n\n### Penalties:\n{penalties}\n\n### Bonus:\n{bonus_rules}\n\n### Final Score Calculation:\n- Base Score: Sum of points from solved problems\n- Token Bonus: (remaining_tokens / initial_tokens) * lambda\n- Final Score = Base Score + Token Bonus\n\n",
-                "competitor": "## Your Status\n- Name: {name}\n- Remaining Tokens: {tokens}\n- Solved Problems: {solved}\n- Current Score: {score}\n\n",
-                "problems": "## Available Problems\n{problems}\n\n",
-                "rankings": "## Current Rankings\n{rankings}\n\n",
-                "other_competitors": "## Other Competitors Status\n{other_competitors}\n\n",
-                "actions": "## Available Actions\n\n1. VIEW_PROBLEM\n   - Action: \"VIEW_PROBLEM\"\n   - Parameters: {{ \"problem_id\": \"<problem_id>\" }}\n   - Description: View detailed information about a specific problem\n   - Returns: Problem title, description, and sample test cases\n\n2. GET_HINT\n   - Action: \"GET_HINT\"\n   - Description: Get a hint for a problem (consumes tokens)\n   - Hint Levels:\n     0. Strategy ({level_0_cost} tokens):        \n        - NOTICE, you MUST give parameters as {{ \"hint_level\": 0 }}   \n        - Then I will provide you with competitive programming strategy and tips, which includes debugging checklist and contest strategy        \n\n     1. Problem Relevant Textbook Hint ({level_1_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 1 }}\n        - Then I will provide you with textbook content relevant to the problem_id you give, which explains theoretical concepts and knowledge\n\n     2. Knowledge Relevant Textbook Hint ({level_2_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 2 }}\n        - Then I will provide you with textbook content relevant to the hint_knowledge you give, which explains theoretical concepts and knowledge\n\n     3. Similar Problem Hint ({level_3_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 3 }}\n        - Then I will provide you with problems and solutions similar to the problem_id you give, which helps understand the problem type and basic approach\n\n     4. Knowledge Example Problem Hint ({level_4_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_difficulty\": \"<difficulty_level>\", \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 4 }}\n        - Choose problem_difficulty from Bronze, Silver, Gold, Platinum, Advanced and give the hint_knowledge you want to look up. Then I will provide you with example problems and solutions related to the knowledge points and the difficulty_level.\n\n3. submission_SOLUTION\n   - Action: \"submission_SOLUTION\"\n   - Parameters: {{\n     \"problem_id\": \"<problem_id>\",\n     \"solution\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\"\n   }}\n   - Description: submission a solution for a problem (consumes tokens)\n   - Token Cost:\n     - Each submission consumes tokens based on the submission status\n     - Cost varies depending on whether the solution is accepted or rejected\n     - Default cost is 100 tokens if not specified in competition rules\n   - Returns: Submission status, score, and test case results\n\n4. TERMINATE\n   - Action: \"TERMINATE\"\n   - Parameters: {{ \"reason\": \"<reason>\" }}\n   - Description: End your participation in the competition and give your reason\n   - Returns: Final score and ranking\n\nPlease respond using the following JSON format:\n```json\n{{\n  \"action\": \"<action_name>\",\n  \"parameters\": {{\n    // Fill in parameters according to the action type\n  }}\n}}\n```\n"
-            },
-            "action_result_template": {
-                "header": "# Last Action Result\n\n",
-                "success": "## Success {action}\n{content}\n\n",
-                "error": "## Error\n{message}\n\n",
-                "problem": "### Problem: {title}\nDescription:\n{description}\n\nSample Cases:\n{cases}",
-                "hint": {
-                    "strategy": "### Hint (Level {level}) - Strategy\n\nCompetitive Programming Strategy and Tips:\n{strategy_content}\n\nDebugging Checklist:\n{debugging_checklist}\n\nContest Strategy:\n{contest_strategy}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
-                    "problem_textbook": "### Hint (Level {level}) - Problem Relevant Textbook\n\nCurrent Problem: {current_problem}\n\nRelevant Textbook Sections:\n{textbook_sections}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
-                    "knowledge_textbook": "### Hint (Level {level}) - Knowledge Relevant Textbook\n\nKnowledge: {hint_knowledge}\n\nRelevant Textbook Sections:\n{textbook_sections}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
-                    "similar_problems": "### Hint (Level {level}) - Similar Problems\n\nCurrent Problem: {current_problem}\n\nSimilar Problems:\n{similar_problems}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
-                    "knowledge_examples": "### Hint (Level {level}) - Knowledge Example Problems\n\nKnowledge: {hint_knowledge}\nProblem Difficulty: {problem_difficulty}\n\nExample Problems:\n{example_problems}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
-                    "comprehensive": "### Hint (Level {level}) - Comprehensive Hint\n\nCurrent Problem: {current_problem}\n\n=== Problem Relevant Textbook ===\n{textbook_sections}\n\n=== Similar Problems ===\n{similar_problems}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n"
-                },
-                "submission": "### Submission Result\nStatus: {status}\nPassed Tests: {passed_tests}/{total_tests}\nScore: {score}\nPenalty: {penalty}\n\nTest Results:\n{cases}\n\n"
-            }
-        }
+        raise ValueError("Failed to load prompt config")
+        # # Fallback to hardcoded default configuration
+        # return {
+        #     "system_prompt": "You are a competitive programming agent participating in a coding competition. You will receive the current state of the competition and results of your previous actions. Your goal is to achieve the highest score possible while managing your token budget wisely. Your token budget has two main uses: 1) Limiting the length of your output responses, and 2) Purchasing hints for problems.\n\nBefore taking any action, you should:\n1. Analyze the current competition state and your remaining resources\n2. Evaluate the difficulty and potential score of each problem\n3. Consider the optimal strategy for token usage (e.g., when to use hints)\n4. Plan your approach to maximize score while minimizing token consumption\n\nPlease respond with a JSON object containing 'action' and 'parameters' fields.",
+        #     "state_template": {
+        #         "header": "# Competition State\n\n",
+        #         "competition": "## Competition: {title}\nDescription: {description}\n\n",
+        #         "rules": "## Competition Rules\n\n### Token Budget:\n- Each participant has a maximum of {limit_tokens} tokens\n- Tokens are used for:\n  1. Limiting the length of your output responses\n  2. Purchasing hints (cost increases with hint level)\n  3. submissionting solutions (cost varies based on submission status)\n- Running out of tokens will terminate your participation\n- Remaining tokens at the end of competition will be converted to bonus points\n  - Bonus points = (remaining_tokens / initial_tokens) * lambda\n  - Lambda is a multiplier defined in competition rules (default: 100)\n\n### Scoring Rules:\n{scoring_rules}\n\n### Penalties:\n{penalties}\n\n### Bonus:\n{bonus_rules}\n\n### Final Score Calculation:\n- Base Score: Sum of points from solved problems\n- Token Bonus: (remaining_tokens / initial_tokens) * lambda\n- Final Score = Base Score + Token Bonus\n\n",
+        #         "competitor": "## Your Status\n- Name: {name}\n- Remaining Tokens: {tokens}\n- Solved Problems: {solved}\n- Current Score: {score}\n\n",
+        #         "problems": "## Available Problems\n{problems}\n\n",
+        #         "rankings": "## Current Rankings\n{rankings}\n\n",
+        #         "other_competitors": "## Other Competitors Status\n{other_competitors}\n\n",
+        #         "actions": "## Available Actions\n\n1. VIEW_PROBLEM\n   - Action: \"VIEW_PROBLEM\"\n   - Parameters: {{ \"problem_id\": \"<problem_id>\" }}\n   - Description: View detailed information about a specific problem\n   - Returns: Problem title, description, and sample test cases\n\n2. GET_HINT\n   - Action: \"GET_HINT\"\n   - Description: Get a hint for a problem (consumes tokens)\n   - Hint Levels:\n     0. Strategy ({level_0_cost} tokens):        \n        - NOTICE, you MUST give parameters as {{ \"hint_level\": 0 }}   \n        - Then I will provide you with competitive programming strategy and tips, which includes debugging checklist and contest strategy        \n\n     1. Problem Relevant Textbook Hint ({level_1_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 1 }}\n        - Then I will provide you with textbook content relevant to the problem_id you give, which explains theoretical concepts and knowledge\n\n     2. Knowledge Relevant Textbook Hint ({level_2_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 2 }}\n        - Then I will provide you with textbook content relevant to the hint_knowledge you give, which explains theoretical concepts and knowledge\n\n     3. Similar Problem Hint ({level_3_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 3 }}\n        - Then I will provide you with problems and solutions similar to the problem_id you give, which helps understand the problem type and basic approach\n\n     4. Knowledge Example Problem Hint ({level_4_cost} tokens):\n        - NOTICE, you MUST give parameters as {{ \"problem_difficulty\": \"<difficulty_level>\", \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 4 }}\n        - Choose problem_difficulty from Bronze, Silver, Gold, Platinum, Advanced and give the hint_knowledge you want to look up. Then I will provide you with example problems and solutions related to the knowledge points and the difficulty_level.\n\n3. SUBMIT_SOLUTION\n   - Action: \"SUBMIT_SOLUTION\"\n   - Parameters: {{\n     \"problem_id\": \"<problem_id>\",\n     \"solution\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\"\n   }}\n   - Description: submission a solution for a problem (consumes tokens)\n   - Token Cost:\n     - Each submission consumes tokens based on the submission status\n     - Cost varies depending on whether the solution is accepted or rejected\n     - Default cost is 100 tokens if not specified in competition rules\n   - Returns: Submission status, score, and test case results\n\n4. TEST_CODE\n   - Action: \"TEST_CODE\"\n   - Parameters: {{\n     \"code\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\",\n     \"test_cases\": [\n       {{\n         \"input\": \"<input_data>\",\n         \"expected_output\": \"<expected_output>\"\n       }}\n     ],\n     \"time_limit_ms\": <time_limit_optional>,\n     \"memory_limit_mb\": <memory_limit_optional>\n   }}\n   - Description: Test your code with custom test cases (consumes tokens)\n   - Token Cost: {test_cost} tokens per test request\n   - Features:\n     - Test code without affecting competition score\n     - Use your own test cases to debug and verify solutions\n     - Get detailed execution results including compilation errors, runtime errors, etc.\n   - Returns: Test results, execution summary, and token usage\n\n5. TERMINATE\n   - Action: \"TERMINATE\"\n   - Parameters: {{ \"reason\": \"<reason>\" }}\n   - Description: End your participation in the competition and give your reason\n   - Returns: Final score and ranking\n\nPlease respond using the following JSON format:\n```json\n{{\n  \"action\": \"<action_name>\",\n  \"parameters\": {{\n    // Fill in parameters according to the action type\n  }}\n}}\n```\n"
+        #     },
+        #     "action_result_template": {
+        #         "header": "# Last Action Result\n\n",
+        #         "success": "## Success {action}\n{content}\n\n",
+        #         "error": "## Error\n{message}\n\n",
+        #         "problem": "### Problem: {title}\nDescription:\n{description}\n\nSample Cases:\n{cases}",
+        #         "hint": {
+        #             "strategy": "### Hint (Level {level}) - Strategy\n\nCompetitive Programming Strategy and Tips:\n{strategy_content}\n\nDebugging Checklist:\n{debugging_checklist}\n\nContest Strategy:\n{contest_strategy}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
+        #             "problem_textbook": "### Hint (Level {level}) - Problem Relevant Textbook\n\nCurrent Problem: {current_problem}\n\nRelevant Textbook Sections:\n{textbook_sections}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
+        #             "knowledge_textbook": "### Hint (Level {level}) - Knowledge Relevant Textbook\n\nKnowledge: {hint_knowledge}\n\nRelevant Textbook Sections:\n{textbook_sections}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
+        #             "similar_problems": "### Hint (Level {level}) - Similar Problems\n\nCurrent Problem: {current_problem}\n\nSimilar Problems:\n{similar_problems}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
+        #             "knowledge_examples": "### Hint (Level {level}) - Knowledge Example Problems\n\nKnowledge: {hint_knowledge}\nProblem Difficulty: {problem_difficulty}\n\nExample Problems:\n{example_problems}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n",
+        #             "comprehensive": "### Hint (Level {level}) - Comprehensive Hint\n\nCurrent Problem: {current_problem}\n\n=== Problem Relevant Textbook ===\n{textbook_sections}\n\n=== Similar Problems ===\n{similar_problems}\n\nToken Cost: {cost}\nRemaining Tokens: {remaining}\n\n"
+        #         },
+        #         "submission": "### Submission Result\nStatus: {status}\nPassed Tests: {passed_tests}/{total_tests}\nScore: {score}\nPenalty: {penalty}\n\nTest Results:\n{cases}\n\n",
+        #         "test_code": "### Test Code Result\nLanguage: {language}\nPassed Tests: {passed_tests}/{total_tests}\nToken Cost: {tokens_cost}\nRemaining Tokens: {remaining_tokens}\n\nExecution Summary:\n{execution_summary}\n\nTest Results:\n{test_results}\n\n"
+        #     }
+        # }
     
     def _format_scoring_rules(self, rules: Dict) -> str:
         """Format scoring rules from competition configuration"""
@@ -147,12 +150,14 @@ Important Notes:
             # If it's already a list of strings, join them directly
             solved_problems_str = ", ".join(solved_problems) if solved_problems else "None"
         
-        prompt += state_template["competitor"].format(
-            name=competitor["name"],
-            tokens=competitor["remaining_tokens"],
-            solved=solved_problems_str,
-            score=competitor["score"] or 0
-        )
+        if state_template.get("competitor"):
+            prompt += state_template["competitor"].format(
+                name=competitor["name"],
+                tokens=competitor["consumed_tokens"],
+                solved=solved_problems_str,
+                score=competitor["problem_pass_score"] or 0,
+                penalty=competitor["submission_penalty"] or 0
+            )
         
         # Available problems
         if isinstance(state["problems"], dict) and "problems_id" in state["problems"]:
@@ -160,30 +165,44 @@ Important Notes:
             problem_ids = state["problems"]["problems_id"]
             first_to_solve = state["problems"].get("problems_first_to_solve", [None] * len(problem_ids))
             problems = "\n".join(
-                f"- problem_id: {pid}, first_to_solve: {first_to_solve[i] or 'None'}"
+                # f"- problem_id: {pid}, first_to_solve: {first_to_solve[i] or 'None'}"
+                f"- problem_id: {pid}"
                 for i, pid in enumerate(problem_ids)
             )
 
         else:
             # Handle the case where problems is a list of objects
             problems = "\n".join(
-                f"- problem_id: {p['id']}, first_to_solve: {p.get('first_to_solve', 'None')}"
+                # f"- problem_id: {p['id']}, first_to_solve: {p.get('first_to_solve', 'None')}"
+                f"- problem_id: {p['id']}"
                 for p in state["problems"]
             )
-        prompt += state_template["problems"].format(problems=problems)
+        if state_template.get("problems"):
+            prompt += state_template["problems"].format(problems=problems)
         
         # Rankings
+        logger.debug(f"State rankings in prompt: {state['rankings']}")
         if isinstance(state["rankings"], dict) and "rankings" in state["rankings"]:
             # Handle the case where rankings is a dict with a list
             rankings_list = state["rankings"]["rankings"]
-            rankings = "\n".join(f"{i+1}. {r[0]}: {r[1]} points" for i, r in enumerate(rankings_list))
+            rankings = "\n".join(
+                f"{i+1}. {r[0]}: Score {r[1]} points, Consumed Credit + Penalty: {r[2]}" +
+                (f" [{'TERMINATED' if r[4] else 'ACTIVE'}]" if len(r) > 4 else "")
+                for i, r in enumerate(rankings_list)
+            )
         elif isinstance(state["rankings"], list):
             # Handle the case where rankings is a list of lists
-            rankings = "\n".join(f"{i+1}. {r[0]}: {r[1]} points" for i, r in enumerate(state["rankings"]))
+            rankings = "\n".join(
+                f"{i+1}. {r[0]}: Score {r[1]} points, Consumed Credit + Penalty: {r[2]}" +
+                (f" [{'TERMINATED' if r[4] else 'ACTIVE'}]" if len(r) > 4 else "")
+                for i, r in enumerate(state["rankings"])
+            )
         else:
             # Handle the case where rankings is a list of objects
-            rankings = "\n".join(f"{r['rank']}. {r['name']}: {r['score']} points" for r in state["rankings"])
-        prompt += state_template["rankings"].format(rankings=rankings)
+            rankings = "\n".join(f"{r['rank']}. {r['name']}: Score {r['score']} points, Consumed Credit + Penalty: {r['consumed_credit']}" for r in state["rankings"])
+        
+        if state_template.get("rankings"):
+            prompt += state_template["rankings"].format(rankings=rankings)
 
         # Other competitors status
         if "other_competitors_status" in state:
@@ -194,7 +213,8 @@ Important Notes:
             ]
             if terminated_competitors:
                 other_competitors = "\n".join(terminated_competitors)
-                prompt += state_template["other_competitors"].format(other_competitors=other_competitors)
+                if state_template.get("other_competitors"):
+                    prompt += state_template["other_competitors"].format(other_competitors=other_competitors)
 
         # Get hint token costs from rules
         hint_tokens = rules.get("hint_tokens", {})
@@ -204,15 +224,20 @@ Important Notes:
         level_3_cost = hint_tokens.get("level_3", 600)
         level_4_cost = hint_tokens.get("level_4", 1000)
 
+        # Get test token cost
+        test_tokens = rules.get("test_tokens", {})
+        test_cost = test_tokens.get("default", 50)
 
         # Available actions with dynamic hint costs
-        actions = state_template["actions"].format(
-            level_0_cost=level_0_cost,
-            level_1_cost=level_1_cost,
-            level_2_cost=level_2_cost,
-            level_3_cost=level_3_cost,
-            level_4_cost=level_4_cost,
-        )
+        if state_template.get("actions"):
+            actions = state_template["actions"].format(
+                level_0_cost=level_0_cost,
+                level_1_cost=level_1_cost,
+                level_2_cost=level_2_cost,
+                level_3_cost=level_3_cost,
+                level_4_cost=level_4_cost,
+                test_cost=test_cost,
+            )
         prompt += actions
         
         return prompt
@@ -267,7 +292,7 @@ Important Notes:
                 if isinstance(hint_content, str):
                     # Legacy format - return early with simple content
                     hint_content = self._truncate_hint_content(hint_content)
-                    content = f"### Hint (Level {hint_level})\n{hint_content}\n\nToken Cost: {action_result.get('tokens_cost', action_result.get('token_cost', 0))}\nRemaining Tokens: {action_result.get('remaining_tokens', 0)}\n\n"
+                    content = f"### Hint (Level {hint_level})\n{hint_content}\n\nCredit Cost: {action_result.get('tokens_cost', action_result.get('token_cost', 0))}\n\n"
                 elif isinstance(hint_content, dict):
                     # New structured format
                     if hint_level == 3:
@@ -296,8 +321,7 @@ Important Notes:
                             level=action_result["hint_level"],
                             current_problem=current_problem_title,
                             similar_problems=similar_problems or "No similar problems found",
-                            cost=action_result["tokens_cost"],
-                            remaining=action_result["remaining_tokens"]
+                            cost=action_result["tokens_cost"]
                         )
 
                     
@@ -326,8 +350,7 @@ Important Notes:
                             level=action_result["hint_level"],
                             current_problem_title=current_problem_title,
                             textbook_sections=textbook_sections or "No textbook content found",
-                            cost=action_result["tokens_cost"],
-                            remaining=action_result["remaining_tokens"]
+                            cost=action_result["tokens_cost"]
                         )
                         
                     
@@ -351,8 +374,7 @@ Important Notes:
                             level=action_result["hint_level"],
                             hint_knowledge=hint_knowledge,
                             textbook_sections=textbook_sections or "No textbook content found",
-                            cost=action_result["tokens_cost"],
-                            remaining=action_result["remaining_tokens"]
+                            cost=action_result["tokens_cost"]
                         )
                     
                     
@@ -402,8 +424,7 @@ Important Notes:
                             hint_knowledge=hint_knowledge,
                             # problem_difficulty=problem_difficulty,
                             example_problems=example_problems or "No example problems found",
-                            cost=action_result["tokens_cost"],
-                            remaining=action_result["remaining_tokens"]
+                            cost=action_result["tokens_cost"]
                         )
                     
                     elif hint_level == 0:
@@ -417,8 +438,7 @@ Important Notes:
                             core_philosophy=core_philosophy,
                             debugging_checklist=debugging_checklist,
                             contest_strategy=contest_strategy,
-                            cost=action_result["tokens_cost"],
-                            remaining=action_result["remaining_tokens"]
+                            cost=action_result["tokens_cost"]
                         )
                         
 
@@ -462,16 +482,15 @@ Important Notes:
                             current_problem=current_problem_title,
                             textbook_sections=textbook_sections or "No textbook content found",
                             similar_problems=similar_problems or "No similar problems found",
-                            cost=action_result["tokens_cost"],
-                            remaining=action_result["remaining_tokens"]
+                            cost=action_result["tokens_cost"]
                         )
                     
                     else:
                         # Fallback for unknown hint level
-                        content = f"### Hint (Level {hint_level})\nUnknown hint level format\n\nToken Cost: {action_result.get('tokens_cost', action_result.get('token_cost', 0))}\nRemaining Tokens: {action_result.get('remaining_tokens', 0)}\n\n"
+                        content = f"### Hint (Level {hint_level})\nUnknown hint level format\n\nToken Cost: {action_result.get('tokens_cost', action_result.get('token_cost', 0))}\n\n"
                 else:
                     # Fallback for unknown format
-                    content = f"### Hint (Level {hint_level})\nUnknown hint format\n\nToken Cost: {action_result.get('tokens_cost', action_result.get('token_cost', 0))}\nRemaining Tokens: {action_result.get('remaining_tokens', 0)}\n\n"
+                    content = f"### Hint (Level {hint_level})\nUnknown hint format\n\nToken Cost: {action_result.get('tokens_cost', action_result.get('token_cost', 0))}\n\n"
             
             elif "submission" in action_result:
                 submission = action_result["submission"]
@@ -489,7 +508,32 @@ Important Notes:
                     passed_tests=submission.get("passed_tests", 0),
                     # total_tests=submission.get("total_tests", 0)
                 )
-            
+
+            elif "test_result" in action_result:
+                test_result = action_result["test_result"]
+
+                # Format test case results
+                test_results_formatted = "\n".join(
+                    f"Test {i+1}: {tr.get('status', 'Unknown')} - {tr.get('output', '')}"
+                    for i, tr in enumerate(test_result.get("test_results", []))
+                )
+
+                # Format execution summary
+                execution_summary = test_result.get("execution_summary", {})
+                summary_lines = []
+                for key, value in execution_summary.items():
+                    summary_lines.append(f"  {key.replace('_', ' ').title()}: {value}")
+                execution_summary_formatted = "\n".join(summary_lines)
+
+                content = action_result_template["test_code"].format(
+                    language=test_result.get("language", "Unknown"),
+                    passed_tests=test_result.get("passed_tests", 0),
+                    total_tests=test_result.get("total_tests", 0),
+                    tokens_cost=test_result.get("tokens_cost", 0),
+                    execution_summary=execution_summary_formatted,
+                    test_results=test_results_formatted
+                )
+
             prompt += action_result_template["success"].format(action=action, content=content)
         
         else:
@@ -542,31 +586,32 @@ class ActionParser:
             except Exception as e:
                 logger.warning(f"Failed to load action config from default location {default_path}: {e}")
         
-        # Fallback to hardcoded default configuration
-        return {
-            "action_patterns": {
-                "view_problem": {
-                    "patterns": ["view problem", "view_problem", "look at problem", "look_at_problem"],
-                    "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?"
-                },
-                "get_hint": {
-                    "patterns": ["get hint", "request hint", "get_hint", "request_hint"],
-                    "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?hint_level\\s*:\\s*(\\d+)"
-                },
-                "submission_solution": {
-                    "patterns": ["submission solution", "submission code", "submission_solution", "submission_code"],
-                    "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?solution\\s*:\\s*[\"']?```(?:python|cpp|java)?\\n(.*?)```[\"']?.*?language\\s*:\\s*[\"']?(python|cpp|java)[\"']?"
-                },
-                "view_rankings": {
-                    "patterns": ["view rankings", "check rankings","view rankings", "check rankings"],
-                    "regex": None
-                },
-                "terminate": {
-                    "patterns": ["terminate", "stop", "end"],
-                    "regex": None
-                }
-            }
-        }
+        raise ValueError("Failed to load action config")
+        # # Fallback to hardcoded default configuration
+        # return {
+        #     "action_patterns": {
+        #         "view_problem": {
+        #             "patterns": ["view problem", "view_problem", "look at problem", "look_at_problem"],
+        #             "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?"
+        #         },
+        #         "get_hint": {
+        #             "patterns": ["get hint", "request hint", "get_hint", "request_hint"],
+        #             "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?hint_level\\s*:\\s*(\\d+)"
+        #         },
+        #         "SUBMIT_SOLUTION": {
+        #             "patterns": ["submission solution", "submission code", "SUBMIT_SOLUTION", "submission_code"],
+        #             "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?solution\\s*:\\s*[\"']?```(?:python|cpp|java)?\\n(.*?)```[\"']?.*?language\\s*:\\s*[\"']?(python|cpp|java)[\"']?"
+        #         },
+        #         "view_rankings": {
+        #             "patterns": ["view rankings", "check rankings","view rankings", "check rankings"],
+        #             "regex": None
+        #         },
+        #         "terminate": {
+        #             "patterns": ["terminate", "stop", "end"],
+        #             "regex": None
+        #         }
+        #     }
+        # }
     
     def _extract_json_smart(self, response: str) -> str:
         """Intelligently extract JSON, handling nested code block issues"""
@@ -703,9 +748,9 @@ class ActionParser:
                                 }
                                 return result
                                 
-                            elif action_type == "submission_solution":
+                            elif action_type == "submit_solution":
                                 result = {
-                                    "action": "submission_SOLUTION",
+                                    "action": "submit_SOLUTION",
                                     "parameters": {
                                         "problem_id": match.group(1),
                                         "solution": match.group(2).strip(),

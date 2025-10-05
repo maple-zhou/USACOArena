@@ -2,11 +2,11 @@
     "competitors": [
         {
             "type": "generic",
-            "name": "gpt-4o",
-            "model_id": "gpt-4o",
+            "name": "gemini-2.5-pro",
+            "model_id": "gemini-2.5-pro",
             "api_base_url": "http://100.76.8.43:10010/",
             "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
-            "prompt_config_path": "agents/single_agent/prompts.json",
+            "prompt_config_path": "agents/single_agent/prompts/prompts-main.json",
             "request_format": {
                 "url": "/v1/chat/completions",
                 "method": "POST",
@@ -24,14 +24,14 @@
                 "response_path": "choices[0].message.content",
                 "error_path": "error.message"
             }
-        }, 
+        },
         {
             "type": "generic",
-            "name": "gpt-4.1",
-            "model_id": "gpt-4.1",
+            "name": "deepseek-v3",
+            "model_id": "deepseek-v3",
             "api_base_url": "http://100.76.8.43:10010/",
             "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
-            "prompt_config_path": "agents/single_agent/prompts.json",
+            "prompt_config_path": "agents/single_agent/prompts/prompts-main.json",
             "request_format": {
                 "url": "/v1/chat/completions",
                 "method": "POST",
@@ -49,39 +49,14 @@
                 "response_path": "choices[0].message.content",
                 "error_path": "error.message"
             }
-        }, 
+        },
         {
             "type": "generic",
-            "name": "gpt-4.1-mini",
-            "model_id": "gpt-4.1-mini",
+            "name": "kimi-k2-0905",
+            "model_id": "kimi-k2-0905",
             "api_base_url": "http://100.76.8.43:10010/",
             "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
-            "prompt_config_path": "agents/single_agent/prompts.json",
-            "request_format": {
-                "url": "/v1/chat/completions",
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer {api_key}"
-                },
-                "body_template": {
-                    "messages": "{messages}",
-                    "model": "{model_id}",
-                    "temperature": 0.7
-                }
-            },
-            "response_format": {
-                "response_path": "choices[0].message.content",
-                "error_path": "error.message"
-            }
-        }, 
-        {
-            "type": "generic",
-            "name": "claude-sonnet-4-20250514",
-            "model_id": "claude-sonnet-4-20250514",
-            "api_base_url": "http://100.76.8.43:10010/",
-            "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
-            "prompt_config_path": "agents/single_agent/prompts.json",
+            "prompt_config_path": "agents/single_agent/prompts/prompts-main.json",
             "request_format": {
                 "url": "/v1/chat/completions",
                 "method": "POST",

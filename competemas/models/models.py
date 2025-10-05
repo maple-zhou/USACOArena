@@ -39,6 +39,8 @@ class Participant:
         self.LLM_tokens = 0
         self.hint_tokens = 0
         self.submission_tokens = 0
+        self.test_tokens = 0
+        self.consumed_tokens = 0  # Total actual tokens consumed (without penalties)
         self.limit_tokens = limit_tokens
         self.remaining_tokens = limit_tokens
         self.lambda_value = lambda_value
@@ -139,6 +141,8 @@ class Participant:
             "LLM_tokens": self.LLM_tokens,
             "hint_tokens": self.hint_tokens,
             "submission_tokens": self.submission_tokens,
+            "test_tokens": self.test_tokens,
+            "consumed_tokens": self.consumed_tokens,
             "limit_tokens": self.limit_tokens,
             "remaining_tokens": self.remaining_tokens,
             "lambda_value": self.lambda_value,
@@ -175,16 +179,24 @@ class Participant:
 
 
 class Case:
-    def __init__(self, id: str, input_data: str, expected_output: str):
+    def __init__(
+        self,
+        id: str,
+        input_data: str,
+        expected_output: str,
+        input_path: Optional[str] = None,
+    ):
         self.id = id
         self.input_data = input_data
         self.expected_output = expected_output
+        self.input_path = input_path
     
     def to_dict(self) -> Dict:
         return {
             "id": self.id,
             "input_data": self.input_data,
-            "expected_output": self.expected_output
+            "expected_output": self.expected_output,
+            "input_path": self.input_path,
         }
 
 
@@ -269,6 +281,15 @@ class Competition:
                 "CE": 100,
                 "TLE": 100,
                 "MLE": 100
+            },
+            "test_tokens": {
+                "default": 50,
+                "per_test_case": 0,
+                "language_multipliers": {
+                    "cpp": 1.0,
+                    "java": 1.2,
+                    "python": 1.5
+                }
             },
             "lambda": 100,
             "input_token_multipliers": {

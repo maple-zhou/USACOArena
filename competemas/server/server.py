@@ -477,6 +477,7 @@ def terminate_participant(competition_id: str, participant_id: str):
     Common termination reasons:
     - "manual_termination": Manual termination by admin
     - "out_of_tokens": Participant ran out of tokens
+    - "all_problems_solved": Participant solved all problems in competition
     - "error": System error occurred
     - "timeout": Participant exceeded time limits
     - "violation": Rule violation
@@ -693,6 +694,103 @@ def create_submission(competition_id: str, participant_id: str, problem_id: str)
     except Exception as e:
         logger.error(f"Failed to create submission: {e}", exc_info=True)
         return error_response(f"Failed to create submission: {str(e)}", 500)
+
+# API Routes for Test Code
+@app.route("/api/test_code/<competition_id>/<participant_id>", methods=["POST"])
+def test_code(competition_id: str, participant_id: str):
+    """
+    Test code with custom test cases.
+
+    Args:
+        competition_id: Competition identifier
+        participant_id: Participant identifier
+
+    Request Body:
+        code: Source code to test
+        language: Programming language (default: "cpp")
+        test_cases: List of test cases with input and expected_output
+        time_limit_ms: Time limit in milliseconds (optional, default: 5000)
+        memory_limit_mb: Memory limit in MB (optional, default: 256)
+
+    Returns:
+        Test results with execution details
+    """
+    # Global frequency control
+    if global_rate_limiter.should_rate_limit():
+        wait_time = global_rate_limiter.get_wait_time()
+        logger.info(f"Rate limiting request, waiting {wait_time:.3f}s")
+        time.sleep(wait_time)
+
+    try:
+        if check_termination(competition_id, participant_id):
+            return error_response("Participant is not running")
+
+        data = request.get_json()
+        if not data:
+            return error_response("No JSON data provided", 400)
+
+        code = data.get("code")
+        language = data.get("language", "cpp")
+        test_cases_data = data.get("test_cases", [])
+        time_limit_ms = data.get("time_limit_ms", 5000)
+        memory_limit_mb = data.get("memory_limit_mb", 256)
+
+        if not all([participant_id, code, test_cases_data]):
+            return error_response("Missing required fields: code and test_cases")
+
+        if not isinstance(test_cases_data, list) or len(test_cases_data) == 0:
+            return error_response("test_cases must be a non-empty list")
+
+        # Convert test cases data to Case objects
+        test_cases = []
+        for i, test_case_data in enumerate(test_cases_data):
+            if not isinstance(test_case_data, dict):
+                return error_response(f"test_cases[{i}] must be an object")
+
+            input_data = test_case_data.get("input", "")
+            expected_output = test_case_data.get("expected_output", "")
+            input_path = test_case_data.get("input_path")
+
+            if not input_data and expected_output:
+                return error_response(f"test_cases[{i}] must have 'input' and 'expected_output' fields")
+
+            test_case = Case(
+                id=f"custom_{i+1}",
+                input_data=input_data,
+                expected_output=expected_output,
+                input_path=input_path
+            )
+            test_cases.append(test_case)
+
+        # Process test code request (handled in storage layer)
+        with DuckDBStorage(db_path=db_path, judge=judge) as data_storage:
+            result = data_storage.process_test_code_request(
+                competition_id=competition_id,
+                participant_id=participant_id,
+                code=code,
+                language=language,
+                test_cases=test_cases,
+                time_limit_ms=time_limit_ms,
+                memory_limit_mb=memory_limit_mb
+            )
+
+        return success_response({
+            "message": "Code testing completed",
+            "passed_tests": result["passed_tests"],
+            "total_tests": result["total_tests"],
+            "tokens_cost": result["tokens_cost"],
+            "remaining_tokens": result["remaining_tokens"],
+            "language": result["language"],
+            "test_results": result["test_results"],
+            "execution_summary": result["execution_summary"]
+        })
+
+    except ValueError as e:
+        logger.warning(f"Test code validation error: {e}")
+        return error_response(str(e), 400)
+    except Exception as e:
+        logger.error(f"Failed to test code: {e}", exc_info=True)
+        return error_response(f"Failed to test code: {str(e)}", 500)
 
 # API Routes for Submissions
 @app.route("/api/submissions/list/<competition_id>", methods=["GET"])

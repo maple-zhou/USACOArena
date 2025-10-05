@@ -152,6 +152,17 @@ def flatten_competition_rules(rules_data: Dict[str, Any]) -> Dict[str, Any]:
     result['rules_submission_tokens_tle'] = submission_tokens.get('TLE', 0)
     result['rules_submission_tokens_mle'] = submission_tokens.get('MLE', 0)
 
+    # 处理test_tokens规则
+    test_tokens = rules_data.get('test_tokens', {})
+    result['rules_test_tokens_default'] = test_tokens.get('default', 0)
+    result['rules_test_tokens_per_test_case'] = test_tokens.get('per_test_case', 0)
+
+    # 处理language_multipliers
+    language_multipliers = test_tokens.get('language_multipliers', {})
+    result['rules_test_tokens_cpp_multiplier'] = language_multipliers.get('cpp', 0)
+    result['rules_test_tokens_java_multiplier'] = language_multipliers.get('java', 0)
+    result['rules_test_tokens_python_multiplier'] = language_multipliers.get('python', 0)
+
     # 处理lambda值
     result['rules_lambda'] = rules_data.get('lambda', 0)
 
@@ -193,8 +204,11 @@ def convert_json_to_csv(json_file_path: str, csv_file_path: str = None) -> str:
         'LLM_tokens',                     # LLM tokens used
         'hint_tokens',                    # Hint tokens
         'submission_tokens',              # Submission tokens
+        'test_tokens',                    # Test tokens used
         'limit_tokens',                   # Token limit
         'remaining_tokens',               # Remaining tokens
+        'consumed_tokens',                # Consumed tokens
+        'consumed_credit',                # Consumed tokens
         'submission_count',               # Submission count
         'accepted_count',                 # Accepted count
         'submission_penalty',             # Submission penalty
@@ -262,6 +276,13 @@ def convert_json_to_csv(json_file_path: str, csv_file_path: str = None) -> str:
         'rules_submission_tokens_tle',    # TLE submission token cost
         'rules_submission_tokens_mle',    # MLE submission token cost
 
+        # Test token costs
+        'rules_test_tokens_default',      # Default test token cost
+        'rules_test_tokens_per_test_case', # Per test case token cost
+        'rules_test_tokens_cpp_multiplier', # C++ language multiplier for test tokens
+        'rules_test_tokens_java_multiplier', # Java language multiplier for test tokens
+        'rules_test_tokens_python_multiplier', # Python language multiplier for test tokens
+
         # Lambda value
         'rules_lambda'                    # Lambda value for token scoring
     ]
@@ -303,9 +324,15 @@ def convert_json_to_csv(json_file_path: str, csv_file_path: str = None) -> str:
             # Extract competition rules data from participant data
             # The rules are spread into the participant data by competition_organizer.py
             rules_data = {}
-            for key in ['scoring', 'bonus_for_first_ac', 'penalties', 'hint_tokens', 'submission_tokens', 'lambda', 'input_token_multipliers', 'output_token_multipliers']:
-                if key in participant_data:
-                    rules_data[key] = participant_data[key]
+            for key in ['scoring', 'bonus_for_first_ac', 'penalties', 'lambda', 'input_token_multipliers', 'output_token_multipliers']:
+                if key in participant_data.get('rules', {}):
+                    rules_data[key] = participant_data.get('rules', {})[key]
+
+            # Handle token-related rules separately to avoid conflicts with participant consumption data
+            # Only extract these if they are dictionaries (rules), not integers (consumption)
+            for key in ['hint_tokens', 'submission_tokens', 'test_tokens']:
+                if key in participant_data.get('rules', {}) and isinstance(participant_data.get('rules', {})[key], dict):
+                    rules_data[key] = participant_data.get('rules', {})[key]
 
             # Flatten competition rules
             rules_info = flatten_competition_rules(rules_data)
@@ -318,8 +345,11 @@ def convert_json_to_csv(json_file_path: str, csv_file_path: str = None) -> str:
                 'LLM_tokens': participant_data.get('LLM_tokens', 0),
                 'hint_tokens': participant_data.get('hint_tokens', 0),
                 'submission_tokens': participant_data.get('submission_tokens', 0),
+                'test_tokens': participant_data.get('test_tokens', 0),
                 'limit_tokens': participant_data.get('limit_tokens', 0),
                 'remaining_tokens': participant_data.get('remaining_tokens', 0),
+                'consumed_tokens': participant_data.get('consumed_tokens', 0),
+                "consumed_credit": participant_data.get('consumed_credit', 0),
                 'submission_count': participant_data.get('submission_count', 0),
                 'accepted_count': participant_data.get('accepted_count', 0),
                 'submission_penalty': participant_data.get('submission_penalty', 0),

@@ -112,7 +112,8 @@ class USACOProblemLoader:
         test_cases = []
         
         # Load all test cases from file system
-        test_dir = os.path.join(self.data_path, "tests", problem_id)
+        tests_root = os.path.join(self.data_path, "tests")
+        test_dir = os.path.join(tests_root, problem_id)
         if os.path.exists(test_dir) and os.path.isdir(test_dir):
             try:
                 # Support two formats: .in/.out and I./O.
@@ -130,7 +131,8 @@ class USACOProblemLoader:
                         
                     if os.path.exists(os.path.join(test_dir, output_file)):
                         try:
-                            with open(os.path.join(test_dir, input_file), 'r') as f_in:
+                            input_path = os.path.join(test_dir, input_file)
+                            with open(input_path, 'r') as f_in:
                                 input_data = f_in.read()
                             with open(os.path.join(test_dir, output_file), 'r') as f_out:
                                 output_data = f_out.read()
@@ -138,7 +140,8 @@ class USACOProblemLoader:
                             case = Case(
                                 id=generate_id(),
                                 input_data=input_data,
-                                expected_output=output_data
+                                expected_output=output_data,
+                                input_path=os.path.relpath(input_path, tests_root)
                             )
                             test_cases.append(case)
                         except Exception as e:

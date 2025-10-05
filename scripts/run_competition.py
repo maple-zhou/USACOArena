@@ -14,9 +14,9 @@ from competemas.utils.logger_config import setup_logging, get_logger
 
 logger = get_logger("run_competition")
 
-def setup_logging_from_config(competiton_config,competitors_config,problem_ids):
-    log_config = competiton_config.get("log")
-    api_base = competiton_config.get("api_base")
+def setup_logging_from_config(competition_config, competition_config_file,competitors_config, problem_ids):
+    log_config = competition_config.get("log")
+    api_base = competition_config.get("api_base")
 
     match = re.search(r':(\d{4})$', api_base)
     if match:
@@ -28,46 +28,48 @@ def setup_logging_from_config(competiton_config,competitors_config,problem_ids):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     competitors_config_name = os.path.splitext(os.path.basename(competitors_config))[0]
     problem_ids_name = os.path.splitext(os.path.basename(problem_ids))[0]
+    competition_config_name = os.path.splitext(os.path.basename(competition_config_file))[0]
     
 
     log_dir = log_config.get("dir", "logs/run_logs")
-    if "max_tokens_per_participant" in competiton_config and competiton_config["max_tokens_per_participant"] != 10000000:
-        max_tokens_per_participant = competiton_config["max_tokens_per_participant"]
-        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_limit{max_tokens_per_participant}_{timestamp}")
+    log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_{competition_config_name}_{timestamp}")
+    # if "max_tokens_per_participant" in competition_config and competition_config["max_tokens_per_participant"] != 10000000:
+    #     max_tokens_per_participant = competition_config["max_tokens_per_participant"]
+    #     log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_limit{max_tokens_per_participant}_{timestamp}")
 
-    elif "rules" in competiton_config and "submission_tokens" in competiton_config["rules"] and "AC" in competiton_config["rules"]["submission_tokens"] and competiton_config["rules"]["submission_tokens"]["AC"] != 100:
-        submission_tokens = competiton_config["rules"]["submission_tokens"]["AC"]
+    # elif "rules" in competition_config and "submission_tokens" in competition_config["rules"] and "AC" in competition_config["rules"]["submission_tokens"] and competition_config["rules"]["submission_tokens"]["AC"] != 100:
+    #     submission_tokens = competition_config["rules"]["submission_tokens"]["AC"]
 
-        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_sub{submission_tokens}_{timestamp}")
+    #     log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_sub{submission_tokens}_{timestamp}")
     
-    elif "rules" in competiton_config and "penalties" in competiton_config["rules"] and "CE" in competiton_config["rules"]["penalties"] and competiton_config["rules"]["penalties"]["CE"] != 5:
-        penalties = competiton_config["rules"]["penalties"]["CE"]
-        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_pena{penalties}_{timestamp}")
+    # elif "rules" in competition_config and "penalties" in competition_config["rules"] and "CE" in competition_config["rules"]["penalties"] and competition_config["rules"]["penalties"]["CE"] != 5:
+    #     penalties = competition_config["rules"]["penalties"]["CE"]
+    #     log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_pena{penalties}_{timestamp}")
     
-    elif "rules" in competiton_config and "bonus_for_first_ac" in competiton_config["rules"] and competiton_config["rules"]["bonus_for_first_ac"] != 100:
-        bonus_for_first_ac = competiton_config["rules"]["bonus_for_first_ac"]
-        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_bonus{bonus_for_first_ac}_{timestamp}")
+    # elif "rules" in competition_config and "bonus_for_first_ac" in competition_config["rules"] and competition_config["rules"]["bonus_for_first_ac"] != 100:
+    #     bonus_for_first_ac = competition_config["rules"]["bonus_for_first_ac"]
+    #     log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_bonus{bonus_for_first_ac}_{timestamp}")
 
-    elif "rules" in competiton_config and "hint_tokens" in competiton_config["rules"] and "level_0" in competiton_config["rules"]["hint_tokens"] and competiton_config["rules"]["hint_tokens"]["level_0"] != 500:
-        hint_tokens = competiton_config["rules"]["hint_tokens"]["level_0"]
-        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_hint{hint_tokens}_{timestamp}")
+    # elif "rules" in competition_config and "hint_tokens" in competition_config["rules"] and "level_0" in competition_config["rules"]["hint_tokens"] and competition_config["rules"]["hint_tokens"]["level_0"] != 500:
+    #     hint_tokens = competition_config["rules"]["hint_tokens"]["level_0"]
+    #     log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_hint{hint_tokens}_{timestamp}")
 
-    elif "rules" in competiton_config and "scoring" in competiton_config["rules"] and "bronze" in competiton_config["rules"]["scoring"] and competiton_config["rules"]["scoring"]["bronze"] == 10000:
-        bronze_score = competiton_config["rules"]["scoring"]["bronze"]
-        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_bronze{bronze_score}_{timestamp}")
+    # elif "rules" in competition_config and "scoring" in competition_config["rules"] and "bronze" in competition_config["rules"]["scoring"] and competition_config["rules"]["scoring"]["bronze"] == 10000:
+    #     bronze_score = competition_config["rules"]["scoring"]["bronze"]
+    #     log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_bronze{bronze_score}_{timestamp}")
     
-    elif "rules" in competiton_config and "scoring" in competiton_config["rules"] and "platinum" in competiton_config["rules"]["scoring"] and competiton_config["rules"]["scoring"]["platinum"] == 10000:
-        platinum_score = competiton_config["rules"]["scoring"]["platinum"]
-        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_platinum{platinum_score}_{timestamp}")
+    # elif "rules" in competition_config and "scoring" in competition_config["rules"] and "platinum" in competition_config["rules"]["scoring"] and competition_config["rules"]["scoring"]["platinum"] == 10000:
+    #     platinum_score = competition_config["rules"]["scoring"]["platinum"]
+    #     log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_platinum{platinum_score}_{timestamp}")
 
-    else:
-        log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_{timestamp}")
+    # else:
+        # log_dir = os.path.join(log_dir, f"run_{port}_{competitors_config_name}_{problem_ids_name}_{timestamp}")
 
     
     os.makedirs(log_dir, exist_ok=True)
     
     # Setup logging
-    setup_logging(level="INFO", log_file=f"{log_dir}/{competitors_config_name}_run_competition.log")
+    setup_logging(level="INFO", log_file=f"{log_dir}/{competitors_config_name}_{competition_config_name}_run_competition.log")
     
     return log_dir  # Return the created log_dir
 
@@ -157,7 +159,20 @@ def log_competition_results(results: Dict, competition_id: str):
             result_lines.append(f"    LLM Inference Count: {data.get('llm_inference_count', 0)}")
             result_lines.append(f"    Hint Tokens: {data.get('hint_tokens', 0)}")
             result_lines.append(f"    Submission Tokens: {data.get('submission_tokens', 0)}")
-            result_lines.append(f"    Total Used: {data.get('LLM_tokens', 0) + data.get('hint_tokens', 0) + data.get('submission_tokens', 0)}")
+            # Safely get token values and ensure they are integers
+            llm_tokens = data.get('LLM_tokens', 0)
+            hint_tokens = data.get('hint_tokens', 0)
+            submission_tokens = data.get('submission_tokens', 0)
+
+            # Convert to int if they're not already (in case they're dicts or other types)
+            try:
+                llm_tokens = int(llm_tokens) if isinstance(llm_tokens, (int, float, str)) else 0
+                hint_tokens = int(hint_tokens) if isinstance(hint_tokens, (int, float, str)) else 0
+                submission_tokens = int(submission_tokens) if isinstance(submission_tokens, (int, float, str)) else 0
+            except (ValueError, TypeError):
+                llm_tokens = hint_tokens = submission_tokens = 0
+
+            result_lines.append(f"    Total Used: {llm_tokens + hint_tokens + submission_tokens}")
             result_lines.append(f"    Limit: {data.get('limit_tokens', 0)}")
             result_lines.append(f"    Remaining: {data.get('remaining_tokens', 0)}")
 
@@ -351,7 +366,7 @@ async def main():
             competition_config["log_dir"] = args.log_dir
 
 
-        log_dir = setup_logging_from_config(competition_config,args.competitors_config,args.problem_ids)
+        log_dir = setup_logging_from_config(competition_config, args.competition_config, args.competitors_config, args.problem_ids)
 
         if not isinstance(problem_ids, list):
             logger.error("problem_ids must be a list in the configuration file")

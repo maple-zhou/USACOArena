@@ -45,6 +45,7 @@ Thumbs.db
 .env
 data/
 logs/
+pids/
 competition_results/
 competitor_results/
 online-judge-rust/
@@ -67,6 +68,6 @@ query_db.py
 dataset/
 tests/
 original_results/
-convert_all_json_to_csv.sh
+# convert_all_json_to_csv.sh
 # json_to_csv_converter.py
 CLAUDE.md

@@ -1,0 +1,27 @@
+{
+    "competitors": [
+        {
+            "type": "generic",
+            "name": "claude-code",
+            "model_id": "claude-code",
+            "api_base_url": "http://localhost:15432/",
+            "api_key": "sk-6ZL6UGfqC8c4gEP67HYDXbaR4MKh0VdkaJ86rgV7jEhwpSDU",
+            "prompt_config_path": "agents/single_agent/prompts/prompts-single.json",
+            "request_format": {
+                "url": "/v1/chat/completions",
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body_template": {
+                    "messages": "{messages}",
+                    "final_result_only": false
+                }
+            },
+            "response_format": {
+                "response_path": "choices[0].message.content",
+                "error_path": "error.message"
+            }
+        }
+    ]
+}

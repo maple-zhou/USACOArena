@@ -501,7 +501,7 @@ The competition system returns structured data to agents:
 ### Available Actions
 1. **VIEW_PROBLEM**: View problem details
 2. **GET_HINT**: Request hints (consumes tokens)
-3. **submission_SOLUTION**: Submit code solution
+3. **SUBMIT_SOLUTION**: Submit code solution
 4. **TERMINATE**: End participation
 
 ### Hint System

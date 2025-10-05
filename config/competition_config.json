@@ -24,7 +24,7 @@
       "AC": 0,
       "WA": 10,
       "RE": 10,
-      "CE": 5,
+      "CE": 10,
       "TLE": 10,
       "MLE": 10
     },
@@ -43,38 +43,55 @@
       "TLE": 100,
       "MLE": 100
     },
+    "test_tokens": {
+      "default": 10,
+      "per_test_case": 0,
+      "language_multipliers": {
+        "cpp": 1.0,
+        "java": 1.2,
+        "python": 1.5
+      }
+    },
+    "error_propagation": {
+      "enabled": false,
+      "description": "When enabled, if any participant encounters an error and is terminated, all other participants will also be terminated with the error reason"
+    },
     "lambda": 100,
     "input_token_multipliers": {
       "qwen3-235b": 0.7,
+      "qwen3-coder-480b": 1.5,
       "gemini-2.5-pro": 1.25,
-      "gemini-2.5-flash": 0.15,
+      "gemini-2.5-flash": 0.3,
       "deepseek-v3": 0.27,
+      "deepseek-v3.1": 0.27,
       "deepseek-r1": 0.55,
-      "kimi-k2": 1,
-      "gpt-4o": 2.5,
+      "kimi-k2-0905": 1,
+      "gpt-4o": 5,
       "gpt-4.1": 2,
       "gpt-4.1-mini": 0.4,
       "gpt-4.1-nano": 0.1,
-      "gpt-4o-mini": 0.15,
-      "claude-3.7-sonnet": 3,
       "claude-sonnet-4-20250514": 3,
-      "grok-3-beta": 3
+      "claude-code": 3,
+      "step-3": 0.27,
+      "glm-4.5": 0.59
     },
     "output_token_multipliers": {
       "qwen3-235b": 2.8,
+      "qwen3-coder-480b": 7.5,
       "gemini-2.5-pro": 10,
-      "gemini-2.5-flash": 0.6,
+      "gemini-2.5-flash": 2.5,
       "deepseek-v3": 1.1,
+      "deepseek-v3.1": 1.1,
       "deepseek-r1": 2.19,
-      "kimi-k2": 3,
-      "gpt-4o": 10,
+      "kimi-k2-0905": 2.75,
+      "gpt-4o": 15,
       "gpt-4.1": 8,
       "gpt-4.1-mini": 1.6,
       "gpt-4.1-nano": 0.4,
-      "gpt-4o-mini": 0.6,
-      "claude-3.7-sonnet": 15,
       "claude-sonnet-4-20250514": 15,
-      "grok-3-beta": 15
+      "claude-code": 15,
+      "step-3": 1,
+      "glm-4.5": 2.19
     }
   }
 }

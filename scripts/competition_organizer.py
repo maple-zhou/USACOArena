@@ -1,13 +1,10 @@
-from calendar import firstweekday
 import json
 import time
-from numpy.char import lower
 import requests
 import asyncio
 import os
-from typing import Dict, List, Optional, Any, Callable, Tuple
-from datetime import datetime, timedelta
-from competemas.models.models import SubmissionStatus
+from typing import Dict, List, Optional
+from datetime import datetime
 from scripts.competitors import Competitor
 from competemas.utils.logger_config import get_logger
 
@@ -243,7 +240,7 @@ class CompetitionOrganizer:
             "competition_details": self.competition_data,
             "competitor_state": competitor.get_participant_state(),
             "problems": problems_state,
-            "rankings": competitor.view_rankings(),
+            "rankings": self.get_enhanced_rankings(),
             "other_competitors_status": [
                 {
                     "name": c.name,
@@ -257,7 +254,7 @@ class CompetitionOrganizer:
         
         # Run competition loop
         while competitor.is_running:
-            try:               
+            try:
                 # Get next action from competitor
                 logger.info(f"Begin call LLM for next action for competitor {competitor.name}")
                 action = await competitor.agent.process(state)
@@ -283,7 +280,7 @@ class CompetitionOrganizer:
                     logger.warning(f"After LLM call: Failed to get participant state for {competitor.name}")
 
                 logger.info(f"Competitor {competitor.name} choose the next action: {action['action']}, remaining_tokens: {competitor.remaining_tokens}, score: {competitor.score}")
-                
+
                 # Process action (this will trigger sync_from_api if needed)
                 action_result = self._process_action(action, competitor)
 
@@ -312,10 +309,11 @@ class CompetitionOrganizer:
                 else:
                     logger.warning(f"After action_result: Failed to get participant state for {competitor.name}")
 
-                
+
                 # Update rankings (only when needed)
-                rankings_result = competitor.view_rankings()
-                
+                rankings_result = self.get_enhanced_rankings()
+                logger.debug(f"Rankings result: {rankings_result}")
+
                 # Format rankings for better readability
                 if "rankings" in rankings_result and isinstance(rankings_result["rankings"], list):
                     formatted_rankings = "{\n  'rankings': [\n"
@@ -328,22 +326,23 @@ class CompetitionOrganizer:
                     logger.critical(f"Time: {datetime.now().strftime('%m-%d %H:%M:%S')}, rankings_result: {formatted_rankings}")
                 else:
                     logger.critical(f"Time: {datetime.now().strftime('%m-%d %H:%M:%S')}, rankings_result: {rankings_result}")
-                
+
                 if "error" not in rankings_result:
                     state["rankings"] = rankings_result.get("rankings", [])
-                
+                    logger.debug(f"State rankings result: {state['rankings']}")
+
                 # Update state for next iteration (competitor state is automatically fresh after action)
                 state["competitor_state"] = competitor.get_participant_state()
                 state["last_action_result"] = action_result
 
                 problems_result = competitor.view_problems()
                 problems = problems_result.get("problems", []) if "error" not in problems_result else []
-                
+
                 problems_state = {
                     "problems_id": [p.get("id") for p in problems],
                     "problems_first_to_solve": [p.get("first_to_solve") for p in problems],
                 }
-                
+
                 state["problems"] = problems_state
                 # Update other competitors status (minimal sync)
                 state["other_competitors_status"] = [
@@ -354,13 +353,40 @@ class CompetitionOrganizer:
                     }
                     for c in self.competitors if c.name != competitor.name
                 ]
-                
+
                 logger.info(f"Competitor {competitor.name} completed the action: {action['action']}, remaining_tokens: {competitor.remaining_tokens}, score: {competitor.score}")
 
-                
+                # Check if participant has solved all problems
+                participant_state_current = competitor.get_participant_state()
+                if participant_state_current:
+                    solved_problems_data = participant_state_current.get('solved_problems', [])
+
+                    # Handle both list of dicts and list of strings format
+                    if solved_problems_data and isinstance(solved_problems_data[0], dict):
+                        # List of dicts format: extract problem_id from each dict
+                        solved_problems = set(str(p.get("problem_id", "")) for p in solved_problems_data if p.get("problem_id"))
+                    else:
+                        # List of strings format
+                        solved_problems = set(str(p) for p in solved_problems_data if p)
+
+                    all_problems = set(str(p) for p in problems_state.get("problems_id", []) if p)
+
+                    if solved_problems and all_problems and solved_problems >= all_problems:
+                        logger.info(f"Competitor {competitor.name} has solved all problems ({len(solved_problems)}/{len(all_problems)})! Terminating with 'all_problems_solved'")
+                        competitor.terminate("all_problems_solved")
+                        break
+
+
             except Exception as e:
                 logger.error(f"Error in competition loop for {competitor.name}: {e}", exc_info=True)
-                competitor.terminate("error")
+                error_reason = "error"
+                competitor.terminate(error_reason)
+
+                # Check if error propagation is enabled
+                if self._is_error_propagation_enabled():
+                    logger.warning(f"Error propagation enabled - terminating all other participants due to {competitor.name}'s error")
+                    self._propagate_error_termination(competitor.name, error_reason)
+
                 break
         
         logger.info(f"Competitor {competitor.name} terminated: {competitor.termination_reason}")
@@ -369,6 +395,8 @@ class CompetitionOrganizer:
         
         # Get final state from competitor
         final_state = competitor.get_participant_state()
+        logger.info(f"Final state for {competitor.name}: {final_state}")
+        logger.debug(f"problem_stats: {final_state.get('problem_stats', {})}")
         
         # Save results to file
         results = {
@@ -380,6 +408,8 @@ class CompetitionOrganizer:
             "submission_tokens": final_state.get("submission_tokens", 0),
             "limit_tokens": final_state.get("limit_tokens", 0),
             "remaining_tokens": final_state.get("remaining_tokens", 0),
+            "consumed_tokens": final_state.get("consumed_tokens", 0),
+            "consumed_credit": final_state.get("consumed_tokens", 0) + final_state.get("submission_penalty", 0),
             "submission_count": final_state.get("submission_count", 0),
             "accepted_count": final_state.get("accepted_count", 0),
             "submission_penalty": final_state.get("submission_penalty", 0),
@@ -397,9 +427,8 @@ class CompetitionOrganizer:
             "gold_score": final_state.get("gold_score", 0),
             "platinum_score": final_state.get("platinum_score", 0),
             "bonus_score": final_state.get("bonus_score", 0),
-            **final_state.get("problem_stats", {}),
-
-            **self.competition_data.get("rules", {}),
+            "problem_stats": final_state.get("problem_stats", {}),
+            "rules": self.competition_data.get("rules", {}),
         }
         
         # Create results directory if it doesn't exist
@@ -450,7 +479,85 @@ class CompetitionOrganizer:
         }
         
         return results
-    
+
+    def _is_error_propagation_enabled(self) -> bool:
+        """Check if error propagation is enabled in competition rules"""
+        if not self.competition_data:
+            return False
+
+        rules = self.competition_data.get("rules", {})
+        error_propagation = rules.get("error_propagation", {})
+        return error_propagation.get("enabled", False)
+
+    def _propagate_error_termination(self, error_competitor_name: str, error_reason: str) -> None:
+        """Terminate all other competitors due to an error from one competitor"""
+        propagation_reason = f"terminated_due_to_{error_competitor_name}_error"
+
+        for competitor in self.competitors:
+            if competitor.name != error_competitor_name and competitor.is_running:
+                try:
+                    logger.info(f"Propagating error termination: terminating {competitor.name} due to {error_competitor_name}'s error")
+                    competitor.terminate(propagation_reason)
+                except Exception as e:
+                    logger.error(f"Failed to propagate error termination to {competitor.name}: {e}", exc_info=True)
+
+    def get_enhanced_rankings(self) -> Dict:
+        """Get competition rankings with competitor termination status"""
+        if not self.competition_id:
+            return {"error": "Competition not initialized"}
+
+        try:
+            # Get base rankings from API
+            response = requests.get(f"{self.api_base}/api/rankings/get/{self.competition_id}")
+            response.raise_for_status()
+
+            result = response.json()
+            if result["status"] != "success":
+                return {"error": f"API error: {result.get('message', 'Unknown error')}"}
+
+            rankings_data = result["data"]
+
+            # Create a mapping of competitor names to termination status
+            competitor_status_map = {}
+            for competitor in self.competitors:
+                competitor_status_map[competitor.name] = {
+                    "is_terminated": not competitor.is_running,
+                    "termination_reason": competitor.termination_reason
+                }
+
+            # Enhance rankings with termination status
+            enhanced_rankings = []
+            for ranking_item in rankings_data:
+                if isinstance(ranking_item, list) and len(ranking_item) >= 4:
+                    participant_name = ranking_item[0]
+                    score = ranking_item[1]
+                    tokens = ranking_item[2]
+                    rank = ranking_item[3]
+
+                    # Get termination status from our competitors
+                    status_info = competitor_status_map.get(participant_name, {
+                        "is_terminated": False,  # Default for unknown competitors
+                        "termination_reason": None
+                    })
+
+                    # Add termination status as the 5th element
+                    enhanced_item = [
+                        participant_name,
+                        score,
+                        tokens,
+                        rank,
+                        status_info["is_terminated"]
+                    ]
+                    enhanced_rankings.append(enhanced_item)
+                else:
+                    # If format is unexpected, keep original item
+                    enhanced_rankings.append(ranking_item)
+
+            return {"rankings": enhanced_rankings}
+
+        except requests.exceptions.RequestException as e:
+            return {"error": f"Failed to fetch rankings: {str(e)}"}
+
     def _process_action(self, action: Dict, competitor: Competitor) -> Dict:
         """
         Process an action from a competitor
@@ -604,7 +711,7 @@ class CompetitionOrganizer:
                 }
                 
             
-            elif action_type == "submission_solution":
+            elif action_type == "submit_solution":
                 problem_id = action.get("parameters", {}).get("problem_id")
                 code = action.get("parameters", {}).get("solution")
                 language = action.get("parameters", {}).get("language", "cpp")
@@ -613,18 +720,18 @@ class CompetitionOrganizer:
                     return {
                         "status": "error",
                         "data": {
-                            "action": "submission_solution",
+                            "action": "submit_solution",
                             "action_result": {"error": "Missing problem_id or code"},
                         },
                         "should_terminate": False,
                         "termination_reason": None
                     }
                 
-                result = competitor.submission_solution(problem_id, code, language)
+                result = competitor.submit_solution(problem_id, code, language)
                 return {
                     "status": "success",
                     "data": {
-                        "action": "submission_solution",
+                        "action": "submit_solution",
                         "action_result": result,
                     },
                     "should_terminate": False,
@@ -632,7 +739,7 @@ class CompetitionOrganizer:
                 }
             
             elif action_type == "view_rankings":
-                result = competitor.view_rankings()
+                result = self.get_enhanced_rankings()
                 return {
                     "status": "success",
                     "data": {
@@ -642,7 +749,47 @@ class CompetitionOrganizer:
                     "should_terminate": False,
                     "termination_reason": None
                 }
-            
+
+            elif action_type == "test_code":
+                code = action.get("parameters", {}).get("code")
+                language = action.get("parameters", {}).get("language", "cpp")
+                test_cases = action.get("parameters", {}).get("test_cases", [])
+                time_limit_ms = action.get("parameters", {}).get("time_limit_ms", 5000)
+                memory_limit_mb = action.get("parameters", {}).get("memory_limit_mb", 256)
+
+                if not code or not test_cases:
+                    return {
+                        "status": "error",
+                        "data": {
+                            "action": "test_code",
+                            "action_result": {"error": "Missing code or test_cases"},
+                        },
+                        "should_terminate": False,
+                        "termination_reason": None
+                    }
+
+                if not isinstance(test_cases, list) or len(test_cases) == 0:
+                    return {
+                        "status": "error",
+                        "data": {
+                            "action": "test_code",
+                            "action_result": {"error": "test_cases must be a non-empty list"},
+                        },
+                        "should_terminate": False,
+                        "termination_reason": None
+                    }
+
+                result = competitor.test_code(code, language, test_cases, time_limit_ms, memory_limit_mb)
+                return {
+                    "status": "success",
+                    "data": {
+                        "action": "test_code",
+                        "action_result": result,
+                    },
+                    "should_terminate": False,
+                    "termination_reason": None
+                }
+
             elif action_type == "terminate":
                 reason = action.get("parameters", {}).get("reason", "manual_termination")
                 competitor.terminate(reason)
@@ -669,6 +816,14 @@ class CompetitionOrganizer:
                 
         except Exception as e:
             logger.error(f"Error processing action {action_type} for {competitor.name}: {e}")
+            error_reason = "action_error"
+            competitor.terminate(error_reason)
+
+            # Check if error propagation is enabled
+            if self._is_error_propagation_enabled():
+                logger.warning(f"Error propagation enabled - terminating all other participants due to {competitor.name}'s action error")
+                self._propagate_error_termination(competitor.name, error_reason)
+
             return {
                 "status": "error",
                 "data": {
@@ -676,5 +831,5 @@ class CompetitionOrganizer:
                     "action_result": {"error": f"Action processing failed: {str(e)}"},
                 },
                 "should_terminate": True,
-                "termination_reason": "action_error"
+                "termination_reason": error_reason
             } 

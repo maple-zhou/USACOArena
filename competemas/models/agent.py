@@ -72,6 +72,8 @@ class Agent(ABC):
         
         # Conversation history
         self.conversation_history: List[Dict[str, str]] = []
+        self.conversation_history.append({"role": "system", "content": self.prompt_system.system_prompt})
+        self.save_conversation()
         
         logger.info(f"Initialized agent: {name}")
     

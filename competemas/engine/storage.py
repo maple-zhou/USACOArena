@@ -107,8 +107,10 @@ class DuckDBStorage:
                 LLM_tokens INTEGER DEFAULT 0,              -- Token count consumed by LLM API calls
                 hint_tokens INTEGER DEFAULT 0,             -- Token count consumed by hint requests
                 submission_tokens INTEGER DEFAULT 0,       -- Token count consumed by submission actions
+                test_tokens INTEGER DEFAULT 0,             -- Token count consumed by test code actions
+                consumed_tokens INTEGER DEFAULT 0,         -- Total actual tokens consumed (without penalties)
                 limit_tokens INTEGER DEFAULT 0,            -- Maximum token limit
-                remaining_tokens INTEGER DEFAULT 0,        -- Remaining token count
+                remaining_tokens INTEGER DEFAULT 0,        -- Remaining token count (includes penalties for scoring)
                 lambda_value INTEGER DEFAULT 0,            -- Lambda parameter
 
                 submission_count INTEGER DEFAULT 0,        -- Number of submissions
@@ -192,6 +194,35 @@ class DuckDBStorage:
                 "bonus_score INTEGER DEFAULT 0",
                 "problem_stats JSON DEFAULT '{}'"
             ]
+
+        # Check if test_tokens field exists and add it if it doesn't
+        try:
+            conn.execute("SELECT test_tokens FROM participants LIMIT 1").fetchone()
+            logger.info("test_tokens field already exists in database")
+        except Exception:
+            logger.info("Adding test_tokens field to existing database")
+            try:
+                conn.execute("ALTER TABLE participants ADD COLUMN test_tokens INTEGER DEFAULT 0")
+                logger.info("Added test_tokens field to participants table")
+            except Exception as e:
+                logger.warning(f"Failed to add test_tokens field: {e}")
+
+        # Check if consumed_tokens field exists and add it if it doesn't
+        try:
+            conn.execute("SELECT consumed_tokens FROM participants LIMIT 1").fetchone()
+            logger.info("consumed_tokens field already exists in database")
+        except Exception:
+            logger.info("Adding consumed_tokens field to existing database")
+            try:
+                conn.execute("ALTER TABLE participants ADD COLUMN consumed_tokens INTEGER DEFAULT 0")
+                # Initialize consumed_tokens with the sum of actual token consumption
+                conn.execute("""
+                    UPDATE participants
+                    SET consumed_tokens = LLM_tokens + hint_tokens + submission_tokens + COALESCE(test_tokens, 0)
+                """)
+                logger.info("Added consumed_tokens field to participants table and initialized values")
+            except Exception as e:
+                logger.warning(f"Failed to add consumed_tokens field: {e}")
 
             for field in new_fields:
                 try:
@@ -338,14 +369,14 @@ class DuckDBStorage:
         conn.execute("""
             INSERT INTO participants
             (id, competition_id, name, api_base_url, api_key,
-            LLM_tokens, hint_tokens, submission_tokens, limit_tokens, remaining_tokens, lambda_value,
+            LLM_tokens, hint_tokens, submission_tokens, test_tokens, consumed_tokens, limit_tokens, remaining_tokens, lambda_value,
             submission_count, accepted_count, submission_penalty, problem_pass_score,
             llm_inference_count, first_ac_score, problem_score, bronze_score, silver_score,
             gold_score, platinum_score, bonus_score, problem_stats, score, is_running, termination_reason)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, [
             participant_id, competition_id, name, api_base_url, api_key,
-            0, 0, 0, limit_tokens, limit_tokens, lambda_value,
+            0, 0, 0, 0, 0, limit_tokens, limit_tokens, lambda_value,
             0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, json.dumps(participant.problem_stats), 0, True, None
         ])
@@ -370,7 +401,7 @@ class DuckDBStorage:
         result = conn.execute("""
             SELECT
                 id, competition_id, name, api_base_url, api_key,
-                LLM_tokens, hint_tokens, submission_tokens, limit_tokens, remaining_tokens, lambda_value,
+                LLM_tokens, hint_tokens, submission_tokens, COALESCE(test_tokens, 0) as test_tokens, COALESCE(consumed_tokens, 0) as consumed_tokens, limit_tokens, remaining_tokens, lambda_value,
                 submission_count, accepted_count, submission_penalty, problem_pass_score,
                 COALESCE(llm_inference_count, 0) as llm_inference_count,
                 COALESCE(first_ac_score, 0) as first_ac_score,
@@ -398,29 +429,31 @@ class DuckDBStorage:
         LLM_tokens = result[5] or 0     # LLM_tokens
         hint_tokens = result[6] or 0    # hint_tokens
         submission_tokens = result[7] or 0 # submission_tokens
-        limit_tokens = result[8] or 100000  # limit_tokens
-        remaining_tokens = result[9] or limit_tokens  # remaining_tokens
-        lambda_value = result[10] or 100   # lambda_value
+        test_tokens = result[8] or 0       # test_tokens
+        consumed_tokens = result[9] or 0   # consumed_tokens
+        limit_tokens = result[10] or 100000  # limit_tokens
+        remaining_tokens = result[11] or limit_tokens  # remaining_tokens
+        lambda_value = result[12] or 100   # lambda_value
 
-        submission_count = result[11] or 0 # submission_count
-        accepted_count = result[12] or 0 # accepted_count
-        submission_penalty = result[13] or 0 # submission_penalty
-        problem_pass_score = result[14] or 0 # problem_pass_score
+        submission_count = result[13] or 0 # submission_count
+        accepted_count = result[14] or 0 # accepted_count
+        submission_penalty = result[15] or 0 # submission_penalty
+        problem_pass_score = result[16] or 0 # problem_pass_score
 
         # New statistics fields (using explicit column names above ensures correct order)
-        llm_inference_count = result[15] or 0  # llm_inference_count
-        first_ac_score = result[16] or 0       # first_ac_score
-        problem_score = result[17] or 0        # problem_score
-        bronze_score = result[18] or 0         # bronze_score
-        silver_score = result[19] or 0         # silver_score
-        gold_score = result[20] or 0           # gold_score
-        platinum_score = result[21] or 0       # platinum_score
-        bonus_score = result[22] or 0          # bonus_score
-        problem_stats_json = result[23] or "{}" # problem_stats
+        llm_inference_count = result[17] or 0  # llm_inference_count
+        first_ac_score = result[18] or 0       # first_ac_score
+        problem_score = result[19] or 0        # problem_score
+        bronze_score = result[20] or 0         # bronze_score
+        silver_score = result[21] or 0         # silver_score
+        gold_score = result[22] or 0           # gold_score
+        platinum_score = result[23] or 0       # platinum_score
+        bonus_score = result[24] or 0          # bonus_score
+        problem_stats_json = result[25] or "{}" # problem_stats
 
-        score = result[24] or 0          # score
-        is_running = result[25] if result[25] is not None else True  # is_running
-        termination_reason = result[26]  # termination_reason
+        score = result[26] or 0          # score
+        is_running = result[27] if result[27] is not None else True  # is_running
+        termination_reason = result[28]  # termination_reason
         
         # Create Participant object
         participant = Participant(
@@ -437,6 +470,8 @@ class DuckDBStorage:
         participant.LLM_tokens = LLM_tokens
         participant.hint_tokens = hint_tokens
         participant.submission_tokens = submission_tokens
+        participant.test_tokens = test_tokens
+        participant.consumed_tokens = consumed_tokens
         participant.remaining_tokens = remaining_tokens
 
         participant.submission_count = submission_count
@@ -455,6 +490,7 @@ class DuckDBStorage:
         participant.bonus_score = bonus_score
 
         # Parse problem_stats from JSON
+        logger.debug(f"[DUCKDB_STORAGE] Problem stats JSON: {problem_stats_json}")
         try:
             participant.problem_stats = json.loads(problem_stats_json) if problem_stats_json else {}
         except (json.JSONDecodeError, TypeError):
@@ -572,7 +608,8 @@ class DuckDBStorage:
                     case = Case(
                         id=case_data.get('id', generate_id()),
                         input_data=case_data.get('input_data', ''),
-                        expected_output=case_data.get('expected_output', '')
+                        expected_output=case_data.get('expected_output', ''),
+                        input_path=case_data.get('input_path')
                     )
                     sample_cases.append(case)
             except (json.JSONDecodeError, KeyError):
@@ -723,7 +760,8 @@ class DuckDBStorage:
         conn.execute("""
             UPDATE participants
             SET submission_tokens = submission_tokens + ?,
-                remaining_tokens = remaining_tokens - ?,
+                consumed_tokens = COALESCE(consumed_tokens, 0) + ?,
+                remaining_tokens = remaining_tokens - ? - ?,
                 submission_count = submission_count + 1,
                 accepted_count = accepted_count + ?,
                 submission_penalty = submission_penalty + ?,
@@ -740,6 +778,8 @@ class DuckDBStorage:
         """, [
             submission.submission_tokens,
             submission.submission_tokens,
+            submission.submission_tokens,
+            submission.penalty,
             1 if submission.status == SubmissionStatus.ACCEPTED else 0,
             submission.penalty,
             add_problem_pass_score,
@@ -755,13 +795,14 @@ class DuckDBStorage:
             participant_id
         ])
         
-        new_remaining_tokens = conn.execute("""
-            SELECT remaining_tokens FROM participants WHERE competition_id = ? AND id = ?
+        # Get current consumed_tokens and limit_tokens for termination check
+        token_status = conn.execute("""
+            SELECT COALESCE(consumed_tokens, 0) as consumed_tokens, limit_tokens FROM participants WHERE competition_id = ? AND id = ?
         """, [competition_id, participant_id]).fetchone()
 
         conn.execute("""
-            INSERT INTO submissions 
-            (id, competition_id, participant_id, problem_id, code, language, 
+            INSERT INTO submissions
+            (id, competition_id, participant_id, problem_id, code, language,
              submitted_at, status, pass_score, penalty, submission_tokens, test_results)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, [
@@ -770,14 +811,14 @@ class DuckDBStorage:
             submission.pass_score, submission.penalty, submission.submission_tokens,
             json.dumps([tr.to_dict() for tr in submission.test_results])
         ])
-        
-        if new_remaining_tokens is None:
+
+        if token_status is None:
             raise ValueError(f"Participant {participant_id} not found in competition {competition_id}")
-        
-        new_remaining_tokens = new_remaining_tokens[0]    
-        
-        # Check if participant should be terminated due to token exhaustion
-        if new_remaining_tokens <= 0:
+
+        consumed_tokens, limit_tokens = token_status[0], token_status[1]
+
+        # Check if participant should be terminated due to token exhaustion (based on actual consumption, not penalties)
+        if consumed_tokens >= limit_tokens:
             self.terminate_participant(competition_id, participant_id, "out_of_tokens")
         
         # Backup
@@ -878,23 +919,18 @@ class DuckDBStorage:
             WHERE competition_id = ?
         """, [competition_id])
         
-        # Then, get rankings based on updated scores
+        # Then, get rankings based on new ranking rules:
+        # 1. Higher problem_pass_score ranks higher
+        # 2. For same problem_pass_score, lower (consumed_tokens + penalty) ranks higher
         return conn.execute("""
-            SELECT 
+            SELECT
                 p.name,
-                p.score,
                 p.problem_pass_score,
-                p.submission_count,
-                p.accepted_count,
-                p.submission_penalty,
-                p.remaining_tokens,
-                p.lambda_value,
-                p.is_running,
-                p.termination_reason,
-                RANK() OVER (ORDER BY p.score DESC, p.problem_pass_score DESC) as rank
+                (COALESCE(p.consumed_tokens, 0) + p.submission_penalty) as consumed_credit,
+                RANK() OVER (ORDER BY p.problem_pass_score DESC, (COALESCE(p.consumed_tokens, 0) + p.submission_penalty) ASC) as rank
             FROM participants p
             WHERE p.competition_id = ?
-            ORDER BY rank
+            ORDER BY p.problem_pass_score DESC, (COALESCE(p.consumed_tokens, 0) + p.submission_penalty) ASC
         """, [competition_id]).fetchall()
     
     def get_submission_statistics(self, competition_id: str) -> Dict:
@@ -1131,26 +1167,35 @@ class DuckDBStorage:
         
         # Calculate total LLM tokens
         llm_tokens = prompt_tokens + completion_tokens + reasoning_tokens
-        
+
         # Update database
         conn = self._get_conn()
         conn.execute("""
             UPDATE participants
-            SET LLM_tokens = LLM_tokens + ?, remaining_tokens = remaining_tokens - ?, llm_inference_count = llm_inference_count + 1
+            SET LLM_tokens = LLM_tokens + ?,
+                consumed_tokens = COALESCE(consumed_tokens, 0) + ?,
+                remaining_tokens = remaining_tokens - ?,
+                llm_inference_count = llm_inference_count + 1
             WHERE competition_id = ? AND id = ?
-        """, [llm_tokens, llm_tokens, competition_id, participant_id])
-        
-        new_remaining_tokens = conn.execute("""
-            SELECT remaining_tokens FROM participants WHERE competition_id = ? AND id = ?
-        """, [competition_id, participant_id]).fetchone()
-        
-        if new_remaining_tokens is None:
-            raise ValueError(f"Participant {participant_id} not found in competition {competition_id}")
-        new_remaining_tokens = new_remaining_tokens[0]    
+        """, [llm_tokens, llm_tokens, llm_tokens, competition_id, participant_id])
 
-        if new_remaining_tokens <= 0:
+        # Get current consumed_tokens and limit_tokens for termination check
+        token_status = conn.execute("""
+            SELECT COALESCE(consumed_tokens, 0) as consumed_tokens, limit_tokens FROM participants WHERE competition_id = ? AND id = ?
+        """, [competition_id, participant_id]).fetchone()
+
+        if token_status is None:
+            raise ValueError(f"Participant {participant_id} not found in competition {competition_id}")
+
+        consumed_tokens, limit_tokens = token_status[0], token_status[1]
+
+        # Calculate new_remaining_tokens for response (using the old logic with penalties)
+        new_remaining_tokens = max(0, participant.remaining_tokens - llm_tokens)
+
+        # Check if participant should be terminated due to token exhaustion (based on actual consumption, not penalties)
+        if consumed_tokens >= limit_tokens:
             self.terminate_participant(competition_id, participant_id, "out_of_tokens")
-        
+
 
         return {
             "content": result,
@@ -1283,17 +1328,32 @@ class DuckDBStorage:
         llm_tokens = prompt_tokens + completion_tokens + reasoning_tokens
 
         logger.critical(f"\nparticipant: {participant.name}, llm_tokens: {llm_tokens}\n")
-        
-        # Update participant token usage
-        new_remaining_tokens = max(0, participant.remaining_tokens - llm_tokens)
-        
+
         # Update database
         conn = self._get_conn()
         conn.execute("""
             UPDATE participants
-            SET LLM_tokens = ?, remaining_tokens = remaining_tokens - ?, llm_inference_count = llm_inference_count + 1
+            SET LLM_tokens = LLM_tokens + ?,
+                consumed_tokens = COALESCE(consumed_tokens, 0) + ?,
+                remaining_tokens = remaining_tokens - ?,
+                llm_inference_count = llm_inference_count + 1
             WHERE competition_id = ? AND id = ?
-        """, [llm_tokens, llm_tokens, competition_id, participant_id])
+        """, [llm_tokens, llm_tokens, llm_tokens, competition_id, participant_id])
+
+        # Get current consumed_tokens and limit_tokens for termination check
+        token_status = conn.execute("""
+            SELECT COALESCE(consumed_tokens, 0) as consumed_tokens, limit_tokens FROM participants WHERE competition_id = ? AND id = ?
+        """, [competition_id, participant_id]).fetchone()
+
+        if token_status is None:
+            raise ValueError(f"Participant {participant_id} not found in competition {competition_id}")
+
+        consumed_tokens, limit_tokens = token_status[0], token_status[1]
+        new_remaining_tokens = max(0, participant.remaining_tokens - llm_tokens)
+
+        # Check if participant should be terminated due to token exhaustion (based on actual consumption, not penalties)
+        if consumed_tokens >= limit_tokens:
+            self.terminate_participant(competition_id, participant_id, "out_of_tokens")
         
         return {
             "reasoning_content": reasoning_content,
@@ -1365,16 +1425,29 @@ class DuckDBStorage:
             
             # Update participant token usage
             new_remaining_tokens = participant.remaining_tokens - hint_cost
-        
+
         # Update database
         conn = self._get_conn()
         conn.execute("""
-            UPDATE participants 
-            SET hint_tokens = hint_tokens + ?, remaining_tokens = ?
+            UPDATE participants
+            SET hint_tokens = hint_tokens + ?,
+                consumed_tokens = COALESCE(consumed_tokens, 0) + ?,
+                remaining_tokens = ?
             WHERE competition_id = ? AND id = ?
-        """, [hint_cost, new_remaining_tokens, competition_id, participant_id])
-        
-        if new_remaining_tokens <= 0:
+        """, [hint_cost, hint_cost, new_remaining_tokens, competition_id, participant_id])
+
+        # Get current consumed_tokens and limit_tokens for termination check
+        token_status = conn.execute("""
+            SELECT COALESCE(consumed_tokens, 0) as consumed_tokens, limit_tokens FROM participants WHERE competition_id = ? AND id = ?
+        """, [competition_id, participant_id]).fetchone()
+
+        if token_status is None:
+            raise ValueError(f"Participant {participant_id} not found in competition {competition_id}")
+
+        consumed_tokens, limit_tokens = token_status[0], token_status[1]
+
+        # Check if participant should be terminated due to token exhaustion (based on actual consumption, not penalties)
+        if consumed_tokens >= limit_tokens:
             self.terminate_participant(competition_id, participant_id, "out_of_tokens")
 
         return {
@@ -1620,4 +1693,131 @@ class DuckDBStorage:
         # Backup the updated participant data
         updated_participant = self.get_participant(competition_id, participant_id)
         if updated_participant:
-            self._backup_to_json('participant', updated_participant.to_dict()) 
+            self._backup_to_json('participant', updated_participant.to_dict())
+
+    def process_test_code_request(
+        self,
+        competition_id: str,
+        participant_id: str,
+        code: str,
+        language: str,
+        test_cases: List[Case],
+        time_limit_ms: int = 5000,
+        memory_limit_mb: int = 256
+    ) -> Dict[str, Any]:
+        """
+        Process a test code request and update participant token usage.
+        This action does not affect competition scoring or statistics.
+
+        Args:
+            competition_id: Competition ID
+            participant_id: Participant ID
+            code: Source code to test
+            language: Programming language
+            test_cases: List of custom test cases
+            time_limit_ms: Time limit in milliseconds
+            memory_limit_mb: Memory limit in MB
+
+        Returns:
+            Dictionary containing test results and token usage information
+        """
+        # Get competition and participant
+        competition = self.get_competition(competition_id)
+        if not competition:
+            raise ValueError(f"Competition with ID {competition_id} not found")
+
+        participant = self.get_participant(competition_id, participant_id)
+        if not participant:
+            raise ValueError(f"Participant with ID {participant_id} not found")
+
+        # Get test token cost from competition rules
+        test_tokens_config = competition.rules.get("test_tokens", {})
+
+        # Support different pricing strategies
+        if isinstance(test_tokens_config, dict):
+            # Base cost
+            test_cost = test_tokens_config.get("default", 50)
+
+            # Optional: Additional cost based on number of test cases
+            cost_per_case = test_tokens_config.get("per_test_case", 0)
+            if cost_per_case > 0:
+                test_cost += len(test_cases) * cost_per_case
+
+            # Optional: Language-specific pricing
+            language_multiplier = test_tokens_config.get("language_multipliers", {}).get(language, 1.0)
+            test_cost = int(test_cost * language_multiplier)
+        else:
+            # Fallback for simple integer configuration
+            test_cost = int(test_tokens_config) if test_tokens_config else 50
+
+        # Check if participant has enough tokens
+        if participant.remaining_tokens < test_cost:
+            raise ValueError(f"Insufficient tokens. Required: {test_cost}, Available: {participant.remaining_tokens}")
+
+        # Validate judge is available
+        judge = self.judge
+        if judge is None:
+            raise ValueError("Judge is not initialized")
+
+        # Execute test code with custom test cases
+        try:
+            test_results = judge.test_code_with_custom_cases(
+                code=code,
+                language=language,
+                test_cases=test_cases,
+                time_limit_ms=time_limit_ms,
+                memory_limit_mb=memory_limit_mb
+            )
+        except Exception as e:
+            logger.error(f"Error testing code: {str(e)}", exc_info=True)
+            raise ValueError(f"Code testing failed: {str(e)}")
+
+        # Update participant token usage (deduct test cost)
+        new_remaining_tokens = participant.remaining_tokens - test_cost
+
+        # Update database
+        conn = self._get_conn()
+        conn.execute("""
+            UPDATE participants
+            SET test_tokens = test_tokens + ?,
+                consumed_tokens = COALESCE(consumed_tokens, 0) + ?,
+                remaining_tokens = ?
+            WHERE competition_id = ? AND id = ?
+        """, [test_cost, test_cost, new_remaining_tokens, competition_id, participant_id])
+
+        # Get current consumed_tokens and limit_tokens for termination check
+        token_status = conn.execute("""
+            SELECT COALESCE(consumed_tokens, 0) as consumed_tokens, limit_tokens FROM participants WHERE competition_id = ? AND id = ?
+        """, [competition_id, participant_id]).fetchone()
+
+        if token_status is None:
+            raise ValueError(f"Participant {participant_id} not found in competition {competition_id}")
+
+        consumed_tokens, limit_tokens = token_status[0], token_status[1]
+
+        # Check if participant should be terminated due to token exhaustion (based on actual consumption, not penalties)
+        if consumed_tokens >= limit_tokens:
+            self.terminate_participant(competition_id, participant_id, "out_of_tokens")
+
+        # Calculate test statistics
+        passed_tests = sum(1 for tr in test_results if tr.status == SubmissionStatus.ACCEPTED)
+        total_tests = len(test_results)
+
+        logger.info(f"Test code request completed for participant {participant_id}: {passed_tests}/{total_tests} tests passed, {test_cost} tokens consumed")
+
+        return {
+            "test_results": [tr.to_dict() for tr in test_results],
+            "passed_tests": passed_tests,
+            "total_tests": total_tests,
+            "tokens_cost": test_cost,
+            "remaining_tokens": new_remaining_tokens,
+            "language": language,
+            "execution_summary": {
+                "compilation_errors": sum(1 for tr in test_results if tr.status == SubmissionStatus.COMPILATION_ERROR),
+                "runtime_errors": sum(1 for tr in test_results if tr.status == SubmissionStatus.RUNTIME_ERROR),
+                "time_limit_exceeded": sum(1 for tr in test_results if tr.status == SubmissionStatus.TIME_LIMIT_EXCEEDED),
+                "memory_limit_exceeded": sum(1 for tr in test_results if tr.status == SubmissionStatus.MEMORY_LIMIT_EXCEEDED),
+                "wrong_answers": sum(1 for tr in test_results if tr.status == SubmissionStatus.WRONG_ANSWER),
+                "accepted": passed_tests
+            }
+        }

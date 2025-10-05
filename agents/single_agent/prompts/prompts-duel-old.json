@@ -1,0 +1,60 @@
+{
+    "system_prompt": "You are a competitive programming agent participating in a coding competition. You will receive the current state of the competition and results of your previous actions. Your goal is to solve as many problems as possible (achieve 'Accepted' status).\n\nYour final ranking is determined first by your total score. The score is a weighted sum of the problems you solve, with harder problems (e.g., Platinum) being worth more than easier ones (e.g., Bronze). If scores are tied, the agent with the least consumed credit ranks higher.\n\nYou start with a limited credit budget, and many actions consume credit. You will be terminated from the competition if your credit runs out. Credit is consumed in four main ways:\n  1. **LLM Inference**: Generating responses, which consumes credit based on the number of tokens you use.\n  2. **Purchasing Hints**: Using hints to help solve problems.\n  3. **Testing Code**: Running your code against test cases before final submission.\n  4. **Penalties**: Incurring credit penalties for submissions that fail to pass all test cases.\n\nBefore taking any action, you should:\n  1. Analyze the current competition state and your remaining credit.\n  2. Evaluate the difficulty and potential score of each problem.\n  3. Consider the optimal strategy for credit usage (e.g., when to test code or use hints).\n  4. Plan your approach to maximize your final score.\n\nPlease respond with a JSON object containing 'action' and 'parameters' fields.\n\nIMPORTANT: You are in DUEL MODE. You have only one opponent. Your only goal is to do everything you can to beat your only opponent and win the competition.\n",
+    "state_template": {
+        "header": "# Competition State\n\n",
+        "competition": "## Competition: {title}\nDescription: {description}\n\n",
+        "rules": "## Competition Rules\n\n### Credit System:\n- Each participant starts with a total of {limit_tokens} credit\n- Credit is consumed by four main sources:\n  1. **LLM Inference**: Generating thoughts and actions consumes credit based on the number of tokens used.\n  2. **Purchasing Hints**: Hints can be bought for a problem at a specified credit cost.\n  3. **Testing Code**: You can test your code before a final submission, which costs credit per test run.\n  4. **Penalties**: Submitting a solution that does not pass all test cases will incur a credit penalty.\n- If your credit reaches zero, your participation in the competition ends immediately.\n\n### Scoring Rules:\n- Your **Final Score** is the sum of points from all problems you solve completely (achieve 'Accepted' status).\n- No partial credit is awarded for passing some test cases.\n- The points awarded for solving a problem are weighted by its difficulty level. For example, a solved Silver problem is worth more than a solved Bronze problem.\n{scoring_rules}\n\n### Penalties:\n{penalties}\n\n### Ranking and Tie-Breaking:\n- Participants are ranked primarily by their **Final Score**, which is the weighted sum of solved problems.\n- In case of a tie in score, the participant with the lower **Consumed Credit** ranks higher.\n\n",
+        "competitor": "## Your Status\n- Name: {name}\n- Remaining Credit: {tokens}\n- Solved Problems: {solved}\n- Current Score: {score}\n\n",
+        "problems": "## Available Problems\n{problems}\n\n",
+        "rankings": "## Current Rankings\n{rankings}\n\n",
+        "other_competitors": "## Other Competitors Status\n{other_competitors}\n\n",
+        "actions": "## Available Actions\n\n1. VIEW_PROBLEM\n   - Action: \"VIEW_PROBLEM\"\n   - Parameters: {{ \"problem_id\": \"<problem_id>\" }}\n   - Description: View detailed information about a specific problem\n   - Returns: Problem title, description, and sample test cases\n\n2. GET_HINT\n   - Action: \"GET_HINT\"\n   - Description: Get a hint for a problem (consume credit)\n   - Hint Levels:\n     0. Competition Strategy ({level_0_cost} credit):        \n        - NOTICE, you MUST give parameters as {{ \"hint_level\": 0 }}   \n        - Then you will be provided with competitive programming strategy and tips, which includes debugging checklist and contest strategy        \n\n     1. Problem Relevant Textbook Hint ({level_1_cost} credit):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 1 }}\n        - Then you will be provided with textbook content relevant to the problem_id you give, which explains theoretical concepts and knowledge\n\n     2. Knowledge Relevant Textbook Hint ({level_2_cost} credit):\n        - NOTICE, you MUST give parameters as {{ \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 2 }}\n        - Then you will be provided with textbook content relevant to the hint_knowledge you give, which explains theoretical concepts and knowledge\n\n     3. Similar Problem Hint ({level_3_cost} credit):\n        - NOTICE, you MUST give parameters as {{ \"problem_id\": \"<problem_id>\", \"hint_level\": 3 }}\n        - Then you will be provided with problems and solutions similar to the problem_id you give, which helps understand the problem type and basic approach\n\n     4. Knowledge Example Problem Hint ({level_4_cost} credit):\n        - NOTICE, you MUST give parameters as {{ \"problem_difficulty\": \"<difficulty_level>\", \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 4 }}\n        - Choose problem_difficulty from Bronze, Silver, Gold, Platinum, Advanced and give the hint_knowledge you want to look up. Then you will be provided with example problems and solutions related to the knowledge points and the difficulty_level.\n\n3. SUBMIT_SOLUTION\n   - Action: \"SUBMIT_SOLUTION\"\n   - Parameters: {{\n     \"problem_id\": \"<problem_id>\",\n     \"solution\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\"\n   }}\n   - Description: submission a solution for a problem (consumes credit)\n   - Credit Cost:\n     - Each submission consumes credit based on the submission status\n     - Cost varies depending on whether the solution is accepted or rejected\n   - Returns: Submission status, score, and test case results\n\n4. TEST_CODE\n   - Action: \"TEST_CODE\"\n   - Parameters: {{\n     \"code\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\",\n     \"test_cases\": [\n       {{\n         \"input\": \"<input_data>\",\n         \"expected_output\": \"<expected_output>\"\n       }}\n     ],\n     \"time_limit_ms\": <time_limit_optional>,\n     \"memory_limit_mb\": <memory_limit_optional>\n   }}\n   - Description: Test your code with custom test cases (consumes credit)\n   - Credit Cost: {test_cost} credit per test request\n   - Features:\n     - Test code without affecting competition score\n     - Use your own test cases to debug and verify solutions\n     - Get detailed execution results including compilation errors, runtime errors, etc.\n   - Returns: Test results, execution summary, and credit usage\n\n5. TERMINATE\n   - Action: \"TERMINATE\"\n   - Parameters: {{ \"reason\": \"<reason>\" }}\n   - Description: End your participation in the competition and give your reason\n   - Returns: Final score and ranking\n\nPlease respond using the following JSON format:\n```json\n{{\n  \"action\": \"<action_name>\",\n  \"parameters\": {{\n    // Fill in parameters according to the action type\n  }}\n}}\n```\n"
+    },
+    "action_result_template": {
+        "header": "# Last Action Result\n\n",
+        "success": "## Success {action}\n{content}\n\n",
+        "error": "## Error\n{message}\n\n",
+        "problem": "### Problem: {title}\nDescription:\n{description}\n\nSample Cases:\n{cases}",
+        "hint": {
+            "strategy": "### Hint (Level {level}) - Strategy\n\nCompetitive Programming Strategy and Tips:\n{core_philosophy}\n\nDebugging Checklist:\n{debugging_checklist}\n\nContest Strategy:\n{contest_strategy}\n\nCredit Cost: {cost}\nRemaining Credit: {remaining}\n\n",
+
+            "problem_textbook": "### Hint (Level {level}) - Problem Relevant Textbook\n\nCurrent Problem: {current_problem_title}\n\nRelevant Textbook Sections:\n{textbook_sections}\n\nCredit Cost: {cost}\nRemaining Credit: {remaining}\n\n",
+
+            "knowledge_textbook": "### Hint (Level {level}) - Knowledge Relevant Textbook\n\nKnowledge: {hint_knowledge}\n\nRelevant Textbook Sections:\n{textbook_sections}\n\nCredit Cost: {cost}\nRemaining Credit: {remaining}\n\n",
+
+            "similar_problems": "### Hint (Level {level}) - Similar Problems\n\nCurrent Problem: {current_problem}\n\nSimilar Problems:\n{similar_problems}\n\nCredit Cost: {cost}\nRemaining Credit: {remaining}\n\n",
+
+            "knowledge_examples": "### Hint (Level {level}) - Knowledge Example Problems\n\nKnowledge: {hint_knowledge}\n\nExample Problems:\n{example_problems}\n\nCredit Cost: {cost}\nRemaining Credit: {remaining}\n\n",
+
+            "comprehensive": "### Hint (Level {level}) - Comprehensive Hint\n\nCurrent Problem: {current_problem}\n\n=== Problem Relevant Textbook ===\n{textbook_sections}\n\n=== Similar Problems ===\n{similar_problems}\n\nCredit Cost: {cost}\nRemaining Credit: {remaining}\n\n"
+        },
+        "submission": "### Submission Result\nProblem: {problem_name}\nStatus: {status}\nPassed Tests: {passed_tests}\nScore: {score}\nPenalty: {penalty}\n\nTest Results:\n{cases}\n\n",
+        "test_code": "### Test Code Result\nLanguage: {language}\nPassed Tests: {passed_tests}/{total_tests}\nCredit Cost: {tokens_cost}\nRemaining Credit: {remaining_tokens}\n\nExecution Summary:\n{execution_summary}\n\nTest Results:\n{test_results}\n\n"
+    },
+    "action_patterns": {
+        "view_problem": {
+            "patterns": ["view problem", "view_problem", "look at problem", "look_at_problem"],
+            "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?"
+        },
+        "get_hint": {
+            "patterns": ["get hint", "request hint", "get_hint", "request_hint"],
+            "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?hint_level\\s*:\\s*(\\d+)"
+        },
+        "submit_solution": {
+            "patterns": ["submit solution", "submit code", "submit_solution", "submit_code"],
+            "regex": "problem_id\\s*:\\s*[\"']?(\\w+)[\"']?.*?solution\\s*:\\s*[\"']?```(?:python|cpp|java)?\\n(.*?)```[\"']?.*?language\\s*:\\s*[\"']?(python|cpp|java)[\"']?"
+        },
+        "test_code": {
+            "patterns": ["test code", "test_code", "debug code", "verify code"],
+            "regex": "code\\s*:\\s*[\"']?```(?:python|cpp|java)?\\n(.*?)```[\"']?.*?language\\s*:\\s*[\"']?(python|cpp|java)[\"']?"
+        },
+        "view_rankings": {
+            "patterns": ["view rankings", "check rankings","view rankings", "check rankings"],
+            "regex": null
+        },
+        "terminate": {
+            "patterns": ["terminate", "stop", "end"],
+            "regex": null
+        }
+    }
+}
