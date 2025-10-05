@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>USACOArena Competition Manager</title>
+    <link rel="stylesheet" href="./static/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="page__header">
+        <div>
+          <h1>USACOArena Competition Manager</h1>
+          <p class="page__subtitle">
+            Launch isolated competitions, configure competitors, and monitor live results without touching the core runtime.
+          </p>
+        </div>
+        <div class="page__actions">
+          <button id="create-instance" class="button button--primary">New Competition</button>
+          <button id="refresh-instances" class="button">Refresh</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="layout__sidebar">
+          <div class="panel">
+            <div class="panel__header">
+              <h2>Competitions</h2>
+            </div>
+            <div id="instance-container" class="panel__body empty">
+              <p>No competitions yet. Start one with the “New Competition” button.</p>
+            </div>
+          </div>
+        </aside>
+
+        <section class="layout__content">
+          <div id="details-container" class="panel">
+            <div class="panel__header">
+              <h2>Competition Details</h2>
+            </div>
+            <div class="panel__body empty">
+              <p>Select a competition to view real-time insights, leaderboards, and participant activity.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="instance-modal" class="modal">
+      <form id="instance-form" class="modal__content" method="dialog">
+        <header class="modal__header">
+          <h2>Create Competition</h2>
+          <button type="button" class="icon-button" data-close>✕</button>
+        </header>
+
+        <section class="modal__section">
+          <h3>Competition Basics</h3>
+          <div class="field-grid" id="competition-general-fields"></div>
+        </section>
+
+        <section class="modal__section">
+          <h3>Problem Selection</h3>
+          <div class="field-grid">
+            <label>
+              Problem Set Template
+              <select name="problem_set_file" id="problem-set-select">
+                <option value="">-- Select template (optional) --</option>
+              </select>
+            </label>
+            <label class="field-grid__full">
+              Custom Problem IDs (newline or comma separated)
+              <textarea name="problem_ids" rows="3" placeholder="1515_bronze_hoof_paper_scissors_minus_one, 1516_bronze_more_cow_photos"></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="modal__section">
+          <h3>Server &amp; Judge</h3>
+          <div class="field-grid">
+            <label>
+              Server Port
+              <input type="number" name="server_port" min="1024" placeholder="Auto-select" />
+            </label>
+            <label>
+              OJ Port
+              <input type="number" name="oj_port" min="1024" placeholder="Auto-select" />
+            </label>
+            <label>
+              OJ Endpoint Override
+              <input type="text" name="oj_endpoint" placeholder="http://localhost:9000/usacoarena/oj/compile-and-execute" />
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" name="start_oj" checked /> Start dedicated OJ container (requires Docker)
+            </label>
+          </div>
+        </section>
+
+        <section class="modal__section">
+          <h3>API &amp; Logging</h3>
+          <div class="field-grid" id="api-config-fields"></div>
+          <div class="field-grid" id="log-config-fields"></div>
+        </section>
+
+        <section class="modal__section">
+          <h3>Scoring &amp; Propagation</h3>
+          <div class="field-grid" id="scoring-fields"></div>
+          <div class="field-grid" id="propagation-fields"></div>
+        </section>
+
+        <section class="modal__section">
+          <h3>Penalties &amp; Submission Costs</h3>
+          <div class="field-grid" id="penalties-fields"></div>
+          <div class="field-grid" id="submission-fields"></div>
+        </section>
+
+        <section class="modal__section">
+          <h3>Hints &amp; Test Tokens</h3>
+          <div class="field-grid" id="hint-fields"></div>
+          <div class="field-grid" id="test-token-fields"></div>
+        </section>
+
+        <section class="modal__section">
+          <h3>Language &amp; Model Multipliers</h3>
+          <div class="multiplier-group">
+            <h4>Test Tokens</h4>
+            <div class="table-toolbar">
+              <button type="button" class="button button--ghost" data-add-language="test">Add Language</button>
+            </div>
+            <div class="table-scroll">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Language</th>
+                    <th>Multiplier</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="test-multipliers-body"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="multiplier-group">
+            <h4>Input Token Multipliers</h4>
+            <div class="table-toolbar">
+              <button type="button" class="button button--ghost" data-add-language="input">Add Model</button>
+            </div>
+            <div class="table-scroll">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>Multiplier</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="input-multipliers-body"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="multiplier-group">
+            <h4>Output Token Multipliers</h4>
+            <div class="table-toolbar">
+              <button type="button" class="button button--ghost" data-add-language="output">Add Model</button>
+            </div>
+            <div class="table-scroll">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>Multiplier</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="output-multipliers-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="modal__section">
+          <h3>Competitors</h3>
+          <div class="table-toolbar">
+            <button type="button" id="add-competitor" class="button button--ghost">Add Competitor</button>
+          </div>
+          <div class="table-scroll">
+            <table class="table" id="competitor-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Model</th>
+                  <th>API Base</th>
+                  <th>API Key</th>
+                  <th>Prompt Config</th>
+                  <th>Token Limit</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <footer class="modal__footer">
+          <div id="form-error" class="form-error" role="alert" aria-live="polite"></div>
+          <button type="submit" class="button button--primary">Launch Competition</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <template id="competitor-row-template">
+      <tr>
+        <td data-label="Name"><input name="name" required placeholder="agent-alpha" /></td>
+        <td data-label="Model"><input name="model_id" required placeholder="gpt-4.1" /></td>
+        <td data-label="API Base"><input name="api_base_url" required placeholder="https://api.example.com" /></td>
+        <td data-label="API Key"><input name="api_key" placeholder="Will be stored locally" /></td>
+        <td data-label="Prompt"><input name="prompt_config_path" placeholder="agents/single_agent/prompts/prompts-single.json" /></td>
+        <td data-label="Token Limit"><input name="limit_tokens" type="number" min="1" placeholder="10000000" /></td>
+        <td class="table__actions"><button type="button" class="button button--danger" data-action="remove-competitor">Remove</button></td>
+      </tr>
+    </template>
+
+    <template id="language-row-template">
+      <tr>
+        <td><input data-field="name" placeholder="model-or-language" /></td>
+        <td><input data-field="value" type="number" step="0.01" placeholder="0.0" /></td>
+        <td class="table__actions"><button type="button" class="button button--ghost" data-action="remove-multiplier">Remove</button></td>
+      </tr>
+    </template>
+
+    <script src="./static/app.js" type="module"></script>
+  </body>
+</html>

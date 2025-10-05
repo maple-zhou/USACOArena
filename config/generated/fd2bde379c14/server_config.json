@@ -1,0 +1,25 @@
+{
+  "server": {
+    "port": 6500,
+    "host": "0.0.0.0"
+  },
+  "log": {
+    "level": "INFO",
+    "dir": "logs/server_logs",
+    "enable_colors": true
+  },
+  "oj": {
+    "endpoint": "http://localhost:9500/usacoarena/oj/compile-and-execute"
+  },
+  "rate_limit": {
+    "min_interval": 0.05
+  },
+  "db": {
+    "path": "data/competition_6500.duckdb",
+    "backup_json": true
+  },
+  "data": {
+    "problem_data_dir": "dataset/datasets/usaco_2025",
+    "textbook_data_dir": "dataset/textbooks"
+  }
+}

@@ -32,7 +32,7 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 ### 3. Prepare USACO Dataset
 
-Download the USACO data from the [link](https://drive.google.com/file/d/1z5ODOJMqyer1QxzYtEUZ2hbAx-7nU8Vi/view?usp=share_link).
+Download the USACO data from the [link](https://1drv.ms/u/c/1ef7b7bac0da57e6/EScfKJ-Fm9hAorr5gByWMUQBHa0pwbi-HmFBi7XFSF3RiA?e=0glfNJ).
 
 ```bash
 # Extract and place in codebase root directory
@@ -78,6 +78,23 @@ curl -X POST http://localhost:8000/usacoarena/oj/compile-and-execute \
 **Important**: Make sure the online judge is running on port 8000 before starting USACOArena competitions.
 
 ## 🎯 Usage
+
+### Web Dashboard (recommended)
+
+1. **Start the orchestration UI (separate service)**
+   ```bash
+   uv run python -m usacoarena.ui.app --host 0.0.0.0 --port 5500
+   ```
+   The UI runs independently and will spin up dedicated competition + OJ servers for each run, keeping workloads isolated.
+
+2. **Open the dashboard**
+   - Visit `http://localhost:5500/ui` (forward the port if running on a headless server).
+   - Click **New Competition** to launch a run — choose a problem set or paste custom IDs, adjust scoring/penalties/token budgets through the form fields, and register competitors (model name, API base, key, prompt path, token limits).
+   - The UI writes configs under `config/generated/<instance_id>/` and can optionally start a fresh Docker-based OJ for each competition.
+
+3. **Monitor live results**
+   - The dashboard polls the spawned competition servers for leaderboards, participant stats, and submission timelines.
+   - Use **Terminate** on a competition card once the experiment finishes to tear down the underlying server/OJ pair.
 
 ### Quick Start
 
