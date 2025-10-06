@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import argparse
+import atexit
+import signal
+import sys
 from pathlib import Path
 from typing import Optional
 
@@ -19,6 +22,26 @@ def create_app(base_dir: Optional[Path] = None) -> Flask:
 
     app = Flask(__name__, static_folder="static", template_folder="templates")
     register_ui_blueprint(app, base_dir=base_dir or DEFAULT_BASE_DIR)
+
+    manager = app.extensions.get("ui_manager")
+
+    def cleanup() -> None:
+        if manager:
+            manager.cleanup_all()
+
+    atexit.register(cleanup)
+
+    def handle_signal(signum, frame):  # type: ignore[override]
+        cleanup()
+        sys.exit(0)
+
+    for sig in (signal.SIGINT, signal.SIGTERM):
+        try:
+            signal.signal(sig, handle_signal)
+        except ValueError:
+            # Signals can only be registered in main thread; ignore otherwise
+            pass
+
     return app
 
 

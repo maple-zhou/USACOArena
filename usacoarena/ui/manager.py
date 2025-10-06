@@ -561,12 +561,19 @@ class CompetitionProcessManager:
                 instance.status = "completed"
                 instance.updated_at = _current_timestamp()
 
+            # Competition finished normally; tear down associated services
+            with self._lock:
+                self._cleanup_instance_processes(instance)
+
         except Exception as exc:  # pylint: disable=broad-except
             logger.error("Competition runtime failed: %s", exc, exc_info=True)
             with self._lock:
                 instance.status = "failed"
                 instance.last_error = str(exc)
                 instance.updated_at = _current_timestamp()
+
+            with self._lock:
+                self._cleanup_instance_processes(instance)
 
     def _build_competitors(self, instance: CompetitionInstance) -> List[Competitor]:
         competitors: List[Competitor] = []
@@ -682,20 +689,54 @@ class CompetitionProcessManager:
             return False
 
         with self._lock:
-            if instance.server_process and instance.server_process.poll() is None:
-                instance.server_process.terminate()
-            if instance.oj_process and instance.oj_process.poll() is None:
-                instance.oj_process.terminate()
-            if instance.oj_container_name and shutil.which("docker"):
-                subprocess.Popen(
-                    ["docker", "rm", "-f", instance.oj_container_name],
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
-                )
-            instance.status = "stopped"
-            instance.updated_at = _current_timestamp()
+            self._cleanup_instance_processes(instance, update_status="stopped")
 
         return True
+
+    def _cleanup_instance_processes(
+        self, instance: CompetitionInstance, update_status: Optional[str] = None
+    ) -> None:
+        """Terminate server and OJ resources tied to an instance."""
+
+        if instance.server_process and instance.server_process.poll() is None:
+            instance.server_process.terminate()
+            try:
+                instance.server_process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                instance.server_process.kill()
+            instance.server_process = None
+
+        if instance.oj_process and instance.oj_process.poll() is None:
+            instance.oj_process.terminate()
+            try:
+                instance.oj_process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                instance.oj_process.kill()
+            instance.oj_process = None
+
+        if instance.oj_container_name and shutil.which("docker"):
+            subprocess.Popen(
+                ["docker", "rm", "-f", instance.oj_container_name],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            instance.oj_container_name = None
+
+        if update_status:
+            instance.status = update_status
+
+        instance.updated_at = _current_timestamp()
+
+    def cleanup_all(self) -> None:
+        """Terminate all managed processes and containers."""
+
+        with self._lock:
+            for instance in list(self.instances.values()):
+                if instance.status in {"completed", "failed"}:
+                    status = instance.status
+                else:
+                    status = "stopped"
+                self._cleanup_instance_processes(instance, update_status=status)
 
 
 # Import placed at bottom to avoid circular import at module import time
