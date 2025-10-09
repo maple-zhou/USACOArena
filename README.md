@@ -510,6 +510,28 @@ We warmly welcome reviewers to explore and experiment with our system!
 - Modify `config/problems.json` to test different problem sets
 - All available problems are listed in `config/all_problems_ids.json`
 
+### Solo LLM Runner
+
+Run one or more problems with a single LLM agent without starting the competition server:
+
+```bash
+python scripts/run_solo_agent.py \
+    --problem-id USACO_2025_JAN_SILVER_OLD \
+    --problem-id USACO_2025_JAN_GOLD_SAMPLE \
+    --agent-config config/1codex.json \
+    --competitor-name gpt-5-codex \
+    --prompt-file prompts/solo_agent_prompt.txt \
+    --language cpp \
+    --token-limit 60000 \
+    --max-retries 3
+```
+
+Key notes:
+- Prompt instructions live in `prompts/solo_agent_prompt.txt`;脚本会在提示中标明 `--language` 指定的语言。
+- 日志基目录默认为 `logs/solo_runs/<timestamp>_*`，每道题各自保留 JSONL、Markdown、源码快照与对话记录 (`conversations/attempt_*.json`)。
+- Token 使用量会在日志中累计；若指定 `--token-limit`，达到阈值后自动停止剩余题目。
+- 使用多次 `--problem-id`（或逗号分隔）可批量执行题目；`--dry-run` 可跳过判题，仅收集代码；`--max-retries` 控制单次 LLM 调用失败后的重试次数。
+
 ### Custom MAS Development
 - Modify prompts in `agents/single_agent/prompts/prompt_manager.py`
 - Adjust agent behavior in `agents/single_agent/single_agent.py`

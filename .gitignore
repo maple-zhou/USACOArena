@@ -73,4 +73,6 @@ original_results/
 CLAUDE.md
 AGENTS.md
 .claude/
+.codex/
+verification.md
 
