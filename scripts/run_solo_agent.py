@@ -168,22 +168,33 @@ def _call_llm_with_retry(
 
 
 def build_feedback(submission: Submission, total_cases: Optional[int]) -> str:
-    """根据判题结果生成反馈。"""
-    status = submission.status.value if hasattr(submission.status, "value") else submission.status
-    lines = [f"你的最近一次提交评测结果为 {status}。"]
-    failed = [tr for tr in submission.test_results if tr.status != SubmissionStatus.ACCEPTED]
-    if not failed:
-        passed_count = sum(1 for tr in submission.test_results if tr.status == SubmissionStatus.ACCEPTED)
-        lines.append(f"通过测试用例：{passed_count}/{total_cases or passed_count}。")
-    else:
-        tr = failed[0]
-        identifier = tr.test_case_id or "unknown"
-        lines.append(f"在测试用例 {identifier} 上失败，判定为 {tr.status.value if hasattr(tr.status, 'value') else tr.status}。")
-        if tr.error_message:
-            lines.append(f"错误信息：{tr.error_message.strip()[:500]}")
-        if tr.output and isinstance(tr.output, str) and tr.output.strip():
-            lines.append(f"程序输出：\n{tr.output.strip()[:500]}")
-        lines.append("请修改代码并再次给出完整的源代码。")
+    """根据判题结果生成结构化反馈文本。"""
+    total_available = total_cases or max(len(submission.test_results), 0)
+    passed_count = sum(1 for tr in submission.test_results if tr.status == SubmissionStatus.ACCEPTED)
+    failed_cases = [(idx, tr) for idx, tr in enumerate(submission.test_results, start=1) if tr.status != SubmissionStatus.ACCEPTED]
+
+    lines: List[str] = []
+    if not failed_cases:
+        lines.append(
+            f"你最近的一次提交测评结果为：通过了 {passed_count}/{total_available or passed_count} 个测试用例，全部测试均已通过。"
+        )
+        return "\n".join(lines)
+
+    failed_index, failed_case = failed_cases[0]
+    failure_status = failed_case.status.value if hasattr(failed_case.status, "value") else failed_case.status
+    lines.append(
+        f"你最近的一次提交测评结果为：通过了 {passed_count}/{total_available or len(submission.test_results)} 个测试用例，"
+        f"第 {failed_index} 个测试用例失败，判定为 {failure_status}。"
+    )
+
+    if failed_case.test_case_id:
+        lines.append(f"失败的测试用例编号：{failed_case.test_case_id}。")
+    if failed_case.error_message:
+        lines.append(f"错误信息：{failed_case.error_message.strip()[:500]}")
+    if failed_case.output and isinstance(failed_case.output, str) and failed_case.output.strip():
+        lines.append(f"程序输出：\n{failed_case.output.strip()[:500]}")
+
+    lines.append("请修改代码并再次给出完整的源代码。")
     return "\n".join(lines)
 
 
