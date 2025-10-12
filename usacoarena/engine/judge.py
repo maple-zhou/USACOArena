@@ -1,7 +1,4 @@
-import base64
-import gzip
 import json
-import lzma
 import requests
 from typing import List, Optional
 from ..models.models import Submission, Problem, Case, TestResult, SubmissionStatus, Competition
@@ -13,13 +10,8 @@ class Judge:
     """
     Judge class to handle code evaluation using the local OJ system based on online-judge-rust.
     """
-    def __init__(self, oj_endpoint: str = "http://localhost:8000/usacoarena/oj/compile-and-execute"):
+    def __init__(self, oj_endpoint: str = "http://localhost:10086/compile-and-execute"):
         self.oj_endpoint = oj_endpoint
-        # Large test cases exceed AWS Lambda's payload limit; compress inputs above this size (bytes)
-        self._stdin_compress_threshold = 700_000
-        # AWS Lambda synchronous invoke hard limit is 6 MB (6,291,456 bytes);
-        # keep a small safety margin but allow large xz-encoded payloads.
-        self._stdin_base64_limit = 6_100_000
         logger.debug(f"Initialized Judge with OJ service at {oj_endpoint}")
     
     def evaluate_submission(self, submission: Submission, problem: Problem, competition: Optional[Competition] = None, first_one: bool = False) -> Submission:
@@ -117,18 +109,22 @@ class Judge:
         Returns a TestResult with the outcome.
         """
         try:
-            # Prepare the request payload for the OJ
+            compile_section = {
+                "source_code": code,
+                "language": self._get_language_code(language),
+            }
+
+            compiler_options = self._get_compiler_options(language)
+            if compiler_options:
+                compile_section["compiler_options"] = compiler_options
+
             payload = {
-                "compile": {
-                    "source_code": code,
-                    "compiler_options": self._get_compiler_options(language),
-                    "language": self._get_language_code(language)
-                },
+                "compile": compile_section,
                 "execute": self._build_execute_payload(
                     input_data,
                     time_limit_ms,
-                    memory_limit_kb
                 ),
+                "test_case": self._build_test_case_payload(expected_output),
             }
 
             response = requests.post(
@@ -146,7 +142,7 @@ class Judge:
             # Extract relevant information
             compile_result = result.get("compile", {})
             execute_result = result.get("execute", {})
-            
+
             # Check for compilation errors
             if compile_result.get("exit_code", 0) != 0:
                 return TestResult(
@@ -154,60 +150,51 @@ class Judge:
                     status=SubmissionStatus.COMPILATION_ERROR,
                     error_message=compile_result.get("stderr", "Compilation failed")
                 )
-            
-            # Check for runtime errors
-            exit_code = execute_result.get("exit_code", 0)
-            if exit_code != 0:
-                stderr = execute_result.get("stderr", "")
 
-                # Check for different types of runtime issues
-                verdict = execute_result.get("verdict", "").lower()
-                stderr_lower = stderr.lower()
-                if (
-                    verdict == "time limit exceeded"
-                    or "time limit" in stderr_lower
-                    or exit_code in (124, 31744)
-                    or "status 124" in stderr_lower
-                ):
-                    status = SubmissionStatus.TIME_LIMIT_EXCEEDED
-                elif verdict == "memory limit exceeded" or "memory limit" in stderr_lower:
-                    status = SubmissionStatus.MEMORY_LIMIT_EXCEEDED
-                else:
-                    status = SubmissionStatus.RUNTIME_ERROR
-
-                return TestResult(
-                    test_case_id="execution",
-                    status=status,
-                    runtime_ms=self._parse_time(execute_result.get("wall_time", "0")),
-                    memory_kb=self._parse_memory(execute_result.get("memory_usage", "0")),
-                    output=execute_result.get("stdout", ""),
-                    error_message=stderr
-                )
-            
-            # Get actual output and compare with expected
-            actual_output = execute_result.get("stdout", "").strip()
-            expected_output = expected_output.strip()
-            
-            # Check memory usage before determining final status
+            stdout = execute_result.get("stdout", "")
+            stderr = execute_result.get("stderr", "")
+            verdict = execute_result.get("verdict")
+            runtime_ms = self._parse_time(execute_result.get("wall_time", "0"))
             memory_used = self._parse_memory(execute_result.get("memory_usage", "0"))
-            if memory_used > memory_limit_kb:
-                return TestResult(
-                    test_case_id="execution",
-                    status=SubmissionStatus.MEMORY_LIMIT_EXCEEDED,
-                    runtime_ms=self._parse_time(execute_result.get("wall_time", "0")),
-                    memory_kb=memory_used,
-                    output=actual_output
-                )
-            
-            # Determine status based on output comparison
-            status = SubmissionStatus.ACCEPTED if self._compare_outputs(actual_output, expected_output) else SubmissionStatus.WRONG_ANSWER
-            
+
+            status = self._map_verdict(verdict)
+
+            if status is None:
+                exit_code = execute_result.get("exit_code", 0)
+                if exit_code != 0:
+                    stderr_lower = stderr.lower()
+                    if (
+                        "time limit" in stderr_lower
+                        or exit_code in (124, 31744)
+                        or "status 124" in stderr_lower
+                    ):
+                        status = SubmissionStatus.TIME_LIMIT_EXCEEDED
+                    elif "memory limit" in stderr_lower:
+                        status = SubmissionStatus.MEMORY_LIMIT_EXCEEDED
+                    else:
+                        status = SubmissionStatus.RUNTIME_ERROR
+                else:
+                    actual_output = stdout.strip()
+                    expected = expected_output.strip()
+                    status = (
+                        SubmissionStatus.ACCEPTED
+                        if self._compare_outputs(actual_output, expected)
+                        else SubmissionStatus.WRONG_ANSWER
+                    )
+            actual_output = stdout.strip()
+
+            if status == SubmissionStatus.ACCEPTED and memory_used > memory_limit_kb:
+                status = SubmissionStatus.MEMORY_LIMIT_EXCEEDED
+
+            error_message = stderr if status != SubmissionStatus.ACCEPTED and stderr else None
+
             return TestResult(
                 test_case_id="execution",
                 status=status,
-                runtime_ms=self._parse_time(execute_result.get("wall_time", "0")),
+                runtime_ms=runtime_ms,
                 memory_kb=memory_used,
-                output=actual_output
+                output=actual_output,
+                error_message=error_message,
             )
             
         except Exception as e:
@@ -222,60 +209,46 @@ class Judge:
         self,
         input_data: str,
         time_limit_ms: int,
-        memory_limit_kb: int
     ) -> dict:
-        execute_payload = {
+        return {
+            "stdin": input_data,
             "timeout_ms": time_limit_ms,
-            "memory_limit_kb": memory_limit_kb,
         }
 
-        input_bytes = input_data.encode("utf-8")
+    def _build_test_case_payload(self, expected_output: str) -> dict:
+        return {
+            "checker_type": "strict_diff",
+            "expected_output": expected_output,
+        }
 
-        if len(input_bytes) <= self._stdin_compress_threshold:
-            execute_payload["stdin"] = input_data
-            return execute_payload
+    def _map_verdict(self, verdict: Optional[str]) -> Optional[SubmissionStatus]:
+        if not verdict:
+            return None
 
-        gzip_compressed = gzip.compress(input_bytes)
-        gzip_encoded = base64.b64encode(gzip_compressed).decode("ascii")
+        normalized = verdict.strip().lower()
+        mapping = {
+            "accepted": SubmissionStatus.ACCEPTED,
+            "wrong_answer": SubmissionStatus.WRONG_ANSWER,
+            "presentation_error": SubmissionStatus.WRONG_ANSWER,
+            "time_limit_exceeded": SubmissionStatus.TIME_LIMIT_EXCEEDED,
+            "output_limit_exceeded": SubmissionStatus.RUNTIME_ERROR,
+            "runtime_error": SubmissionStatus.RUNTIME_ERROR,
+            "memory_limit_exceeded": SubmissionStatus.MEMORY_LIMIT_EXCEEDED,
+        }
 
-        if len(gzip_encoded) <= self._stdin_base64_limit:
-            logger.debug(
-                "Compressing stdin with gzip: original=%d bytes, compressed=%d bytes, encoded=%d bytes",
-                len(input_bytes),
-                len(gzip_compressed),
-                len(gzip_encoded),
-            )
-            execute_payload["stdin_gzip_base64"] = gzip_encoded
-            return execute_payload
+        return mapping.get(normalized)
 
-        xz_compressed = lzma.compress(input_bytes, format=lzma.FORMAT_XZ, preset=6)
-        xz_encoded = base64.b64encode(xz_compressed).decode("ascii")
-
-        if len(xz_encoded) <= self._stdin_base64_limit:
-            logger.debug(
-                "Compressing stdin with xz: original=%d bytes, compressed=%d bytes, encoded=%d bytes",
-                len(input_bytes),
-                len(xz_compressed),
-                len(xz_encoded),
-            )
-            execute_payload["stdin_xz_base64"] = xz_encoded
-            return execute_payload
-
-        raise ValueError(
-            "Input test case remains too large after compression; consider splitting or using stdin_id"
-        )
-
-    def _get_compiler_options(self, language: str) -> str:
+    def _get_compiler_options(self, language: str) -> List[str]:
         """Get appropriate compiler options based on language"""
         language = language.lower()
         if language in ["c++", "cpp"]:
-            return "-O2 -std=c++17"
+            return ["-O2", "-std=c++17"]
         elif language == "java":
-            return ""
+            return []
         elif language in ["python", "python3"]:
-            return ""
+            return []
         else:
-            return ""
+            return []
     
     def _get_language_code(self, language: str) -> str:
         """Convert user-friendly language name to OJ language code"""
@@ -336,13 +309,18 @@ int main() {
 }
 """
         try:
+            compile_section = {
+                "source_code": test_code,
+                "language": "cpp",
+            }
+            options = self._get_compiler_options("cpp")
+            if options:
+                compile_section["compiler_options"] = options
+
             payload = {
-                "compile": {
-                    "source_code": test_code,
-                    "compiler_options": "-O2 -std=c++17",
-                    "language": "cpp"
-                },
-                "execute": self._build_execute_payload("5 7", 5000, 256 * 1024)
+                "compile": compile_section,
+                "execute": self._build_execute_payload("5 7", 5000),
+                "test_case": self._build_test_case_payload("12\n"),
             }
 
             response = requests.post(

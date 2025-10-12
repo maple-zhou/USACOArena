@@ -72,7 +72,7 @@ class JudgeServerConfig:
 
     host: str = "0.0.0.0"
     port: int = 8081
-    oj_endpoint: str = "http://localhost:8000/usacoarena/oj/compile-and-execute"
+    oj_endpoint: str = "http://localhost:10086/compile-and-execute"
     dataset_path: Optional[str] = None
 
 
@@ -185,7 +185,7 @@ def _parse_args() -> JudgeServerConfig:
     parser.add_argument("--port", type=int, default=int(os.getenv("JUDGE_SERVER_PORT", "8081")))
     parser.add_argument(
         "--oj-endpoint",
-        default=os.getenv("JUDGE_SERVER_OJ_ENDPOINT", "http://localhost:8000/usacoarena/oj/compile-and-execute"),
+        default=os.getenv("JUDGE_SERVER_OJ_ENDPOINT", "http://localhost:10086/compile-and-execute"),
     )
     parser.add_argument("--dataset-path", default=os.getenv("JUDGE_SERVER_DATASET_PATH"))
     args = parser.parse_args()

@@ -214,7 +214,7 @@ class CompetitionProcessManager:
             os.environ.get("USACOA_UI_BASE_SERVER_PORT", "6500")
         )
         self.base_oj_port = int(
-            os.environ.get("USACOA_UI_BASE_OJ_PORT", str(self.base_server_port + 3000))
+            os.environ.get("USACOA_UI_BASE_OJ_PORT", "10086")
         )
 
         self.dataset_mount = os.environ.get("USACOA_UI_OJ_DATASET")
@@ -311,7 +311,7 @@ class CompetitionProcessManager:
             start_oj = bool(payload.get("start_oj", False))
             instance.oj_endpoint = payload.get(
                 "oj_endpoint",
-                f"http://localhost:{oj_port}/usacoarena/oj/compile-and-execute",
+                f"http://localhost:{oj_port}/compile-and-execute",
             )
 
             if start_oj:
@@ -366,7 +366,7 @@ class CompetitionProcessManager:
         server_config.setdefault("oj", {})
         server_config["oj"]["endpoint"] = payload.get(
             "oj_endpoint",
-            f"http://localhost:{oj_port}/usacoarena/oj/compile-and-execute",
+            f"http://localhost:{oj_port}/compile-and-execute",
         )
 
         server_config.setdefault("db", {})
@@ -485,7 +485,7 @@ class CompetitionProcessManager:
         ]
         if dataset_mount:
             command.extend(["-v", f"{dataset_mount}:/data/tests"])
-        command.extend(["-p", f"{oj_port}:8080", self.oj_image])
+        command.extend(["-p", f"{oj_port}:10086", self.oj_image])
 
         try:
             subprocess.check_output(command, stderr=subprocess.STDOUT)

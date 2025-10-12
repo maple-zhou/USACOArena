@@ -76,7 +76,7 @@ def main():
         config.set("server.host", args.host)
     if args.port:
         config.set("server.port", args.port)
-        config.set("oj.endpoint", f"http://localhost:{args.port+3000}/usacoarena/oj/compile-and-execute")
+        config.set("oj.endpoint", "http://localhost:10086/compile-and-execute")
     if args.log_level:
         config.set("log.level", args.log_level)
     if args.log_dir:

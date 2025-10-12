@@ -55,27 +55,31 @@ cd online-judge-rust
 docker build --platform linux/amd64 -t oj-rust .
 
 # Run the online judge
-docker run --platform linux/amd64 --rm -p 8000:8080 oj-rust
+docker run --platform linux/amd64 --rm -p 10086:10086 oj-rust
 ```
 
 ### 3. Test Online Judge
 ```bash
-curl -X POST http://localhost:8000/usacoarena/oj/compile-and-execute \
+curl -X POST http://localhost:10086/compile-and-execute \
   -H "Content-Type: application/json" \
   -d '{
     "compile": {
       "source_code": "#include <iostream>\nusing namespace std;\n\nint main() {\n  int a, b;\n  cin >> a >> b;\n  cout << a + b << endl;\n  return 0;\n}\n",
-      "compiler_options": "-O2 -std=c++17",
+      "compiler_options": ["-O2", "-std=c++17"],
       "language": "cpp"
     },
     "execute": {
       "stdin": "5 7",
       "timeout_ms": 5000
+    },
+    "test_case": {
+      "checker_type": "strict_diff",
+      "expected_output": "12\n"
     }
   }'
 ```
 
-**Important**: Make sure the online judge is running on port 8000 before starting USACOArena competitions.
+**Important**: Make sure the online judge is running on port 10086 before starting USACOArena competitions.
 
 ## 🎯 Usage
 

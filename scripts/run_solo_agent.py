@@ -72,7 +72,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--oj-endpoint",
-        default="http://localhost:8000/usacoarena/oj/compile-and-execute",
+        default="http://localhost:10086/compile-and-execute",
         help="在线判题接口地址",
     )
     parser.add_argument(

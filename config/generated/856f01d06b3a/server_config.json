@@ -9,7 +9,7 @@
     "enable_colors": true
   },
   "oj": {
-    "endpoint": "http://localhost:9500/usacoarena/oj/compile-and-execute"
+    "endpoint": "http://localhost:9500/compile-and-execute"
   },
   "rate_limit": {
     "min_interval": 0.05
