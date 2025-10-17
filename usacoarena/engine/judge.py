@@ -29,6 +29,9 @@ class Judge:
 
         # Set initial values
         try:
+            first_failure_status: Optional[SubmissionStatus] = None
+            first_failure_case_id: Optional[str] = None
+
             # Run the code against each test case
             for test_case in test_cases:
                 logger.debug(f"Running test case {test_case.id}")
@@ -42,14 +45,22 @@ class Judge:
                 )
                 submission.test_results.append(test_result)
                 logger.debug(f"Test case {test_case.id} result: {test_result.status}")
-                
-                if test_result.status != SubmissionStatus.ACCEPTED:
-                    submission.status = test_result.status
-                    logger.critical(f"Submission failed on test case {test_case.id} with status {test_result.status}")
-                    break
-            else:
+
+                if test_result.status != SubmissionStatus.ACCEPTED and first_failure_status is None:
+                    first_failure_status = test_result.status
+                    first_failure_case_id = test_case.id
+                    logger.critical(
+                        f"Submission encountered first failing test case {test_case.id} with status {test_result.status}"
+                    )
+
+            if first_failure_status is None:
                 submission.status = SubmissionStatus.ACCEPTED
                 logger.debug("Submission passed all test cases")
+            else:
+                submission.status = first_failure_status
+                logger.critical(
+                    f"Submission marked as {first_failure_status} based on failing test case {first_failure_case_id}; remaining tests executed"
+                )
             
             # Calculate pass_score
             # OLD: Calculate score (proportion of test cases passed * max score)
