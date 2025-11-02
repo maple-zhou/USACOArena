@@ -18,7 +18,7 @@ paper environment in roughly 30 minutes.
 
 - **USACO dataset** – Download the archive using the link listed in the README and extract it to the
   repository root.
-- **Online Judge** – Use the companion repository `USACOArena_online_judge`; follow its README to
+- **Online Judge** – Use the companion repository [`USACOArena_online_judge`](https://github.com/maple-zhou/USACOArena_online_judge); follow its README to
   build the Docker image and run it on `localhost:10086`.
 
 ## 3. Launch Services and a Competition
