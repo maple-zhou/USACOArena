@@ -1,567 +1,135 @@
 # USACOArena
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![uv](https://img.shields.io/badge/package%20manager-uv-orange.svg)](https://docs.astral.sh/uv/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+USACOArena is a benchmarking and analytics platform for multi-agent programming competitions. This
+repository hosts the official open-source implementation that accompanies the NeurIPS 2025 LAW
+Workshop submission *USACOArena: Cost-Aware Evaluation of Agentic Coding Capabilities of
+Multi-Agent Systems*. The release focuses on reproducibility, publication-readiness, and automated
+safety auditing for the research community.
 
-## 📋 Prerequisites
+> For citation details, see the **Citation** section below.
 
-- **Python 3.10+**
-- **uv** (recommended package manager)
-- **Docker** (for containerized deployment)
+## Project Overview
 
-## 🛠️ Installation
+- Reproducible Python 3.10 environment management powered by `uv`.
+- Modular services for competition orchestration, judging, and live visualization.
+- Cost-aware analytics designed to compare agent strategies on efficiency and quality.
+- Built-in release audit scripts that keep user-facing documentation concise and leak-free.
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/maple-zhou/USACOArena.git
-cd USACOArena
-```
+## Key Highlights
 
-### 2. Install with uv (Recommended)
-```bash
-# Install uv if not already installed
-curl -LsSf https://astral.sh/uv/install.sh | sh
+1. **Paper Companion** – Documentation and repository layout mirror the NeurIPS 2025 LAW Workshop
+   manuscript for straightforward review and replication.
+2. **Rapid Onboarding** – Environment setup and a demo competition can be completed in minutes (see
+   Quick Start).
+3. **Release Ready** – Includes a publication checklist, artifact tracking, and automated secret
+   scanning.
+4. **Data Accessibility** – Documents approved data sources, usage terms, and fallback options for
+   constrained environments.
 
-# Create virtual environment and install dependencies
-uv sync
+## Installation
 
-# Activate virtual environment
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-```
-
-### 3. Prepare USACO Dataset
-
-Download the USACO data from the [link](https://1drv.ms/u/c/1ef7b7bac0da57e6/EScfKJ-Fm9hAorr5gByWMUQBHa0pwbi-HmFBi7XFSF3RiA?e=0glfNJ).
-
-```bash
-# Extract and place in codebase root directory
-tar -xzvf dataset.tar.gz
-```
-
-## 🔧 Online Judge Setup
-
-### 1. Get Online Judge Rust
-```bash
-# Clone the online judge repository
-git clone https://github.com/maple-zhou/USACOArena_online_judge.git
-```
-
-### 2. Build and Run Online Judge
-```bash
-cd online-judge-rust
-
-# Build Docker image
-docker build --platform linux/amd64 -t oj-rust .
-
-# Run the online judge
-docker run --platform linux/amd64 --rm -p 10086:10086 oj-rust
-```
-
-### 3. Test Online Judge
-```bash
-curl -X POST http://localhost:10086/compile-and-execute \
-  -H "Content-Type: application/json" \
-  -d '{
-    "compile": {
-      "source_code": "#include <iostream>\nusing namespace std;\n\nint main() {\n  int a, b;\n  cin >> a >> b;\n  cout << a + b << endl;\n  return 0;\n}\n",
-      "compiler_options": ["-O2", "-std=c++17"],
-      "language": "cpp"
-    },
-    "execute": {
-      "stdin": "5 7",
-      "timeout_ms": 5000
-    },
-    "test_case": {
-      "checker_type": "strict_diff",
-      "expected_output": "12\n"
-    }
-  }'
-```
-
-**Important**: Make sure the online judge is running on port 10086 before starting USACOArena competitions.
-
-## 🎯 Usage
-
-### Web Dashboard (recommended)
-
-1. **Start the orchestration UI (separate service)**
+1. **Clone the repository**
    ```bash
-   uv run python -m usacoarena.ui.app --host 0.0.0.0 --port 5500
+   git clone https://github.com/maple-zhou/USACOArena.git
+   cd USACOArena
    ```
-   The UI runs independently and will spin up dedicated competition + OJ servers for each run, keeping workloads isolated.
+2. **Install uv and sync dependencies**
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   uv sync --dev
+   ```
+3. **Optional – align Git signature for releases**
+   ```bash
+   git config user.name "maple-zhou"
+   git config user.email "zhoulingfeng@sjtu.edu.cn"
+   ```
 
-2. **Open the dashboard**
-   - Visit `http://localhost:5500/ui` (forward the port if running on a headless server).
-   - Click **New Competition** to launch a run — choose a problem set or paste custom IDs, adjust scoring/penalties/token budgets through the form fields, and register competitors (model name, API base, key, prompt path, token limits).
-   - The UI writes configs under `config/generated/<instance_id>/` and can optionally start a fresh Docker-based OJ for each competition.
+## Quick Start
 
-3. **Monitor live results**
-   - The dashboard polls the spawned competition servers for leaderboards, participant stats, and submission timelines.
-   - Use **Terminate** on a competition card once the experiment finishes to tear down the underlying server/OJ pair.
+> For a full walkthrough—including judge deployment and UI usage—refer to
+> [`docs/quickstart.md`](docs/quickstart.md).
 
-### Quick Start
+1. **Launch the local competition server**
+   ```bash
+   uv run python -m usacoarena.main --port 5000 --debug
+   ```
+2. **Run a sample competition**
+   ```bash
+   uv run python scripts/run_competition.py \
+     --competition-title "Demo Match" \
+     --max-tokens-per-participant 20000 \
+     --port 5000
+   ```
+3. **Review results** – Output is written to `logs/` and the terminal; the Quick Start guide explains
+   the optional UI.
+4. **Prepare datasets** – Follow the licensing notes at the end of this README to source the official
+   USACO problem sets.
 
-Here are three different ways to run a competition:
+## Release Checklist Overview
 
-#### Method 1: Manual Control (Two Terminals)
-```bash
-# Terminal 1: Start the API server
-python -m usacoarena.main --port 5000 --debug
+Complete the following before publishing a new release:
 
-# Terminal 2: Run a competition
-python scripts/run_competition.py \
-    --competition-title "Test Competition" \
-    --max-tokens-per-participant 50000 \
-    --port 5000
+1. **Documentation** – Update this README, `docs/release/release-checklist.md`, and
+   `docs/quickstart.md`.
+2. **Dependency freeze** – Run `uv sync --frozen` and commit the updated `uv.lock`.
+3. **Dry run** – Execute the Quick Start end-to-end and record results under `docs/release/logs/<date>.md`.
+4. **Security audit** – Run `./scripts/release_audit.sh` to generate the secret scan and documentation
+   checks; reports are saved under `docs/security/`.
+5. **Artifact tracking** – Log added or removed files in `docs/release/artifacts.csv`, including
+   rationale and owner.
+
+The full checklist is available in [`docs/release/release-checklist.md`](docs/release/release-checklist.md).
+
+### Repository Layout (docs/)
+
+```text
+docs/
+├── quickstart.md
+├── release/
+│   ├── README.md
+│   ├── release-checklist.md
+│   ├── artifacts.csv
+│   └── logs/
+└── security/
+    └── (scan reports)
 ```
 
-#### Method 2: Shell Commands (Single Terminal)
-```bash
-# Start server in background
-competition_server --port 5000 &
+## Citation
 
-# Run competition
-competition_run --competition-title "Test Competition" --max-tokens-per-participant 50000
+If you build upon USACOArena in your research, please cite:
 
-# Stop server when done
-pkill -f competition_server
-```
+**Text Citation**
 
-#### Method 3: Automated Loop (Multiple Rounds)
-```bash
-# Run 5 competitions automatically
-./run_competition_loop.sh 5 \
-    --server-args "--port 5000 --debug" \
-    --client-args "--competition-title 'Test Competition' --max-tokens-per-participant 50000"
-```
+> Zhou, L., et al. (2025). *USACOArena: Cost-Aware Evaluation of Agentic Coding Capabilities of
+> Multi-Agent Systems*. NeurIPS 2025 LAW Workshop.
 
-### Configuration
+**BibTeX**
 
-#### 1. Configure Participants
-Edit `config/competitors_config.json`:
-
-```json
-{
-  "competitors": [
-    {
-      "name": "gpt-4",
-      "type": "generic",
-      "model_id": "gpt-4",
-      "api_base_url": "https://api.openai.com/v1",
-      "api_key": "your-api-key"
-    }
-  ]
+```bibtex
+@inproceedings{zhou2025usacoarena,
+  title     = {USACOArena: Cost-Aware Evaluation of Agentic Coding Capabilities of Multi-Agent Systems},
+  author    = {Lingfeng Zhou and Collaborators},
+  booktitle = {Proceedings of the NeurIPS 2025 Workshop on Legal Meets AI (LAW)},
+  year      = {2025},
+  url       = {https://sites.google.com/view/law-2025},
+  note      = {See repository for code and experimental setup}
 }
 ```
 
-#### 2. Available Options
-
-**Server Options:**
-- `--config`: Path to server configuration file (default: `config/server_config.json`)
-- `--host`: Host to bind the API server (default: `0.0.0.0`)
-- `--port`: Port to bind the API server (default: `5000`)
-- `--debug`: Enable debug mode
-- `--log-level`: Override log level (`DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`)
-- `--log-dir`: Override log directory
-- `--oj-endpoint`: Override online judge endpoint
-- `--db-path`: Override database path
-
-**Competition Options:**
-- `--competition-config`: Path to competition configuration (default: `config/competition_config.json`)
-- `--competitors-config`: Path to competitors configuration (default: `config/competitors_config.json`)
-- `--problem-ids`: Path to problem IDs configuration (default: `config/problems.json`)
-- `--api-base`: API base URL (default: `http://localhost:5000`)
-- `--port`: API server port (default: `5000`)
-- `--competition-title`: Competition title
-- `--competition-description`: Competition description
-- `--max-tokens-per-participant`: Maximum tokens per participant
-- `--log-level`: Log level
-- `--log-dir`: Log directory
-
-### Custom Agent Development
-
-Implement your agent by extending the base Agent class:
-
-```python
-from usacoarena.models.agent import Agent
-
-class MyCustomAgent(Agent):
-    async def generate_response(self, messages: List[Dict], **kwargs) -> Tuple[str, Dict]:
-        # Implement your agent logic
-        return "response", {"tokens": 100}
-```
-
-### API Usage
-
-The system provides comprehensive REST API:
-
-```bash
-# List all competitions
-curl http://localhost:5000/api/competitions
-
-# Create competition
-curl -X POST http://localhost:5000/api/competitions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "Test Competition",
-    "description": "A test competition",
-    "problem_ids": ["1323_bronze_feb"],
-    "max_tokens_per_participant": 100000
-  }'
-
-# Get competition details
-curl http://localhost:5000/api/competitions/{competition_id}
-
-# View rankings
-curl http://localhost:5000/api/competitions/{competition_id}/rankings
-
-# Get participant information
-curl http://localhost:5000/api/competitions/{competition_id}/participants/{participant_id}
-
-# Get problems list
-curl http://localhost:5000/api/competitions/{competition_id}/problems
-
-# Get submissions for a participant
-curl http://localhost:5000/api/competitions/{competition_id}/participants/{participant_id}/submissions
-```
-
-**Note**: Replace `{competition_id}` and `{participant_id}` with actual IDs from your competition.
-
-### Monitor Results
-
-```bash
-# Check competition status via API
-curl http://localhost:5000/api/competitions
-
-# View rankings
-curl http://localhost:5000/api/competitions/{competition_id}/rankings
-
-# Convert results to CSV
-./convert_all_json_to_csv.sh
-```
-
-The competition will automatically:
-- Create participants based on your configuration
-- Run the competition with the specified problems
-- Track token usage and scores
-- Generate detailed logs and results
-- Save results to JSON and CSV files
-
-### Shell Script Automation
-
-For automated and repeated competition runs, you can use the provided shell scripts:
-
-#### 1. Single Competition Run
-```bash
-# Start server (in background)
-competition_server --port 5000 &
-
-# Run competition
-competition_run --competitors-config config/1v3.json --problem-ids config/problems.json
-
-# Stop server
-pkill -f competition_server
-```
-
-#### 2. Automated Competition Loop
-```bash
-# Run 5 competitions with default settings
-./run_competition_loop.sh 5
-
-# Run with custom server arguments
-./run_competition_loop.sh 3 --server-args "--port 5000 --debug"
-
-# Run with custom client arguments
-./run_competition_loop.sh 5 --client-args "--competitors-config config/1v3.json --problem-ids config/problems.json"
-
-# Run with both custom server and client arguments
-./run_competition_loop.sh 10 \
-    --server-args "--port 5000 --debug" \
-    --client-args "--competitors-config config/1v3.json --problem-ids config/problems.json --max-tokens-per-participant 50000"
-```
-
-**Shell script features:**
-- **Automated server management**: Starts and stops server automatically
-- **Multiple rounds**: Run competitions in a loop
-- **Comprehensive logging**: Detailed logs for each round
-- **Error handling**: Automatic cleanup on failures
-- **Port management**: Automatic port detection and cleanup
-- **CSV conversion**: Automatically converts results to CSV format
-
-#### 3. Batch Result Conversion
-```bash
-# Convert all JSON results to CSV
-./convert_all_json_to_csv.sh
-
-# This script will:
-# - Find all JSON files in logs/run_logs/
-# - Convert them to CSV format
-# - Skip already converted files
-# - Provide detailed conversion statistics
-```
-
-#### 4. Available Shell Commands
-
-**Server Management:**
-```bash
-# Start server with default settings
-competition_server
-
-# Start server with custom port
-competition_server --port 8080
-
-# Start server with debug mode
-competition_server --debug --log-level DEBUG
-
-# Start server with custom config
-competition_server --config config/server_config.json
-```
-
-**Competition Execution:**
-```bash
-# Run competition with default settings
-competition_run
-
-# Run with custom configuration
-competition_run --competitors-config config/1v3.json --problem-ids config/problems.json
-
-# Run with token limits
-competition_run --max-tokens-per-participant 100000
-
-# Run with custom competition title
-competition_run --competition-title "My Custom Competition"
-```
-
-**Result Processing:**
-```bash
-# Convert single JSON file to CSV
-python json_to_csv_converter.py results.json results.csv
-
-# Convert all results in batch
-./convert_all_json_to_csv.sh
-```
-
-## 🏗️ Architecture
-
-USACOArena adopts a modular design that achieves clear separation between **core framework** and **user-defined content**:
-
-```
-USACOArena/
-├── 🏗️ Core Framework Package (usacoarena/)
-│   ├── models/                   # Data model definitions
-│   │   ├── models.py            # Core data models
-│   │   └── agent.py             # Agent base class
-│   ├── engine/                  # Core business logic
-│   │   ├── storage.py           # DuckDB storage system
-│   │   └── judge.py             # Code evaluation system
-│   ├── server/                  # REST API Service
-│   │   └── server.py            # Flask API server
-│   ├── utils/                   # Utility modules
-│   │   ├── problem_loader.py    # USACO problem loader
-│   │   ├── textbook_loader.py   # Textbook content loader
-│   │   ├── strategy_loader.py   # Strategy content loader
-│   │   ├── usacoguide_loader.py # USACO guide loader
-│   │   └── logger_config.py     # Logging configuration
-│   └── main.py                  # Framework main entry
-├── 🛠️ User Custom Scripts (scripts/)
-│   ├── run_competition.py       # Competition run main script
-│   ├── competition_organizer.py # Competition organization logic
-│   └── competitors.py           # Competitor management
-├── 🤖 Agent Implementations (agents/)
-│   └── single_agent/            # Single agent implementation
-│       ├── single_agent.py      # Generic API agent
-│       └── prompts/             # Prompt templates
-│           └── prompt_manager.py # Prompt management system
-├── ⚙️ Configuration (config/)
-│   ├── competition_config.json  # Competition configuration
-│   ├── competitors_config.json  # Participants configuration
-│   ├── problems.json           # Problem lists
-│   └── server_config.json      # Server configuration
-├── 📊 Data storage (data/)
-├── 📝 Logs (logs/)
-└── 🧪 Tests (tests/)
-```
-
-### Modular Design Advantages
-
-#### 1. Clear Separation of Responsibilities
-- **Core Framework** (`usacoarena/`) - Stable business logic and infrastructure
-- **User Scripts** (`scripts/`) - Customizable competition execution and management
-- **Agent Implementations** (`agents/`) - LLM agent implementations
-- **Configuration** (`config/`) - Configuration files and templates
-
-#### 2. Agent Interface Design
-The system uses a flexible agent interface for loose coupling:
-
-```python
-# usacoarena/models/agent.py
-class Agent(ABC):
-    @abstractmethod
-    async def generate_response(self, messages: List[Dict], **kwargs) -> Tuple[str, Dict]:
-        """Generate response from LLM"""
-        pass
-```
-
-#### 3. Performance Optimization
-- **Storage Optimization**: DuckDB database for high-performance analytics
-- **Dynamic Loading**: Test cases loaded on-demand from file system
-- **Modular Architecture**: Supports parallel development, easy to maintain and extend
-
-### Project Structure Details
-
-#### Core Framework (`usacoarena/`)
-- **`models/`**: Data models and agent interfaces
-  - `models.py`: Core data models (Competition, Participant, Problem, etc.)
-  - `agent.py`: Agent base class and interfaces
-
-- **`engine/`**: Core business logic
-  - `storage.py`: DuckDB storage system with high-performance queries
-  - `judge.py`: Code evaluation and execution system
-
-- **`server/`**: REST API interfaces
-  - `server.py`: Flask API server providing complete RESTful interfaces
-
-- **`utils/`**: Utility functions
-  - `problem_loader.py`: USACO problem dynamic loading
-  - `textbook_loader.py`: Textbook content loading and search
-  - `strategy_loader.py`: Strategy content loading
-  - `usacoguide_loader.py`: USACO guide content loading
-  - `logger_config.py`: Logging configuration
-
-#### User Scripts (`scripts/`)
-- **`run_competition.py`**: Main competition execution script
-- **`competition_organizer.py`**: Competition organization and management
-- **`competitors.py`**: Competitor class and management
-
-#### Agent Implementations (`agents/`)
-- **`single_agent/`**: Single agent implementation
-  - `single_agent.py`: Generic API agent supporting multiple LLM providers
-  - `prompts/prompt_manager.py`: Prompt templates and parsing system
-
-#### Configuration (`config/`)
-- **`competition_config.json`**: Competition configuration
-- **`competitors_config.json`**: Participants configuration
-- **`problems.json`**: Problem lists
-- **`server_config.json`**: Server configuration
-
-## 📊 Competition System
-
-### Agent Response Format
-The competition system returns structured data to agents:
-
-```python
-{
-  "competition_id": str,           # Current competition ID
-  "competition_details": {         # Competition details
-      "id": str,
-      "title": str,
-      "description": str,
-      "problem_ids": List[str],
-      "rules": Dict
-  },
-  "competitor_state": {            # Current participant state
-      "name": str,                 # Participant name
-      "remaining_tokens": int,     # Remaining tokens
-      "solved_problems": List[str], # Solved problems list
-      "is_running": bool,          # Whether still running
-      "termination_reason": Optional[str], # Termination reason (if any)
-      "score": int                 # Current score
-  },
-  "problems": List[Dict],          # All problems list
-  "rankings": List[Dict],          # Current rankings
-  "last_action_result": {          # Last action result
-      "status": str,               # "success" or "error"
-      "data": Dict,                # Action return data
-      "message": str               # Error message (if any)
-  },
-  "other_competitors_status": [    # Other competitors status
-      {
-          "name": str,
-          "is_terminated": bool,
-          "termination_reason": Optional[str]
-      }
-  ]
-}
-```
-
-### Available Actions
-1. **VIEW_PROBLEM**: View problem details
-2. **GET_HINT**: Request hints (consumes tokens)
-3. **SUBMIT_SOLUTION**: Submit code solution
-4. **TERMINATE**: End participation
-
-### Hint System
-The system provides multi-level hints:
-- **Level 0**: Strategy hints (competitive programming strategies)
-- **Level 1**: Problem-relevant textbook content
-- **Level 2**: Knowledge-relevant textbook content
-- **Level 3**: Similar problems with solutions
-- **Level 4**: Knowledge-specific example problems
-
-## 🔬 For Reviewers
-
-We warmly welcome reviewers to explore and experiment with our system!
-
-### Model Configuration
-- Configure different LLM models in `config/competitors_config.json`
-- Key parameters: `model_id`, `api_base_url`, `api_key`
-- Adjust token pricing in `agents/single_agent/single_agent.py`
-- Refer to [Artificial Analysis](https://artificialanalysis.ai/) for model pricing information
-
-### Competition Parameters
-- Adjust competition parameters in `config/competition_config.json`
-- Modify `config/problems.json` to test different problem sets
-- All available problems are listed in `config/all_problems_ids.json`
-
-### Solo LLM Runner
-
-Run one or more problems with a single LLM agent without starting the competition server:
-
-```bash
-python scripts/run_solo_agent.py \
-    --problem-id USACO_2025_JAN_SILVER_OLD \
-    --problem-id USACO_2025_JAN_GOLD_SAMPLE \
-    --agent-config config/1codex.json \
-    --competitor-name gpt-5-codex \
-    --prompt-file prompts/solo_agent_prompt.txt \
-    --language cpp \
-    --token-limit 60000 \
-    --max-retries 3
-```
-
-Key notes:
-- Prompt instructions live in `prompts/solo_agent_prompt.txt`;脚本会在提示中标明 `--language` 指定的语言。
-- 日志基目录默认为 `logs/solo_runs/<timestamp>_*`，每道题各自保留 JSONL、Markdown、源码快照与对话记录 (`conversations/attempt_*.json`)。
-- Token 使用量会在日志中累计；若指定 `--token-limit`，达到阈值后自动停止剩余题目。
-- 使用多次 `--problem-id`（或逗号分隔）可批量执行题目；`--dry-run` 可跳过判题，仅收集代码；`--max-retries` 控制单次 LLM 调用失败后的重试次数。
-
-### Custom MAS Development
-- Modify prompts in `agents/single_agent/prompts/prompt_manager.py`
-- Adjust agent behavior in `agents/single_agent/single_agent.py`
-- Agents connect through the `Agent.generate_response` function
-- Welcome to try different strategies and approaches! 😊
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and linting
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Thanks to all contributors
-- Inspired by various programming competition platforms
-- Built with modern Python best practices 
-- USACO problem library from [USACO Bench](https://github.com/princeton-nlp/USACO)
-- Online Judge implementation from [CP Initiative](https://github.com/cpinitiative/online-judge-rust)
+**PDF** – [_NeurIPS_25_Workshop_LAW__USACOArena.pdf](../_NeurIPS_25_Workshop_LAW__USACOArena.pdf)
+
+## Support & License
+
+- **License** – MIT; see [`LICENSE`](LICENSE).
+- **Issues** – Report bugs, feature requests, or security concerns via GitHub Issues.
+- **Data usage** – Follow original licensing terms for USACO problems and samples (details in the
+  Quick Start appendix).
+- **Security audit** – Run `./scripts/release_audit.sh --output docs/security/scan-latest.json`.
+  Baseline data lives in [`.secrets.baseline`](.secrets.baseline); an example report is provided in
+  [`docs/security/scan-template.json`](docs/security/scan-template.json).
+- **Security contact** – Submit audit reports or disclosures to `zhoulingfeng@sjtu.edu.cn`.
 
 ---
 
-**USACOArena v0.2.0** - A modular, efficient, and extensible multi-agent competition framework 🎉
+*This README is intentionally capped well below 200 lines to keep key information immediately
+accessible to reviewers and practitioners.*

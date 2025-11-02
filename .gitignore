@@ -50,7 +50,6 @@ competition_results/
 competitor_results/
 online-judge-rust/
 original_code/
-__pycache__/
 .pytest_cache/
 
 .coverage
@@ -60,13 +59,11 @@ htmlcov/
 coverage.xml
 *.cover
 .hypothesis/
-.pytest_cache/
 .mypy_cache/
 .dmypy.json
 dmypy.json
 query_db.py
 dataset/
-tests/
 original_results/
 # convert_all_json_to_csv.sh
 # json_to_csv_converter.py
@@ -76,3 +73,4 @@ AGENTS.md
 .codex/
 .serena/
 verification.md
+# NOTE: tests/ is intentionally tracked for release-readiness checks

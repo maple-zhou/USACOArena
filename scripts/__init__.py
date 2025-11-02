@@ -1,1 +1,1 @@
-"""脚本集合模块化入口。"""
+"""Module entry point for script utilities."""

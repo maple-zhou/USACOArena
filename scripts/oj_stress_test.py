@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-OJ 压力测试工具
-----------------
-针对 README_OJ.md 描述的 /compile-and-execute 接口，通过并发请求与可调输入规模评估服务吞吐、延迟与稳定性。
+OJ stress-testing utility
+-------------------------
+Evaluate throughput, latency, and stability of the `/compile-and-execute` endpoint described in
+README_OJ.md by issuing concurrent requests with configurable input sizes.
 """
 
 from __future__ import annotations
@@ -28,7 +29,7 @@ LANGUAGE_CODE = {
 
 
 def load_source(args: argparse.Namespace) -> str:
-    """根据参数加载源代码；若未指定则提供默认求和模板。"""
+    """Load source code from arguments or fall back to a default summation template."""
     if args.code_file:
         return Path(args.code_file).read_text(encoding="utf-8")
 
@@ -57,17 +58,17 @@ def load_source(args: argparse.Namespace) -> str:
             "System.out.println(sum);}}\n"
         )
 
-    raise ValueError(f"暂不支持的语言：{args.language}")
+    raise ValueError(f"Unsupported language: {args.language}")
 
 
 def load_dataset(path: Optional[str]) -> List[List[int]]:
-    """从 JSON/文本中加载测试数据；若为空则返回空列表代表需在线生成。"""
+    """Load test data from JSON/text; return an empty list to trigger on-the-fly generation."""
     if not path:
         return []
 
     dataset_path = Path(path)
     if not dataset_path.exists():
-        raise FileNotFoundError(f"数据文件不存在：{dataset_path}")
+        raise FileNotFoundError(f"Dataset file does not exist: {dataset_path}")
 
     if dataset_path.suffix.lower() in {".json", ".jsonl"}:
         cases: List[List[int]] = []
@@ -80,10 +81,10 @@ def load_dataset(path: Optional[str]) -> List[List[int]]:
             elif isinstance(payload, list):
                 cases.append([int(x) for x in payload])
             else:
-                raise ValueError(f"无法解析数据行：{line}")
+                raise ValueError(f"Unable to parse dataset line: {line}")
         return cases
 
-    # 默认按纯数字文本解析，每行一组，用空格或逗号分隔
+    # Interpret plain-number text by line, splitting on whitespace or commas
     cases = []
     for line in dataset_path.read_text(encoding="utf-8").splitlines():
         tokens = [token.strip() for token in line.replace(",", " ").split() if token.strip()]
@@ -93,7 +94,7 @@ def load_dataset(path: Optional[str]) -> List[List[int]]:
 
 
 def generate_numbers(rng: random.Random, count: int, magnitude: int) -> List[int]:
-    """生成指定数量与数量级的随机整数用于构造 stdin。"""
+    """Generate random integers to populate stdin."""
     limit = 10 ** magnitude
     return [rng.randrange(-limit, limit) for _ in range(count)]
 
@@ -103,7 +104,7 @@ def build_payloads(
     source_code: str,
     dataset: Iterable[List[int]],
 ) -> Iterable[Dict]:
-    """持续生成请求 payload，结合自定义数据或在线随机生成。"""
+    """Yield request payloads driven by custom data or random generation."""
     rng = random.Random(args.seed)
 
     for idx in range(args.total_requests):
@@ -141,14 +142,14 @@ def build_payloads(
 
 
 def cycle_dataset(dataset: List[List[int]]) -> Iterable[List[int]]:
-    """将有限数据集循环使用，以便支撑长时间压力测试。"""
+    """Cycle through a finite dataset to sustain long-running tests."""
     while True:
         for case in dataset:
             yield case
 
 
 def describe_latency(latencies: List[float]) -> str:
-    """生成延迟统计描述。"""
+    """Produce a human-readable latency summary."""
     p95 = statistics.quantiles(latencies, n=100)[94] if len(latencies) >= 2 else latencies[0]
     return (
         f"avg={statistics.mean(latencies):.3f}s "
@@ -163,7 +164,7 @@ def worker(
     payload: Dict,
     timeout: float,
 ) -> Dict:
-    """发送单次请求并记录指标。"""
+    """Send a single request and record metrics."""
     sent_at = time.perf_counter()
     try:
         response = requests.post(endpoint, json=payload, timeout=timeout)
@@ -213,7 +214,7 @@ def worker(
 
 
 def stress(endpoint: str, payloads: Iterable[Dict], concurrency: int, timeout: float) -> Dict:
-    """按照设定的并发度执行压力测试，并汇总结果。"""
+    """Execute the stress test with the configured concurrency and aggregate results."""
     latencies: List[float] = []
     successes = 0
     failures: List[Dict] = []
@@ -241,22 +242,22 @@ def stress(endpoint: str, payloads: Iterable[Dict], concurrency: int, timeout: f
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="对 /compile-and-execute 进行并发压力测试，评估延迟与成功率。",
+        description="Stress test the /compile-and-execute endpoint with concurrent requests to evaluate latency and success rate.",
     )
-    parser.add_argument("--endpoint", default="http://localhost:10086/compile-and-execute", help="OJ 接口地址")
-    parser.add_argument("--language", choices=list(LANGUAGE_CODE), default="cpp", help="测试语言")
-    parser.add_argument("--code-file", help="自定义源代码文件路径")
-    parser.add_argument("--dataset", help="从文件加载输入集合（JSON/文本），支持循环使用")
-    parser.add_argument("--total-requests", type=int, default=100, help="总请求数")
-    parser.add_argument("--concurrency", type=int, default=8, help="最大并发度")
-    parser.add_argument("--timeout-ms", type=int, default=3000, help="OJ 执行超时（毫秒）")
-    parser.add_argument("--http-timeout", type=float, default=10.0, help="HTTP 请求超时时间（秒）")
-    parser.add_argument("--min-numbers", type=int, default=2, help="随机生成输入时的最小数字个数")
-    parser.add_argument("--max-numbers", type=int, default=4096, help="随机生成输入时的最大数字个数")
-    parser.add_argument("--number-magnitude", type=int, default=6, help="随机整数的数量级（10^m）")
-    parser.add_argument("--no-stdin", action="store_true", help="禁用 stdin 以测试编译阶段吞吐")
-    parser.add_argument("--seed", type=int, default=2025, help="随机数种子，便于复现压测场景")
-    parser.add_argument("--save-failures", help="将失败案例写入 JSONL 文件")
+    parser.add_argument("--endpoint", default="http://localhost:10086/compile-and-execute", help="OJ endpoint")
+    parser.add_argument("--language", choices=list(LANGUAGE_CODE), default="cpp", help="Programming language to test")
+    parser.add_argument("--code-file", help="Path to a custom source file")
+    parser.add_argument("--dataset", help="Load input cases from a JSON/text file (cycled)")
+    parser.add_argument("--total-requests", type=int, default=100, help="Total number of requests")
+    parser.add_argument("--concurrency", type=int, default=8, help="Maximum concurrency")
+    parser.add_argument("--timeout-ms", type=int, default=3000, help="OJ execution timeout in milliseconds")
+    parser.add_argument("--http-timeout", type=float, default=10.0, help="HTTP timeout in seconds")
+    parser.add_argument("--min-numbers", type=int, default=2, help="Minimum numbers when generating random input")
+    parser.add_argument("--max-numbers", type=int, default=4096, help="Maximum numbers when generating random input")
+    parser.add_argument("--number-magnitude", type=int, default=6, help="Magnitude for random integers (10^m)")
+    parser.add_argument("--no-stdin", action="store_true", help="Disable stdin to isolate compilation throughput")
+    parser.add_argument("--seed", type=int, default=2025, help="Random seed for reproducibility")
+    parser.add_argument("--save-failures", help="Write failing cases to a JSONL file")
     return parser.parse_args()
 
 
@@ -273,15 +274,15 @@ def main() -> None:
     success_rate = summary["successes"] / args.total_requests * 100
     latencies = summary["latencies"]
 
-    print("=== OJ 压力测试报告 ===")
-    print(f"接口: {args.endpoint}")
-    print(f"总请求: {args.total_requests}")
-    print(f"并发度: {args.concurrency}")
-    print(f"成功率: {summary['successes']} / {args.total_requests} ({success_rate:.2f}%)")
-    print(f"延迟: {describe_latency(latencies)}")
+    print("=== OJ Stress Test Report ===")
+    print(f"Endpoint: {args.endpoint}")
+    print(f"Total requests: {args.total_requests}")
+    print(f"Concurrency: {args.concurrency}")
+    print(f"Success rate: {summary['successes']} / {args.total_requests} ({success_rate:.2f}%)")
+    print(f"Latency: {describe_latency(latencies)}")
 
     if summary["failures"]:
-        print(f"失败样本（{len(summary['failures'])}）：")
+        print(f"Failure samples ({len(summary['failures'])}):")
         for failure in summary["failures"][:5]:
             print(
                 f"- verdict={failure['verdict']} status={failure['status_code']} "
@@ -293,7 +294,7 @@ def main() -> None:
             with output_path.open("w", encoding="utf-8") as fp:
                 for failure in summary["failures"]:
                     fp.write(json.dumps(failure, ensure_ascii=False) + "\n")
-            print(f"失败详情已写入 {output_path}")
+            print(f"Failure details written to {output_path}")
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-"""Flask 服务，为 Judge 提供 HTTP 接口，便于外部 Agent 远程判题。"""
+"""Flask service that exposes HTTP endpoints for remote judging."""
 
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ LOGGER = get_logger("judge_server")
 
 
 def _build_feedback(submission: Submission, total_cases: Optional[int]) -> str:
-    """生成结构化反馈信息。"""
+    """Produce structured textual feedback for the latest submission."""
     total_available = total_cases or max(len(submission.test_results), 0)
     passed_count = sum(1 for tr in submission.test_results if tr.status == SubmissionStatus.ACCEPTED)
     failed_cases = [
@@ -35,28 +35,30 @@ def _build_feedback(submission: Submission, total_cases: Optional[int]) -> str:
 
     if not failed_cases:
         return (
-            f"你最近的一次提交测评结果为：通过了 {passed_count}/{total_available or passed_count} 个测试用例，"
-            f"全部测试均已通过。"
+            f"Your most recent submission passed {passed_count}/{total_available or passed_count} test cases. "
+            "All available tests passed."
         )
 
     failed_index, failed_case = failed_cases[0]
     failure_status = failed_case.status.value if hasattr(failed_case.status, "value") else str(failed_case.status)
     parts = [
-        f"你最近的一次提交测评结果为：通过了 {passed_count}/{total_available or len(submission.test_results)} 个测试用例，"
-        f"第 {failed_index} 个测试用例失败，判定为 {failure_status}。",
+        (
+            f"Your most recent submission passed {passed_count}/{total_available or len(submission.test_results)} "
+            f"test cases. Test case {failed_index} failed with status {failure_status}."
+        ),
     ]
     if failed_case.test_case_id:
-        parts.append(f"失败的测试用例编号：{failed_case.test_case_id}。")
+        parts.append(f"Failed test case ID: {failed_case.test_case_id}.")
     if failed_case.error_message:
-        parts.append(f"错误信息：{failed_case.error_message.strip()[:500]}")
+        parts.append(f"Error message: {failed_case.error_message.strip()[:500]}")
     if failed_case.output and isinstance(failed_case.output, str) and failed_case.output.strip():
-        parts.append(f"程序输出：\n{failed_case.output.strip()[:500]}")
-    parts.append("请修改代码并再次给出完整的源代码。")
+        parts.append(f"Program output:\n{failed_case.output.strip()[:500]}")
+    parts.append("Please revise the solution and submit the complete source code again.")
     return "\n".join(parts)
 
 
 def _summarise_submission(submission: Submission, total_cases: Optional[int]) -> Dict[str, Any]:
-    """构造基础统计数据。"""
+    """Build a summary payload for the submission results."""
     passed = sum(1 for tr in submission.test_results if tr.status == SubmissionStatus.ACCEPTED)
     total = total_cases or max(passed, len(submission.test_results))
     return {
@@ -68,7 +70,7 @@ def _summarise_submission(submission: Submission, total_cases: Optional[int]) ->
 
 @dataclass
 class JudgeServerConfig:
-    """Judge Server 配置，支持通过 CLI/环境变量覆盖。"""
+    """Judge-server configuration, overridable via CLI or environment variables."""
 
     host: str = "0.0.0.0"
     port: int = 8081
@@ -77,7 +79,7 @@ class JudgeServerConfig:
 
 
 class JudgeService:
-    """封装 Judge 与题库加载逻辑，提供提交评测能力。"""
+    """Wrap judge orchestration and problem loading utilities."""
 
     def __init__(self, config: JudgeServerConfig):
         self.config = config
@@ -90,18 +92,18 @@ class JudgeService:
         )
 
     def evaluate(self, payload: Dict[str, Any]) -> Tuple[Submission, Optional[int]]:
-        """根据请求 payload 评测一次提交，返回 Submission 与总测试数。"""
+        """Evaluate a submission request and return the result plus test-count metadata."""
         problem_id = (payload.get("problem_id") or "").strip()
         code = payload.get("code")
         language = (payload.get("language") or "python").strip()
         if not problem_id:
-            raise ValueError("problem_id 不能为空")
+            raise ValueError("problem_id must not be empty")
         if not code:
-            raise ValueError("code 不能为空")
+            raise ValueError("code must not be empty")
 
         problem = self.loader.load_problem(problem_id)
         if not problem:
-            raise ValueError(f"未找到题目 {problem_id}")
+            raise ValueError(f"Problem {problem_id} not found")
 
         competition = None
         competition_data = payload.get("competition")
@@ -146,7 +148,7 @@ class JudgeService:
 
 
 def create_app(config: JudgeServerConfig) -> Flask:
-    """创建 Flask 应用。"""
+    """Create and configure the Flask application."""
     service = JudgeService(config)
     app = Flask(__name__)
 
@@ -172,7 +174,7 @@ def create_app(config: JudgeServerConfig) -> Flask:
         except ValueError as exc:
             LOGGER.warning("Invalid request data: %s", exc)
             return jsonify({"ok": False, "error": str(exc)}), 400
-        except Exception as exc:  # pragma: no cover - 避免暴露堆栈
+        except Exception as exc:  # pragma: no cover - avoid leaking stack traces
             LOGGER.error("Failed to evaluate submission", exc_info=True)
             return jsonify({"ok": False, "error": str(exc)}), 500
 
@@ -180,7 +182,7 @@ def create_app(config: JudgeServerConfig) -> Flask:
 
 
 def _parse_args() -> JudgeServerConfig:
-    parser = argparse.ArgumentParser(description="启动 Judge HTTP 服务")
+    parser = argparse.ArgumentParser(description="Start the Judge HTTP service")
     parser.add_argument("--host", default=os.getenv("JUDGE_SERVER_HOST", "0.0.0.0"))
     parser.add_argument("--port", type=int, default=int(os.getenv("JUDGE_SERVER_PORT", "8081")))
     parser.add_argument(

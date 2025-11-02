@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-针对单个用例批量压测 /compile-and-execute 接口。
-读取指定源码与输入输出文件，通过并发请求评估判题服务稳定性与延迟。
+Stress-test the /compile-and-execute endpoint with a single fixed test case.
+Load the specified source code and IO files, then issue concurrent requests to measure stability and latency.
 """
 
 from __future__ import annotations
@@ -25,7 +25,7 @@ LANGUAGE_CODES = {
 
 
 def load_text(path: str) -> str:
-    """读取文件内容，保留原始换行。"""
+    """Load file content while preserving line breaks."""
     return Path(path).read_text(encoding="utf-8")
 
 
@@ -38,7 +38,7 @@ def build_payload(
     file_io_name: Optional[str],
     checker_type: str,
 ) -> Dict:
-    """构造与 README_OJ.md 匹配的请求体。"""
+    """Construct the request payload that matches README_OJ.md."""
     compile_section = {
         "language": LANGUAGE_CODES[language],
         "source_code": source_code,
@@ -65,7 +65,7 @@ def build_payload(
 
 
 def describe_latency(latencies: list[float]) -> str:
-    """生成延迟统计摘要。"""
+    """Generate a latency summary."""
     average = statistics.mean(latencies)
     maximum = max(latencies)
     minimum = min(latencies)
@@ -77,7 +77,7 @@ def describe_latency(latencies: list[float]) -> str:
 
 
 def worker(endpoint: str, payload: Dict, http_timeout: float) -> Dict:
-    """单次请求任务，返回判题结果与耗时。"""
+    """Execute a single request and return the result with latency."""
     started = time.perf_counter()
     try:
         response = requests.post(endpoint, json=payload, timeout=http_timeout)
@@ -141,7 +141,7 @@ def run_benchmark(
     concurrency: int,
     http_timeout: float,
 ) -> Dict:
-    """并发执行请求并汇总结果。"""
+    """Execute requests concurrently and aggregate the results."""
     latencies: list[float] = []
     successes = 0
     failures: list[Dict] = []
@@ -168,25 +168,25 @@ def run_benchmark(
 
 
 def parse_args() -> argparse.Namespace:
-    """解析命令行参数。"""
-    parser = argparse.ArgumentParser(description="针对单个数据点压测 OJ 判题接口。")
-    parser.add_argument("--endpoint", default="http://localhost:10086/compile-and-execute", help="OJ 服务地址")
-    parser.add_argument("--language", choices=list(LANGUAGE_CODES), default="cpp", help="源码语言")
-    parser.add_argument("--source-file", required=True, help="源代码文件路径")
-    parser.add_argument("--input-file", required=True, help="输入数据文件路径")
-    parser.add_argument("--expected-file", required=True, help="期望输出文件路径")
-    parser.add_argument("--total-requests", type=int, default=50, help="请求次数")
-    parser.add_argument("--concurrency", type=int, default=8, help="并发线程数")
-    parser.add_argument("--timeout-ms", type=int, default=4000, help="OJ 执行超时（毫秒）")
-    parser.add_argument("--http-timeout", type=float, default=15.0, help="HTTP 请求超时（秒）")
-    parser.add_argument("--file-io-name", help="可选 file_io_name，用于文件读写题目")
-    parser.add_argument("--checker-type", default="strict_diff", help="判题方式")
-    parser.add_argument("--save-failures", help="失败结果输出到 JSONL 文件")
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(description="Stress-test the OJ endpoint with a single data point.")
+    parser.add_argument("--endpoint", default="http://localhost:10086/compile-and-execute", help="OJ service endpoint")
+    parser.add_argument("--language", choices=list(LANGUAGE_CODES), default="cpp", help="Source language")
+    parser.add_argument("--source-file", required=True, help="Path to the source code file")
+    parser.add_argument("--input-file", required=True, help="Path to the input data file")
+    parser.add_argument("--expected-file", required=True, help="Path to the expected output file")
+    parser.add_argument("--total-requests", type=int, default=50, help="Number of requests")
+    parser.add_argument("--concurrency", type=int, default=8, help="Number of concurrent threads")
+    parser.add_argument("--timeout-ms", type=int, default=4000, help="OJ execution timeout (ms)")
+    parser.add_argument("--http-timeout", type=float, default=15.0, help="HTTP request timeout (seconds)")
+    parser.add_argument("--file-io-name", help="Optional file_io_name for file-IO style problems")
+    parser.add_argument("--checker-type", default="strict_diff", help="Checker type")
+    parser.add_argument("--save-failures", help="Write failing results to a JSONL file")
     return parser.parse_args()
 
 
 def main() -> None:
-    """程序入口：加载文件、构造 payload、执行压测并输出统计。"""
+    """Entry point: load files, build the payload, execute the benchmark, and print statistics."""
     args = parse_args()
 
     source_code = load_text(args.source_file)
@@ -212,15 +212,15 @@ def main() -> None:
     )
 
     success_rate = summary["successes"] / args.total_requests * 100
-    print("=== 单用例压测报告 ===")
-    print(f"接口: {args.endpoint}")
-    print(f"总请求: {args.total_requests}")
-    print(f"并发度: {args.concurrency}")
-    print(f"成功率: {summary['successes']} / {args.total_requests} ({success_rate:.2f}%)")
-    print(f"延迟: {describe_latency(summary['latencies'])}")
+    print("=== Single-Case Stress Test Report ===")
+    print(f"Endpoint: {args.endpoint}")
+    print(f"Total requests: {args.total_requests}")
+    print(f"Concurrency: {args.concurrency}")
+    print(f"Success rate: {summary['successes']} / {args.total_requests} ({success_rate:.2f}%)")
+    print(f"Latency: {describe_latency(summary['latencies'])}")
 
     if summary["failures"]:
-        print(f"失败样本（{len(summary['failures'])}）:")
+        print(f"Failure samples ({len(summary['failures'])}):")
         for failure in summary["failures"][:5]:
             print(
                 f"- status={failure['status_code']} verdict={failure['verdict']} "
@@ -232,7 +232,7 @@ def main() -> None:
         with output_path.open("w", encoding="utf-8") as fp:
             for failure in summary["failures"]:
                 fp.write(json.dumps(failure, ensure_ascii=False) + "\n")
-        print(f"失败详情已写入 {output_path}")
+        print(f"Failure details written to {output_path}")
 
 
 if __name__ == "__main__":

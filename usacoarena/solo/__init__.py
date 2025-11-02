@@ -1,4 +1,4 @@
-"""轻量化的单题 LLM 运行工具集。"""
+"""Lightweight utilities for single-problem LLM execution."""
 
 from .prompting import SoloPromptBuilder
 from .llm import LLMClient, LLMConfig, LLMUsage

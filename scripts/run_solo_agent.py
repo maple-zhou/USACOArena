@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""为单题 LLM Agent 提供端到端执行流程的脚本。"""
+"""Script that orchestrates an end-to-end run for a single-problem LLM agent."""
 
 from __future__ import annotations
 
@@ -27,36 +27,36 @@ logger = get_logger("solo_runner")
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="运行单题 LLM Agent 并记录判题日志"
+        description="Run a single-problem LLM agent and log judging results"
     )
     parser.add_argument(
         "--problem-id",
         action="append",
         dest="problem_ids",
         required=True,
-        help="USACO 题目编号，可多次提供或使用逗号分隔多个题目",
+        help="USACO problem ID(s); provide multiple entries or comma-separated list",
     )
-    parser.add_argument("--agent-config", required=True, help="LLM 配置文件路径")
+    parser.add_argument("--agent-config", required=True, help="Path to the LLM configuration file")
     parser.add_argument(
         "--competitor-name",
-        help="当配置文件包含多个 competitor 时，指定要使用的名称",
+        help="Select a competitor when the config lists multiple entries",
     )
     parser.add_argument(
         "--prompt-file",
         default="prompts/solo_agent_prompt.txt",
-        help="提示词模板文件路径",
+        help="Path to the prompt template",
     )
     parser.add_argument(
         "--language",
         default="cpp",
-        help="提交语言 (如 cpp/python/java)",
+        help="Submission language (e.g., cpp/python/java)",
     )
     parser.add_argument(
         "--max-retries",
         type=int,
         default=3,
         dest="max_retries",
-        help="单次 LLM 调用失败后的最大重试次数；0 表示无限重试",
+        help="Maximum retries after a failed LLM call; 0 means unlimited",
     )
     parser.add_argument(
         "--max-attempts",
@@ -68,31 +68,31 @@ def parse_args() -> argparse.Namespace:
         "--token-limit",
         type=int,
         default=1000000,
-        help="累计 token 阈值，达到后停止所有题目；默认 1,000,000",
+        help="Cumulative token threshold; stop all problems once exceeded (default 1,000,000)",
     )
     parser.add_argument(
         "--oj-endpoint",
         default="http://localhost:10086/compile-and-execute",
-        help="在线判题接口地址",
+        help="Online judge endpoint",
     )
     parser.add_argument(
         "--dataset-root",
-        help="自定义数据集路径（可选）",
+        help="Optional dataset root",
     )
     parser.add_argument(
         "--log-dir",
-        help="自定义日志输出目录",
+        help="Optional log output directory",
     )
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="仅生成代码，不调用在线判题",
+        help="Generate code only without contacting the judge",
     )
     parser.add_argument(
         "--timeout",
         type=float,
         default=300.0,
-        help="LLM 请求超时时间 (秒)",
+        help="LLM request timeout (seconds)",
     )
     return parser.parse_args()
 
@@ -109,7 +109,7 @@ def default_log_dir(problem_ids: List[str], agent_config: str) -> Path:
 
 
 def extract_code(content: str, language: str) -> str:
-    """从模型回复中提取代码块。"""
+    """Extract a code block from the model response."""
     fence_pattern = re.compile(r"```(?:([\w+#-]+)\n)?(.*?)```", re.DOTALL)
     matches = fence_pattern.findall(content)
     if matches:
@@ -160,15 +160,15 @@ def _call_llm_with_retry(
             return client.infer(messages)
         except RuntimeError as exc:
             attempts += 1
-            logger.warning("LLM 调用失败，第 %d 次重试：%s", attempts, exc)
+            logger.warning("LLM call failed, retry %d: %s", attempts, exc)
             if max_retries and attempts >= max_retries:
                 raise RuntimeError(
-                    f"LLM 调用连续失败 {attempts} 次，停止重试：{exc}"
+                    f"LLM call failed {attempts} times consecutively; aborting: {exc}"
                 ) from exc
 
 
 def build_feedback(submission: Submission, total_cases: Optional[int]) -> str:
-    """根据判题结果生成结构化反馈文本。"""
+    """Generate structured feedback text based on judging results."""
     total_available = total_cases or max(len(submission.test_results), 0)
     passed_count = sum(1 for tr in submission.test_results if tr.status == SubmissionStatus.ACCEPTED)
     failed_cases = [(idx, tr) for idx, tr in enumerate(submission.test_results, start=1) if tr.status != SubmissionStatus.ACCEPTED]
@@ -176,25 +176,26 @@ def build_feedback(submission: Submission, total_cases: Optional[int]) -> str:
     lines: List[str] = []
     if not failed_cases:
         lines.append(
-            f"你最近的一次提交测评结果为：通过了 {passed_count}/{total_available or passed_count} 个测试用例，全部测试均已通过。"
+            f"Your most recent submission passed {passed_count}/{total_available or passed_count} test cases. "
+            "All tests passed."
         )
         return "\n".join(lines)
 
     failed_index, failed_case = failed_cases[0]
     failure_status = failed_case.status.value if hasattr(failed_case.status, "value") else failed_case.status
     lines.append(
-        f"你最近的一次提交测评结果为：通过了 {passed_count}/{total_available or len(submission.test_results)} 个测试用例，"
-        f"第 {failed_index} 个测试用例失败，判定为 {failure_status}。"
+        f"Your most recent submission passed {passed_count}/{total_available or len(submission.test_results)} test cases. "
+        f"Test case {failed_index} failed with status {failure_status}."
     )
 
     if failed_case.test_case_id:
-        lines.append(f"失败的测试用例编号：{failed_case.test_case_id}。")
+        lines.append(f"Failed test case ID: {failed_case.test_case_id}.")
     if failed_case.error_message:
-        lines.append(f"错误信息：{failed_case.error_message.strip()[:500]}")
+        lines.append(f"Error message: {failed_case.error_message.strip()[:500]}")
     if failed_case.output and isinstance(failed_case.output, str) and failed_case.output.strip():
-        lines.append(f"程序输出：\n{failed_case.output.strip()[:500]}")
+        lines.append(f"Program output:\n{failed_case.output.strip()[:500]}")
 
-    lines.append("请修改代码并再次给出完整的源代码。")
+    lines.append("Please revise the solution and submit the complete code again.")
     return "\n".join(lines)
 
 
@@ -212,7 +213,7 @@ def main() -> int:
         raw_problem_values.extend([p.strip() for p in item.split(",") if p.strip()])
     problem_ids = raw_problem_values
     if not problem_ids:
-        raise ValueError("至少需要一个 problem-id")
+        raise ValueError("At least one problem-id is required")
 
     log_root = Path(args.log_dir) if args.log_dir else default_log_dir(problem_ids, args.agent_config)
     log_root.mkdir(parents=True, exist_ok=True)
@@ -224,7 +225,7 @@ def main() -> int:
     judge = None if args.dry_run else Judge(oj_endpoint=args.oj_endpoint)
 
     logger.info(
-        "开始单题运行：problems=%s, agent=%s, token-limit=%s",
+        "Starting single-problem run: problems=%s, agent=%s, token-limit=%s",
         problem_ids,
         config.name,
         args.token_limit,
@@ -276,13 +277,13 @@ def main() -> int:
         attempt = 0
         while True:
             attempt += 1
-            logger.info("[%s] 尝试 %d", problem_id, attempt)
+            logger.info("[%s] Attempt %d", problem_id, attempt)
             try:
                 response_text, usage = _call_llm_with_retry(
                     client, messages, args.max_retries
                 )
             except RuntimeError as exc:
-                logger.error("LLM 重试耗尽：%s", exc)
+                logger.error("LLM retries exhausted: %s", exc)
                 entry = AttemptLogEntry(
                     attempt=attempt,
                     language=args.language,
@@ -319,7 +320,7 @@ def main() -> int:
             problem_tokens += attempt_tokens
 
             if not code:
-                logger.warning("[%s] 未从模型回复中提取到代码，尝试编号 %d", problem_id, attempt)
+                logger.warning("[%s] No code extracted from model response (attempt %d)", problem_id, attempt)
                 messages.append({"role": "assistant", "content": response_text})
                 entry = AttemptLogEntry(
                     attempt=attempt,
@@ -331,7 +332,7 @@ def main() -> int:
                     judge_status="NO_CODE",
                     passed_cases=None,
                     total_cases=total_cases,
-                    error_message="模型回复中没有识别到代码块",
+                    error_message="No code block detected in model response",
                     prompt_tokens_cumulative_problem=problem_prompt_tokens,
                     completion_tokens_cumulative_problem=problem_completion_tokens,
                     total_tokens_cumulative_problem=problem_tokens,
@@ -346,7 +347,7 @@ def main() -> int:
                 messages.append(
                     {
                         "role": "user",
-                        "content": "未能识别到代码，请直接输出完整代码并使用代码块包裹。",
+                        "content": "Code was not detected. Please output the full solution inside a code block.",
                     }
                 )
                 continue
@@ -363,7 +364,7 @@ def main() -> int:
                     judge_status="DRY_RUN",
                     passed_cases=None,
                     total_cases=total_cases,
-                    error_message="Dry run 模式未评测",
+                    error_message="Dry-run mode skipped judging",
                     prompt_tokens_cumulative_problem=problem_prompt_tokens,
                     completion_tokens_cumulative_problem=problem_completion_tokens,
                     total_tokens_cumulative_problem=problem_tokens,
@@ -372,7 +373,7 @@ def main() -> int:
                     total_tokens_cumulative_run=total_tokens_consumed,
                 )
                 run_logger.log_attempt(entry, messages=[dict(m) for m in messages])
-                logger.info("[%s] 干跑模式：已生成代码。", problem_id)
+                logger.info("[%s] Dry-run mode: code generated.", problem_id)
                 problem_solved = True
                 break
 
@@ -389,7 +390,7 @@ def main() -> int:
             try:
                 submission = judge.evaluate_submission(submission, bundle.problem)
             except Exception as exc:
-                logger.error("判题服务调用失败：%s", exc)
+                logger.error("Judge service call failed: %s", exc)
                 messages.append({"role": "assistant", "content": response_text})
                 entry = AttemptLogEntry(
                     attempt=attempt,
@@ -416,7 +417,7 @@ def main() -> int:
                 messages.append(
                     {
                         "role": "user",
-                        "content": f"判题调用失败：{exc}。请重新输出代码。",
+                        "content": f"Judging failed: {exc}. Please output the code again.",
                     }
                 )
                 continue
@@ -424,7 +425,7 @@ def main() -> int:
             summary = summarise_attempt(submission, total_cases)
             status_value = submission.status.value if hasattr(submission.status, "value") else submission.status
             logger.info(
-                "[%s] 判题结果：%s，样例通过 %s/%s",
+                "[%s] Judge result: %s, samples %s/%s",
                 problem_id,
                 status_value,
                 summary["passed"],
@@ -453,7 +454,7 @@ def main() -> int:
             run_logger.log_attempt(entry, messages=[dict(m) for m in messages])
 
             if submission.status == SubmissionStatus.ACCEPTED:
-                logger.info("[%s] 所有测试已通过。", problem_id)
+                logger.info("[%s] All tests passed.", problem_id)
                 problem_solved = True
                 break
 
@@ -463,7 +464,7 @@ def main() -> int:
             if args.token_limit and total_tokens_consumed >= args.token_limit:
                 token_limit_reached = True
                 break
-            # 继续下一轮尝试
+            # Continue to the next attempt
 
         if token_limit_reached:
             run_logger.finalize(
@@ -496,7 +497,7 @@ def main() -> int:
         if problem_solved:
             solved_problems += 1
         if not problem_solved and args.dry_run:
-            # dry run 视为成功
+            # Treat dry run as success
             solved_problems += 1
 
     if token_limit_reached:

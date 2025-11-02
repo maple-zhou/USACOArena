@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# 轻量级批处理竞赛脚本 - 只运行实验，连接到现有服务
+# Lightweight batch competition script – run experiments against existing services
 set -e
 
-# 默认参数
+# Default parameters
 CONCURRENCY=10
 COMPETITORS_CONFIG="config/1pro.json"
 PROBLEM_IDS_LIST=""
@@ -39,7 +39,7 @@ show_usage() {
     echo "  ./service_manager.sh stop"
 }
 
-# 解析命令行参数
+# Parse command-line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
         --concurrency)
@@ -78,7 +78,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# 构建问题文件列表
+# Build list of problem files
 if [[ -n "$PROBLEM_PATTERN" ]]; then
     echo "Finding problem files with pattern: $PROBLEM_PATTERN"
     PROBLEM_FILES=($(ls $PROBLEM_PATTERN 2>/dev/null | sort))
@@ -90,7 +90,7 @@ else
     PROBLEM_FILES=($(ls config/problem_*.json 2>/dev/null | sort))
 fi
 
-# 检查是否找到了问题文件
+# Ensure at least one problem file is found
 if [[ ${#PROBLEM_FILES[@]} -eq 0 ]]; then
     echo "Error: No problem files found!"
     echo "Please use --problem-ids-list or --problem-pattern to specify problem files."
@@ -99,24 +99,24 @@ fi
 
 TOTAL_RUNS=${#PROBLEM_FILES[@]}
 
-# 服务发现或手动指定端口
+# Discover services or use manually supplied ports
 setup_services() {
     if [[ -n "$MANUAL_PORTS" ]]; then
         echo "Using manually specified ports: $MANUAL_PORTS"
         IFS=',' read -ra AVAILABLE_SERVICES <<< "$MANUAL_PORTS"
 
-        # 验证端口格式和可用性
+        # Validate port formatting and availability
         for port in "${AVAILABLE_SERVICES[@]}"; do
-            # 移除前后空格
+            # Strip whitespace around the port
             port=$(echo "$port" | xargs)
 
-            # 验证端口是否为数字
+            # Verify the port is numeric
             if ! [[ "$port" =~ ^[0-9]+$ ]]; then
                 echo "Error: Invalid port number '$port'"
                 exit 1
             fi
 
-            # 可选：验证端口是否在监听（如果需要的话）
+            # Optional: verify the port is listening if desired
             # if ! nc -z localhost "$port" 2>/dev/null; then
             #     echo "Warning: Port $port may not be available"
             # fi
@@ -128,11 +128,11 @@ setup_services() {
         discover_services
     fi
 
-    # 根据可用端口数量调整并发数
+    # Adjust concurrency to available ports
     adjust_concurrency
 }
 
-# 服务发现 - 获取可用的服务端口
+# Service discovery - obtain available server ports
 discover_services() {
     echo "Discovering available services..."
 
@@ -142,14 +142,14 @@ discover_services() {
         exit 1
     fi
 
-    # 获取可用的服务端点
+    # Retrieve available service endpoints
     AVAILABLE_SERVICES=()
     local retry_count=0
 
     while [[ ${#AVAILABLE_SERVICES[@]} -eq 0 && $retry_count -lt $SERVICE_DISCOVERY_RETRIES ]]; do
         echo "Service discovery attempt $((retry_count + 1))/$SERVICE_DISCOVERY_RETRIES"
 
-        # 通过service_manager获取可用端点
+        # Query service_manager for available endpoints
         local service_output=$(./service_manager.sh list-ports 2>/dev/null | grep "Instance" || true)
 
         if [[ -n "$service_output" ]]; then
@@ -178,7 +178,7 @@ discover_services() {
     echo "Found ${#AVAILABLE_SERVICES[@]} available services: ${AVAILABLE_SERVICES[*]}"
 }
 
-# 根据可用端口数量调整并发数
+# Adjust concurrency to available ports
 adjust_concurrency() {
     local available_ports=${#AVAILABLE_SERVICES[@]}
     local original_concurrency=$CONCURRENCY
@@ -188,7 +188,7 @@ adjust_concurrency() {
         exit 1
     fi
 
-    # 如果并发数超过可用端口数，自动调整为端口数
+    # Clamp concurrency to available port count when necessary
     if [ $CONCURRENCY -gt $available_ports ]; then
         CONCURRENCY=$available_ports
         echo "Warning: Concurrency ($original_concurrency) exceeds available ports ($available_ports)"
@@ -197,7 +197,7 @@ adjust_concurrency() {
         echo "Concurrency ($CONCURRENCY) is within available ports limit ($available_ports)"
     fi
 
-    # 如果并发数明显小于端口数，给出提示
+    # Provide a hint when concurrency is much lower than available ports
     if [ $CONCURRENCY -lt $available_ports ] && [ $((available_ports - CONCURRENCY)) -ge 2 ]; then
         echo "Info: You have $available_ports ports available but only using $CONCURRENCY concurrent jobs"
         echo "Consider increasing --concurrency to maximize port utilization"
@@ -216,26 +216,26 @@ for i in "${!PROBLEM_FILES[@]}"; do
 done
 echo ""
 
-# 发现或配置可用服务
+# Discover or configure available services
 setup_services
 
 echo ""
 echo "Final configuration:"
 echo "  Actual concurrency: $CONCURRENCY"
 
-# 创建日志目录
+# Create log directory
 LOG_DIR="logs/batch_lean_$(date +%Y%m%d_%H%M%S)"
 mkdir -p "$LOG_DIR"
 
 echo "Logs will be saved to: $LOG_DIR"
 echo ""
 
-# 运行单个竞赛的函数
+# Function to run a single competition
 run_competition_lean() {
     local run_id=$1
     local problem_file=$2
 
-    # 重新构建可用服务列表（因为数组无法通过export传递给子进程）
+    # Rebuild available services (arrays cannot be exported to child processes)
     local services_list=(${AVAILABLE_SERVICES_STR})
     local service_count=${#services_list[@]}
 
@@ -250,7 +250,7 @@ run_competition_lean() {
     echo "Starting competition $run_id (Server:$server_port, Problem:$problem_file)..."
     echo "Starting competition $run_id (Server:$server_port, Problem:$problem_file)..." >> "$log_file"
 
-    # 只运行竞赛客户端，连接到现有服务
+    # Run only the competition client, connecting to existing services
     competition_run \
         --competition-config config/competition_config.json \
         --competitors-config "$COMPETITORS_CONFIG" \
@@ -270,18 +270,18 @@ run_competition_lean() {
     return $exit_code
 }
 
-# 并发控制 - 将数组转为字符串以便export
+# Concurrency control – convert arrays to strings for export
 AVAILABLE_SERVICES_STR="${AVAILABLE_SERVICES[*]}"
 export -f run_competition_lean
 export LOG_DIR COMPETITORS_CONFIG AVAILABLE_SERVICES_STR
 
-# 创建任务列表，格式：run_id problem_file
+# Build task list in the format: run_id problem_file
 TASK_LIST=""
 for i in $(seq 0 $((TOTAL_RUNS-1))); do
     TASK_LIST="$TASK_LIST$i ${PROBLEM_FILES[$i]}\n"
 done
 
-# 使用GNU parallel或xargs进行并发执行
+# Use GNU parallel or xargs for concurrent execution
 if command -v parallel >/dev/null 2>&1; then
     echo "Using GNU parallel for concurrent execution..."
     echo -e "$TASK_LIST" | parallel -j "$CONCURRENCY" --colsep ' ' run_competition_lean {1} {2}
@@ -294,7 +294,7 @@ echo ""
 echo "All competitions completed!"
 echo "Check logs in: $LOG_DIR"
 
-# 生成汇总报告
+# Generate summary report
 echo ""
 echo "=== Competition Summary ==="
 for i in $(seq 0 $((TOTAL_RUNS-1))); do

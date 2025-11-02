@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-JSON竞赛结果转CSV转换器
-将竞赛结果的JSON文件转换为CSV格式，便于数据分析
+JSON competition results to CSV converter
+Transform competition result JSON files into CSV format for analysis.
 """
 
 import json
@@ -14,7 +14,7 @@ from typing import Dict, List, Any
 
 def flatten_solved_problems(solved_problems: List[Dict]) -> Dict[str, Any]:
     """
-    将solved_problems列表扁平化为字典
+    Flatten the solved_problems list into a dictionary structure.
     """
     if not solved_problems:
         return {
@@ -39,7 +39,7 @@ def flatten_solved_problems(solved_problems: List[Dict]) -> Dict[str, Any]:
 
 def flatten_problem_stats(problem_stats: Dict[str, Any]) -> Dict[str, Any]:
     """
-    将problem_stats字典扁平化为CSV可用的格式
+    Flatten the problem_stats dictionary into CSV-friendly fields.
     """
     if not problem_stats:
         return {
@@ -79,7 +79,7 @@ def flatten_problem_stats(problem_stats: Dict[str, Any]) -> Dict[str, Any]:
 
 def get_all_problem_ids(data: Dict[str, Any]) -> List[str]:
     """
-    从所有参赛者的problem_stats中提取所有题目ID
+    Collect every problem ID observed in participant problem_stats.
     """
     all_problem_ids = set()
 
@@ -88,20 +88,20 @@ def get_all_problem_ids(data: Dict[str, Any]) -> List[str]:
         if problem_stats:
             all_problem_ids.update(problem_stats.keys())
 
-    # 排序以确保一致的列顺序
+    # Sort to keep a stable column order
     return sorted(list(all_problem_ids))
 
 
 def flatten_individual_problem_stats(problem_stats: Dict[str, Any], all_problem_ids: List[str]) -> Dict[str, Any]:
     """
-    为每道题生成独立的统计列
+    Generate per-problem statistic columns.
     """
     result = {}
 
     for problem_id in all_problem_ids:
         stats = problem_stats.get(problem_id, {})
 
-        # 为每道题添加4个统计列
+        # Four statistical columns per problem
         result[f'{problem_id}_score'] = stats.get('best_score', 0)
         result[f'{problem_id}_passed_cases'] = stats.get('passed_test_cases', 0)
         result[f'{problem_id}_submissions'] = stats.get('submission_count', 0)
@@ -112,21 +112,21 @@ def flatten_individual_problem_stats(problem_stats: Dict[str, Any], all_problem_
 
 def flatten_competition_rules(rules_data: Dict[str, Any]) -> Dict[str, Any]:
     """
-    扁平化竞赛规则数据为CSV可用的格式
+    Flatten competition rules into CSV-friendly fields.
     """
     result = {}
 
-    # 处理scoring规则
+    # Handle scoring rules
     scoring = rules_data.get('scoring', {})
     result['rules_bronze_points'] = scoring.get('bronze', 0)
     result['rules_silver_points'] = scoring.get('silver', 0)
     result['rules_gold_points'] = scoring.get('gold', 0)
     result['rules_platinum_points'] = scoring.get('platinum', 0)
 
-    # 处理bonus规则
+    # Handle bonus rules
     result['rules_bonus_for_first_ac'] = rules_data.get('bonus_for_first_ac', 0)
 
-    # 处理penalties规则
+    # Handle penalty rules
     penalties = rules_data.get('penalties', {})
     result['rules_penalty_ac'] = penalties.get('AC', 0)
     result['rules_penalty_wa'] = penalties.get('WA', 0)
@@ -135,7 +135,7 @@ def flatten_competition_rules(rules_data: Dict[str, Any]) -> Dict[str, Any]:
     result['rules_penalty_tle'] = penalties.get('TLE', 0)
     result['rules_penalty_mle'] = penalties.get('MLE', 0)
 
-    # 处理hint_tokens规则
+    # Handle hint token rules
     hint_tokens = rules_data.get('hint_tokens', {})
     result['rules_hint_tokens_level_0'] = hint_tokens.get('level_0', 0)
     result['rules_hint_tokens_level_1'] = hint_tokens.get('level_1', 0)
@@ -143,7 +143,7 @@ def flatten_competition_rules(rules_data: Dict[str, Any]) -> Dict[str, Any]:
     result['rules_hint_tokens_level_3'] = hint_tokens.get('level_3', 0)
     result['rules_hint_tokens_level_4'] = hint_tokens.get('level_4', 0)
 
-    # 处理submission_tokens规则
+    # Handle submission token rules
     submission_tokens = rules_data.get('submission_tokens', {})
     result['rules_submission_tokens_ac'] = submission_tokens.get('AC', 0)
     result['rules_submission_tokens_wa'] = submission_tokens.get('WA', 0)
@@ -152,23 +152,23 @@ def flatten_competition_rules(rules_data: Dict[str, Any]) -> Dict[str, Any]:
     result['rules_submission_tokens_tle'] = submission_tokens.get('TLE', 0)
     result['rules_submission_tokens_mle'] = submission_tokens.get('MLE', 0)
 
-    # 处理test_tokens规则
+    # Handle test token rules
     test_tokens = rules_data.get('test_tokens', {})
     result['rules_test_tokens_default'] = test_tokens.get('default', 0)
     result['rules_test_tokens_per_test_case'] = test_tokens.get('per_test_case', 0)
 
-    # 处理language_multipliers
+    # Handle language multipliers
     language_multipliers = test_tokens.get('language_multipliers', {})
     result['rules_test_tokens_cpp_multiplier'] = language_multipliers.get('cpp', 0)
     result['rules_test_tokens_java_multiplier'] = language_multipliers.get('java', 0)
     result['rules_test_tokens_python_multiplier'] = language_multipliers.get('python', 0)
 
-    # 处理lambda值
+    # Handle lambda value
     result['rules_lambda'] = rules_data.get('lambda', 0)
 
-    # 注意：input_token_multipliers和output_token_multipliers包含大量模型特定数据
-    # 这些通常不需要在CSV中展示，因为它们对每个参与者都是相同的
-    # 如果需要，可以选择性地添加特定模型的倍数
+    # Note: input_token_multipliers and output_token_multipliers contain extensive model-specific data
+    # These are typically identical across participants and can be omitted
+    # Add specific multipliers only when explicitly required
 
     return result
 

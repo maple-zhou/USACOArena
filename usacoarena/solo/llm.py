@@ -1,4 +1,4 @@
-"""封装直连 LLM API 的客户端。"""
+"""Client wrapper for direct LLM API interactions."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ logger = get_logger("solo_llm")
 
 @dataclass
 class LLMUsage:
-    """记录一次推理的 token 统计。"""
+    """Capture token statistics for a single inference."""
 
     prompt_tokens: Optional[int]
     completion_tokens: Optional[int]
@@ -36,7 +36,7 @@ class LLMUsage:
 
 @dataclass
 class LLMConfig:
-    """LLM 服务的配置载体。"""
+    """Configuration container for an LLM service."""
 
     name: str
     model_id: str
@@ -49,7 +49,7 @@ class LLMConfig:
     def from_file(cls, path: str, competitor_name: Optional[str] = None) -> "LLMConfig":
         config_path = Path(path)
         if not config_path.exists():
-            raise FileNotFoundError(f"找不到 LLM 配置文件: {path}")
+            raise FileNotFoundError(f"LLM configuration file not found: {path}")
 
         data = json.loads(config_path.read_text(encoding="utf-8"))
         if "competitors" in data:
@@ -57,11 +57,11 @@ class LLMConfig:
             if competitor_name:
                 matches = [c for c in entries if c.get("name") == competitor_name]
                 if not matches:
-                    raise ValueError(f"配置文件中未找到名为 {competitor_name} 的 competitor")
+                    raise ValueError(f"No competitor named {competitor_name} found in the configuration")
                 entry = matches[0]
             else:
                 if len(entries) != 1:
-                    raise ValueError("配置文件包含多个 competitor，请使用 --competitor-name 指定目标")
+                    raise ValueError("Configuration contains multiple competitors; use --competitor-name to specify the target")
                 entry = entries[0]
         else:
             entry = data
@@ -69,7 +69,7 @@ class LLMConfig:
         required = ["name", "model_id", "api_base_url", "api_key"]
         missing = [key for key in required if key not in entry]
         if missing:
-            raise ValueError(f"LLM 配置缺失字段: {missing}")
+            raise ValueError(f"LLM configuration missing fields: {missing}")
 
         request_format = entry.get("request_format") or {
             "url": "/v1/chat/completions",
@@ -99,7 +99,7 @@ class LLMConfig:
         )
 
     def prepare_request(self, messages: List[Dict[str, str]]) -> Tuple[str, str, Dict[str, str], Dict[str, Any]]:
-        """根据模板生成请求所需数据。"""
+        """Generate request components based on the configured template."""
         method = self.request_format.get("method", "POST")
         url = self.request_format.get("url", "")
         if not url.startswith("http"):
@@ -130,26 +130,26 @@ class LLMConfig:
         return method, url, headers, payload
 
     def extract_content(self, response_json: Dict[str, Any]) -> str:
-        """按照配置路径提取模型输出。"""
+        """Extract the model output following the configured path."""
         path = self.response_format.get("response_path", "choices[0].message.content")
         return _dig_value(response_json, path)
 
     def extract_usage(self, response_json: Dict[str, Any]) -> LLMUsage:
-        """提取 usage 字段。"""
+        """Extract usage information from the response."""
         usage_path = self.response_format.get("usage_path", "usage")
         usage = _dig_value(response_json, usage_path, default=None)
         return LLMUsage.from_payload(usage if isinstance(usage, dict) else None)
 
 
 class LLMClient:
-    """简单的 LLM API 客户端，负责发送消息并返回代码。"""
+    """Lightweight LLM API client for sending prompts and returning code."""
 
     def __init__(self, config: LLMConfig, timeout: float = 120.0):
         self._config = config
         self._timeout = timeout
 
     def infer(self, messages: List[Dict[str, str]]) -> Tuple[str, LLMUsage]:
-        """执行一次推理调用。"""
+        """Execute a single inference call."""
         method, url, headers, payload = self._config.prepare_request(messages)
         try:
             response = requests.request(
@@ -161,23 +161,23 @@ class LLMClient:
             )
             response.raise_for_status()
         except requests.RequestException as exc:
-            raise RuntimeError(f"LLM 请求失败: {exc}") from exc
+            raise RuntimeError(f"LLM request failed: {exc}") from exc
 
         try:
             response_json = response.json()
         except ValueError as exc:
-            raise RuntimeError("LLM 返回了无效的 JSON 数据") from exc
+            raise RuntimeError("LLM returned invalid JSON data") from exc
 
         content = self._config.extract_content(response_json)
         if not isinstance(content, str):
-            raise RuntimeError("无法从 LLM 响应中提取文本内容")
+            raise RuntimeError("Unable to extract textual content from LLM response")
 
         usage = self._config.extract_usage(response_json)
         return content, usage
 
 
 def _dig_value(data: Dict[str, Any], path: str, default: Any = None) -> Any:
-    """按照冒号或点语法提取嵌套字段。"""
+    """Resolve a nested field using dotted or slash-delimited syntax."""
     if not path:
         return data
     current: Any = data

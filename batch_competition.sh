@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# 设置错误时退出
+# Exit immediately on error
 set -e
 
-# 默认参数
+# Default parameters
 CONCURRENCY=10
 BASE_OJ_PORT=8000
 BASE_SERVER_PORT=5000
 COMPETITORS_CONFIG="config/1pro.json"
-PROBLEM_IDS_LIST=""  # 将通过参数或自动发现设置
-TOTAL_RUNS=0  # 将根据问题文件数量自动设置
+PROBLEM_IDS_LIST=""  # Populated via CLI arguments or auto-discovery
+TOTAL_RUNS=0  # Automatically set based on the number of problem files
 
-# 显示使用说明
+# Display usage instructions
 show_usage() {
     echo "Usage: $0 [OPTIONS]"
     echo "Options:"
@@ -36,7 +36,7 @@ show_usage() {
     echo "Each competition will run with a different problem file and unique ports."
 }
 
-# 解析命令行参数
+# Parse command-line arguments
 while [[ $# -gt 0 ]]; do
     case $1 in
         --concurrency)
@@ -75,7 +75,7 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# 构建问题文件列表
+# Build the list of problem files
 if [[ -n "$PROBLEM_PATTERN" ]]; then
     echo "Finding problem files with pattern: $PROBLEM_PATTERN"
     PROBLEM_FILES=($(ls $PROBLEM_PATTERN 2>/dev/null | sort))
@@ -87,7 +87,7 @@ else
     PROBLEM_FILES=($(ls config/problem_*.json 2>/dev/null | sort))
 fi
 
-# 检查是否找到了问题文件
+# Ensure at least one problem file is available
 if [[ ${#PROBLEM_FILES[@]} -eq 0 ]]; then
     echo "Error: No problem files found!"
     echo "Please use --problem-ids-list or --problem-pattern to specify problem files."
@@ -111,14 +111,14 @@ for i in "${!PROBLEM_FILES[@]}"; do
 done
 echo ""
 
-# 创建日志目录
+# Create log directory
 LOG_DIR="logs/batch_$(date +%Y%m%d_%H%M%S)"
 mkdir -p "$LOG_DIR"
 
 echo "Logs will be saved to: $LOG_DIR"
 echo ""
 
-# 运行单个竞赛的函数
+# Run a single competition
 run_competition() {
     local run_id=$1
     local problem_file=$2
@@ -129,7 +129,7 @@ run_competition() {
     echo "Starting competition $run_id (OJ:$oj_port, Server:$server_port, Problem:$problem_file)..."
     echo "Starting competition $run_id (OJ:$oj_port, Server:$server_port, Problem:$problem_file)..." >> "$log_file"
 
-    # 运行竞赛并记录日志（完全静默，只输出到日志文件）
+    # Run the competition and capture all output in the log file
     ./run_full_competition.sh \
         --oj-port "$oj_port" \
         --server-port "$server_port" \
@@ -149,17 +149,17 @@ run_competition() {
     return $exit_code
 }
 
-# 并发控制
+# Concurrency control
 export -f run_competition
 export LOG_DIR BASE_OJ_PORT BASE_SERVER_PORT COMPETITORS_CONFIG
 
-# 创建任务列表，格式：run_id problem_file
+# Build task list in the format: run_id problem_file
 TASK_LIST=""
 for i in $(seq 0 $((TOTAL_RUNS-1))); do
     TASK_LIST="$TASK_LIST$i ${PROBLEM_FILES[$i]}\n"
 done
 
-# 使用GNU parallel或xargs进行并发执行
+# Use GNU parallel or xargs for concurrent execution
 if command -v parallel >/dev/null 2>&1; then
     echo "Using GNU parallel for concurrent execution..."
     echo -e "$TASK_LIST" | parallel -j "$CONCURRENCY" --colsep ' ' run_competition {1} {2}
@@ -172,7 +172,7 @@ echo ""
 echo "All competitions completed!"
 echo "Check logs in: $LOG_DIR"
 
-# 生成汇总报告
+# Generate summary report
 echo ""
 echo "=== Competition Summary ==="
 for i in $(seq 0 $((TOTAL_RUNS-1))); do

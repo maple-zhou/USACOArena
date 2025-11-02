@@ -1,4 +1,4 @@
-"""记录单题运行过程的日志工具。"""
+"""Logging utilities for single-problem LLM runs."""
 
 from __future__ import annotations
 
@@ -26,7 +26,7 @@ _LANGUAGE_EXT = {
 
 @dataclass
 class AttemptLogEntry:
-    """描述一次提交尝试。"""
+    """Describe a single submission attempt."""
 
     attempt: int
     language: str
@@ -53,7 +53,7 @@ class AttemptLogEntry:
 
 
 class SoloRunLogger:
-    """管理本地日志输出。"""
+    """Manage local logging artifacts for a single run."""
 
     def __init__(self, base_dir: Path) -> None:
         self.base_dir = base_dir
@@ -70,14 +70,14 @@ class SoloRunLogger:
     def _init_markdown(self) -> None:
         if not self._markdown_path.exists():
             header = [
-                "# LLM 单题尝试记录",
-                f"创建时间：{datetime.now().isoformat(timespec='seconds')}",
+                "# LLM Single-Problem Run Log",
+                f"Generated at: {datetime.now().isoformat(timespec='seconds')}",
                 "",
             ]
             self._markdown_path.write_text("\n".join(header), encoding="utf-8")
 
     def start_run(self, metadata: Dict[str, Any]) -> None:
-        """写入运行元数据。"""
+        """Persist run metadata to disk."""
         payload = {
             "status": "running",
             "started_at": datetime.now().isoformat(timespec="seconds"),
@@ -93,7 +93,7 @@ class SoloRunLogger:
         entry: AttemptLogEntry,
         messages: Optional[List[Dict[str, str]]] = None,
     ) -> Path:
-        """记录一次提交并返回代码文件路径。"""
+        """Record an attempt and return the emitted code path."""
         code_path = self.code_dir / f"attempt_{entry.attempt}{self._code_extension(entry.language)}"
         code_path.write_text(entry.code, encoding="utf-8")
 
@@ -113,29 +113,29 @@ class SoloRunLogger:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
         md_lines = [
-            f"## 尝试 {entry.attempt}",
-            f"- 语言：{entry.language}",
-            f"- 判题结果：{entry.judge_status}",
-            f"- 样例通过：{entry.passed_cases}/{entry.total_cases if entry.total_cases is not None else '?'}",
-            f"- Token：prompt={entry.prompt_tokens or 0}, completion={entry.completion_tokens or 0}, total={entry.total_tokens or 0}",
+            f"## Attempt {entry.attempt}",
+            f"- Language: {entry.language}",
+            f"- Judge result: {entry.judge_status}",
+            f"- Sample cases: {entry.passed_cases}/{entry.total_cases if entry.total_cases is not None else '?'}",
+            f"- Tokens: prompt={entry.prompt_tokens or 0}, completion={entry.completion_tokens or 0}, total={entry.total_tokens or 0}",
             (
-                "- 累计 Token（题目）："
+                "- Cumulative tokens (problem): "
                 f"prompt={entry.prompt_tokens_cumulative_problem}, "
                 f"completion={entry.completion_tokens_cumulative_problem}, "
                 f"total={entry.total_tokens_cumulative_problem}"
             ),
             (
-                "- 累计 Token（整体）："
+                "- Cumulative tokens (run): "
                 f"prompt={entry.prompt_tokens_cumulative_run}, "
                 f"completion={entry.completion_tokens_cumulative_run}, "
                 f"total={entry.total_tokens_cumulative_run}"
             ),
         ]
         if entry.error_message:
-            md_lines.append(f"- 错误信息：{entry.error_message}")
+            md_lines.append(f"- Error: {entry.error_message}")
         if conversation_path is not None:
             md_lines.append(
-                f"- 对话记录：{conversation_path.relative_to(self.base_dir)}"
+                f"- Conversation log: {conversation_path.relative_to(self.base_dir)}"
             )
         md_lines.append("")
         md_lines.append("```")
@@ -148,7 +148,7 @@ class SoloRunLogger:
         return code_path
 
     def finalize(self, status: str, extra: Optional[Dict[str, Any]] = None) -> None:
-        """收尾运行并更新元数据文件。"""
+        """Finalize the run and update the metadata file."""
         final_payload = {
             "status": status,
             "finished_at": datetime.now().isoformat(timespec="seconds"),

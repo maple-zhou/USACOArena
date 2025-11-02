@@ -1,0 +1,3 @@
+path,action,reason,replacement,reviewer
+USACOArena/1450_correct.cpp,removed,Legacy debugging sample not part of release,Private archive (contact maintainer),Lingfeng Zhou
+USACOArena/1450_wrong.cpp,removed,Incorrect sample retained for debugging,Private archive (contact maintainer),Lingfeng Zhou

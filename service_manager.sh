@@ -1,20 +1,20 @@
 #!/bin/bash
 
-# 服务管理脚本 - 管理OJ和Server实例的启动、监控和重启
+# Service management script for starting, monitoring, and restarting OJ and server instances
 set -e
 
-# 配置参数
-SERVICE_INSTANCES=10  # 默认启动2个服务实例
+# Configuration parameters
+SERVICE_INSTANCES=10  # Default number of service instances
 OJ_BASE_PORT=10086
 SERVER_BASE_PORT=5000
-CHECK_INTERVAL=10    # 健康检查间隔（秒）
+CHECK_INTERVAL=10    # Health-check interval (seconds)
 LOG_DIR="logs/services"
 PID_DIR="pids"
 
-# 创建必要目录
+# Create required directories
 mkdir -p "$LOG_DIR" "$PID_DIR"
 
-# 服务状态文件
+# Service status file
 SERVICE_STATUS_FILE="$PID_DIR/service_status.json"
 
 show_usage() {
@@ -40,7 +40,7 @@ show_usage() {
     echo "  $0 list-ports                             # List available ports"
 }
 
-# 解析命令行参数
+# Parse command-line arguments
 parse_args() {
     COMMAND=""
     while [[ $# -gt 0 ]]; do
@@ -84,13 +84,13 @@ parse_args() {
     fi
 }
 
-# 检查端口是否可用
+# Check if a port is available
 is_port_available() {
     local port=$1
     ! ss -tuln | grep -q ":$port "
 }
 
-# 检查服务是否健康
+# Check service health
 check_service_health() {
     local service_type=$1
     local port=$2
@@ -108,7 +108,7 @@ check_service_health() {
     esac
 }
 
-# 启动单个OJ实例
+# Start a single OJ instance
 start_oj_instance() {
     local instance_id=$1
     local oj_port=$((OJ_BASE_PORT + instance_id))
@@ -117,7 +117,7 @@ start_oj_instance() {
 
     echo "Starting OJ instance $instance_id on port $oj_port..."
 
-    # 启动docker容器
+    # Launch docker container
     docker run --platform linux/amd64 -d \
         -v /home/ubuntu/scratch/lfzhou/USACOArena/dataset/datasets/usaco_2025/tests:/data/tests \
         --name "oj-rust-$instance_id" \
@@ -133,7 +133,7 @@ start_oj_instance() {
     fi
 }
 
-# 启动单个Server实例
+# Start a single server instance
 start_server_instance() {
     local instance_id=$1
     local server_port=$((SERVER_BASE_PORT + instance_id))
@@ -143,7 +143,7 @@ start_server_instance() {
 
     echo "Starting Server instance $instance_id on port $server_port..."
 
-    # 启动竞赛服务器
+    # Launch competition server
     nohup competition_server \
         --config config/server_config.json \
         --port "$server_port" \
@@ -161,7 +161,7 @@ start_server_instance() {
     fi
 }
 
-# 停止单个OJ实例
+# Stop a single OJ instance
 stop_oj_instance() {
     local instance_id=$1
     local container_name="oj-rust-$instance_id"
@@ -172,7 +172,7 @@ stop_oj_instance() {
     rm -f "$PID_DIR/oj_${instance_id}.pid"
 }
 
-# 停止单个Server实例
+# Stop a single server instance
 stop_server_instance() {
     local instance_id=$1
     local pid_file="$PID_DIR/server_${instance_id}.pid"
@@ -191,11 +191,11 @@ stop_server_instance() {
     fi
 }
 
-# 启动所有服务
+# Start all services
 start_services() {
     echo "Starting $SERVICE_INSTANCES service instances..."
 
-    # 更新服务状态文件
+    # Update service status metadata
     cat > "$SERVICE_STATUS_FILE" <<EOF
 {
     "instances": $SERVICE_INSTANCES,
@@ -208,11 +208,11 @@ EOF
 
     for i in $(seq 0 $((SERVICE_INSTANCES-1))); do
         start_oj_instance "$i"
-        sleep 3  # 等待OJ启动
+        sleep 3  # Wait for OJ instance to start
         start_server_instance "$i"
-        sleep 2  # 等待Server启动
+        sleep 2  # Wait for server to start
 
-        # 更新状态文件
+        # Update status file entry
         local oj_port=$((OJ_BASE_PORT + i))
         local server_port=$((SERVER_BASE_PORT + i))
         echo "Recording service instance $i in status file..."
@@ -223,7 +223,7 @@ EOF
     list_service_ports
 }
 
-# 停止所有服务
+# Stop all services
 stop_services() {
     echo "Stopping all service instances..."
 
@@ -236,7 +236,7 @@ stop_services() {
     echo "All services stopped."
 }
 
-# 显示服务状态
+# Display service status
 show_status() {
     echo "Service Status:"
     echo "==============="
@@ -252,14 +252,14 @@ show_status() {
 
         printf "Instance %d: " "$i"
 
-        # 检查OJ状态
+        # Check OJ status
         if check_service_health "oj" "$oj_port"; then
             printf "OJ(:%d)=✓ " "$oj_port"
         else
             printf "OJ(:%d)=✗ " "$oj_port"
         fi
 
-        # 检查Server状态
+        # Check server status
         if check_service_health "server" "$server_port"; then
             printf "Server(:%d)=✓" "$server_port"
         else
@@ -270,7 +270,7 @@ show_status() {
     done
 }
 
-# 列出可用端口
+# List active endpoints
 list_service_ports() {
     if [[ ! -f "$SERVICE_STATUS_FILE" ]]; then
         echo "No services running."
@@ -290,7 +290,7 @@ list_service_ports() {
     done
 }
 
-# 监控守护进程
+# Monitoring loop
 start_monitoring() {
     echo "Starting service monitoring (interval: ${CHECK_INTERVAL}s)..."
     echo "Press Ctrl+C to stop monitoring"
@@ -300,7 +300,7 @@ start_monitoring() {
             local oj_port=$((OJ_BASE_PORT + i))
             local server_port=$((SERVER_BASE_PORT + i))
 
-            # 检查并重启失败的服务
+            # Check and restart unhealthy services
             if ! check_service_health "oj" "$oj_port"; then
                 echo "$(date): OJ instance $i is down, restarting..."
                 stop_oj_instance "$i"
@@ -321,7 +321,7 @@ start_monitoring() {
     done
 }
 
-# 主函数
+# Main entry point
 main() {
     parse_args "$@"
 
