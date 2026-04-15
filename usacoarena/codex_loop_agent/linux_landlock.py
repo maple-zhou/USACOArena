@@ -1,1 +1,295 @@
-IiIiTWluaW1hbCBMYW5kbG9jayBoZWxwZXIgdXNlZCBieSBzdGFuZGFsb25lIENvZGV4IGxvb3AgYWdlbnQuIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQgY3R5cGVzCmltcG9ydCBvcwppbXBvcnQgcGxhdGZvcm0KaW1wb3J0IHJlCmZyb20gZGF0YWNsYXNzZXMgaW1wb3J0IGRhdGFjbGFzcwpmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKZnJvbSB0eXBpbmcgaW1wb3J0IEl0ZXJhYmxlLCBPcHRpb25hbAoKCl9MQU5ETE9DS19DUkVBVEVfUlVMRVNFVF9WRVJTSU9OID0gMSA8PCAwCl9MQU5ETE9DS19SVUxFX1BBVEhfQkVORUFUSCA9IDEKCiMgbGludXgvbGFuZGxvY2suaCBhY2Nlc3MgcmlnaHRzCl9MQU5ETE9DS19BQ0NFU1NfRlNfV1JJVEVfRklMRSA9IDEgPDwgMQpfTEFORExPQ0tfQUNDRVNTX0ZTX1JFQURfRklMRSA9IDEgPDwgMgpfTEFORExPQ0tfQUNDRVNTX0ZTX1JFQURfRElSID0gMSA8PCAzCl9MQU5ETE9DS19BQ0NFU1NfRlNfUkVNT1ZFX0RJUiA9IDEgPDwgNApfTEFORExPQ0tfQUNDRVNTX0ZTX1JFTU9WRV9GSUxFID0gMSA8PCA1Cl9MQU5ETE9DS19BQ0NFU1NfRlNfTUFLRV9ESVIgPSAxIDw8IDcKX0xBTkRMT0NLX0FDQ0VTU19GU19NQUtFX1JFRyA9IDEgPDwgOApfTEFORExPQ0tfQUNDRVNTX0ZTX1RSVU5DQVRFID0gMSA8PCAxNAoKIyBsaW51eC9wcmN0bC5oCl9QUl9TRVRfTk9fTkVXX1BSSVZTID0gMzgKCgpjbGFzcyBMYW5kbG9ja0Vycm9yKFJ1bnRpbWVFcnJvcik6CiAgICAiIiJCYXNlIExhbmRsb2NrIGVycm9yLiIiIgoKCmNsYXNzIExhbmRsb2NrVW5hdmFpbGFibGUoTGFuZGxvY2tFcnJvcik6CiAgICAiIiJSYWlzZWQgd2hlbiBMYW5kbG9jayBpcyB1bmF2YWlsYWJsZS4iIiIKCgpAZGF0YWNsYXNzKGZyb3plbj1UcnVlLCBzbG90cz1UcnVlKQpjbGFzcyBMYW5kbG9ja1BvbGljeToKICAgICIiIkFsbG93bGlzdCBwb2xpY3kgZm9yIExhbmRsb2NrLiIiIgoKICAgIHJvX3BhdGhzOiB0dXBsZVtQYXRoLCAuLi5dID0gKCkKICAgIHJ3X3BhdGhzOiB0dXBsZVtQYXRoLCAuLi5dID0gKCkKCgpjbGFzcyBfUnVsZXNldEF0dHIoY3R5cGVzLlN0cnVjdHVyZSk6CiAgICBfZmllbGRzXyA9IFsKICAgICAgICAoImhhbmRsZWRfYWNjZXNzX2ZzIiwgY3R5cGVzLmNfdWludDY0KSwKICAgICAgICAoImhhbmRsZWRfYWNjZXNzX25ldCIsIGN0eXBlcy5jX3VpbnQ2NCksCiAgICBdCgoKY2xhc3MgX1BhdGhCZW5lYXRoQXR0cihjdHlwZXMuU3RydWN0dXJlKToKICAgIF9wYWNrXyA9IDEKICAgIF9maWVsZHNfID0gWwogICAgICAgICgiYWxsb3dlZF9hY2Nlc3MiLCBjdHlwZXMuY191aW50NjQpLAogICAgICAgICgicGFyZW50X2ZkIiwgY3R5cGVzLmNfaW50MzIpLAogICAgXQoKCl9MSUJDOiBPcHRpb25hbFtjdHlwZXMuQ0RMTF0gPSBOb25lCl9TWVNDQUxMX05SOiBPcHRpb25hbFtkaWN0W3N0ciwgaW50XV0gPSBOb25lCgoKZGVmIF9nZXRfbGliYygpIC0+IGN0eXBlcy5DRExMOgogICAgZ2xvYmFsIF9MSUJDCiAgICBpZiBfTElCQyBpcyBOb25lOgogICAgICAgIGxpYmMgPSBjdHlwZXMuQ0RMTCgibGliYy5zby42IiwgdXNlX2Vycm5vPVRydWUpCiAgICAgICAgbGliYy5zeXNjYWxsLnJlc3R5cGUgPSBjdHlwZXMuY19sb25nCiAgICAgICAgbGliYy5wcmN0bC5yZXN0eXBlID0gY3R5cGVzLmNfaW50CiAgICAgICAgX0xJQkMgPSBsaWJjCiAgICByZXR1cm4gX0xJQkMKCgpkZWYgX3N5c2NhbGxfbnVtYmVycygpIC0+IGRpY3Rbc3RyLCBpbnRdOgogICAgbmFtZXMgPSBbCiAgICAgICAgImxhbmRsb2NrX2NyZWF0ZV9ydWxlc2V0IiwKICAgICAgICAibGFuZGxvY2tfYWRkX3J1bGUiLAogICAgICAgICJsYW5kbG9ja19yZXN0cmljdF9zZWxmIiwKICAgIF0KICAgIGhlYWRlcl9jYW5kaWRhdGVzID0gWwogICAgICAgIFBhdGgoIi91c3IvaW5jbHVkZS9hc20tZ2VuZXJpYy91bmlzdGQuaCIpLAogICAgICAgIFBhdGgoIi91c3IvaW5jbHVkZS94ODZfNjQtbGludXgtZ251L2FzbS91bmlzdGRfNjQuaCIpLAogICAgICAgIFBhdGgoIi91c3IvaW5jbHVkZS9hYXJjaDY0LWxpbnV4LWdudS9hc20vdW5pc3RkLmgiKSwKICAgIF0KICAgIHBhdHRlcm4gPSByZS5jb21waWxlKHIiXiNkZWZpbmVcXHMrX19OUl8oP1A8bmFtZT5bYS16MC05X10rKVxccysoP1A8bnI+XFxkKylcXHMqJCIpCiAgICBmb3VuZDogZGljdFtzdHIsIGludF0gPSB7fQogICAgZm9yIGhlYWRlciBpbiBoZWFkZXJfY2FuZGlkYXRlczoKICAgICAgICB0cnk6CiAgICAgICAgICAgIGNvbnRlbnQgPSBoZWFkZXIucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIsIGVycm9ycz0iaWdub3JlIikKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgY29udGludWUKICAgICAgICBmb3IgbGluZSBpbiBjb250ZW50LnNwbGl0bGluZXMoKToKICAgICAgICAgICAgbWF0Y2ggPSBwYXR0ZXJuLm1hdGNoKGxpbmUuc3RyaXAoKSkKICAgICAgICAgICAgaWYgbm90IG1hdGNoOgogICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgbmFtZSA9IG1hdGNoLmdyb3VwKCJuYW1lIikKICAgICAgICAgICAgaWYgbmFtZSBpbiBuYW1lczoKICAgICAgICAgICAgICAgIGZvdW5kW25hbWVdID0gaW50KG1hdGNoLmdyb3VwKCJuciIpKQogICAgICAgIGlmIGFsbChuYW1lIGluIGZvdW5kIGZvciBuYW1lIGluIG5hbWVzKToKICAgICAgICAgICAgYnJlYWsKCiAgICBpZiBhbGwobmFtZSBpbiBmb3VuZCBmb3IgbmFtZSBpbiBuYW1lcyk6CiAgICAgICAgcmV0dXJuIGZvdW5kCgogICAgYXJjaCA9IHBsYXRmb3JtLm1hY2hpbmUoKS5sb3dlcigpCiAgICBpZiBhcmNoIGluIHsieDg2XzY0IiwgImFtZDY0IiwgImFhcmNoNjQiLCAiYXJtNjQifToKICAgICAgICByZXR1cm4gewogICAgICAgICAgICAibGFuZGxvY2tfY3JlYXRlX3J1bGVzZXQiOiA0NDQsCiAgICAgICAgICAgICJsYW5kbG9ja19hZGRfcnVsZSI6IDQ0NSwKICAgICAgICAgICAgImxhbmRsb2NrX3Jlc3RyaWN0X3NlbGYiOiA0NDYsCiAgICAgICAgfQogICAgcmFpc2UgTGFuZGxvY2tVbmF2YWlsYWJsZSgKICAgICAgICAidW5hYmxlIHRvIGRldGVybWluZSBMYW5kbG9jayBzeXNjYWxsIG51bWJlcnMgZm9yIHRoaXMgYXJjaGl0ZWN0dXJlIgogICAgKQoKCmRlZiBfZ2V0X3N5c2NhbGxfbnVtYmVycygpIC0+IGRpY3Rbc3RyLCBpbnRdOgogICAgZ2xvYmFsIF9TWVNDQUxMX05SCiAgICBpZiBfU1lTQ0FMTF9OUiBpcyBOb25lOgogICAgICAgIF9TWVNDQUxMX05SID0gX3N5c2NhbGxfbnVtYmVycygpCiAgICByZXR1cm4gX1NZU0NBTExfTlIKCgpkZWYgX3JhaXNlX2Vycm5vKHByZWZpeDogc3RyKSAtPiBOb25lOgogICAgZXJyID0gY3R5cGVzLmdldF9lcnJubygpCiAgICByYWlzZSBPU0Vycm9yKGVyciwgZiJ7cHJlZml4fToge29zLnN0cmVycm9yKGVycil9IikKCgpkZWYgX3N5c2NhbGwobnI6IGludCwgKmFyZ3M6IG9iamVjdCkgLT4gaW50OgogICAgbGliYyA9IF9nZXRfbGliYygpCiAgICByZXN1bHQgPSBsaWJjLnN5c2NhbGwoY3R5cGVzLmNfbG9uZyhuciksICphcmdzKQogICAgaWYgcmVzdWx0ID09IC0xOgogICAgICAgIF9yYWlzZV9lcnJubyhmInN5c2NhbGwoe25yfSkgZmFpbGVkIikKICAgIHJldHVybiBpbnQocmVzdWx0KQoKCmRlZiBfcHJjdGwob3B0aW9uOiBpbnQsIGFyZzI6IGludCwgYXJnMzogaW50ID0gMCwgYXJnNDogaW50ID0gMCwgYXJnNTogaW50ID0gMCkgLT4gTm9uZToKICAgIGxpYmMgPSBfZ2V0X2xpYmMoKQogICAgcmVzdWx0ID0gbGliYy5wcmN0bChvcHRpb24sIGFyZzIsIGFyZzMsIGFyZzQsIGFyZzUpCiAgICBpZiByZXN1bHQgIT0gMDoKICAgICAgICBfcmFpc2VfZXJybm8oInByY3RsIGZhaWxlZCIpCgoKZGVmIGxhbmRsb2NrX2FiaV92ZXJzaW9uKCkgLT4gaW50OgogICAgaWYgcGxhdGZvcm0uc3lzdGVtKCkubG93ZXIoKSAhPSAibGludXgiOgogICAgICAgIHJhaXNlIExhbmRsb2NrVW5hdmFpbGFibGUoIkxhbmRsb2NrIGlzIG9ubHkgYXZhaWxhYmxlIG9uIExpbnV4IikKICAgIHN5c2NhbGxfbnIgPSBfZ2V0X3N5c2NhbGxfbnVtYmVycygpCiAgICB0cnk6CiAgICAgICAgYWJpID0gX3N5c2NhbGwoCiAgICAgICAgICAgIHN5c2NhbGxfbnJbImxhbmRsb2NrX2NyZWF0ZV9ydWxlc2V0Il0sCiAgICAgICAgICAgIGN0eXBlcy5jX3ZvaWRfcCgwKSwKICAgICAgICAgICAgY3R5cGVzLmNfc2l6ZV90KDApLAogICAgICAgICAgICBjdHlwZXMuY191aW50MzIoX0xBTkRMT0NLX0NSRUFURV9SVUxFU0VUX1ZFUlNJT04pLAogICAgICAgICkKICAgIGV4Y2VwdCBPU0Vycm9yIGFzIGV4YzoKICAgICAgICByYWlzZSBMYW5kbG9ja1VuYXZhaWxhYmxlKAogICAgICAgICAgICAiTGFuZGxvY2sgaXMgdW5hdmFpbGFibGUgKGtlcm5lbCB0b28gb2xkIG9yIGRpc2FibGVkKSIKICAgICAgICApIGZyb20gZXhjCiAgICBpZiBhYmkgPD0gMDoKICAgICAgICByYWlzZSBMYW5kbG9ja1VuYXZhaWxhYmxlKGYiaW52YWxpZCBMYW5kbG9jayBBQkkgdmVyc2lvbjoge2FiaX0iKQogICAgcmV0dXJuIGFiaQoKCmRlZiBfc3VwcG9ydGVkX2ZzX3JpZ2h0c19mb3JfYWJpKGFiaTogaW50KSAtPiBpbnQ6CiAgICAjIHYxIHVwIHRvIGJpdCAxMiwgdjIgYWRkcyBiaXQgMTMsIHYzIGFkZHMgYml0IDE0CiAgICB2MSA9ICgxIDw8IDEzKSAtIDEKICAgIHYyID0gKDEgPDwgMTQpIC0gMQogICAgdjMgPSAoMSA8PCAxNSkgLSAxCiAgICBpZiBhYmkgPD0gMToKICAgICAgICByZXR1cm4gdjEKICAgIGlmIGFiaSA9PSAyOgogICAgICAgIHJldHVybiB2MgogICAgcmV0dXJuIHYzCgoKZGVmIF9ub3JtYWxpemVfcGF0aHMocGF0aHM6IEl0ZXJhYmxlW1BhdGhdKSAtPiBsaXN0W1BhdGhdOgogICAgbm9ybWFsaXplZDogbGlzdFtQYXRoXSA9IFtdCiAgICBzZWVuOiBzZXRbc3RyXSA9IHNldCgpCiAgICBmb3IgcmF3IGluIHBhdGhzOgogICAgICAgIGlmIHJhdyBpcyBOb25lOgogICAgICAgICAgICBjb250aW51ZQogICAgICAgIHBhdGggPSBQYXRoKHJhdykuZXhwYW5kdXNlcigpCiAgICAgICAgdHJ5OgogICAgICAgICAgICByZXNvbHZlZCA9IHBhdGgucmVzb2x2ZSgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJlc29sdmVkID0gcGF0aAogICAgICAgIGtleSA9IHN0cihyZXNvbHZlZCkKICAgICAgICBpZiBub3Qga2V5IG9yIGtleSBpbiBzZWVuOgogICAgICAgICAgICBjb250aW51ZQogICAgICAgIHNlZW4uYWRkKGtleSkKICAgICAgICBub3JtYWxpemVkLmFwcGVuZChyZXNvbHZlZCkKICAgIHJldHVybiBub3JtYWxpemVkCgoKZGVmIF9hZGRfcGF0aF9ydWxlKCosIHJ1bGVzZXRfZmQ6IGludCwgcGF0aDogUGF0aCwgYWxsb3dlZF9hY2Nlc3M6IGludCkgLT4gTm9uZToKICAgIHRhcmdldCA9IHBhdGgKICAgIHRyeToKICAgICAgICBpZiB0YXJnZXQuaXNfZmlsZSgpOgogICAgICAgICAgICB0YXJnZXQgPSB0YXJnZXQucGFyZW50CiAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICB0YXJnZXQgPSB0YXJnZXQucGFyZW50CgogICAgZmQgPSBvcy5vcGVuKHN0cih0YXJnZXQpLCBvcy5PX1BBVEggfCBvcy5PX0NMT0VYRUMpCiAgICB0cnk6CiAgICAgICAgYXR0ciA9IF9QYXRoQmVuZWF0aEF0dHIoKQogICAgICAgIGF0dHIuYWxsb3dlZF9hY2Nlc3MgPSBjdHlwZXMuY191aW50NjQoaW50KGFsbG93ZWRfYWNjZXNzKSkKICAgICAgICBhdHRyLnBhcmVudF9mZCA9IGN0eXBlcy5jX2ludDMyKGZkKQogICAgICAgIHN5c2NhbGxfbnIgPSBfZ2V0X3N5c2NhbGxfbnVtYmVycygpCiAgICAgICAgX3N5c2NhbGwoCiAgICAgICAgICAgIHN5c2NhbGxfbnJbImxhbmRsb2NrX2FkZF9ydWxlIl0sCiAgICAgICAgICAgIGN0eXBlcy5jX2ludChydWxlc2V0X2ZkKSwKICAgICAgICAgICAgY3R5cGVzLmNfaW50KF9MQU5ETE9DS19SVUxFX1BBVEhfQkVORUFUSCksCiAgICAgICAgICAgIGN0eXBlcy5ieXJlZihhdHRyKSwKICAgICAgICAgICAgY3R5cGVzLmNfdWludDMyKDApLAogICAgICAgICkKICAgIGZpbmFsbHk6CiAgICAgICAgb3MuY2xvc2UoZmQpCgoKZGVmIF9jcmVhdGVfcnVsZXNldF9mZCgqLCBoYW5kbGVkX2FjY2Vzc19mczogaW50KSAtPiBpbnQ6CiAgICBhdHRyID0gX1J1bGVzZXRBdHRyKCkKICAgIGF0dHIuaGFuZGxlZF9hY2Nlc3NfZnMgPSBjdHlwZXMuY191aW50NjQoaW50KGhhbmRsZWRfYWNjZXNzX2ZzKSkKICAgIGF0dHIuaGFuZGxlZF9hY2Nlc3NfbmV0ID0gY3R5cGVzLmNfdWludDY0KDApCiAgICBzeXNjYWxsX25yID0gX2dldF9zeXNjYWxsX251bWJlcnMoKQogICAgcmV0dXJuIF9zeXNjYWxsKAogICAgICAgIHN5c2NhbGxfbnJbImxhbmRsb2NrX2NyZWF0ZV9ydWxlc2V0Il0sCiAgICAgICAgY3R5cGVzLmJ5cmVmKGF0dHIpLAogICAgICAgIGN0eXBlcy5jX3NpemVfdChjdHlwZXMuc2l6ZW9mKGF0dHIpKSwKICAgICAgICBjdHlwZXMuY191aW50MzIoMCksCiAgICApCgoKZGVmIGFwcGx5X2xhbmRsb2NrKHBvbGljeTogTGFuZGxvY2tQb2xpY3kpIC0+IGludDoKICAgICIiIkFwcGx5IExhbmRsb2NrIHBvbGljeSB0byB0aGUgY3VycmVudCBwcm9jZXNzLgoKICAgIFJldHVybnMgdGhlIGRldGVjdGVkIExhbmRsb2NrIEFCSSB2ZXJzaW9uLgogICAgIiIiCgogICAgYWJpID0gbGFuZGxvY2tfYWJpX3ZlcnNpb24oKQogICAgc3VwcG9ydGVkX3JpZ2h0cyA9IF9zdXBwb3J0ZWRfZnNfcmlnaHRzX2Zvcl9hYmkoYWJpKQoKICAgIHJvX2FjY2VzcyA9IF9MQU5ETE9DS19BQ0NFU1NfRlNfUkVBRF9GSUxFIHwgX0xBTkRMT0NLX0FDQ0VTU19GU19SRUFEX0RJUgogICAgcndfYWNjZXNzID0gKAogICAgICAgIHJvX2FjY2VzcwogICAgICAgIHwgX0xBTkRMT0NLX0FDQ0VTU19GU19XUklURV9GSUxFCiAgICAgICAgfCBfTEFORExPQ0tfQUNDRVNTX0ZTX1RSVU5DQVRFCiAgICAgICAgfCBfTEFORExPQ0tfQUNDRVNTX0ZTX01BS0VfRElSCiAgICAgICAgfCBfTEFORExPQ0tfQUNDRVNTX0ZTX01BS0VfUkVHCiAgICAgICAgfCBfTEFORExPQ0tfQUNDRVNTX0ZTX1JFTU9WRV9ESVIKICAgICAgICB8IF9MQU5ETE9DS19BQ0NFU1NfRlNfUkVNT1ZFX0ZJTEUKICAgICkKCiAgICByb19hY2Nlc3MgJj0gc3VwcG9ydGVkX3JpZ2h0cwogICAgcndfYWNjZXNzICY9IHN1cHBvcnRlZF9yaWdodHMKICAgIGhhbmRsZWRfYWNjZXNzX2ZzID0gcm9fYWNjZXNzIHwgcndfYWNjZXNzCiAgICBpZiBoYW5kbGVkX2FjY2Vzc19mcyA9PSAwOgogICAgICAgIHJhaXNlIExhbmRsb2NrVW5hdmFpbGFibGUoIkxhbmRsb2NrIHN1cHBvcnRlZCBmcyByaWdodHMgYXJlIGVtcHR5IikKCiAgICBydWxlc2V0X2ZkOiBPcHRpb25hbFtpbnRdID0gTm9uZQogICAgdHJ5OgogICAgICAgIHJ1bGVzZXRfZmQgPSBfY3JlYXRlX3J1bGVzZXRfZmQoaGFuZGxlZF9hY2Nlc3NfZnM9aGFuZGxlZF9hY2Nlc3NfZnMpCgogICAgICAgIGZvciBwYXRoIGluIF9ub3JtYWxpemVfcGF0aHMocG9saWN5LnJvX3BhdGhzKToKICAgICAgICAgICAgaWYgcGF0aC5leGlzdHMoKToKICAgICAgICAgICAgICAgIF9hZGRfcGF0aF9ydWxlKHJ1bGVzZXRfZmQ9cnVsZXNldF9mZCwgcGF0aD1wYXRoLCBhbGxvd2VkX2FjY2Vzcz1yb19hY2Nlc3MpCgogICAgICAgIGZvciBwYXRoIGluIF9ub3JtYWxpemVfcGF0aHMocG9saWN5LnJ3X3BhdGhzKToKICAgICAgICAgICAgaWYgcGF0aC5leGlzdHMoKToKICAgICAgICAgICAgICAgIF9hZGRfcGF0aF9ydWxlKHJ1bGVzZXRfZmQ9cnVsZXNldF9mZCwgcGF0aD1wYXRoLCBhbGxvd2VkX2FjY2Vzcz1yd19hY2Nlc3MpCgogICAgICAgIF9wcmN0bChfUFJfU0VUX05PX05FV19QUklWUywgMSkKICAgICAgICBzeXNjYWxsX25yID0gX2dldF9zeXNjYWxsX251bWJlcnMoKQogICAgICAgIF9zeXNjYWxsKAogICAgICAgICAgICBzeXNjYWxsX25yWyJsYW5kbG9ja19yZXN0cmljdF9zZWxmIl0sCiAgICAgICAgICAgIGN0eXBlcy5jX2ludChydWxlc2V0X2ZkKSwKICAgICAgICAgICAgY3R5cGVzLmNfdWludDMyKDApLAogICAgICAgICkKICAgICAgICByZXR1cm4gYWJpCiAgICBmaW5hbGx5OgogICAgICAgIGlmIHJ1bGVzZXRfZmQgaXMgbm90IE5vbmU6CiAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgIG9zLmNsb3NlKHJ1bGVzZXRfZmQpCiAgICAgICAgICAgIGV4Y2VwdCBPU0Vycm9yOgogICAgICAgICAgICAgICAgcGFzcwoKCl9fYWxsX18gPSBbCiAgICAiTGFuZGxvY2tFcnJvciIsCiAgICAiTGFuZGxvY2tQb2xpY3kiLAogICAgIkxhbmRsb2NrVW5hdmFpbGFibGUiLAogICAgImFwcGx5X2xhbmRsb2NrIiwKICAgICJsYW5kbG9ja19hYmlfdmVyc2lvbiIsCl0K
+"""Minimal Landlock helper used by standalone Codex loop agent."""
+
+from __future__ import annotations
+
+import ctypes
+import os
+import platform
+import re
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Iterable, Optional
+
+
+_LANDLOCK_CREATE_RULESET_VERSION = 1 << 0
+_LANDLOCK_RULE_PATH_BENEATH = 1
+
+# linux/landlock.h access rights
+_LANDLOCK_ACCESS_FS_WRITE_FILE = 1 << 1
+_LANDLOCK_ACCESS_FS_READ_FILE = 1 << 2
+_LANDLOCK_ACCESS_FS_READ_DIR = 1 << 3
+_LANDLOCK_ACCESS_FS_REMOVE_DIR = 1 << 4
+_LANDLOCK_ACCESS_FS_REMOVE_FILE = 1 << 5
+_LANDLOCK_ACCESS_FS_MAKE_DIR = 1 << 7
+_LANDLOCK_ACCESS_FS_MAKE_REG = 1 << 8
+_LANDLOCK_ACCESS_FS_TRUNCATE = 1 << 14
+
+# linux/prctl.h
+_PR_SET_NO_NEW_PRIVS = 38
+
+
+class LandlockError(RuntimeError):
+    """Base Landlock error."""
+
+
+class LandlockUnavailable(LandlockError):
+    """Raised when Landlock is unavailable."""
+
+
+@dataclass(frozen=True, slots=True)
+class LandlockPolicy:
+    """Allowlist policy for Landlock."""
+
+    ro_paths: tuple[Path, ...] = ()
+    rw_paths: tuple[Path, ...] = ()
+
+
+class _RulesetAttr(ctypes.Structure):
+    _fields_ = [
+        ("handled_access_fs", ctypes.c_uint64),
+        ("handled_access_net", ctypes.c_uint64),
+    ]
+
+
+class _PathBeneathAttr(ctypes.Structure):
+    _pack_ = 1
+    _fields_ = [
+        ("allowed_access", ctypes.c_uint64),
+        ("parent_fd", ctypes.c_int32),
+    ]
+
+
+_LIBC: Optional[ctypes.CDLL] = None
+_SYSCALL_NR: Optional[dict[str, int]] = None
+
+
+def _get_libc() -> ctypes.CDLL:
+    global _LIBC
+    if _LIBC is None:
+        libc = ctypes.CDLL("libc.so.6", use_errno=True)
+        libc.syscall.restype = ctypes.c_long
+        libc.prctl.restype = ctypes.c_int
+        _LIBC = libc
+    return _LIBC
+
+
+def _syscall_numbers() -> dict[str, int]:
+    names = [
+        "landlock_create_ruleset",
+        "landlock_add_rule",
+        "landlock_restrict_self",
+    ]
+    header_candidates = [
+        Path("/usr/include/asm-generic/unistd.h"),
+        Path("/usr/include/x86_64-linux-gnu/asm/unistd_64.h"),
+        Path("/usr/include/aarch64-linux-gnu/asm/unistd.h"),
+    ]
+    pattern = re.compile(r"^#define\\s+__NR_(?P<name>[a-z0-9_]+)\\s+(?P<nr>\\d+)\\s*$")
+    found: dict[str, int] = {}
+    for header in header_candidates:
+        try:
+            content = header.read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            continue
+        for line in content.splitlines():
+            match = pattern.match(line.strip())
+            if not match:
+                continue
+            name = match.group("name")
+            if name in names:
+                found[name] = int(match.group("nr"))
+        if all(name in found for name in names):
+            break
+
+    if all(name in found for name in names):
+        return found
+
+    arch = platform.machine().lower()
+    if arch in {"x86_64", "amd64", "aarch64", "arm64"}:
+        return {
+            "landlock_create_ruleset": 444,
+            "landlock_add_rule": 445,
+            "landlock_restrict_self": 446,
+        }
+    raise LandlockUnavailable(
+        "unable to determine Landlock syscall numbers for this architecture"
+    )
+
+
+def _get_syscall_numbers() -> dict[str, int]:
+    global _SYSCALL_NR
+    if _SYSCALL_NR is None:
+        _SYSCALL_NR = _syscall_numbers()
+    return _SYSCALL_NR
+
+
+def _raise_errno(prefix: str) -> None:
+    err = ctypes.get_errno()
+    raise OSError(err, f"{prefix}: {os.strerror(err)}")
+
+
+def _syscall(nr: int, *args: object) -> int:
+    libc = _get_libc()
+    result = libc.syscall(ctypes.c_long(nr), *args)
+    if result == -1:
+        _raise_errno(f"syscall({nr}) failed")
+    return int(result)
+
+
+def _prctl(option: int, arg2: int, arg3: int = 0, arg4: int = 0, arg5: int = 0) -> None:
+    libc = _get_libc()
+    result = libc.prctl(option, arg2, arg3, arg4, arg5)
+    if result != 0:
+        _raise_errno("prctl failed")
+
+
+def landlock_abi_version() -> int:
+    if platform.system().lower() != "linux":
+        raise LandlockUnavailable("Landlock is only available on Linux")
+    syscall_nr = _get_syscall_numbers()
+    try:
+        abi = _syscall(
+            syscall_nr["landlock_create_ruleset"],
+            ctypes.c_void_p(0),
+            ctypes.c_size_t(0),
+            ctypes.c_uint32(_LANDLOCK_CREATE_RULESET_VERSION),
+        )
+    except OSError as exc:
+        raise LandlockUnavailable(
+            "Landlock is unavailable (kernel too old or disabled)"
+        ) from exc
+    if abi <= 0:
+        raise LandlockUnavailable(f"invalid Landlock ABI version: {abi}")
+    return abi
+
+
+def _supported_fs_rights_for_abi(abi: int) -> int:
+    # v1 up to bit 12, v2 adds bit 13, v3 adds bit 14
+    v1 = (1 << 13) - 1
+    v2 = (1 << 14) - 1
+    v3 = (1 << 15) - 1
+    if abi <= 1:
+        return v1
+    if abi == 2:
+        return v2
+    return v3
+
+
+def _normalize_paths(paths: Iterable[Path]) -> list[Path]:
+    normalized: list[Path] = []
+    seen: set[str] = set()
+    for raw in paths:
+        if raw is None:
+            continue
+        path = Path(raw).expanduser()
+        try:
+            resolved = path.resolve()
+        except OSError:
+            resolved = path
+        key = str(resolved)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        normalized.append(resolved)
+    return normalized
+
+
+def _add_path_rule(*, ruleset_fd: int, path: Path, allowed_access: int) -> None:
+    target = path
+    try:
+        if target.is_file():
+            target = target.parent
+    except OSError:
+        target = target.parent
+
+    fd = os.open(str(target), os.O_PATH | os.O_CLOEXEC)
+    try:
+        attr = _PathBeneathAttr()
+        attr.allowed_access = ctypes.c_uint64(int(allowed_access))
+        attr.parent_fd = ctypes.c_int32(fd)
+        syscall_nr = _get_syscall_numbers()
+        _syscall(
+            syscall_nr["landlock_add_rule"],
+            ctypes.c_int(ruleset_fd),
+            ctypes.c_int(_LANDLOCK_RULE_PATH_BENEATH),
+            ctypes.byref(attr),
+            ctypes.c_uint32(0),
+        )
+    finally:
+        os.close(fd)
+
+
+def _create_ruleset_fd(*, handled_access_fs: int) -> int:
+    attr = _RulesetAttr()
+    attr.handled_access_fs = ctypes.c_uint64(int(handled_access_fs))
+    attr.handled_access_net = ctypes.c_uint64(0)
+    syscall_nr = _get_syscall_numbers()
+    return _syscall(
+        syscall_nr["landlock_create_ruleset"],
+        ctypes.byref(attr),
+        ctypes.c_size_t(ctypes.sizeof(attr)),
+        ctypes.c_uint32(0),
+    )
+
+
+def apply_landlock(policy: LandlockPolicy) -> int:
+    """Apply Landlock policy to the current process.
+
+    Returns the detected Landlock ABI version.
+    """
+
+    abi = landlock_abi_version()
+    supported_rights = _supported_fs_rights_for_abi(abi)
+
+    ro_access = _LANDLOCK_ACCESS_FS_READ_FILE | _LANDLOCK_ACCESS_FS_READ_DIR
+    rw_access = (
+        ro_access
+        | _LANDLOCK_ACCESS_FS_WRITE_FILE
+        | _LANDLOCK_ACCESS_FS_TRUNCATE
+        | _LANDLOCK_ACCESS_FS_MAKE_DIR
+        | _LANDLOCK_ACCESS_FS_MAKE_REG
+        | _LANDLOCK_ACCESS_FS_REMOVE_DIR
+        | _LANDLOCK_ACCESS_FS_REMOVE_FILE
+    )
+
+    ro_access &= supported_rights
+    rw_access &= supported_rights
+    handled_access_fs = ro_access | rw_access
+    if handled_access_fs == 0:
+        raise LandlockUnavailable("Landlock supported fs rights are empty")
+
+    ruleset_fd: Optional[int] = None
+    try:
+        ruleset_fd = _create_ruleset_fd(handled_access_fs=handled_access_fs)
+
+        for path in _normalize_paths(policy.ro_paths):
+            if path.exists():
+                _add_path_rule(ruleset_fd=ruleset_fd, path=path, allowed_access=ro_access)
+
+        for path in _normalize_paths(policy.rw_paths):
+            if path.exists():
+                _add_path_rule(ruleset_fd=ruleset_fd, path=path, allowed_access=rw_access)
+
+        _prctl(_PR_SET_NO_NEW_PRIVS, 1)
+        syscall_nr = _get_syscall_numbers()
+        _syscall(
+            syscall_nr["landlock_restrict_self"],
+            ctypes.c_int(ruleset_fd),
+            ctypes.c_uint32(0),
+        )
+        return abi
+    finally:
+        if ruleset_fd is not None:
+            try:
+                os.close(ruleset_fd)
+            except OSError:
+                pass
+
+
+__all__ = [
+    "LandlockError",
+    "LandlockPolicy",
+    "LandlockUnavailable",
+    "apply_landlock",
+    "landlock_abi_version",
+]

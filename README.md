@@ -1,1 +1,187 @@
-IyBVU0FDT0FyZW5hCgpVU0FDT0FyZW5hIGlzIHRoZSBvZmZpY2lhbCBvcGVuLXNvdXJjZSBjb21wYW5pb24gY29kZWJhc2UgZm9yIHRoZSBJQ0xSIDIwMjYgcGFwZXIgKkNyZWRpdC1CdWRnZXRlZCBJQ1BDLVN0eWxlIENvZGluZzogV2hlbiBBZ2VudHMgTXVzdCBQYXkgZm9yIEV2ZXJ5IERlY2lzaW9uKi4gVGhpcyByZWxlYXNlIGtlZXBzIHRoZSBvcmlnaW5hbCBjb21wZXRpdGlvbiBzZXJ2ZXIsIGFnZW50IGludGVncmF0aW9uIGxheWVyLCBwYXBlciBjb25maWdzLCByZXBvcnRpbmcgdXRpbGl0aWVzLCBhbmQgcmVwcm9kdWN0aW9uIHNjcmlwdHMsIHdoaWxlIHJlcGxhY2luZyB0aGUgbGVnYWN5IHNlbGYtbWFpbnRhaW5lZCBPSiBzdGFjayB3aXRoIGEgSHlkcm8tYmFzZWQganVkZ2luZyBhbmQgcHJvYmxlbS1tYW5hZ2VtZW50IHdvcmtmbG93LgoKUGFwZXIgc3RhdHVzOiBQdWJsaXNoZWQgYXMgYSBjb25mZXJlbmNlIHBhcGVyIGF0IElDTFIgMjAyNi4KCiMjIFBhcGVyIENvbXBhbmlvbgoKLSBQYXBlcjogWypDcmVkaXQtQnVkZ2V0ZWQgSUNQQy1TdHlsZSBDb2Rpbmc6IFdoZW4gQWdlbnRzIE11c3QgUGF5IGZvciBFdmVyeSBEZWNpc2lvbipdKGh0dHBzOi8vYXJ4aXYub3JnL2Ficy8yNjA0LjEwMTgyKQotIEF1dGhvcnM6IExpbmdmZW5nIFpob3UsIEp1bmhhbyBTaGksIEppbiBHYW8sIERlcXVhbiBXYW5nCi0gUmVwb3NpdG9yeTogYGh0dHBzOi8vZ2l0aHViLmNvbS9tYXBsZS16aG91L1VTQUNPQXJlbmFfaHlkcm9gCi0gSnVkZ2UgaW5mcmFzdHJ1Y3R1cmU6IFtIeWRyb10oaHR0cHM6Ly9naXRodWIuY29tL2h5ZHJvLWRldi9IeWRybykKCiMjIEluc3RhbGxhdGlvbgoKMS4gQ2xvbmUgdGhpcyByZXBvc2l0b3J5OgoKYGBgYmFzaApnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL21hcGxlLXpob3UvVVNBQ09BcmVuYV9oeWRyby5naXQKY2QgVVNBQ09BcmVuYV9oeWRybwpgYGAKCjIuIEluc3RhbGwgYHV2YCBhbmQgc3luYyBQeXRob24gZGVwZW5kZW5jaWVzOgoKYGBgYmFzaApjdXJsIC1Mc1NmIGh0dHBzOi8vYXN0cmFsLnNoL3V2L2luc3RhbGwuc2ggfCBzaAp1diBzeW5jIC0tZGV2CmBgYAoKMy4gRG93bmxvYWQgdGhlIHJlbGVhc2VkIGFydGlmYWN0czoKCi0gSHlkcm8gYWRkb24gcGFja2FnZTogYGh0dHBzOi8vMWRydi5tcy91L2MvMWVmN2I3YmFjMGRhNTdlNi9JUURMazg0MEs3a0tRSWNhbnRzZHUyVnNBWFVVVlFzdUN4cWJrWU8wTDBzSnkwVT9lPUw2Z1h1RGAKLSBIeWRybyBwcm9ibGVtc2V0IHppcDogYGh0dHBzOi8vMWRydi5tcy91L2MvMWVmN2I3YmFjMGRhNTdlNi9JUUJ5Um4wUFNsaGdRWVMxa3dQamJTMkJBY0IxN3ZhZ1FmUGgxaklOZGMtTVpFbz9lPWRCbkhpSGAKLSBMb2NhbCByZXNvdXJjZSBkYXRhc2V0OiBgaHR0cHM6Ly8xZHJ2Lm1zL3UvYy8xZWY3YjdiYWMwZGE1N2U2L0lRQ3pYSDRzNEFiN1JKaVNrcHpia081ZUFkd3JFelJCTFcwNVJUbFF5V2tua0xvP2U9aFNqQjVYYAoKNC4gRXh0cmFjdCB0aGUgbG9jYWwgcmVzb3VyY2UgZGF0YXNldCBpbnRvIHRoZSByZXBvc2l0b3J5IHJvb3QuIFRoaXMgYXJjaGl2ZSBpcyBmb3IgaGludCBjb3Jwb3JhLCB0ZXh0Ym9vayByZXNvdXJjZXMsIGFuZCBndWlkZSBjb250ZW50LiBJdCBpcyBub3QgdGhlIEh5ZHJvIHByb2JsZW1zZXQgemlwIHVzZWQgZm9yIGp1ZGdpbmc6CgpgYGB0ZXh0CmRhdGFzZXQvCiAgY29ycHVzZXMvCiAgICBjcGJvb2tfdjIuanNvbgogICAgVVNBQ09fc3RyYXRlZ3kuanNvbgogIGRhdGFzZXRzLwogICAgVVNBQ09fZ3VpZGUuanNvbgogICAgdXNhY29fMjAyNV9kaWN0Lmpzb24gICMgb3B0aW9uYWwgY29tcGF0aWJpbGl0eSBtZXRhZGF0YQpgYGAKClNlZSBgZG9jcy9kYXRhc2V0Lm1kYCBmb3IgdGhlIGV4YWN0IGxheW91dCBhbmQgdmFsaWRhdGlvbiBjb21tYW5kcy4KCjUuIFByZXBhcmUgSHlkcm8gYXMgdGhlIGp1ZGdpbmcgYmFja2VuZC4gVGhlIHJlY29tbWVuZGVkIGZsb3cgaXM6CgpgYGBiYXNoCmdpdCBjbG9uZSBodHRwczovL2dpdGh1Yi5jb20vaHlkcm8tZGV2L0h5ZHJvLmdpdCAuLi9IeWRybwpgYGAKClRoZW4gZm9sbG93IGBkb2NzL29qLm1kYCB0bzoKCi0gaW5zdGFsbCBhbmQgc3RhcnQgSHlkcm8KLSBpbnN0YWxsIHRoZSByZWxlYXNlZCBgaHlkcm9fcGx1Z2luX3VzYWNvYXJlbmFgIGFkZG9uIHBhY2thZ2UKLSBjb25maWd1cmUgdGhlIGFkZG9uIHRva2VuIGFuZCBtb3VudGVkIEFQSSBiYXNlCi0gaW1wb3J0IHRoZSByZWxlYXNlZCBIeWRybyBwcm9ibGVtc2V0IHppcAoKIyMgUXVpY2sgU3RhcnQKCjEuIFN0YXJ0IEh5ZHJvIGFuZCBtYWtlIHN1cmUgdGhlIGFkZG9uIEFQSSBpcyByZWFjaGFibGUuIFdpdGggYSBkZWZhdWx0IGxvY2FsIEh5ZHJvIGRlcGxveW1lbnQsIFVTQUNPQXJlbmEgZXhwZWN0czoKCmBgYHRleHQKaHR0cDovLzEyNy4wLjAuMTo4ODg4L3VzYWNvYXJlbmEvYXBpL2hlYWx0aApgYGAKCjIuIFN0YXJ0IHRoZSBVU0FDT0FyZW5hIEFQSSBzZXJ2ZXI6CgpgYGBiYXNoCnV2IHJ1biBweXRob24gLW0gdXNhY29hcmVuYS5tYWluIFwKICAtLWNvbmZpZyBjb25maWcvc2VydmVyX2NvbmZpZy5qc29uIFwKICAtLWhvc3QgMC4wLjAuMCBcCiAgLS1wb3J0IDUwMDAgXAogIC0taHlkcm8tYmFzZS11cmwgaHR0cDovLzEyNy4wLjAuMTo4ODg4CmBgYAoKSWYgdGhlIEh5ZHJvIGFkZG9uIHVzZXMgYSB0b2tlbiwgYWxzbyBwYXNzOgoKYGBgYmFzaAp1diBydW4gcHl0aG9uIC1tIHVzYWNvYXJlbmEubWFpbiBcCiAgLS1jb25maWcgY29uZmlnL3NlcnZlcl9jb25maWcuanNvbiBcCiAgLS1oeWRyby1iYXNlLXVybCBodHRwOi8vMTI3LjAuMC4xOjg4ODggXAogIC0taHlkcm8tYXBpLXRva2VuICI8dG9rZW4+IgpgYGAKCjMuIEluIGFub3RoZXIgdGVybWluYWwsIHN0YXJ0IHRoZSBtYW5hZ2VtZW50IFVJOgoKYGBgYmFzaAp1diBydW4gcHl0aG9uIC1tIHVzYWNvYXJlbmEudWkuYXBwIFwKICAtLWhvc3QgMTI3LjAuMC4xIFwKICAtLXBvcnQgNTUwMApgYGAKCjQuIEV4cG9ydCBvZmZpY2lhbC1wcm92aWRlciBlbnZpcm9ubWVudCB2YXJpYWJsZXMuIEFsbCBjaGVja2VkLWluIHB1YmxpYyBjb25maWdzIGludGVudGlvbmFsbHkga2VlcCBgYXBpX2tleWAgYmxhbms6CgpgYGBiYXNoCmV4cG9ydCBPUEVOQUlfQkFTRV9VUkw9Imh0dHBzOi8vYXBpLm9wZW5haS5jb20iCmV4cG9ydCBPUEVOQUlfQVBJX0tFWT0iIgpleHBvcnQgR0VNSU5JX0JBU0VfVVJMPSJodHRwczovL2dlbmVyYXRpdmVsYW5ndWFnZS5nb29nbGVhcGlzLmNvbS9vcGVuYWkiCmV4cG9ydCBHRU1JTklfQVBJX0tFWT0iIgpleHBvcnQgQU5USFJPUElDX0JBU0VfVVJMPSJodHRwczovL2FwaS5hbnRocm9waWMuY29tIgpleHBvcnQgQU5USFJPUElDX0FQSV9LRVk9IiIKZXhwb3J0IERFRVBTRUVLX0JBU0VfVVJMPSJodHRwczovL2FwaS5kZWVwc2Vlay5jb20iCmV4cG9ydCBERUVQU0VFS19BUElfS0VZPSIiCmV4cG9ydCBNT09OU0hPVF9CQVNFX1VSTD0iaHR0cHM6Ly9hcGkubW9vbnNob3QuYWkiCmV4cG9ydCBNT09OU0hPVF9BUElfS0VZPSIiCmV4cG9ydCBEQVNIU0NPUEVfQkFTRV9VUkw9Imh0dHBzOi8vZGFzaHNjb3BlLmFsaXl1bmNzLmNvbS9jb21wYXRpYmxlLW1vZGUiCmV4cG9ydCBEQVNIU0NPUEVfQVBJX0tFWT0iIgpleHBvcnQgR0xNX0JBU0VfVVJMPSJodHRwczovL29wZW4uYmlnbW9kZWwuY24vYXBpL3BhYXMiCmV4cG9ydCBHTE1fQVBJX0tFWT0iIgpgYGAKCjUuIFJ1biBhIG1pbmltYWwgc2FuaXR5IGJlbmNobWFyazoKCmBgYGJhc2gKbWtkaXIgLXAgcnVucy9zYW5pdHkKdXYgcnVuIHB5dGhvbiBzY3JpcHRzL3J1bl9jb21wZXRpdGlvbi5weSBcCiAgLS1jb21wZXRpdGlvbi1jb25maWcgY29uZmlnL3BhcGVyL2NvbXBldGl0aW9uL21haW5fYWxwaGEwLmpzb24gXAogIC0tY29tcGV0aXRvcnMtY29uZmlnIGNvbmZpZy9wYXBlci9jb21wZXRpdG9ycy90aHJlZV9tb2RlbF9zYW5pdHkuanNvbiBcCiAgLS1wcm9ibGVtLWlkcyBjb25maWcvcGFwZXIvcHJvYmxlbXMvcXVhbGlmaWNhdGlvbl9mZWJydWFyeV8yMDI1Lmpzb24gXAogIC0tbG9nLWRpciBydW5zL3Nhbml0eS9sb2dzIFwKICAtLWNvbXBldGl0aW9uLWlkLW91dHB1dCBydW5zL3Nhbml0eS9jb21wZXRpdGlvbl9pZC50eHQKYGBgCgo2LiBFeHBvcnQgdGhlIGZpbmFsIGludGVsbGlnZW5jZSByZXBvcnQ6CgpgYGBiYXNoCkNPTVBFVElUSU9OX0lEPSIkKGNhdCBydW5zL3Nhbml0eS9jb21wZXRpdGlvbl9pZC50eHQpIgp1diBydW4gcHl0aG9uIHNjcmlwdHMvYmVuY2htYXJrX2NsaS5weSByZXBvcnQgXAogIC0tYXBpLWJhc2UgaHR0cDovLzEyNy4wLjAuMTo1MDAwIFwKICAtLWNvbXBldGl0aW9uLWlkICIkQ09NUEVUSVRJT05fSUQiIFwKICAtLW91dHB1dC1kaXIgcnVucy9zYW5pdHkvcmVwb3J0cwpgYGAKCjcuIEV4cG9ydCB0aGUgbWV0cmljIHRpbWVsaW5lOgoKYGBgYmFzaAp1diBydW4gcHl0aG9uIHNjcmlwdHMvZXhwb3J0X21ldHJpY3NfdGltZWxpbmUucHkgXAogIC0tYXBpLWJhc2UgaHR0cDovLzEyNy4wLjAuMTo1MDAwIFwKICAtLWNvbXBldGl0aW9uLWlkICIkQ09NUEVUSVRJT05fSUQiIFwKICAtLWludGVydmFsIDEwIFwKICAtLW91dHB1dC1kaXIgcnVucy9zYW5pdHkvdGltZWxpbmUKYGBgCgojIyBDaXRhdGlvbgoKSWYgeW91IHVzZSBVU0FDT0FyZW5hIG9yIGl0cyBwdWJsaWMgZXhwZXJpbWVudCBjb25maWdzLCBwbGVhc2UgY2l0ZToKCmBgYGJpYnRleApAaW5wcm9jZWVkaW5nc3t6aG91MjAyNmNyZWRpdGJ1ZGdldGVkLAogIHRpdGxlICAgICA9IHtDcmVkaXQtQnVkZ2V0ZWQgSUNQQy1TdHlsZSBDb2Rpbmc6IFdoZW4gQWdlbnRzIE11c3QgUGF5IGZvciBFdmVyeSBEZWNpc2lvbn0sCiAgYXV0aG9yICAgID0ge0xpbmdmZW5nIFpob3UgYW5kIEp1bmhhbyBTaGkgYW5kIEppbiBHYW8gYW5kIERlcXVhbiBXYW5nfSwKICBib29rdGl0bGUgPSB7VGhlIEZvdXJ0ZWVudGggSW50ZXJuYXRpb25hbCBDb25mZXJlbmNlIG9uIExlYXJuaW5nIFJlcHJlc2VudGF0aW9uc30sCiAgeWVhciAgICAgID0gezIwMjZ9LAogIG5vdGUgICAgICA9IHtQdWJsaXNoZWQgYXMgYSBjb25mZXJlbmNlIHBhcGVyIGF0IElDTFIgMjAyNn0sCiAgZXByaW50ICAgID0gezI2MDQuMTAxODJ9LAogIGFyY2hpdmVQcmVmaXggPSB7YXJYaXZ9LAogIHByaW1hcnlDbGFzcyA9IHtjcy5BSX0sCiAgdXJsICAgICAgID0ge2h0dHBzOi8vZ2l0aHViLmNvbS9tYXBsZS16aG91L1VTQUNPQXJlbmFfaHlkcm99Cn0KYGBgCgojIyBSZXBvc2l0b3J5IExheW91dAoKLSBgY29uZmlnL3BhcGVyL2NvbXBldGl0aW9uL2A6IGNvbXBldGl0aW9uLXJ1bGUgY29uZmlncyB1c2VkIGluIHRoZSBwYXBlcgotIGBjb25maWcvcGFwZXIvY29tcGV0aXRvcnMvYDogcHVibGljIGNvbXBldGl0b3IgY29uZmlncyB1c2VkIGluIHRoZSBwYXBlcgotIGBjb25maWcvcGFwZXIvcHJvYmxlbXMvYDogY29udGVzdCBwcm9ibGVtIGxpc3RzIGZvciBtYWluLCBxdWFsaWZpY2F0aW9uLCBhbmQgYXBwZW5kaXggZXhwZXJpbWVudHMKLSBgaHlkcm9fcGx1Z2luX3VzYWNvYXJlbmEvYDogSHlkcm8gYWRkb24gc291cmNlIHRoYXQgZXhwb3NlcyBtYWNoaW5lLWZhY2luZyBBUElzIGZvciBVU0FDT0FyZW5hCi0gYHNjcmlwdHMvaHlkcm8vbm9ybWFsaXplX2h5ZHJvX3Byb2JsZW1zZXQucHlgOiBpbmplY3RzIGFsaWFzIHRhZ3MgaW50byBhIEh5ZHJvIHByb2JsZW1zZXQgemlwCi0gYHNjcmlwdHMvcnVuX2NvbXBldGl0aW9uLnB5YDogc3RhbmRhcmQgbXVsdGktbW9kZWwgY29tcGV0aXRpb24gZW50cnlwb2ludAotIGBzY3JpcHRzL3J1bl9jb21wZXRpdGlvbl9mb3JfY29kZXgucHlgOiBjb21wZXRpdGlvbiBzZXR1cCBwbHVzIENvZGV4IHBhcnRpY2lwYW50IHJlZ2lzdHJhdGlvbgotIGBzY3JpcHRzL2JlbmNobWFya19jbGkucHlgOiBiZW5jaG1hcmsgc2V0dXAgLyByZXBvcnQgLyBzbW9rZSBDTEkKLSBgZG9jcy9vai5tZGA6IEh5ZHJvIGRlcGxveW1lbnQsIGFkZG9uIGluc3RhbGxhdGlvbiwgYW5kIHByb2JsZW1zZXQgaW1wb3J0IGd1aWRlCi0gYGRvY3MvcXVpY2tzdGFydC5tZGA6IGVuZC10by1lbmQgbG9jYWwgc2V0dXAgZ3VpZGUKLSBgZG9jcy9wYXBlcl9yZXByb2R1Y3Rpb24ubWRgOiBuby1za2lwIHBhcGVyIHJlcHJvZHVjdGlvbiBndWlkZQoKIyMgU3VwcG9ydCAmIExpY2Vuc2UKCi0gQ29kZSBsaWNlbnNlOiBNSVQsIHNlZSBgTElDRU5TRWAKLSBSZWxlYXNlZCBhcnRpZmFjdCBsaW5rcyBhcmUgbGlzdGVkIGFib3ZlIGFuZCBkZXBsb3ltZW50IGRldGFpbHMgbGl2ZSBpbiBgZG9jcy9vai5tZGAsIGBkb2NzL2RhdGFzZXQubWRgLCBhbmQgYGRvY3MvcXVpY2tzdGFydC5tZGAKLSBEYXRhc2V0IGFuZCBwcm9ibGVtIGNvbnRlbnQgdXNhZ2UgbXVzdCBjb250aW51ZSB0byBmb2xsb3cgdGhlIG9yaWdpbmFsIGxpY2Vuc2luZyB0ZXJtcyBvZiB0aGUgcmVsZWFzZWQgVVNBQ08gbWF0ZXJpYWxzIGFuZCB0aGlyZC1wYXJ0eSBjb3Jwb3JhOyBzZWUgYGRvY3MvZGF0YXNldC5tZGAKLSBGb3IgZXhhY3QgZXhwZXJpbWVudCBjb21tYW5kcyBhbmQgcGFwZXItYWxpZ25lZCByZXByb2R1Y3Rpb24gZmxvdywgc3RhcnQgd2l0aCBgZG9jcy9wYXBlcl9yZXByb2R1Y3Rpb24ubWRgCi0gRm9yIHJlbGVhc2UgYXVkaXQgc2NvcGUgYW5kIHBhY2thZ2luZyBleHBlY3RhdGlvbnMsIHNlZSBgZG9jcy9yZWxlYXNlL2AK
+# USACOArena
+
+USACOArena is the official open-source companion codebase for the ICLR 2026 paper *Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision*. This release keeps the original competition server, agent integration layer, paper configs, reporting utilities, and reproduction scripts, while replacing the legacy self-maintained OJ stack with a Hydro-based judging and problem-management workflow.
+
+Paper status: Published as a conference paper at ICLR 2026.
+
+## Paper Companion
+
+- Paper: [*Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision*](https://arxiv.org/abs/2604.10182)
+- Authors: Lingfeng Zhou, Junhao Shi, Jin Gao, Dequan Wang
+- Repository: `https://github.com/maple-zhou/USACOArena_hydro`
+- Judge infrastructure: [Hydro](https://github.com/hydro-dev/Hydro)
+
+## Installation
+
+1. Clone this repository:
+
+```bash
+git clone https://github.com/maple-zhou/USACOArena_hydro.git
+cd USACOArena_hydro
+```
+
+2. Install `uv` and sync Python dependencies:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv sync --dev
+```
+
+3. Download the released artifacts:
+
+- Hydro addon package: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDLk840K7kKQIcantsdu2VsAXUUVQsuCxqbkYO0L0sJy0U?e=L6gXuD`
+- Hydro problemset zip: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQByRn0PSlhgQYS1kwPjbS2BAcB17vagQfPh1jINdc-MZEo?e=dBnHiH`
+- Local resource dataset: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQCzXH4s4Ab7RJiSkpzbkO5eAdwrEzRBLW05RTlQyWknkLo?e=hSjB5X`
+
+4. Extract the local resource dataset into the repository root. This archive is for hint corpora, textbook resources, and guide content. It is not the Hydro problemset zip used for judging:
+
+```text
+dataset/
+  corpuses/
+    cpbook_v2.json
+    USACO_strategy.json
+  datasets/
+    USACO_guide.json
+    usaco_2025_dict.json  # optional compatibility metadata
+```
+
+See `docs/dataset.md` for the exact layout and validation commands.
+
+5. Prepare Hydro as the judging backend. The recommended flow is:
+
+```bash
+git clone https://github.com/hydro-dev/Hydro.git ../Hydro
+```
+
+Then follow `docs/oj.md` to:
+
+- install and start Hydro
+- install the released `hydro_plugin_usacoarena` addon package
+- configure the addon token and mounted API base
+- import the released Hydro problemset zip
+
+## Quick Start
+
+1. Start Hydro and make sure the addon API is reachable. With a default local Hydro deployment, USACOArena expects:
+
+```text
+http://127.0.0.1:8888/usacoarena/api/health
+```
+
+2. Start the USACOArena API server:
+
+```bash
+uv run python -m usacoarena.main \
+  --config config/server_config.json \
+  --host 0.0.0.0 \
+  --port 5000 \
+  --hydro-base-url http://127.0.0.1:8888
+```
+
+If the Hydro addon uses a token, also pass:
+
+```bash
+uv run python -m usacoarena.main \
+  --config config/server_config.json \
+  --hydro-base-url http://127.0.0.1:8888 \
+  --hydro-api-token "<token>"
+```
+
+3. In another terminal, start the management UI:
+
+```bash
+uv run python -m usacoarena.ui.app \
+  --host 127.0.0.1 \
+  --port 5500
+```
+
+4. Export official-provider environment variables. All checked-in public configs intentionally keep `api_key` blank:
+
+```bash
+export OPENAI_BASE_URL="https://api.openai.com"
+export OPENAI_API_KEY=""
+export GEMINI_BASE_URL="https://generativelanguage.googleapis.com/openai"
+export GEMINI_API_KEY=""
+export ANTHROPIC_BASE_URL="https://api.anthropic.com"
+export ANTHROPIC_API_KEY=""
+export DEEPSEEK_BASE_URL="https://api.deepseek.com"
+export DEEPSEEK_API_KEY=""
+export MOONSHOT_BASE_URL="https://api.moonshot.ai"
+export MOONSHOT_API_KEY=""
+export DASHSCOPE_BASE_URL="https://dashscope.aliyuncs.com/compatible-mode"
+export DASHSCOPE_API_KEY=""
+export GLM_BASE_URL="https://open.bigmodel.cn/api/paas"
+export GLM_API_KEY=""
+```
+
+5. Run a minimal sanity benchmark:
+
+```bash
+mkdir -p runs/sanity
+uv run python scripts/run_competition.py \
+  --competition-config config/paper/competition/main_alpha0.json \
+  --competitors-config config/paper/competitors/three_model_sanity.json \
+  --problem-ids config/paper/problems/qualification_february_2025.json \
+  --log-dir runs/sanity/logs \
+  --competition-id-output runs/sanity/competition_id.txt
+```
+
+6. Export the final intelligence report:
+
+```bash
+COMPETITION_ID="$(cat runs/sanity/competition_id.txt)"
+uv run python scripts/benchmark_cli.py report \
+  --api-base http://127.0.0.1:5000 \
+  --competition-id "$COMPETITION_ID" \
+  --output-dir runs/sanity/reports
+```
+
+7. Export the metric timeline:
+
+```bash
+uv run python scripts/export_metrics_timeline.py \
+  --api-base http://127.0.0.1:5000 \
+  --competition-id "$COMPETITION_ID" \
+  --interval 10 \
+  --output-dir runs/sanity/timeline
+```
+
+## Citation
+
+If you use USACOArena or its public experiment configs, please cite:
+
+```bibtex
+@inproceedings{zhou2026creditbudgeted,
+  title     = {Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision},
+  author    = {Lingfeng Zhou and Junhao Shi and Jin Gao and Dequan Wang},
+  booktitle = {The Fourteenth International Conference on Learning Representations},
+  year      = {2026},
+  note      = {Published as a conference paper at ICLR 2026},
+  eprint    = {2604.10182},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.AI},
+  url       = {https://github.com/maple-zhou/USACOArena_hydro}
+}
+```
+
+## Repository Layout
+
+- `config/paper/competition/`: competition-rule configs used in the paper
+- `config/paper/competitors/`: public competitor configs used in the paper
+- `config/paper/problems/`: contest problem lists for main, qualification, and appendix experiments
+- `hydro_plugin_usacoarena/`: Hydro addon source that exposes machine-facing APIs for USACOArena
+- `scripts/hydro/normalize_hydro_problemset.py`: injects alias tags into a Hydro problemset zip
+- `scripts/run_competition.py`: standard multi-model competition entrypoint
+- `scripts/run_competition_for_codex.py`: competition setup plus Codex participant registration
+- `scripts/benchmark_cli.py`: benchmark setup / report / smoke CLI
+- `docs/oj.md`: Hydro deployment, addon installation, and problemset import guide
+- `docs/quickstart.md`: end-to-end local setup guide
+- `docs/paper_reproduction.md`: no-skip paper reproduction guide
+
+## Support & License
+
+- Code license: MIT, see `LICENSE`
+- Released artifact links are listed above and deployment details live in `docs/oj.md`, `docs/dataset.md`, and `docs/quickstart.md`
+- Dataset and problem content usage must continue to follow the original licensing terms of the released USACO materials and third-party corpora; see `docs/dataset.md`
+- For exact experiment commands and paper-aligned reproduction flow, start with `docs/paper_reproduction.md`
+- For release audit scope and packaging expectations, see `docs/release/`

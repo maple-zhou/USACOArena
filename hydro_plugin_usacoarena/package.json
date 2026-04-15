@@ -1,1 +1,24 @@
-ewogICJuYW1lIjogIkB1c2Fjb2FyZW5hL2h5ZHJvLXBsdWdpbiIsCiAgInZlcnNpb24iOiAiMC4xLjAiLAogICJkZXNjcmlwdGlvbiI6ICJIeWRybyBhZGRvbiBleHBvc2luZyBtYWNoaW5lLWZhY2luZyBBUElzIGZvciBVU0FDT0FyZW5hLiIsCiAgIm1haW4iOiAiaW5kZXgudHMiLAogICJyZXBvc2l0b3J5IjogImh0dHBzOi8vZ2l0aHViLmNvbS9tYXBsZS16aG91L1VTQUNPQXJlbmFfaHlkcm8iLAogICJsaWNlbnNlIjogIk1JVCIsCiAgImtleXdvcmRzIjogWwogICAgImh5ZHJvb2oiLAogICAgImh5ZHJvIiwKICAgICJ1c2Fjb2FyZW5hIiwKICAgICJvbmxpbmUtanVkZ2UiLAogICAgInBsdWdpbiIKICBdLAogICJlbmdpbmVzIjogewogICAgIm5vZGUiOiAiPj0yMiIKICB9LAogICJwZWVyRGVwZW5kZW5jaWVzIjogewogICAgImh5ZHJvb2oiOiAiKiIKICB9LAogICJkZXBlbmRlbmNpZXMiOiB7CiAgICAiaHlkcm9vaiI6ICIqIgogIH0KfQo=
+{
+  "name": "@usacoarena/hydro-plugin",
+  "version": "0.1.0",
+  "description": "Hydro addon exposing machine-facing APIs for USACOArena.",
+  "main": "index.ts",
+  "repository": "https://github.com/maple-zhou/USACOArena_hydro",
+  "license": "MIT",
+  "keywords": [
+    "hydrooj",
+    "hydro",
+    "usacoarena",
+    "online-judge",
+    "plugin"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "peerDependencies": {
+    "hydrooj": "*"
+  },
+  "dependencies": {
+    "hydrooj": "*"
+  }
+}

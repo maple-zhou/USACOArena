@@ -1,1 +1,40 @@
-IyBVU0FDT0FyZW5hIEh5ZHJvIEFkZG9uCgpUaGlzIGRpcmVjdG9yeSBpcyB0aGUgSHlkcm8gYWRkb24gc291cmNlIHNoaXBwZWQgd2l0aCBgVVNBQ09BcmVuYV9oeWRyb2AuCgojIyBXaGF0IEl0IERvZXMKClRoZSBhZGRvbiBhZGRzIGEgbWFjaGluZS1mYWNpbmcgQVBJIGxheWVyIG9uIHRvcCBvZiBIeWRybyBzbyB0aGF0IFVTQUNPQXJlbmEgY2FuOgoKLSBsaXN0IGF2YWlsYWJsZSBwcm9ibGVtcwotIHJlc29sdmUgcGFwZXItZmFjaW5nIGxvbmcgcHJvYmxlbSBJRHMgdmlhIHRhZ3MKLSBmZXRjaCBwcm9ibGVtIG1ldGFkYXRhIGFuZCBwdWJsaWMgc2FtcGxlcwotIHN1Ym1pdCBvZmZpY2lhbCBzb2x1dGlvbnMKLSBwb2xsIHJlY29yZHMKLSBydW4gSHlkcm8tYmFja2VkIHByZXRlc3RzIG9uIGN1c3RvbSBpbnB1dAoKIyMgSW5zdGFsbAoKRnJvbSB0aGUgSHlkcm8gaG9zdDoKCmBgYGJhc2gKaHlkcm9vaiBhZGRvbiBhZGQgL3BhdGgvdG8vVVNBQ09BcmVuYV9oeWRyby9oeWRyb19wbHVnaW5fdXNhY29hcmVuYQpgYGAKClRoZW4gcmVzdGFydCBIeWRyby4KCiMjIFJlcXVpcmVkIEh5ZHJvIFNldHRpbmdzCgotIGB1c2Fjb2FyZW5hSHlkcm8uYXBpQmFzZWAKLSBgdXNhY29hcmVuYUh5ZHJvLmFwaVRva2VuYAoKUmVjb21tZW5kZWQgdmFsdWVzOgoKYGBgdGV4dAp1c2Fjb2FyZW5hSHlkcm8uYXBpQmFzZT0vdXNhY29hcmVuYS9hcGkKdXNhY29hcmVuYUh5ZHJvLmFwaVRva2VuPTxzdHJvbmctcmFuZG9tLXRva2VuPgpgYGAKCiMjIFJlbGVhc2UgUGFja2FnaW5nCgpUaGlzIGFkZG9uIGlzIGludGVudGlvbmFsbHkga2VwdCBhcyBhIHN0YW5kYWxvbmUgZGlyZWN0b3J5IHNvIGl0IGNhbiBiZSBhcmNoaXZlZCBhbmQgcmVsZWFzZWQgaW5kZXBlbmRlbnRseSBmcm9tIHRoZSBtYWluIHJlcG9zaXRvcnkuIEEgc2ltcGxlIHJlbGVhc2UgYXJ0aWZhY3QgY2FuIGJlIGNyZWF0ZWQgYnkgcGFja2FnaW5nIHRoaXMgZm9sZGVyIGFzLWlzLgo=
+# USACOArena Hydro Addon
+
+This directory is the Hydro addon source shipped with `USACOArena_hydro`.
+
+## What It Does
+
+The addon adds a machine-facing API layer on top of Hydro so that USACOArena can:
+
+- list available problems
+- resolve paper-facing long problem IDs via tags
+- fetch problem metadata and public samples
+- submit official solutions
+- poll records
+- run Hydro-backed pretests on custom input
+
+## Install
+
+From the Hydro host:
+
+```bash
+hydrooj addon add /path/to/USACOArena_hydro/hydro_plugin_usacoarena
+```
+
+Then restart Hydro.
+
+## Required Hydro Settings
+
+- `usacoarenaHydro.apiBase`
+- `usacoarenaHydro.apiToken`
+
+Recommended values:
+
+```text
+usacoarenaHydro.apiBase=/usacoarena/api
+usacoarenaHydro.apiToken=<strong-random-token>
+```
+
+## Release Packaging
+
+This addon is intentionally kept as a standalone directory so it can be archived and released independently from the main repository. A simple release artifact can be created by packaging this folder as-is.

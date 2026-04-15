@@ -1,1 +1,41 @@
-ewogICJjb21wZXRpdGlvbiI6IHsKICAgICJpZCI6ICJtYWluLWRlYy1ydW4xIiwKICAgICJ0aXRsZSI6ICJNYWluIERlY2VtYmVyIFJ1biAxIiwKICAgICJkZXNjcmlwdGlvbiI6ICJmaXh0dXJlIiwKICAgICJwcm9ibGVtX2NvdW50IjogNAogIH0sCiAgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTA0LTE0VDAwOjAwOjAwWiIsCiAgInN1bW1hcnkiOiB7CiAgICAicGFydGljaXBhbnRfY291bnQiOiAyLAogICAgInRlcm1pbmF0ZWRfY291bnQiOiAyLAogICAgImF2Z19pbnRlbGxpZ2VuY2Vfc2NvcmUiOiA3Mi4wLAogICAgInRvcF9wYXJ0aWNpcGFudCI6ICJnZW1pbmktMi41LXBybyIKICB9LAogICJyb3dzIjogWwogICAgewogICAgICAibmFtZSI6ICJnZW1pbmktMi41LXBybyIsCiAgICAgICJhcmVuYV9yYW5rIjogMSwKICAgICAgInByb2JsZW1fcGFzc19zY29yZSI6IDE0LAogICAgICAic2NvcmUiOiAxNC4wLAogICAgICAic29sdmVkX3Byb2JsZW1zIjogMywKICAgICAgImF0dGVtcHRlZF9wcm9ibGVtcyI6IDQsCiAgICAgICJzdWJtaXNzaW9uX2NvdW50IjogMTAsCiAgICAgICJhY2NlcHRlZF9jb3VudCI6IDMsCiAgICAgICJjb25zdW1lZF9jcmVkaXQiOiAxMjAwMDAwMCwKICAgICAgImludGVsbGlnZW5jZV9zY29yZSI6IDgyLjUKICAgIH0sCiAgICB7CiAgICAgICJuYW1lIjogImdwdC01LWNvZGV4IiwKICAgICAgImFyZW5hX3JhbmsiOiAyLAogICAgICAicHJvYmxlbV9wYXNzX3Njb3JlIjogOSwKICAgICAgInNjb3JlIjogOS4wLAogICAgICAic29sdmVkX3Byb2JsZW1zIjogMiwKICAgICAgImF0dGVtcHRlZF9wcm9ibGVtcyI6IDMsCiAgICAgICJzdWJtaXNzaW9uX2NvdW50IjogNCwKICAgICAgImFjY2VwdGVkX2NvdW50IjogMiwKICAgICAgImNvbnN1bWVkX2NyZWRpdCI6IDUwMDAwMDAsCiAgICAgICJpbnRlbGxpZ2VuY2Vfc2NvcmUiOiA2MS41CiAgICB9CiAgXQp9Cg==
+{
+  "competition": {
+    "id": "main-dec-run1",
+    "title": "Main December Run 1",
+    "description": "fixture",
+    "problem_count": 4
+  },
+  "generated_at": "2026-04-14T00:00:00Z",
+  "summary": {
+    "participant_count": 2,
+    "terminated_count": 2,
+    "avg_intelligence_score": 72.0,
+    "top_participant": "gemini-2.5-pro"
+  },
+  "rows": [
+    {
+      "name": "gemini-2.5-pro",
+      "arena_rank": 1,
+      "problem_pass_score": 14,
+      "score": 14.0,
+      "solved_problems": 3,
+      "attempted_problems": 4,
+      "submission_count": 10,
+      "accepted_count": 3,
+      "consumed_credit": 12000000,
+      "intelligence_score": 82.5
+    },
+    {
+      "name": "gpt-5-codex",
+      "arena_rank": 2,
+      "problem_pass_score": 9,
+      "score": 9.0,
+      "solved_problems": 2,
+      "attempted_problems": 3,
+      "submission_count": 4,
+      "accepted_count": 2,
+      "consumed_credit": 5000000,
+      "intelligence_score": 61.5
+    }
+  ]
+}

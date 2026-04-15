@@ -1,1 +1,314 @@
-ZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IGNzdgppbXBvcnQganNvbgppbXBvcnQgc3VicHJvY2VzcwppbXBvcnQgc3lzCmltcG9ydCBhcmdwYXJzZQpmcm9tIGRhdGFjbGFzc2VzIGltcG9ydCBkYXRhY2xhc3MKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gdHlwaW5nIGltcG9ydCBBbnksIERpY3QsIEl0ZXJhYmxlLCBMaXN0LCBPcHRpb25hbAoKZnJvbSAuIGltcG9ydCByZWFkbWVfY2hlY2tzCgoKUkVRVUlSRURfQ0hFQ0tMSVNUX1NFQ1RJT05TOiB0dXBsZVtzdHIsIC4uLl0gPSAoCiAgICAiIyMgRG9jdW1lbnRhdGlvbiIsCiAgICAiIyMgVGVzdGluZyIsCiAgICAiIyMgU2VjdXJpdHkiLAogICAgIiMjIFBhY2thZ2luZyIsCiAgICAiIyMgQ29tbXVuaWNhdGlvbiIsCikKCklHTk9SRURfU0VHTUVOVFMgPSAoCiAgICAiLnB5dGVzdF9jYWNoZS8iLAogICAgIi5zZWNyZXRzLmJhc2VsaW5lIiwKICAgICJkb2NzL3NlY3VyaXR5LyIsCiAgICAiLnZlbnYvIiwKICAgICJfX3B5Y2FjaGVfXyIsCiAgICAibG9ncy8iLAogICAgImNvbXBldGl0aW9uX3Jlc3VsdHMiLAogICAgImNvbXBldGl0b3JfcmVzdWx0cyIsCiAgICAidGVzdHMvZml4dHVyZXMvIiwKKQoKCkBkYXRhY2xhc3MKY2xhc3MgQXVkaXRSZXN1bHQ6CiAgICBzdGF0dXM6IHN0cgogICAgcmVhZG1lOiBEaWN0W3N0ciwgQW55XQogICAgcmVsZWFzZV9jaGVja2xpc3Q6IERpY3Rbc3RyLCBBbnldCiAgICBhcnRpZmFjdF9zd2VlcDogRGljdFtzdHIsIEFueV0KICAgIHNlY3JldF9zY2FuOiBEaWN0W3N0ciwgQW55XQoKICAgIGRlZiB0b19kaWN0KHNlbGYpIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICJzdGF0dXMiOiBzZWxmLnN0YXR1cywKICAgICAgICAgICAgInJlYWRtZSI6IHNlbGYucmVhZG1lLAogICAgICAgICAgICAicmVsZWFzZV9jaGVja2xpc3QiOiBzZWxmLnJlbGVhc2VfY2hlY2tsaXN0LAogICAgICAgICAgICAiYXJ0aWZhY3Rfc3dlZXAiOiBzZWxmLmFydGlmYWN0X3N3ZWVwLAogICAgICAgICAgICAic2VjcmV0X3NjYW4iOiBzZWxmLnNlY3JldF9zY2FuLAogICAgICAgIH0KCgpkZWYgdmFsaWRhdGVfcmVsZWFzZV9jaGVja2xpc3QocGF0aDogUGF0aCkgLT4gTGlzdFtzdHJdOgogICAgZXJyb3JzOiBMaXN0W3N0cl0gPSBbXQogICAgaWYgbm90IHBhdGguZXhpc3RzKCk6CiAgICAgICAgcmV0dXJuIFsiTWlzc2luZyBkb2NzL3JlbGVhc2UvcmVsZWFzZS1jaGVja2xpc3QubWQiXQoKICAgIGNvbnRlbnQgPSBwYXRoLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKQogICAgZm9yIHNlY3Rpb24gaW4gUkVRVUlSRURfQ0hFQ0tMSVNUX1NFQ1RJT05TOgogICAgICAgIGlmIHNlY3Rpb24gbm90IGluIGNvbnRlbnQ6CiAgICAgICAgICAgIGVycm9ycy5hcHBlbmQoZiJyZWxlYXNlLWNoZWNrbGlzdC5tZCBpcyBtaXNzaW5nIHJlcXVpcmVkIHNlY3Rpb246IHtzZWN0aW9ufSIpCgogICAgY2hlY2tib3hfdG90YWwgPSBjb250ZW50LmNvdW50KCItIFsgXSIpCiAgICBpZiBjaGVja2JveF90b3RhbCA8IGxlbihSRVFVSVJFRF9DSEVDS0xJU1RfU0VDVElPTlMpOgogICAgICAgIGVycm9ycy5hcHBlbmQoIkVhY2ggc2VjdGlvbiBtdXN0IGNvbnRhaW4gYXQgbGVhc3Qgb25lIGNoZWNrbGlzdCBpdGVtICgtIFsgXSkiKQoKICAgIGlmICJhcnRpZmFjdHMuY3N2IiBub3QgaW4gY29udGVudDoKICAgICAgICBlcnJvcnMuYXBwZW5kKCJyZWxlYXNlLWNoZWNrbGlzdC5tZCBtdXN0IHJlZmVyZW5jZSBhcnRpZmFjdHMuY3N2IikKCiAgICByZXR1cm4gZXJyb3JzCgoKZGVmIF9yZWFkX2FydGlmYWN0cyhwYXRoOiBQYXRoKSAtPiBMaXN0W0RpY3Rbc3RyLCBzdHJdXToKICAgIGlmIG5vdCBwYXRoLmV4aXN0cygpOgogICAgICAgIHJhaXNlIEZpbGVOb3RGb3VuZEVycm9yKCJNaXNzaW5nIGRvY3MvcmVsZWFzZS9hcnRpZmFjdHMuY3N2IikKCiAgICB3aXRoIHBhdGgub3BlbihlbmNvZGluZz0idXRmLTgiKSBhcyBjc3ZmaWxlOgogICAgICAgIHJlYWRlciA9IGNzdi5EaWN0UmVhZGVyKGNzdmZpbGUpCiAgICAgICAgZXhwZWN0ZWRfZmllbGRzID0gWyJwYXRoIiwgImFjdGlvbiIsICJyZWFzb24iLCAicmVwbGFjZW1lbnQiLCAicmV2aWV3ZXIiXQogICAgICAgIGlmIHJlYWRlci5maWVsZG5hbWVzICE9IGV4cGVjdGVkX2ZpZWxkczoKICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcigiYXJ0aWZhY3RzLmNzdiBoZWFkZXIgZG9lcyBub3QgbWF0Y2ggdGhlIGV4cGVjdGVkIGZvcm1hdCIpCiAgICAgICAgcmV0dXJuIGxpc3QocmVhZGVyKQoKCmRlZiBldmFsdWF0ZV9hcnRpZmFjdHMocHJvamVjdF9yb290OiBQYXRoLCBwYXRoOiBQYXRoKSAtPiBEaWN0W3N0ciwgQW55XToKICAgIHN1bW1hcnk6IERpY3Rbc3RyLCBBbnldID0geyJlcnJvcnMiOiBbXSwgIml0ZW1zIjogW119CgogICAgdHJ5OgogICAgICAgIHJvd3MgPSBfcmVhZF9hcnRpZmFjdHMocGF0aCkKICAgIGV4Y2VwdCBGaWxlTm90Rm91bmRFcnJvciBhcyBleGM6CiAgICAgICAgc3VtbWFyeVsiZXJyb3JzIl0uYXBwZW5kKHN0cihleGMpKQogICAgICAgIHJldHVybiBzdW1tYXJ5CiAgICBleGNlcHQgVmFsdWVFcnJvciBhcyBleGM6ICAjIGhlYWRlciBtaXNtYXRjaAogICAgICAgIHN1bW1hcnlbImVycm9ycyJdLmFwcGVuZChzdHIoZXhjKSkKICAgICAgICByZXR1cm4gc3VtbWFyeQoKICAgIGZvciByb3cgaW4gcm93czoKICAgICAgICBhcnRpZmFjdF9wYXRoID0gKHByb2plY3Rfcm9vdCAvIHJvd1sicGF0aCJdKS5yZXNvbHZlKCkKICAgICAgICBhY3Rpb24gPSByb3dbImFjdGlvbiJdLnN0cmlwKCkubG93ZXIoKQoKICAgICAgICBleGlzdHMgPSBhcnRpZmFjdF9wYXRoLmV4aXN0cygpCiAgICAgICAgc3VtbWFyeVsiaXRlbXMiXS5hcHBlbmQoeyJwYXRoIjogc3RyKGFydGlmYWN0X3BhdGgpLCAiYWN0aW9uIjogYWN0aW9uLCAiZXhpc3RzIjogZXhpc3RzfSkKCiAgICAgICAgaWYgYWN0aW9uID09ICJyZW1vdmVkIiBhbmQgZXhpc3RzOgogICAgICAgICAgICBzdW1tYXJ5WyJlcnJvcnMiXS5hcHBlbmQoZiJGaWxlIG1hcmtlZCBhcyByZW1vdmVkIHN0aWxsIGV4aXN0czoge2FydGlmYWN0X3BhdGh9IikKICAgICAgICBpZiBhY3Rpb24gPT0gImtlcHQiIGFuZCBub3QgZXhpc3RzOgogICAgICAgICAgICBzdW1tYXJ5WyJlcnJvcnMiXS5hcHBlbmQoZiJGaWxlIG1hcmtlZCBhcyBrZXB0IGlzIG1pc3Npbmc6IHthcnRpZmFjdF9wYXRofSIpCgogICAgcmV0dXJuIHN1bW1hcnkKCgpkZWYgcnVuX3NlY3JldF9zY2FuKHByb2plY3Rfcm9vdDogUGF0aCwgKiwgaWdub3JlZF9zZWdtZW50czogSXRlcmFibGVbc3RyXSA9IElHTk9SRURfU0VHTUVOVFMpIC0+IERpY3Rbc3RyLCBBbnldOgogICAgY21kID0gWwogICAgICAgIHN5cy5leGVjdXRhYmxlLAogICAgICAgICItbSIsCiAgICAgICAgImRldGVjdF9zZWNyZXRzIiwKICAgICAgICAic2NhbiIsCiAgICAgICAgIi0tYWxsLWZpbGVzIiwKICAgICAgICBzdHIocHJvamVjdF9yb290KSwKICAgIF0KCiAgICBwcm9jID0gc3VicHJvY2Vzcy5ydW4oY21kLCBjYXB0dXJlX291dHB1dD1UcnVlLCB0ZXh0PVRydWUsIGNoZWNrPUZhbHNlKQoKICAgIHN0ZG91dCA9IHByb2Muc3Rkb3V0LnN0cmlwKCkKICAgIGZpbmRpbmdzOiBMaXN0W0RpY3Rbc3RyLCBBbnldXSA9IFtdCiAgICByYXc6IERpY3Rbc3RyLCBBbnldID0ge30KCiAgICBpZiBzdGRvdXQ6CiAgICAgICAgdHJ5OgogICAgICAgICAgICByYXcgPSBqc29uLmxvYWRzKHN0ZG91dCkKICAgICAgICBleGNlcHQganNvbi5KU09ORGVjb2RlRXJyb3I6CiAgICAgICAgICAgIHJhdyA9IHsiZXJyb3IiOiAiRmFpbGVkIHRvIHBhcnNlIGRldGVjdC1zZWNyZXRzIG91dHB1dCIsICJzdGRvdXQiOiBzdGRvdXR9CiAgICBlbHNlOgogICAgICAgIHJhdyA9IHsiZXJyb3IiOiAiZGV0ZWN0LXNlY3JldHMgcHJvZHVjZWQgbm8gb3V0cHV0IiwgInN0ZGVyciI6IHByb2Muc3RkZXJyfQoKICAgIHJlc3VsdHMgPSByYXcuZ2V0KCJyZXN1bHRzIiwge30pIGlmIGlzaW5zdGFuY2UocmF3LCBkaWN0KSBlbHNlIHt9CiAgICBmb3IgZmlsZW5hbWUsIHNlY3JldHMgaW4gcmVzdWx0cy5pdGVtcygpOgogICAgICAgIGlmIGFueShzZWdtZW50IGluIGZpbGVuYW1lIGZvciBzZWdtZW50IGluIGlnbm9yZWRfc2VnbWVudHMpOgogICAgICAgICAgICBjb250aW51ZQogICAgICAgIHRyeToKICAgICAgICAgICAgdGV4dF9saW5lcyA9IChwcm9qZWN0X3Jvb3QgLyBmaWxlbmFtZSkucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIsIGVycm9ycz0icmVwbGFjZSIpLnNwbGl0bGluZXMoKQogICAgICAgIGV4Y2VwdCBPU0Vycm9yOgogICAgICAgICAgICB0ZXh0X2xpbmVzID0gW10KICAgICAgICBmb3Igc2VjcmV0IGluIHNlY3JldHM6CiAgICAgICAgICAgIGxpbmVfbnVtYmVyID0gc2VjcmV0LmdldCgibGluZV9udW1iZXIiKQogICAgICAgICAgICBsaW5lX3RleHQgPSAiIgogICAgICAgICAgICBpZiBpc2luc3RhbmNlKGxpbmVfbnVtYmVyLCBpbnQpIGFuZCBsaW5lX251bWJlciA+IDAgYW5kIGxpbmVfbnVtYmVyIDw9IGxlbih0ZXh0X2xpbmVzKToKICAgICAgICAgICAgICAgIGxpbmVfdGV4dCA9IHRleHRfbGluZXNbbGluZV9udW1iZXIgLSAxXS5zdHJpcCgpCiAgICAgICAgICAgIGlmIF9pc19wdWJsaWNfdGVtcGxhdGVfZmFsc2VfcG9zaXRpdmUobGluZV90ZXh0KToKICAgICAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgICAgIGZpbmRpbmdzLmFwcGVuZCgKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAiZmlsZW5hbWUiOiBzdHIoKHByb2plY3Rfcm9vdCAvIGZpbGVuYW1lKS5yZXNvbHZlKCkpLAogICAgICAgICAgICAgICAgICAgICJ0eXBlIjogc2VjcmV0LmdldCgidHlwZSIpLAogICAgICAgICAgICAgICAgICAgICJsaW5lX251bWJlciI6IGxpbmVfbnVtYmVyLAogICAgICAgICAgICAgICAgfQogICAgICAgICAgICApCgogICAgcmV0dXJuIHsKICAgICAgICAicmV0dXJuY29kZSI6IHByb2MucmV0dXJuY29kZSwKICAgICAgICAiZmluZGluZ3MiOiBmaW5kaW5ncywKICAgICAgICAicmF3IjogcmF3LAogICAgICAgICJzdGRlcnIiOiBwcm9jLnN0ZGVyci5zdHJpcCgpLAogICAgfQoKCmRlZiBfaXNfcHVibGljX3RlbXBsYXRlX2ZhbHNlX3Bvc2l0aXZlKGxpbmVfdGV4dDogc3RyKSAtPiBib29sOgogICAgdGV4dCA9IHN0cihsaW5lX3RleHQgb3IgIiIpLnN0cmlwKCkKICAgIGlmIG5vdCB0ZXh0OgogICAgICAgIHJldHVybiBGYWxzZQoKICAgIG5vcm1hbGl6ZWQgPSB0ZXh0LnJlcGxhY2UoIiAiLCAiIikKICAgIGFsbG93ZWRfcGF0dGVybnMgPSAoCiAgICAgICAgJyJhcGlfa2V5IjoiIicsCiAgICAgICAgJyJhcGlfa2V5Ijoic2steHh4IicsCiAgICAgICAgJyJhcGlfa2V5X2VudiI6JywKICAgICAgICAiJ2FwaV9rZXknOicnIiwKICAgICAgICAiJ2FwaV9rZXknOidzay14eHgnIiwKICAgICAgICAiJ2FwaV9rZXlfZW52JzoiLAogICAgICAgICJ7YXBpX2tleX0iLAogICAgICAgICIkRU5WOk9QRU5BSV9BUElfS0VZIiwKICAgICAgICAiJEVOVjpBTlRIUk9QSUNfQVBJX0tFWSIsCiAgICAgICAgIiRFTlY6R0VNSU5JX0FQSV9LRVkiLAogICAgICAgICIkRU5WOkRFRVBTRUVLX0FQSV9LRVkiLAogICAgICAgICIkRU5WOk1PT05TSE9UX0FQSV9LRVkiLAogICAgICAgICIkRU5WOkRBU0hTQ09QRV9BUElfS0VZIiwKICAgICAgICAiJEVOVjpHTE1fQVBJX0tFWSIsCiAgICApCiAgICByZXR1cm4gYW55KHBhdHRlcm4gaW4gbm9ybWFsaXplZCBvciBwYXR0ZXJuIGluIHRleHQgZm9yIHBhdHRlcm4gaW4gYWxsb3dlZF9wYXR0ZXJucykKCgpkZWYgcnVuX2F1ZGl0KAogICAgcHJvamVjdF9yb290OiBQYXRoLAogICAgKiwKICAgIGluY2x1ZGVfc2VjcmV0X3NjYW46IGJvb2wgPSBUcnVlLAogICAgaW5jbHVkZV9yZWFkbWVfbGludDogYm9vbCA9IFRydWUsCiAgICBpbmNsdWRlX2NoZWNrbGlzdDogYm9vbCA9IFRydWUsCiAgICBpbmNsdWRlX2FydGlmYWN0X3N3ZWVwOiBib29sID0gVHJ1ZSwKICAgIHNjYW5fcm9vdDogT3B0aW9uYWxbUGF0aF0gPSBOb25lLAogICAgb3V0cHV0X3BhdGg6IE9wdGlvbmFsW1BhdGhdID0gTm9uZSwKKSAtPiBEaWN0W3N0ciwgQW55XToKICAgIHByb2plY3Rfcm9vdCA9IHByb2plY3Rfcm9vdC5yZXNvbHZlKCkKCiAgICByZWFkbWVfcmVzdWx0OiBEaWN0W3N0ciwgQW55XSA9IHsiZXJyb3JzIjogW119CiAgICBpZiBpbmNsdWRlX3JlYWRtZV9saW50OgogICAgICAgIHJlYWRtZV9lcnJvcnMgPSByZWFkbWVfY2hlY2tzLnZhbGlkYXRlX3JlYWRtZShwcm9qZWN0X3Jvb3QgLyAiUkVBRE1FLm1kIikKICAgICAgICByZWFkbWVfcmVzdWx0WyJlcnJvcnMiXSA9IHJlYWRtZV9lcnJvcnMKCiAgICBjaGVja2xpc3RfcmVzdWx0OiBEaWN0W3N0ciwgQW55XSA9IHsiZXJyb3JzIjogW119CiAgICBpZiBpbmNsdWRlX2NoZWNrbGlzdDoKICAgICAgICBjaGVja2xpc3RfcGF0aCA9IHByb2plY3Rfcm9vdCAvICJkb2NzIiAvICJyZWxlYXNlIiAvICJyZWxlYXNlLWNoZWNrbGlzdC5tZCIKICAgICAgICBjaGVja2xpc3RfcmVzdWx0WyJlcnJvcnMiXSA9IHZhbGlkYXRlX3JlbGVhc2VfY2hlY2tsaXN0KGNoZWNrbGlzdF9wYXRoKQoKICAgIGFydGlmYWN0X3Jlc3VsdDogRGljdFtzdHIsIEFueV0gPSB7ImVycm9ycyI6IFtdLCAiaXRlbXMiOiBbXX0KICAgIGlmIGluY2x1ZGVfYXJ0aWZhY3Rfc3dlZXA6CiAgICAgICAgYXJ0aWZhY3RfcGF0aCA9IHByb2plY3Rfcm9vdCAvICJkb2NzIiAvICJyZWxlYXNlIiAvICJhcnRpZmFjdHMuY3N2IgogICAgICAgIGFydGlmYWN0X3Jlc3VsdCA9IGV2YWx1YXRlX2FydGlmYWN0cyhwcm9qZWN0X3Jvb3QsIGFydGlmYWN0X3BhdGgpCgogICAgc2VjcmV0X3Jlc3VsdDogRGljdFtzdHIsIEFueV0gPSB7ImZpbmRpbmdzIjogW10sICJyZXR1cm5jb2RlIjogTm9uZSwgInN0ZGVyciI6ICIifQogICAgaWYgaW5jbHVkZV9zZWNyZXRfc2NhbjoKICAgICAgICB0YXJnZXQgPSAoc2Nhbl9yb290IG9yIHByb2plY3Rfcm9vdCkucmVzb2x2ZSgpCiAgICAgICAgaWdub3JlZCA9IElHTk9SRURfU0VHTUVOVFMgaWYgc2Nhbl9yb290IGlzIE5vbmUgZWxzZSAoKQogICAgICAgIHNlY3JldF9yZXN1bHQgPSBydW5fc2VjcmV0X3NjYW4odGFyZ2V0LCBpZ25vcmVkX3NlZ21lbnRzPWlnbm9yZWQpCgogICAgc3RhdHVzID0gInBhc3NlZCIKICAgIGZvciBzZWN0aW9uIGluIChyZWFkbWVfcmVzdWx0LCBjaGVja2xpc3RfcmVzdWx0LCBhcnRpZmFjdF9yZXN1bHQpOgogICAgICAgIGlmIHNlY3Rpb24uZ2V0KCJlcnJvcnMiKToKICAgICAgICAgICAgc3RhdHVzID0gImZhaWxlZCIKICAgIGlmIGluY2x1ZGVfc2VjcmV0X3NjYW4gYW5kIHNlY3JldF9yZXN1bHQuZ2V0KCJmaW5kaW5ncyIpOgogICAgICAgIHN0YXR1cyA9ICJmYWlsZWQiCiAgICBpZiBpbmNsdWRlX3NlY3JldF9zY2FuIGFuZCBzZWNyZXRfcmVzdWx0LmdldCgicmV0dXJuY29kZSIpIG5vdCBpbiAoMCwgTm9uZSk6CiAgICAgICAgc3RhdHVzID0gImZhaWxlZCIKCiAgICBhdWRpdF9yZXN1bHQgPSBBdWRpdFJlc3VsdCgKICAgICAgICBzdGF0dXM9c3RhdHVzLAogICAgICAgIHJlYWRtZT1yZWFkbWVfcmVzdWx0LAogICAgICAgIHJlbGVhc2VfY2hlY2tsaXN0PWNoZWNrbGlzdF9yZXN1bHQsCiAgICAgICAgYXJ0aWZhY3Rfc3dlZXA9YXJ0aWZhY3RfcmVzdWx0LAogICAgICAgIHNlY3JldF9zY2FuPXNlY3JldF9yZXN1bHQsCiAgICApCgogICAgaWYgb3V0cHV0X3BhdGggaXMgbm90IE5vbmU6CiAgICAgICAgb3V0cHV0X3BhdGgucGFyZW50Lm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKICAgICAgICBvdXRwdXRfcGF0aC53cml0ZV90ZXh0KGpzb24uZHVtcHMoYXVkaXRfcmVzdWx0LnRvX2RpY3QoKSwgaW5kZW50PTIsIGVuc3VyZV9hc2NpaT1GYWxzZSksIGVuY29kaW5nPSJ1dGYtOCIpCgogICAgcmV0dXJuIGF1ZGl0X3Jlc3VsdC50b19kaWN0KCkKCgpkZWYgYnVpbGRfcGFyc2VyKCkgLT4gYXJncGFyc2UuQXJndW1lbnRQYXJzZXI6CiAgICBwYXJzZXIgPSBhcmdwYXJzZS5Bcmd1bWVudFBhcnNlcihkZXNjcmlwdGlvbj0iUnVuIFVTQUNPQXJlbmEgcmVsZWFzZSBhdWRpdCBjaGVja3MiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1wcm9qZWN0LXJvb3QiLAogICAgICAgIHR5cGU9UGF0aCwKICAgICAgICBkZWZhdWx0PVBhdGguY3dkKCksCiAgICAgICAgaGVscD0iUHJvamVjdCByb290IChkZWZhdWx0cyB0byBjdXJyZW50IHdvcmtpbmcgZGlyZWN0b3J5KSIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLXNjYW4tcm9vdCIsCiAgICAgICAgdHlwZT1QYXRoLAogICAgICAgIGhlbHA9IkRpcmVjdG9yeSB0byBzY2FuIHdpdGggZGV0ZWN0LXNlY3JldHMgKGRlZmF1bHRzIHRvIHByb2plY3Qgcm9vdCkiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1vdXRwdXQiLAogICAgICAgIHR5cGU9UGF0aCwKICAgICAgICBoZWxwPSJXcml0ZSB0aGUgYXVkaXQgcmVzdWx0IHRvIGEgSlNPTiBmaWxlIiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tbm8tc2VjcmV0LXNjYW4iLAogICAgICAgIGFjdGlvbj0ic3RvcmVfdHJ1ZSIsCiAgICAgICAgaGVscD0iU2tpcCBzZWNyZXQgc2Nhbm5pbmcgKG5vdCByZWNvbW1lbmRlZCBleGNlcHQgZm9yIGRlYnVnZ2luZykiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1uby1yZWFkbWUiLAogICAgICAgIGFjdGlvbj0ic3RvcmVfdHJ1ZSIsCiAgICAgICAgaGVscD0iU2tpcCBSRUFETUUgc3RydWN0dXJhbCBjaGVja3MiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1uby1jaGVja2xpc3QiLAogICAgICAgIGFjdGlvbj0ic3RvcmVfdHJ1ZSIsCiAgICAgICAgaGVscD0iU2tpcCByZWxlYXNlLWNoZWNrbGlzdCB2YWxpZGF0aW9uIiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tbm8tYXJ0aWZhY3RzIiwKICAgICAgICBhY3Rpb249InN0b3JlX3RydWUiLAogICAgICAgIGhlbHA9IlNraXAgYXJ0aWZhY3RzLmNzdiB2YWxpZGF0aW9uIiwKICAgICkKICAgIHJldHVybiBwYXJzZXIKCgpkZWYgbWFpbihhcmd2OiBPcHRpb25hbFtMaXN0W3N0cl1dID0gTm9uZSkgLT4gaW50OgogICAgcGFyc2VyID0gYnVpbGRfcGFyc2VyKCkKICAgIGFyZ3MgPSBwYXJzZXIucGFyc2VfYXJncyhhcmd2KQoKICAgIHJlcG9ydCA9IHJ1bl9hdWRpdCgKICAgICAgICBwcm9qZWN0X3Jvb3Q9YXJncy5wcm9qZWN0X3Jvb3QsCiAgICAgICAgaW5jbHVkZV9zZWNyZXRfc2Nhbj1ub3QgYXJncy5ub19zZWNyZXRfc2NhbiwKICAgICAgICBpbmNsdWRlX3JlYWRtZV9saW50PW5vdCBhcmdzLm5vX3JlYWRtZSwKICAgICAgICBpbmNsdWRlX2NoZWNrbGlzdD1ub3QgYXJncy5ub19jaGVja2xpc3QsCiAgICAgICAgaW5jbHVkZV9hcnRpZmFjdF9zd2VlcD1ub3QgYXJncy5ub19hcnRpZmFjdHMsCiAgICAgICAgc2Nhbl9yb290PWFyZ3Muc2Nhbl9yb290LAogICAgICAgIG91dHB1dF9wYXRoPWFyZ3Mub3V0cHV0LAogICAgKQogICAgaWYgcmVwb3J0WyJzdGF0dXMiXSA9PSAicGFzc2VkIjoKICAgICAgICBwcmludCgiUmVsZWFzZSBhdWRpdCBwYXNzZWQg4pyFIikKICAgICAgICByZXR1cm4gMAoKICAgIHByaW50KCJSZWxlYXNlIGF1ZGl0IHJlcG9ydGVkIGlzc3VlcyDinYwiKQogICAgcHJpbnQoanNvbi5kdW1wcyhyZXBvcnQsIGluZGVudD0yLCBlbnN1cmVfYXNjaWk9RmFsc2UpKQogICAgcmV0dXJuIDEKCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgcmFpc2UgU3lzdGVtRXhpdChtYWluKCkpCg==
+from __future__ import annotations
+
+import csv
+import json
+import subprocess
+import sys
+import argparse
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Dict, Iterable, List, Optional
+
+from . import readme_checks
+
+
+REQUIRED_CHECKLIST_SECTIONS: tuple[str, ...] = (
+    "## Documentation",
+    "## Testing",
+    "## Security",
+    "## Packaging",
+    "## Communication",
+)
+
+IGNORED_SEGMENTS = (
+    ".pytest_cache/",
+    ".secrets.baseline",
+    "docs/security/",
+    ".venv/",
+    "__pycache__",
+    "logs/",
+    "competition_results",
+    "competitor_results",
+    "tests/fixtures/",
+)
+
+
+@dataclass
+class AuditResult:
+    status: str
+    readme: Dict[str, Any]
+    release_checklist: Dict[str, Any]
+    artifact_sweep: Dict[str, Any]
+    secret_scan: Dict[str, Any]
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "status": self.status,
+            "readme": self.readme,
+            "release_checklist": self.release_checklist,
+            "artifact_sweep": self.artifact_sweep,
+            "secret_scan": self.secret_scan,
+        }
+
+
+def validate_release_checklist(path: Path) -> List[str]:
+    errors: List[str] = []
+    if not path.exists():
+        return ["Missing docs/release/release-checklist.md"]
+
+    content = path.read_text(encoding="utf-8")
+    for section in REQUIRED_CHECKLIST_SECTIONS:
+        if section not in content:
+            errors.append(f"release-checklist.md is missing required section: {section}")
+
+    checkbox_total = content.count("- [ ]")
+    if checkbox_total < len(REQUIRED_CHECKLIST_SECTIONS):
+        errors.append("Each section must contain at least one checklist item (- [ ])")
+
+    if "artifacts.csv" not in content:
+        errors.append("release-checklist.md must reference artifacts.csv")
+
+    return errors
+
+
+def _read_artifacts(path: Path) -> List[Dict[str, str]]:
+    if not path.exists():
+        raise FileNotFoundError("Missing docs/release/artifacts.csv")
+
+    with path.open(encoding="utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+        expected_fields = ["path", "action", "reason", "replacement", "reviewer"]
+        if reader.fieldnames != expected_fields:
+            raise ValueError("artifacts.csv header does not match the expected format")
+        return list(reader)
+
+
+def evaluate_artifacts(project_root: Path, path: Path) -> Dict[str, Any]:
+    summary: Dict[str, Any] = {"errors": [], "items": []}
+
+    try:
+        rows = _read_artifacts(path)
+    except FileNotFoundError as exc:
+        summary["errors"].append(str(exc))
+        return summary
+    except ValueError as exc:  # header mismatch
+        summary["errors"].append(str(exc))
+        return summary
+
+    for row in rows:
+        artifact_path = (project_root / row["path"]).resolve()
+        action = row["action"].strip().lower()
+
+        exists = artifact_path.exists()
+        summary["items"].append({"path": str(artifact_path), "action": action, "exists": exists})
+
+        if action == "removed" and exists:
+            summary["errors"].append(f"File marked as removed still exists: {artifact_path}")
+        if action == "kept" and not exists:
+            summary["errors"].append(f"File marked as kept is missing: {artifact_path}")
+
+    return summary
+
+
+def run_secret_scan(project_root: Path, *, ignored_segments: Iterable[str] = IGNORED_SEGMENTS) -> Dict[str, Any]:
+    cmd = [
+        sys.executable,
+        "-m",
+        "detect_secrets",
+        "scan",
+        "--all-files",
+        str(project_root),
+    ]
+
+    proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
+
+    stdout = proc.stdout.strip()
+    findings: List[Dict[str, Any]] = []
+    raw: Dict[str, Any] = {}
+
+    if stdout:
+        try:
+            raw = json.loads(stdout)
+        except json.JSONDecodeError:
+            raw = {"error": "Failed to parse detect-secrets output", "stdout": stdout}
+    else:
+        raw = {"error": "detect-secrets produced no output", "stderr": proc.stderr}
+
+    results = raw.get("results", {}) if isinstance(raw, dict) else {}
+    for filename, secrets in results.items():
+        if any(segment in filename for segment in ignored_segments):
+            continue
+        try:
+            text_lines = (project_root / filename).read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError:
+            text_lines = []
+        for secret in secrets:
+            line_number = secret.get("line_number")
+            line_text = ""
+            if isinstance(line_number, int) and line_number > 0 and line_number <= len(text_lines):
+                line_text = text_lines[line_number - 1].strip()
+            if _is_public_template_false_positive(line_text):
+                continue
+            findings.append(
+                {
+                    "filename": str((project_root / filename).resolve()),
+                    "type": secret.get("type"),
+                    "line_number": line_number,
+                }
+            )
+
+    return {
+        "returncode": proc.returncode,
+        "findings": findings,
+        "raw": raw,
+        "stderr": proc.stderr.strip(),
+    }
+
+
+def _is_public_template_false_positive(line_text: str) -> bool:
+    text = str(line_text or "").strip()
+    if not text:
+        return False
+
+    normalized = text.replace(" ", "")
+    allowed_patterns = (
+        '"api_key":""',
+        '"api_key":"sk-xxx"',
+        '"api_key_env":',
+        "'api_key':''",
+        "'api_key':'sk-xxx'",
+        "'api_key_env':",
+        "{api_key}",
+        "$ENV:OPENAI_API_KEY",
+        "$ENV:ANTHROPIC_API_KEY",
+        "$ENV:GEMINI_API_KEY",
+        "$ENV:DEEPSEEK_API_KEY",
+        "$ENV:MOONSHOT_API_KEY",
+        "$ENV:DASHSCOPE_API_KEY",
+        "$ENV:GLM_API_KEY",
+    )
+    return any(pattern in normalized or pattern in text for pattern in allowed_patterns)
+
+
+def run_audit(
+    project_root: Path,
+    *,
+    include_secret_scan: bool = True,
+    include_readme_lint: bool = True,
+    include_checklist: bool = True,
+    include_artifact_sweep: bool = True,
+    scan_root: Optional[Path] = None,
+    output_path: Optional[Path] = None,
+) -> Dict[str, Any]:
+    project_root = project_root.resolve()
+
+    readme_result: Dict[str, Any] = {"errors": []}
+    if include_readme_lint:
+        readme_errors = readme_checks.validate_readme(project_root / "README.md")
+        readme_result["errors"] = readme_errors
+
+    checklist_result: Dict[str, Any] = {"errors": []}
+    if include_checklist:
+        checklist_path = project_root / "docs" / "release" / "release-checklist.md"
+        checklist_result["errors"] = validate_release_checklist(checklist_path)
+
+    artifact_result: Dict[str, Any] = {"errors": [], "items": []}
+    if include_artifact_sweep:
+        artifact_path = project_root / "docs" / "release" / "artifacts.csv"
+        artifact_result = evaluate_artifacts(project_root, artifact_path)
+
+    secret_result: Dict[str, Any] = {"findings": [], "returncode": None, "stderr": ""}
+    if include_secret_scan:
+        target = (scan_root or project_root).resolve()
+        ignored = IGNORED_SEGMENTS if scan_root is None else ()
+        secret_result = run_secret_scan(target, ignored_segments=ignored)
+
+    status = "passed"
+    for section in (readme_result, checklist_result, artifact_result):
+        if section.get("errors"):
+            status = "failed"
+    if include_secret_scan and secret_result.get("findings"):
+        status = "failed"
+    if include_secret_scan and secret_result.get("returncode") not in (0, None):
+        status = "failed"
+
+    audit_result = AuditResult(
+        status=status,
+        readme=readme_result,
+        release_checklist=checklist_result,
+        artifact_sweep=artifact_result,
+        secret_scan=secret_result,
+    )
+
+    if output_path is not None:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(json.dumps(audit_result.to_dict(), indent=2, ensure_ascii=False), encoding="utf-8")
+
+    return audit_result.to_dict()
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Run USACOArena release audit checks")
+    parser.add_argument(
+        "--project-root",
+        type=Path,
+        default=Path.cwd(),
+        help="Project root (defaults to current working directory)",
+    )
+    parser.add_argument(
+        "--scan-root",
+        type=Path,
+        help="Directory to scan with detect-secrets (defaults to project root)",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        help="Write the audit result to a JSON file",
+    )
+    parser.add_argument(
+        "--no-secret-scan",
+        action="store_true",
+        help="Skip secret scanning (not recommended except for debugging)",
+    )
+    parser.add_argument(
+        "--no-readme",
+        action="store_true",
+        help="Skip README structural checks",
+    )
+    parser.add_argument(
+        "--no-checklist",
+        action="store_true",
+        help="Skip release-checklist validation",
+    )
+    parser.add_argument(
+        "--no-artifacts",
+        action="store_true",
+        help="Skip artifacts.csv validation",
+    )
+    return parser
+
+
+def main(argv: Optional[List[str]] = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+
+    report = run_audit(
+        project_root=args.project_root,
+        include_secret_scan=not args.no_secret_scan,
+        include_readme_lint=not args.no_readme,
+        include_checklist=not args.no_checklist,
+        include_artifact_sweep=not args.no_artifacts,
+        scan_root=args.scan_root,
+        output_path=args.output,
+    )
+    if report["status"] == "passed":
+        print("Release audit passed ✅")
+        return 0
+
+    print("Release audit reported issues ❌")
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

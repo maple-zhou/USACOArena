@@ -1,1 +1,13 @@
-IyEvdXNyL2Jpbi9lbnYgYmFzaApzZXQgLWV1byBwaXBlZmFpbAoKU0NSSVBUX0RJUj0iJChjZCAiJChkaXJuYW1lICIke0JBU0hfU09VUkNFWzBdfSIpIiAmJiBwd2QpIgpQUk9KRUNUX1JPT1Q9IiQoY2QgIiR7U0NSSVBUX0RJUn0vLi4iICYmIHB3ZCkiCgpjZCAiJHtQUk9KRUNUX1JPT1R9IgoKaWYgY29tbWFuZCAtdiB1diA+L2Rldi9udWxsIDI+JjE7IHRoZW4KICB1diBydW4gcHl0aG9uIC1tIHVzYWNvYXJlbmEudG9vbHMucmVsZWFzZV9hdWRpdCAiJEAiCmVsc2UKICBweXRob24zIC1tIHVzYWNvYXJlbmEudG9vbHMucmVsZWFzZV9hdWRpdCAiJEAiCmZpCg==
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+cd "${PROJECT_ROOT}"
+
+if command -v uv >/dev/null 2>&1; then
+  uv run python -m usacoarena.tools.release_audit "$@"
+else
+  python3 -m usacoarena.tools.release_audit "$@"
+fi

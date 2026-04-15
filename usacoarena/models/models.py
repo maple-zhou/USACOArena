@@ -1,1 +1,583 @@
-ZnJvbSBlbnVtIGltcG9ydCBFbnVtCmZyb20gdHlwaW5nIGltcG9ydCBEaWN0LCBMaXN0LCBPcHRpb25hbCwgQW55LCBUdXBsZQpmcm9tIGRhdGV0aW1lIGltcG9ydCBkYXRldGltZQppbXBvcnQgdXVpZAoKIyBIZWxwZXIgZnVuY3Rpb24gdG8gZ2VuZXJhdGUgdW5pcXVlIElEcwpkZWYgZ2VuZXJhdGVfaWQoKSAtPiBzdHI6CiAgICAiIiJHZW5lcmF0ZSBhIHVuaXF1ZSBJRCBmb3IgZW50aXRpZXMiIiIKICAgIHJldHVybiBzdHIodXVpZC51dWlkNCgpKQoKCmNsYXNzIFN1Ym1pc3Npb25TdGF0dXMoc3RyLCBFbnVtKToKICAgIEFDQ0VQVEVEID0gIkFDIgogICAgV1JPTkdfQU5TV0VSID0gIldBIgogICAgUlVOVElNRV9FUlJPUiA9ICJSRSIKICAgIENPTVBJTEFUSU9OX0VSUk9SID0gIkNFIgogICAgVElNRV9MSU1JVF9FWENFRURFRCA9ICJUTEUiCiAgICBNRU1PUllfTElNSVRfRVhDRUVERUQgPSAiTUxFIgogICAgUEVORElORyA9ICJQRU5ESU5HIgoKCmNsYXNzIExldmVsKHN0ciwgRW51bSk6CiAgICBCUk9OWkUgPSAiYnJvbnplIgogICAgU0lMVkVSID0gInNpbHZlciIKICAgIEdPTEQgPSAiZ29sZCIKICAgIFBMQVRJTlVNID0gInBsYXRpbnVtIgoKCmNsYXNzIFBhcnRpY2lwYW50OgogICAgZGVmIF9faW5pdF9fKAogICAgICAgIHNlbGYsCiAgICAgICAgaWQ6IHN0ciwKICAgICAgICBjb21wZXRpdGlvbl9pZDogc3RyLAogICAgICAgIG5hbWU6IHN0ciwKICAgICAgICBhcGlfYmFzZV91cmw6IHN0ciwKICAgICAgICBhcGlfa2V5OiBzdHIsCiAgICAgICAgbGltaXRfdG9rZW5zOiBpbnQsCiAgICAgICAgbGFtYmRhX3ZhbHVlOiBpbnQsCiAgICAgICAgYWdlbnRfcHJvZmlsZTogT3B0aW9uYWxbRGljdFtzdHIsIEFueV1dID0gTm9uZSwKICAgICAgICBzdGFydGVkX2F0OiBPcHRpb25hbFtkYXRldGltZV0gPSBOb25lLAogICAgICAgIHRlcm1pbmF0ZWRfYXQ6IE9wdGlvbmFsW2RhdGV0aW1lXSA9IE5vbmUsCiAgICAgICAgZGVsaXZlcnlfdGltZV9zZWNvbmRzOiBpbnQgPSAwLAogICAgICAgIGRlbGl2ZXJ5X3RpbWVfbXVsdGlwbGllcjogZmxvYXQgPSAxLjAsCiAgICAgICAgZGVsaXZlcnlfdGltZV9jcmVkaXQ6IGZsb2F0ID0gMC4wLAogICAgKToKICAgICAgICAjIENvcmUgcGVyc2lzdGVudCBhdHRyaWJ1dGVzCiAgICAgICAgc2VsZi5pZCA9IGlkCiAgICAgICAgc2VsZi5jb21wZXRpdGlvbl9pZCA9IGNvbXBldGl0aW9uX2lkCiAgICAgICAgc2VsZi5uYW1lID0gbmFtZQogICAgICAgIHNlbGYuYXBpX2Jhc2VfdXJsID0gYXBpX2Jhc2VfdXJsCiAgICAgICAgc2VsZi5hcGlfa2V5ID0gYXBpX2tleQogICAgICAgIHNlbGYuYWdlbnRfcHJvZmlsZSA9IGFnZW50X3Byb2ZpbGUgaWYgaXNpbnN0YW5jZShhZ2VudF9wcm9maWxlLCBkaWN0KSBlbHNlIHt9CgogICAgICAgICMgVG9rZW4gdHJhY2tpbmcgICBCX3Rva2VuX3JlbWFpbmluZwogICAgICAgIHNlbGYuTExNX3Rva2VucyA9IDAKICAgICAgICBzZWxmLmhpbnRfdG9rZW5zID0gMAogICAgICAgIHNlbGYuc3VibWlzc2lvbl90b2tlbnMgPSAwCiAgICAgICAgc2VsZi50ZXN0X3Rva2VucyA9IDAKICAgICAgICBzZWxmLmNvbnN1bWVkX3Rva2VucyA9IDAgICMgVG90YWwgYWN0dWFsIHRva2VucyBjb25zdW1lZCAod2l0aG91dCBwZW5hbHRpZXMpCiAgICAgICAgc2VsZi5saW1pdF90b2tlbnMgPSBsaW1pdF90b2tlbnMKICAgICAgICBzZWxmLnJlbWFpbmluZ190b2tlbnMgPSBsaW1pdF90b2tlbnMKICAgICAgICBzZWxmLmxhbWJkYV92YWx1ZSA9IGxhbWJkYV92YWx1ZQoKICAgICAgICAjIFN1Ym1pc3Npb24gdHJhY2tpbmcKICAgICAgICBzZWxmLnN1Ym1pc3Npb25fY291bnQgPSAwCiAgICAgICAgc2VsZi5hY2NlcHRlZF9jb3VudCA9IDAKCiAgICAgICAgIyBQX3N1Ym1pc3Npb25fY291bnQKICAgICAgICBzZWxmLnN1Ym1pc3Npb25fcGVuYWx0eSA9IDAKICAgICAgICAjIFNfYWNjZXB0ZWRfc2NvcmUKICAgICAgICBzZWxmLnByb2JsZW1fcGFzc19zY29yZSA9IDAKCiAgICAgICAgIyBOZXcgc3RhdGlzdGljcyBmaWVsZHMKICAgICAgICBzZWxmLmxsbV9pbmZlcmVuY2VfY291bnQgPSAwICAjIFRvdGFsIExMTSBpbmZlcmVuY2UgY2FsbHMKICAgICAgICBzZWxmLmZpcnN0X2FjX3Njb3JlID0gMCAgIyBTY29yZSBmcm9tIGJlaW5nIGZpcnN0IHRvIHNvbHZlIHByb2JsZW1zCiAgICAgICAgc2VsZi5wcm9ibGVtX3Njb3JlID0gMCAgIyBTY29yZSBmcm9tIHBhc3NpbmcgcHJvYmxlbXMgKGV4Y2x1ZGluZyBmaXJzdCBBQyBib251cykKCiAgICAgICAgIyBEZXRhaWxlZCBydWxlLWJhc2VkIHNjb3JpbmcgYnJlYWtkb3duCiAgICAgICAgc2VsZi5icm9uemVfc2NvcmUgPSAwCiAgICAgICAgc2VsZi5zaWx2ZXJfc2NvcmUgPSAwCiAgICAgICAgc2VsZi5nb2xkX3Njb3JlID0gMAogICAgICAgIHNlbGYucGxhdGludW1fc2NvcmUgPSAwCiAgICAgICAgc2VsZi5ib251c19zY29yZSA9IDAgICMgRmlyc3QgQUMgYm9udXNlcwoKICAgICAgICAjIFBlci1wcm9ibGVtIGRldGFpbGVkIHN0YXRpc3RpY3MgKERpY3RbcHJvYmxlbV9pZCwgc3RhdHNdKQogICAgICAgIHNlbGYucHJvYmxlbV9zdGF0cyA9IHt9ICAjIFdpbGwgY29udGFpbiBkZXRhaWxlZCBwZXItcHJvYmxlbSBzdGF0aXN0aWNzCgogICAgICAgICMgIHRvdGFsX3Njb3JlID0gU19hY2NlcHRlZF9zY29yZSAtIFBfc3VibWlzc2lvbl9jb3VudCArIEJfdG9rZW5fcmVtYWluaW5nCiAgICAgICAgc2VsZi5zY29yZSA9IDAKICAgICAgICAKICAgICAgICAjIFJ1bnRpbWUgc3RhdGUKICAgICAgICBzZWxmLmlzX3J1bm5pbmc6IGJvb2wgPSBUcnVlCiAgICAgICAgc2VsZi50ZXJtaW5hdGlvbl9yZWFzb246IE9wdGlvbmFsW3N0cl0gPSBOb25lCgogICAgICAgICMgRGVsaXZlcnktdGltZSBzZXR0bGVtZW50IHN0YXRlCiAgICAgICAgc2VsZi5zdGFydGVkX2F0OiBkYXRldGltZSA9IHN0YXJ0ZWRfYXQgb3IgZGF0ZXRpbWUubm93KCkKICAgICAgICBzZWxmLnRlcm1pbmF0ZWRfYXQ6IE9wdGlvbmFsW2RhdGV0aW1lXSA9IHRlcm1pbmF0ZWRfYXQKICAgICAgICBzZWxmLmRlbGl2ZXJ5X3RpbWVfc2Vjb25kczogaW50ID0gc2VsZi5fdG9fbm9uX25lZ2F0aXZlX2ludChkZWxpdmVyeV90aW1lX3NlY29uZHMsIDApCiAgICAgICAgc2VsZi5kZWxpdmVyeV90aW1lX211bHRpcGxpZXI6IGZsb2F0ID0gc2VsZi5fdG9fbm9uX25lZ2F0aXZlX2Zsb2F0KAogICAgICAgICAgICBkZWxpdmVyeV90aW1lX211bHRpcGxpZXIsIDEuMAogICAgICAgICkKICAgICAgICBzZWxmLmRlbGl2ZXJ5X3RpbWVfY3JlZGl0OiBmbG9hdCA9IHNlbGYuX3RvX25vbl9uZWdhdGl2ZV9mbG9hdChkZWxpdmVyeV90aW1lX2NyZWRpdCwgMC4wKQoKICAgIEBzdGF0aWNtZXRob2QKICAgIGRlZiBfdG9fbm9uX25lZ2F0aXZlX2ludCh2YWx1ZTogQW55LCBkZWZhdWx0OiBpbnQgPSAwKSAtPiBpbnQ6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBwYXJzZWQgPSBpbnQodmFsdWUpCiAgICAgICAgZXhjZXB0IChUeXBlRXJyb3IsIFZhbHVlRXJyb3IpOgogICAgICAgICAgICByZXR1cm4gZGVmYXVsdAogICAgICAgIHJldHVybiBtYXgoMCwgcGFyc2VkKQoKICAgIEBzdGF0aWNtZXRob2QKICAgIGRlZiBfdG9fbm9uX25lZ2F0aXZlX2Zsb2F0KHZhbHVlOiBBbnksIGRlZmF1bHQ6IGZsb2F0ID0gMC4wKSAtPiBmbG9hdDoKICAgICAgICB0cnk6CiAgICAgICAgICAgIHBhcnNlZCA9IGZsb2F0KHZhbHVlKQogICAgICAgIGV4Y2VwdCAoVHlwZUVycm9yLCBWYWx1ZUVycm9yKToKICAgICAgICAgICAgcmV0dXJuIGRlZmF1bHQKICAgICAgICByZXR1cm4gbWF4KDAuMCwgcGFyc2VkKQoKICAgIGRlZiBnZXRfZWxhcHNlZF90aW1lX3NlY29uZHMoc2VsZiwgbm93OiBPcHRpb25hbFtkYXRldGltZV0gPSBOb25lKSAtPiBpbnQ6CiAgICAgICAgaWYgbm90IHNlbGYuc3RhcnRlZF9hdDoKICAgICAgICAgICAgcmV0dXJuIDAKICAgICAgICBlbmRfdGltZSA9ICgKICAgICAgICAgICAgc2VsZi50ZXJtaW5hdGVkX2F0CiAgICAgICAgICAgIGlmIChub3Qgc2VsZi5pc19ydW5uaW5nIGFuZCBzZWxmLnRlcm1pbmF0ZWRfYXQgaXMgbm90IE5vbmUpCiAgICAgICAgICAgIGVsc2UgKG5vdyBvciBkYXRldGltZS5ub3coKSkKICAgICAgICApCiAgICAgICAgdHJ5OgogICAgICAgICAgICAjIFVzZSB1bml4IHRpbWVzdGFtcCBkZWx0YSB0byBhdm9pZCBhd2FyZS9uYWl2ZSBzdWJ0cmFjdGlvbiBlcnJvcnMuCiAgICAgICAgICAgIHJldHVybiBtYXgoMCwgaW50KGVuZF90aW1lLnRpbWVzdGFtcCgpIC0gc2VsZi5zdGFydGVkX2F0LnRpbWVzdGFtcCgpKSkKICAgICAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgICAgICBzdGFydCA9IHNlbGYuc3RhcnRlZF9hdAogICAgICAgICAgICBpZiAoc3RhcnQudHppbmZvIGlzIE5vbmUpICE9IChlbmRfdGltZS50emluZm8gaXMgTm9uZSk6CiAgICAgICAgICAgICAgICBpZiBzdGFydC50emluZm8gaXMgTm9uZSBhbmQgZW5kX3RpbWUudHppbmZvIGlzIG5vdCBOb25lOgogICAgICAgICAgICAgICAgICAgIHN0YXJ0ID0gc3RhcnQucmVwbGFjZSh0emluZm89ZW5kX3RpbWUudHppbmZvKQogICAgICAgICAgICAgICAgZWxpZiBzdGFydC50emluZm8gaXMgbm90IE5vbmUgYW5kIGVuZF90aW1lLnR6aW5mbyBpcyBOb25lOgogICAgICAgICAgICAgICAgICAgIGVuZF90aW1lID0gZW5kX3RpbWUucmVwbGFjZSh0emluZm89c3RhcnQudHppbmZvKQogICAgICAgICAgICByZXR1cm4gbWF4KDAsIGludCgoZW5kX3RpbWUgLSBzdGFydCkudG90YWxfc2Vjb25kcygpKSkKCiAgICBkZWYgZ2V0X2NvbnN1bWVkX2NyZWRpdChzZWxmKSAtPiBmbG9hdDoKICAgICAgICBiYXNlX2NyZWRpdCA9IGZsb2F0KChzZWxmLmNvbnN1bWVkX3Rva2VucyBvciAwKSArIChzZWxmLnN1Ym1pc3Npb25fcGVuYWx0eSBvciAwKSkKICAgICAgICBpZiBub3Qgc2VsZi5pc19ydW5uaW5nOgogICAgICAgICAgICByZXR1cm4gYmFzZV9jcmVkaXQgKyBzZWxmLl90b19ub25fbmVnYXRpdmVfZmxvYXQoc2VsZi5kZWxpdmVyeV90aW1lX2NyZWRpdCwgMC4wKQogICAgICAgIHJldHVybiBiYXNlX2NyZWRpdAoKICAgIGRlZiB0ZXJtaW5hdGUoc2VsZiwgcmVhc29uOiBzdHIsIHRlcm1pbmF0ZWRfYXQ6IE9wdGlvbmFsW2RhdGV0aW1lXSA9IE5vbmUpIC0+IE5vbmU6CiAgICAgICAgIiIiVGVybWluYXRlIHRoZSBwYXJ0aWNpcGFudCB3aXRoIGEgcmVhc29uIiIiCiAgICAgICAgc2V0dGxlZF9hdCA9IHRlcm1pbmF0ZWRfYXQgb3IgZGF0ZXRpbWUubm93KCkKICAgICAgICBzZWxmLmlzX3J1bm5pbmcgPSBGYWxzZQogICAgICAgIHNlbGYudGVybWluYXRpb25fcmVhc29uID0gcmVhc29uCiAgICAgICAgc2VsZi50ZXJtaW5hdGVkX2F0ID0gc2V0dGxlZF9hdAogICAgICAgIHNlbGYuZGVsaXZlcnlfdGltZV9zZWNvbmRzID0gc2VsZi5nZXRfZWxhcHNlZF90aW1lX3NlY29uZHMobm93PXNldHRsZWRfYXQpCiAgICAgICAgc2VsZi5kZWxpdmVyeV90aW1lX2NyZWRpdCA9ICgKICAgICAgICAgICAgZmxvYXQoc2VsZi5kZWxpdmVyeV90aW1lX3NlY29uZHMpICogc2VsZi5kZWxpdmVyeV90aW1lX211bHRpcGxpZXIKICAgICAgICApCgogICAgZGVmIGluaXRpYWxpemVfcHJvYmxlbV9zdGF0cyhzZWxmLCBwcm9ibGVtX2lkOiBzdHIpIC0+IE5vbmU6CiAgICAgICAgIiIiSW5pdGlhbGl6ZSBzdGF0aXN0aWNzIGZvciBhIHByb2JsZW0iIiIKICAgICAgICBpZiBwcm9ibGVtX2lkIG5vdCBpbiBzZWxmLnByb2JsZW1fc3RhdHM6CiAgICAgICAgICAgIHNlbGYucHJvYmxlbV9zdGF0c1twcm9ibGVtX2lkXSA9IHsKICAgICAgICAgICAgICAgICJwcm9ibGVtX2lkIjogcHJvYmxlbV9pZCwKICAgICAgICAgICAgICAgICJzdWJtaXNzaW9uX2NvdW50IjogMCwKICAgICAgICAgICAgICAgICJwYXNzZWRfdGVzdF9jYXNlcyI6IDAsCiAgICAgICAgICAgICAgICAidG90YWxfdGVzdF9jYXNlcyI6IDAsCiAgICAgICAgICAgICAgICAiYmVzdF9zY29yZSI6IDAsCiAgICAgICAgICAgICAgICAicGVuYWx0eSI6IDAsCiAgICAgICAgICAgICAgICAic29sdmVkIjogRmFsc2UsCiAgICAgICAgICAgICAgICAic29sdmVkX2F0IjogTm9uZSwKICAgICAgICAgICAgICAgICJmaXJzdF9zdWJtaXNzaW9uX2F0IjogTm9uZSwKICAgICAgICAgICAgICAgICJsYXN0X3N1Ym1pc3Npb25fYXQiOiBOb25lLAogICAgICAgICAgICAgICAgImlzX2ZpcnN0X2FjIjogRmFsc2UsCiAgICAgICAgICAgICAgICAibGFuZ3VhZ2VfdXNlZCI6IE5vbmUKICAgICAgICAgICAgfQoKICAgIGRlZiBpbml0aWFsaXplX2FsbF9wcm9ibGVtc19zdGF0cyhzZWxmLCBwcm9ibGVtX2lkczogTGlzdFtzdHJdKSAtPiBOb25lOgogICAgICAgICIiIkluaXRpYWxpemUgc3RhdGlzdGljcyBmb3IgYWxsIHByb2JsZW1zIGluIHRoZSBjb21wZXRpdGlvbiIiIgogICAgICAgIGZvciBwcm9ibGVtX2lkIGluIHByb2JsZW1faWRzOgogICAgICAgICAgICBzZWxmLmluaXRpYWxpemVfcHJvYmxlbV9zdGF0cyhwcm9ibGVtX2lkKQoKICAgIGRlZiB1cGRhdGVfcHJvYmxlbV9zdGF0cyhzZWxmLCBwcm9ibGVtX2lkOiBzdHIsIHN1Ym1pc3Npb246ICdTdWJtaXNzaW9uJywKICAgICAgICAgICAgICAgICAgICAgICAgICAgcGFzc2VkX2Nhc2VzOiBpbnQgPSAwLCB0b3RhbF9jYXNlczogaW50ID0gMCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgaXNfZmlyc3RfYWM6IGJvb2wgPSBGYWxzZSkgLT4gTm9uZToKICAgICAgICAiIiJVcGRhdGUgc3RhdGlzdGljcyBmb3IgYSBzcGVjaWZpYyBwcm9ibGVtIGFmdGVyIGEgc3VibWlzc2lvbiIiIgogICAgICAgIHNlbGYuaW5pdGlhbGl6ZV9wcm9ibGVtX3N0YXRzKHByb2JsZW1faWQpCgogICAgICAgIHN0YXRzID0gc2VsZi5wcm9ibGVtX3N0YXRzW3Byb2JsZW1faWRdCiAgICAgICAgc3RhdHNbInN1Ym1pc3Npb25fY291bnQiXSArPSAxCiAgICAgICAgc3RhdHNbInBlbmFsdHkiXSArPSBzdWJtaXNzaW9uLnBlbmFsdHkKICAgICAgICBzdGF0c1sibGFzdF9zdWJtaXNzaW9uX2F0Il0gPSBzdWJtaXNzaW9uLnN1Ym1pdHRlZF9hdC5pc29mb3JtYXQoKQogICAgICAgIHN0YXRzWyJsYW5ndWFnZV91c2VkIl0gPSBzdWJtaXNzaW9uLmxhbmd1YWdlCgogICAgICAgIGlmIHN0YXRzWyJmaXJzdF9zdWJtaXNzaW9uX2F0Il0gaXMgTm9uZToKICAgICAgICAgICAgc3RhdHNbImZpcnN0X3N1Ym1pc3Npb25fYXQiXSA9IHN1Ym1pc3Npb24uc3VibWl0dGVkX2F0Lmlzb2Zvcm1hdCgpCgogICAgICAgIGlmIHRvdGFsX2Nhc2VzID4gMDoKICAgICAgICAgICAgc3RhdHNbInBhc3NlZF90ZXN0X2Nhc2VzIl0gPSBtYXgoc3RhdHNbInBhc3NlZF90ZXN0X2Nhc2VzIl0sIHBhc3NlZF9jYXNlcykKICAgICAgICAgICAgc3RhdHNbInRvdGFsX3Rlc3RfY2FzZXMiXSA9IHRvdGFsX2Nhc2VzCgogICAgICAgIGlmIHN1Ym1pc3Npb24ucGFzc19zY29yZSA+IHN0YXRzWyJiZXN0X3Njb3JlIl06CiAgICAgICAgICAgIHN0YXRzWyJiZXN0X3Njb3JlIl0gPSBzdWJtaXNzaW9uLnBhc3Nfc2NvcmUKCiAgICAgICAgaWYgc3VibWlzc2lvbi5zdGF0dXMgPT0gU3VibWlzc2lvblN0YXR1cy5BQ0NFUFRFRDoKICAgICAgICAgICAgc3RhdHNbInNvbHZlZCJdID0gVHJ1ZQogICAgICAgICAgICBpZiBzdGF0c1sic29sdmVkX2F0Il0gaXMgTm9uZToKICAgICAgICAgICAgICAgIHN0YXRzWyJzb2x2ZWRfYXQiXSA9IHN1Ym1pc3Npb24uc3VibWl0dGVkX2F0Lmlzb2Zvcm1hdCgpCiAgICAgICAgICAgIHN0YXRzWyJpc19maXJzdF9hYyJdID0gaXNfZmlyc3RfYWMKICAgIAogICAgZGVmIHRvX2RpY3Qoc2VsZiwgaW5jbHVkZV9zdWJtaXNzaW9uczogYm9vbCA9IEZhbHNlKSAtPiBEaWN0OgogICAgICAgIGVsYXBzZWRfdGltZV9zZWNvbmRzID0gc2VsZi5nZXRfZWxhcHNlZF90aW1lX3NlY29uZHMoKQogICAgICAgIHNldHRsZWRfZGVsaXZlcnlfc2Vjb25kcyA9ICgKICAgICAgICAgICAgc2VsZi5fdG9fbm9uX25lZ2F0aXZlX2ludChzZWxmLmRlbGl2ZXJ5X3RpbWVfc2Vjb25kcywgMCkKICAgICAgICAgICAgaWYgbm90IHNlbGYuaXNfcnVubmluZwogICAgICAgICAgICBlbHNlIDAKICAgICAgICApCiAgICAgICAgc2V0dGxlZF9kZWxpdmVyeV9jcmVkaXQgPSAoCiAgICAgICAgICAgIHNlbGYuX3RvX25vbl9uZWdhdGl2ZV9mbG9hdChzZWxmLmRlbGl2ZXJ5X3RpbWVfY3JlZGl0LCAwLjApCiAgICAgICAgICAgIGlmIG5vdCBzZWxmLmlzX3J1bm5pbmcKICAgICAgICAgICAgZWxzZSAwLjAKICAgICAgICApCgogICAgICAgIHJlc3VsdCA9IHsKICAgICAgICAgICAgImlkIjogc2VsZi5pZCwKICAgICAgICAgICAgImNvbXBldGl0aW9uX2lkIjogc2VsZi5jb21wZXRpdGlvbl9pZCwKICAgICAgICAgICAgIm5hbWUiOiBzZWxmLm5hbWUsCiAgICAgICAgICAgICJhZ2VudF9wcm9maWxlIjogc2VsZi5hZ2VudF9wcm9maWxlLAogICAgICAgICAgICAiTExNX3Rva2VucyI6IHNlbGYuTExNX3Rva2VucywKICAgICAgICAgICAgImhpbnRfdG9rZW5zIjogc2VsZi5oaW50X3Rva2VucywKICAgICAgICAgICAgInN1Ym1pc3Npb25fdG9rZW5zIjogc2VsZi5zdWJtaXNzaW9uX3Rva2VucywKICAgICAgICAgICAgInRlc3RfdG9rZW5zIjogc2VsZi50ZXN0X3Rva2VucywKICAgICAgICAgICAgImNvbnN1bWVkX3Rva2VucyI6IHNlbGYuY29uc3VtZWRfdG9rZW5zLAogICAgICAgICAgICAibGltaXRfdG9rZW5zIjogc2VsZi5saW1pdF90b2tlbnMsCiAgICAgICAgICAgICJyZW1haW5pbmdfdG9rZW5zIjogc2VsZi5yZW1haW5pbmdfdG9rZW5zLAogICAgICAgICAgICAibGFtYmRhX3ZhbHVlIjogc2VsZi5sYW1iZGFfdmFsdWUsCiAgICAgICAgICAgICJzdWJtaXNzaW9uX2NvdW50Ijogc2VsZi5zdWJtaXNzaW9uX2NvdW50LAogICAgICAgICAgICAiYWNjZXB0ZWRfY291bnQiOiBzZWxmLmFjY2VwdGVkX2NvdW50LAogICAgICAgICAgICAic3VibWlzc2lvbl9wZW5hbHR5Ijogc2VsZi5zdWJtaXNzaW9uX3BlbmFsdHksCiAgICAgICAgICAgICJwcm9ibGVtX3Bhc3Nfc2NvcmUiOiBzZWxmLnByb2JsZW1fcGFzc19zY29yZSwKICAgICAgICAgICAgInNjb3JlIjogc2VsZi5zY29yZSwKCiAgICAgICAgICAgICMgTmV3IHN0YXRpc3RpY3MgZmllbGRzCiAgICAgICAgICAgICJsbG1faW5mZXJlbmNlX2NvdW50Ijogc2VsZi5sbG1faW5mZXJlbmNlX2NvdW50LAogICAgICAgICAgICAiZmlyc3RfYWNfc2NvcmUiOiBzZWxmLmZpcnN0X2FjX3Njb3JlLAogICAgICAgICAgICAicHJvYmxlbV9zY29yZSI6IHNlbGYucHJvYmxlbV9zY29yZSwKCiAgICAgICAgICAgICMgRGV0YWlsZWQgcnVsZS1iYXNlZCBzY29yaW5nIGJyZWFrZG93bgogICAgICAgICAgICAiYnJvbnplX3Njb3JlIjogc2VsZi5icm9uemVfc2NvcmUsCiAgICAgICAgICAgICJzaWx2ZXJfc2NvcmUiOiBzZWxmLnNpbHZlcl9zY29yZSwKICAgICAgICAgICAgImdvbGRfc2NvcmUiOiBzZWxmLmdvbGRfc2NvcmUsCiAgICAgICAgICAgICJwbGF0aW51bV9zY29yZSI6IHNlbGYucGxhdGludW1fc2NvcmUsCiAgICAgICAgICAgICJib251c19zY29yZSI6IHNlbGYuYm9udXNfc2NvcmUsCgogICAgICAgICAgICAjIFBlci1wcm9ibGVtIHN0YXRpc3RpY3MKICAgICAgICAgICAgInByb2JsZW1fc3RhdHMiOiBzZWxmLnByb2JsZW1fc3RhdHMsCgogICAgICAgICAgICAjICJzb2x2ZWRfcHJvYmxlbXMiOiBzZWxmLnNvbHZlZF9wcm9ibGVtcywKICAgICAgICAgICAgImlzX3J1bm5pbmciOiBzZWxmLmlzX3J1bm5pbmcsCiAgICAgICAgICAgICJ0ZXJtaW5hdGlvbl9yZWFzb24iOiBzZWxmLnRlcm1pbmF0aW9uX3JlYXNvbiwKICAgICAgICAgICAgInN0YXJ0ZWRfYXQiOiBzZWxmLnN0YXJ0ZWRfYXQuaXNvZm9ybWF0KCkgaWYgc2VsZi5zdGFydGVkX2F0IGVsc2UgTm9uZSwKICAgICAgICAgICAgInRlcm1pbmF0ZWRfYXQiOiBzZWxmLnRlcm1pbmF0ZWRfYXQuaXNvZm9ybWF0KCkgaWYgc2VsZi50ZXJtaW5hdGVkX2F0IGVsc2UgTm9uZSwKICAgICAgICAgICAgImVsYXBzZWRfdGltZV9zZWNvbmRzIjogZWxhcHNlZF90aW1lX3NlY29uZHMsCiAgICAgICAgICAgICJkZWxpdmVyeV90aW1lX3NlY29uZHMiOiBzZXR0bGVkX2RlbGl2ZXJ5X3NlY29uZHMsCiAgICAgICAgICAgICJkZWxpdmVyeV90aW1lX211bHRpcGxpZXIiOiBzZWxmLmRlbGl2ZXJ5X3RpbWVfbXVsdGlwbGllciwKICAgICAgICAgICAgImRlbGl2ZXJ5X3RpbWVfY3JlZGl0Ijogc2V0dGxlZF9kZWxpdmVyeV9jcmVkaXQsCiAgICAgICAgICAgICJkZWxpdmVyeV90aW1lX3NldHRsZWQiOiAobm90IHNlbGYuaXNfcnVubmluZyksCiAgICAgICAgICAgICJjb25zdW1lZF9jcmVkaXQiOiBzZWxmLmdldF9jb25zdW1lZF9jcmVkaXQoKSwKICAgICAgICB9CgogICAgICAgICMgaWYgaW5jbHVkZV9zdWJtaXNzaW9uczoKICAgICAgICAjICAgICByZXN1bHRbInN1Ym1pc3Npb25zIl0gPSBbcy50b19kaWN0KCkgZm9yIHMgaW4gc2VsZi5zdWJtaXNzaW9uc10KCiAgICAgICAgcmV0dXJuIHJlc3VsdAoKCmNsYXNzIENhc2U6CiAgICBkZWYgX19pbml0X18oCiAgICAgICAgc2VsZiwKICAgICAgICBpZDogc3RyLAogICAgICAgIGlucHV0X2RhdGE6IHN0ciwKICAgICAgICBleHBlY3RlZF9vdXRwdXQ6IHN0ciwKICAgICAgICBpbnB1dF9wYXRoOiBPcHRpb25hbFtzdHJdID0gTm9uZSwKICAgICk6CiAgICAgICAgc2VsZi5pZCA9IGlkCiAgICAgICAgc2VsZi5pbnB1dF9kYXRhID0gaW5wdXRfZGF0YQogICAgICAgIHNlbGYuZXhwZWN0ZWRfb3V0cHV0ID0gZXhwZWN0ZWRfb3V0cHV0CiAgICAgICAgc2VsZi5pbnB1dF9wYXRoID0gaW5wdXRfcGF0aAogICAgCiAgICBkZWYgdG9fZGljdChzZWxmKSAtPiBEaWN0OgogICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICJpZCI6IHNlbGYuaWQsCiAgICAgICAgICAgICJpbnB1dF9kYXRhIjogc2VsZi5pbnB1dF9kYXRhLAogICAgICAgICAgICAiZXhwZWN0ZWRfb3V0cHV0Ijogc2VsZi5leHBlY3RlZF9vdXRwdXQsCiAgICAgICAgICAgICJpbnB1dF9wYXRoIjogc2VsZi5pbnB1dF9wYXRoLAogICAgICAgIH0KCgoKCgpjbGFzcyBUZXN0UmVzdWx0OgogICAgZGVmIF9faW5pdF9fKAogICAgICAgIHNlbGYsCiAgICAgICAgdGVzdF9jYXNlX2lkOiBzdHIsCiAgICAgICAgc3RhdHVzOiBTdWJtaXNzaW9uU3RhdHVzLAogICAgICAgIHJ1bnRpbWVfbXM6IE9wdGlvbmFsW2ludF0gPSBOb25lLAogICAgICAgIG1lbW9yeV9rYjogT3B0aW9uYWxbaW50XSA9IE5vbmUsCiAgICAgICAgb3V0cHV0OiBPcHRpb25hbFtzdHJdID0gTm9uZSwKICAgICAgICBlcnJvcl9tZXNzYWdlOiBPcHRpb25hbFtzdHJdID0gTm9uZQogICAgKToKICAgICAgICBzZWxmLnRlc3RfY2FzZV9pZCA9IHRlc3RfY2FzZV9pZAogICAgICAgIHNlbGYuc3RhdHVzID0gc3RhdHVzCiAgICAgICAgc2VsZi5ydW50aW1lX21zID0gcnVudGltZV9tcwogICAgICAgIHNlbGYubWVtb3J5X2tiID0gbWVtb3J5X2tiCiAgICAgICAgc2VsZi5vdXRwdXQgPSBvdXRwdXQKICAgICAgICBzZWxmLmVycm9yX21lc3NhZ2UgPSBlcnJvcl9tZXNzYWdlCiAgICAKICAgIGRlZiB0b19kaWN0KHNlbGYpIC0+IERpY3Q6CiAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgInRlc3RfY2FzZV9pZCI6IHNlbGYudGVzdF9jYXNlX2lkLAogICAgICAgICAgICAic3RhdHVzIjogc2VsZi5zdGF0dXMudmFsdWUsICAjIFVzZSAudmFsdWUgZm9yIGVudW0gc2VyaWFsaXphdGlvbgogICAgICAgICAgICAicnVudGltZV9tcyI6IHNlbGYucnVudGltZV9tcywKICAgICAgICAgICAgIm1lbW9yeV9rYiI6IHNlbGYubWVtb3J5X2tiLAogICAgICAgICAgICAib3V0cHV0Ijogc2VsZi5vdXRwdXQsCiAgICAgICAgICAgICJlcnJvcl9tZXNzYWdlIjogc2VsZi5lcnJvcl9tZXNzYWdlCiAgICAgICAgfQoKCmNsYXNzIENvbXBldGl0aW9uOgogICAgZGVmIF9faW5pdF9fKAogICAgICAgIHNlbGYsCiAgICAgICAgaWQ6IHN0ciwKICAgICAgICB0aXRsZTogc3RyLAogICAgICAgIGRlc2NyaXB0aW9uOiBzdHIsCiAgICAgICAgc3RhcnRfdGltZTogZGF0ZXRpbWUsCiAgICAgICAgZW5kX3RpbWU6IE9wdGlvbmFsW2RhdGV0aW1lXSA9IE5vbmUsCiAgICAgICAgbWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQ6IGludCA9IDEwMDAwMCwKICAgICAgICBydWxlczogT3B0aW9uYWxbRGljdFtzdHIsIEFueV1dID0gTm9uZSwKICAgICAgICBpc19hY3RpdmU6IGJvb2wgPSBUcnVlLAogICAgICAgIHBhcnRpY2lwYW50X2NvdW50OiBpbnQgPSAwLAogICAgICAgIHByb2JsZW1fY291bnQ6IGludCA9IDAsCiAgICApOgogICAgICAgIHNlbGYuaWQgPSBpZAogICAgICAgIHNlbGYudGl0bGUgPSB0aXRsZQogICAgICAgIHNlbGYuZGVzY3JpcHRpb24gPSBkZXNjcmlwdGlvbgogICAgICAgIHNlbGYubWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQgPSBtYXhfdG9rZW5zX3Blcl9wYXJ0aWNpcGFudAogICAgICAgIHNlbGYuc3RhcnRfdGltZSA9IHN0YXJ0X3RpbWUKICAgICAgICBzZWxmLmVuZF90aW1lID0gZW5kX3RpbWUKICAgICAgICBzZWxmLmlzX2FjdGl2ZSA9IGlzX2FjdGl2ZQogICAgICAgIHNlbGYucGFydGljaXBhbnRfY291bnQgPSBwYXJ0aWNpcGFudF9jb3VudAogICAgICAgIHNlbGYucHJvYmxlbV9jb3VudCA9IHByb2JsZW1fY291bnQKICAgICAgICBzZWxmLnJ1bGVzID0gcnVsZXMgb3IgewogICAgICAgICAgICAic2NvcmluZyI6IHsKICAgICAgICAgICAgICAgICJicm9uemUiOiAxMDAsCiAgICAgICAgICAgICAgICAic2lsdmVyIjogMjAwLAogICAgICAgICAgICAgICAgImdvbGQiOiA1MDAsCiAgICAgICAgICAgICAgICAicGxhdGludW0iOiAxMDAwCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJib251c19mb3JfZmlyc3RfYWMiOiAxMDAsCiAgICAgICAgICAgICJwZW5hbHRpZXMiOiB7CiAgICAgICAgICAgICAgICAiV0EiOiAxMCwKICAgICAgICAgICAgICAgICJSRSI6IDEwLAogICAgICAgICAgICAgICAgIkNFIjogNSwKICAgICAgICAgICAgICAgICJUTEUiOiAxMCwKICAgICAgICAgICAgICAgICJNTEUiOiAxMAogICAgICAgICAgICB9LAogICAgICAgICAgICAiaGludF90b2tlbnMiOiB7CiAgICAgICAgICAgICAgICAibGV2ZWxfMSI6IDUwMCwKICAgICAgICAgICAgICAgICJsZXZlbF8yIjogMTAwMCwKICAgICAgICAgICAgICAgICJsZXZlbF8zIjogMTUwMAogICAgICAgICAgICB9LAogICAgICAgICAgICAic3VibWlzc2lvbl90b2tlbnMiOiB7CiAgICAgICAgICAgICAgICAiQUMiOiAxMDAsCiAgICAgICAgICAgICAgICAiV0EiOiAxMDAsCiAgICAgICAgICAgICAgICAiUkUiOiAxMDAsCiAgICAgICAgICAgICAgICAiQ0UiOiAxMDAsCiAgICAgICAgICAgICAgICAiVExFIjogMTAwLAogICAgICAgICAgICAgICAgIk1MRSI6IDEwMAogICAgICAgICAgICB9LAogICAgICAgICAgICAidGVzdF90b2tlbnMiOiB7CiAgICAgICAgICAgICAgICAiZGVmYXVsdCI6IDUwLAogICAgICAgICAgICAgICAgInBlcl90ZXN0X2Nhc2UiOiAwLAogICAgICAgICAgICAgICAgImxhbmd1YWdlX211bHRpcGxpZXJzIjogewogICAgICAgICAgICAgICAgICAgICJjcHAiOiAxLjAsCiAgICAgICAgICAgICAgICAgICAgImphdmEiOiAxLjIsCiAgICAgICAgICAgICAgICAgICAgInB5dGhvbiI6IDEuNQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9LAogICAgICAgICAgICAibGFtYmRhIjogMTAwLAogICAgICAgICAgICAiZGVsaXZlcnlfdGltZV9tdWx0aXBsaWVyIjogMS4wLAogICAgICAgICAgICAiaW5wdXRfdG9rZW5fbXVsdGlwbGllcnMiOiB7CiAgICAgICAgICAgICJxd2VuMy0yMzViIjogMC43LAogICAgICAgICAgICAiZ2VtaW5pLTIuNS1wcm8iOiAxLjI1LAogICAgICAgICAgICAiZ2VtaW5pLTIuNS1mbGFzaCI6IDAuMTUsCiAgICAgICAgICAgICJkZWVwc2Vlay12MyI6IDAuMjcsCiAgICAgICAgICAgICJkZWVwc2Vlay1yMSI6IDAuNTUsCiAgICAgICAgICAgICJraW1pLWsyIjogMSwKICAgICAgICAgICAgImdwdC00byI6IDIuNSwKICAgICAgICAgICAgImdwdC00LjEiOiAyLAogICAgICAgICAgICAiZ3B0LTQuMS1taW5pIjogMC40LAogICAgICAgICAgICAiZ3B0LTQuMS1uYW5vIjogMC4xLAogICAgICAgICAgICAiZ3B0LTRvLW1pbmkiOiAwLjE1LAogICAgICAgICAgICAiY2xhdWRlLTMuNy1zb25uZXQiOiAzLAogICAgICAgICAgICAiY2xhdWRlLXNvbm5ldC00LTIwMjUwNTE0IjogMywKICAgICAgICAgICAgImdyb2stMy1iZXRhIjogMwogICAgICAgICAgICB9LAogICAgICAgICAgICAib3V0cHV0X3Rva2VuX211bHRpcGxpZXJzIjogewogICAgICAgICAgICAicXdlbjMtMjM1YiI6IDIuOCwKICAgICAgICAgICAgImdlbWluaS0yLjUtcHJvIjogMTAsCiAgICAgICAgICAgICJnZW1pbmktMi41LWZsYXNoIjogMC42LAogICAgICAgICAgICAiZGVlcHNlZWstdjMiOiAxLjEsCiAgICAgICAgICAgICJkZWVwc2Vlay1yMSI6IDIuMTksCiAgICAgICAgICAgICJraW1pLWsyIjogMywKICAgICAgICAgICAgImdwdC00byI6IDEwLAogICAgICAgICAgICAiZ3B0LTQuMSI6IDgsCiAgICAgICAgICAgICJncHQtNC4xLW1pbmkiOiAxLjYsCiAgICAgICAgICAgICJncHQtNC4xLW5hbm8iOiAwLjQsCiAgICAgICAgICAgICJncHQtNG8tbWluaSI6IDAuNiwKICAgICAgICAgICAgImNsYXVkZS0zLjctc29ubmV0IjogMTUsCiAgICAgICAgICAgICJjbGF1ZGUtc29ubmV0LTQtMjAyNTA1MTQiOiAxNSwKICAgICAgICAgICAgImdyb2stMy1iZXRhIjogMTUKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIAogICAgZGVmIHRvX2RpY3Qoc2VsZiwgaW5jbHVkZV9kZXRhaWxzOiBib29sID0gRmFsc2UpIC0+IERpY3Q6CiAgICAgICAgcmVzdWx0ID0gewogICAgICAgICAgICAiaWQiOiBzZWxmLmlkLAogICAgICAgICAgICAidGl0bGUiOiBzZWxmLnRpdGxlLAogICAgICAgICAgICAiZGVzY3JpcHRpb24iOiBzZWxmLmRlc2NyaXB0aW9uLAogICAgICAgICAgICAibWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQiOiBzZWxmLm1heF90b2tlbnNfcGVyX3BhcnRpY2lwYW50LAogICAgICAgICAgICAicnVsZXMiOiBzZWxmLnJ1bGVzLAogICAgICAgICAgICAiaXNfYWN0aXZlIjogc2VsZi5pc19hY3RpdmUsCiAgICAgICAgICAgICJwYXJ0aWNpcGFudF9jb3VudCI6IHNlbGYucGFydGljaXBhbnRfY291bnQsCiAgICAgICAgICAgICJwcm9ibGVtX2NvdW50Ijogc2VsZi5wcm9ibGVtX2NvdW50LAogICAgICAgICAgICAic3RhcnRfdGltZSI6IHNlbGYuc3RhcnRfdGltZS5pc29mb3JtYXQoKSBpZiBzZWxmLnN0YXJ0X3RpbWUgZWxzZSBOb25lLAogICAgICAgICAgICAiZW5kX3RpbWUiOiBzZWxmLmVuZF90aW1lLmlzb2Zvcm1hdCgpIGlmIHNlbGYuZW5kX3RpbWUgZWxzZSBOb25lCiAgICAgICAgICAgIH0KICAgICAgICAKICAgICAgICByZXR1cm4gcmVzdWx0CgpjbGFzcyBQcm9ibGVtOgogICAgZGVmIF9faW5pdF9fKAogICAgICAgIHNlbGYsIAogICAgICAgIGlkOiBzdHIsIAogICAgICAgIHRpdGxlOiBzdHIsIAogICAgICAgIGRlc2NyaXB0aW9uOiBzdHIsIAogICAgICAgIGxldmVsOiBMZXZlbCwKICAgICAgICB0aW1lX2xpbWl0X21zOiBpbnQgPSAxMDAwLAogICAgICAgIG1lbW9yeV9saW1pdF9tYjogaW50ID0gMjU2LAogICAgICAgIGZpcnN0X3RvX3NvbHZlOiBPcHRpb25hbFtzdHJdID0gTm9uZSwKICAgICAgICAjIHRlc3RfY2FzZXM6IExpc3RbQ2FzZV0gPSBbXSwKICAgICAgICBzYW1wbGVfY2FzZXM6IExpc3RbQ2FzZV0gPSBbXQogICAgKToKICAgICAgICBzZWxmLmlkID0gaWQKICAgICAgICBzZWxmLnRpdGxlID0gdGl0bGUKICAgICAgICBzZWxmLmRlc2NyaXB0aW9uID0gZGVzY3JpcHRpb24KICAgICAgICBzZWxmLmxldmVsID0gbGV2ZWwKICAgICAgICAjIHNlbGYudGVzdF9jYXNlcyA9IHRlc3RfY2FzZXMKICAgICAgICBzZWxmLnNhbXBsZV9jYXNlcyA9IHNhbXBsZV9jYXNlcwogICAgICAgIHNlbGYudGltZV9saW1pdF9tcyA9IHRpbWVfbGltaXRfbXMKICAgICAgICBzZWxmLm1lbW9yeV9saW1pdF9tYiA9IG1lbW9yeV9saW1pdF9tYgogICAgICAgIHNlbGYuZmlyc3RfdG9fc29sdmU6IE9wdGlvbmFsW3N0cl0gPSBmaXJzdF90b19zb2x2ZSAgIyBQYXJ0aWNpcGFudCBJRAogICAgICAgIAogICAgZGVmIHRvX2RpY3Qoc2VsZikgLT4gRGljdDoKICAgICAgICByZXN1bHQgPSB7CiAgICAgICAgICAgICJpZCI6IHNlbGYuaWQsCiAgICAgICAgICAgICJ0aXRsZSI6IHNlbGYudGl0bGUsCiAgICAgICAgICAgICJkZXNjcmlwdGlvbiI6IHNlbGYuZGVzY3JpcHRpb24sCiAgICAgICAgICAgICJsZXZlbCI6IHNlbGYubGV2ZWwudmFsdWUsICAjIFVzZSAudmFsdWUgZm9yIGVudW0gc2VyaWFsaXphdGlvbgogICAgICAgICAgICAic2FtcGxlX2Nhc2VzIjogW2Nhc2UudG9fZGljdCgpIGZvciBjYXNlIGluIHNlbGYuc2FtcGxlX2Nhc2VzXSwKICAgICAgICAgICAgInRpbWVfbGltaXRfbXMiOiBzZWxmLnRpbWVfbGltaXRfbXMsCiAgICAgICAgICAgICJtZW1vcnlfbGltaXRfbWIiOiBzZWxmLm1lbW9yeV9saW1pdF9tYiwKICAgICAgICAgICAgImZpcnN0X3RvX3NvbHZlIjogc2VsZi5maXJzdF90b19zb2x2ZSwKICAgICAgICAgICAgIyAidGVzdF9jYXNlcyI6IFtjYXNlLnRvX2RpY3QoKSBmb3IgY2FzZSBpbiBzZWxmLnRlc3RfY2FzZXNdCiAgICAgICAgfQogICAgICAgIHJldHVybiByZXN1bHQKICAgIAogICAgCiAgICBkZWYgZ2V0X3Byb2JsZW1fYmFzZV9zY29yZShzZWxmLCBjb21wZXRpdGlvbjogQ29tcGV0aXRpb24pIC0+IGludDoKICAgICAgICAiIiJHZXQgdGhlIG1heGltdW0gcG9zc2libGUgc2NvcmUgZm9yIGEgcHJvYmxlbSBiYXNlZCBvbiBjb21wZXRpdGlvbiBydWxlcyIiIgogICAgICAgIHNjb3JpbmdfcnVsZXMgPSBjb21wZXRpdGlvbi5ydWxlcy5nZXQoInNjb3JpbmciLCB7fSkKICAgICAgICByZXR1cm4gc2NvcmluZ19ydWxlcy5nZXQoc2VsZi5sZXZlbC52YWx1ZSwgMCkKCiAgICBkZWYgZ2V0X3Byb2JsZW1fZmlyc3RBQ19ib251cyhzZWxmLCBjb21wZXRpdGlvbjogQ29tcGV0aXRpb24pIC0+IGludDoKICAgICAgICAiIiJHZXQgdGhlIG1heGltdW0gcG9zc2libGUgc2NvcmUgZm9yIGEgcHJvYmxlbSBiYXNlZCBvbiBjb21wZXRpdGlvbiBydWxlcyIiIgogICAgICAgIHJldHVybiBjb21wZXRpdGlvbi5ydWxlcy5nZXQoImJvbnVzX2Zvcl9maXJzdF9hYyIsIDEwMCkKCmNsYXNzIFN1Ym1pc3Npb246CiAgICAiIiJBIHN1Ym1pc3Npb24gbWFkZSBieSBhIHBhcnRpY2lwYW50IGluIGEgY29tcGV0aXRpb24sIGNvcnJlc3BvbmRpbmcgdG8gYSBwcm9ibGVtIiIiCiAgICBkZWYgX19pbml0X18oCiAgICAgICAgc2VsZiwKICAgICAgICBpZDogc3RyLAogICAgICAgIGNvbXBldGl0aW9uX2lkOiBzdHIsCiAgICAgICAgcGFydGljaXBhbnRfaWQ6IHN0ciwKICAgICAgICBwcm9ibGVtX2lkOiBzdHIsCiAgICAgICAgY29kZTogc3RyLAogICAgICAgIGxhbmd1YWdlOiBzdHIsCiAgICAgICAgc3VibWl0dGVkX2F0OiBkYXRldGltZSwKICAgICAgICBzdGF0dXM6IFN1Ym1pc3Npb25TdGF0dXMgPSBTdWJtaXNzaW9uU3RhdHVzLlBFTkRJTkcsCiAgICAgICAgCiAgICAgICAgcGFzc19zY29yZTogaW50ID0gMCwKICAgICAgICBwZW5hbHR5OiBpbnQgPSAwLAogICAgICAgIHN1Ym1pc3Npb25fdG9rZW5zOiBpbnQgPSAwLAogICAgICAgIHRlc3RfcmVzdWx0czogT3B0aW9uYWxbTGlzdFtUZXN0UmVzdWx0XV0gPSBOb25lLAogICAgKToKICAgICAgICBzZWxmLmlkID0gaWQKICAgICAgICBzZWxmLmNvbXBldGl0aW9uX2lkID0gY29tcGV0aXRpb25faWQKICAgICAgICBzZWxmLnBhcnRpY2lwYW50X2lkID0gcGFydGljaXBhbnRfaWQKICAgICAgICBzZWxmLnByb2JsZW1faWQgPSBwcm9ibGVtX2lkCiAgICAgICAgc2VsZi5jb2RlID0gY29kZQogICAgICAgIHNlbGYubGFuZ3VhZ2UgPSBsYW5ndWFnZQogICAgICAgIHNlbGYuc3VibWl0dGVkX2F0ID0gc3VibWl0dGVkX2F0CiAgICAgICAgc2VsZi5zdGF0dXMgPSBzdGF0dXMKICAgICAgICBzZWxmLnRlc3RfcmVzdWx0cyA9IHRlc3RfcmVzdWx0cyBvciBbXQogICAgICAgIHNlbGYucGFzc19zY29yZSA9IHBhc3Nfc2NvcmUKICAgICAgICBzZWxmLnBlbmFsdHkgPSBwZW5hbHR5CiAgICAgICAgc2VsZi5zdWJtaXNzaW9uX3Rva2VucyA9IHN1Ym1pc3Npb25fdG9rZW5zCiAgICBkZWYgY2FsY3VsYXRlX3BlbmFsdHkoc2VsZiwgY29tcGV0aXRpb246IE9wdGlvbmFsW0NvbXBldGl0aW9uXSA9IE5vbmUpIC0+IGludDoKICAgICAgICAiIiIKICAgICAgICBDYWxjdWxhdGUgcGVuYWx0eSBiYXNlZCBvbiBzdWJtaXNzaW9uIHN0YXR1cyBhbmQgY29tcGV0aXRpb24gcnVsZXMuCiAgICAgICAgQWxsIHN1Ym1pc3Npb25zIChpbmNsdWRpbmcgQUMpIGNhbiBoYXZlIHBlbmFsdGllcyBiYXNlZCBvbiBjb21wZXRpdGlvbiBydWxlcy4KICAgICAgICBJZiBjb21wZXRpdGlvbiBpcyBub3QgcHJvdmlkZWQsIHJldHVybnMgMC4KICAgICAgICAiIiIKICAgICAgICBpZiBub3QgY29tcGV0aXRpb246CiAgICAgICAgICAgIHJldHVybiAwCiAgICAgICAgICAgIAogICAgICAgIHBlbmFsdGllcyA9IGNvbXBldGl0aW9uLnJ1bGVzLmdldCgicGVuYWx0aWVzIiwge30pCiAgICAgICAgCiAgICAgICAgaWYgc2VsZi5zdGF0dXMgPT0gU3VibWlzc2lvblN0YXR1cy5BQ0NFUFRFRDoKICAgICAgICAgICAgcmV0dXJuIHBlbmFsdGllcy5nZXQoIkFDIiwgMCkgICMgQUMgY2FuIGhhdmUgcGVuYWx0eSB0b28KICAgICAgICBlbGlmIHNlbGYuc3RhdHVzID09IFN1Ym1pc3Npb25TdGF0dXMuV1JPTkdfQU5TV0VSOgogICAgICAgICAgICByZXR1cm4gcGVuYWx0aWVzLmdldCgiV0EiLCAxMCkKICAgICAgICBlbGlmIHNlbGYuc3RhdHVzID09IFN1Ym1pc3Npb25TdGF0dXMuUlVOVElNRV9FUlJPUjoKICAgICAgICAgICAgcmV0dXJuIHBlbmFsdGllcy5nZXQoIlJFIiwgMTApCiAgICAgICAgZWxpZiBzZWxmLnN0YXR1cyA9PSBTdWJtaXNzaW9uU3RhdHVzLkNPTVBJTEFUSU9OX0VSUk9SOgogICAgICAgICAgICByZXR1cm4gcGVuYWx0aWVzLmdldCgiQ0UiLCA1KQogICAgICAgIGVsaWYgc2VsZi5zdGF0dXMgPT0gU3VibWlzc2lvblN0YXR1cy5USU1FX0xJTUlUX0VYQ0VFREVEOgogICAgICAgICAgICByZXR1cm4gcGVuYWx0aWVzLmdldCgiVExFIiwgMTApCiAgICAgICAgZWxpZiBzZWxmLnN0YXR1cyA9PSBTdWJtaXNzaW9uU3RhdHVzLk1FTU9SWV9MSU1JVF9FWENFRURFRDoKICAgICAgICAgICAgcmV0dXJuIHBlbmFsdGllcy5nZXQoIk1MRSIsIDEwKQogICAgICAgIHJldHVybiAwCiAgICAKICAgIGRlZiBjYWxjdWxhdGVfc3VibWlzc2lvbl90b2tlbnMoc2VsZiwgY29tcGV0aXRpb246IE9wdGlvbmFsW0NvbXBldGl0aW9uXSA9IE5vbmUpIC0+IGludDoKICAgICAgICAiIiIKICAgICAgICBDYWxjdWxhdGUgc3VibWlzc2lvbiB0b2tlbnMgYmFzZWQgb24gc3VibWlzc2lvbiBzdGF0dXMgYW5kIGNvbXBldGl0aW9uIHJ1bGVzLgogICAgICAgIElmIGNvbXBldGl0aW9uIGlzIG5vdCBwcm92aWRlZCwgcmV0dXJucyAwLgogICAgICAgICIiIgogICAgICAgIGlmIG5vdCBjb21wZXRpdGlvbjoKICAgICAgICAgICAgcmV0dXJuIDAKICAgICAgICAgICAgCiAgICAgICAgc3VibWlzc2lvbl90b2tlbnMgPSBjb21wZXRpdGlvbi5ydWxlcy5nZXQoInN1Ym1pc3Npb25fdG9rZW5zIiwge30pCiAgICAgICAgCiAgICAgICAgaWYgc2VsZi5zdGF0dXMgPT0gU3VibWlzc2lvblN0YXR1cy5BQ0NFUFRFRDoKICAgICAgICAgICAgcmV0dXJuIHN1Ym1pc3Npb25fdG9rZW5zLmdldCgiQUMiLCAxMDApCiAgICAgICAgZWxpZiBzZWxmLnN0YXR1cyA9PSBTdWJtaXNzaW9uU3RhdHVzLldST05HX0FOU1dFUjoKICAgICAgICAgICAgcmV0dXJuIHN1Ym1pc3Npb25fdG9rZW5zLmdldCgiV0EiLCAxMDApCiAgICAgICAgZWxpZiBzZWxmLnN0YXR1cyA9PSBTdWJtaXNzaW9uU3RhdHVzLlJVTlRJTUVfRVJST1I6CiAgICAgICAgICAgIHJldHVybiBzdWJtaXNzaW9uX3Rva2Vucy5nZXQoIlJFIiwgMTAwKQogICAgICAgIGVsaWYgc2VsZi5zdGF0dXMgPT0gU3VibWlzc2lvblN0YXR1cy5DT01QSUxBVElPTl9FUlJPUjoKICAgICAgICAgICAgcmV0dXJuIHN1Ym1pc3Npb25fdG9rZW5zLmdldCgiQ0UiLCAxMDApCiAgICAgICAgZWxpZiBzZWxmLnN0YXR1cyA9PSBTdWJtaXNzaW9uU3RhdHVzLlRJTUVfTElNSVRfRVhDRUVERUQ6CiAgICAgICAgICAgIHJldHVybiBzdWJtaXNzaW9uX3Rva2Vucy5nZXQoIlRMRSIsIDEwMCkKICAgICAgICBlbGlmIHNlbGYuc3RhdHVzID09IFN1Ym1pc3Npb25TdGF0dXMuTUVNT1JZX0xJTUlUX0VYQ0VFREVEOgogICAgICAgICAgICByZXR1cm4gc3VibWlzc2lvbl90b2tlbnMuZ2V0KCJNTEUiLCAxMDApCiAgICAgICAgcmV0dXJuIDAKICAgIAogICAgZGVmIHRvX2RpY3Qoc2VsZiwgaW5jbHVkZV9jb2RlOiBib29sID0gRmFsc2UpIC0+IERpY3Q6CiAgICAgICAgcmVzdWx0ID0gewogICAgICAgICAgICAiaWQiOiBzZWxmLmlkLAogICAgICAgICAgICAiY29tcGV0aXRpb25faWQiOiBzZWxmLmNvbXBldGl0aW9uX2lkLAogICAgICAgICAgICAicGFydGljaXBhbnRfaWQiOiBzZWxmLnBhcnRpY2lwYW50X2lkLAogICAgICAgICAgICAicHJvYmxlbV9pZCI6IHNlbGYucHJvYmxlbV9pZCwKICAgICAgICAgICAgImxhbmd1YWdlIjogc2VsZi5sYW5ndWFnZSwKICAgICAgICAgICAgInN1Ym1pdHRlZF9hdCI6IHNlbGYuc3VibWl0dGVkX2F0Lmlzb2Zvcm1hdCgpLAogICAgICAgICAgICAic3RhdHVzIjogc2VsZi5zdGF0dXMudmFsdWUsICAjIFVzZSAudmFsdWUgZm9yIGVudW0gc2VyaWFsaXphdGlvbgogICAgICAgICAgICAidGVzdF9yZXN1bHRzIjogW3RyLnRvX2RpY3QoKSBmb3IgdHIgaW4gc2VsZi50ZXN0X3Jlc3VsdHNdLAogICAgICAgICAgICAicGFzc19zY29yZSI6IHNlbGYucGFzc19zY29yZSwKICAgICAgICAgICAgInBlbmFsdHkiOiBzZWxmLnBlbmFsdHksCiAgICAgICAgICAgICJzdWJtaXNzaW9uX3Rva2VucyI6IHNlbGYuc3VibWlzc2lvbl90b2tlbnMKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgaWYgaW5jbHVkZV9jb2RlOgogICAgICAgICAgICByZXN1bHRbImNvZGUiXSA9IHNlbGYuY29kZQogICAgICAgICAgICAKICAgICAgICByZXR1cm4gcmVzdWx0Cg==
+from enum import Enum
+from typing import Dict, List, Optional, Any, Tuple
+from datetime import datetime
+import uuid
+
+# Helper function to generate unique IDs
+def generate_id() -> str:
+    """Generate a unique ID for entities"""
+    return str(uuid.uuid4())
+
+
+class SubmissionStatus(str, Enum):
+    ACCEPTED = "AC"
+    WRONG_ANSWER = "WA"
+    RUNTIME_ERROR = "RE"
+    COMPILATION_ERROR = "CE"
+    TIME_LIMIT_EXCEEDED = "TLE"
+    MEMORY_LIMIT_EXCEEDED = "MLE"
+    PENDING = "PENDING"
+
+
+class Level(str, Enum):
+    BRONZE = "bronze"
+    SILVER = "silver"
+    GOLD = "gold"
+    PLATINUM = "platinum"
+
+
+class Participant:
+    def __init__(
+        self,
+        id: str,
+        competition_id: str,
+        name: str,
+        api_base_url: str,
+        api_key: str,
+        limit_tokens: int,
+        lambda_value: int,
+        agent_profile: Optional[Dict[str, Any]] = None,
+        started_at: Optional[datetime] = None,
+        terminated_at: Optional[datetime] = None,
+        delivery_time_seconds: int = 0,
+        delivery_time_multiplier: float = 1.0,
+        delivery_time_credit: float = 0.0,
+    ):
+        # Core persistent attributes
+        self.id = id
+        self.competition_id = competition_id
+        self.name = name
+        self.api_base_url = api_base_url
+        self.api_key = api_key
+        self.agent_profile = agent_profile if isinstance(agent_profile, dict) else {}
+
+        # Token tracking   B_token_remaining
+        self.LLM_tokens = 0
+        self.hint_tokens = 0
+        self.submission_tokens = 0
+        self.test_tokens = 0
+        self.consumed_tokens = 0  # Total actual tokens consumed (without penalties)
+        self.limit_tokens = limit_tokens
+        self.remaining_tokens = limit_tokens
+        self.lambda_value = lambda_value
+
+        # Submission tracking
+        self.submission_count = 0
+        self.accepted_count = 0
+
+        # P_submission_count
+        self.submission_penalty = 0
+        # S_accepted_score
+        self.problem_pass_score = 0
+
+        # New statistics fields
+        self.llm_inference_count = 0  # Total LLM inference calls
+        self.first_ac_score = 0  # Score from being first to solve problems
+        self.problem_score = 0  # Score from passing problems (excluding first AC bonus)
+
+        # Detailed rule-based scoring breakdown
+        self.bronze_score = 0
+        self.silver_score = 0
+        self.gold_score = 0
+        self.platinum_score = 0
+        self.bonus_score = 0  # First AC bonuses
+
+        # Per-problem detailed statistics (Dict[problem_id, stats])
+        self.problem_stats = {}  # Will contain detailed per-problem statistics
+
+        #  total_score = S_accepted_score - P_submission_count + B_token_remaining
+        self.score = 0
+        
+        # Runtime state
+        self.is_running: bool = True
+        self.termination_reason: Optional[str] = None
+
+        # Delivery-time settlement state
+        self.started_at: datetime = started_at or datetime.now()
+        self.terminated_at: Optional[datetime] = terminated_at
+        self.delivery_time_seconds: int = self._to_non_negative_int(delivery_time_seconds, 0)
+        self.delivery_time_multiplier: float = self._to_non_negative_float(
+            delivery_time_multiplier, 1.0
+        )
+        self.delivery_time_credit: float = self._to_non_negative_float(delivery_time_credit, 0.0)
+
+    @staticmethod
+    def _to_non_negative_int(value: Any, default: int = 0) -> int:
+        try:
+            parsed = int(value)
+        except (TypeError, ValueError):
+            return default
+        return max(0, parsed)
+
+    @staticmethod
+    def _to_non_negative_float(value: Any, default: float = 0.0) -> float:
+        try:
+            parsed = float(value)
+        except (TypeError, ValueError):
+            return default
+        return max(0.0, parsed)
+
+    def get_elapsed_time_seconds(self, now: Optional[datetime] = None) -> int:
+        if not self.started_at:
+            return 0
+        end_time = (
+            self.terminated_at
+            if (not self.is_running and self.terminated_at is not None)
+            else (now or datetime.now())
+        )
+        try:
+            # Use unix timestamp delta to avoid aware/naive subtraction errors.
+            return max(0, int(end_time.timestamp() - self.started_at.timestamp()))
+        except Exception:
+            start = self.started_at
+            if (start.tzinfo is None) != (end_time.tzinfo is None):
+                if start.tzinfo is None and end_time.tzinfo is not None:
+                    start = start.replace(tzinfo=end_time.tzinfo)
+                elif start.tzinfo is not None and end_time.tzinfo is None:
+                    end_time = end_time.replace(tzinfo=start.tzinfo)
+            return max(0, int((end_time - start).total_seconds()))
+
+    def get_consumed_credit(self) -> float:
+        base_credit = float((self.consumed_tokens or 0) + (self.submission_penalty or 0))
+        if not self.is_running:
+            return base_credit + self._to_non_negative_float(self.delivery_time_credit, 0.0)
+        return base_credit
+
+    def terminate(self, reason: str, terminated_at: Optional[datetime] = None) -> None:
+        """Terminate the participant with a reason"""
+        settled_at = terminated_at or datetime.now()
+        self.is_running = False
+        self.termination_reason = reason
+        self.terminated_at = settled_at
+        self.delivery_time_seconds = self.get_elapsed_time_seconds(now=settled_at)
+        self.delivery_time_credit = (
+            float(self.delivery_time_seconds) * self.delivery_time_multiplier
+        )
+
+    def initialize_problem_stats(self, problem_id: str) -> None:
+        """Initialize statistics for a problem"""
+        if problem_id not in self.problem_stats:
+            self.problem_stats[problem_id] = {
+                "problem_id": problem_id,
+                "submission_count": 0,
+                "passed_test_cases": 0,
+                "total_test_cases": 0,
+                "best_score": 0,
+                "penalty": 0,
+                "solved": False,
+                "solved_at": None,
+                "first_submission_at": None,
+                "last_submission_at": None,
+                "is_first_ac": False,
+                "language_used": None
+            }
+
+    def initialize_all_problems_stats(self, problem_ids: List[str]) -> None:
+        """Initialize statistics for all problems in the competition"""
+        for problem_id in problem_ids:
+            self.initialize_problem_stats(problem_id)
+
+    def update_problem_stats(self, problem_id: str, submission: 'Submission',
+                           passed_cases: int = 0, total_cases: int = 0,
+                           is_first_ac: bool = False) -> None:
+        """Update statistics for a specific problem after a submission"""
+        self.initialize_problem_stats(problem_id)
+
+        stats = self.problem_stats[problem_id]
+        stats["submission_count"] += 1
+        stats["penalty"] += submission.penalty
+        stats["last_submission_at"] = submission.submitted_at.isoformat()
+        stats["language_used"] = submission.language
+
+        if stats["first_submission_at"] is None:
+            stats["first_submission_at"] = submission.submitted_at.isoformat()
+
+        if total_cases > 0:
+            stats["passed_test_cases"] = max(stats["passed_test_cases"], passed_cases)
+            stats["total_test_cases"] = total_cases
+
+        if submission.pass_score > stats["best_score"]:
+            stats["best_score"] = submission.pass_score
+
+        if submission.status == SubmissionStatus.ACCEPTED:
+            stats["solved"] = True
+            if stats["solved_at"] is None:
+                stats["solved_at"] = submission.submitted_at.isoformat()
+            stats["is_first_ac"] = is_first_ac
+    
+    def to_dict(self, include_submissions: bool = False) -> Dict:
+        elapsed_time_seconds = self.get_elapsed_time_seconds()
+        settled_delivery_seconds = (
+            self._to_non_negative_int(self.delivery_time_seconds, 0)
+            if not self.is_running
+            else 0
+        )
+        settled_delivery_credit = (
+            self._to_non_negative_float(self.delivery_time_credit, 0.0)
+            if not self.is_running
+            else 0.0
+        )
+
+        result = {
+            "id": self.id,
+            "competition_id": self.competition_id,
+            "name": self.name,
+            "agent_profile": self.agent_profile,
+            "LLM_tokens": self.LLM_tokens,
+            "hint_tokens": self.hint_tokens,
+            "submission_tokens": self.submission_tokens,
+            "test_tokens": self.test_tokens,
+            "consumed_tokens": self.consumed_tokens,
+            "limit_tokens": self.limit_tokens,
+            "remaining_tokens": self.remaining_tokens,
+            "lambda_value": self.lambda_value,
+            "submission_count": self.submission_count,
+            "accepted_count": self.accepted_count,
+            "submission_penalty": self.submission_penalty,
+            "problem_pass_score": self.problem_pass_score,
+            "score": self.score,
+
+            # New statistics fields
+            "llm_inference_count": self.llm_inference_count,
+            "first_ac_score": self.first_ac_score,
+            "problem_score": self.problem_score,
+
+            # Detailed rule-based scoring breakdown
+            "bronze_score": self.bronze_score,
+            "silver_score": self.silver_score,
+            "gold_score": self.gold_score,
+            "platinum_score": self.platinum_score,
+            "bonus_score": self.bonus_score,
+
+            # Per-problem statistics
+            "problem_stats": self.problem_stats,
+
+            # "solved_problems": self.solved_problems,
+            "is_running": self.is_running,
+            "termination_reason": self.termination_reason,
+            "started_at": self.started_at.isoformat() if self.started_at else None,
+            "terminated_at": self.terminated_at.isoformat() if self.terminated_at else None,
+            "elapsed_time_seconds": elapsed_time_seconds,
+            "delivery_time_seconds": settled_delivery_seconds,
+            "delivery_time_multiplier": self.delivery_time_multiplier,
+            "delivery_time_credit": settled_delivery_credit,
+            "delivery_time_settled": (not self.is_running),
+            "consumed_credit": self.get_consumed_credit(),
+        }
+
+        # if include_submissions:
+        #     result["submissions"] = [s.to_dict() for s in self.submissions]
+
+        return result
+
+
+class Case:
+    def __init__(
+        self,
+        id: str,
+        input_data: str,
+        expected_output: str,
+        input_path: Optional[str] = None,
+    ):
+        self.id = id
+        self.input_data = input_data
+        self.expected_output = expected_output
+        self.input_path = input_path
+    
+    def to_dict(self) -> Dict:
+        return {
+            "id": self.id,
+            "input_data": self.input_data,
+            "expected_output": self.expected_output,
+            "input_path": self.input_path,
+        }
+
+
+
+
+
+class TestResult:
+    def __init__(
+        self,
+        test_case_id: str,
+        status: SubmissionStatus,
+        runtime_ms: Optional[int] = None,
+        memory_kb: Optional[int] = None,
+        output: Optional[str] = None,
+        error_message: Optional[str] = None
+    ):
+        self.test_case_id = test_case_id
+        self.status = status
+        self.runtime_ms = runtime_ms
+        self.memory_kb = memory_kb
+        self.output = output
+        self.error_message = error_message
+    
+    def to_dict(self) -> Dict:
+        return {
+            "test_case_id": self.test_case_id,
+            "status": self.status.value,  # Use .value for enum serialization
+            "runtime_ms": self.runtime_ms,
+            "memory_kb": self.memory_kb,
+            "output": self.output,
+            "error_message": self.error_message
+        }
+
+
+class Competition:
+    def __init__(
+        self,
+        id: str,
+        title: str,
+        description: str,
+        start_time: datetime,
+        end_time: Optional[datetime] = None,
+        max_tokens_per_participant: int = 100000,
+        rules: Optional[Dict[str, Any]] = None,
+        is_active: bool = True,
+        participant_count: int = 0,
+        problem_count: int = 0,
+    ):
+        self.id = id
+        self.title = title
+        self.description = description
+        self.max_tokens_per_participant = max_tokens_per_participant
+        self.start_time = start_time
+        self.end_time = end_time
+        self.is_active = is_active
+        self.participant_count = participant_count
+        self.problem_count = problem_count
+        self.rules = rules or {
+            "scoring": {
+                "bronze": 100,
+                "silver": 200,
+                "gold": 500,
+                "platinum": 1000
+            },
+            "bonus_for_first_ac": 100,
+            "penalties": {
+                "WA": 10,
+                "RE": 10,
+                "CE": 5,
+                "TLE": 10,
+                "MLE": 10
+            },
+            "hint_tokens": {
+                "level_1": 500,
+                "level_2": 1000,
+                "level_3": 1500
+            },
+            "submission_tokens": {
+                "AC": 100,
+                "WA": 100,
+                "RE": 100,
+                "CE": 100,
+                "TLE": 100,
+                "MLE": 100
+            },
+            "test_tokens": {
+                "default": 50,
+                "per_test_case": 0,
+                "language_multipliers": {
+                    "cpp": 1.0,
+                    "java": 1.2,
+                    "python": 1.5
+                }
+            },
+            "lambda": 100,
+            "delivery_time_multiplier": 1.0,
+            "input_token_multipliers": {
+            "qwen3-235b": 0.7,
+            "gemini-2.5-pro": 1.25,
+            "gemini-2.5-flash": 0.15,
+            "deepseek-v3": 0.27,
+            "deepseek-r1": 0.55,
+            "kimi-k2": 1,
+            "gpt-4o": 2.5,
+            "gpt-4.1": 2,
+            "gpt-4.1-mini": 0.4,
+            "gpt-4.1-nano": 0.1,
+            "gpt-4o-mini": 0.15,
+            "claude-3.7-sonnet": 3,
+            "claude-sonnet-4-20250514": 3,
+            "grok-3-beta": 3
+            },
+            "output_token_multipliers": {
+            "qwen3-235b": 2.8,
+            "gemini-2.5-pro": 10,
+            "gemini-2.5-flash": 0.6,
+            "deepseek-v3": 1.1,
+            "deepseek-r1": 2.19,
+            "kimi-k2": 3,
+            "gpt-4o": 10,
+            "gpt-4.1": 8,
+            "gpt-4.1-mini": 1.6,
+            "gpt-4.1-nano": 0.4,
+            "gpt-4o-mini": 0.6,
+            "claude-3.7-sonnet": 15,
+            "claude-sonnet-4-20250514": 15,
+            "grok-3-beta": 15
+            }
+        }
+    
+    def to_dict(self, include_details: bool = False) -> Dict:
+        result = {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "max_tokens_per_participant": self.max_tokens_per_participant,
+            "rules": self.rules,
+            "is_active": self.is_active,
+            "participant_count": self.participant_count,
+            "problem_count": self.problem_count,
+            "start_time": self.start_time.isoformat() if self.start_time else None,
+            "end_time": self.end_time.isoformat() if self.end_time else None
+            }
+        
+        return result
+
+class Problem:
+    def __init__(
+        self, 
+        id: str, 
+        title: str, 
+        description: str, 
+        level: Level,
+        time_limit_ms: int = 1000,
+        memory_limit_mb: int = 256,
+        first_to_solve: Optional[str] = None,
+        # test_cases: List[Case] = [],
+        sample_cases: List[Case] = []
+    ):
+        self.id = id
+        self.title = title
+        self.description = description
+        self.level = level
+        # self.test_cases = test_cases
+        self.sample_cases = sample_cases
+        self.time_limit_ms = time_limit_ms
+        self.memory_limit_mb = memory_limit_mb
+        self.first_to_solve: Optional[str] = first_to_solve  # Participant ID
+        
+    def to_dict(self) -> Dict:
+        result = {
+            "id": self.id,
+            "title": self.title,
+            "description": self.description,
+            "level": self.level.value,  # Use .value for enum serialization
+            "sample_cases": [case.to_dict() for case in self.sample_cases],
+            "time_limit_ms": self.time_limit_ms,
+            "memory_limit_mb": self.memory_limit_mb,
+            "first_to_solve": self.first_to_solve,
+            # "test_cases": [case.to_dict() for case in self.test_cases]
+        }
+        return result
+    
+    
+    def get_problem_base_score(self, competition: Competition) -> int:
+        """Get the maximum possible score for a problem based on competition rules"""
+        scoring_rules = competition.rules.get("scoring", {})
+        return scoring_rules.get(self.level.value, 0)
+
+    def get_problem_firstAC_bonus(self, competition: Competition) -> int:
+        """Get the maximum possible score for a problem based on competition rules"""
+        return competition.rules.get("bonus_for_first_ac", 100)
+
+class Submission:
+    """A submission made by a participant in a competition, corresponding to a problem"""
+    def __init__(
+        self,
+        id: str,
+        competition_id: str,
+        participant_id: str,
+        problem_id: str,
+        code: str,
+        language: str,
+        submitted_at: datetime,
+        status: SubmissionStatus = SubmissionStatus.PENDING,
+        
+        pass_score: int = 0,
+        penalty: int = 0,
+        submission_tokens: int = 0,
+        test_results: Optional[List[TestResult]] = None,
+    ):
+        self.id = id
+        self.competition_id = competition_id
+        self.participant_id = participant_id
+        self.problem_id = problem_id
+        self.code = code
+        self.language = language
+        self.submitted_at = submitted_at
+        self.status = status
+        self.test_results = test_results or []
+        self.pass_score = pass_score
+        self.penalty = penalty
+        self.submission_tokens = submission_tokens
+    def calculate_penalty(self, competition: Optional[Competition] = None) -> int:
+        """
+        Calculate penalty based on submission status and competition rules.
+        All submissions (including AC) can have penalties based on competition rules.
+        If competition is not provided, returns 0.
+        """
+        if not competition:
+            return 0
+            
+        penalties = competition.rules.get("penalties", {})
+        
+        if self.status == SubmissionStatus.ACCEPTED:
+            return penalties.get("AC", 0)  # AC can have penalty too
+        elif self.status == SubmissionStatus.WRONG_ANSWER:
+            return penalties.get("WA", 10)
+        elif self.status == SubmissionStatus.RUNTIME_ERROR:
+            return penalties.get("RE", 10)
+        elif self.status == SubmissionStatus.COMPILATION_ERROR:
+            return penalties.get("CE", 5)
+        elif self.status == SubmissionStatus.TIME_LIMIT_EXCEEDED:
+            return penalties.get("TLE", 10)
+        elif self.status == SubmissionStatus.MEMORY_LIMIT_EXCEEDED:
+            return penalties.get("MLE", 10)
+        return 0
+    
+    def calculate_submission_tokens(self, competition: Optional[Competition] = None) -> int:
+        """
+        Calculate submission tokens based on submission status and competition rules.
+        If competition is not provided, returns 0.
+        """
+        if not competition:
+            return 0
+            
+        submission_tokens = competition.rules.get("submission_tokens", {})
+        
+        if self.status == SubmissionStatus.ACCEPTED:
+            return submission_tokens.get("AC", 100)
+        elif self.status == SubmissionStatus.WRONG_ANSWER:
+            return submission_tokens.get("WA", 100)
+        elif self.status == SubmissionStatus.RUNTIME_ERROR:
+            return submission_tokens.get("RE", 100)
+        elif self.status == SubmissionStatus.COMPILATION_ERROR:
+            return submission_tokens.get("CE", 100)
+        elif self.status == SubmissionStatus.TIME_LIMIT_EXCEEDED:
+            return submission_tokens.get("TLE", 100)
+        elif self.status == SubmissionStatus.MEMORY_LIMIT_EXCEEDED:
+            return submission_tokens.get("MLE", 100)
+        return 0
+    
+    def to_dict(self, include_code: bool = False) -> Dict:
+        result = {
+            "id": self.id,
+            "competition_id": self.competition_id,
+            "participant_id": self.participant_id,
+            "problem_id": self.problem_id,
+            "language": self.language,
+            "submitted_at": self.submitted_at.isoformat(),
+            "status": self.status.value,  # Use .value for enum serialization
+            "test_results": [tr.to_dict() for tr in self.test_results],
+            "pass_score": self.pass_score,
+            "penalty": self.penalty,
+            "submission_tokens": self.submission_tokens
+        }
+        
+        if include_code:
+            result["code"] = self.code
+            
+        return result

@@ -1,1 +1,9 @@
-ewogICJjb21wZXRpdGlvbiI6IHsiaWQiOiAiYWItZmxhdC1zY29yZSIsICJ0aXRsZSI6ICJGbGF0IFNjb3JlIiwgImRlc2NyaXB0aW9uIjogImZpeHR1cmUiLCAicHJvYmxlbV9jb3VudCI6IDR9LAogICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0wNC0xNFQwMjoxNDowMFoiLAogICJzdW1tYXJ5IjogeyJwYXJ0aWNpcGFudF9jb3VudCI6IDIsICJ0ZXJtaW5hdGVkX2NvdW50IjogMiwgImF2Z19pbnRlbGxpZ2VuY2Vfc2NvcmUiOiA1Ny4wLCAidG9wX3BhcnRpY2lwYW50IjogImdlbWluaS0yLjUtcHJvIn0sCiAgInJvd3MiOiBbCiAgICB7Im5hbWUiOiAiZ2VtaW5pLTIuNS1wcm8iLCAiYXJlbmFfcmFuayI6IDEsICJwcm9ibGVtX3Bhc3Nfc2NvcmUiOiA4LjMsICJzY29yZSI6IDguMywgInN1Ym1pc3Npb25fY291bnQiOiA4LCAiYWNjZXB0ZWRfY291bnQiOiAzLCAiYXR0ZW1wdGVkX3Byb2JsZW1zIjogNCwgImNvbnN1bWVkX2NyZWRpdCI6IDgyMDAwMDB9LAogICAgeyJuYW1lIjogImdwdC01LWNvZGV4IiwgImFyZW5hX3JhbmsiOiAyLCAicHJvYmxlbV9wYXNzX3Njb3JlIjogNC4zLCAic2NvcmUiOiA0LjMsICJzdWJtaXNzaW9uX2NvdW50IjogNSwgImFjY2VwdGVkX2NvdW50IjogMywgImF0dGVtcHRlZF9wcm9ibGVtcyI6IDMsICJjb25zdW1lZF9jcmVkaXQiOiA1MTAwMDAwfQogIF0KfQo=
+{
+  "competition": {"id": "ab-flat-score", "title": "Flat Score", "description": "fixture", "problem_count": 4},
+  "generated_at": "2026-04-14T02:14:00Z",
+  "summary": {"participant_count": 2, "terminated_count": 2, "avg_intelligence_score": 57.0, "top_participant": "gemini-2.5-pro"},
+  "rows": [
+    {"name": "gemini-2.5-pro", "arena_rank": 1, "problem_pass_score": 8.3, "score": 8.3, "submission_count": 8, "accepted_count": 3, "attempted_problems": 4, "consumed_credit": 8200000},
+    {"name": "gpt-5-codex", "arena_rank": 2, "problem_pass_score": 4.3, "score": 4.3, "submission_count": 5, "accepted_count": 3, "attempted_problems": 3, "consumed_credit": 5100000}
+  ]
+}

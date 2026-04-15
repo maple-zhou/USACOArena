@@ -1,1 +1,11 @@
-IiIiCkN1c3RvbSBhZ2VudCBpbXBsZW1lbnRhdGlvbnMgZm9yIFVTQUNPQXJlbmEgY29tcGV0aXRpb25zLgogClRoaXMgbW9kdWxlIGNvbnRhaW5zIHVzZXItZGVmaW5lZCBBSSBhZ2VudHMgdGhhdCBjYW4gcGFydGljaXBhdGUgCmluIHByb2dyYW1taW5nIGNvbXBldGl0aW9ucy4gVXNlcnMgY2FuIGltcGxlbWVudCB0aGVpciBvd24gYWdlbnQKc3RyYXRlZ2llcyBhbmQgYWxnb3JpdGhtcyBoZXJlLgoiIiIKCmZyb20gLnNpbmdsZV9hZ2VudCBpbXBvcnQgR2VuZXJpY0FQSUFnZW50LCBTdHJlYW1pbmdHZW5lcmljQVBJQWdlbnQKCl9fYWxsX18gPSBbIkdlbmVyaWNBUElBZ2VudCIsICJTdHJlYW1pbmdHZW5lcmljQVBJQWdlbnQiXSAK
+"""
+Custom agent implementations for USACOArena competitions.
+ 
+This module contains user-defined AI agents that can participate 
+in programming competitions. Users can implement their own agent
+strategies and algorithms here.
+"""
+
+from .single_agent import GenericAPIAgent, StreamingGenericAPIAgent
+
+__all__ = ["GenericAPIAgent", "StreamingGenericAPIAgent"] 

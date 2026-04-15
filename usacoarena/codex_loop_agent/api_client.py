@@ -1,1 +1,210 @@
-IiIiSFRUUCBjbGllbnQgZm9yIHN0YW5kYWxvbmUgQ29kZXggbG9vcCBhZ2VudC4iIiIKCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKCmZyb20gZGF0YWNsYXNzZXMgaW1wb3J0IGRhdGFjbGFzcwpmcm9tIHR5cGluZyBpbXBvcnQgQW55LCBEaWN0LCBMaXN0LCBPcHRpb25hbAoKaW1wb3J0IHJlcXVlc3RzCgoKY2xhc3MgQXJlbmFBUElFcnJvcihSdW50aW1lRXJyb3IpOgogICAgIiIiUmFpc2VkIHdoZW4gVVNBQ09BcmVuYSBBUEkgcmV0dXJucyBhbiBlcnJvci4iIiIKCgpAZGF0YWNsYXNzKGZyb3plbj1UcnVlKQpjbGFzcyBHYXRld2F5Q3JlZGVudGlhbHM6CiAgICAiIiJQYXJ0aWNpcGFudC1zY29wZWQgZ2F0ZXdheSBjcmVkZW50aWFscyBmb3IgT3BlbkFJLWNvbXBhdGlibGUgY2FsbHMuIiIiCgogICAgY29tcGV0aXRpb25faWQ6IHN0cgogICAgcGFydGljaXBhbnRfaWQ6IHN0cgogICAgcGFydGljaXBhbnRfbmFtZTogc3RyCiAgICBnYXRld2F5X2Jhc2VfdXJsOiBzdHIKICAgIG9wZW5haV9hcGlfYmFzZTogc3RyCiAgICBvcGVuYWlfYXBpX2tleTogc3RyCgoKQGRhdGFjbGFzcyhmcm96ZW49VHJ1ZSkKY2xhc3MgUGFydGljaXBhbnRTdGF0dXM6CiAgICAiIiJMaXZlIHBhcnRpY2lwYW50IHN0YXR1cy4iIiIKCiAgICBpc19ydW5uaW5nOiBib29sCiAgICB0ZXJtaW5hdGlvbl9yZWFzb246IE9wdGlvbmFsW3N0cl0KICAgIHJlbWFpbmluZ190b2tlbnM6IGludAogICAgc2NvcmU6IGZsb2F0CiAgICBlbGFwc2VkX3RpbWVfc2Vjb25kczogaW50CiAgICBkZWxpdmVyeV90aW1lX211bHRpcGxpZXI6IGZsb2F0CiAgICBkZWxpdmVyeV90aW1lX3NldHRsZWQ6IGJvb2wKICAgIGRlbGl2ZXJ5X3RpbWVfY3JlZGl0OiBmbG9hdAoKCmNsYXNzIEFyZW5hQ2xpZW50OgogICAgIiIiVGhpbiB0eXBlZCB3cmFwcGVyIG92ZXIgVVNBQ09BcmVuYSBlbmRwb2ludHMgdXNlZCBieSBjb2RleCBsb29wIHJ1bm5lci4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgYXBpX2Jhc2U6IHN0ciwgdGltZW91dDogZmxvYXQgPSAzMC4wKSAtPiBOb25lOgogICAgICAgIG5vcm1hbGl6ZWQgPSBzdHIoYXBpX2Jhc2Ugb3IgIiIpLnN0cmlwKCkucnN0cmlwKCIvIikKICAgICAgICBpZiBub3Qgbm9ybWFsaXplZDoKICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcigiYXBpX2Jhc2UgbXVzdCBub3QgYmUgZW1wdHkiKQogICAgICAgIHNlbGYuYXBpX2Jhc2UgPSBub3JtYWxpemVkCiAgICAgICAgc2VsZi50aW1lb3V0ID0gZmxvYXQodGltZW91dCkKICAgICAgICBzZWxmLnNlc3Npb24gPSByZXF1ZXN0cy5TZXNzaW9uKCkKCiAgICBkZWYgX3JlcXVlc3QoCiAgICAgICAgc2VsZiwKICAgICAgICBtZXRob2Q6IHN0ciwKICAgICAgICBwYXRoOiBzdHIsCiAgICAgICAgKiwKICAgICAgICBwYXlsb2FkOiBPcHRpb25hbFtEaWN0W3N0ciwgQW55XV0gPSBOb25lLAogICAgKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICB1cmwgPSBmIntzZWxmLmFwaV9iYXNlfXtwYXRofSIKICAgICAgICB0cnk6CiAgICAgICAgICAgIHJlc3BvbnNlID0gc2VsZi5zZXNzaW9uLnJlcXVlc3QobWV0aG9kLCB1cmwsIGpzb249cGF5bG9hZCwgdGltZW91dD1zZWxmLnRpbWVvdXQpCiAgICAgICAgZXhjZXB0IHJlcXVlc3RzLlJlcXVlc3RFeGNlcHRpb24gYXMgZXhjOgogICAgICAgICAgICByYWlzZSBBcmVuYUFQSUVycm9yKGYibmV0d29yayBlcnJvciBmb3Ige21ldGhvZH0ge3BhdGh9OiB7ZXhjfSIpIGZyb20gZXhjCgogICAgICAgIHJlc3BvbnNlX2pzb246IE9wdGlvbmFsW0RpY3Rbc3RyLCBBbnldXSA9IE5vbmUKICAgICAgICBwYXJzZV9lcnJvcjogT3B0aW9uYWxbRXhjZXB0aW9uXSA9IE5vbmUKICAgICAgICB0cnk6CiAgICAgICAgICAgIGxvYWRlZCA9IHJlc3BvbnNlLmpzb24oKQogICAgICAgICAgICBpZiBpc2luc3RhbmNlKGxvYWRlZCwgZGljdCk6CiAgICAgICAgICAgICAgICByZXNwb25zZV9qc29uID0gbG9hZGVkCiAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBleGM6ICAjIHByYWdtYTogbm8gY292ZXIgLSBkZWZlbnNpdmUKICAgICAgICAgICAgcGFyc2VfZXJyb3IgPSBleGMKCiAgICAgICAgaWYgcmVzcG9uc2Uuc3RhdHVzX2NvZGUgPj0gNDAwOgogICAgICAgICAgICBpZiBpc2luc3RhbmNlKHJlc3BvbnNlX2pzb24sIGRpY3QpOgogICAgICAgICAgICAgICAgbWVzc2FnZSA9IHJlc3BvbnNlX2pzb24uZ2V0KCJtZXNzYWdlIikgb3IgcmVzcG9uc2VfanNvbi5nZXQoImVycm9yIikgb3Igc3RyKHJlc3BvbnNlX2pzb24pCiAgICAgICAgICAgIGVsc2U6CiAgICAgICAgICAgICAgICB0ZXh0ID0gKHJlc3BvbnNlLnRleHQgb3IgIiIpLnN0cmlwKCkKICAgICAgICAgICAgICAgIG1lc3NhZ2UgPSB0ZXh0Wzo1MDBdIGlmIHRleHQgZWxzZSByZXNwb25zZS5yZWFzb24KICAgICAgICAgICAgcmFpc2UgQXJlbmFBUElFcnJvcihmIkhUVFAge3Jlc3BvbnNlLnN0YXR1c19jb2RlfSBmb3Ige21ldGhvZH0ge3BhdGh9OiB7bWVzc2FnZX0iKQoKICAgICAgICBpZiBwYXJzZV9lcnJvciBpcyBub3QgTm9uZToKICAgICAgICAgICAgcmFpc2UgQXJlbmFBUElFcnJvcihmImludmFsaWQgSlNPTiByZXNwb25zZSBmb3Ige21ldGhvZH0ge3BhdGh9OiB7cGFyc2VfZXJyb3J9IikgZnJvbSBwYXJzZV9lcnJvcgogICAgICAgIGlmIHJlc3BvbnNlX2pzb24gaXMgTm9uZToKICAgICAgICAgICAgcmFpc2UgQXJlbmFBUElFcnJvcihmInJlc3BvbnNlIGZvciB7bWV0aG9kfSB7cGF0aH0gaXMgbm90IGEgSlNPTiBvYmplY3QiKQoKICAgICAgICBpZiByZXNwb25zZV9qc29uLmdldCgic3RhdHVzIikgIT0gInN1Y2Nlc3MiOgogICAgICAgICAgICBtZXNzYWdlID0gcmVzcG9uc2VfanNvbi5nZXQoIm1lc3NhZ2UiKSBvciAidW5rbm93biBBUEkgZXJyb3IiCiAgICAgICAgICAgIHJhaXNlIEFyZW5hQVBJRXJyb3IoZiJBUEkgZXJyb3IgZm9yIHttZXRob2R9IHtwYXRofToge21lc3NhZ2V9IikKCiAgICAgICAgcmV0dXJuIHJlc3BvbnNlX2pzb24KCiAgICBAc3RhdGljbWV0aG9kCiAgICBkZWYgX3JlcXVpcmVfZGljdCh2YWx1ZTogQW55LCAqLCBjb250ZXh0OiBzdHIpIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKHZhbHVlLCBkaWN0KToKICAgICAgICAgICAgcmFpc2UgQXJlbmFBUElFcnJvcihmIntjb250ZXh0fSBwYXlsb2FkIG11c3QgYmUgYSBKU09OIG9iamVjdCIpCiAgICAgICAgcmV0dXJuIHZhbHVlCgogICAgZGVmIGdldF9nYXRld2F5X2NyZWRlbnRpYWxzKHNlbGYsIGNvbXBldGl0aW9uX2lkOiBzdHIsIHBhcnRpY2lwYW50X2lkOiBzdHIpIC0+IEdhdGV3YXlDcmVkZW50aWFsczoKICAgICAgICBkYXRhID0gc2VsZi5fcmVxdWVzdCgKICAgICAgICAgICAgIkdFVCIsCiAgICAgICAgICAgIGYiL2FwaS9wYXJ0aWNpcGFudHMvZ2F0ZXdheV9jcmVkZW50aWFscy97Y29tcGV0aXRpb25faWR9L3twYXJ0aWNpcGFudF9pZH0iLAogICAgICAgICkKICAgICAgICBwYXlsb2FkID0gc2VsZi5fcmVxdWlyZV9kaWN0KGRhdGEuZ2V0KCJkYXRhIiksIGNvbnRleHQ9ImdhdGV3YXlfY3JlZGVudGlhbHMiKQogICAgICAgIHJldHVybiBHYXRld2F5Q3JlZGVudGlhbHMoCiAgICAgICAgICAgIGNvbXBldGl0aW9uX2lkPXN0cihwYXlsb2FkLmdldCgiY29tcGV0aXRpb25faWQiKSBvciBjb21wZXRpdGlvbl9pZCksCiAgICAgICAgICAgIHBhcnRpY2lwYW50X2lkPXN0cihwYXlsb2FkLmdldCgicGFydGljaXBhbnRfaWQiKSBvciBwYXJ0aWNpcGFudF9pZCksCiAgICAgICAgICAgIHBhcnRpY2lwYW50X25hbWU9c3RyKHBheWxvYWQuZ2V0KCJwYXJ0aWNpcGFudF9uYW1lIikgb3IgIiIpLAogICAgICAgICAgICBnYXRld2F5X2Jhc2VfdXJsPXN0cihwYXlsb2FkLmdldCgiZ2F0ZXdheV9iYXNlX3VybCIpIG9yICIiKS5yc3RyaXAoIi8iKSwKICAgICAgICAgICAgb3BlbmFpX2FwaV9iYXNlPXN0cihwYXlsb2FkLmdldCgib3BlbmFpX2FwaV9iYXNlIikgb3IgIiIpLnJzdHJpcCgiLyIpLAogICAgICAgICAgICBvcGVuYWlfYXBpX2tleT1zdHIocGF5bG9hZC5nZXQoIm9wZW5haV9hcGlfa2V5Iikgb3IgIiIpLnN0cmlwKCksCiAgICAgICAgKQoKICAgIGRlZiBnZXRfcGFydGljaXBhbnRfc3RhdHVzKHNlbGYsIGNvbXBldGl0aW9uX2lkOiBzdHIsIHBhcnRpY2lwYW50X2lkOiBzdHIpIC0+IFBhcnRpY2lwYW50U3RhdHVzOgogICAgICAgIGRhdGEgPSBzZWxmLl9yZXF1ZXN0KCJHRVQiLCBmIi9hcGkvcGFydGljaXBhbnRzL3N0YXR1cy97Y29tcGV0aXRpb25faWR9L3twYXJ0aWNpcGFudF9pZH0iKQogICAgICAgIHBheWxvYWQgPSBzZWxmLl9yZXF1aXJlX2RpY3QoZGF0YS5nZXQoImRhdGEiKSwgY29udGV4dD0icGFydGljaXBhbnRfc3RhdHVzIikKICAgICAgICByZXR1cm4gUGFydGljaXBhbnRTdGF0dXMoCiAgICAgICAgICAgIGlzX3J1bm5pbmc9Ym9vbChwYXlsb2FkLmdldCgiaXNfcnVubmluZyIsIEZhbHNlKSksCiAgICAgICAgICAgIHRlcm1pbmF0aW9uX3JlYXNvbj0oCiAgICAgICAgICAgICAgICBzdHIocGF5bG9hZC5nZXQoInRlcm1pbmF0aW9uX3JlYXNvbiIpKS5zdHJpcCgpCiAgICAgICAgICAgICAgICBpZiBwYXlsb2FkLmdldCgidGVybWluYXRpb25fcmVhc29uIikgaXMgbm90IE5vbmUKICAgICAgICAgICAgICAgIGVsc2UgTm9uZQogICAgICAgICAgICApLAogICAgICAgICAgICByZW1haW5pbmdfdG9rZW5zPV90b19pbnQocGF5bG9hZC5nZXQoInJlbWFpbmluZ190b2tlbnMiKSwgZGVmYXVsdD0wKSwKICAgICAgICAgICAgc2NvcmU9X3RvX2Zsb2F0KHBheWxvYWQuZ2V0KCJzY29yZSIpLCBkZWZhdWx0PTAuMCksCiAgICAgICAgICAgIGVsYXBzZWRfdGltZV9zZWNvbmRzPV90b19pbnQocGF5bG9hZC5nZXQoImVsYXBzZWRfdGltZV9zZWNvbmRzIiksIGRlZmF1bHQ9MCksCiAgICAgICAgICAgIGRlbGl2ZXJ5X3RpbWVfbXVsdGlwbGllcj1fdG9fZmxvYXQoCiAgICAgICAgICAgICAgICBwYXlsb2FkLmdldCgiZGVsaXZlcnlfdGltZV9tdWx0aXBsaWVyIiksIGRlZmF1bHQ9MS4wCiAgICAgICAgICAgICksCiAgICAgICAgICAgIGRlbGl2ZXJ5X3RpbWVfc2V0dGxlZD1ib29sKHBheWxvYWQuZ2V0KCJkZWxpdmVyeV90aW1lX3NldHRsZWQiLCBGYWxzZSkpLAogICAgICAgICAgICBkZWxpdmVyeV90aW1lX2NyZWRpdD1fdG9fZmxvYXQocGF5bG9hZC5nZXQoImRlbGl2ZXJ5X3RpbWVfY3JlZGl0IiksIGRlZmF1bHQ9MC4wKSwKICAgICAgICApCgogICAgZGVmIGdldF9wYXJ0aWNpcGFudF9zdGF0ZShzZWxmLCBjb21wZXRpdGlvbl9pZDogc3RyLCBwYXJ0aWNpcGFudF9pZDogc3RyKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICBkYXRhID0gc2VsZi5fcmVxdWVzdCgKICAgICAgICAgICAgIkdFVCIsCiAgICAgICAgICAgIGYiL2FwaS9wYXJ0aWNpcGFudHMvZ2V0X3NvbHZlZF9wcm9ibGVtcy97Y29tcGV0aXRpb25faWR9L3twYXJ0aWNpcGFudF9pZH0iLAogICAgICAgICkKICAgICAgICByZXR1cm4gc2VsZi5fcmVxdWlyZV9kaWN0KGRhdGEuZ2V0KCJkYXRhIiksIGNvbnRleHQ9InBhcnRpY2lwYW50X3N0YXRlIikKCiAgICBkZWYgbGlzdF9wcm9ibGVtcyhzZWxmLCBjb21wZXRpdGlvbl9pZDogc3RyKSAtPiBMaXN0W0RpY3Rbc3RyLCBBbnldXToKICAgICAgICBkYXRhID0gc2VsZi5fcmVxdWVzdCgiR0VUIiwgZiIvYXBpL3Byb2JsZW1zL2xpc3Qve2NvbXBldGl0aW9uX2lkfSIpCiAgICAgICAgcm93cyA9IGRhdGEuZ2V0KCJkYXRhIikKICAgICAgICBpZiBub3QgaXNpbnN0YW5jZShyb3dzLCBsaXN0KToKICAgICAgICAgICAgcmV0dXJuIFtdCiAgICAgICAgcmV0dXJuIFtyb3cgZm9yIHJvdyBpbiByb3dzIGlmIGlzaW5zdGFuY2Uocm93LCBkaWN0KV0KCiAgICBkZWYgZ2V0X3Byb2JsZW0oc2VsZiwgY29tcGV0aXRpb25faWQ6IHN0ciwgcHJvYmxlbV9pZDogc3RyKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICBkYXRhID0gc2VsZi5fcmVxdWVzdCgiR0VUIiwgZiIvYXBpL3Byb2JsZW1zL2dldC97Y29tcGV0aXRpb25faWR9L3twcm9ibGVtX2lkfSIpCiAgICAgICAgcmV0dXJuIHNlbGYuX3JlcXVpcmVfZGljdChkYXRhLmdldCgiZGF0YSIpLCBjb250ZXh0PSJwcm9ibGVtX2RldGFpbCIpCgogICAgZGVmIHN1Ym1pdF9zb2x1dGlvbigKICAgICAgICBzZWxmLAogICAgICAgIGNvbXBldGl0aW9uX2lkOiBzdHIsCiAgICAgICAgcGFydGljaXBhbnRfaWQ6IHN0ciwKICAgICAgICBwcm9ibGVtX2lkOiBzdHIsCiAgICAgICAgKiwKICAgICAgICBjb2RlOiBzdHIsCiAgICAgICAgbGFuZ3VhZ2U6IHN0ciwKICAgICkgLT4gRGljdFtzdHIsIEFueV06CiAgICAgICAgcGF5bG9hZCA9IHsKICAgICAgICAgICAgImNvZGUiOiBjb2RlLAogICAgICAgICAgICAibGFuZ3VhZ2UiOiBsYW5ndWFnZSwKICAgICAgICB9CiAgICAgICAgZGF0YSA9IHNlbGYuX3JlcXVlc3QoCiAgICAgICAgICAgICJQT1NUIiwKICAgICAgICAgICAgZiIvYXBpL3N1Ym1pc3Npb25zL2NyZWF0ZS97Y29tcGV0aXRpb25faWR9L3twYXJ0aWNpcGFudF9pZH0ve3Byb2JsZW1faWR9IiwKICAgICAgICAgICAgcGF5bG9hZD1wYXlsb2FkLAogICAgICAgICkKICAgICAgICByZXR1cm4gc2VsZi5fcmVxdWlyZV9kaWN0KGRhdGEuZ2V0KCJkYXRhIiksIGNvbnRleHQ9InN1Ym1pc3Npb25fY3JlYXRlIikKCiAgICBkZWYgZ2V0X3N1Ym1pc3Npb24oc2VsZiwgc3VibWlzc2lvbl9pZDogc3RyKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICBkYXRhID0gc2VsZi5fcmVxdWVzdCgiR0VUIiwgZiIvYXBpL3N1Ym1pc3Npb25zL2dldC97c3VibWlzc2lvbl9pZH0iKQogICAgICAgIHJldHVybiBzZWxmLl9yZXF1aXJlX2RpY3QoZGF0YS5nZXQoImRhdGEiKSwgY29udGV4dD0ic3VibWlzc2lvbl9kZXRhaWwiKQoKICAgIGRlZiBnZXRfcmFua2luZ3Moc2VsZiwgY29tcGV0aXRpb25faWQ6IHN0cikgLT4gTGlzdFtEaWN0W3N0ciwgQW55XV06CiAgICAgICAgZGF0YSA9IHNlbGYuX3JlcXVlc3QoIkdFVCIsIGYiL2FwaS9yYW5raW5ncy9nZXQve2NvbXBldGl0aW9uX2lkfSIpCiAgICAgICAgcm93cyA9IGRhdGEuZ2V0KCJkYXRhIikKICAgICAgICBpZiBub3QgaXNpbnN0YW5jZShyb3dzLCBsaXN0KToKICAgICAgICAgICAgcmV0dXJuIFtdCiAgICAgICAgcmV0dXJuIFtyb3cgZm9yIHJvdyBpbiByb3dzIGlmIGlzaW5zdGFuY2Uocm93LCBkaWN0KV0KCiAgICBkZWYgdGVybWluYXRlX3BhcnRpY2lwYW50KAogICAgICAgIHNlbGYsCiAgICAgICAgY29tcGV0aXRpb25faWQ6IHN0ciwKICAgICAgICBwYXJ0aWNpcGFudF9pZDogc3RyLAogICAgICAgICosCiAgICAgICAgcmVhc29uOiBzdHIsCiAgICApIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgIGRhdGEgPSBzZWxmLl9yZXF1ZXN0KAogICAgICAgICAgICAiUE9TVCIsCiAgICAgICAgICAgIGYiL2FwaS9wYXJ0aWNpcGFudHMvdGVybWluYXRlL3tjb21wZXRpdGlvbl9pZH0ve3BhcnRpY2lwYW50X2lkfSIsCiAgICAgICAgICAgIHBheWxvYWQ9eyJyZWFzb24iOiByZWFzb259LAogICAgICAgICkKICAgICAgICBwYXlsb2FkID0gZGF0YS5nZXQoImRhdGEiKQogICAgICAgIHJldHVybiBwYXlsb2FkIGlmIGlzaW5zdGFuY2UocGF5bG9hZCwgZGljdCkgZWxzZSB7fQoKCmRlZiBfdG9faW50KHZhbHVlOiBBbnksIGRlZmF1bHQ6IGludCkgLT4gaW50OgogICAgdHJ5OgogICAgICAgIHJldHVybiBpbnQodmFsdWUpCiAgICBleGNlcHQgKFR5cGVFcnJvciwgVmFsdWVFcnJvcik6CiAgICAgICAgcmV0dXJuIGRlZmF1bHQKCgpkZWYgX3RvX2Zsb2F0KHZhbHVlOiBBbnksIGRlZmF1bHQ6IGZsb2F0KSAtPiBmbG9hdDoKICAgIHRyeToKICAgICAgICByZXR1cm4gZmxvYXQodmFsdWUpCiAgICBleGNlcHQgKFR5cGVFcnJvciwgVmFsdWVFcnJvcik6CiAgICAgICAgcmV0dXJuIGRlZmF1bHQK
+"""HTTP client for standalone Codex loop agent."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Any, Dict, List, Optional
+
+import requests
+
+
+class ArenaAPIError(RuntimeError):
+    """Raised when USACOArena API returns an error."""
+
+
+@dataclass(frozen=True)
+class GatewayCredentials:
+    """Participant-scoped gateway credentials for OpenAI-compatible calls."""
+
+    competition_id: str
+    participant_id: str
+    participant_name: str
+    gateway_base_url: str
+    openai_api_base: str
+    openai_api_key: str
+
+
+@dataclass(frozen=True)
+class ParticipantStatus:
+    """Live participant status."""
+
+    is_running: bool
+    termination_reason: Optional[str]
+    remaining_tokens: int
+    score: float
+    elapsed_time_seconds: int
+    delivery_time_multiplier: float
+    delivery_time_settled: bool
+    delivery_time_credit: float
+
+
+class ArenaClient:
+    """Thin typed wrapper over USACOArena endpoints used by codex loop runner."""
+
+    def __init__(self, api_base: str, timeout: float = 30.0) -> None:
+        normalized = str(api_base or "").strip().rstrip("/")
+        if not normalized:
+            raise ValueError("api_base must not be empty")
+        self.api_base = normalized
+        self.timeout = float(timeout)
+        self.session = requests.Session()
+
+    def _request(
+        self,
+        method: str,
+        path: str,
+        *,
+        payload: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        url = f"{self.api_base}{path}"
+        try:
+            response = self.session.request(method, url, json=payload, timeout=self.timeout)
+        except requests.RequestException as exc:
+            raise ArenaAPIError(f"network error for {method} {path}: {exc}") from exc
+
+        response_json: Optional[Dict[str, Any]] = None
+        parse_error: Optional[Exception] = None
+        try:
+            loaded = response.json()
+            if isinstance(loaded, dict):
+                response_json = loaded
+        except Exception as exc:  # pragma: no cover - defensive
+            parse_error = exc
+
+        if response.status_code >= 400:
+            if isinstance(response_json, dict):
+                message = response_json.get("message") or response_json.get("error") or str(response_json)
+            else:
+                text = (response.text or "").strip()
+                message = text[:500] if text else response.reason
+            raise ArenaAPIError(f"HTTP {response.status_code} for {method} {path}: {message}")
+
+        if parse_error is not None:
+            raise ArenaAPIError(f"invalid JSON response for {method} {path}: {parse_error}") from parse_error
+        if response_json is None:
+            raise ArenaAPIError(f"response for {method} {path} is not a JSON object")
+
+        if response_json.get("status") != "success":
+            message = response_json.get("message") or "unknown API error"
+            raise ArenaAPIError(f"API error for {method} {path}: {message}")
+
+        return response_json
+
+    @staticmethod
+    def _require_dict(value: Any, *, context: str) -> Dict[str, Any]:
+        if not isinstance(value, dict):
+            raise ArenaAPIError(f"{context} payload must be a JSON object")
+        return value
+
+    def get_gateway_credentials(self, competition_id: str, participant_id: str) -> GatewayCredentials:
+        data = self._request(
+            "GET",
+            f"/api/participants/gateway_credentials/{competition_id}/{participant_id}",
+        )
+        payload = self._require_dict(data.get("data"), context="gateway_credentials")
+        return GatewayCredentials(
+            competition_id=str(payload.get("competition_id") or competition_id),
+            participant_id=str(payload.get("participant_id") or participant_id),
+            participant_name=str(payload.get("participant_name") or ""),
+            gateway_base_url=str(payload.get("gateway_base_url") or "").rstrip("/"),
+            openai_api_base=str(payload.get("openai_api_base") or "").rstrip("/"),
+            openai_api_key=str(payload.get("openai_api_key") or "").strip(),
+        )
+
+    def get_participant_status(self, competition_id: str, participant_id: str) -> ParticipantStatus:
+        data = self._request("GET", f"/api/participants/status/{competition_id}/{participant_id}")
+        payload = self._require_dict(data.get("data"), context="participant_status")
+        return ParticipantStatus(
+            is_running=bool(payload.get("is_running", False)),
+            termination_reason=(
+                str(payload.get("termination_reason")).strip()
+                if payload.get("termination_reason") is not None
+                else None
+            ),
+            remaining_tokens=_to_int(payload.get("remaining_tokens"), default=0),
+            score=_to_float(payload.get("score"), default=0.0),
+            elapsed_time_seconds=_to_int(payload.get("elapsed_time_seconds"), default=0),
+            delivery_time_multiplier=_to_float(
+                payload.get("delivery_time_multiplier"), default=1.0
+            ),
+            delivery_time_settled=bool(payload.get("delivery_time_settled", False)),
+            delivery_time_credit=_to_float(payload.get("delivery_time_credit"), default=0.0),
+        )
+
+    def get_participant_state(self, competition_id: str, participant_id: str) -> Dict[str, Any]:
+        data = self._request(
+            "GET",
+            f"/api/participants/get_solved_problems/{competition_id}/{participant_id}",
+        )
+        return self._require_dict(data.get("data"), context="participant_state")
+
+    def list_problems(self, competition_id: str) -> List[Dict[str, Any]]:
+        data = self._request("GET", f"/api/problems/list/{competition_id}")
+        rows = data.get("data")
+        if not isinstance(rows, list):
+            return []
+        return [row for row in rows if isinstance(row, dict)]
+
+    def get_problem(self, competition_id: str, problem_id: str) -> Dict[str, Any]:
+        data = self._request("GET", f"/api/problems/get/{competition_id}/{problem_id}")
+        return self._require_dict(data.get("data"), context="problem_detail")
+
+    def submit_solution(
+        self,
+        competition_id: str,
+        participant_id: str,
+        problem_id: str,
+        *,
+        code: str,
+        language: str,
+    ) -> Dict[str, Any]:
+        payload = {
+            "code": code,
+            "language": language,
+        }
+        data = self._request(
+            "POST",
+            f"/api/submissions/create/{competition_id}/{participant_id}/{problem_id}",
+            payload=payload,
+        )
+        return self._require_dict(data.get("data"), context="submission_create")
+
+    def get_submission(self, submission_id: str) -> Dict[str, Any]:
+        data = self._request("GET", f"/api/submissions/get/{submission_id}")
+        return self._require_dict(data.get("data"), context="submission_detail")
+
+    def get_rankings(self, competition_id: str) -> List[Dict[str, Any]]:
+        data = self._request("GET", f"/api/rankings/get/{competition_id}")
+        rows = data.get("data")
+        if not isinstance(rows, list):
+            return []
+        return [row for row in rows if isinstance(row, dict)]
+
+    def terminate_participant(
+        self,
+        competition_id: str,
+        participant_id: str,
+        *,
+        reason: str,
+    ) -> Dict[str, Any]:
+        data = self._request(
+            "POST",
+            f"/api/participants/terminate/{competition_id}/{participant_id}",
+            payload={"reason": reason},
+        )
+        payload = data.get("data")
+        return payload if isinstance(payload, dict) else {}
+
+
+def _to_int(value: Any, default: int) -> int:
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def _to_float(value: Any, default: float) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default

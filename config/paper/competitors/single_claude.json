@@ -1,1 +1,33 @@
-ewogICJjb21wZXRpdG9ycyI6IFsKICAgIHsKICAgICAgInR5cGUiOiAiZ2VuZXJpYyIsCiAgICAgICJuYW1lIjogImNsYXVkZS1zb25uZXQtNC0yMDI1MDUxNCIsCiAgICAgICJtb2RlbF9pZCI6ICJjbGF1ZGUtc29ubmV0LTQtMjAyNTA1MTQiLAogICAgICAiYXBpX2Jhc2VfdXJsIjogImh0dHBzOi8vYXBpLmFudGhyb3BpYy5jb20iLAogICAgICAiYXBpX2tleSI6ICIiLAogICAgICAicHJvbXB0X2NvbmZpZ19wYXRoIjogImFnZW50cy9zaW5nbGVfYWdlbnQvcHJvbXB0cy9wcm9tcHRzLXNpbmdsZS5qc29uIiwKICAgICAgInJlcXVlc3RfZm9ybWF0IjogewogICAgICAgICJ1cmwiOiAiL3YxL21lc3NhZ2VzIiwKICAgICAgICAibWV0aG9kIjogIlBPU1QiLAogICAgICAgICJoZWFkZXJzIjogewogICAgICAgICAgIkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIiwKICAgICAgICAgICJ4LWFwaS1rZXkiOiAie2FwaV9rZXl9IiwKICAgICAgICAgICJhbnRocm9waWMtdmVyc2lvbiI6ICIyMDIzLTA2LTAxIgogICAgICAgIH0sCiAgICAgICAgImJvZHlfdGVtcGxhdGUiOiB7CiAgICAgICAgICAibW9kZWwiOiAie21vZGVsX2lkfSIsCiAgICAgICAgICAibWF4X3Rva2VucyI6IDQwOTYsCiAgICAgICAgICAibWVzc2FnZXMiOiAie21lc3NhZ2VzfSIKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJyZXNwb25zZV9mb3JtYXQiOiB7CiAgICAgICAgInJlc3BvbnNlX3BhdGgiOiAiY29udGVudFswXS50ZXh0IiwKICAgICAgICAiZXJyb3JfcGF0aCI6ICJlcnJvci5tZXNzYWdlIiwKICAgICAgICAidXNhZ2VfcGF0aCI6ICJ1c2FnZSIKICAgICAgfSwKICAgICAgImFwaV9iYXNlX3VybF9lbnYiOiAiQU5USFJPUElDX0JBU0VfVVJMIiwKICAgICAgImFwaV9rZXlfZW52IjogIkFOVEhST1BJQ19BUElfS0VZIgogICAgfQogIF0KfQo=
+{
+  "competitors": [
+    {
+      "type": "generic",
+      "name": "claude-sonnet-4-20250514",
+      "model_id": "claude-sonnet-4-20250514",
+      "api_base_url": "https://api.anthropic.com",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/prompts-single.json",
+      "request_format": {
+        "url": "/v1/messages",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "x-api-key": "{api_key}",
+          "anthropic-version": "2023-06-01"
+        },
+        "body_template": {
+          "model": "{model_id}",
+          "max_tokens": 4096,
+          "messages": "{messages}"
+        }
+      },
+      "response_format": {
+        "response_path": "content[0].text",
+        "error_path": "error.message",
+        "usage_path": "usage"
+      },
+      "api_base_url_env": "ANTHROPIC_BASE_URL",
+      "api_key_env": "ANTHROPIC_API_KEY"
+    }
+  ]
+}

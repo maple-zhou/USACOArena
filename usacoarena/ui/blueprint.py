@@ -1,1 +1,197 @@
-IiIiQmx1ZXByaW50IGV4cG9zaW5nIHRoZSBjb21wZXRpdGlvbiBtYW5hZ2VtZW50IGRhc2hib2FyZCBBUElzIGFuZCBhc3NldHMuIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQganNvbgpmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKZnJvbSB0eXBpbmcgaW1wb3J0IEFueSwgRGljdCwgT3B0aW9uYWwKCmZyb20gZmxhc2sgaW1wb3J0ICgKICAgIEJsdWVwcmludCwKICAgIFJlc3BvbnNlLAogICAgY3VycmVudF9hcHAsCiAgICBqc29uaWZ5LAogICAgcmVxdWVzdCwKICAgIHNlbmRfZnJvbV9kaXJlY3RvcnksCikKCmZyb20gLm1hbmFnZXIgaW1wb3J0IENvbXBldGl0aW9uUHJvY2Vzc01hbmFnZXIKCgp1aV9icCA9IEJsdWVwcmludCgKICAgICJ1c2Fjb2FyZW5hX3VpIiwKICAgIF9fbmFtZV9fLAogICAgdXJsX3ByZWZpeD0iL3VpIiwKICAgIHN0YXRpY19mb2xkZXI9InN0YXRpYyIsCiAgICB0ZW1wbGF0ZV9mb2xkZXI9InRlbXBsYXRlcyIsCikKCgpkZWYgX2dldF9iYXNlX2RpcigpIC0+IFBhdGg6CiAgICBiYXNlX2RpciA9IGN1cnJlbnRfYXBwLmNvbmZpZy5nZXQoIlVTQUNPQV9VSV9CQVNFX0RJUiIpCiAgICBpZiBiYXNlX2RpciBpcyBOb25lOgogICAgICAgIGJhc2VfZGlyID0gUGF0aChfX2ZpbGVfXykucmVzb2x2ZSgpLnBhcmVudHNbMl0KICAgICAgICBjdXJyZW50X2FwcC5jb25maWdbIlVTQUNPQV9VSV9CQVNFX0RJUiJdID0gYmFzZV9kaXIKICAgIHJldHVybiBQYXRoKGJhc2VfZGlyKQoKCmRlZiBfZ2V0X21hbmFnZXIoKSAtPiBDb21wZXRpdGlvblByb2Nlc3NNYW5hZ2VyOgogICAgbWFuYWdlcjogT3B0aW9uYWxbQ29tcGV0aXRpb25Qcm9jZXNzTWFuYWdlcl0gPSBjdXJyZW50X2FwcC5leHRlbnNpb25zLmdldCgKICAgICAgICAidWlfbWFuYWdlciIKICAgICkKICAgIGlmIG1hbmFnZXIgaXMgTm9uZToKICAgICAgICBtYW5hZ2VyID0gQ29tcGV0aXRpb25Qcm9jZXNzTWFuYWdlcihiYXNlX2Rpcj1fZ2V0X2Jhc2VfZGlyKCkpCiAgICAgICAgY3VycmVudF9hcHAuZXh0ZW5zaW9uc1sidWlfbWFuYWdlciJdID0gbWFuYWdlcgogICAgcmV0dXJuIG1hbmFnZXIKCgpAdWlfYnAucm91dGUoIi8iKQpkZWYgdWlfaW5kZXgoKSAtPiBSZXNwb25zZToKICAgICIiIlNlcnZlIHRoZSBtYWluIGRhc2hib2FyZCBwYWdlLiIiIgoKICAgIHN0YXRpY19kaXIgPSBQYXRoKHVpX2JwLnN0YXRpY19mb2xkZXIgb3IgInN0YXRpYyIpCiAgICBpZiBub3Qgc3RhdGljX2Rpci5pc19hYnNvbHV0ZSgpOgogICAgICAgIHN0YXRpY19kaXIgPSBQYXRoKF9fZmlsZV9fKS5yZXNvbHZlKCkucGFyZW50IC8gc3RhdGljX2RpcgogICAgcmV0dXJuIHNlbmRfZnJvbV9kaXJlY3Rvcnkoc3RyKHN0YXRpY19kaXIpLCAiaW5kZXguaHRtbCIpCgoKQHVpX2JwLnJvdXRlKCIvYXBpL2luc3RhbmNlcyIsIG1ldGhvZHM9WyJHRVQiXSkKZGVmIGxpc3RfaW5zdGFuY2VzKCkgLT4gUmVzcG9uc2U6CiAgICBtYW5hZ2VyID0gX2dldF9tYW5hZ2VyKCkKICAgIGluc3RhbmNlcyA9IFsKICAgICAgICBtYW5hZ2VyLmluc3RhbmNlX3RvX2RpY3QoaW5zdGFuY2UpIGZvciBpbnN0YW5jZSBpbiBtYW5hZ2VyLmxpc3RfaW5zdGFuY2VzKCkKICAgIF0KICAgIHJldHVybiBqc29uaWZ5KHsic3RhdHVzIjogInN1Y2Nlc3MiLCAiZGF0YSI6IGluc3RhbmNlc30pCgoKQHVpX2JwLnJvdXRlKCIvYXBpL2luc3RhbmNlcyIsIG1ldGhvZHM9WyJQT1NUIl0pCmRlZiBjcmVhdGVfaW5zdGFuY2UoKSAtPiBSZXNwb25zZToKICAgIHBheWxvYWQ6IERpY3Rbc3RyLCBBbnldID0gcmVxdWVzdC5nZXRfanNvbihzaWxlbnQ9VHJ1ZSkgb3Ige30KICAgIG1hbmFnZXIgPSBfZ2V0X21hbmFnZXIoKQoKICAgIHRyeToKICAgICAgICBpbnN0YW5jZSA9IG1hbmFnZXIuY3JlYXRlX2luc3RhbmNlKHBheWxvYWQpCiAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGV4YzogICMgcHlsaW50OiBkaXNhYmxlPWJyb2FkLWV4Y2VwdAogICAgICAgIHJldHVybiBqc29uaWZ5KHsic3RhdHVzIjogImVycm9yIiwgIm1lc3NhZ2UiOiBzdHIoZXhjKX0pLCA0MDAKCiAgICByZXR1cm4ganNvbmlmeSh7InN0YXR1cyI6ICJzdWNjZXNzIiwgImRhdGEiOiBtYW5hZ2VyLmluc3RhbmNlX3RvX2RpY3QoaW5zdGFuY2UpfSkKCgpAdWlfYnAucm91dGUoIi9hcGkvaW5zdGFuY2VzLzxpbnN0YW5jZV9pZD4iLCBtZXRob2RzPVsiR0VUIl0pCmRlZiBnZXRfaW5zdGFuY2UoaW5zdGFuY2VfaWQ6IHN0cikgLT4gUmVzcG9uc2U6CiAgICBtYW5hZ2VyID0gX2dldF9tYW5hZ2VyKCkKICAgIGluc3RhbmNlID0gbWFuYWdlci5nZXRfaW5zdGFuY2UoaW5zdGFuY2VfaWQpCiAgICBpZiBub3QgaW5zdGFuY2U6CiAgICAgICAgcmV0dXJuIGpzb25pZnkoeyJzdGF0dXMiOiAiZXJyb3IiLCAibWVzc2FnZSI6ICJJbnN0YW5jZSBub3QgZm91bmQifSksIDQwNAoKICAgIHJldHVybiBqc29uaWZ5KHsic3RhdHVzIjogInN1Y2Nlc3MiLCAiZGF0YSI6IG1hbmFnZXIuaW5zdGFuY2VfdG9fZGljdChpbnN0YW5jZSl9KQoKCkB1aV9icC5yb3V0ZSgiL2FwaS9pbnN0YW5jZXMvPGluc3RhbmNlX2lkPi9zbmFwc2hvdCIsIG1ldGhvZHM9WyJHRVQiXSkKZGVmIGluc3RhbmNlX3NuYXBzaG90KGluc3RhbmNlX2lkOiBzdHIpIC0+IFJlc3BvbnNlOgogICAgbWFuYWdlciA9IF9nZXRfbWFuYWdlcigpCiAgICBpbnN0YW5jZSA9IG1hbmFnZXIuZ2V0X2luc3RhbmNlKGluc3RhbmNlX2lkKQogICAgaWYgbm90IGluc3RhbmNlOgogICAgICAgIHJldHVybiBqc29uaWZ5KHsic3RhdHVzIjogImVycm9yIiwgIm1lc3NhZ2UiOiAiSW5zdGFuY2Ugbm90IGZvdW5kIn0pLCA0MDQKCiAgICBzbmFwc2hvdCA9IG1hbmFnZXIuY29sbGVjdF9ydW50aW1lX3NuYXBzaG90KGluc3RhbmNlKQogICAgcmV0dXJuIGpzb25pZnkoeyJzdGF0dXMiOiAic3VjY2VzcyIsICJkYXRhIjogc25hcHNob3R9KQoKCkB1aV9icC5yb3V0ZSgiL2FwaS9pbnN0YW5jZXMvPGluc3RhbmNlX2lkPi9zdG9wIiwgbWV0aG9kcz1bIlBPU1QiXSkKZGVmIHN0b3BfaW5zdGFuY2UoaW5zdGFuY2VfaWQ6IHN0cikgLT4gUmVzcG9uc2U6CiAgICBtYW5hZ2VyID0gX2dldF9tYW5hZ2VyKCkKICAgIHN0b3BwZWQgPSBtYW5hZ2VyLnN0b3BfaW5zdGFuY2UoaW5zdGFuY2VfaWQpCiAgICBpZiBub3Qgc3RvcHBlZDoKICAgICAgICByZXR1cm4ganNvbmlmeSh7InN0YXR1cyI6ICJlcnJvciIsICJtZXNzYWdlIjogIkluc3RhbmNlIG5vdCBmb3VuZCJ9KSwgNDA0CgogICAgaW5zdGFuY2UgPSBtYW5hZ2VyLmdldF9pbnN0YW5jZShpbnN0YW5jZV9pZCkKICAgIHJldHVybiBqc29uaWZ5KHsic3RhdHVzIjogInN1Y2Nlc3MiLCAiZGF0YSI6IG1hbmFnZXIuaW5zdGFuY2VfdG9fZGljdChpbnN0YW5jZSl9KQoKCkB1aV9icC5yb3V0ZSgiL2FwaS90ZW1wbGF0ZXMvcHJvYmxlbS1zZXRzIiwgbWV0aG9kcz1bIkdFVCJdKQpkZWYgbGlzdF9wcm9ibGVtX3NldHMoKSAtPiBSZXNwb25zZToKICAgIHJvb3QgPSBfZ2V0X2Jhc2VfZGlyKCkgLyAiY29uZmlnIgogICAgZXhjbHVkZV9zdGVtcyA9IHsicHJvYmxlbXNfbWFpbiIsICJwcm9ibGVtc19tYWluLW9sZCJ9CiAgICBwcm9ibGVtX2ZpbGVzID0gWwogICAgICAgIGZpbGVfcGF0aAogICAgICAgIGZvciBmaWxlX3BhdGggaW4gc29ydGVkKHJvb3QuZ2xvYigicHJvYmxlbXMqLmpzb24iKSkKICAgICAgICBpZiBmaWxlX3BhdGguc3RlbSBub3QgaW4gZXhjbHVkZV9zdGVtcwogICAgXQoKICAgIGRhdGEgPSBbXQogICAgZm9yIGZpbGVfcGF0aCBpbiBwcm9ibGVtX2ZpbGVzOgogICAgICAgIHRyeToKICAgICAgICAgICAgd2l0aCBmaWxlX3BhdGgub3BlbigiciIsIGVuY29kaW5nPSJ1dGYtOCIpIGFzIGhhbmRsZToKICAgICAgICAgICAgICAgIHByb2JsZW1zID0ganNvbi5sb2FkKGhhbmRsZSkKICAgICAgICAgICAgZGF0YS5hcHBlbmQoCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgIm5hbWUiOiBmaWxlX3BhdGgubmFtZSwKICAgICAgICAgICAgICAgICAgICAicGF0aCI6IHN0cihmaWxlX3BhdGgucmVsYXRpdmVfdG8oX2dldF9iYXNlX2RpcigpKSksCiAgICAgICAgICAgICAgICAgICAgImNvdW50IjogbGVuKHByb2JsZW1zKSBpZiBpc2luc3RhbmNlKHByb2JsZW1zLCBsaXN0KSBlbHNlIDAsCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICkKICAgICAgICBleGNlcHQgRXhjZXB0aW9uOiAgIyBweWxpbnQ6IGRpc2FibGU9YnJvYWQtZXhjZXB0CiAgICAgICAgICAgIGNvbnRpbnVlCgogICAgcmV0dXJuIGpzb25pZnkoeyJzdGF0dXMiOiAic3VjY2VzcyIsICJkYXRhIjogZGF0YX0pCgoKQHVpX2JwLnJvdXRlKCIvYXBpL3RlbXBsYXRlcy9jb21wZXRpdGlvbi1jb25maWdzIiwgbWV0aG9kcz1bIkdFVCJdKQpkZWYgbGlzdF9jb21wZXRpdGlvbl90ZW1wbGF0ZXMoKSAtPiBSZXNwb25zZToKICAgIHJvb3QgPSBfZ2V0X2Jhc2VfZGlyKCkgLyAiY29uZmlnIgogICAgZmlsZXMgPSBzb3J0ZWQocm9vdC5nbG9iKCJjb21wZXRpdGlvbl8qLmpzb24iKSkKCiAgICBkYXRhID0gWwogICAgICAgIHsKICAgICAgICAgICAgIm5hbWUiOiBmaWxlX3BhdGgubmFtZSwKICAgICAgICAgICAgInBhdGgiOiBzdHIoZmlsZV9wYXRoLnJlbGF0aXZlX3RvKF9nZXRfYmFzZV9kaXIoKSkpLAogICAgICAgIH0KICAgICAgICBmb3IgZmlsZV9wYXRoIGluIGZpbGVzCiAgICBdCiAgICByZXR1cm4ganNvbmlmeSh7InN0YXR1cyI6ICJzdWNjZXNzIiwgImRhdGEiOiBkYXRhfSkKCgpAdWlfYnAucm91dGUoIi9hcGkvdGVtcGxhdGVzL2NvbXBldGl0b3ItY29uZmlncyIsIG1ldGhvZHM9WyJHRVQiXSkKZGVmIGxpc3RfY29tcGV0aXRvcl90ZW1wbGF0ZXMoKSAtPiBSZXNwb25zZToKICAgIHJvb3QgPSBfZ2V0X2Jhc2VfZGlyKCkgLyAiY29uZmlnIgogICAgZmlsZXMgPSBzb3J0ZWQocm9vdC5nbG9iKCIqbGxtKi5qc29uIikpCgogICAgZGF0YSA9IFsKICAgICAgICB7CiAgICAgICAgICAgICJuYW1lIjogZmlsZV9wYXRoLm5hbWUsCiAgICAgICAgICAgICJwYXRoIjogc3RyKGZpbGVfcGF0aC5yZWxhdGl2ZV90byhfZ2V0X2Jhc2VfZGlyKCkpKSwKICAgICAgICB9CiAgICAgICAgZm9yIGZpbGVfcGF0aCBpbiBmaWxlcwogICAgXQogICAgcmV0dXJuIGpzb25pZnkoeyJzdGF0dXMiOiAic3VjY2VzcyIsICJkYXRhIjogZGF0YX0pCgoKQHVpX2JwLnJvdXRlKCIvYXBpL3RlbXBsYXRlcy9jb21wZXRpdGlvbi1kZWZhdWx0cyIsIG1ldGhvZHM9WyJHRVQiXSkKZGVmIGdldF9jb21wZXRpdGlvbl9kZWZhdWx0cygpIC0+IFJlc3BvbnNlOgogICAgbWFuYWdlciA9IF9nZXRfbWFuYWdlcigpCiAgICBkZWZhdWx0cyA9IG1hbmFnZXIuZ2V0X2NvbXBldGl0aW9uX2RlZmF1bHRzKCkKICAgIHJldHVybiBqc29uaWZ5KHsic3RhdHVzIjogInN1Y2Nlc3MiLCAiZGF0YSI6IGRlZmF1bHRzfSkKCgpAdWlfYnAucm91dGUoIi9hcGkvdGVtcGxhdGVzL2RlZmF1bHQtY29tcGV0aXRvcnMiLCBtZXRob2RzPVsiR0VUIl0pCmRlZiBnZXRfZGVmYXVsdF9jb21wZXRpdG9ycygpIC0+IFJlc3BvbnNlOgogICAgbWFuYWdlciA9IF9nZXRfbWFuYWdlcigpCiAgICBjb21wZXRpdG9ycyA9IG1hbmFnZXIuZ2V0X2RlZmF1bHRfY29tcGV0aXRvcnMoKQogICAgcmV0dXJuIGpzb25pZnkoeyJzdGF0dXMiOiAic3VjY2VzcyIsICJkYXRhIjogY29tcGV0aXRvcnN9KQoKCmRlZiByZWdpc3Rlcl91aV9ibHVlcHJpbnQoYXBwLCAqLCBiYXNlX2RpcjogT3B0aW9uYWxbUGF0aF0gPSBOb25lKSAtPiBOb25lOgogICAgIiIiUmVnaXN0ZXIgdGhlIFVJIGJsdWVwcmludCBhbmQgYXR0YWNoIHRoZSBtYW5hZ2VyIHRvIHRoZSBGbGFzayBhcHAuIiIiCgogICAgcmVzb2x2ZWRfYmFzZV9kaXIgPSAoCiAgICAgICAgUGF0aChiYXNlX2RpcikgaWYgYmFzZV9kaXIgZWxzZSBQYXRoKF9fZmlsZV9fKS5yZXNvbHZlKCkucGFyZW50c1syXQogICAgKQogICAgYXBwLmNvbmZpZy5zZXRkZWZhdWx0KCJVU0FDT0FfVUlfQkFTRV9ESVIiLCByZXNvbHZlZF9iYXNlX2RpcikKCiAgICBpZiAidWlfbWFuYWdlciIgbm90IGluIGFwcC5leHRlbnNpb25zOgogICAgICAgIGFwcC5leHRlbnNpb25zWyJ1aV9tYW5hZ2VyIl0gPSBDb21wZXRpdGlvblByb2Nlc3NNYW5hZ2VyKAogICAgICAgICAgICBiYXNlX2Rpcj1yZXNvbHZlZF9iYXNlX2RpcgogICAgICAgICkKICAgIGlmICJ1c2Fjb2FyZW5hX3VpIiBub3QgaW4gYXBwLmJsdWVwcmludHM6CiAgICAgICAgYXBwLnJlZ2lzdGVyX2JsdWVwcmludCh1aV9icCkK
+"""Blueprint exposing the competition management dashboard APIs and assets."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any, Dict, Optional
+
+from flask import (
+    Blueprint,
+    Response,
+    current_app,
+    jsonify,
+    request,
+    send_from_directory,
+)
+
+from .manager import CompetitionProcessManager
+
+
+ui_bp = Blueprint(
+    "usacoarena_ui",
+    __name__,
+    url_prefix="/ui",
+    static_folder="static",
+    template_folder="templates",
+)
+
+
+def _get_base_dir() -> Path:
+    base_dir = current_app.config.get("USACOA_UI_BASE_DIR")
+    if base_dir is None:
+        base_dir = Path(__file__).resolve().parents[2]
+        current_app.config["USACOA_UI_BASE_DIR"] = base_dir
+    return Path(base_dir)
+
+
+def _get_manager() -> CompetitionProcessManager:
+    manager: Optional[CompetitionProcessManager] = current_app.extensions.get(
+        "ui_manager"
+    )
+    if manager is None:
+        manager = CompetitionProcessManager(base_dir=_get_base_dir())
+        current_app.extensions["ui_manager"] = manager
+    return manager
+
+
+@ui_bp.route("/")
+def ui_index() -> Response:
+    """Serve the main dashboard page."""
+
+    static_dir = Path(ui_bp.static_folder or "static")
+    if not static_dir.is_absolute():
+        static_dir = Path(__file__).resolve().parent / static_dir
+    return send_from_directory(str(static_dir), "index.html")
+
+
+@ui_bp.route("/api/instances", methods=["GET"])
+def list_instances() -> Response:
+    manager = _get_manager()
+    instances = [
+        manager.instance_to_dict(instance) for instance in manager.list_instances()
+    ]
+    return jsonify({"status": "success", "data": instances})
+
+
+@ui_bp.route("/api/instances", methods=["POST"])
+def create_instance() -> Response:
+    payload: Dict[str, Any] = request.get_json(silent=True) or {}
+    manager = _get_manager()
+
+    try:
+        instance = manager.create_instance(payload)
+    except Exception as exc:  # pylint: disable=broad-except
+        return jsonify({"status": "error", "message": str(exc)}), 400
+
+    return jsonify({"status": "success", "data": manager.instance_to_dict(instance)})
+
+
+@ui_bp.route("/api/instances/<instance_id>", methods=["GET"])
+def get_instance(instance_id: str) -> Response:
+    manager = _get_manager()
+    instance = manager.get_instance(instance_id)
+    if not instance:
+        return jsonify({"status": "error", "message": "Instance not found"}), 404
+
+    return jsonify({"status": "success", "data": manager.instance_to_dict(instance)})
+
+
+@ui_bp.route("/api/instances/<instance_id>/snapshot", methods=["GET"])
+def instance_snapshot(instance_id: str) -> Response:
+    manager = _get_manager()
+    instance = manager.get_instance(instance_id)
+    if not instance:
+        return jsonify({"status": "error", "message": "Instance not found"}), 404
+
+    snapshot = manager.collect_runtime_snapshot(instance)
+    return jsonify({"status": "success", "data": snapshot})
+
+
+@ui_bp.route("/api/instances/<instance_id>/stop", methods=["POST"])
+def stop_instance(instance_id: str) -> Response:
+    manager = _get_manager()
+    stopped = manager.stop_instance(instance_id)
+    if not stopped:
+        return jsonify({"status": "error", "message": "Instance not found"}), 404
+
+    instance = manager.get_instance(instance_id)
+    return jsonify({"status": "success", "data": manager.instance_to_dict(instance)})
+
+
+@ui_bp.route("/api/templates/problem-sets", methods=["GET"])
+def list_problem_sets() -> Response:
+    root = _get_base_dir() / "config"
+    exclude_stems = {"problems_main", "problems_main-old"}
+    problem_files = [
+        file_path
+        for file_path in sorted(root.glob("problems*.json"))
+        if file_path.stem not in exclude_stems
+    ]
+
+    data = []
+    for file_path in problem_files:
+        try:
+            with file_path.open("r", encoding="utf-8") as handle:
+                problems = json.load(handle)
+            data.append(
+                {
+                    "name": file_path.name,
+                    "path": str(file_path.relative_to(_get_base_dir())),
+                    "count": len(problems) if isinstance(problems, list) else 0,
+                }
+            )
+        except Exception:  # pylint: disable=broad-except
+            continue
+
+    return jsonify({"status": "success", "data": data})
+
+
+@ui_bp.route("/api/templates/competition-configs", methods=["GET"])
+def list_competition_templates() -> Response:
+    root = _get_base_dir() / "config"
+    files = sorted(root.glob("competition_*.json"))
+
+    data = [
+        {
+            "name": file_path.name,
+            "path": str(file_path.relative_to(_get_base_dir())),
+        }
+        for file_path in files
+    ]
+    return jsonify({"status": "success", "data": data})
+
+
+@ui_bp.route("/api/templates/competitor-configs", methods=["GET"])
+def list_competitor_templates() -> Response:
+    root = _get_base_dir() / "config"
+    files = sorted(root.glob("*llm*.json"))
+
+    data = [
+        {
+            "name": file_path.name,
+            "path": str(file_path.relative_to(_get_base_dir())),
+        }
+        for file_path in files
+    ]
+    return jsonify({"status": "success", "data": data})
+
+
+@ui_bp.route("/api/templates/competition-defaults", methods=["GET"])
+def get_competition_defaults() -> Response:
+    manager = _get_manager()
+    defaults = manager.get_competition_defaults()
+    return jsonify({"status": "success", "data": defaults})
+
+
+@ui_bp.route("/api/templates/default-competitors", methods=["GET"])
+def get_default_competitors() -> Response:
+    manager = _get_manager()
+    competitors = manager.get_default_competitors()
+    return jsonify({"status": "success", "data": competitors})
+
+
+def register_ui_blueprint(app, *, base_dir: Optional[Path] = None) -> None:
+    """Register the UI blueprint and attach the manager to the Flask app."""
+
+    resolved_base_dir = (
+        Path(base_dir) if base_dir else Path(__file__).resolve().parents[2]
+    )
+    app.config.setdefault("USACOA_UI_BASE_DIR", resolved_base_dir)
+
+    if "ui_manager" not in app.extensions:
+        app.extensions["ui_manager"] = CompetitionProcessManager(
+            base_dir=resolved_base_dir
+        )
+    if "usacoarena_ui" not in app.blueprints:
+        app.register_blueprint(ui_bp)

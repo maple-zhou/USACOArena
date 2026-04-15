@@ -1,1 +1,31 @@
-ewogICJjb21wZXRpdG9ycyI6IFsKICAgIHsKICAgICAgInR5cGUiOiAiZ2VuZXJpYyIsCiAgICAgICJuYW1lIjogImdlbWluaS0yLjUtcHJvIiwKICAgICAgIm1vZGVsX2lkIjogImdlbWluaS0yLjUtcHJvIiwKICAgICAgImFwaV9iYXNlX3VybCI6ICJodHRwczovL2dlbmVyYXRpdmVsYW5ndWFnZS5nb29nbGVhcGlzLmNvbS9vcGVuYWkiLAogICAgICAiYXBpX2tleSI6ICIiLAogICAgICAicHJvbXB0X2NvbmZpZ19wYXRoIjogImFnZW50cy9zaW5nbGVfYWdlbnQvcHJvbXB0cy9wcm9tcHRzLXNpbmdsZS5qc29uIiwKICAgICAgInJlcXVlc3RfZm9ybWF0IjogewogICAgICAgICJ1cmwiOiAiL3YxYmV0YS9vcGVuYWkvY2hhdC9jb21wbGV0aW9ucyIsCiAgICAgICAgIm1ldGhvZCI6ICJQT1NUIiwKICAgICAgICAiaGVhZGVycyI6IHsKICAgICAgICAgICJDb250ZW50LVR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsCiAgICAgICAgICAiQXV0aG9yaXphdGlvbiI6ICJCZWFyZXIge2FwaV9rZXl9IgogICAgICAgIH0sCiAgICAgICAgImJvZHlfdGVtcGxhdGUiOiB7CiAgICAgICAgICAibWVzc2FnZXMiOiAie21lc3NhZ2VzfSIsCiAgICAgICAgICAibW9kZWwiOiAie21vZGVsX2lkfSIsCiAgICAgICAgICAidGVtcGVyYXR1cmUiOiAwLjcKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJyZXNwb25zZV9mb3JtYXQiOiB7CiAgICAgICAgInJlc3BvbnNlX3BhdGgiOiAiY2hvaWNlc1swXS5tZXNzYWdlLmNvbnRlbnQiLAogICAgICAgICJlcnJvcl9wYXRoIjogImVycm9yLm1lc3NhZ2UiCiAgICAgIH0sCiAgICAgICJhcGlfYmFzZV91cmxfZW52IjogIkdFTUlOSV9CQVNFX1VSTCIsCiAgICAgICJhcGlfa2V5X2VudiI6ICJHRU1JTklfQVBJX0tFWSIKICAgIH0KICBdCn0K
+{
+  "competitors": [
+    {
+      "type": "generic",
+      "name": "gemini-2.5-pro",
+      "model_id": "gemini-2.5-pro",
+      "api_base_url": "https://generativelanguage.googleapis.com/openai",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/prompts-single.json",
+      "request_format": {
+        "url": "/v1beta/openai/chat/completions",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {api_key}"
+        },
+        "body_template": {
+          "messages": "{messages}",
+          "model": "{model_id}",
+          "temperature": 0.7
+        }
+      },
+      "response_format": {
+        "response_path": "choices[0].message.content",
+        "error_path": "error.message"
+      },
+      "api_base_url_env": "GEMINI_BASE_URL",
+      "api_key_env": "GEMINI_API_KEY"
+    }
+  ]
+}

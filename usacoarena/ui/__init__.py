@@ -1,1 +1,10 @@
-IiIiV2ViIFVJIGludGVncmF0aW9uIGZvciBVU0FDT0FyZW5hLgoKVGhpcyBwYWNrYWdlIGV4cG9zZXMgaGVscGVycyB0byByZWdpc3RlciB0aGUgbWFuYWdlbWVudCBkYXNoYm9hcmQgYmx1ZXByaW50CndpdGggRmxhc2sgYXBwbGljYXRpb25zIGFuZCBwcm92aWRlcyBhIHN0YW5kYWxvbmUgVUkgYXBwIGZhY3RvcnkuCiIiIgoKZnJvbSAuYmx1ZXByaW50IGltcG9ydCByZWdpc3Rlcl91aV9ibHVlcHJpbnQKZnJvbSAuYXBwIGltcG9ydCBjcmVhdGVfYXBwCgpfX2FsbF9fID0gWyJyZWdpc3Rlcl91aV9ibHVlcHJpbnQiLCAiY3JlYXRlX2FwcCJdCg==
+"""Web UI integration for USACOArena.
+
+This package exposes helpers to register the management dashboard blueprint
+with Flask applications and provides a standalone UI app factory.
+"""
+
+from .blueprint import register_ui_blueprint
+from .app import create_app
+
+__all__ = ["register_ui_blueprint", "create_app"]

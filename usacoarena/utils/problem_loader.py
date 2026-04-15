@@ -1,1 +1,226 @@
-IiIiSHlkcm8tYmFja2VkIHByb2JsZW0gbG9hZGluZyB1dGlsaXRpZXMgZm9yIFVTQUNPQXJlbmEuIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQgcmUKZnJvbSB0eXBpbmcgaW1wb3J0IERpY3QsIExpc3QsIE9wdGlvbmFsCgpmcm9tIHVzYWNvYXJlbmEubW9kZWxzLm1vZGVscyBpbXBvcnQgQ2FzZSwgTGV2ZWwsIFByb2JsZW0sIGdlbmVyYXRlX2lkCmZyb20gdXNhY29hcmVuYS51dGlscy5oeWRyb19jbGllbnQgaW1wb3J0IEh5ZHJvQ2xpZW50LCBIeWRyb0NsaWVudEVycm9yCmZyb20gdXNhY29hcmVuYS51dGlscy5sb2dnZXJfY29uZmlnIGltcG9ydCBnZXRfbG9nZ2VyCgpsb2dnZXIgPSBnZXRfbG9nZ2VyKCJ1c2Fjb19wcm9ibGVtX2xvYWRlciIpCgpfU0VDVElPTl9QQVRURVJOID0gcmUuY29tcGlsZSgKICAgIHIiKD9QPGhlYWRlcj5JTlBVVCBGT1JNQVR8T1VUUFVUIEZPUk1BVHxTQU1QTEUgSU5QVVR8U0FNUExFIE9VVFBVVHxJTlBVVHxPVVRQVVQpXHMqOlxzKiIsCiAgICBmbGFncz1yZS5JR05PUkVDQVNFLAopCgoKY2xhc3MgVVNBQ09Qcm9ibGVtTG9hZGVyOgogICAgIiIiCiAgICBCYWNrd2FyZC1jb21wYXRpYmxlIHByb2JsZW0gbG9hZGVyIHRoYXQgcmVhZHMgbWV0YWRhdGEgZnJvbSBIeWRyby4KCiAgICBUaGUgaGlzdG9yaWNhbCBjbGFzcyBuYW1lIGlzIGtlcHQgaW50ZW50aW9uYWxseSBzbyB0aGUgcmVzdCBvZiB0aGUKICAgIFVTQUNPQXJlbmEgY29kZWJhc2UgY2FuIG1pZ3JhdGUgd2l0aCBtaW5pbWFsIGNodXJuLgogICAgIiIiCgogICAgZGVmIF9faW5pdF9fKAogICAgICAgIHNlbGYsCiAgICAgICAgZGF0YV9wYXRoOiBPcHRpb25hbFtzdHJdID0gTm9uZSwKICAgICAgICAqLAogICAgICAgIGh5ZHJvX2NsaWVudDogT3B0aW9uYWxbSHlkcm9DbGllbnRdID0gTm9uZSwKICAgICkgLT4gTm9uZToKICAgICAgICBzZWxmLmRhdGFfcGF0aCA9IGRhdGFfcGF0aAogICAgICAgIHNlbGYuaHlkcm9fY2xpZW50ID0gaHlkcm9fY2xpZW50IG9yIEh5ZHJvQ2xpZW50LmZyb21fZW52KCkKICAgICAgICBpZiBzZWxmLmh5ZHJvX2NsaWVudCBpcyBOb25lOgogICAgICAgICAgICByYWlzZSBWYWx1ZUVycm9yKAogICAgICAgICAgICAgICAgIkh5ZHJvIHByb2JsZW0gbG9hZGVyIHJlcXVpcmVzIFVTQUNPQVJFTkFfSFlEUk9fQkFTRV9VUkwgIgogICAgICAgICAgICAgICAgIm9yIGFuIGV4cGxpY2l0IEh5ZHJvQ2xpZW50IGluc3RhbmNlIgogICAgICAgICAgICApCgogICAgICAgIHNlbGYucHJvYmxlbXNfZGljdDogRGljdFtzdHIsIERpY3RdID0ge30KICAgICAgICBzZWxmLl9kZXRhaWxfY2FjaGU6IERpY3Rbc3RyLCBEaWN0XSA9IHt9CiAgICAgICAgc2VsZi5fbG9hZF9wcm9ibGVtX2RpY3QoKQoKICAgIGRlZiBfbG9hZF9wcm9ibGVtX2RpY3Qoc2VsZikgLT4gTm9uZToKICAgICAgICB0cnk6CiAgICAgICAgICAgIHByb2JsZW1zID0gc2VsZi5oeWRyb19jbGllbnQubGlzdF9wcm9ibGVtcyhkZXRhaWw9VHJ1ZSkKICAgICAgICBleGNlcHQgSHlkcm9DbGllbnRFcnJvciBhcyBleGM6CiAgICAgICAgICAgIGxvZ2dlci5lcnJvcigiRmFpbGVkIHRvIGxvYWQgSHlkcm8gcHJvYmxlbSBsaWJyYXJ5OiAlcyIsIGV4YykKICAgICAgICAgICAgc2VsZi5wcm9ibGVtc19kaWN0ID0ge30KICAgICAgICAgICAgcmV0dXJuCgogICAgICAgIHNlbGYucHJvYmxlbXNfZGljdCA9IHsKICAgICAgICAgICAgc3RyKHByb2JsZW0uZ2V0KCJpZCIpKTogcHJvYmxlbQogICAgICAgICAgICBmb3IgcHJvYmxlbSBpbiBwcm9ibGVtcwogICAgICAgICAgICBpZiBpc2luc3RhbmNlKHByb2JsZW0sIGRpY3QpIGFuZCBwcm9ibGVtLmdldCgiaWQiKSBpcyBub3QgTm9uZQogICAgICAgIH0KICAgICAgICBzZWxmLl9kZXRhaWxfY2FjaGUudXBkYXRlKHNlbGYucHJvYmxlbXNfZGljdCkKCiAgICBkZWYgcmVmcmVzaChzZWxmKSAtPiBOb25lOgogICAgICAgICIiIlJlbG9hZCB0aGUgcHJvYmxlbSBpbmRleCBmcm9tIEh5ZHJvLiIiIgogICAgICAgIHNlbGYuX2xvYWRfcHJvYmxlbV9kaWN0KCkKCiAgICBkZWYgZ2V0X3Byb2JsZW1faWRzKHNlbGYsIGxldmVsOiBPcHRpb25hbFtzdHJdID0gTm9uZSkgLT4gTGlzdFtzdHJdOgogICAgICAgIGlmIG5vdCBsZXZlbDoKICAgICAgICAgICAgcmV0dXJuIGxpc3Qoc2VsZi5wcm9ibGVtc19kaWN0LmtleXMoKSkKCiAgICAgICAgbGV2ZWxfbG93ZXIgPSBzdHIobGV2ZWwpLnN0cmlwKCkubG93ZXIoKQogICAgICAgIHJldHVybiBbCiAgICAgICAgICAgIHBpZAogICAgICAgICAgICBmb3IgcGlkLCBwcm9ibGVtIGluIHNlbGYucHJvYmxlbXNfZGljdC5pdGVtcygpCiAgICAgICAgICAgIGlmIHN0cihwcm9ibGVtLmdldCgibGV2ZWwiLCAiIikpLnN0cmlwKCkubG93ZXIoKSA9PSBsZXZlbF9sb3dlcgogICAgICAgIF0KCiAgICBkZWYgbG9hZF9zb2x1dGlvbihzZWxmLCBwcm9ibGVtX2lkOiBzdHIpIC0+IE9wdGlvbmFsW3N0cl06CiAgICAgICAgdHJ5OgogICAgICAgICAgICByZXR1cm4gc2VsZi5oeWRyb19jbGllbnQuZ2V0X3Byb2JsZW1fc29sdXRpb24ocHJvYmxlbV9pZCkKICAgICAgICBleGNlcHQgSHlkcm9DbGllbnRFcnJvciBhcyBleGM6CiAgICAgICAgICAgIGxvZ2dlci53YXJuaW5nKCJGYWlsZWQgdG8gbG9hZCBIeWRybyBzb2x1dGlvbiBmb3IgJXM6ICVzIiwgcHJvYmxlbV9pZCwgZXhjKQogICAgICAgICAgICByZXR1cm4gTm9uZQoKICAgIGRlZiBsb2FkX3Byb2JsZW0oc2VsZiwgcHJvYmxlbV9pZDogc3RyKSAtPiBPcHRpb25hbFtQcm9ibGVtXToKICAgICAgICBkZXRhaWwgPSBzZWxmLl9nZXRfcHJvYmxlbV9kZXRhaWwocHJvYmxlbV9pZCkKICAgICAgICBpZiBub3QgZGV0YWlsOgogICAgICAgICAgICByZXR1cm4gTm9uZQoKICAgICAgICBzYW1wbGVfY2FzZXMgPSBzZWxmLl9wYXJzZV9zYW1wbGVfY2FzZXMoZGV0YWlsKQogICAgICAgIGxldmVsID0gc2VsZi5fcGFyc2VfbGV2ZWwoZGV0YWlsLmdldCgibGV2ZWwiKSkKCiAgICAgICAgcmV0dXJuIFByb2JsZW0oCiAgICAgICAgICAgIGlkPXN0cihkZXRhaWwuZ2V0KCJpZCIsIHByb2JsZW1faWQpKSwKICAgICAgICAgICAgdGl0bGU9c3RyKGRldGFpbC5nZXQoInRpdGxlIiwgIiIpKSwKICAgICAgICAgICAgZGVzY3JpcHRpb249c3RyKGRldGFpbC5nZXQoImRlc2NyaXB0aW9uIiwgZGV0YWlsLmdldCgic3RhdGVtZW50IiwgIiIpKSksCiAgICAgICAgICAgIGxldmVsPWxldmVsLAogICAgICAgICAgICBzYW1wbGVfY2FzZXM9c2FtcGxlX2Nhc2VzLAogICAgICAgICAgICB0aW1lX2xpbWl0X21zPWludChkZXRhaWwuZ2V0KCJ0aW1lX2xpbWl0X21zIiwgMTAwMCkgb3IgMTAwMCksCiAgICAgICAgICAgIG1lbW9yeV9saW1pdF9tYj1pbnQoZGV0YWlsLmdldCgibWVtb3J5X2xpbWl0X21iIiwgMjU2KSBvciAyNTYpLAogICAgICAgICkKCiAgICBkZWYgbG9hZF90ZXN0X2Nhc2VzKHNlbGYsIHByb2JsZW1faWQ6IHN0cikgLT4gTGlzdFtDYXNlXToKICAgICAgICAiIiIKICAgICAgICBIaWRkZW4gdGVzdCBkYXRhIGlzIG5vIGxvbmdlciBhdmFpbGFibGUgdG8gVVNBQ09BcmVuYSBkaXJlY3RseS4KCiAgICAgICAgVGhpcyBtZXRob2QgcmVtYWlucyBmb3IgY29tcGF0aWJpbGl0eSwgYnV0IG9ubHkgcmV0dXJucyBwdWJsaWMgc2FtcGxlCiAgICAgICAgY2FzZXMsIHdoaWNoIGlzIHN1ZmZpY2llbnQgZm9yIHByb21wdCBjb25zdHJ1Y3Rpb24gYW5kIGxpZ2h0d2VpZ2h0CiAgICAgICAgZGVidWdnaW5nIGZsb3dzLgogICAgICAgICIiIgogICAgICAgIHByb2JsZW0gPSBzZWxmLmxvYWRfcHJvYmxlbShwcm9ibGVtX2lkKQogICAgICAgIGlmIG5vdCBwcm9ibGVtOgogICAgICAgICAgICByZXR1cm4gW10KICAgICAgICByZXR1cm4gbGlzdChwcm9ibGVtLnNhbXBsZV9jYXNlcykKCiAgICBkZWYgZ2V0X3Byb2JsZW1fd2l0aF90ZXN0X2Nhc2VzKHNlbGYsIHByb2JsZW1faWQ6IHN0cikgLT4gT3B0aW9uYWxbRGljdF06CiAgICAgICAgcHJvYmxlbSA9IHNlbGYubG9hZF9wcm9ibGVtKHByb2JsZW1faWQpCiAgICAgICAgaWYgbm90IHByb2JsZW06CiAgICAgICAgICAgIHJldHVybiBOb25lCiAgICAgICAgdGVzdF9jYXNlcyA9IHNlbGYubG9hZF90ZXN0X2Nhc2VzKHByb2JsZW1faWQpIG9yIGxpc3QocHJvYmxlbS5zYW1wbGVfY2FzZXMpCiAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgInByb2JsZW0iOiBwcm9ibGVtLAogICAgICAgICAgICAidGVzdF9jYXNlcyI6IHRlc3RfY2FzZXMsCiAgICAgICAgfQoKICAgIGRlZiBpbXBvcnRfcHJvYmxlbXNfdG9fY29tcGV0aXRpb24oc2VsZiwgY29tcGV0aXRpb24sIHByb2JsZW1faWRzOiBMaXN0W3N0cl0pIC0+IGludDoKICAgICAgICBjb3VudCA9IDAKICAgICAgICBmb3IgcGlkIGluIHByb2JsZW1faWRzOgogICAgICAgICAgICBpZiBzZWxmLmxvYWRfcHJvYmxlbShwaWQpOgogICAgICAgICAgICAgICAgY291bnQgKz0gMQogICAgICAgIHJldHVybiBjb3VudAoKICAgIGRlZiBnZXRfcHJvYmxlbV9pbmZvKHNlbGYsIHByb2JsZW1faWQ6IHN0cikgLT4gT3B0aW9uYWxbRGljdF06CiAgICAgICAgZGV0YWlsID0gc2VsZi5fZ2V0X3Byb2JsZW1fZGV0YWlsKHByb2JsZW1faWQpCiAgICAgICAgaWYgbm90IGRldGFpbDoKICAgICAgICAgICAgcmV0dXJuIE5vbmUKICAgICAgICBzYW1wbGVzID0gc2VsZi5fcGFyc2Vfc2FtcGxlX2Nhc2VzKGRldGFpbCkKICAgICAgICByZXR1cm4gewogICAgICAgICAgICAiaWQiOiBzdHIoZGV0YWlsLmdldCgiaWQiLCBwcm9ibGVtX2lkKSksCiAgICAgICAgICAgICJ0aXRsZSI6IHN0cihkZXRhaWwuZ2V0KCJ0aXRsZSIsICIiKSksCiAgICAgICAgICAgICJkZXNjcmlwdGlvbiI6IHN0cihkZXRhaWwuZ2V0KCJkZXNjcmlwdGlvbiIsIGRldGFpbC5nZXQoInN0YXRlbWVudCIsICIiKSkpLAogICAgICAgICAgICAibGV2ZWwiOiBzdHIoZGV0YWlsLmdldCgibGV2ZWwiLCAiYnJvbnplIikpLAogICAgICAgICAgICAicnVudGltZV9saW1pdCI6IGludChkZXRhaWwuZ2V0KCJ0aW1lX2xpbWl0X21zIiwgMTAwMCkgb3IgMTAwMCkgLy8gMTAwMCwKICAgICAgICAgICAgIm1lbW9yeV9saW1pdCI6IGludChkZXRhaWwuZ2V0KCJtZW1vcnlfbGltaXRfbWIiLCAyNTYpIG9yIDI1NiksCiAgICAgICAgICAgICJzYW1wbGVfY291bnQiOiBsZW4oc2FtcGxlcyksCiAgICAgICAgICAgICJoYXNfdGVzdF9maWxlcyI6IGJvb2woZGV0YWlsLmdldCgidGVzdF9jYXNlX2NvdW50IiwgMCkpLAogICAgICAgIH0KCiAgICBkZWYgX2dldF9wcm9ibGVtX2RldGFpbChzZWxmLCBwcm9ibGVtX2lkOiBzdHIpIC0+IE9wdGlvbmFsW0RpY3RdOgogICAgICAgIHByb2JsZW1faWQgPSBzdHIocHJvYmxlbV9pZCkuc3RyaXAoKQogICAgICAgIGlmIG5vdCBwcm9ibGVtX2lkOgogICAgICAgICAgICByZXR1cm4gTm9uZQoKICAgICAgICBpZiBwcm9ibGVtX2lkIGluIHNlbGYuX2RldGFpbF9jYWNoZToKICAgICAgICAgICAgcmV0dXJuIHNlbGYuX2RldGFpbF9jYWNoZVtwcm9ibGVtX2lkXQoKICAgICAgICB0cnk6CiAgICAgICAgICAgIGRldGFpbCA9IHNlbGYuaHlkcm9fY2xpZW50LmdldF9wcm9ibGVtKHByb2JsZW1faWQpCiAgICAgICAgZXhjZXB0IEh5ZHJvQ2xpZW50RXJyb3IgYXMgZXhjOgogICAgICAgICAgICBsb2dnZXIud2FybmluZygiUHJvYmxlbSAlcyBub3QgZm91bmQgaW4gSHlkcm86ICVzIiwgcHJvYmxlbV9pZCwgZXhjKQogICAgICAgICAgICByZXR1cm4gTm9uZQoKICAgICAgICBzZWxmLl9kZXRhaWxfY2FjaGVbcHJvYmxlbV9pZF0gPSBkZXRhaWwKICAgICAgICBzZWxmLnByb2JsZW1zX2RpY3Quc2V0ZGVmYXVsdChwcm9ibGVtX2lkLCBkZXRhaWwpCiAgICAgICAgcmV0dXJuIGRldGFpbAoKICAgIGRlZiBfcGFyc2Vfc2FtcGxlX2Nhc2VzKHNlbGYsIGRldGFpbDogRGljdCkgLT4gTGlzdFtDYXNlXToKICAgICAgICByYXdfc2FtcGxlcyA9IGRldGFpbC5nZXQoInNhbXBsZV9jYXNlcyIpCiAgICAgICAgaWYgaXNpbnN0YW5jZShyYXdfc2FtcGxlcywgbGlzdCk6CiAgICAgICAgICAgIGNhc2VzID0gW10KICAgICAgICAgICAgZm9yIGl0ZW0gaW4gcmF3X3NhbXBsZXM6CiAgICAgICAgICAgICAgICBpZiBub3QgaXNpbnN0YW5jZShpdGVtLCBkaWN0KToKICAgICAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICAgICAgY2FzZXMuYXBwZW5kKAogICAgICAgICAgICAgICAgICAgIENhc2UoCiAgICAgICAgICAgICAgICAgICAgICAgIGlkPXN0cihpdGVtLmdldCgiaWQiKSBvciBnZW5lcmF0ZV9pZCgpKSwKICAgICAgICAgICAgICAgICAgICAgICAgaW5wdXRfZGF0YT1zdHIoCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBpdGVtLmdldCgiaW5wdXRfZGF0YSIsIGl0ZW0uZ2V0KCJpbnB1dCIsICIiKSkgb3IgIiIKICAgICAgICAgICAgICAgICAgICAgICAgKSwKICAgICAgICAgICAgICAgICAgICAgICAgZXhwZWN0ZWRfb3V0cHV0PXN0cigKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGl0ZW0uZ2V0KCJleHBlY3RlZF9vdXRwdXQiLCBpdGVtLmdldCgib3V0cHV0IiwgIiIpKSBvciAiIgogICAgICAgICAgICAgICAgICAgICAgICApLAogICAgICAgICAgICAgICAgICAgICAgICBpbnB1dF9wYXRoPWl0ZW0uZ2V0KCJpbnB1dF9wYXRoIiksCiAgICAgICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgKQogICAgICAgICAgICBpZiBjYXNlczoKICAgICAgICAgICAgICAgIHJldHVybiBjYXNlcwoKICAgICAgICBzdGF0ZW1lbnQgPSBzdHIoZGV0YWlsLmdldCgic3RhdGVtZW50IiwgZGV0YWlsLmdldCgiZGVzY3JpcHRpb24iLCAiIikpIG9yICIiKQogICAgICAgIHJldHVybiBzZWxmLl9leHRyYWN0X3NhbXBsZXNfZnJvbV9zdGF0ZW1lbnQoc3RhdGVtZW50KQoKICAgIGRlZiBfZXh0cmFjdF9zYW1wbGVzX2Zyb21fc3RhdGVtZW50KHNlbGYsIHN0YXRlbWVudDogc3RyKSAtPiBMaXN0W0Nhc2VdOgogICAgICAgIGlmIG5vdCBzdGF0ZW1lbnQuc3RyaXAoKToKICAgICAgICAgICAgcmV0dXJuIFtdCgogICAgICAgIG1hcmtlcnMgPSBsaXN0KF9TRUNUSU9OX1BBVFRFUk4uZmluZGl0ZXIoc3RhdGVtZW50KSkKICAgICAgICBpZiBub3QgbWFya2VyczoKICAgICAgICAgICAgcmV0dXJuIFtdCgogICAgICAgIHNlY3Rpb25zOiBEaWN0W3N0ciwgc3RyXSA9IHt9CiAgICAgICAgZm9yIGlkeCwgbWF0Y2ggaW4gZW51bWVyYXRlKG1hcmtlcnMpOgogICAgICAgICAgICBzdGFydCA9IG1hdGNoLmVuZCgpCiAgICAgICAgICAgIGVuZCA9IG1hcmtlcnNbaWR4ICsgMV0uc3RhcnQoKSBpZiBpZHggKyAxIDwgbGVuKG1hcmtlcnMpIGVsc2UgbGVuKHN0YXRlbWVudCkKICAgICAgICAgICAgaGVhZGVyID0gbWF0Y2guZ3JvdXAoImhlYWRlciIpLnN0cmlwKCkudXBwZXIoKQogICAgICAgICAgICBzZWN0aW9uc1toZWFkZXJdID0gc3RhdGVtZW50W3N0YXJ0OmVuZF0uc3RyaXAoKQoKICAgICAgICBpbnB1dF90ZXh0ID0gc2VjdGlvbnMuZ2V0KCJTQU1QTEUgSU5QVVQiKSBvciBzZWN0aW9ucy5nZXQoIklOUFVUIikKICAgICAgICBvdXRwdXRfdGV4dCA9IHNlY3Rpb25zLmdldCgiU0FNUExFIE9VVFBVVCIpIG9yIHNlY3Rpb25zLmdldCgiT1VUUFVUIikKICAgICAgICBpZiBub3QgaW5wdXRfdGV4dCBvciBub3Qgb3V0cHV0X3RleHQ6CiAgICAgICAgICAgIHJldHVybiBbXQoKICAgICAgICByZXR1cm4gWwogICAgICAgICAgICBDYXNlKAogICAgICAgICAgICAgICAgaWQ9Z2VuZXJhdGVfaWQoKSwKICAgICAgICAgICAgICAgIGlucHV0X2RhdGE9aW5wdXRfdGV4dC5zdHJpcCgpLAogICAgICAgICAgICAgICAgZXhwZWN0ZWRfb3V0cHV0PW91dHB1dF90ZXh0LnN0cmlwKCksCiAgICAgICAgICAgICkKICAgICAgICBdCgogICAgZGVmIF9wYXJzZV9sZXZlbChzZWxmLCByYXdfbGV2ZWw6IE9wdGlvbmFsW3N0cl0pIC0+IExldmVsOgogICAgICAgIG5vcm1hbGl6ZWQgPSBzdHIocmF3X2xldmVsIG9yICIiKS5zdHJpcCgpLmxvd2VyKCkKICAgICAgICBtYXBwaW5nID0gewogICAgICAgICAgICAiYnJvbnplIjogTGV2ZWwuQlJPTlpFLAogICAgICAgICAgICAic2lsdmVyIjogTGV2ZWwuU0lMVkVSLAogICAgICAgICAgICAiZ29sZCI6IExldmVsLkdPTEQsCiAgICAgICAgICAgICJwbGF0aW51bSI6IExldmVsLlBMQVRJTlVNLAogICAgICAgIH0KICAgICAgICByZXR1cm4gbWFwcGluZy5nZXQobm9ybWFsaXplZCwgTGV2ZWwuQlJPTlpFKQo=
+"""Hydro-backed problem loading utilities for USACOArena."""
+
+from __future__ import annotations
+
+import re
+from typing import Dict, List, Optional
+
+from usacoarena.models.models import Case, Level, Problem, generate_id
+from usacoarena.utils.hydro_client import HydroClient, HydroClientError
+from usacoarena.utils.logger_config import get_logger
+
+logger = get_logger("usaco_problem_loader")
+
+_SECTION_PATTERN = re.compile(
+    r"(?P<header>INPUT FORMAT|OUTPUT FORMAT|SAMPLE INPUT|SAMPLE OUTPUT|INPUT|OUTPUT)\s*:\s*",
+    flags=re.IGNORECASE,
+)
+
+
+class USACOProblemLoader:
+    """
+    Backward-compatible problem loader that reads metadata from Hydro.
+
+    The historical class name is kept intentionally so the rest of the
+    USACOArena codebase can migrate with minimal churn.
+    """
+
+    def __init__(
+        self,
+        data_path: Optional[str] = None,
+        *,
+        hydro_client: Optional[HydroClient] = None,
+    ) -> None:
+        self.data_path = data_path
+        self.hydro_client = hydro_client or HydroClient.from_env()
+        if self.hydro_client is None:
+            raise ValueError(
+                "Hydro problem loader requires USACOARENA_HYDRO_BASE_URL "
+                "or an explicit HydroClient instance"
+            )
+
+        self.problems_dict: Dict[str, Dict] = {}
+        self._detail_cache: Dict[str, Dict] = {}
+        self._load_problem_dict()
+
+    def _load_problem_dict(self) -> None:
+        try:
+            problems = self.hydro_client.list_problems(detail=True)
+        except HydroClientError as exc:
+            logger.error("Failed to load Hydro problem library: %s", exc)
+            self.problems_dict = {}
+            return
+
+        self.problems_dict = {
+            str(problem.get("id")): problem
+            for problem in problems
+            if isinstance(problem, dict) and problem.get("id") is not None
+        }
+        self._detail_cache.update(self.problems_dict)
+
+    def refresh(self) -> None:
+        """Reload the problem index from Hydro."""
+        self._load_problem_dict()
+
+    def get_problem_ids(self, level: Optional[str] = None) -> List[str]:
+        if not level:
+            return list(self.problems_dict.keys())
+
+        level_lower = str(level).strip().lower()
+        return [
+            pid
+            for pid, problem in self.problems_dict.items()
+            if str(problem.get("level", "")).strip().lower() == level_lower
+        ]
+
+    def load_solution(self, problem_id: str) -> Optional[str]:
+        try:
+            return self.hydro_client.get_problem_solution(problem_id)
+        except HydroClientError as exc:
+            logger.warning("Failed to load Hydro solution for %s: %s", problem_id, exc)
+            return None
+
+    def load_problem(self, problem_id: str) -> Optional[Problem]:
+        detail = self._get_problem_detail(problem_id)
+        if not detail:
+            return None
+
+        sample_cases = self._parse_sample_cases(detail)
+        level = self._parse_level(detail.get("level"))
+
+        return Problem(
+            id=str(detail.get("id", problem_id)),
+            title=str(detail.get("title", "")),
+            description=str(detail.get("description", detail.get("statement", ""))),
+            level=level,
+            sample_cases=sample_cases,
+            time_limit_ms=int(detail.get("time_limit_ms", 1000) or 1000),
+            memory_limit_mb=int(detail.get("memory_limit_mb", 256) or 256),
+        )
+
+    def load_test_cases(self, problem_id: str) -> List[Case]:
+        """
+        Hidden test data is no longer available to USACOArena directly.
+
+        This method remains for compatibility, but only returns public sample
+        cases, which is sufficient for prompt construction and lightweight
+        debugging flows.
+        """
+        problem = self.load_problem(problem_id)
+        if not problem:
+            return []
+        return list(problem.sample_cases)
+
+    def get_problem_with_test_cases(self, problem_id: str) -> Optional[Dict]:
+        problem = self.load_problem(problem_id)
+        if not problem:
+            return None
+        test_cases = self.load_test_cases(problem_id) or list(problem.sample_cases)
+        return {
+            "problem": problem,
+            "test_cases": test_cases,
+        }
+
+    def import_problems_to_competition(self, competition, problem_ids: List[str]) -> int:
+        count = 0
+        for pid in problem_ids:
+            if self.load_problem(pid):
+                count += 1
+        return count
+
+    def get_problem_info(self, problem_id: str) -> Optional[Dict]:
+        detail = self._get_problem_detail(problem_id)
+        if not detail:
+            return None
+        samples = self._parse_sample_cases(detail)
+        return {
+            "id": str(detail.get("id", problem_id)),
+            "title": str(detail.get("title", "")),
+            "description": str(detail.get("description", detail.get("statement", ""))),
+            "level": str(detail.get("level", "bronze")),
+            "runtime_limit": int(detail.get("time_limit_ms", 1000) or 1000) // 1000,
+            "memory_limit": int(detail.get("memory_limit_mb", 256) or 256),
+            "sample_count": len(samples),
+            "has_test_files": bool(detail.get("test_case_count", 0)),
+        }
+
+    def _get_problem_detail(self, problem_id: str) -> Optional[Dict]:
+        problem_id = str(problem_id).strip()
+        if not problem_id:
+            return None
+
+        if problem_id in self._detail_cache:
+            return self._detail_cache[problem_id]
+
+        try:
+            detail = self.hydro_client.get_problem(problem_id)
+        except HydroClientError as exc:
+            logger.warning("Problem %s not found in Hydro: %s", problem_id, exc)
+            return None
+
+        self._detail_cache[problem_id] = detail
+        self.problems_dict.setdefault(problem_id, detail)
+        return detail
+
+    def _parse_sample_cases(self, detail: Dict) -> List[Case]:
+        raw_samples = detail.get("sample_cases")
+        if isinstance(raw_samples, list):
+            cases = []
+            for item in raw_samples:
+                if not isinstance(item, dict):
+                    continue
+                cases.append(
+                    Case(
+                        id=str(item.get("id") or generate_id()),
+                        input_data=str(
+                            item.get("input_data", item.get("input", "")) or ""
+                        ),
+                        expected_output=str(
+                            item.get("expected_output", item.get("output", "")) or ""
+                        ),
+                        input_path=item.get("input_path"),
+                    )
+                )
+            if cases:
+                return cases
+
+        statement = str(detail.get("statement", detail.get("description", "")) or "")
+        return self._extract_samples_from_statement(statement)
+
+    def _extract_samples_from_statement(self, statement: str) -> List[Case]:
+        if not statement.strip():
+            return []
+
+        markers = list(_SECTION_PATTERN.finditer(statement))
+        if not markers:
+            return []
+
+        sections: Dict[str, str] = {}
+        for idx, match in enumerate(markers):
+            start = match.end()
+            end = markers[idx + 1].start() if idx + 1 < len(markers) else len(statement)
+            header = match.group("header").strip().upper()
+            sections[header] = statement[start:end].strip()
+
+        input_text = sections.get("SAMPLE INPUT") or sections.get("INPUT")
+        output_text = sections.get("SAMPLE OUTPUT") or sections.get("OUTPUT")
+        if not input_text or not output_text:
+            return []
+
+        return [
+            Case(
+                id=generate_id(),
+                input_data=input_text.strip(),
+                expected_output=output_text.strip(),
+            )
+        ]
+
+    def _parse_level(self, raw_level: Optional[str]) -> Level:
+        normalized = str(raw_level or "").strip().lower()
+        mapping = {
+            "bronze": Level.BRONZE,
+            "silver": Level.SILVER,
+            "gold": Level.GOLD,
+            "platinum": Level.PLATINUM,
+        }
+        return mapping.get(normalized, Level.BRONZE)

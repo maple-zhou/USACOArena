@@ -1,1 +1,122 @@
-IiIiCk1haW4gZW50cnkgcG9pbnQgZm9yIFVTQUNPQXJlbmEgZnJhbWV3b3JrLgoKVGhpcyBtb2R1bGUgcHJvdmlkZXMgY29tbWFuZC1saW5lIGludGVyZmFjZSBhbmQgcHJvZ3JhbW1hdGljIGFjY2VzcyB0bwpzdGFydCB0aGUgVVNBQ09BcmVuYSBBUEkgc2VydmVyIGFuZCBtYW5hZ2UgY29tcGV0aXRpb25zLgoiIiIKCmltcG9ydCBhcmdwYXJzZQppbXBvcnQgc3lzCmltcG9ydCBvcwpmcm9tIGRhdGV0aW1lIGltcG9ydCBkYXRldGltZQpmcm9tIC5zZXJ2ZXIuc2VydmVyIGltcG9ydCBydW5fYXBpCmZyb20gLnV0aWxzLmxvZ2dlcl9jb25maWcgaW1wb3J0IHNldHVwX2xvZ2dpbmcsIGdldF9sb2dnZXIKZnJvbSAudXRpbHMuY29uZmlnX21hbmFnZXIgaW1wb3J0IGdldF9jb25maWcKCmRlZiBzZXR1cF9sb2dnaW5nX2Zyb21fY29uZmlnKGNvbmZpZyk6CiAgICAiIiJTZXR1cCBsb2dnaW5nIGJhc2VkIG9uIGNvbmZpZ3VyYXRpb24iIiIKICAgIGxvZ19jb25maWcgPSBjb25maWcuZ2V0X3NlY3Rpb24oImxvZyIpCiAgICBzZXJ2ZXJfY29uZmlnID0gY29uZmlnLmdldF9zZWN0aW9uKCJzZXJ2ZXIiKQogICAgCiAgICAjIENyZWF0ZSBsb2cgZGlyZWN0b3J5CiAgICBsb2dfZGlyID0gbG9nX2NvbmZpZy5nZXQoImRpciIsICJsb2dzL3NlcnZlcl9sb2dzIikKICAgIHBvcnQgPSBzZXJ2ZXJfY29uZmlnLmdldCgicG9ydCIsIDUwMDApICAjIEdldCBwb3J0IGZyb20gc2VydmVyIGNvbmZpZ3VyYXRpb24KICAgIG9zLm1ha2VkaXJzKGxvZ19kaXIsIGV4aXN0X29rPVRydWUpCiAgICAKICAgICMgR2VuZXJhdGUgbG9nIGZpbGVuYW1lCiAgICB0aW1lc3RhbXAgPSBkYXRldGltZS5ub3coKS5zdHJmdGltZSgiJVklbSVkXyVIJU0lUyIpCiAgICBsb2dfZmlsZW5hbWUgPSBvcy5wYXRoLmpvaW4obG9nX2RpciwgZiJzZXJ2ZXJfe3BvcnR9X3t0aW1lc3RhbXB9LmxvZyIpCiAgICAKICAgICMgU2V0dXAgbG9nZ2luZwogICAgc2V0dXBfbG9nZ2luZygKICAgICAgICBsZXZlbD1sb2dfY29uZmlnLmdldCgibGV2ZWwiLCAiSU5GTyIpLAogICAgICAgIGxvZ19maWxlPWxvZ19maWxlbmFtZSwKICAgICAgICBlbmFibGVfY29sb3JzPWxvZ19jb25maWcuZ2V0KCJlbmFibGVfY29sb3JzIiwgVHJ1ZSkKICAgICkKCmRlZiBtYWluKCk6CiAgICAiIiJNYWluIGVudHJ5IHBvaW50IGZvciBVU0FDT0FyZW5hIENMSSIiIgogICAgcGFyc2VyID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoZGVzY3JpcHRpb249J1VTQUNPQXJlbmEgLSBNdWx0aS1BZ2VudCBTeXN0ZW0gQ29tcGV0aXRpb24gRnJhbWV3b3JrJykKICAgIAogICAgIyBTZXJ2ZXIgY29uZmlndXJhdGlvbgogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgnLS1jb25maWcnLCBkZWZhdWx0PSdjb25maWcvc2VydmVyX2NvbmZpZy5qc29uJywKICAgICAgICAgICAgICAgICAgICAgICBoZWxwPSdQYXRoIHRvIHNlcnZlciBjb25maWd1cmF0aW9uIGZpbGUnKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgnLS1ob3N0JywgZGVmYXVsdD0nMC4wLjAuMCcsIGhlbHA9J0hvc3QgdG8gYmluZCB0aGUgQVBJIHNlcnZlcicpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCctLXBvcnQnLCB0eXBlPWludCwgZGVmYXVsdD01MDAwLCBoZWxwPSdQb3J0IHRvIGJpbmQgdGhlIEFQSSBzZXJ2ZXInKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgnLS1kZWJ1ZycsIGFjdGlvbj0nc3RvcmVfdHJ1ZScsIGhlbHA9J0VuYWJsZSBkZWJ1ZyBtb2RlJykKICAgIAogICAgIyBMb2dnaW5nIGNvbmZpZ3VyYXRpb24KICAgIHBhcnNlci5hZGRfYXJndW1lbnQoJy0tbG9nLWxldmVsJywgCiAgICAgICAgICAgICAgICAgICAgICAgY2hvaWNlcz1bJ0RFQlVHJywgJ0lORk8nLCAnV0FSTklORycsICdFUlJPUicsICdDUklUSUNBTCddLAogICAgICAgICAgICAgICAgICAgICAgIGhlbHA9J092ZXJyaWRlIGxvZyBsZXZlbCcpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCctLWxvZy1kaXInLCBoZWxwPSdPdmVycmlkZSBsb2cgZGlyZWN0b3J5JykKICAgIAogICAgIyBIeWRybyBjb25maWd1cmF0aW9uCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCctLW9qLXBvcnQnLCBoZWxwPSdEZXByZWNhdGVkIGFsaWFzOyB1c2UgLS1oeWRyby1iYXNlLXVybCBpbnN0ZWFkJykKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoJy0tb2otZW5kcG9pbnQnLCBoZWxwPSdEZXByZWNhdGVkIGFsaWFzIGZvciBIeWRybyBiYXNlIFVSTCcpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCctLWh5ZHJvLWJhc2UtdXJsJywgaGVscD0nT3ZlcnJpZGUgSHlkcm8gYmFzZSBVUkwnKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgnLS1oeWRyby1hcGktdG9rZW4nLCBoZWxwPSdPdmVycmlkZSBIeWRybyBwbHVnaW4gQVBJIHRva2VuJykKICAgIAogICAgIyBSYXRlIGxpbWl0aW5nIGNvbmZpZ3VyYXRpb24KICAgIHBhcnNlci5hZGRfYXJndW1lbnQoJy0tcmF0ZS1saW1pdC1pbnRlcnZhbCcsIHR5cGU9ZmxvYXQsIAogICAgICAgICAgICAgICAgICAgICAgIGhlbHA9J092ZXJyaWRlIHJhdGUgbGltaXQgaW50ZXJ2YWwgKHNlY29uZHMpJykKICAgIAogICAgIyBEYXRhYmFzZSBjb25maWd1cmF0aW9uCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCctLWRiLXBhdGgnLCBoZWxwPSdPdmVycmlkZSBkYXRhYmFzZSBwYXRoJykKICAgIAogICAgIyBEYXRhIHNvdXJjZXMgY29uZmlndXJhdGlvbgogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgnLS1wcm9ibGVtLWRhdGEtZGlyJywgaGVscD0nT3ZlcnJpZGUgcHJvYmxlbSBkYXRhIGRpcmVjdG9yeScpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCctLXRleHRib29rLWRhdGEtZGlyJywgaGVscD0nT3ZlcnJpZGUgdGV4dGJvb2sgZGF0YSBkaXJlY3RvcnknKQogICAgCiAgICBhcmdzID0gcGFyc2VyLnBhcnNlX2FyZ3MoKQogICAgCiAgICAjIExvYWQgY29uZmlndXJhdGlvbgogICAgY29uZmlnID0gZ2V0X2NvbmZpZyhhcmdzLmNvbmZpZykKICAgIAogICAgIyBPdmVycmlkZSBjb25maWd1cmF0aW9uIHdpdGggY29tbWFuZCBsaW5lIGFyZ3VtZW50cwogICAgaWYgYXJncy5ob3N0OgogICAgICAgIGNvbmZpZy5zZXQoInNlcnZlci5ob3N0IiwgYXJncy5ob3N0KQogICAgaWYgYXJncy5wb3J0OgogICAgICAgIGNvbmZpZy5zZXQoInNlcnZlci5wb3J0IiwgYXJncy5wb3J0KQogICAgaWYgYXJncy5sb2dfbGV2ZWw6CiAgICAgICAgY29uZmlnLnNldCgibG9nLmxldmVsIiwgYXJncy5sb2dfbGV2ZWwpCiAgICBpZiBhcmdzLmxvZ19kaXI6CiAgICAgICAgY29uZmlnLnNldCgibG9nLmRpciIsIGFyZ3MubG9nX2RpcikKICAgIGlmIGFyZ3Mub2pfZW5kcG9pbnQ6CiAgICAgICAgY29uZmlnLnNldCgiaHlkcm8uYmFzZV91cmwiLCBhcmdzLm9qX2VuZHBvaW50KQogICAgaWYgYXJncy5oeWRyb19iYXNlX3VybDoKICAgICAgICBjb25maWcuc2V0KCJoeWRyby5iYXNlX3VybCIsIGFyZ3MuaHlkcm9fYmFzZV91cmwpCiAgICBpZiBhcmdzLmh5ZHJvX2FwaV90b2tlbiBpcyBub3QgTm9uZToKICAgICAgICBjb25maWcuc2V0KCJoeWRyby5hcGlfdG9rZW4iLCBhcmdzLmh5ZHJvX2FwaV90b2tlbikKICAgIGlmIGFyZ3MucmF0ZV9saW1pdF9pbnRlcnZhbDoKICAgICAgICBjb25maWcuc2V0KCJyYXRlX2xpbWl0Lm1pbl9pbnRlcnZhbCIsIGFyZ3MucmF0ZV9saW1pdF9pbnRlcnZhbCkKICAgIGlmIGFyZ3MuZGJfcGF0aDoKICAgICAgICBjb25maWcuc2V0KCJkYi5wYXRoIiwgYXJncy5kYl9wYXRoKQogICAgaWYgYXJncy5wcm9ibGVtX2RhdGFfZGlyOgogICAgICAgIGNvbmZpZy5zZXQoImRhdGEucHJvYmxlbV9kYXRhX2RpciIsIGFyZ3MucHJvYmxlbV9kYXRhX2RpcikKICAgIGlmIGFyZ3MudGV4dGJvb2tfZGF0YV9kaXI6CiAgICAgICAgY29uZmlnLnNldCgiZGF0YS50ZXh0Ym9va19kYXRhX2RpciIsIGFyZ3MudGV4dGJvb2tfZGF0YV9kaXIpCiAgICAKICAgICMgU2V0dXAgbG9nZ2luZwogICAgc2V0dXBfbG9nZ2luZ19mcm9tX2NvbmZpZyhjb25maWcpCiAgICBsb2dnZXIgPSBnZXRfbG9nZ2VyKCJtYWluIikKICAgIAogICAgbG9nZ2VyLmluZm8oZiJTdGFydGluZyBVU0FDT0FyZW5hIEFQSSBzZXJ2ZXIgb24ge2FyZ3MuaG9zdH06e2FyZ3MucG9ydH0iKQogICAgbG9nZ2VyLmluZm8oZiJDb25maWd1cmF0aW9uIGxvYWRlZCBmcm9tOiB7Y29uZmlnLmNvbmZpZ19wYXRofSIpCiAgICAKICAgIGlmIGFyZ3MuZGVidWc6CiAgICAgICAgbG9nZ2VyLmRlYnVnKCJEZWJ1ZyBtb2RlIGVuYWJsZWQiKQogICAgICAgIGNvbmZpZy5zZXQoImxvZy5sZXZlbCIsICJERUJVRyIpCiAgICAKICAgIHRyeToKICAgICAgICBydW5fYXBpKGhvc3Q9YXJncy5ob3N0LCBwb3J0PWFyZ3MucG9ydCwgZGVidWc9YXJncy5kZWJ1ZywgY29uZmlnPWNvbmZpZykKICAgIGV4Y2VwdCBLZXlib2FyZEludGVycnVwdDoKICAgICAgICBsb2dnZXIuaW5mbygiXG5TaHV0dGluZyBkb3duIFVTQUNPQXJlbmEgQVBJIHNlcnZlci4uLiIpCiAgICAgICAgc3lzLmV4aXQoMCkKICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICBsb2dnZXIuZXJyb3IoZiJFcnJvciBzdGFydGluZyBBUEkgc2VydmVyOiB7ZX0iLCBleGNfaW5mbz1UcnVlKQogICAgICAgIHN5cy5leGl0KDEpCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIG1haW4oKSAK
+"""
+Main entry point for USACOArena framework.
+
+This module provides command-line interface and programmatic access to
+start the USACOArena API server and manage competitions.
+"""
+
+import argparse
+import sys
+import os
+from datetime import datetime
+from .server.server import run_api
+from .utils.logger_config import setup_logging, get_logger
+from .utils.config_manager import get_config
+
+def setup_logging_from_config(config):
+    """Setup logging based on configuration"""
+    log_config = config.get_section("log")
+    server_config = config.get_section("server")
+    
+    # Create log directory
+    log_dir = log_config.get("dir", "logs/server_logs")
+    port = server_config.get("port", 5000)  # Get port from server configuration
+    os.makedirs(log_dir, exist_ok=True)
+    
+    # Generate log filename
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_filename = os.path.join(log_dir, f"server_{port}_{timestamp}.log")
+    
+    # Setup logging
+    setup_logging(
+        level=log_config.get("level", "INFO"),
+        log_file=log_filename,
+        enable_colors=log_config.get("enable_colors", True)
+    )
+
+def main():
+    """Main entry point for USACOArena CLI"""
+    parser = argparse.ArgumentParser(description='USACOArena - Multi-Agent System Competition Framework')
+    
+    # Server configuration
+    parser.add_argument('--config', default='config/server_config.json',
+                       help='Path to server configuration file')
+    parser.add_argument('--host', default='0.0.0.0', help='Host to bind the API server')
+    parser.add_argument('--port', type=int, default=5000, help='Port to bind the API server')
+    parser.add_argument('--debug', action='store_true', help='Enable debug mode')
+    
+    # Logging configuration
+    parser.add_argument('--log-level', 
+                       choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'],
+                       help='Override log level')
+    parser.add_argument('--log-dir', help='Override log directory')
+    
+    # Hydro configuration
+    parser.add_argument('--oj-port', help='Deprecated alias; use --hydro-base-url instead')
+    parser.add_argument('--oj-endpoint', help='Deprecated alias for Hydro base URL')
+    parser.add_argument('--hydro-base-url', help='Override Hydro base URL')
+    parser.add_argument('--hydro-api-token', help='Override Hydro plugin API token')
+    
+    # Rate limiting configuration
+    parser.add_argument('--rate-limit-interval', type=float, 
+                       help='Override rate limit interval (seconds)')
+    
+    # Database configuration
+    parser.add_argument('--db-path', help='Override database path')
+    
+    # Data sources configuration
+    parser.add_argument('--problem-data-dir', help='Override problem data directory')
+    parser.add_argument('--textbook-data-dir', help='Override textbook data directory')
+    
+    args = parser.parse_args()
+    
+    # Load configuration
+    config = get_config(args.config)
+    
+    # Override configuration with command line arguments
+    if args.host:
+        config.set("server.host", args.host)
+    if args.port:
+        config.set("server.port", args.port)
+    if args.log_level:
+        config.set("log.level", args.log_level)
+    if args.log_dir:
+        config.set("log.dir", args.log_dir)
+    if args.oj_endpoint:
+        config.set("hydro.base_url", args.oj_endpoint)
+    if args.hydro_base_url:
+        config.set("hydro.base_url", args.hydro_base_url)
+    if args.hydro_api_token is not None:
+        config.set("hydro.api_token", args.hydro_api_token)
+    if args.rate_limit_interval:
+        config.set("rate_limit.min_interval", args.rate_limit_interval)
+    if args.db_path:
+        config.set("db.path", args.db_path)
+    if args.problem_data_dir:
+        config.set("data.problem_data_dir", args.problem_data_dir)
+    if args.textbook_data_dir:
+        config.set("data.textbook_data_dir", args.textbook_data_dir)
+    
+    # Setup logging
+    setup_logging_from_config(config)
+    logger = get_logger("main")
+    
+    logger.info(f"Starting USACOArena API server on {args.host}:{args.port}")
+    logger.info(f"Configuration loaded from: {config.config_path}")
+    
+    if args.debug:
+        logger.debug("Debug mode enabled")
+        config.set("log.level", "DEBUG")
+    
+    try:
+        run_api(host=args.host, port=args.port, debug=args.debug, config=config)
+    except KeyboardInterrupt:
+        logger.info("\nShutting down USACOArena API server...")
+        sys.exit(0)
+    except Exception as e:
+        logger.error(f"Error starting API server: {e}", exc_info=True)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main() 

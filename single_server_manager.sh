@@ -1,1 +1,135 @@
-IyEvYmluL2Jhc2gKCiMgTGlnaHR3ZWlnaHQgc2VydmVyIG1hbmFnZXIgaW5zcGlyZWQgYnkgc2VydmljZV9tYW5hZ2VyLnNoCnNldCAtZXVvIHBpcGVmYWlsCgpTRVJWRVJfQ01EPSJ1diBydW4gcHl0aG9uIC1tIHVzYWNvYXJlbmEubWFpbiAtLWhvc3QgMC4wLjAuMCAtLXBvcnQgNTAwMCAtLWRlYnVnIgpDSEVDS19JTlRFUlZBTD0xCkxPR19ESVI9ImxvZ3MiClBJRF9ESVI9InBpZHMiCkxPR19GSUxFPSIke0xPR19ESVJ9L3NpbmdsZV9zZXJ2ZXIubG9nIgpQSURfRklMRT0iJHtQSURfRElSfS9zaW5nbGVfc2VydmVyLnBpZCIKSEVBTFRIX1VSTD0iaHR0cDovL2xvY2FsaG9zdDo1MDAwL2hlYWx0aCIKCmVuc3VyZV9kaXJzKCkgewogICAgbWtkaXIgLXAgIiRMT0dfRElSIiAiJFBJRF9ESVIiCn0KCnNob3dfdXNhZ2UoKSB7CiAgICBjYXQgPDxFT0YKVXNhZ2U6ICQwIHtzdGFydHxzdG9wfHJlc3RhcnR8c3RhdHVzfG1vbml0b3J8bG9nc30KCkNvbW1hbmRzOgogIHN0YXJ0ICAgICBTdGFydCB0aGUgc2VydmVyIGlmIGl0IGlzIG5vdCBydW5uaW5nCiAgc3RvcCAgICAgIFN0b3AgdGhlIHNlcnZlciBpZiBpdCBpcyBydW5uaW5nCiAgcmVzdGFydCAgIFN0b3AgKGlmIG5lZWRlZCkgYW5kIHRoZW4gc3RhcnQgdGhlIHNlcnZlcgogIHN0YXR1cyAgICBTaG93IHdoZXRoZXIgdGhlIHNlcnZlciBpcyBydW5uaW5nIGFuZCBoZWFsdGh5CiAgbW9uaXRvciAgIEtlZXAgdGhlIHNlcnZlciBydW5uaW5nLCByZXN0YXJ0aW5nIG9uIGZhaWx1cmUKICBsb2dzICAgICAgVGFpbCB0aGUgc2VydmVyIGxvZyBmaWxlCkVPRgp9Cgppc19ydW5uaW5nKCkgewogICAgaWYgW1sgLWYgIiRQSURfRklMRSIgXV07IHRoZW4KICAgICAgICBsb2NhbCBwaWQKICAgICAgICBwaWQ9JChjYXQgIiRQSURfRklMRSIpCiAgICAgICAgaWYga2lsbCAtMCAiJHBpZCIgPi9kZXYvbnVsbCAyPiYxOyB0aGVuCiAgICAgICAgICAgIHJldHVybiAwCiAgICAgICAgZmkKICAgIGZpCiAgICByZXR1cm4gMQp9CgpoZWFsdGhfY2hlY2soKSB7CiAgICBjdXJsIC1zIC0tbWF4LXRpbWUgMyAiJEhFQUxUSF9VUkwiID4vZGV2L251bGwgMj4mMQp9CgpzdGFydF9zZXJ2ZXIoKSB7CiAgICBlbnN1cmVfZGlycwogICAgaWYgaXNfcnVubmluZzsgdGhlbgogICAgICAgIGVjaG8gIlNlcnZlciBhbHJlYWR5IHJ1bm5pbmcgKHBpZCAkKGNhdCAiJFBJRF9GSUxFIikpLiIKICAgICAgICByZXR1cm4KICAgIGZpCgogICAgZWNobyAiU3RhcnRpbmcgc2VydmVyLi4uIgogICAgbm9odXAgYmFzaCAtbGMgIiRTRVJWRVJfQ01EIiA+PiIkTE9HX0ZJTEUiIDI+JjEgJgogICAgbG9jYWwgcGlkPSQhCiAgICBlY2hvICIkcGlkIiA+IiRQSURfRklMRSIKICAgIGVjaG8gIlNlcnZlciBzdGFydGVkIHdpdGggcGlkICRwaWQgKGxvZ2dpbmcgdG8gJExPR19GSUxFKS4iCn0KCnN0b3Bfc2VydmVyKCkgewogICAgaWYgISBpc19ydW5uaW5nOyB0aGVuCiAgICAgICAgZWNobyAiU2VydmVyIGlzIG5vdCBydW5uaW5nLiIKICAgICAgICByZXR1cm4KICAgIGZpCgogICAgbG9jYWwgcGlkCiAgICBwaWQ9JChjYXQgIiRQSURfRklMRSIpCiAgICBlY2hvICJTdG9wcGluZyBzZXJ2ZXIgKHBpZCAkcGlkKS4uLiIKICAgIGtpbGwgIiRwaWQiID4vZGV2L251bGwgMj4mMSB8fCB0cnVlCiAgICBybSAtZiAiJFBJRF9GSUxFIgogICAgZWNobyAiU2VydmVyIHN0b3BwZWQuIgp9CgpzdGF0dXNfc2VydmVyKCkgewogICAgaWYgISBpc19ydW5uaW5nOyB0aGVuCiAgICAgICAgZWNobyAiU2VydmVyIHN0YXR1czogc3RvcHBlZC4iCiAgICAgICAgcmV0dXJuCiAgICBmaQoKICAgIGlmIGhlYWx0aF9jaGVjazsgdGhlbgogICAgICAgIGVjaG8gIlNlcnZlciBzdGF0dXM6IHJ1bm5pbmcgYW5kIGhlYWx0aHkgKHBpZCAkKGNhdCAiJFBJRF9GSUxFIikpLiIKICAgIGVsc2UKICAgICAgICBlY2hvICJTZXJ2ZXIgc3RhdHVzOiBydW5uaW5nIGJ1dCBoZWFsdGggY2hlY2sgZmFpbGVkIChwaWQgJChjYXQgIiRQSURfRklMRSIpKS4iCiAgICBmaQp9Cgptb25pdG9yX3NlcnZlcigpIHsKICAgIGVuc3VyZV9kaXJzCiAgICBlY2hvICJNb25pdG9yaW5nIHNlcnZlciAoaGVhbHRoIGV2ZXJ5ICR7Q0hFQ0tfSU5URVJWQUx9cykuIFByZXNzIEN0cmwrQyB0byBleGl0LiIKICAgIHdoaWxlIHRydWU7IGRvCiAgICAgICAgaWYgISBpc19ydW5uaW5nOyB0aGVuCiAgICAgICAgICAgIGVjaG8gIiQoZGF0ZSAnKyVGICVUJykgc2VydmVyIG5vdCBydW5uaW5nLCBzdGFydGluZy4uLiIKICAgICAgICAgICAgc3RhcnRfc2VydmVyCiAgICAgICAgZWxpZiAhIGhlYWx0aF9jaGVjazsgdGhlbgogICAgICAgICAgICBlY2hvICIkKGRhdGUgJyslRiAlVCcpIGhlYWx0aCBjaGVjayBmYWlsZWQsIHJlc3RhcnRpbmcuLi4iCiAgICAgICAgICAgIHN0b3Bfc2VydmVyCiAgICAgICAgICAgIHNsZWVwIDEKICAgICAgICAgICAgc3RhcnRfc2VydmVyCiAgICAgICAgZmkKICAgICAgICBzbGVlcCAiJENIRUNLX0lOVEVSVkFMIgogICAgZG9uZQp9Cgp0YWlsX2xvZ3MoKSB7CiAgICBlbnN1cmVfZGlycwogICAgdG91Y2ggIiRMT0dfRklMRSIKICAgIHRhaWwgLWYgIiRMT0dfRklMRSIKfQoKY2FzZSAiJHsxLX0iIGluCiAgICBzdGFydCkKICAgICAgICBzdGFydF9zZXJ2ZXIKICAgICAgICA7OwogICAgc3RvcCkKICAgICAgICBzdG9wX3NlcnZlcgogICAgICAgIDs7CiAgICByZXN0YXJ0KQogICAgICAgIHN0b3Bfc2VydmVyCiAgICAgICAgc3RhcnRfc2VydmVyCiAgICAgICAgOzsKICAgIHN0YXR1cykKICAgICAgICBzdGF0dXNfc2VydmVyCiAgICAgICAgOzsKICAgIG1vbml0b3IpCiAgICAgICAgbW9uaXRvcl9zZXJ2ZXIKICAgICAgICA7OwogICAgbG9ncykKICAgICAgICB0YWlsX2xvZ3MKICAgICAgICA7OwogICAgKikKICAgICAgICBzaG93X3VzYWdlCiAgICAgICAgZXhpdCAxCiAgICAgICAgOzsKZXNhYwo=
+#!/bin/bash
+
+# Lightweight server manager inspired by service_manager.sh
+set -euo pipefail
+
+SERVER_CMD="uv run python -m usacoarena.main --host 0.0.0.0 --port 5000 --debug"
+CHECK_INTERVAL=1
+LOG_DIR="logs"
+PID_DIR="pids"
+LOG_FILE="${LOG_DIR}/single_server.log"
+PID_FILE="${PID_DIR}/single_server.pid"
+HEALTH_URL="http://localhost:5000/health"
+
+ensure_dirs() {
+    mkdir -p "$LOG_DIR" "$PID_DIR"
+}
+
+show_usage() {
+    cat <<EOF
+Usage: $0 {start|stop|restart|status|monitor|logs}
+
+Commands:
+  start     Start the server if it is not running
+  stop      Stop the server if it is running
+  restart   Stop (if needed) and then start the server
+  status    Show whether the server is running and healthy
+  monitor   Keep the server running, restarting on failure
+  logs      Tail the server log file
+EOF
+}
+
+is_running() {
+    if [[ -f "$PID_FILE" ]]; then
+        local pid
+        pid=$(cat "$PID_FILE")
+        if kill -0 "$pid" >/dev/null 2>&1; then
+            return 0
+        fi
+    fi
+    return 1
+}
+
+health_check() {
+    curl -s --max-time 3 "$HEALTH_URL" >/dev/null 2>&1
+}
+
+start_server() {
+    ensure_dirs
+    if is_running; then
+        echo "Server already running (pid $(cat "$PID_FILE"))."
+        return
+    fi
+
+    echo "Starting server..."
+    nohup bash -lc "$SERVER_CMD" >>"$LOG_FILE" 2>&1 &
+    local pid=$!
+    echo "$pid" >"$PID_FILE"
+    echo "Server started with pid $pid (logging to $LOG_FILE)."
+}
+
+stop_server() {
+    if ! is_running; then
+        echo "Server is not running."
+        return
+    fi
+
+    local pid
+    pid=$(cat "$PID_FILE")
+    echo "Stopping server (pid $pid)..."
+    kill "$pid" >/dev/null 2>&1 || true
+    rm -f "$PID_FILE"
+    echo "Server stopped."
+}
+
+status_server() {
+    if ! is_running; then
+        echo "Server status: stopped."
+        return
+    fi
+
+    if health_check; then
+        echo "Server status: running and healthy (pid $(cat "$PID_FILE"))."
+    else
+        echo "Server status: running but health check failed (pid $(cat "$PID_FILE"))."
+    fi
+}
+
+monitor_server() {
+    ensure_dirs
+    echo "Monitoring server (health every ${CHECK_INTERVAL}s). Press Ctrl+C to exit."
+    while true; do
+        if ! is_running; then
+            echo "$(date '+%F %T') server not running, starting..."
+            start_server
+        elif ! health_check; then
+            echo "$(date '+%F %T') health check failed, restarting..."
+            stop_server
+            sleep 1
+            start_server
+        fi
+        sleep "$CHECK_INTERVAL"
+    done
+}
+
+tail_logs() {
+    ensure_dirs
+    touch "$LOG_FILE"
+    tail -f "$LOG_FILE"
+}
+
+case "${1-}" in
+    start)
+        start_server
+        ;;
+    stop)
+        stop_server
+        ;;
+    restart)
+        stop_server
+        start_server
+        ;;
+    status)
+        status_server
+        ;;
+    monitor)
+        monitor_server
+        ;;
+    logs)
+        tail_logs
+        ;;
+    *)
+        show_usage
+        exit 1
+        ;;
+esac

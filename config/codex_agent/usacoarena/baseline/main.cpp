@@ -1,1 +1,11 @@
-I2luY2x1ZGUgPGlvc3RyZWFtPgoKaW50IG1haW4oKSB7CiAgICBsb25nIGxvbmcgYSA9IDA7CiAgICBsb25nIGxvbmcgYiA9IDA7CiAgICBpZiAoIShzdGQ6OmNpbiA+PiBhID4+IGIpKSB7CiAgICAgICAgcmV0dXJuIDA7CiAgICB9CiAgICBzdGQ6OmNvdXQgPDwgKGEgKyBiKSA8PCAnXG4nOwogICAgcmV0dXJuIDA7Cn0K
+#include <iostream>
+
+int main() {
+    long long a = 0;
+    long long b = 0;
+    if (!(std::cin >> a >> b)) {
+        return 0;
+    }
+    std::cout << (a + b) << '\n';
+    return 0;
+}

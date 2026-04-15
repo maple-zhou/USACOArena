@@ -1,1 +1,228 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJQb2xsIFVTQUNPQXJlbmEgQVBJcyBhbmQgZXhwb3J0IGNvbXBldGl0aW9uIG1ldHJpYyBzbmFwc2hvdHMgb3ZlciB0aW1lLiIiIgoKZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IGFyZ3BhcnNlCmltcG9ydCBjc3YKaW1wb3J0IGpzb24KaW1wb3J0IHRpbWUKZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUsIHRpbWV6b25lCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aApmcm9tIHR5cGluZyBpbXBvcnQgQW55LCBEaWN0LCBJdGVyYWJsZSwgTGlzdAoKaW1wb3J0IHJlcXVlc3RzCgoKZGVmIF9yZXF1ZXN0X2pzb24oYmFzZV91cmw6IHN0ciwgcGF0aDogc3RyLCB0aW1lb3V0OiBmbG9hdCkgLT4gRGljdFtzdHIsIEFueV06CiAgICByZXNwb25zZSA9IHJlcXVlc3RzLmdldCgKICAgICAgICBmIntiYXNlX3VybC5yc3RyaXAoJy8nKX17cGF0aH0iLAogICAgICAgIHRpbWVvdXQ9dGltZW91dCwKICAgICkKICAgIHJlc3BvbnNlLnJhaXNlX2Zvcl9zdGF0dXMoKQogICAgcGF5bG9hZCA9IHJlc3BvbnNlLmpzb24oKQogICAgaWYgbm90IGlzaW5zdGFuY2UocGF5bG9hZCwgZGljdCk6CiAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKGYiVW5leHBlY3RlZCBKU09OIHBheWxvYWQgZm9yIHtwYXRofTogbm90IGFuIG9iamVjdCIpCiAgICByZXR1cm4gcGF5bG9hZAoKCmRlZiBfdXRjX25vdygpIC0+IHN0cjoKICAgIHJldHVybiBkYXRldGltZS5ub3codGltZXpvbmUudXRjKS5pc29mb3JtYXQoKS5yZXBsYWNlKCIrMDA6MDAiLCAiWiIpCgoKZGVmIF9mbGF0dGVuX3BhcnRpY2lwYW50X21ldHJpY3MoCiAgICBzbmFwc2hvdF9hdDogc3RyLAogICAgY29tcGV0aXRpb25faWQ6IHN0ciwKICAgIHJhbmtpbmdfcm93czogSXRlcmFibGVbRGljdFtzdHIsIEFueV1dLAogICAgc3VibWlzc2lvbnNfYnlfcGFydGljaXBhbnQ6IERpY3Rbc3RyLCBMaXN0W0RpY3Rbc3RyLCBBbnldXV0sCikgLT4gTGlzdFtEaWN0W3N0ciwgQW55XV06CiAgICByb3dzOiBMaXN0W0RpY3Rbc3RyLCBBbnldXSA9IFtdCiAgICBmb3IgZW50cnkgaW4gcmFua2luZ19yb3dzOgogICAgICAgIHBhcnRpY2lwYW50X2lkID0gc3RyKGVudHJ5LmdldCgicGFydGljaXBhbnRfaWQiKSBvciBlbnRyeS5nZXQoImlkIikgb3IgIiIpLnN0cmlwKCkKICAgICAgICByb3dzLmFwcGVuZCgKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgInNuYXBzaG90X2F0Ijogc25hcHNob3RfYXQsCiAgICAgICAgICAgICAgICAiY29tcGV0aXRpb25faWQiOiBjb21wZXRpdGlvbl9pZCwKICAgICAgICAgICAgICAgICJwYXJ0aWNpcGFudF9pZCI6IHBhcnRpY2lwYW50X2lkLAogICAgICAgICAgICAgICAgIm5hbWUiOiBlbnRyeS5nZXQoIm5hbWUiKSwKICAgICAgICAgICAgICAgICJyYW5rIjogZW50cnkuZ2V0KCJyYW5rIiksCiAgICAgICAgICAgICAgICAic2NvcmUiOiBlbnRyeS5nZXQoInNjb3JlIiksCiAgICAgICAgICAgICAgICAicHJvYmxlbV9wYXNzX3Njb3JlIjogZW50cnkuZ2V0KCJwcm9ibGVtX3Bhc3Nfc2NvcmUiKSwKICAgICAgICAgICAgICAgICJyZW1haW5pbmdfdG9rZW5zIjogZW50cnkuZ2V0KCJyZW1haW5pbmdfdG9rZW5zIiksCiAgICAgICAgICAgICAgICAiY29uc3VtZWRfdG9rZW5zIjogZW50cnkuZ2V0KCJjb25zdW1lZF90b2tlbnMiKSwKICAgICAgICAgICAgICAgICJjb25zdW1lZF9jcmVkaXQiOiBlbnRyeS5nZXQoImNvbnN1bWVkX2NyZWRpdCIpLAogICAgICAgICAgICAgICAgInN1Ym1pc3Npb25fcGVuYWx0eSI6IGVudHJ5LmdldCgic3VibWlzc2lvbl9wZW5hbHR5IiksCiAgICAgICAgICAgICAgICAiTExNX3Rva2VucyI6IGVudHJ5LmdldCgiTExNX3Rva2VucyIpLAogICAgICAgICAgICAgICAgImhpbnRfdG9rZW5zIjogZW50cnkuZ2V0KCJoaW50X3Rva2VucyIpLAogICAgICAgICAgICAgICAgInRlc3RfdG9rZW5zIjogZW50cnkuZ2V0KCJ0ZXN0X3Rva2VucyIpLAogICAgICAgICAgICAgICAgInN1Ym1pc3Npb25fdG9rZW5zIjogZW50cnkuZ2V0KCJzdWJtaXNzaW9uX3Rva2VucyIpLAogICAgICAgICAgICAgICAgImxsbV9pbmZlcmVuY2VfY291bnQiOiBlbnRyeS5nZXQoImxsbV9pbmZlcmVuY2VfY291bnQiKSwKICAgICAgICAgICAgICAgICJzdWJtaXNzaW9uX2NvdW50IjogZW50cnkuZ2V0KCJzdWJtaXNzaW9uX2NvdW50IiksCiAgICAgICAgICAgICAgICAiYWNjZXB0ZWRfY291bnQiOiBlbnRyeS5nZXQoImFjY2VwdGVkX2NvdW50IiksCiAgICAgICAgICAgICAgICAiZWxhcHNlZF90aW1lX3NlY29uZHMiOiBlbnRyeS5nZXQoImVsYXBzZWRfdGltZV9zZWNvbmRzIiksCiAgICAgICAgICAgICAgICAiZGVsaXZlcnlfdGltZV9zZWNvbmRzIjogZW50cnkuZ2V0KCJkZWxpdmVyeV90aW1lX3NlY29uZHMiKSwKICAgICAgICAgICAgICAgICJkZWxpdmVyeV90aW1lX2NyZWRpdCI6IGVudHJ5LmdldCgiZGVsaXZlcnlfdGltZV9jcmVkaXQiKSwKICAgICAgICAgICAgICAgICJkZWxpdmVyeV90aW1lX211bHRpcGxpZXIiOiBlbnRyeS5nZXQoImRlbGl2ZXJ5X3RpbWVfbXVsdGlwbGllciIpLAogICAgICAgICAgICAgICAgImlzX3J1bm5pbmciOiBlbnRyeS5nZXQoImlzX3J1bm5pbmciKSwKICAgICAgICAgICAgICAgICJ0ZXJtaW5hdGlvbl9yZWFzb24iOiBlbnRyeS5nZXQoInRlcm1pbmF0aW9uX3JlYXNvbiIpLAogICAgICAgICAgICAgICAgInNvbHZlZF9wcm9ibGVtX2NvdW50IjogbGVuKGVudHJ5LmdldCgic29sdmVkX3Byb2JsZW1zIikgb3IgW10pLAogICAgICAgICAgICAgICAgInN1Ym1pc3Npb25fZXZlbnRfY291bnQiOiBsZW4oc3VibWlzc2lvbnNfYnlfcGFydGljaXBhbnQuZ2V0KHBhcnRpY2lwYW50X2lkLCBbXSkpLAogICAgICAgICAgICB9CiAgICAgICAgKQogICAgcmV0dXJuIHJvd3MKCgpkZWYgX3dyaXRlX2pzb25sKHBhdGg6IFBhdGgsIHJlY29yZHM6IEl0ZXJhYmxlW0RpY3Rbc3RyLCBBbnldXSkgLT4gTm9uZToKICAgIHdpdGggcGF0aC5vcGVuKCJhIiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgaGFuZGxlOgogICAgICAgIGZvciByZWNvcmQgaW4gcmVjb3JkczoKICAgICAgICAgICAgaGFuZGxlLndyaXRlKGpzb24uZHVtcHMocmVjb3JkLCBlbnN1cmVfYXNjaWk9RmFsc2UpICsgIlxuIikKCgpkZWYgX3Jld3JpdGVfY3N2KHBhdGg6IFBhdGgsIHJvd3M6IExpc3RbRGljdFtzdHIsIEFueV1dKSAtPiBOb25lOgogICAgZmllbGRuYW1lcyA9IFsKICAgICAgICAic25hcHNob3RfYXQiLAogICAgICAgICJjb21wZXRpdGlvbl9pZCIsCiAgICAgICAgInBhcnRpY2lwYW50X2lkIiwKICAgICAgICAibmFtZSIsCiAgICAgICAgInJhbmsiLAogICAgICAgICJzY29yZSIsCiAgICAgICAgInByb2JsZW1fcGFzc19zY29yZSIsCiAgICAgICAgInJlbWFpbmluZ190b2tlbnMiLAogICAgICAgICJjb25zdW1lZF90b2tlbnMiLAogICAgICAgICJjb25zdW1lZF9jcmVkaXQiLAogICAgICAgICJzdWJtaXNzaW9uX3BlbmFsdHkiLAogICAgICAgICJMTE1fdG9rZW5zIiwKICAgICAgICAiaGludF90b2tlbnMiLAogICAgICAgICJ0ZXN0X3Rva2VucyIsCiAgICAgICAgInN1Ym1pc3Npb25fdG9rZW5zIiwKICAgICAgICAibGxtX2luZmVyZW5jZV9jb3VudCIsCiAgICAgICAgInN1Ym1pc3Npb25fY291bnQiLAogICAgICAgICJhY2NlcHRlZF9jb3VudCIsCiAgICAgICAgImVsYXBzZWRfdGltZV9zZWNvbmRzIiwKICAgICAgICAiZGVsaXZlcnlfdGltZV9zZWNvbmRzIiwKICAgICAgICAiZGVsaXZlcnlfdGltZV9jcmVkaXQiLAogICAgICAgICJkZWxpdmVyeV90aW1lX211bHRpcGxpZXIiLAogICAgICAgICJpc19ydW5uaW5nIiwKICAgICAgICAidGVybWluYXRpb25fcmVhc29uIiwKICAgICAgICAic29sdmVkX3Byb2JsZW1fY291bnQiLAogICAgICAgICJzdWJtaXNzaW9uX2V2ZW50X2NvdW50IiwKICAgIF0KICAgIHdpdGggcGF0aC5vcGVuKCJ3IiwgZW5jb2Rpbmc9InV0Zi04IiwgbmV3bGluZT0iIikgYXMgaGFuZGxlOgogICAgICAgIHdyaXRlciA9IGNzdi5EaWN0V3JpdGVyKGhhbmRsZSwgZmllbGRuYW1lcz1maWVsZG5hbWVzKQogICAgICAgIHdyaXRlci53cml0ZWhlYWRlcigpCiAgICAgICAgd3JpdGVyLndyaXRlcm93cyhyb3dzKQoKCmRlZiBwYXJzZV9hcmdzKCkgLT4gYXJncGFyc2UuTmFtZXNwYWNlOgogICAgcGFyc2VyID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoCiAgICAgICAgZGVzY3JpcHRpb249IlBvbGwgVVNBQ09BcmVuYSBtZXRyaWNzIGVuZHBvaW50cyBhbmQgZXhwb3J0IGEgdGltZWxpbmUuIgogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1hcGktYmFzZSIsIHJlcXVpcmVkPVRydWUsIGhlbHA9IlVTQUNPQXJlbmEgQVBJIGJhc2UgVVJMIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tY29tcGV0aXRpb24taWQiLCByZXF1aXJlZD1UcnVlLCBoZWxwPSJDb21wZXRpdGlvbiBJRCIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLWludGVydmFsIiwKICAgICAgICB0eXBlPWZsb2F0LAogICAgICAgIGRlZmF1bHQ9MTUuMCwKICAgICAgICBoZWxwPSJQb2xsaW5nIGludGVydmFsIGluIHNlY29uZHMiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1kdXJhdGlvbiIsCiAgICAgICAgdHlwZT1mbG9hdCwKICAgICAgICBkZWZhdWx0PTAuMCwKICAgICAgICBoZWxwPSJTdG9wIGFmdGVyIHRoaXMgbWFueSBzZWNvbmRzOyAwIG1lYW5zIHJ1biB1bnRpbCBhbGwgcGFydGljaXBhbnRzIHRlcm1pbmF0ZSIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLW91dHB1dC1kaXIiLAogICAgICAgIGRlZmF1bHQ9InJlcG9ydHMvdGltZWxpbmUiLAogICAgICAgIGhlbHA9IkRpcmVjdG9yeSBmb3IgSlNPTkwvQ1NWIHNuYXBzaG90cyIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLXRpbWVvdXQiLAogICAgICAgIHR5cGU9ZmxvYXQsCiAgICAgICAgZGVmYXVsdD0zMC4wLAogICAgICAgIGhlbHA9IkhUVFAgdGltZW91dCBpbiBzZWNvbmRzIiwKICAgICkKICAgIHJldHVybiBwYXJzZXIucGFyc2VfYXJncygpCgoKZGVmIG1haW4oKSAtPiBpbnQ6CiAgICBhcmdzID0gcGFyc2VfYXJncygpCiAgICBvdXRwdXRfZGlyID0gUGF0aChhcmdzLm91dHB1dF9kaXIpLmV4cGFuZHVzZXIoKS5yZXNvbHZlKCkgLyBhcmdzLmNvbXBldGl0aW9uX2lkCiAgICBvdXRwdXRfZGlyLm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKCiAgICB0aW1lbGluZV9qc29ubCA9IG91dHB1dF9kaXIgLyAicGFydGljaXBhbnRfbWV0cmljc190aW1lbGluZS5qc29ubCIKICAgIHRpbWVsaW5lX2NzdiA9IG91dHB1dF9kaXIgLyAicGFydGljaXBhbnRfbWV0cmljc190aW1lbGluZS5jc3YiCiAgICByYW5raW5nc19qc29ubCA9IG91dHB1dF9kaXIgLyAicmFua2luZ3NfcmF3Lmpzb25sIgogICAgc3VibWlzc2lvbnNfanNvbmwgPSBvdXRwdXRfZGlyIC8gInN1Ym1pc3Npb25zX3Jhdy5qc29ubCIKICAgIGludGVsbGlnZW5jZV9qc29ubCA9IG91dHB1dF9kaXIgLyAiaW50ZWxsaWdlbmNlX3JlcG9ydF9yYXcuanNvbmwiCgogICAgYWxsX3Jvd3M6IExpc3RbRGljdFtzdHIsIEFueV1dID0gW10KICAgIHN0YXJ0ZWRfYXQgPSB0aW1lLnRpbWUoKQoKICAgIHdoaWxlIFRydWU6CiAgICAgICAgc25hcHNob3RfYXQgPSBfdXRjX25vdygpCiAgICAgICAgcmFua2luZ3NfcGF5bG9hZCA9IF9yZXF1ZXN0X2pzb24oCiAgICAgICAgICAgIGFyZ3MuYXBpX2Jhc2UsCiAgICAgICAgICAgIGYiL2FwaS9yYW5raW5ncy9nZXQve2FyZ3MuY29tcGV0aXRpb25faWR9IiwKICAgICAgICAgICAgYXJncy50aW1lb3V0LAogICAgICAgICkKICAgICAgICBzdWJtaXNzaW9uc19wYXlsb2FkID0gX3JlcXVlc3RfanNvbigKICAgICAgICAgICAgYXJncy5hcGlfYmFzZSwKICAgICAgICAgICAgZiIvYXBpL3N1Ym1pc3Npb25zL2xpc3Qve2FyZ3MuY29tcGV0aXRpb25faWR9IiwKICAgICAgICAgICAgYXJncy50aW1lb3V0LAogICAgICAgICkKICAgICAgICBpbnRlbGxpZ2VuY2VfcGF5bG9hZCA9IF9yZXF1ZXN0X2pzb24oCiAgICAgICAgICAgIGFyZ3MuYXBpX2Jhc2UsCiAgICAgICAgICAgIGYiL2FwaS9tZXRyaWNzL2ludGVsbGlnZW5jZS97YXJncy5jb21wZXRpdGlvbl9pZH0/Zm9ybWF0PWpzb24iLAogICAgICAgICAgICBhcmdzLnRpbWVvdXQsCiAgICAgICAgKQoKICAgICAgICByYW5raW5nX3Jvd3MgPSByYW5raW5nc19wYXlsb2FkLmdldCgiZGF0YSIpIG9yIFtdCiAgICAgICAgc3VibWlzc2lvbl9yb3dzID0gc3VibWlzc2lvbnNfcGF5bG9hZC5nZXQoImRhdGEiKSBvciBbXQogICAgICAgIGludGVsbGlnZW5jZV9kYXRhID0gaW50ZWxsaWdlbmNlX3BheWxvYWQuZ2V0KCJkYXRhIikgb3Ige30KCiAgICAgICAgc3VibWlzc2lvbnNfYnlfcGFydGljaXBhbnQ6IERpY3Rbc3RyLCBMaXN0W0RpY3Rbc3RyLCBBbnldXV0gPSB7fQogICAgICAgIGZvciBlbnRyeSBpbiBzdWJtaXNzaW9uX3Jvd3M6CiAgICAgICAgICAgIHBhcnRpY2lwYW50X2lkID0gc3RyKGVudHJ5LmdldCgicGFydGljaXBhbnRfaWQiKSBvciAiIikuc3RyaXAoKQogICAgICAgICAgICBzdWJtaXNzaW9uc19ieV9wYXJ0aWNpcGFudC5zZXRkZWZhdWx0KHBhcnRpY2lwYW50X2lkLCBbXSkuYXBwZW5kKGVudHJ5KQoKICAgICAgICBmbGF0X3Jvd3MgPSBfZmxhdHRlbl9wYXJ0aWNpcGFudF9tZXRyaWNzKAogICAgICAgICAgICBzbmFwc2hvdF9hdD1zbmFwc2hvdF9hdCwKICAgICAgICAgICAgY29tcGV0aXRpb25faWQ9YXJncy5jb21wZXRpdGlvbl9pZCwKICAgICAgICAgICAgcmFua2luZ19yb3dzPXJhbmtpbmdfcm93cywKICAgICAgICAgICAgc3VibWlzc2lvbnNfYnlfcGFydGljaXBhbnQ9c3VibWlzc2lvbnNfYnlfcGFydGljaXBhbnQsCiAgICAgICAgKQogICAgICAgIGFsbF9yb3dzLmV4dGVuZChmbGF0X3Jvd3MpCgogICAgICAgIF93cml0ZV9qc29ubCh0aW1lbGluZV9qc29ubCwgZmxhdF9yb3dzKQogICAgICAgIF93cml0ZV9qc29ubCgKICAgICAgICAgICAgcmFua2luZ3NfanNvbmwsCiAgICAgICAgICAgIFt7InNuYXBzaG90X2F0Ijogc25hcHNob3RfYXQsICJjb21wZXRpdGlvbl9pZCI6IGFyZ3MuY29tcGV0aXRpb25faWQsICJyYW5raW5ncyI6IHJhbmtpbmdfcm93c31dLAogICAgICAgICkKICAgICAgICBfd3JpdGVfanNvbmwoCiAgICAgICAgICAgIHN1Ym1pc3Npb25zX2pzb25sLAogICAgICAgICAgICBbeyJzbmFwc2hvdF9hdCI6IHNuYXBzaG90X2F0LCAiY29tcGV0aXRpb25faWQiOiBhcmdzLmNvbXBldGl0aW9uX2lkLCAic3VibWlzc2lvbnMiOiBzdWJtaXNzaW9uX3Jvd3N9XSwKICAgICAgICApCiAgICAgICAgX3dyaXRlX2pzb25sKAogICAgICAgICAgICBpbnRlbGxpZ2VuY2VfanNvbmwsCiAgICAgICAgICAgIFt7InNuYXBzaG90X2F0Ijogc25hcHNob3RfYXQsICJjb21wZXRpdGlvbl9pZCI6IGFyZ3MuY29tcGV0aXRpb25faWQsICJyZXBvcnQiOiBpbnRlbGxpZ2VuY2VfZGF0YX1dLAogICAgICAgICkKICAgICAgICBfcmV3cml0ZV9jc3YodGltZWxpbmVfY3N2LCBhbGxfcm93cykKCiAgICAgICAgYWxsX3Rlcm1pbmF0ZWQgPSBib29sKGZsYXRfcm93cykgYW5kIGFsbChub3QgYm9vbChyb3cuZ2V0KCJpc19ydW5uaW5nIikpIGZvciByb3cgaW4gZmxhdF9yb3dzKQogICAgICAgIGlmIGFyZ3MuZHVyYXRpb24gPiAwIGFuZCAodGltZS50aW1lKCkgLSBzdGFydGVkX2F0KSA+PSBhcmdzLmR1cmF0aW9uOgogICAgICAgICAgICBicmVhawogICAgICAgIGlmIGFsbF90ZXJtaW5hdGVkOgogICAgICAgICAgICBicmVhawogICAgICAgIHRpbWUuc2xlZXAobWF4KGFyZ3MuaW50ZXJ2YWwsIDEuMCkpCgogICAgcHJpbnQoZiJ0aW1lbGluZV9qc29ubD17dGltZWxpbmVfanNvbmx9IikKICAgIHByaW50KGYidGltZWxpbmVfY3N2PXt0aW1lbGluZV9jc3Z9IikKICAgIHByaW50KGYicmFua2luZ3NfanNvbmw9e3JhbmtpbmdzX2pzb25sfSIpCiAgICBwcmludChmInN1Ym1pc3Npb25zX2pzb25sPXtzdWJtaXNzaW9uc19qc29ubH0iKQogICAgcHJpbnQoZiJpbnRlbGxpZ2VuY2VfanNvbmw9e2ludGVsbGlnZW5jZV9qc29ubH0iKQogICAgcmV0dXJuIDAKCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgcmFpc2UgU3lzdGVtRXhpdChtYWluKCkpCg==
+#!/usr/bin/env python3
+"""Poll USACOArena APIs and export competition metric snapshots over time."""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, Iterable, List
+
+import requests
+
+
+def _request_json(base_url: str, path: str, timeout: float) -> Dict[str, Any]:
+    response = requests.get(
+        f"{base_url.rstrip('/')}{path}",
+        timeout=timeout,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    if not isinstance(payload, dict):
+        raise RuntimeError(f"Unexpected JSON payload for {path}: not an object")
+    return payload
+
+
+def _utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+def _flatten_participant_metrics(
+    snapshot_at: str,
+    competition_id: str,
+    ranking_rows: Iterable[Dict[str, Any]],
+    submissions_by_participant: Dict[str, List[Dict[str, Any]]],
+) -> List[Dict[str, Any]]:
+    rows: List[Dict[str, Any]] = []
+    for entry in ranking_rows:
+        participant_id = str(entry.get("participant_id") or entry.get("id") or "").strip()
+        rows.append(
+            {
+                "snapshot_at": snapshot_at,
+                "competition_id": competition_id,
+                "participant_id": participant_id,
+                "name": entry.get("name"),
+                "rank": entry.get("rank"),
+                "score": entry.get("score"),
+                "problem_pass_score": entry.get("problem_pass_score"),
+                "remaining_tokens": entry.get("remaining_tokens"),
+                "consumed_tokens": entry.get("consumed_tokens"),
+                "consumed_credit": entry.get("consumed_credit"),
+                "submission_penalty": entry.get("submission_penalty"),
+                "LLM_tokens": entry.get("LLM_tokens"),
+                "hint_tokens": entry.get("hint_tokens"),
+                "test_tokens": entry.get("test_tokens"),
+                "submission_tokens": entry.get("submission_tokens"),
+                "llm_inference_count": entry.get("llm_inference_count"),
+                "submission_count": entry.get("submission_count"),
+                "accepted_count": entry.get("accepted_count"),
+                "elapsed_time_seconds": entry.get("elapsed_time_seconds"),
+                "delivery_time_seconds": entry.get("delivery_time_seconds"),
+                "delivery_time_credit": entry.get("delivery_time_credit"),
+                "delivery_time_multiplier": entry.get("delivery_time_multiplier"),
+                "is_running": entry.get("is_running"),
+                "termination_reason": entry.get("termination_reason"),
+                "solved_problem_count": len(entry.get("solved_problems") or []),
+                "submission_event_count": len(submissions_by_participant.get(participant_id, [])),
+            }
+        )
+    return rows
+
+
+def _write_jsonl(path: Path, records: Iterable[Dict[str, Any]]) -> None:
+    with path.open("a", encoding="utf-8") as handle:
+        for record in records:
+            handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def _rewrite_csv(path: Path, rows: List[Dict[str, Any]]) -> None:
+    fieldnames = [
+        "snapshot_at",
+        "competition_id",
+        "participant_id",
+        "name",
+        "rank",
+        "score",
+        "problem_pass_score",
+        "remaining_tokens",
+        "consumed_tokens",
+        "consumed_credit",
+        "submission_penalty",
+        "LLM_tokens",
+        "hint_tokens",
+        "test_tokens",
+        "submission_tokens",
+        "llm_inference_count",
+        "submission_count",
+        "accepted_count",
+        "elapsed_time_seconds",
+        "delivery_time_seconds",
+        "delivery_time_credit",
+        "delivery_time_multiplier",
+        "is_running",
+        "termination_reason",
+        "solved_problem_count",
+        "submission_event_count",
+    ]
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Poll USACOArena metrics endpoints and export a timeline."
+    )
+    parser.add_argument("--api-base", required=True, help="USACOArena API base URL")
+    parser.add_argument("--competition-id", required=True, help="Competition ID")
+    parser.add_argument(
+        "--interval",
+        type=float,
+        default=15.0,
+        help="Polling interval in seconds",
+    )
+    parser.add_argument(
+        "--duration",
+        type=float,
+        default=0.0,
+        help="Stop after this many seconds; 0 means run until all participants terminate",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default="reports/timeline",
+        help="Directory for JSONL/CSV snapshots",
+    )
+    parser.add_argument(
+        "--timeout",
+        type=float,
+        default=30.0,
+        help="HTTP timeout in seconds",
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    output_dir = Path(args.output_dir).expanduser().resolve() / args.competition_id
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    timeline_jsonl = output_dir / "participant_metrics_timeline.jsonl"
+    timeline_csv = output_dir / "participant_metrics_timeline.csv"
+    rankings_jsonl = output_dir / "rankings_raw.jsonl"
+    submissions_jsonl = output_dir / "submissions_raw.jsonl"
+    intelligence_jsonl = output_dir / "intelligence_report_raw.jsonl"
+
+    all_rows: List[Dict[str, Any]] = []
+    started_at = time.time()
+
+    while True:
+        snapshot_at = _utc_now()
+        rankings_payload = _request_json(
+            args.api_base,
+            f"/api/rankings/get/{args.competition_id}",
+            args.timeout,
+        )
+        submissions_payload = _request_json(
+            args.api_base,
+            f"/api/submissions/list/{args.competition_id}",
+            args.timeout,
+        )
+        intelligence_payload = _request_json(
+            args.api_base,
+            f"/api/metrics/intelligence/{args.competition_id}?format=json",
+            args.timeout,
+        )
+
+        ranking_rows = rankings_payload.get("data") or []
+        submission_rows = submissions_payload.get("data") or []
+        intelligence_data = intelligence_payload.get("data") or {}
+
+        submissions_by_participant: Dict[str, List[Dict[str, Any]]] = {}
+        for entry in submission_rows:
+            participant_id = str(entry.get("participant_id") or "").strip()
+            submissions_by_participant.setdefault(participant_id, []).append(entry)
+
+        flat_rows = _flatten_participant_metrics(
+            snapshot_at=snapshot_at,
+            competition_id=args.competition_id,
+            ranking_rows=ranking_rows,
+            submissions_by_participant=submissions_by_participant,
+        )
+        all_rows.extend(flat_rows)
+
+        _write_jsonl(timeline_jsonl, flat_rows)
+        _write_jsonl(
+            rankings_jsonl,
+            [{"snapshot_at": snapshot_at, "competition_id": args.competition_id, "rankings": ranking_rows}],
+        )
+        _write_jsonl(
+            submissions_jsonl,
+            [{"snapshot_at": snapshot_at, "competition_id": args.competition_id, "submissions": submission_rows}],
+        )
+        _write_jsonl(
+            intelligence_jsonl,
+            [{"snapshot_at": snapshot_at, "competition_id": args.competition_id, "report": intelligence_data}],
+        )
+        _rewrite_csv(timeline_csv, all_rows)
+
+        all_terminated = bool(flat_rows) and all(not bool(row.get("is_running")) for row in flat_rows)
+        if args.duration > 0 and (time.time() - started_at) >= args.duration:
+            break
+        if all_terminated:
+            break
+        time.sleep(max(args.interval, 1.0))
+
+    print(f"timeline_jsonl={timeline_jsonl}")
+    print(f"timeline_csv={timeline_csv}")
+    print(f"rankings_jsonl={rankings_jsonl}")
+    print(f"submissions_jsonl={submissions_jsonl}")
+    print(f"intelligence_jsonl={intelligence_jsonl}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

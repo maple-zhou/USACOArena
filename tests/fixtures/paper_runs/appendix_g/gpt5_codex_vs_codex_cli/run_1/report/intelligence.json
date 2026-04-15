@@ -1,1 +1,9 @@
-ewogICJjb21wZXRpdGlvbiI6IHsiaWQiOiAiZ3B0NS1mYW1pbHktMyIsICJ0aXRsZSI6ICJDb2RleCB2cyBDb2RleCBDTEkiLCAiZGVzY3JpcHRpb24iOiAiZml4dHVyZSIsICJwcm9ibGVtX2NvdW50IjogNH0sCiAgImdlbmVyYXRlZF9hdCI6ICIyMDI2LTA0LTE0VDAzOjEwOjAwWiIsCiAgInN1bW1hcnkiOiB7InBhcnRpY2lwYW50X2NvdW50IjogMiwgInRlcm1pbmF0ZWRfY291bnQiOiAyLCAiYXZnX2ludGVsbGlnZW5jZV9zY29yZSI6IDc0LjAsICJ0b3BfcGFydGljaXBhbnQiOiAiQ29kZXgtQ0xJIn0sCiAgInJvd3MiOiBbCiAgICB7Im5hbWUiOiAiZ3B0LTUtY29kZXgiLCAiYXJlbmFfcmFuayI6IDIsICJwcm9ibGVtX3Bhc3Nfc2NvcmUiOiA1LCAic2NvcmUiOiA1LjAsICJzdWJtaXNzaW9uX2NvdW50IjogMTgsICJhY2NlcHRlZF9jb3VudCI6IDgsICJhdHRlbXB0ZWRfcHJvYmxlbXMiOiAxNiwgImNvbnN1bWVkX2NyZWRpdCI6IDQwMDAwMDB9LAogICAgeyJuYW1lIjogIkNvZGV4LUNMSSIsICJhcmVuYV9yYW5rIjogMSwgInByb2JsZW1fcGFzc19zY29yZSI6IDksICJzY29yZSI6IDkuMCwgInN1Ym1pc3Npb25fY291bnQiOiAyMSwgImFjY2VwdGVkX2NvdW50IjogMTEsICJhdHRlbXB0ZWRfcHJvYmxlbXMiOiAyMSwgImNvbnN1bWVkX2NyZWRpdCI6IDE1MDAwMDAwfQogIF0KfQo=
+{
+  "competition": {"id": "gpt5-family-3", "title": "Codex vs Codex CLI", "description": "fixture", "problem_count": 4},
+  "generated_at": "2026-04-14T03:10:00Z",
+  "summary": {"participant_count": 2, "terminated_count": 2, "avg_intelligence_score": 74.0, "top_participant": "Codex-CLI"},
+  "rows": [
+    {"name": "gpt-5-codex", "arena_rank": 2, "problem_pass_score": 5, "score": 5.0, "submission_count": 18, "accepted_count": 8, "attempted_problems": 16, "consumed_credit": 4000000},
+    {"name": "Codex-CLI", "arena_rank": 1, "problem_pass_score": 9, "score": 9.0, "submission_count": 21, "accepted_count": 11, "attempted_problems": 21, "consumed_credit": 15000000}
+  ]
+}

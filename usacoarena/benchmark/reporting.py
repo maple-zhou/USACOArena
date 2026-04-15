@@ -1,1 +1,189 @@
-IiIiUmVwb3J0IHJlbmRlcmVycyBmb3IgYmVuY2htYXJrIGludGVsbGlnZW5jZSBvdXRwdXRzLiIiIgoKZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IGNzdgppbXBvcnQgaW8KaW1wb3J0IGpzb24KZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gdHlwaW5nIGltcG9ydCBBbnksIERpY3QsIEl0ZXJhYmxlLCBMaXN0CgoKQ1NWX0NPTFVNTlM6IExpc3Rbc3RyXSA9IFsKICAgICJpbnRlbGxpZ2VuY2VfcmFuayIsCiAgICAiYXJlbmFfcmFuayIsCiAgICAibmFtZSIsCiAgICAicGFydGljaXBhbnRfaWQiLAogICAgImFnZW50X3R5cGUiLAogICAgInRyYW5zcG9ydCIsCiAgICAibWNwX2VuYWJsZWQiLAogICAgImlzX3J1bm5pbmciLAogICAgInRlcm1pbmF0aW9uX3JlYXNvbiIsCiAgICAiaW50ZWxsaWdlbmNlX3Njb3JlIiwKICAgICJwcm9ibGVtX3Bhc3Nfc2NvcmUiLAogICAgInNjb3JlIiwKICAgICJzb2x2ZWRfcHJvYmxlbXMiLAogICAgImF0dGVtcHRlZF9wcm9ibGVtcyIsCiAgICAic3VibWlzc2lvbl9jb3VudCIsCiAgICAiYWNjZXB0ZWRfY291bnQiLAogICAgImNvbnN1bWVkX3Rva2VucyIsCiAgICAiY29uc3VtZWRfY3JlZGl0IiwKICAgICJkZWxpdmVyeV90aW1lX3NlY29uZHMiLAogICAgInNvbHZlX2NvbXBvbmVudCIsCiAgICAiZWZmaWNpZW5jeV9jb21wb25lbnQiLAogICAgInJlbGlhYmlsaXR5X2NvbXBvbmVudCIsCiAgICAic3BlZWRfY29tcG9uZW50IiwKICAgICJjb3ZlcmFnZV9jb21wb25lbnQiLApdCgoKZGVmIF9zYWZlX3RleHQodmFsdWU6IEFueSkgLT4gc3RyOgogICAgaWYgdmFsdWUgaXMgTm9uZToKICAgICAgICByZXR1cm4gIiIKICAgIHJldHVybiBzdHIodmFsdWUpCgoKZGVmIHJlbmRlcl9jc3YocmVwb3J0OiBEaWN0W3N0ciwgQW55XSkgLT4gc3RyOgogICAgcm93cyA9IHJlcG9ydC5nZXQoInJvd3MiLCBbXSkgaWYgaXNpbnN0YW5jZShyZXBvcnQsIGRpY3QpIGVsc2UgW10KICAgIHN0cmVhbSA9IGlvLlN0cmluZ0lPKCkKICAgIHdyaXRlciA9IGNzdi5EaWN0V3JpdGVyKHN0cmVhbSwgZmllbGRuYW1lcz1DU1ZfQ09MVU1OUykKICAgIHdyaXRlci53cml0ZWhlYWRlcigpCgogICAgZm9yIHJvdyBpbiByb3dzOgogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKHJvdywgZGljdCk6CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgcGF5bG9hZCA9IHtrZXk6IHJvdy5nZXQoa2V5LCAiIikgZm9yIGtleSBpbiBDU1ZfQ09MVU1OU30KICAgICAgICB3cml0ZXIud3JpdGVyb3cocGF5bG9hZCkKCiAgICByZXR1cm4gc3RyZWFtLmdldHZhbHVlKCkKCgpkZWYgcmVuZGVyX21hcmtkb3duKHJlcG9ydDogRGljdFtzdHIsIEFueV0pIC0+IHN0cjoKICAgIGNvbXBldGl0aW9uID0gcmVwb3J0LmdldCgiY29tcGV0aXRpb24iLCB7fSkgaWYgaXNpbnN0YW5jZShyZXBvcnQsIGRpY3QpIGVsc2Uge30KICAgIHN1bW1hcnkgPSByZXBvcnQuZ2V0KCJzdW1tYXJ5Iiwge30pIGlmIGlzaW5zdGFuY2UocmVwb3J0LCBkaWN0KSBlbHNlIHt9CiAgICByb3dzID0gcmVwb3J0LmdldCgicm93cyIsIFtdKSBpZiBpc2luc3RhbmNlKHJlcG9ydCwgZGljdCkgZWxzZSBbXQoKICAgIGxpbmVzOiBMaXN0W3N0cl0gPSBbXQogICAgbGluZXMuYXBwZW5kKGYiIyBJbnRlbGxpZ2VuY2UgUmVwb3J0OiB7X3NhZmVfdGV4dChjb21wZXRpdGlvbi5nZXQoJ3RpdGxlJywgJ1Vua25vd24nKSl9IikKICAgIGxpbmVzLmFwcGVuZCgiIikKICAgIGxpbmVzLmFwcGVuZChmIi0gQ29tcGV0aXRpb24gSUQ6IGB7X3NhZmVfdGV4dChjb21wZXRpdGlvbi5nZXQoJ2lkJykpfWAiKQogICAgbGluZXMuYXBwZW5kKGYiLSBHZW5lcmF0ZWQgQXQ6IGB7X3NhZmVfdGV4dChyZXBvcnQuZ2V0KCdnZW5lcmF0ZWRfYXQnKSl9YCIpCiAgICBsaW5lcy5hcHBlbmQoZiItIFBhcnRpY2lwYW50czogYHtfc2FmZV90ZXh0KHN1bW1hcnkuZ2V0KCdwYXJ0aWNpcGFudF9jb3VudCcsIDApKX1gIikKICAgIGxpbmVzLmFwcGVuZChmIi0gQXZnIEludGVsbGlnZW5jZSBTY29yZTogYHtfc2FmZV90ZXh0KHN1bW1hcnkuZ2V0KCdhdmdfaW50ZWxsaWdlbmNlX3Njb3JlJywgMCkpfWAiKQogICAgbGluZXMuYXBwZW5kKGYiLSBUb3AgUGFydGljaXBhbnQ6IGB7X3NhZmVfdGV4dChzdW1tYXJ5LmdldCgndG9wX3BhcnRpY2lwYW50JywgJ04vQScpKX1gIikKICAgIGxpbmVzLmFwcGVuZCgiIikKICAgIGxpbmVzLmFwcGVuZCgifCBSYW5rIHwgQXJlbmEgUmFuayB8IE5hbWUgfCBJbnRlbGxpZ2VuY2UgfCBTb2x2ZSB8IEVmZmljaWVuY3kgfCBSZWxpYWJpbGl0eSB8IFNwZWVkIHwgQ292ZXJhZ2UgfCIpCiAgICBsaW5lcy5hcHBlbmQoInwtLS06fC0tLTp8LS0tfC0tLTp8LS0tOnwtLS06fC0tLTp8LS0tOnwtLS06fCIpCgogICAgZm9yIHJvdyBpbiByb3dzOgogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKHJvdywgZGljdCk6CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgbGluZXMuYXBwZW5kKAogICAgICAgICAgICAifCB7aW50ZWxsaWdlbmNlX3Jhbmt9IHwge2FyZW5hX3Jhbmt9IHwge25hbWV9IHwge2ludGVsbGlnZW5jZV9zY29yZX0gfCAiCiAgICAgICAgICAgICJ7c29sdmVfY29tcG9uZW50fSB8IHtlZmZpY2llbmN5X2NvbXBvbmVudH0gfCB7cmVsaWFiaWxpdHlfY29tcG9uZW50fSB8ICIKICAgICAgICAgICAgIntzcGVlZF9jb21wb25lbnR9IHwge2NvdmVyYWdlX2NvbXBvbmVudH0gfCIuZm9ybWF0KAogICAgICAgICAgICAgICAgaW50ZWxsaWdlbmNlX3Jhbms9X3NhZmVfdGV4dChyb3cuZ2V0KCJpbnRlbGxpZ2VuY2VfcmFuayIsICIiKSksCiAgICAgICAgICAgICAgICBhcmVuYV9yYW5rPV9zYWZlX3RleHQocm93LmdldCgiYXJlbmFfcmFuayIsICIiKSksCiAgICAgICAgICAgICAgICBuYW1lPV9zYWZlX3RleHQocm93LmdldCgibmFtZSIsICIiKSksCiAgICAgICAgICAgICAgICBpbnRlbGxpZ2VuY2Vfc2NvcmU9X3NhZmVfdGV4dChyb3cuZ2V0KCJpbnRlbGxpZ2VuY2Vfc2NvcmUiLCAiIikpLAogICAgICAgICAgICAgICAgc29sdmVfY29tcG9uZW50PV9zYWZlX3RleHQocm93LmdldCgic29sdmVfY29tcG9uZW50IiwgIiIpKSwKICAgICAgICAgICAgICAgIGVmZmljaWVuY3lfY29tcG9uZW50PV9zYWZlX3RleHQocm93LmdldCgiZWZmaWNpZW5jeV9jb21wb25lbnQiLCAiIikpLAogICAgICAgICAgICAgICAgcmVsaWFiaWxpdHlfY29tcG9uZW50PV9zYWZlX3RleHQocm93LmdldCgicmVsaWFiaWxpdHlfY29tcG9uZW50IiwgIiIpKSwKICAgICAgICAgICAgICAgIHNwZWVkX2NvbXBvbmVudD1fc2FmZV90ZXh0KHJvdy5nZXQoInNwZWVkX2NvbXBvbmVudCIsICIiKSksCiAgICAgICAgICAgICAgICBjb3ZlcmFnZV9jb21wb25lbnQ9X3NhZmVfdGV4dChyb3cuZ2V0KCJjb3ZlcmFnZV9jb21wb25lbnQiLCAiIikpLAogICAgICAgICAgICApCiAgICAgICAgKQoKICAgIHJldHVybiAiXG4iLmpvaW4obGluZXMpICsgIlxuIgoKCmRlZiByZW5kZXJfaHRtbChyZXBvcnQ6IERpY3Rbc3RyLCBBbnldKSAtPiBzdHI6CiAgICBjb21wZXRpdGlvbiA9IHJlcG9ydC5nZXQoImNvbXBldGl0aW9uIiwge30pIGlmIGlzaW5zdGFuY2UocmVwb3J0LCBkaWN0KSBlbHNlIHt9CiAgICBzdW1tYXJ5ID0gcmVwb3J0LmdldCgic3VtbWFyeSIsIHt9KSBpZiBpc2luc3RhbmNlKHJlcG9ydCwgZGljdCkgZWxzZSB7fQogICAgcm93cyA9IHJlcG9ydC5nZXQoInJvd3MiLCBbXSkgaWYgaXNpbnN0YW5jZShyZXBvcnQsIGRpY3QpIGVsc2UgW10KCiAgICBoZWFkZXJfY2VsbHMgPSAiIi5qb2luKGYiPHRoPntjb2x9PC90aD4iIGZvciBjb2wgaW4gQ1NWX0NPTFVNTlMpCiAgICBib2R5X3Jvd3M6IExpc3Rbc3RyXSA9IFtdCgogICAgZm9yIHJvdyBpbiByb3dzOgogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKHJvdywgZGljdCk6CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgY2VsbHMgPSAiIi5qb2luKGYiPHRkPntfc2FmZV90ZXh0KHJvdy5nZXQoY29sLCAnJykpfTwvdGQ+IiBmb3IgY29sIGluIENTVl9DT0xVTU5TKQogICAgICAgIGJvZHlfcm93cy5hcHBlbmQoZiI8dHI+e2NlbGxzfTwvdHI+IikKCiAgICB0YWJsZV9ib2R5ID0gIlxuIi5qb2luKGJvZHlfcm93cykKCiAgICByZXR1cm4gZiIiIjwhRE9DVFlQRSBodG1sPgo8aHRtbCBsYW5nPVwiZW5cIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD1cInV0Zi04XCIgLz4KICA8bWV0YSBuYW1lPVwidmlld3BvcnRcIiBjb250ZW50PVwid2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTFcIiAvPgogIDx0aXRsZT5VU0FDT0FyZW5hIEludGVsbGlnZW5jZSBSZXBvcnQ8L3RpdGxlPgogIDxzdHlsZT4KICAgIGJvZHkge3sgZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBtYXJnaW46IDI0cHg7IGNvbG9yOiAjMTExODI3OyBiYWNrZ3JvdW5kOiAjZjlmYWZiOyB9fQogICAgLmNhcmQge3sgYmFja2dyb3VuZDogI2ZmZmZmZjsgYm9yZGVyOiAxcHggc29saWQgI2U1ZTdlYjsgYm9yZGVyLXJhZGl1czogMTBweDsgcGFkZGluZzogMTZweDsgbWFyZ2luLWJvdHRvbTogMTZweDsgfX0KICAgIGgxIHt7IG1hcmdpbjogMCAwIDhweCAwOyBmb250LXNpemU6IDI0cHg7IH19CiAgICAubWV0YSB7eyBjb2xvcjogIzM3NDE1MTsgZm9udC1zaXplOiAxNHB4OyB9fQogICAgdGFibGUge3sgd2lkdGg6IDEwMCU7IGJvcmRlci1jb2xsYXBzZTogY29sbGFwc2U7IGZvbnQtc2l6ZTogMTNweDsgYmFja2dyb3VuZDogI2ZmZjsgfX0KICAgIHRoLCB0ZCB7eyBib3JkZXI6IDFweCBzb2xpZCAjZTVlN2ViOyBwYWRkaW5nOiA4cHg7IHRleHQtYWxpZ246IGxlZnQ7IH19CiAgICB0aCB7eyBwb3NpdGlvbjogc3RpY2t5OyB0b3A6IDA7IGJhY2tncm91bmQ6ICNmM2Y0ZjY7IH19CiAgICAudGFibGUtd3JhcCB7eyBvdmVyZmxvdzogYXV0bzsgbWF4LWhlaWdodDogNzB2aDsgYm9yZGVyLXJhZGl1czogOHB4OyBib3JkZXI6IDFweCBzb2xpZCAjZTVlN2ViOyB9fQogIDwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CiAgPGRpdiBjbGFzcz1cImNhcmRcIj4KICAgIDxoMT57X3NhZmVfdGV4dChjb21wZXRpdGlvbi5nZXQoJ3RpdGxlJywgJ1VTQUNPQXJlbmEgSW50ZWxsaWdlbmNlIFJlcG9ydCcpKX08L2gxPgogICAgPGRpdiBjbGFzcz1cIm1ldGFcIj5Db21wZXRpdGlvbiBJRDoge19zYWZlX3RleHQoY29tcGV0aXRpb24uZ2V0KCdpZCcpKX08L2Rpdj4KICAgIDxkaXYgY2xhc3M9XCJtZXRhXCI+R2VuZXJhdGVkIEF0OiB7X3NhZmVfdGV4dChyZXBvcnQuZ2V0KCdnZW5lcmF0ZWRfYXQnKSl9PC9kaXY+CiAgICA8ZGl2IGNsYXNzPVwibWV0YVwiPlBhcnRpY2lwYW50czoge19zYWZlX3RleHQoc3VtbWFyeS5nZXQoJ3BhcnRpY2lwYW50X2NvdW50JywgMCkpfSwgQXZnIEludGVsbGlnZW5jZToge19zYWZlX3RleHQoc3VtbWFyeS5nZXQoJ2F2Z19pbnRlbGxpZ2VuY2Vfc2NvcmUnLCAwKSl9PC9kaXY+CiAgPC9kaXY+CiAgPGRpdiBjbGFzcz1cInRhYmxlLXdyYXBcIj4KICAgIDx0YWJsZT4KICAgICAgPHRoZWFkPjx0cj57aGVhZGVyX2NlbGxzfTwvdHI+PC90aGVhZD4KICAgICAgPHRib2R5PgogICAgICB7dGFibGVfYm9keX0KICAgICAgPC90Ym9keT4KICAgIDwvdGFibGU+CiAgPC9kaXY+CjwvYm9keT4KPC9odG1sPgoiIiIKCgpkZWYgc2F2ZV9yZXBvcnRfYnVuZGxlKHJlcG9ydDogRGljdFtzdHIsIEFueV0sIG91dHB1dF9kaXI6IFBhdGgsIGZpbGVfc3RlbTogc3RyID0gImludGVsbGlnZW5jZSIpIC0+IERpY3Rbc3RyLCBzdHJdOgogICAgb3V0cHV0X2Rpci5ta2RpcihwYXJlbnRzPVRydWUsIGV4aXN0X29rPVRydWUpCgogICAganNvbl9wYXRoID0gb3V0cHV0X2RpciAvIGYie2ZpbGVfc3RlbX0uanNvbiIKICAgIGNzdl9wYXRoID0gb3V0cHV0X2RpciAvIGYie2ZpbGVfc3RlbX0uY3N2IgogICAgbWRfcGF0aCA9IG91dHB1dF9kaXIgLyBmIntmaWxlX3N0ZW19Lm1kIgogICAgaHRtbF9wYXRoID0gb3V0cHV0X2RpciAvIGYie2ZpbGVfc3RlbX0uaHRtbCIKCiAgICBqc29uX3BhdGgud3JpdGVfdGV4dChqc29uLmR1bXBzKHJlcG9ydCwgZW5zdXJlX2FzY2lpPUZhbHNlLCBpbmRlbnQ9MikgKyAiXG4iLCBlbmNvZGluZz0idXRmLTgiKQogICAgY3N2X3BhdGgud3JpdGVfdGV4dChyZW5kZXJfY3N2KHJlcG9ydCksIGVuY29kaW5nPSJ1dGYtOCIpCiAgICBtZF9wYXRoLndyaXRlX3RleHQocmVuZGVyX21hcmtkb3duKHJlcG9ydCksIGVuY29kaW5nPSJ1dGYtOCIpCiAgICBodG1sX3BhdGgud3JpdGVfdGV4dChyZW5kZXJfaHRtbChyZXBvcnQpLCBlbmNvZGluZz0idXRmLTgiKQoKICAgIHJldHVybiB7CiAgICAgICAgImpzb24iOiBzdHIoanNvbl9wYXRoKSwKICAgICAgICAiY3N2Ijogc3RyKGNzdl9wYXRoKSwKICAgICAgICAibWFya2Rvd24iOiBzdHIobWRfcGF0aCksCiAgICAgICAgImh0bWwiOiBzdHIoaHRtbF9wYXRoKSwKICAgIH0KCgpkZWYgcmVuZGVyX2J5X2Zvcm1hdChyZXBvcnQ6IERpY3Rbc3RyLCBBbnldLCBmbXQ6IHN0cikgLT4gc3RyOgogICAgbm9ybWFsaXplZCA9IChmbXQgb3IgImpzb24iKS5zdHJpcCgpLmxvd2VyKCkKICAgIGlmIG5vcm1hbGl6ZWQgPT0gImNzdiI6CiAgICAgICAgcmV0dXJuIHJlbmRlcl9jc3YocmVwb3J0KQogICAgaWYgbm9ybWFsaXplZCBpbiB7Im1kIiwgIm1hcmtkb3duIn06CiAgICAgICAgcmV0dXJuIHJlbmRlcl9tYXJrZG93bihyZXBvcnQpCiAgICBpZiBub3JtYWxpemVkID09ICJodG1sIjoKICAgICAgICByZXR1cm4gcmVuZGVyX2h0bWwocmVwb3J0KQogICAgcmV0dXJuIGpzb24uZHVtcHMocmVwb3J0LCBlbnN1cmVfYXNjaWk9RmFsc2UsIGluZGVudD0yKSArICJcbiIKCgpkZWYgcm93c19mb3JfdGFibGUocmVwb3J0OiBEaWN0W3N0ciwgQW55XSkgLT4gSXRlcmFibGVbRGljdFtzdHIsIEFueV1dOgogICAgcm93cyA9IHJlcG9ydC5nZXQoInJvd3MiLCBbXSkgaWYgaXNpbnN0YW5jZShyZXBvcnQsIGRpY3QpIGVsc2UgW10KICAgIGZvciByb3cgaW4gcm93czoKICAgICAgICBpZiBpc2luc3RhbmNlKHJvdywgZGljdCk6CiAgICAgICAgICAgIHlpZWxkIHJvdwo=
+"""Report renderers for benchmark intelligence outputs."""
+
+from __future__ import annotations
+
+import csv
+import io
+import json
+from pathlib import Path
+from typing import Any, Dict, Iterable, List
+
+
+CSV_COLUMNS: List[str] = [
+    "intelligence_rank",
+    "arena_rank",
+    "name",
+    "participant_id",
+    "agent_type",
+    "transport",
+    "mcp_enabled",
+    "is_running",
+    "termination_reason",
+    "intelligence_score",
+    "problem_pass_score",
+    "score",
+    "solved_problems",
+    "attempted_problems",
+    "submission_count",
+    "accepted_count",
+    "consumed_tokens",
+    "consumed_credit",
+    "delivery_time_seconds",
+    "solve_component",
+    "efficiency_component",
+    "reliability_component",
+    "speed_component",
+    "coverage_component",
+]
+
+
+def _safe_text(value: Any) -> str:
+    if value is None:
+        return ""
+    return str(value)
+
+
+def render_csv(report: Dict[str, Any]) -> str:
+    rows = report.get("rows", []) if isinstance(report, dict) else []
+    stream = io.StringIO()
+    writer = csv.DictWriter(stream, fieldnames=CSV_COLUMNS)
+    writer.writeheader()
+
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        payload = {key: row.get(key, "") for key in CSV_COLUMNS}
+        writer.writerow(payload)
+
+    return stream.getvalue()
+
+
+def render_markdown(report: Dict[str, Any]) -> str:
+    competition = report.get("competition", {}) if isinstance(report, dict) else {}
+    summary = report.get("summary", {}) if isinstance(report, dict) else {}
+    rows = report.get("rows", []) if isinstance(report, dict) else []
+
+    lines: List[str] = []
+    lines.append(f"# Intelligence Report: {_safe_text(competition.get('title', 'Unknown'))}")
+    lines.append("")
+    lines.append(f"- Competition ID: `{_safe_text(competition.get('id'))}`")
+    lines.append(f"- Generated At: `{_safe_text(report.get('generated_at'))}`")
+    lines.append(f"- Participants: `{_safe_text(summary.get('participant_count', 0))}`")
+    lines.append(f"- Avg Intelligence Score: `{_safe_text(summary.get('avg_intelligence_score', 0))}`")
+    lines.append(f"- Top Participant: `{_safe_text(summary.get('top_participant', 'N/A'))}`")
+    lines.append("")
+    lines.append("| Rank | Arena Rank | Name | Intelligence | Solve | Efficiency | Reliability | Speed | Coverage |")
+    lines.append("|---:|---:|---|---:|---:|---:|---:|---:|---:|")
+
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        lines.append(
+            "| {intelligence_rank} | {arena_rank} | {name} | {intelligence_score} | "
+            "{solve_component} | {efficiency_component} | {reliability_component} | "
+            "{speed_component} | {coverage_component} |".format(
+                intelligence_rank=_safe_text(row.get("intelligence_rank", "")),
+                arena_rank=_safe_text(row.get("arena_rank", "")),
+                name=_safe_text(row.get("name", "")),
+                intelligence_score=_safe_text(row.get("intelligence_score", "")),
+                solve_component=_safe_text(row.get("solve_component", "")),
+                efficiency_component=_safe_text(row.get("efficiency_component", "")),
+                reliability_component=_safe_text(row.get("reliability_component", "")),
+                speed_component=_safe_text(row.get("speed_component", "")),
+                coverage_component=_safe_text(row.get("coverage_component", "")),
+            )
+        )
+
+    return "\n".join(lines) + "\n"
+
+
+def render_html(report: Dict[str, Any]) -> str:
+    competition = report.get("competition", {}) if isinstance(report, dict) else {}
+    summary = report.get("summary", {}) if isinstance(report, dict) else {}
+    rows = report.get("rows", []) if isinstance(report, dict) else []
+
+    header_cells = "".join(f"<th>{col}</th>" for col in CSV_COLUMNS)
+    body_rows: List[str] = []
+
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        cells = "".join(f"<td>{_safe_text(row.get(col, ''))}</td>" for col in CSV_COLUMNS)
+        body_rows.append(f"<tr>{cells}</tr>")
+
+    table_body = "\n".join(body_rows)
+
+    return f"""<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+  <meta charset=\"utf-8\" />
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
+  <title>USACOArena Intelligence Report</title>
+  <style>
+    body {{ font-family: Arial, sans-serif; margin: 24px; color: #111827; background: #f9fafb; }}
+    .card {{ background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; margin-bottom: 16px; }}
+    h1 {{ margin: 0 0 8px 0; font-size: 24px; }}
+    .meta {{ color: #374151; font-size: 14px; }}
+    table {{ width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; }}
+    th, td {{ border: 1px solid #e5e7eb; padding: 8px; text-align: left; }}
+    th {{ position: sticky; top: 0; background: #f3f4f6; }}
+    .table-wrap {{ overflow: auto; max-height: 70vh; border-radius: 8px; border: 1px solid #e5e7eb; }}
+  </style>
+</head>
+<body>
+  <div class=\"card\">
+    <h1>{_safe_text(competition.get('title', 'USACOArena Intelligence Report'))}</h1>
+    <div class=\"meta\">Competition ID: {_safe_text(competition.get('id'))}</div>
+    <div class=\"meta\">Generated At: {_safe_text(report.get('generated_at'))}</div>
+    <div class=\"meta\">Participants: {_safe_text(summary.get('participant_count', 0))}, Avg Intelligence: {_safe_text(summary.get('avg_intelligence_score', 0))}</div>
+  </div>
+  <div class=\"table-wrap\">
+    <table>
+      <thead><tr>{header_cells}</tr></thead>
+      <tbody>
+      {table_body}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
+"""
+
+
+def save_report_bundle(report: Dict[str, Any], output_dir: Path, file_stem: str = "intelligence") -> Dict[str, str]:
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    json_path = output_dir / f"{file_stem}.json"
+    csv_path = output_dir / f"{file_stem}.csv"
+    md_path = output_dir / f"{file_stem}.md"
+    html_path = output_dir / f"{file_stem}.html"
+
+    json_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    csv_path.write_text(render_csv(report), encoding="utf-8")
+    md_path.write_text(render_markdown(report), encoding="utf-8")
+    html_path.write_text(render_html(report), encoding="utf-8")
+
+    return {
+        "json": str(json_path),
+        "csv": str(csv_path),
+        "markdown": str(md_path),
+        "html": str(html_path),
+    }
+
+
+def render_by_format(report: Dict[str, Any], fmt: str) -> str:
+    normalized = (fmt or "json").strip().lower()
+    if normalized == "csv":
+        return render_csv(report)
+    if normalized in {"md", "markdown"}:
+        return render_markdown(report)
+    if normalized == "html":
+        return render_html(report)
+    return json.dumps(report, ensure_ascii=False, indent=2) + "\n"
+
+
+def rows_for_table(report: Dict[str, Any]) -> Iterable[Dict[str, Any]]:
+    rows = report.get("rows", []) if isinstance(report, dict) else []
+    for row in rows:
+        if isinstance(row, dict):
+            yield row

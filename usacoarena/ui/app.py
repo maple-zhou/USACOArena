@@ -1,1 +1,82 @@
-IiIiU3RhbmRhbG9uZSBGbGFzayBhcHBsaWNhdGlvbiBmb3IgdGhlIFVTQUNPQXJlbmEgbWFuYWdlbWVudCBVSS4iIiIKCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKCmltcG9ydCBhcmdwYXJzZQppbXBvcnQgYXRleGl0CmltcG9ydCBzaWduYWwKaW1wb3J0IHN5cwpmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKZnJvbSB0eXBpbmcgaW1wb3J0IE9wdGlvbmFsCgpmcm9tIGZsYXNrIGltcG9ydCBGbGFzawoKZnJvbSAuYmx1ZXByaW50IGltcG9ydCByZWdpc3Rlcl91aV9ibHVlcHJpbnQKCgpERUZBVUxUX0JBU0VfRElSID0gUGF0aChfX2ZpbGVfXykucmVzb2x2ZSgpLnBhcmVudHNbMl0KCgpkZWYgY3JlYXRlX2FwcChiYXNlX2RpcjogT3B0aW9uYWxbUGF0aF0gPSBOb25lKSAtPiBGbGFzazoKICAgICIiIkNyZWF0ZSBhIEZsYXNrIGFwcCB0aGF0IG9ubHkgc2VydmVzIHRoZSBtYW5hZ2VtZW50IFVJLiIiIgoKICAgIGFwcCA9IEZsYXNrKF9fbmFtZV9fLCBzdGF0aWNfZm9sZGVyPSJzdGF0aWMiLCB0ZW1wbGF0ZV9mb2xkZXI9InRlbXBsYXRlcyIpCiAgICByZWdpc3Rlcl91aV9ibHVlcHJpbnQoYXBwLCBiYXNlX2Rpcj1iYXNlX2RpciBvciBERUZBVUxUX0JBU0VfRElSKQoKICAgIG1hbmFnZXIgPSBhcHAuZXh0ZW5zaW9ucy5nZXQoInVpX21hbmFnZXIiKQoKICAgIGRlZiBjbGVhbnVwKCkgLT4gTm9uZToKICAgICAgICBpZiBtYW5hZ2VyOgogICAgICAgICAgICBtYW5hZ2VyLmNsZWFudXBfYWxsKCkKCiAgICBhdGV4aXQucmVnaXN0ZXIoY2xlYW51cCkKCiAgICBkZWYgaGFuZGxlX3NpZ25hbChzaWdudW0sIGZyYW1lKTogICMgdHlwZTogaWdub3JlW292ZXJyaWRlXQogICAgICAgIGNsZWFudXAoKQogICAgICAgIHN5cy5leGl0KDApCgogICAgZm9yIHNpZyBpbiAoc2lnbmFsLlNJR0lOVCwgc2lnbmFsLlNJR1RFUk0pOgogICAgICAgIHRyeToKICAgICAgICAgICAgc2lnbmFsLnNpZ25hbChzaWcsIGhhbmRsZV9zaWduYWwpCiAgICAgICAgZXhjZXB0IFZhbHVlRXJyb3I6CiAgICAgICAgICAgICMgU2lnbmFscyBjYW4gb25seSBiZSByZWdpc3RlcmVkIGluIG1haW4gdGhyZWFkOyBpZ25vcmUgb3RoZXJ3aXNlCiAgICAgICAgICAgIHBhc3MKCiAgICByZXR1cm4gYXBwCgoKZGVmIG1haW4oKSAtPiBOb25lOgogICAgcGFyc2VyID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoCiAgICAgICAgZGVzY3JpcHRpb249IlJ1biB0aGUgVVNBQ09BcmVuYSBjb21wZXRpdGlvbiBtYW5hZ2VtZW50IGRhc2hib2FyZCIKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0taG9zdCIsCiAgICAgICAgZGVmYXVsdD0iMTI3LjAuMC4xIiwKICAgICAgICBoZWxwPSJIb3N0IHRvIGJpbmQgdGhlIFVJIHNlcnZlciAoZGVmYXVsdDogMTI3LjAuMC4xKSIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLXBvcnQiLAogICAgICAgIHR5cGU9aW50LAogICAgICAgIGRlZmF1bHQ9NTUwMCwKICAgICAgICBoZWxwPSJQb3J0IHRvIGJpbmQgdGhlIFVJIHNlcnZlciAoZGVmYXVsdDogNTUwMCkiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1iYXNlLWRpciIsCiAgICAgICAgdHlwZT1QYXRoLAogICAgICAgIGRlZmF1bHQ9REVGQVVMVF9CQVNFX0RJUiwKICAgICAgICBoZWxwPSJSZXBvc2l0b3J5IHJvb3QgY29udGFpbmluZyBjb25maWcvIGFuZCBzY3JpcHRzLyAoZGVmYXVsdDogcHJvamVjdCByb290KSIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLWRlYnVnIiwKICAgICAgICBhY3Rpb249InN0b3JlX3RydWUiLAogICAgICAgIGhlbHA9IkVuYWJsZSBGbGFzayBkZWJ1ZyBtb2RlIiwKICAgICkKCiAgICBhcmdzID0gcGFyc2VyLnBhcnNlX2FyZ3MoKQoKICAgIGFwcCA9IGNyZWF0ZV9hcHAoYXJncy5iYXNlX2RpcikKICAgIGFwcC5ydW4oaG9zdD1hcmdzLmhvc3QsIHBvcnQ9YXJncy5wb3J0LCBkZWJ1Zz1hcmdzLmRlYnVnKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK
+"""Standalone Flask application for the USACOArena management UI."""
+
+from __future__ import annotations
+
+import argparse
+import atexit
+import signal
+import sys
+from pathlib import Path
+from typing import Optional
+
+from flask import Flask
+
+from .blueprint import register_ui_blueprint
+
+
+DEFAULT_BASE_DIR = Path(__file__).resolve().parents[2]
+
+
+def create_app(base_dir: Optional[Path] = None) -> Flask:
+    """Create a Flask app that only serves the management UI."""
+
+    app = Flask(__name__, static_folder="static", template_folder="templates")
+    register_ui_blueprint(app, base_dir=base_dir or DEFAULT_BASE_DIR)
+
+    manager = app.extensions.get("ui_manager")
+
+    def cleanup() -> None:
+        if manager:
+            manager.cleanup_all()
+
+    atexit.register(cleanup)
+
+    def handle_signal(signum, frame):  # type: ignore[override]
+        cleanup()
+        sys.exit(0)
+
+    for sig in (signal.SIGINT, signal.SIGTERM):
+        try:
+            signal.signal(sig, handle_signal)
+        except ValueError:
+            # Signals can only be registered in main thread; ignore otherwise
+            pass
+
+    return app
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Run the USACOArena competition management dashboard"
+    )
+    parser.add_argument(
+        "--host",
+        default="127.0.0.1",
+        help="Host to bind the UI server (default: 127.0.0.1)",
+    )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=5500,
+        help="Port to bind the UI server (default: 5500)",
+    )
+    parser.add_argument(
+        "--base-dir",
+        type=Path,
+        default=DEFAULT_BASE_DIR,
+        help="Repository root containing config/ and scripts/ (default: project root)",
+    )
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Enable Flask debug mode",
+    )
+
+    args = parser.parse_args()
+
+    app = create_app(args.base_dir)
+    app.run(host=args.host, port=args.port, debug=args.debug)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,1 +1,58 @@
-ewogICJjb21wZXRpdG9ycyI6IFsKICAgIHsKICAgICAgInR5cGUiOiAiZ2VuZXJpYyIsCiAgICAgICJuYW1lIjogImdwdC01LTIwMjUtMDgtMDciLAogICAgICAibW9kZWxfaWQiOiAiZ3B0LTUtMjAyNS0wOC0wNyIsCiAgICAgICJhcGlfYmFzZV91cmwiOiAiaHR0cHM6Ly9hcGkub3BlbmFpLmNvbSIsCiAgICAgICJhcGlfa2V5IjogIiIsCiAgICAgICJwcm9tcHRfY29uZmlnX3BhdGgiOiAiYWdlbnRzL3NpbmdsZV9hZ2VudC9wcm9tcHRzL3Byb21wdHMtbWFpbi5qc29uIiwKICAgICAgInJlcXVlc3RfZm9ybWF0IjogewogICAgICAgICJ1cmwiOiAiL3YxL2NoYXQvY29tcGxldGlvbnMiLAogICAgICAgICJtZXRob2QiOiAiUE9TVCIsCiAgICAgICAgImhlYWRlcnMiOiB7CiAgICAgICAgICAiQ29udGVudC1UeXBlIjogImFwcGxpY2F0aW9uL2pzb24iLAogICAgICAgICAgIkF1dGhvcml6YXRpb24iOiAiQmVhcmVyIHthcGlfa2V5fSIKICAgICAgICB9LAogICAgICAgICJib2R5X3RlbXBsYXRlIjogewogICAgICAgICAgIm1lc3NhZ2VzIjogInttZXNzYWdlc30iLAogICAgICAgICAgIm1vZGVsIjogInttb2RlbF9pZH0iLAogICAgICAgICAgInRlbXBlcmF0dXJlIjogMC43CiAgICAgICAgfQogICAgICB9LAogICAgICAicmVzcG9uc2VfZm9ybWF0IjogewogICAgICAgICJyZXNwb25zZV9wYXRoIjogImNob2ljZXNbMF0ubWVzc2FnZS5jb250ZW50IiwKICAgICAgICAiZXJyb3JfcGF0aCI6ICJlcnJvci5tZXNzYWdlIgogICAgICB9LAogICAgICAiYXBpX2Jhc2VfdXJsX2VudiI6ICJPUEVOQUlfQkFTRV9VUkwiLAogICAgICAiYXBpX2tleV9lbnYiOiAiT1BFTkFJX0FQSV9LRVkiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJnZW5lcmljIiwKICAgICAgIm5hbWUiOiAiZ3B0LTUtY29kZXgiLAogICAgICAibW9kZWxfaWQiOiAiZ3B0LTUtY29kZXgiLAogICAgICAiYXBpX2Jhc2VfdXJsIjogImh0dHBzOi8vYXBpLm9wZW5haS5jb20iLAogICAgICAiYXBpX2tleSI6ICIiLAogICAgICAicHJvbXB0X2NvbmZpZ19wYXRoIjogImFnZW50cy9zaW5nbGVfYWdlbnQvcHJvbXB0cy9wcm9tcHRzLW1haW4uanNvbiIsCiAgICAgICJyZXF1ZXN0X2Zvcm1hdCI6IHsKICAgICAgICAidXJsIjogIi92MS9jaGF0L2NvbXBsZXRpb25zIiwKICAgICAgICAibWV0aG9kIjogIlBPU1QiLAogICAgICAgICJoZWFkZXJzIjogewogICAgICAgICAgIkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIiwKICAgICAgICAgICJBdXRob3JpemF0aW9uIjogIkJlYXJlciB7YXBpX2tleX0iCiAgICAgICAgfSwKICAgICAgICAiYm9keV90ZW1wbGF0ZSI6IHsKICAgICAgICAgICJtZXNzYWdlcyI6ICJ7bWVzc2FnZXN9IiwKICAgICAgICAgICJtb2RlbCI6ICJ7bW9kZWxfaWR9IiwKICAgICAgICAgICJ0ZW1wZXJhdHVyZSI6IDAuNwogICAgICAgIH0KICAgICAgfSwKICAgICAgInJlc3BvbnNlX2Zvcm1hdCI6IHsKICAgICAgICAicmVzcG9uc2VfcGF0aCI6ICJjaG9pY2VzWzBdLm1lc3NhZ2UuY29udGVudCIsCiAgICAgICAgImVycm9yX3BhdGgiOiAiZXJyb3IubWVzc2FnZSIKICAgICAgfSwKICAgICAgImFwaV9iYXNlX3VybF9lbnYiOiAiT1BFTkFJX0JBU0VfVVJMIiwKICAgICAgImFwaV9rZXlfZW52IjogIk9QRU5BSV9BUElfS0VZIgogICAgfQogIF0KfQo=
+{
+  "competitors": [
+    {
+      "type": "generic",
+      "name": "gpt-5-2025-08-07",
+      "model_id": "gpt-5-2025-08-07",
+      "api_base_url": "https://api.openai.com",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/prompts-main.json",
+      "request_format": {
+        "url": "/v1/chat/completions",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {api_key}"
+        },
+        "body_template": {
+          "messages": "{messages}",
+          "model": "{model_id}",
+          "temperature": 0.7
+        }
+      },
+      "response_format": {
+        "response_path": "choices[0].message.content",
+        "error_path": "error.message"
+      },
+      "api_base_url_env": "OPENAI_BASE_URL",
+      "api_key_env": "OPENAI_API_KEY"
+    },
+    {
+      "type": "generic",
+      "name": "gpt-5-codex",
+      "model_id": "gpt-5-codex",
+      "api_base_url": "https://api.openai.com",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/prompts-main.json",
+      "request_format": {
+        "url": "/v1/chat/completions",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {api_key}"
+        },
+        "body_template": {
+          "messages": "{messages}",
+          "model": "{model_id}",
+          "temperature": 0.7
+        }
+      },
+      "response_format": {
+        "response_path": "choices[0].message.content",
+        "error_path": "error.message"
+      },
+      "api_base_url_env": "OPENAI_BASE_URL",
+      "api_key_env": "OPENAI_API_KEY"
+    }
+  ]
+}

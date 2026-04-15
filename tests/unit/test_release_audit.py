@@ -1,1 +1,34 @@
-ZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IHNodXRpbApmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKCmltcG9ydCBweXRlc3QKCmZyb20gdXNhY29hcmVuYS50b29scyBpbXBvcnQgcmVsZWFzZV9hdWRpdAoKCnB5dGVzdG1hcmsgPSBweXRlc3QubWFyay5za2lwaWYoCiAgICBzaHV0aWwud2hpY2goImRldGVjdC1zZWNyZXRzIikgaXMgTm9uZSwKICAgIHJlYXNvbj0iZGV0ZWN0LXNlY3JldHMgQ0xJIG5vdCBpbnN0YWxsZWQiLAopCgoKZGVmIHRlc3RfcmVsZWFzZV9hdWRpdF9kZXRlY3RzX2ZpeHR1cmVfc2VjcmV0KCkgLT4gTm9uZToKICAgIHJlcG9fcm9vdCA9IFBhdGgoX19maWxlX18pLnJlc29sdmUoKS5wYXJlbnRzWzJdCiAgICBmaXh0dXJlX3Jvb3QgPSByZXBvX3Jvb3QgLyAidGVzdHMiIC8gImZpeHR1cmVzIiAvICJyZWxlYXNlX2F1ZGl0IgoKICAgIHJlc3VsdCA9IHJlbGVhc2VfYXVkaXQucnVuX2F1ZGl0KAogICAgICAgIHByb2plY3Rfcm9vdD1yZXBvX3Jvb3QsCiAgICAgICAgaW5jbHVkZV9yZWFkbWVfbGludD1GYWxzZSwKICAgICAgICBpbmNsdWRlX2NoZWNrbGlzdD1GYWxzZSwKICAgICAgICBpbmNsdWRlX2FydGlmYWN0X3N3ZWVwPUZhbHNlLAogICAgICAgIHNjYW5fcm9vdD1maXh0dXJlX3Jvb3QsCiAgICApCgogICAgYXNzZXJ0ICgKICAgICAgICByZXN1bHRbInNlY3JldF9zY2FuIl1bImZpbmRpbmdzIl0KICAgICksICJGaXh0dXJlIHNlY3JldHMgc2hvdWxkIGJlIGRldGVjdGVkIgogICAgYXNzZXJ0ICgKICAgICAgICByZXN1bHRbInN0YXR1cyJdID09ICJmYWlsZWQiCiAgICApLCAiQXVkaXQgc3RhdHVzIHNob3VsZCBiZSBmYWlsZWQgd2hlbiBzZWNyZXRzIGFyZSBkZXRlY3RlZCIK
+from __future__ import annotations
+
+import shutil
+from pathlib import Path
+
+import pytest
+
+from usacoarena.tools import release_audit
+
+
+pytestmark = pytest.mark.skipif(
+    shutil.which("detect-secrets") is None,
+    reason="detect-secrets CLI not installed",
+)
+
+
+def test_release_audit_detects_fixture_secret() -> None:
+    repo_root = Path(__file__).resolve().parents[2]
+    fixture_root = repo_root / "tests" / "fixtures" / "release_audit"
+
+    result = release_audit.run_audit(
+        project_root=repo_root,
+        include_readme_lint=False,
+        include_checklist=False,
+        include_artifact_sweep=False,
+        scan_root=fixture_root,
+    )
+
+    assert (
+        result["secret_scan"]["findings"]
+    ), "Fixture secrets should be detected"
+    assert (
+        result["status"] == "failed"
+    ), "Audit status should be failed when secrets are detected"

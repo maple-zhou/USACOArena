@@ -1,1 +1,412 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwojIC0qLSBjb2Rpbmc6IHV0Zi04IC0qLQoiIiIKSlNPTiBjb21wZXRpdGlvbiByZXN1bHRzIHRvIENTViBjb252ZXJ0ZXIKVHJhbnNmb3JtIGNvbXBldGl0aW9uIHJlc3VsdCBKU09OIGZpbGVzIGludG8gQ1NWIGZvcm1hdCBmb3IgYW5hbHlzaXMuCiIiIgoKaW1wb3J0IGpzb24KaW1wb3J0IGNzdgppbXBvcnQgc3lzCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aApmcm9tIHR5cGluZyBpbXBvcnQgRGljdCwgTGlzdCwgQW55CgoKZGVmIGZsYXR0ZW5fc29sdmVkX3Byb2JsZW1zKHNvbHZlZF9wcm9ibGVtczogTGlzdFtEaWN0XSkgLT4gRGljdFtzdHIsIEFueV06CiAgICAiIiIKICAgIEZsYXR0ZW4gdGhlIHNvbHZlZF9wcm9ibGVtcyBsaXN0IGludG8gYSBkaWN0aW9uYXJ5IHN0cnVjdHVyZS4KICAgICIiIgogICAgaWYgbm90IHNvbHZlZF9wcm9ibGVtczoKICAgICAgICByZXR1cm4gewogICAgICAgICAgICAnc29sdmVkX3Byb2JsZW1fY291bnQnOiAwLAogICAgICAgICAgICAnc29sdmVkX3Byb2JsZW1zX3N1bW1hcnknOiAnJywKICAgICAgICAgICAgJ2ZpcnN0X3NvbHZlZF9wcm9ibGVtJzogJycsCiAgICAgICAgICAgICdsYXN0X3NvbHZlZF9wcm9ibGVtJzogJycKICAgICAgICB9CgogICAgcHJvYmxlbV9jb3VudCA9IGxlbihzb2x2ZWRfcHJvYmxlbXMpCiAgICBwcm9ibGVtX3N1bW1hcnkgPSAnOyAnLmpvaW4oW2Yie3BbJ3Byb2JsZW1faWQnXX0oe3BbJ3Njb3JlJ119KSIgZm9yIHAgaW4gc29sdmVkX3Byb2JsZW1zXSkKICAgIGZpcnN0X3Byb2JsZW0gPSBzb2x2ZWRfcHJvYmxlbXNbMF1bJ3Byb2JsZW1faWQnXSBpZiBzb2x2ZWRfcHJvYmxlbXMgZWxzZSAnJwogICAgbGFzdF9wcm9ibGVtID0gc29sdmVkX3Byb2JsZW1zWy0xXVsncHJvYmxlbV9pZCddIGlmIHNvbHZlZF9wcm9ibGVtcyBlbHNlICcnCgogICAgcmV0dXJuIHsKICAgICAgICAnc29sdmVkX3Byb2JsZW1fY291bnQnOiBwcm9ibGVtX2NvdW50LAogICAgICAgICdzb2x2ZWRfcHJvYmxlbXNfc3VtbWFyeSc6IHByb2JsZW1fc3VtbWFyeSwKICAgICAgICAnZmlyc3Rfc29sdmVkX3Byb2JsZW0nOiBmaXJzdF9wcm9ibGVtLAogICAgICAgICdsYXN0X3NvbHZlZF9wcm9ibGVtJzogbGFzdF9wcm9ibGVtCiAgICB9CgoKZGVmIGZsYXR0ZW5fcHJvYmxlbV9zdGF0cyhwcm9ibGVtX3N0YXRzOiBEaWN0W3N0ciwgQW55XSkgLT4gRGljdFtzdHIsIEFueV06CiAgICAiIiIKICAgIEZsYXR0ZW4gdGhlIHByb2JsZW1fc3RhdHMgZGljdGlvbmFyeSBpbnRvIENTVi1mcmllbmRseSBmaWVsZHMuCiAgICAiIiIKICAgIGlmIG5vdCBwcm9ibGVtX3N0YXRzOgogICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICd0b3RhbF9wcm9ibGVtc19hdHRlbXB0ZWQnOiAwLAogICAgICAgICAgICAncHJvYmxlbXNfc29sdmVkJzogMCwKICAgICAgICAgICAgJ3RvdGFsX3N1Ym1pc3Npb25zJzogMCwKICAgICAgICAgICAgJ2F2Z19zdWJtaXNzaW9uc19wZXJfcHJvYmxlbSc6IDAsCiAgICAgICAgICAgICd0b3RhbF9wZW5hbHR5JzogMCwKICAgICAgICAgICAgJ3Byb2JsZW1zX2ZpcnN0X2FjJzogMCwKICAgICAgICAgICAgJ3Byb2JsZW1fZGV0YWlsc19zdW1tYXJ5JzogJycKICAgICAgICB9CgogICAgdG90YWxfcHJvYmxlbXNfYXR0ZW1wdGVkID0gbGVuKHByb2JsZW1fc3RhdHMpCiAgICBwcm9ibGVtc19zb2x2ZWQgPSBzdW0oMSBmb3Igc3RhdHMgaW4gcHJvYmxlbV9zdGF0cy52YWx1ZXMoKSBpZiBzdGF0cy5nZXQoJ3NvbHZlZCcsIEZhbHNlKSkKICAgIHRvdGFsX3N1Ym1pc3Npb25zID0gc3VtKHN0YXRzLmdldCgnc3VibWlzc2lvbl9jb3VudCcsIDApIGZvciBzdGF0cyBpbiBwcm9ibGVtX3N0YXRzLnZhbHVlcygpKQogICAgYXZnX3N1Ym1pc3Npb25zID0gcm91bmQodG90YWxfc3VibWlzc2lvbnMgLyB0b3RhbF9wcm9ibGVtc19hdHRlbXB0ZWQsIDIpIGlmIHRvdGFsX3Byb2JsZW1zX2F0dGVtcHRlZCA+IDAgZWxzZSAwCiAgICB0b3RhbF9wZW5hbHR5ID0gc3VtKHN0YXRzLmdldCgncGVuYWx0eScsIDApIGZvciBzdGF0cyBpbiBwcm9ibGVtX3N0YXRzLnZhbHVlcygpKQogICAgcHJvYmxlbXNfZmlyc3RfYWMgPSBzdW0oMSBmb3Igc3RhdHMgaW4gcHJvYmxlbV9zdGF0cy52YWx1ZXMoKSBpZiBzdGF0cy5nZXQoJ2lzX2ZpcnN0X2FjJywgRmFsc2UpKQoKICAgICMgQ3JlYXRlIHN1bW1hcnkgb2YgcHJvYmxlbSBkZXRhaWxzCiAgICBkZXRhaWxzID0gW10KICAgIGZvciBwcm9ibGVtX2lkLCBzdGF0cyBpbiBwcm9ibGVtX3N0YXRzLml0ZW1zKCk6CiAgICAgICAgZGV0YWlsID0gZiJ7cHJvYmxlbV9pZH0oc3Viczp7c3RhdHMuZ2V0KCdzdWJtaXNzaW9uX2NvdW50JywgMCl9LCBzb2x2ZWQ6e3N0YXRzLmdldCgnc29sdmVkJywgRmFsc2UpfSwgc2NvcmU6e3N0YXRzLmdldCgnYmVzdF9zY29yZScsIDApfSkiCiAgICAgICAgZGV0YWlscy5hcHBlbmQoZGV0YWlsKQogICAgcHJvYmxlbV9kZXRhaWxzX3N1bW1hcnkgPSAnOyAnLmpvaW4oZGV0YWlscykKCiAgICByZXR1cm4gewogICAgICAgICd0b3RhbF9wcm9ibGVtc19hdHRlbXB0ZWQnOiB0b3RhbF9wcm9ibGVtc19hdHRlbXB0ZWQsCiAgICAgICAgJ3Byb2JsZW1zX3NvbHZlZCc6IHByb2JsZW1zX3NvbHZlZCwKICAgICAgICAndG90YWxfc3VibWlzc2lvbnMnOiB0b3RhbF9zdWJtaXNzaW9ucywKICAgICAgICAnYXZnX3N1Ym1pc3Npb25zX3Blcl9wcm9ibGVtJzogYXZnX3N1Ym1pc3Npb25zLAogICAgICAgICd0b3RhbF9wZW5hbHR5JzogdG90YWxfcGVuYWx0eSwKICAgICAgICAncHJvYmxlbXNfZmlyc3RfYWMnOiBwcm9ibGVtc19maXJzdF9hYywKICAgICAgICAncHJvYmxlbV9kZXRhaWxzX3N1bW1hcnknOiBwcm9ibGVtX2RldGFpbHNfc3VtbWFyeQogICAgfQoKCmRlZiBnZXRfYWxsX3Byb2JsZW1faWRzKGRhdGE6IERpY3Rbc3RyLCBBbnldKSAtPiBMaXN0W3N0cl06CiAgICAiIiIKICAgIENvbGxlY3QgZXZlcnkgcHJvYmxlbSBJRCBvYnNlcnZlZCBpbiBwYXJ0aWNpcGFudCBwcm9ibGVtX3N0YXRzLgogICAgIiIiCiAgICBhbGxfcHJvYmxlbV9pZHMgPSBzZXQoKQoKICAgIGZvciBwYXJ0aWNpcGFudF9kYXRhIGluIGRhdGEudmFsdWVzKCk6CiAgICAgICAgcHJvYmxlbV9zdGF0cyA9IHBhcnRpY2lwYW50X2RhdGEuZ2V0KCdwcm9ibGVtX3N0YXRzJywge30pCiAgICAgICAgaWYgcHJvYmxlbV9zdGF0czoKICAgICAgICAgICAgYWxsX3Byb2JsZW1faWRzLnVwZGF0ZShwcm9ibGVtX3N0YXRzLmtleXMoKSkKCiAgICAjIFNvcnQgdG8ga2VlcCBhIHN0YWJsZSBjb2x1bW4gb3JkZXIKICAgIHJldHVybiBzb3J0ZWQobGlzdChhbGxfcHJvYmxlbV9pZHMpKQoKCmRlZiBmbGF0dGVuX2luZGl2aWR1YWxfcHJvYmxlbV9zdGF0cyhwcm9ibGVtX3N0YXRzOiBEaWN0W3N0ciwgQW55XSwgYWxsX3Byb2JsZW1faWRzOiBMaXN0W3N0cl0pIC0+IERpY3Rbc3RyLCBBbnldOgogICAgIiIiCiAgICBHZW5lcmF0ZSBwZXItcHJvYmxlbSBzdGF0aXN0aWMgY29sdW1ucy4KICAgICIiIgogICAgcmVzdWx0ID0ge30KCiAgICBmb3IgcHJvYmxlbV9pZCBpbiBhbGxfcHJvYmxlbV9pZHM6CiAgICAgICAgc3RhdHMgPSBwcm9ibGVtX3N0YXRzLmdldChwcm9ibGVtX2lkLCB7fSkKCiAgICAgICAgIyBGb3VyIHN0YXRpc3RpY2FsIGNvbHVtbnMgcGVyIHByb2JsZW0KICAgICAgICByZXN1bHRbZid7cHJvYmxlbV9pZH1fc2NvcmUnXSA9IHN0YXRzLmdldCgnYmVzdF9zY29yZScsIDApCiAgICAgICAgcmVzdWx0W2Yne3Byb2JsZW1faWR9X3Bhc3NlZF9jYXNlcyddID0gc3RhdHMuZ2V0KCdwYXNzZWRfdGVzdF9jYXNlcycsIDApCiAgICAgICAgcmVzdWx0W2Yne3Byb2JsZW1faWR9X3N1Ym1pc3Npb25zJ10gPSBzdGF0cy5nZXQoJ3N1Ym1pc3Npb25fY291bnQnLCAwKQogICAgICAgIHJlc3VsdFtmJ3twcm9ibGVtX2lkfV9wZW5hbHR5J10gPSBzdGF0cy5nZXQoJ3BlbmFsdHknLCAwKQoKICAgIHJldHVybiByZXN1bHQKCgpkZWYgZmxhdHRlbl9jb21wZXRpdGlvbl9ydWxlcyhydWxlc19kYXRhOiBEaWN0W3N0ciwgQW55XSkgLT4gRGljdFtzdHIsIEFueV06CiAgICAiIiIKICAgIEZsYXR0ZW4gY29tcGV0aXRpb24gcnVsZXMgaW50byBDU1YtZnJpZW5kbHkgZmllbGRzLgogICAgIiIiCiAgICByZXN1bHQgPSB7fQoKICAgICMgSGFuZGxlIHNjb3JpbmcgcnVsZXMKICAgIHNjb3JpbmcgPSBydWxlc19kYXRhLmdldCgnc2NvcmluZycsIHt9KQogICAgcmVzdWx0WydydWxlc19icm9uemVfcG9pbnRzJ10gPSBzY29yaW5nLmdldCgnYnJvbnplJywgMCkKICAgIHJlc3VsdFsncnVsZXNfc2lsdmVyX3BvaW50cyddID0gc2NvcmluZy5nZXQoJ3NpbHZlcicsIDApCiAgICByZXN1bHRbJ3J1bGVzX2dvbGRfcG9pbnRzJ10gPSBzY29yaW5nLmdldCgnZ29sZCcsIDApCiAgICByZXN1bHRbJ3J1bGVzX3BsYXRpbnVtX3BvaW50cyddID0gc2NvcmluZy5nZXQoJ3BsYXRpbnVtJywgMCkKCiAgICAjIEhhbmRsZSBib251cyBydWxlcwogICAgcmVzdWx0WydydWxlc19ib251c19mb3JfZmlyc3RfYWMnXSA9IHJ1bGVzX2RhdGEuZ2V0KCdib251c19mb3JfZmlyc3RfYWMnLCAwKQoKICAgICMgSGFuZGxlIHBlbmFsdHkgcnVsZXMKICAgIHBlbmFsdGllcyA9IHJ1bGVzX2RhdGEuZ2V0KCdwZW5hbHRpZXMnLCB7fSkKICAgIHJlc3VsdFsncnVsZXNfcGVuYWx0eV9hYyddID0gcGVuYWx0aWVzLmdldCgnQUMnLCAwKQogICAgcmVzdWx0WydydWxlc19wZW5hbHR5X3dhJ10gPSBwZW5hbHRpZXMuZ2V0KCdXQScsIDApCiAgICByZXN1bHRbJ3J1bGVzX3BlbmFsdHlfcmUnXSA9IHBlbmFsdGllcy5nZXQoJ1JFJywgMCkKICAgIHJlc3VsdFsncnVsZXNfcGVuYWx0eV9jZSddID0gcGVuYWx0aWVzLmdldCgnQ0UnLCAwKQogICAgcmVzdWx0WydydWxlc19wZW5hbHR5X3RsZSddID0gcGVuYWx0aWVzLmdldCgnVExFJywgMCkKICAgIHJlc3VsdFsncnVsZXNfcGVuYWx0eV9tbGUnXSA9IHBlbmFsdGllcy5nZXQoJ01MRScsIDApCgogICAgIyBIYW5kbGUgaGludCB0b2tlbiBydWxlcwogICAgaGludF90b2tlbnMgPSBydWxlc19kYXRhLmdldCgnaGludF90b2tlbnMnLCB7fSkKICAgIHJlc3VsdFsncnVsZXNfaGludF90b2tlbnNfbGV2ZWxfMCddID0gaGludF90b2tlbnMuZ2V0KCdsZXZlbF8wJywgMCkKICAgIHJlc3VsdFsncnVsZXNfaGludF90b2tlbnNfbGV2ZWxfMSddID0gaGludF90b2tlbnMuZ2V0KCdsZXZlbF8xJywgMCkKICAgIHJlc3VsdFsncnVsZXNfaGludF90b2tlbnNfbGV2ZWxfMiddID0gaGludF90b2tlbnMuZ2V0KCdsZXZlbF8yJywgMCkKICAgIHJlc3VsdFsncnVsZXNfaGludF90b2tlbnNfbGV2ZWxfMyddID0gaGludF90b2tlbnMuZ2V0KCdsZXZlbF8zJywgMCkKICAgIHJlc3VsdFsncnVsZXNfaGludF90b2tlbnNfbGV2ZWxfNCddID0gaGludF90b2tlbnMuZ2V0KCdsZXZlbF80JywgMCkKCiAgICAjIEhhbmRsZSBzdWJtaXNzaW9uIHRva2VuIHJ1bGVzCiAgICBzdWJtaXNzaW9uX3Rva2VucyA9IHJ1bGVzX2RhdGEuZ2V0KCdzdWJtaXNzaW9uX3Rva2VucycsIHt9KQogICAgcmVzdWx0WydydWxlc19zdWJtaXNzaW9uX3Rva2Vuc19hYyddID0gc3VibWlzc2lvbl90b2tlbnMuZ2V0KCdBQycsIDApCiAgICByZXN1bHRbJ3J1bGVzX3N1Ym1pc3Npb25fdG9rZW5zX3dhJ10gPSBzdWJtaXNzaW9uX3Rva2Vucy5nZXQoJ1dBJywgMCkKICAgIHJlc3VsdFsncnVsZXNfc3VibWlzc2lvbl90b2tlbnNfcmUnXSA9IHN1Ym1pc3Npb25fdG9rZW5zLmdldCgnUkUnLCAwKQogICAgcmVzdWx0WydydWxlc19zdWJtaXNzaW9uX3Rva2Vuc19jZSddID0gc3VibWlzc2lvbl90b2tlbnMuZ2V0KCdDRScsIDApCiAgICByZXN1bHRbJ3J1bGVzX3N1Ym1pc3Npb25fdG9rZW5zX3RsZSddID0gc3VibWlzc2lvbl90b2tlbnMuZ2V0KCdUTEUnLCAwKQogICAgcmVzdWx0WydydWxlc19zdWJtaXNzaW9uX3Rva2Vuc19tbGUnXSA9IHN1Ym1pc3Npb25fdG9rZW5zLmdldCgnTUxFJywgMCkKCiAgICAjIEhhbmRsZSB0ZXN0IHRva2VuIHJ1bGVzCiAgICB0ZXN0X3Rva2VucyA9IHJ1bGVzX2RhdGEuZ2V0KCd0ZXN0X3Rva2VucycsIHt9KQogICAgcmVzdWx0WydydWxlc190ZXN0X3Rva2Vuc19kZWZhdWx0J10gPSB0ZXN0X3Rva2Vucy5nZXQoJ2RlZmF1bHQnLCAwKQogICAgcmVzdWx0WydydWxlc190ZXN0X3Rva2Vuc19wZXJfdGVzdF9jYXNlJ10gPSB0ZXN0X3Rva2Vucy5nZXQoJ3Blcl90ZXN0X2Nhc2UnLCAwKQoKICAgICMgSGFuZGxlIGxhbmd1YWdlIG11bHRpcGxpZXJzCiAgICBsYW5ndWFnZV9tdWx0aXBsaWVycyA9IHRlc3RfdG9rZW5zLmdldCgnbGFuZ3VhZ2VfbXVsdGlwbGllcnMnLCB7fSkKICAgIHJlc3VsdFsncnVsZXNfdGVzdF90b2tlbnNfY3BwX211bHRpcGxpZXInXSA9IGxhbmd1YWdlX211bHRpcGxpZXJzLmdldCgnY3BwJywgMCkKICAgIHJlc3VsdFsncnVsZXNfdGVzdF90b2tlbnNfamF2YV9tdWx0aXBsaWVyJ10gPSBsYW5ndWFnZV9tdWx0aXBsaWVycy5nZXQoJ2phdmEnLCAwKQogICAgcmVzdWx0WydydWxlc190ZXN0X3Rva2Vuc19weXRob25fbXVsdGlwbGllciddID0gbGFuZ3VhZ2VfbXVsdGlwbGllcnMuZ2V0KCdweXRob24nLCAwKQoKICAgICMgSGFuZGxlIGxhbWJkYSB2YWx1ZQogICAgcmVzdWx0WydydWxlc19sYW1iZGEnXSA9IHJ1bGVzX2RhdGEuZ2V0KCdsYW1iZGEnLCAwKQoKICAgICMgTm90ZTogaW5wdXRfdG9rZW5fbXVsdGlwbGllcnMgYW5kIG91dHB1dF90b2tlbl9tdWx0aXBsaWVycyBjb250YWluIGV4dGVuc2l2ZSBtb2RlbC1zcGVjaWZpYyBkYXRhCiAgICAjIFRoZXNlIGFyZSB0eXBpY2FsbHkgaWRlbnRpY2FsIGFjcm9zcyBwYXJ0aWNpcGFudHMgYW5kIGNhbiBiZSBvbWl0dGVkCiAgICAjIEFkZCBzcGVjaWZpYyBtdWx0aXBsaWVycyBvbmx5IHdoZW4gZXhwbGljaXRseSByZXF1aXJlZAoKICAgIHJldHVybiByZXN1bHQKCgpkZWYgY29udmVydF9qc29uX3RvX2Nzdihqc29uX2ZpbGVfcGF0aDogc3RyLCBjc3ZfZmlsZV9wYXRoOiBzdHIgPSBOb25lKSAtPiBzdHI6CiAgICAiIiIKICAgIENvbnZlcnQgSlNPTiBmaWxlIHRvIENTViBmaWxlCgogICAgQXJnczoKICAgICAgICBqc29uX2ZpbGVfcGF0aDogSlNPTiBmaWxlIHBhdGgKICAgICAgICBjc3ZfZmlsZV9wYXRoOiBPdXRwdXQgQ1NWIGZpbGUgcGF0aCwgaWYgTm9uZSB0aGVuIGF1dG8tZ2VuZXJhdGUKCiAgICBSZXR1cm5zOgogICAgICAgIEdlbmVyYXRlZCBDU1YgZmlsZSBwYXRoCiAgICAiIiIKICAgICMgUmVhZCBKU09OIGZpbGUKICAgIHdpdGggb3Blbihqc29uX2ZpbGVfcGF0aCwgJ3InLCBlbmNvZGluZz0ndXRmLTgnKSBhcyBmOgogICAgICAgIGRhdGEgPSBqc29uLmxvYWQoZikKCiAgICAjIElmIENTViBmaWxlIHBhdGggaXMgbm90IHNwZWNpZmllZCwgYXV0by1nZW5lcmF0ZQogICAgaWYgY3N2X2ZpbGVfcGF0aCBpcyBOb25lOgogICAgICAgIGpzb25fcGF0aCA9IFBhdGgoanNvbl9maWxlX3BhdGgpCiAgICAgICAgY3N2X2ZpbGVfcGF0aCA9IGpzb25fcGF0aC53aXRoX3N1ZmZpeCgnLmNzdicpCgogICAgIyBHZXQgYWxsIHByb2JsZW0gSURzIGZyb20gYWxsIHBhcnRpY2lwYW50cwogICAgYWxsX3Byb2JsZW1faWRzID0gZ2V0X2FsbF9wcm9ibGVtX2lkcyhkYXRhKQoKICAgICMgRGVmaW5lIGJhc2UgQ1NWIGNvbHVtbiBuYW1lcwogICAgYmFzZV9maWVsZG5hbWVzID0gWwogICAgICAgICduYW1lJywgICAgICAgICAgICAgICAgICAgICAgICAgICAjIFBhcnRpY2lwYW50IG5hbWUKICAgICAgICAncGFydGljaXBhbnRfaWQnLCAgICAgICAgICAgICAgICAgIyBQYXJ0aWNpcGFudCBJRAogICAgICAgICdjb21wZXRpdGlvbl9pZCcsICAgICAgICAgICAgICAgICAjIENvbXBldGl0aW9uIElECiAgICAgICAgJ0xMTV90b2tlbnMnLCAgICAgICAgICAgICAgICAgICAgICMgTExNIHRva2VucyB1c2VkCiAgICAgICAgJ2hpbnRfdG9rZW5zJywgICAgICAgICAgICAgICAgICAgICMgSGludCB0b2tlbnMKICAgICAgICAnc3VibWlzc2lvbl90b2tlbnMnLCAgICAgICAgICAgICAgIyBTdWJtaXNzaW9uIHRva2VucwogICAgICAgICd0ZXN0X3Rva2VucycsICAgICAgICAgICAgICAgICAgICAjIFRlc3QgdG9rZW5zIHVzZWQKICAgICAgICAnbGltaXRfdG9rZW5zJywgICAgICAgICAgICAgICAgICAgIyBUb2tlbiBsaW1pdAogICAgICAgICdyZW1haW5pbmdfdG9rZW5zJywgICAgICAgICAgICAgICAjIFJlbWFpbmluZyB0b2tlbnMKICAgICAgICAnY29uc3VtZWRfdG9rZW5zJywgICAgICAgICAgICAgICAgIyBDb25zdW1lZCB0b2tlbnMKICAgICAgICAnY29uc3VtZWRfY3JlZGl0JywgICAgICAgICAgICAgICAgIyBDb25zdW1lZCB0b2tlbnMKICAgICAgICAnc3VibWlzc2lvbl9jb3VudCcsICAgICAgICAgICAgICAgIyBTdWJtaXNzaW9uIGNvdW50CiAgICAgICAgJ2FjY2VwdGVkX2NvdW50JywgICAgICAgICAgICAgICAgICMgQWNjZXB0ZWQgY291bnQKICAgICAgICAnc3VibWlzc2lvbl9wZW5hbHR5JywgICAgICAgICAgICAgIyBTdWJtaXNzaW9uIHBlbmFsdHkKICAgICAgICAncHJvYmxlbV9wYXNzX3Njb3JlJywgICAgICAgICAgICAgIyBQcm9ibGVtIHBhc3Mgc2NvcmUKCiAgICAgICAgIyBOZXcgc3RhdGlzdGljcyBmaWVsZHMKICAgICAgICAnbGxtX2luZmVyZW5jZV9jb3VudCcsICAgICAgICAgICAgIyBUb3RhbCBMTE0gaW5mZXJlbmNlIGNhbGxzCiAgICAgICAgJ2ZpcnN0X2FjX3Njb3JlJywgICAgICAgICAgICAgICAgICMgU2NvcmUgZnJvbSBiZWluZyBmaXJzdCB0byBzb2x2ZSBwcm9ibGVtcwogICAgICAgICdwcm9ibGVtX3Njb3JlJywgICAgICAgICAgICAgICAgICAjIFNjb3JlIGZyb20gcGFzc2luZyBwcm9ibGVtcyAoZXhjbHVkaW5nIGZpcnN0IEFDIGJvbnVzKQoKICAgICAgICAjIERldGFpbGVkIHJ1bGUtYmFzZWQgc2NvcmluZyBicmVha2Rvd24KICAgICAgICAnYnJvbnplX3Njb3JlJywgICAgICAgICAgICAgICAgICAgIyBTY29yZSBmcm9tIGJyb256ZSBwcm9ibGVtcwogICAgICAgICdzaWx2ZXJfc2NvcmUnLCAgICAgICAgICAgICAgICAgICAjIFNjb3JlIGZyb20gc2lsdmVyIHByb2JsZW1zCiAgICAgICAgJ2dvbGRfc2NvcmUnLCAgICAgICAgICAgICAgICAgICAgICMgU2NvcmUgZnJvbSBnb2xkIHByb2JsZW1zCiAgICAgICAgJ3BsYXRpbnVtX3Njb3JlJywgICAgICAgICAgICAgICAgICMgU2NvcmUgZnJvbSBwbGF0aW51bSBwcm9ibGVtcwogICAgICAgICdib251c19zY29yZScsICAgICAgICAgICAgICAgICAgICAjIEZpcnN0IEFDIGJvbnVzZXMKCiAgICAgICAgJ3Njb3JlJywgICAgICAgICAgICAgICAgICAgICAgICAgICMgVG90YWwgc2NvcmUKICAgICAgICAnaXNfcnVubmluZycsICAgICAgICAgICAgICAgICAgICAgIyBJcyBydW5uaW5nCiAgICAgICAgJ3Rlcm1pbmF0aW9uX3JlYXNvbicsICAgICAgICAgICAgICMgVGVybWluYXRpb24gcmVhc29uCiAgICAgICAgJ3NvbHZlZF9wcm9ibGVtX2NvdW50JywgICAgICAgICAgICMgU29sdmVkIHByb2JsZW0gY291bnQKICAgICAgICAnc29sdmVkX3Byb2JsZW1zX3N1bW1hcnknLCAgICAgICAgIyBTb2x2ZWQgcHJvYmxlbXMgc3VtbWFyeQogICAgICAgICdmaXJzdF9zb2x2ZWRfcHJvYmxlbScsICAgICAgICAgICAjIEZpcnN0IHNvbHZlZCBwcm9ibGVtCiAgICAgICAgJ2xhc3Rfc29sdmVkX3Byb2JsZW0nLCAgICAgICAgICAgICMgTGFzdCBzb2x2ZWQgcHJvYmxlbQoKICAgICAgICAjIFBlci1wcm9ibGVtIHN0YXRpc3RpY3Mgc3VtbWFyeQogICAgICAgICd0b3RhbF9wcm9ibGVtc19hdHRlbXB0ZWQnLCAgICAgICAjIFRvdGFsIHByb2JsZW1zIGF0dGVtcHRlZAogICAgICAgICdwcm9ibGVtc19zb2x2ZWQnLCAgICAgICAgICAgICAgICAjIE51bWJlciBvZiBwcm9ibGVtcyBzb2x2ZWQKICAgICAgICAndG90YWxfc3VibWlzc2lvbnMnLCAgICAgICAgICAgICAgIyBUb3RhbCBzdWJtaXNzaW9ucyBhY3Jvc3MgYWxsIHByb2JsZW1zCiAgICAgICAgJ2F2Z19zdWJtaXNzaW9uc19wZXJfcHJvYmxlbScsICAgICMgQXZlcmFnZSBzdWJtaXNzaW9ucyBwZXIgcHJvYmxlbQogICAgICAgICd0b3RhbF9wZW5hbHR5JywgICAgICAgICAgICAgICAgICAjIFRvdGFsIHBlbmFsdHkgYWNyb3NzIGFsbCBwcm9ibGVtcwogICAgICAgICdwcm9ibGVtc19maXJzdF9hYycsICAgICAgICAgICAgICAjIE51bWJlciBvZiBwcm9ibGVtcyB3aGVyZSBwYXJ0aWNpcGFudCB3YXMgZmlyc3QgdG8gc29sdmUKICAgICAgICAncHJvYmxlbV9kZXRhaWxzX3N1bW1hcnknICAgICAgICAgIyBEZXRhaWxlZCBwZXItcHJvYmxlbSBzdW1tYXJ5CiAgICBdCgogICAgIyBDb21wZXRpdGlvbiBydWxlcyBjb2x1bW5zCiAgICBydWxlc19maWVsZG5hbWVzID0gWwogICAgICAgICMgU2NvcmluZyBydWxlcwogICAgICAgICdydWxlc19icm9uemVfcG9pbnRzJywgICAgICAgICAgICAjIEJyb256ZSBwcm9ibGVtIHBvaW50cwogICAgICAgICdydWxlc19zaWx2ZXJfcG9pbnRzJywgICAgICAgICAgICAjIFNpbHZlciBwcm9ibGVtIHBvaW50cwogICAgICAgICdydWxlc19nb2xkX3BvaW50cycsICAgICAgICAgICAgICAjIEdvbGQgcHJvYmxlbSBwb2ludHMKICAgICAgICAncnVsZXNfcGxhdGludW1fcG9pbnRzJywgICAgICAgICAgIyBQbGF0aW51bSBwcm9ibGVtIHBvaW50cwogICAgICAgICdydWxlc19ib251c19mb3JfZmlyc3RfYWMnLCAgICAgICAjIEZpcnN0IEFDIGJvbnVzIHBvaW50cwoKICAgICAgICAjIFBlbmFsdHkgcnVsZXMKICAgICAgICAncnVsZXNfcGVuYWx0eV9hYycsICAgICAgICAgICAgICAgIyBBQyBwZW5hbHR5CiAgICAgICAgJ3J1bGVzX3BlbmFsdHlfd2EnLCAgICAgICAgICAgICAgICMgV0EgcGVuYWx0eQogICAgICAgICdydWxlc19wZW5hbHR5X3JlJywgICAgICAgICAgICAgICAjIFJFIHBlbmFsdHkKICAgICAgICAncnVsZXNfcGVuYWx0eV9jZScsICAgICAgICAgICAgICAgIyBDRSBwZW5hbHR5CiAgICAgICAgJ3J1bGVzX3BlbmFsdHlfdGxlJywgICAgICAgICAgICAgICMgVExFIHBlbmFsdHkKICAgICAgICAncnVsZXNfcGVuYWx0eV9tbGUnLCAgICAgICAgICAgICAgIyBNTEUgcGVuYWx0eQoKICAgICAgICAjIEhpbnQgdG9rZW4gY29zdHMKICAgICAgICAncnVsZXNfaGludF90b2tlbnNfbGV2ZWxfMCcsICAgICAgIyBMZXZlbCAwIGhpbnQgdG9rZW4gY29zdAogICAgICAgICdydWxlc19oaW50X3Rva2Vuc19sZXZlbF8xJywgICAgICAjIExldmVsIDEgaGludCB0b2tlbiBjb3N0CiAgICAgICAgJ3J1bGVzX2hpbnRfdG9rZW5zX2xldmVsXzInLCAgICAgICMgTGV2ZWwgMiBoaW50IHRva2VuIGNvc3QKICAgICAgICAncnVsZXNfaGludF90b2tlbnNfbGV2ZWxfMycsICAgICAgIyBMZXZlbCAzIGhpbnQgdG9rZW4gY29zdAogICAgICAgICdydWxlc19oaW50X3Rva2Vuc19sZXZlbF80JywgICAgICAjIExldmVsIDQgaGludCB0b2tlbiBjb3N0CgogICAgICAgICMgU3VibWlzc2lvbiB0b2tlbiBjb3N0cwogICAgICAgICdydWxlc19zdWJtaXNzaW9uX3Rva2Vuc19hYycsICAgICAjIEFDIHN1Ym1pc3Npb24gdG9rZW4gY29zdAogICAgICAgICdydWxlc19zdWJtaXNzaW9uX3Rva2Vuc193YScsICAgICAjIFdBIHN1Ym1pc3Npb24gdG9rZW4gY29zdAogICAgICAgICdydWxlc19zdWJtaXNzaW9uX3Rva2Vuc19yZScsICAgICAjIFJFIHN1Ym1pc3Npb24gdG9rZW4gY29zdAogICAgICAgICdydWxlc19zdWJtaXNzaW9uX3Rva2Vuc19jZScsICAgICAjIENFIHN1Ym1pc3Npb24gdG9rZW4gY29zdAogICAgICAgICdydWxlc19zdWJtaXNzaW9uX3Rva2Vuc190bGUnLCAgICAjIFRMRSBzdWJtaXNzaW9uIHRva2VuIGNvc3QKICAgICAgICAncnVsZXNfc3VibWlzc2lvbl90b2tlbnNfbWxlJywgICAgIyBNTEUgc3VibWlzc2lvbiB0b2tlbiBjb3N0CgogICAgICAgICMgVGVzdCB0b2tlbiBjb3N0cwogICAgICAgICdydWxlc190ZXN0X3Rva2Vuc19kZWZhdWx0JywgICAgICAjIERlZmF1bHQgdGVzdCB0b2tlbiBjb3N0CiAgICAgICAgJ3J1bGVzX3Rlc3RfdG9rZW5zX3Blcl90ZXN0X2Nhc2UnLCAjIFBlciB0ZXN0IGNhc2UgdG9rZW4gY29zdAogICAgICAgICdydWxlc190ZXN0X3Rva2Vuc19jcHBfbXVsdGlwbGllcicsICMgQysrIGxhbmd1YWdlIG11bHRpcGxpZXIgZm9yIHRlc3QgdG9rZW5zCiAgICAgICAgJ3J1bGVzX3Rlc3RfdG9rZW5zX2phdmFfbXVsdGlwbGllcicsICMgSmF2YSBsYW5ndWFnZSBtdWx0aXBsaWVyIGZvciB0ZXN0IHRva2VucwogICAgICAgICdydWxlc190ZXN0X3Rva2Vuc19weXRob25fbXVsdGlwbGllcicsICMgUHl0aG9uIGxhbmd1YWdlIG11bHRpcGxpZXIgZm9yIHRlc3QgdG9rZW5zCgogICAgICAgICMgTGFtYmRhIHZhbHVlCiAgICAgICAgJ3J1bGVzX2xhbWJkYScgICAgICAgICAgICAgICAgICAgICMgTGFtYmRhIHZhbHVlIGZvciB0b2tlbiBzY29yaW5nCiAgICBdCgogICAgIyBHZW5lcmF0ZSBpbmRpdmlkdWFsIHByb2JsZW0gY29sdW1ucwogICAgaW5kaXZpZHVhbF9wcm9ibGVtX2ZpZWxkbmFtZXMgPSBbXQogICAgZm9yIHByb2JsZW1faWQgaW4gYWxsX3Byb2JsZW1faWRzOgogICAgICAgIGluZGl2aWR1YWxfcHJvYmxlbV9maWVsZG5hbWVzLmV4dGVuZChbCiAgICAgICAgICAgIGYne3Byb2JsZW1faWR9X3Njb3JlJywgICAgICAgICMgUHJvYmxlbSBzY29yZQogICAgICAgICAgICBmJ3twcm9ibGVtX2lkfV9wYXNzZWRfY2FzZXMnLCAjIFBhc3NlZCB0ZXN0IGNhc2VzCiAgICAgICAgICAgIGYne3Byb2JsZW1faWR9X3N1Ym1pc3Npb25zJywgICMgTnVtYmVyIG9mIHN1Ym1pc3Npb25zCiAgICAgICAgICAgIGYne3Byb2JsZW1faWR9X3BlbmFsdHknICAgICAgICMgUHJvYmxlbSBwZW5hbHR5CiAgICAgICAgXSkKCiAgICAjIENvbWJpbmUgYWxsIGZpZWxkbmFtZXMKICAgIGZpZWxkbmFtZXMgPSBiYXNlX2ZpZWxkbmFtZXMgKyBydWxlc19maWVsZG5hbWVzICsgaW5kaXZpZHVhbF9wcm9ibGVtX2ZpZWxkbmFtZXMKCiAgICAjIFdyaXRlIENTViBmaWxlCiAgICB3aXRoIG9wZW4oY3N2X2ZpbGVfcGF0aCwgJ3cnLCBuZXdsaW5lPScnLCBlbmNvZGluZz0ndXRmLTgnKSBhcyBjc3ZmaWxlOgogICAgICAgIHdyaXRlciA9IGNzdi5EaWN0V3JpdGVyKGNzdmZpbGUsIGZpZWxkbmFtZXM9ZmllbGRuYW1lcykKCiAgICAgICAgIyBXcml0ZSBoZWFkZXIKICAgICAgICB3cml0ZXIud3JpdGVoZWFkZXIoKQoKICAgICAgICAjIFdyaXRlIGRhdGEgcm93cwogICAgICAgIGZvciBwYXJ0aWNpcGFudF9uYW1lLCBwYXJ0aWNpcGFudF9kYXRhIGluIGRhdGEuaXRlbXMoKToKICAgICAgICAgICAgIyBGbGF0dGVuIHNvbHZlZF9wcm9ibGVtcwogICAgICAgICAgICBzb2x2ZWRfaW5mbyA9IGZsYXR0ZW5fc29sdmVkX3Byb2JsZW1zKHBhcnRpY2lwYW50X2RhdGEuZ2V0KCdzb2x2ZWRfcHJvYmxlbXMnLCBbXSkpCgogICAgICAgICAgICAjIEZsYXR0ZW4gcHJvYmxlbV9zdGF0cwogICAgICAgICAgICBwcm9ibGVtX3N0YXRzX2luZm8gPSBmbGF0dGVuX3Byb2JsZW1fc3RhdHMocGFydGljaXBhbnRfZGF0YS5nZXQoJ3Byb2JsZW1fc3RhdHMnLCB7fSkpCgogICAgICAgICAgICAjIEZsYXR0ZW4gaW5kaXZpZHVhbCBwcm9ibGVtIHN0YXRzCiAgICAgICAgICAgIGluZGl2aWR1YWxfcHJvYmxlbV9pbmZvID0gZmxhdHRlbl9pbmRpdmlkdWFsX3Byb2JsZW1fc3RhdHMoCiAgICAgICAgICAgICAgICBwYXJ0aWNpcGFudF9kYXRhLmdldCgncHJvYmxlbV9zdGF0cycsIHt9KSwKICAgICAgICAgICAgICAgIGFsbF9wcm9ibGVtX2lkcwogICAgICAgICAgICApCgogICAgICAgICAgICAjIEV4dHJhY3QgY29tcGV0aXRpb24gcnVsZXMgZGF0YSBmcm9tIHBhcnRpY2lwYW50IGRhdGEKICAgICAgICAgICAgIyBUaGUgcnVsZXMgYXJlIHNwcmVhZCBpbnRvIHRoZSBwYXJ0aWNpcGFudCBkYXRhIGJ5IGNvbXBldGl0aW9uX29yZ2FuaXplci5weQogICAgICAgICAgICBydWxlc19kYXRhID0ge30KICAgICAgICAgICAgZm9yIGtleSBpbiBbJ3Njb3JpbmcnLCAnYm9udXNfZm9yX2ZpcnN0X2FjJywgJ3BlbmFsdGllcycsICdsYW1iZGEnLCAnaW5wdXRfdG9rZW5fbXVsdGlwbGllcnMnLCAnb3V0cHV0X3Rva2VuX211bHRpcGxpZXJzJ106CiAgICAgICAgICAgICAgICBpZiBrZXkgaW4gcGFydGljaXBhbnRfZGF0YS5nZXQoJ3J1bGVzJywge30pOgogICAgICAgICAgICAgICAgICAgIHJ1bGVzX2RhdGFba2V5XSA9IHBhcnRpY2lwYW50X2RhdGEuZ2V0KCdydWxlcycsIHt9KVtrZXldCgogICAgICAgICAgICAjIEhhbmRsZSB0b2tlbi1yZWxhdGVkIHJ1bGVzIHNlcGFyYXRlbHkgdG8gYXZvaWQgY29uZmxpY3RzIHdpdGggcGFydGljaXBhbnQgY29uc3VtcHRpb24gZGF0YQogICAgICAgICAgICAjIE9ubHkgZXh0cmFjdCB0aGVzZSBpZiB0aGV5IGFyZSBkaWN0aW9uYXJpZXMgKHJ1bGVzKSwgbm90IGludGVnZXJzIChjb25zdW1wdGlvbikKICAgICAgICAgICAgZm9yIGtleSBpbiBbJ2hpbnRfdG9rZW5zJywgJ3N1Ym1pc3Npb25fdG9rZW5zJywgJ3Rlc3RfdG9rZW5zJ106CiAgICAgICAgICAgICAgICBpZiBrZXkgaW4gcGFydGljaXBhbnRfZGF0YS5nZXQoJ3J1bGVzJywge30pIGFuZCBpc2luc3RhbmNlKHBhcnRpY2lwYW50X2RhdGEuZ2V0KCdydWxlcycsIHt9KVtrZXldLCBkaWN0KToKICAgICAgICAgICAgICAgICAgICBydWxlc19kYXRhW2tleV0gPSBwYXJ0aWNpcGFudF9kYXRhLmdldCgncnVsZXMnLCB7fSlba2V5XQoKICAgICAgICAgICAgIyBGbGF0dGVuIGNvbXBldGl0aW9uIHJ1bGVzCiAgICAgICAgICAgIHJ1bGVzX2luZm8gPSBmbGF0dGVuX2NvbXBldGl0aW9uX3J1bGVzKHJ1bGVzX2RhdGEpCgogICAgICAgICAgICAjIE1lcmdlIGRhdGEKICAgICAgICAgICAgcm93X2RhdGEgPSB7CiAgICAgICAgICAgICAgICAnbmFtZSc6IHBhcnRpY2lwYW50X25hbWUsCiAgICAgICAgICAgICAgICAncGFydGljaXBhbnRfaWQnOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgncGFydGljaXBhbnRfaWQnLCAnJyksCiAgICAgICAgICAgICAgICAnY29tcGV0aXRpb25faWQnOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgnY29tcGV0aXRpb25faWQnLCAnJyksCiAgICAgICAgICAgICAgICAnTExNX3Rva2Vucyc6IHBhcnRpY2lwYW50X2RhdGEuZ2V0KCdMTE1fdG9rZW5zJywgMCksCiAgICAgICAgICAgICAgICAnaGludF90b2tlbnMnOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgnaGludF90b2tlbnMnLCAwKSwKICAgICAgICAgICAgICAgICdzdWJtaXNzaW9uX3Rva2Vucyc6IHBhcnRpY2lwYW50X2RhdGEuZ2V0KCdzdWJtaXNzaW9uX3Rva2VucycsIDApLAogICAgICAgICAgICAgICAgJ3Rlc3RfdG9rZW5zJzogcGFydGljaXBhbnRfZGF0YS5nZXQoJ3Rlc3RfdG9rZW5zJywgMCksCiAgICAgICAgICAgICAgICAnbGltaXRfdG9rZW5zJzogcGFydGljaXBhbnRfZGF0YS5nZXQoJ2xpbWl0X3Rva2VucycsIDApLAogICAgICAgICAgICAgICAgJ3JlbWFpbmluZ190b2tlbnMnOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgncmVtYWluaW5nX3Rva2VucycsIDApLAogICAgICAgICAgICAgICAgJ2NvbnN1bWVkX3Rva2Vucyc6IHBhcnRpY2lwYW50X2RhdGEuZ2V0KCdjb25zdW1lZF90b2tlbnMnLCAwKSwKICAgICAgICAgICAgICAgICJjb25zdW1lZF9jcmVkaXQiOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgnY29uc3VtZWRfY3JlZGl0JywgMCksCiAgICAgICAgICAgICAgICAnc3VibWlzc2lvbl9jb3VudCc6IHBhcnRpY2lwYW50X2RhdGEuZ2V0KCdzdWJtaXNzaW9uX2NvdW50JywgMCksCiAgICAgICAgICAgICAgICAnYWNjZXB0ZWRfY291bnQnOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgnYWNjZXB0ZWRfY291bnQnLCAwKSwKICAgICAgICAgICAgICAgICdzdWJtaXNzaW9uX3BlbmFsdHknOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgnc3VibWlzc2lvbl9wZW5hbHR5JywgMCksCiAgICAgICAgICAgICAgICAncHJvYmxlbV9wYXNzX3Njb3JlJzogcGFydGljaXBhbnRfZGF0YS5nZXQoJ3Byb2JsZW1fcGFzc19zY29yZScsIDApLAoKICAgICAgICAgICAgICAgICMgTmV3IHN0YXRpc3RpY3MgZmllbGRzCiAgICAgICAgICAgICAgICAnbGxtX2luZmVyZW5jZV9jb3VudCc6IHBhcnRpY2lwYW50X2RhdGEuZ2V0KCdsbG1faW5mZXJlbmNlX2NvdW50JywgMCksCiAgICAgICAgICAgICAgICAnZmlyc3RfYWNfc2NvcmUnOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgnZmlyc3RfYWNfc2NvcmUnLCAwKSwKICAgICAgICAgICAgICAgICdwcm9ibGVtX3Njb3JlJzogcGFydGljaXBhbnRfZGF0YS5nZXQoJ3Byb2JsZW1fc2NvcmUnLCAwKSwKCiAgICAgICAgICAgICAgICAjIERldGFpbGVkIHJ1bGUtYmFzZWQgc2NvcmluZyBicmVha2Rvd24KICAgICAgICAgICAgICAgICdicm9uemVfc2NvcmUnOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgnYnJvbnplX3Njb3JlJywgMCksCiAgICAgICAgICAgICAgICAnc2lsdmVyX3Njb3JlJzogcGFydGljaXBhbnRfZGF0YS5nZXQoJ3NpbHZlcl9zY29yZScsIDApLAogICAgICAgICAgICAgICAgJ2dvbGRfc2NvcmUnOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgnZ29sZF9zY29yZScsIDApLAogICAgICAgICAgICAgICAgJ3BsYXRpbnVtX3Njb3JlJzogcGFydGljaXBhbnRfZGF0YS5nZXQoJ3BsYXRpbnVtX3Njb3JlJywgMCksCiAgICAgICAgICAgICAgICAnYm9udXNfc2NvcmUnOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgnYm9udXNfc2NvcmUnLCAwKSwKCiAgICAgICAgICAgICAgICAnc2NvcmUnOiBwYXJ0aWNpcGFudF9kYXRhLmdldCgnc2NvcmUnLCAwKSwKICAgICAgICAgICAgICAgICdpc19ydW5uaW5nJzogcGFydGljaXBhbnRfZGF0YS5nZXQoJ2lzX3J1bm5pbmcnLCBGYWxzZSksCiAgICAgICAgICAgICAgICAndGVybWluYXRpb25fcmVhc29uJzogcGFydGljaXBhbnRfZGF0YS5nZXQoJ3Rlcm1pbmF0aW9uX3JlYXNvbicsICcnKSwKICAgICAgICAgICAgICAgICoqc29sdmVkX2luZm8sCiAgICAgICAgICAgICAgICAqKnByb2JsZW1fc3RhdHNfaW5mbywKICAgICAgICAgICAgICAgICoqcnVsZXNfaW5mbywKICAgICAgICAgICAgICAgICoqaW5kaXZpZHVhbF9wcm9ibGVtX2luZm8KICAgICAgICAgICAgfQoKICAgICAgICAgICAgd3JpdGVyLndyaXRlcm93KHJvd19kYXRhKQoKICAgIHJldHVybiBzdHIoY3N2X2ZpbGVfcGF0aCkKCgpkZWYgbWFpbigpOgogICAgIiIiCiAgICBNYWluIGZ1bmN0aW9uCiAgICAiIiIKICAgIGlmIGxlbihzeXMuYXJndikgPCAyOgogICAgICAgIHByaW50KCJVc2FnZTogcHl0aG9uIGpzb25fdG9fY3N2X2NvbnZlcnRlci5weSA8anNvbl9maWxlX3BhdGg+IFtjc3ZfZmlsZV9wYXRoXSIpCiAgICAgICAgcHJpbnQoIkV4YW1wbGU6IHB5dGhvbiBqc29uX3RvX2Nzdl9jb252ZXJ0ZXIucHkgY29tcGV0aXRpb25fcmVzdWx0cy5qc29uIikKICAgICAgICBwcmludCgiRXhhbXBsZTogcHl0aG9uIGpzb25fdG9fY3N2X2NvbnZlcnRlci5weSBjb21wZXRpdGlvbl9yZXN1bHRzLmpzb24gb3V0cHV0LmNzdiIpCiAgICAgICAgc3lzLmV4aXQoMSkKICAgIAogICAganNvbl9maWxlX3BhdGggPSBzeXMuYXJndlsxXQogICAgY3N2X2ZpbGVfcGF0aCA9IHN5cy5hcmd2WzJdIGlmIGxlbihzeXMuYXJndikgPiAyIGVsc2UgTm9uZQogICAgCiAgICB0cnk6CiAgICAgICAgb3V0cHV0X3BhdGggPSBjb252ZXJ0X2pzb25fdG9fY3N2KGpzb25fZmlsZV9wYXRoLCBjc3ZfZmlsZV9wYXRoKQogICAgICAgIHByaW50KGYiQ29udmVyc2lvbiBzdWNjZXNzZnVsISBDU1YgZmlsZSBzYXZlZCB0bzoge291dHB1dF9wYXRofSIpCiAgICBleGNlcHQgRmlsZU5vdEZvdW5kRXJyb3I6CiAgICAgICAgcHJpbnQoZiJFcnJvcjogRmlsZSBub3QgZm91bmQge2pzb25fZmlsZV9wYXRofSIpCiAgICAgICAgc3lzLmV4aXQoMSkKICAgIGV4Y2VwdCBqc29uLkpTT05EZWNvZGVFcnJvciBhcyBlOgogICAgICAgIHByaW50KGYiRXJyb3I6IEludmFsaWQgSlNPTiBmaWxlIGZvcm1hdCAtIHtlfSIpCiAgICAgICAgc3lzLmV4aXQoMSkKICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICBwcmludChmIkVycm9yOiB7ZX0iKQogICAgICAgIHN5cy5leGl0KDEpCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIG1haW4oKSA=
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+JSON competition results to CSV converter
+Transform competition result JSON files into CSV format for analysis.
+"""
+
+import json
+import csv
+import sys
+from pathlib import Path
+from typing import Dict, List, Any
+
+
+def flatten_solved_problems(solved_problems: List[Dict]) -> Dict[str, Any]:
+    """
+    Flatten the solved_problems list into a dictionary structure.
+    """
+    if not solved_problems:
+        return {
+            'solved_problem_count': 0,
+            'solved_problems_summary': '',
+            'first_solved_problem': '',
+            'last_solved_problem': ''
+        }
+
+    problem_count = len(solved_problems)
+    problem_summary = '; '.join([f"{p['problem_id']}({p['score']})" for p in solved_problems])
+    first_problem = solved_problems[0]['problem_id'] if solved_problems else ''
+    last_problem = solved_problems[-1]['problem_id'] if solved_problems else ''
+
+    return {
+        'solved_problem_count': problem_count,
+        'solved_problems_summary': problem_summary,
+        'first_solved_problem': first_problem,
+        'last_solved_problem': last_problem
+    }
+
+
+def flatten_problem_stats(problem_stats: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Flatten the problem_stats dictionary into CSV-friendly fields.
+    """
+    if not problem_stats:
+        return {
+            'total_problems_attempted': 0,
+            'problems_solved': 0,
+            'total_submissions': 0,
+            'avg_submissions_per_problem': 0,
+            'total_penalty': 0,
+            'problems_first_ac': 0,
+            'problem_details_summary': ''
+        }
+
+    total_problems_attempted = len(problem_stats)
+    problems_solved = sum(1 for stats in problem_stats.values() if stats.get('solved', False))
+    total_submissions = sum(stats.get('submission_count', 0) for stats in problem_stats.values())
+    avg_submissions = round(total_submissions / total_problems_attempted, 2) if total_problems_attempted > 0 else 0
+    total_penalty = sum(stats.get('penalty', 0) for stats in problem_stats.values())
+    problems_first_ac = sum(1 for stats in problem_stats.values() if stats.get('is_first_ac', False))
+
+    # Create summary of problem details
+    details = []
+    for problem_id, stats in problem_stats.items():
+        detail = f"{problem_id}(subs:{stats.get('submission_count', 0)}, solved:{stats.get('solved', False)}, score:{stats.get('best_score', 0)})"
+        details.append(detail)
+    problem_details_summary = '; '.join(details)
+
+    return {
+        'total_problems_attempted': total_problems_attempted,
+        'problems_solved': problems_solved,
+        'total_submissions': total_submissions,
+        'avg_submissions_per_problem': avg_submissions,
+        'total_penalty': total_penalty,
+        'problems_first_ac': problems_first_ac,
+        'problem_details_summary': problem_details_summary
+    }
+
+
+def get_all_problem_ids(data: Dict[str, Any]) -> List[str]:
+    """
+    Collect every problem ID observed in participant problem_stats.
+    """
+    all_problem_ids = set()
+
+    for participant_data in data.values():
+        problem_stats = participant_data.get('problem_stats', {})
+        if problem_stats:
+            all_problem_ids.update(problem_stats.keys())
+
+    # Sort to keep a stable column order
+    return sorted(list(all_problem_ids))
+
+
+def flatten_individual_problem_stats(problem_stats: Dict[str, Any], all_problem_ids: List[str]) -> Dict[str, Any]:
+    """
+    Generate per-problem statistic columns.
+    """
+    result = {}
+
+    for problem_id in all_problem_ids:
+        stats = problem_stats.get(problem_id, {})
+
+        # Four statistical columns per problem
+        result[f'{problem_id}_score'] = stats.get('best_score', 0)
+        result[f'{problem_id}_passed_cases'] = stats.get('passed_test_cases', 0)
+        result[f'{problem_id}_submissions'] = stats.get('submission_count', 0)
+        result[f'{problem_id}_penalty'] = stats.get('penalty', 0)
+
+    return result
+
+
+def flatten_competition_rules(rules_data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Flatten competition rules into CSV-friendly fields.
+    """
+    result = {}
+
+    # Handle scoring rules
+    scoring = rules_data.get('scoring', {})
+    result['rules_bronze_points'] = scoring.get('bronze', 0)
+    result['rules_silver_points'] = scoring.get('silver', 0)
+    result['rules_gold_points'] = scoring.get('gold', 0)
+    result['rules_platinum_points'] = scoring.get('platinum', 0)
+
+    # Handle bonus rules
+    result['rules_bonus_for_first_ac'] = rules_data.get('bonus_for_first_ac', 0)
+
+    # Handle penalty rules
+    penalties = rules_data.get('penalties', {})
+    result['rules_penalty_ac'] = penalties.get('AC', 0)
+    result['rules_penalty_wa'] = penalties.get('WA', 0)
+    result['rules_penalty_re'] = penalties.get('RE', 0)
+    result['rules_penalty_ce'] = penalties.get('CE', 0)
+    result['rules_penalty_tle'] = penalties.get('TLE', 0)
+    result['rules_penalty_mle'] = penalties.get('MLE', 0)
+
+    # Handle hint token rules
+    hint_tokens = rules_data.get('hint_tokens', {})
+    result['rules_hint_tokens_level_0'] = hint_tokens.get('level_0', 0)
+    result['rules_hint_tokens_level_1'] = hint_tokens.get('level_1', 0)
+    result['rules_hint_tokens_level_2'] = hint_tokens.get('level_2', 0)
+    result['rules_hint_tokens_level_3'] = hint_tokens.get('level_3', 0)
+    result['rules_hint_tokens_level_4'] = hint_tokens.get('level_4', 0)
+
+    # Handle submission token rules
+    submission_tokens = rules_data.get('submission_tokens', {})
+    result['rules_submission_tokens_ac'] = submission_tokens.get('AC', 0)
+    result['rules_submission_tokens_wa'] = submission_tokens.get('WA', 0)
+    result['rules_submission_tokens_re'] = submission_tokens.get('RE', 0)
+    result['rules_submission_tokens_ce'] = submission_tokens.get('CE', 0)
+    result['rules_submission_tokens_tle'] = submission_tokens.get('TLE', 0)
+    result['rules_submission_tokens_mle'] = submission_tokens.get('MLE', 0)
+
+    # Handle test token rules
+    test_tokens = rules_data.get('test_tokens', {})
+    result['rules_test_tokens_default'] = test_tokens.get('default', 0)
+    result['rules_test_tokens_per_test_case'] = test_tokens.get('per_test_case', 0)
+
+    # Handle language multipliers
+    language_multipliers = test_tokens.get('language_multipliers', {})
+    result['rules_test_tokens_cpp_multiplier'] = language_multipliers.get('cpp', 0)
+    result['rules_test_tokens_java_multiplier'] = language_multipliers.get('java', 0)
+    result['rules_test_tokens_python_multiplier'] = language_multipliers.get('python', 0)
+
+    # Handle lambda value
+    result['rules_lambda'] = rules_data.get('lambda', 0)
+
+    # Note: input_token_multipliers and output_token_multipliers contain extensive model-specific data
+    # These are typically identical across participants and can be omitted
+    # Add specific multipliers only when explicitly required
+
+    return result
+
+
+def convert_json_to_csv(json_file_path: str, csv_file_path: str = None) -> str:
+    """
+    Convert JSON file to CSV file
+
+    Args:
+        json_file_path: JSON file path
+        csv_file_path: Output CSV file path, if None then auto-generate
+
+    Returns:
+        Generated CSV file path
+    """
+    # Read JSON file
+    with open(json_file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    # If CSV file path is not specified, auto-generate
+    if csv_file_path is None:
+        json_path = Path(json_file_path)
+        csv_file_path = json_path.with_suffix('.csv')
+
+    # Get all problem IDs from all participants
+    all_problem_ids = get_all_problem_ids(data)
+
+    # Define base CSV column names
+    base_fieldnames = [
+        'name',                           # Participant name
+        'participant_id',                 # Participant ID
+        'competition_id',                 # Competition ID
+        'LLM_tokens',                     # LLM tokens used
+        'hint_tokens',                    # Hint tokens
+        'submission_tokens',              # Submission tokens
+        'test_tokens',                    # Test tokens used
+        'limit_tokens',                   # Token limit
+        'remaining_tokens',               # Remaining tokens
+        'consumed_tokens',                # Consumed tokens
+        'consumed_credit',                # Consumed tokens
+        'submission_count',               # Submission count
+        'accepted_count',                 # Accepted count
+        'submission_penalty',             # Submission penalty
+        'problem_pass_score',             # Problem pass score
+
+        # New statistics fields
+        'llm_inference_count',            # Total LLM inference calls
+        'first_ac_score',                 # Score from being first to solve problems
+        'problem_score',                  # Score from passing problems (excluding first AC bonus)
+
+        # Detailed rule-based scoring breakdown
+        'bronze_score',                   # Score from bronze problems
+        'silver_score',                   # Score from silver problems
+        'gold_score',                     # Score from gold problems
+        'platinum_score',                 # Score from platinum problems
+        'bonus_score',                    # First AC bonuses
+
+        'score',                          # Total score
+        'is_running',                     # Is running
+        'termination_reason',             # Termination reason
+        'solved_problem_count',           # Solved problem count
+        'solved_problems_summary',        # Solved problems summary
+        'first_solved_problem',           # First solved problem
+        'last_solved_problem',            # Last solved problem
+
+        # Per-problem statistics summary
+        'total_problems_attempted',       # Total problems attempted
+        'problems_solved',                # Number of problems solved
+        'total_submissions',              # Total submissions across all problems
+        'avg_submissions_per_problem',    # Average submissions per problem
+        'total_penalty',                  # Total penalty across all problems
+        'problems_first_ac',              # Number of problems where participant was first to solve
+        'problem_details_summary'         # Detailed per-problem summary
+    ]
+
+    # Competition rules columns
+    rules_fieldnames = [
+        # Scoring rules
+        'rules_bronze_points',            # Bronze problem points
+        'rules_silver_points',            # Silver problem points
+        'rules_gold_points',              # Gold problem points
+        'rules_platinum_points',          # Platinum problem points
+        'rules_bonus_for_first_ac',       # First AC bonus points
+
+        # Penalty rules
+        'rules_penalty_ac',               # AC penalty
+        'rules_penalty_wa',               # WA penalty
+        'rules_penalty_re',               # RE penalty
+        'rules_penalty_ce',               # CE penalty
+        'rules_penalty_tle',              # TLE penalty
+        'rules_penalty_mle',              # MLE penalty
+
+        # Hint token costs
+        'rules_hint_tokens_level_0',      # Level 0 hint token cost
+        'rules_hint_tokens_level_1',      # Level 1 hint token cost
+        'rules_hint_tokens_level_2',      # Level 2 hint token cost
+        'rules_hint_tokens_level_3',      # Level 3 hint token cost
+        'rules_hint_tokens_level_4',      # Level 4 hint token cost
+
+        # Submission token costs
+        'rules_submission_tokens_ac',     # AC submission token cost
+        'rules_submission_tokens_wa',     # WA submission token cost
+        'rules_submission_tokens_re',     # RE submission token cost
+        'rules_submission_tokens_ce',     # CE submission token cost
+        'rules_submission_tokens_tle',    # TLE submission token cost
+        'rules_submission_tokens_mle',    # MLE submission token cost
+
+        # Test token costs
+        'rules_test_tokens_default',      # Default test token cost
+        'rules_test_tokens_per_test_case', # Per test case token cost
+        'rules_test_tokens_cpp_multiplier', # C++ language multiplier for test tokens
+        'rules_test_tokens_java_multiplier', # Java language multiplier for test tokens
+        'rules_test_tokens_python_multiplier', # Python language multiplier for test tokens
+
+        # Lambda value
+        'rules_lambda'                    # Lambda value for token scoring
+    ]
+
+    # Generate individual problem columns
+    individual_problem_fieldnames = []
+    for problem_id in all_problem_ids:
+        individual_problem_fieldnames.extend([
+            f'{problem_id}_score',        # Problem score
+            f'{problem_id}_passed_cases', # Passed test cases
+            f'{problem_id}_submissions',  # Number of submissions
+            f'{problem_id}_penalty'       # Problem penalty
+        ])
+
+    # Combine all fieldnames
+    fieldnames = base_fieldnames + rules_fieldnames + individual_problem_fieldnames
+
+    # Write CSV file
+    with open(csv_file_path, 'w', newline='', encoding='utf-8') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        # Write header
+        writer.writeheader()
+
+        # Write data rows
+        for participant_name, participant_data in data.items():
+            # Flatten solved_problems
+            solved_info = flatten_solved_problems(participant_data.get('solved_problems', []))
+
+            # Flatten problem_stats
+            problem_stats_info = flatten_problem_stats(participant_data.get('problem_stats', {}))
+
+            # Flatten individual problem stats
+            individual_problem_info = flatten_individual_problem_stats(
+                participant_data.get('problem_stats', {}),
+                all_problem_ids
+            )
+
+            # Extract competition rules data from participant data
+            # The rules are spread into the participant data by competition_organizer.py
+            rules_data = {}
+            for key in ['scoring', 'bonus_for_first_ac', 'penalties', 'lambda', 'input_token_multipliers', 'output_token_multipliers']:
+                if key in participant_data.get('rules', {}):
+                    rules_data[key] = participant_data.get('rules', {})[key]
+
+            # Handle token-related rules separately to avoid conflicts with participant consumption data
+            # Only extract these if they are dictionaries (rules), not integers (consumption)
+            for key in ['hint_tokens', 'submission_tokens', 'test_tokens']:
+                if key in participant_data.get('rules', {}) and isinstance(participant_data.get('rules', {})[key], dict):
+                    rules_data[key] = participant_data.get('rules', {})[key]
+
+            # Flatten competition rules
+            rules_info = flatten_competition_rules(rules_data)
+
+            # Merge data
+            row_data = {
+                'name': participant_name,
+                'participant_id': participant_data.get('participant_id', ''),
+                'competition_id': participant_data.get('competition_id', ''),
+                'LLM_tokens': participant_data.get('LLM_tokens', 0),
+                'hint_tokens': participant_data.get('hint_tokens', 0),
+                'submission_tokens': participant_data.get('submission_tokens', 0),
+                'test_tokens': participant_data.get('test_tokens', 0),
+                'limit_tokens': participant_data.get('limit_tokens', 0),
+                'remaining_tokens': participant_data.get('remaining_tokens', 0),
+                'consumed_tokens': participant_data.get('consumed_tokens', 0),
+                "consumed_credit": participant_data.get('consumed_credit', 0),
+                'submission_count': participant_data.get('submission_count', 0),
+                'accepted_count': participant_data.get('accepted_count', 0),
+                'submission_penalty': participant_data.get('submission_penalty', 0),
+                'problem_pass_score': participant_data.get('problem_pass_score', 0),
+
+                # New statistics fields
+                'llm_inference_count': participant_data.get('llm_inference_count', 0),
+                'first_ac_score': participant_data.get('first_ac_score', 0),
+                'problem_score': participant_data.get('problem_score', 0),
+
+                # Detailed rule-based scoring breakdown
+                'bronze_score': participant_data.get('bronze_score', 0),
+                'silver_score': participant_data.get('silver_score', 0),
+                'gold_score': participant_data.get('gold_score', 0),
+                'platinum_score': participant_data.get('platinum_score', 0),
+                'bonus_score': participant_data.get('bonus_score', 0),
+
+                'score': participant_data.get('score', 0),
+                'is_running': participant_data.get('is_running', False),
+                'termination_reason': participant_data.get('termination_reason', ''),
+                **solved_info,
+                **problem_stats_info,
+                **rules_info,
+                **individual_problem_info
+            }
+
+            writer.writerow(row_data)
+
+    return str(csv_file_path)
+
+
+def main():
+    """
+    Main function
+    """
+    if len(sys.argv) < 2:
+        print("Usage: python json_to_csv_converter.py <json_file_path> [csv_file_path]")
+        print("Example: python json_to_csv_converter.py competition_results.json")
+        print("Example: python json_to_csv_converter.py competition_results.json output.csv")
+        sys.exit(1)
+    
+    json_file_path = sys.argv[1]
+    csv_file_path = sys.argv[2] if len(sys.argv) > 2 else None
+    
+    try:
+        output_path = convert_json_to_csv(json_file_path, csv_file_path)
+        print(f"Conversion successful! CSV file saved to: {output_path}")
+    except FileNotFoundError:
+        print(f"Error: File not found {json_file_path}")
+        sys.exit(1)
+    except json.JSONDecodeError as e:
+        print(f"Error: Invalid JSON file format - {e}")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main() 

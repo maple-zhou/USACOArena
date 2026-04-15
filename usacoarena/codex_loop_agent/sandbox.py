@@ -1,1 +1,360 @@
-IiIiU2FuZGJveCBhbmQgcnVuLWxvY2FsIEhPTUUgbWFuYWdlbWVudCBmb3Igc3RhbmRhbG9uZSBDb2RleCBsb29wIGFnZW50LiIiIgoKZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IG9zCmltcG9ydCBzaHV0aWwKaW1wb3J0IHN1YnByb2Nlc3MKaW1wb3J0IHRocmVhZGluZwpmcm9tIGRhdGFjbGFzc2VzIGltcG9ydCBkYXRhY2xhc3MKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gdHlwaW5nIGltcG9ydCBBbnksIENhbGxhYmxlLCBEaWN0LCBJdGVyYWJsZSwgTGlzdCwgT3B0aW9uYWwKCmZyb20gLmxpbnV4X2xhbmRsb2NrIGltcG9ydCAoCiAgICBMYW5kbG9ja1BvbGljeSwKICAgIExhbmRsb2NrVW5hdmFpbGFibGUsCiAgICBhcHBseV9sYW5kbG9jaywKICAgIGxhbmRsb2NrX2FiaV92ZXJzaW9uLAopCgoKY2xhc3MgU2FuZGJveEVycm9yKFJ1bnRpbWVFcnJvcik6CiAgICAiIiJCYXNlIHNhbmRib3ggZXJyb3IuIiIiCgoKQGRhdGFjbGFzcyhmcm96ZW49VHJ1ZSwgc2xvdHM9VHJ1ZSkKY2xhc3MgU2FuZGJveExheW91dDoKICAgICIiIlJ1bi1sb2NhbCBmaWxlc3lzdGVtIGxheW91dCBmb3IgQ29kZXguIiIiCgogICAgd29ya3NwYWNlOiBQYXRoCiAgICBob21lX2RpcjogUGF0aAogICAgY29kZXhfaG9tZTogUGF0aAogICAgdG1wX2RpcjogUGF0aAogICAgbG9nc19kaXI6IFBhdGgKCgpkZWYgX25vcm1hbGl6ZV9wYXRocyhwYXRoczogSXRlcmFibGVbUGF0aF0pIC0+IExpc3RbUGF0aF06CiAgICBub3JtYWxpemVkOiBMaXN0W1BhdGhdID0gW10KICAgIHNlZW46IHNldFtzdHJdID0gc2V0KCkKICAgIGZvciByYXcgaW4gcGF0aHM6CiAgICAgICAgaWYgcmF3IGlzIE5vbmU6CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgcGF0aCA9IFBhdGgocmF3KS5leHBhbmR1c2VyKCkKICAgICAgICB0cnk6CiAgICAgICAgICAgIHJlc29sdmVkID0gcGF0aC5yZXNvbHZlKCkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcmVzb2x2ZWQgPSBwYXRoCiAgICAgICAga2V5ID0gc3RyKHJlc29sdmVkKQogICAgICAgIGlmIG5vdCBrZXkgb3Iga2V5IGluIHNlZW46CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgc2Vlbi5hZGQoa2V5KQogICAgICAgIG5vcm1hbGl6ZWQuYXBwZW5kKHJlc29sdmVkKQogICAgcmV0dXJuIG5vcm1hbGl6ZWQKCgpkZWYgX2V4aXN0aW5nX3BhdGhzKHBhdGhzOiBJdGVyYWJsZVtQYXRoXSkgLT4gTGlzdFtQYXRoXToKICAgIHJvd3M6IExpc3RbUGF0aF0gPSBbXQogICAgZm9yIHBhdGggaW4gX25vcm1hbGl6ZV9wYXRocyhwYXRocyk6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBpZiBwYXRoLmV4aXN0cygpOgogICAgICAgICAgICAgICAgcm93cy5hcHBlbmQocGF0aCkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgY29udGludWUKICAgIHJldHVybiByb3dzCgoKZGVmIF9jb2xsZWN0X2JpbmFyeV9wYXRocyhiaW5hcnlfcGF0aDogc3RyKSAtPiBMaXN0W1BhdGhdOgogICAgcm93czogTGlzdFtQYXRoXSA9IFtdCiAgICBub3JtYWxpemVkID0gc3RyKGJpbmFyeV9wYXRoIG9yICIiKS5zdHJpcCgpCiAgICBpZiBub3JtYWxpemVkOgogICAgICAgIHJvd3MuYXBwZW5kKFBhdGgobm9ybWFsaXplZCkpCgogICAgaWYgbm9ybWFsaXplZCBhbmQgbm90IG9zLnBhdGguaXNhYnMobm9ybWFsaXplZCk6CiAgICAgICAgcmVzb2x2ZWQgPSBzaHV0aWwud2hpY2gobm9ybWFsaXplZCkKICAgICAgICBpZiByZXNvbHZlZDoKICAgICAgICAgICAgcm93cy5hcHBlbmQoUGF0aChyZXNvbHZlZCkpCgogICAgaWYgbm90IG5vcm1hbGl6ZWQ6CiAgICAgICAgcmVzb2x2ZWQgPSBzaHV0aWwud2hpY2goImNvZGV4IikKICAgICAgICBpZiByZXNvbHZlZDoKICAgICAgICAgICAgcm93cy5hcHBlbmQoUGF0aChyZXNvbHZlZCkpCgogICAgb3V0OiBMaXN0W1BhdGhdID0gW10KICAgIGZvciBwYXRoIGluIF9leGlzdGluZ19wYXRocyhyb3dzKToKICAgICAgICBvdXQuYXBwZW5kKHBhdGgpCiAgICAgICAgb3V0LmFwcGVuZChwYXRoLnBhcmVudCkKICAgICAgICBpZiBwYXRoLnBhcmVudCAhPSBwYXRoLnBhcmVudC5wYXJlbnQ6CiAgICAgICAgICAgIG91dC5hcHBlbmQocGF0aC5wYXJlbnQucGFyZW50KQogICAgcmV0dXJuIF9leGlzdGluZ19wYXRocyhvdXQpCgoKZGVmIF9kZWZhdWx0X3N5c3RlbV9yb19wYXRocygpIC0+IExpc3RbUGF0aF06CiAgICByZXR1cm4gX2V4aXN0aW5nX3BhdGhzKAogICAgICAgIFsKICAgICAgICAgICAgUGF0aCgiL3VzciIpLAogICAgICAgICAgICBQYXRoKCIvYmluIiksCiAgICAgICAgICAgIFBhdGgoIi9zYmluIiksCiAgICAgICAgICAgIFBhdGgoIi9saWIiKSwKICAgICAgICAgICAgUGF0aCgiL2xpYjY0IiksCiAgICAgICAgICAgIFBhdGgoIi9ldGMiKSwKICAgICAgICAgICAgUGF0aCgiL3J1biIpLAogICAgICAgICAgICBQYXRoKCIvdmFyL3J1biIpLAogICAgICAgIF0KICAgICkKCgpkZWYgX2RlZmF1bHRfc3lzdGVtX3J3X3BhdGhzKCkgLT4gTGlzdFtQYXRoXToKICAgIHJldHVybiBfZXhpc3RpbmdfcGF0aHMoW1BhdGgoIi9kZXYiKSwgUGF0aCgiL3RtcCIpLCBQYXRoKCIvdmFyL3RtcCIpXSkKCgpkZWYgX2xvb2tzX2xpa2VfdmlydHVhbGVudl9iaW4ocGF0aDogUGF0aCkgLT4gYm9vbDoKICAgIGNhbmRpZGF0ZSA9IFBhdGgocGF0aCkuZXhwYW5kdXNlcigpCiAgICB0ZXh0ID0gc3RyKGNhbmRpZGF0ZSkubG93ZXIoKQogICAgaWYgdGV4dC5lbmRzd2l0aCgiLy52ZW52L2JpbiIpOgogICAgICAgIHJldHVybiBUcnVlCiAgICBpZiAiLy52ZW52LyIgaW4gdGV4dCBvciAiL3ZlbnYvIiBpbiB0ZXh0IG9yICIvdmlydHVhbGVudi8iIGluIHRleHQ6CiAgICAgICAgcmV0dXJuIFRydWUKICAgIHRyeToKICAgICAgICBjZmcgPSBjYW5kaWRhdGUucGFyZW50IC8gInB5dmVudi5jZmciCiAgICAgICAgaWYgY2FuZGlkYXRlLm5hbWUgPT0gImJpbiIgYW5kIGNmZy5leGlzdHMoKToKICAgICAgICAgICAgcmV0dXJuIFRydWUKICAgIGV4Y2VwdCBPU0Vycm9yOgogICAgICAgIHJldHVybiBGYWxzZQogICAgcmV0dXJuIEZhbHNlCgoKY2xhc3MgUnVubmVyU2FuZGJveDoKICAgICIiIkJ1aWxkIHJ1bi1sb2NhbCBIT01FIGFuZCBvcHRpb25hbCBMaW51eCBMYW5kbG9jayBwcmVleGVjLiIiIgoKICAgIGRlZiBfX2luaXRfXygKICAgICAgICBzZWxmLAogICAgICAgICosCiAgICAgICAgd29ya3NwYWNlOiBQYXRoLAogICAgICAgIGNvZGV4X2JpbmFyeTogc3RyLAogICAgICAgIGVuYWJsZV9sYW5kbG9jazogYm9vbCwKICAgICkgLT4gTm9uZToKICAgICAgICByb290ID0gUGF0aCh3b3Jrc3BhY2UpLmV4cGFuZHVzZXIoKS5yZXNvbHZlKCkKICAgICAgICBzZWxmLmxheW91dCA9IFNhbmRib3hMYXlvdXQoCiAgICAgICAgICAgIHdvcmtzcGFjZT1yb290LAogICAgICAgICAgICBob21lX2Rpcj1yb290IC8gIi5ydW5uZXJfaG9tZSIsCiAgICAgICAgICAgIGNvZGV4X2hvbWU9cm9vdCAvICIucnVubmVyX2hvbWUiIC8gIi5jb2RleCIsCiAgICAgICAgICAgIHRtcF9kaXI9cm9vdCAvICIuc2FuZGJveF90bXAiLAogICAgICAgICAgICBsb2dzX2Rpcj1yb290IC8gImxvZ3MiLAogICAgICAgICkKICAgICAgICBzZWxmLmNvZGV4X2JpbmFyeSA9IGNvZGV4X2JpbmFyeQogICAgICAgIHNlbGYuZW5hYmxlX2xhbmRsb2NrID0gYm9vbChlbmFibGVfbGFuZGxvY2spCgogICAgICAgIHNlbGYubGF5b3V0LndvcmtzcGFjZS5ta2RpcihwYXJlbnRzPVRydWUsIGV4aXN0X29rPVRydWUpCiAgICAgICAgc2VsZi5sYXlvdXQuaG9tZV9kaXIubWtkaXIocGFyZW50cz1UcnVlLCBleGlzdF9vaz1UcnVlKQogICAgICAgIHNlbGYubGF5b3V0LmNvZGV4X2hvbWUubWtkaXIocGFyZW50cz1UcnVlLCBleGlzdF9vaz1UcnVlKQogICAgICAgIHNlbGYubGF5b3V0LnRtcF9kaXIubWtkaXIocGFyZW50cz1UcnVlLCBleGlzdF9vaz1UcnVlKQogICAgICAgIHNlbGYubGF5b3V0LmxvZ3NfZGlyLm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKCiAgICAgICAgaWYgc2VsZi5lbmFibGVfbGFuZGxvY2s6CiAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgIGxhbmRsb2NrX2FiaV92ZXJzaW9uKCkKICAgICAgICAgICAgZXhjZXB0IExhbmRsb2NrVW5hdmFpbGFibGUgYXMgZXhjOgogICAgICAgICAgICAgICAgcmFpc2UgU2FuZGJveEVycm9yKGYiTGFuZGxvY2sgaXMgdW5hdmFpbGFibGU6IHtleGN9IikgZnJvbSBleGMKCiAgICBkZWYgc2VlZF9jb2RleF9ob21lKHNlbGYpIC0+IE5vbmU6CiAgICAgICAgIiIiQmVzdC1lZmZvcnQgY29weSBvZiBob3N0IENvZGV4IGNvbmZpZy9hdXRoIGludG8gcnVuLWxvY2FsIENPREVYX0hPTUUuIiIiCgogICAgICAgIGhvc3RfY29kZXhfaG9tZSA9IFBhdGguaG9tZSgpIC8gIi5jb2RleCIKICAgICAgICBmb3IgZmlsZW5hbWUgaW4gKCJjb25maWcudG9tbCIsICJhdXRoLmpzb24iKToKICAgICAgICAgICAgc291cmNlID0gaG9zdF9jb2RleF9ob21lIC8gZmlsZW5hbWUKICAgICAgICAgICAgdGFyZ2V0ID0gc2VsZi5sYXlvdXQuY29kZXhfaG9tZSAvIGZpbGVuYW1lCiAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgIGlmIG5vdCBzb3VyY2UuaXNfZmlsZSgpIG9yIHNvdXJjZS5pc19zeW1saW5rKCk6CiAgICAgICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgICAgIHRhcmdldC5wYXJlbnQubWtkaXIocGFyZW50cz1UcnVlLCBleGlzdF9vaz1UcnVlKQogICAgICAgICAgICAgICAgc2h1dGlsLmNvcHkyKHNvdXJjZSwgdGFyZ2V0KQogICAgICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgICAgIGNvbnRpbnVlCgogICAgZGVmIGJ1aWxkX2VudihzZWxmLCBiYXNlX2VudjogT3B0aW9uYWxbRGljdFtzdHIsIHN0cl1dID0gTm9uZSkgLT4gRGljdFtzdHIsIHN0cl06CiAgICAgICAgZW52ID0gZGljdChiYXNlX2VudiBvciBvcy5lbnZpcm9uKQoKICAgICAgICBlbnZbIkhPTUUiXSA9IHN0cihzZWxmLmxheW91dC5ob21lX2RpcikKICAgICAgICBlbnZbIkNPREVYX0hPTUUiXSA9IHN0cihzZWxmLmxheW91dC5jb2RleF9ob21lKQogICAgICAgIGVudlsiVE1QRElSIl0gPSBzdHIoc2VsZi5sYXlvdXQudG1wX2RpcikKCiAgICAgICAgZW52LnBvcCgiVklSVFVBTF9FTlYiLCBOb25lKQogICAgICAgIGVudi5wb3AoIkNPTkRBX1BSRUZJWCIsIE5vbmUpCiAgICAgICAgZW52LnBvcCgiUFlUSE9OSE9NRSIsIE5vbmUpCgogICAgICAgIGVudlsiUEFUSCJdID0gc2VsZi5fYnVpbGRfcGF0aChlbnYuZ2V0KCJQQVRIIiwgIiIpKQogICAgICAgIHNoaW1fYmluID0gc2VsZi5fZW5zdXJlX3B5dGhvbl9zaGltX2RpcigpCiAgICAgICAgZW52WyJQQVRIIl0gPSBmIntzaGltX2Jpbn06e2VudlsnUEFUSCddfSIKICAgICAgICByZXR1cm4gZW52CgogICAgZGVmIGJ1aWxkX3ByZWV4ZWNfZm4oc2VsZiwgKiwgd29ya2RpcjogUGF0aCwgcHJpb3I6IE9wdGlvbmFsW0NhbGxhYmxlW1tdLCBOb25lXV0gPSBOb25lKSAtPiBPcHRpb25hbFtDYWxsYWJsZVtbXSwgTm9uZV1dOgogICAgICAgIGlmIG5vdCBzZWxmLmVuYWJsZV9sYW5kbG9jazoKICAgICAgICAgICAgcmV0dXJuIHByaW9yCgogICAgICAgIHBvbGljeSA9IHNlbGYuX2J1aWxkX2xhbmRsb2NrX3BvbGljeSh3b3JrZGlyPXdvcmtkaXIpCgogICAgICAgIGRlZiBfYXBwbHkoKSAtPiBOb25lOgogICAgICAgICAgICBhcHBseV9sYW5kbG9jayhwb2xpY3kpCgogICAgICAgIGlmIHByaW9yIGlzIE5vbmU6CiAgICAgICAgICAgIHJldHVybiBfYXBwbHkKCiAgICAgICAgZGVmIF9jaGFpbmVkKCkgLT4gTm9uZToKICAgICAgICAgICAgcHJpb3IoKQogICAgICAgICAgICBfYXBwbHkoKQoKICAgICAgICByZXR1cm4gX2NoYWluZWQKCiAgICBkZWYgX2J1aWxkX3BhdGgoc2VsZiwgaW5oZXJpdGVkOiBzdHIpIC0+IHN0cjoKICAgICAgICBwYXJ0czogTGlzdFtzdHJdID0gWwogICAgICAgICAgICAiL3Vzci9sb2NhbC9zYmluIiwKICAgICAgICAgICAgIi91c3IvbG9jYWwvYmluIiwKICAgICAgICAgICAgIi91c3Ivc2JpbiIsCiAgICAgICAgICAgICIvdXNyL2JpbiIsCiAgICAgICAgICAgICIvc2JpbiIsCiAgICAgICAgICAgICIvYmluIiwKICAgICAgICBdCgogICAgICAgIGZvciBwYXRoIGluIF9jb2xsZWN0X2JpbmFyeV9wYXRocyhzZWxmLmNvZGV4X2JpbmFyeSk6CiAgICAgICAgICAgIGlmIHBhdGguaXNfZGlyKCk6CiAgICAgICAgICAgICAgICBwYXJ0cy5hcHBlbmQoc3RyKHBhdGgpKQogICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgcGFydHMuYXBwZW5kKHN0cihwYXRoLnBhcmVudCkpCgogICAgICAgIGZvciB0b2tlbiBpbiBzdHIoaW5oZXJpdGVkIG9yICIiKS5zcGxpdCgiOiIpOgogICAgICAgICAgICBub3JtYWxpemVkID0gdG9rZW4uc3RyaXAoKQogICAgICAgICAgICBpZiBub3JtYWxpemVkOgogICAgICAgICAgICAgICAgaWYgX2xvb2tzX2xpa2VfdmlydHVhbGVudl9iaW4oUGF0aChub3JtYWxpemVkKSk6CiAgICAgICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgICAgIHBhcnRzLmFwcGVuZChub3JtYWxpemVkKQoKICAgICAgICBkZWR1cGVkOiBMaXN0W3N0cl0gPSBbXQogICAgICAgIHNlZW46IHNldFtzdHJdID0gc2V0KCkKICAgICAgICBmb3IgaXRlbSBpbiBwYXJ0czoKICAgICAgICAgICAgaWYgaXRlbSBpbiBzZWVuOgogICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgc2Vlbi5hZGQoaXRlbSkKICAgICAgICAgICAgZGVkdXBlZC5hcHBlbmQoaXRlbSkKICAgICAgICByZXR1cm4gIjoiLmpvaW4oZGVkdXBlZCkKCiAgICBkZWYgX2Vuc3VyZV9weXRob25fc2hpbV9kaXIoc2VsZikgLT4gc3RyOgogICAgICAgICIiIlByb3ZpZGUgYSBzdGFibGUgYHB5dGhvbmAgY29tbWFuZCB0aGF0IHJlc29sdmVzIHRvIHN5c3RlbSBgcHl0aG9uM2AuIiIiCgogICAgICAgIHNoaW1fZGlyID0gc2VsZi5sYXlvdXQuaG9tZV9kaXIgLyAiYmluIgogICAgICAgIHNoaW1fcGF0aCA9IHNoaW1fZGlyIC8gInB5dGhvbiIKICAgICAgICBzaGltX2NvbnRlbnQgPSAiIyEvdXNyL2Jpbi9lbnYgYmFzaFxuZXhlYyBweXRob24zIFwiJEBcIlxuIgoKICAgICAgICB0cnk6CiAgICAgICAgICAgIHNoaW1fZGlyLm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKICAgICAgICAgICAgaWYgKG5vdCBzaGltX3BhdGguZXhpc3RzKCkpIG9yIChzaGltX3BhdGgucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIpICE9IHNoaW1fY29udGVudCk6CiAgICAgICAgICAgICAgICBzaGltX3BhdGgud3JpdGVfdGV4dChzaGltX2NvbnRlbnQsIGVuY29kaW5nPSJ1dGYtOCIpCiAgICAgICAgICAgIHNoaW1fcGF0aC5jaG1vZCgwbzc1NSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcmV0dXJuICIvdXNyL2JpbiIKICAgICAgICByZXR1cm4gc3RyKHNoaW1fZGlyKQoKICAgIGRlZiBfYnVpbGRfbGFuZGxvY2tfcG9saWN5KHNlbGYsICosIHdvcmtkaXI6IFBhdGgpIC0+IExhbmRsb2NrUG9saWN5OgogICAgICAgIHdvcmtkaXIgPSBQYXRoKHdvcmtkaXIpLnJlc29sdmUoKQoKICAgICAgICByb19wYXRoczogTGlzdFtQYXRoXSA9IFtdCiAgICAgICAgcm9fcGF0aHMuZXh0ZW5kKF9kZWZhdWx0X3N5c3RlbV9yb19wYXRocygpKQogICAgICAgIHJvX3BhdGhzLmV4dGVuZChfY29sbGVjdF9iaW5hcnlfcGF0aHMoc2VsZi5jb2RleF9iaW5hcnkpKQoKICAgICAgICByd19wYXRoczogTGlzdFtQYXRoXSA9IFsKICAgICAgICAgICAgc2VsZi5sYXlvdXQud29ya3NwYWNlLAogICAgICAgICAgICBzZWxmLmxheW91dC5ob21lX2RpciwKICAgICAgICAgICAgc2VsZi5sYXlvdXQuY29kZXhfaG9tZSwKICAgICAgICAgICAgc2VsZi5sYXlvdXQudG1wX2RpciwKICAgICAgICAgICAgc2VsZi5sYXlvdXQubG9nc19kaXIsCiAgICAgICAgICAgIHdvcmtkaXIsCiAgICAgICAgXQogICAgICAgIHJ3X3BhdGhzLmV4dGVuZChfZGVmYXVsdF9zeXN0ZW1fcndfcGF0aHMoKSkKCiAgICAgICAgbm9ybWFsaXplZF9ydyA9IF9ub3JtYWxpemVfcGF0aHMocndfcGF0aHMpCiAgICAgICAgcndfc2V0ID0ge3N0cihwYXRoKSBmb3IgcGF0aCBpbiBub3JtYWxpemVkX3J3fQogICAgICAgIG5vcm1hbGl6ZWRfcm8gPSBbcGF0aCBmb3IgcGF0aCBpbiBfbm9ybWFsaXplX3BhdGhzKHJvX3BhdGhzKSBpZiBzdHIocGF0aCkgbm90IGluIHJ3X3NldF0KCiAgICAgICAgcmV0dXJuIExhbmRsb2NrUG9saWN5KAogICAgICAgICAgICByb19wYXRocz10dXBsZShub3JtYWxpemVkX3JvKSwKICAgICAgICAgICAgcndfcGF0aHM9dHVwbGUobm9ybWFsaXplZF9ydyksCiAgICAgICAgKQoKICAgIGRlZiBydW5fc3VicHJvY2VzcygKICAgICAgICBzZWxmLAogICAgICAgICosCiAgICAgICAgY29tbWFuZDogTGlzdFtzdHJdLAogICAgICAgIGN3ZDogUGF0aCwKICAgICAgICBlbnY6IERpY3Rbc3RyLCBzdHJdLAogICAgICAgIHN0ZGluOiBzdHIsCiAgICAgICAgc3Rkb3V0X3BhdGg6IFBhdGgsCiAgICAgICAgc3RkZXJyX3BhdGg6IFBhdGgsCiAgICAgICAgb25fc3Rkb3V0X2xpbmU6IE9wdGlvbmFsW0NhbGxhYmxlW1tzdHJdLCBOb25lXV0gPSBOb25lLAogICAgICAgIG9uX3N0ZGVycl9saW5lOiBPcHRpb25hbFtDYWxsYWJsZVtbc3RyXSwgTm9uZV1dID0gTm9uZSwKICAgICkgLT4gaW50OgogICAgICAgICIiIlJ1biBzdWJwcm9jZXNzIGFuZCBzdHJlYW0gb3V0cHV0IHRvIGxvZyBmaWxlcy4iIiIKCiAgICAgICAgY3dkID0gUGF0aChjd2QpLnJlc29sdmUoKQogICAgICAgIHN0ZG91dF9wYXRoLnBhcmVudC5ta2RpcihwYXJlbnRzPVRydWUsIGV4aXN0X29rPVRydWUpCiAgICAgICAgc3RkZXJyX3BhdGgucGFyZW50Lm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKCiAgICAgICAgcHJlZXhlY19mbiA9IHNlbGYuYnVpbGRfcHJlZXhlY19mbih3b3JrZGlyPWN3ZCkKCiAgICAgICAgd2l0aCBzdGRvdXRfcGF0aC5vcGVuKCJ3IiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgb3V0X2hhbmRsZSwgc3RkZXJyX3BhdGgub3BlbigKICAgICAgICAgICAgInciLCBlbmNvZGluZz0idXRmLTgiCiAgICAgICAgKSBhcyBlcnJfaGFuZGxlOgogICAgICAgICAgICBwcm9jZXNzID0gc3VicHJvY2Vzcy5Qb3BlbigKICAgICAgICAgICAgICAgIGNvbW1hbmQsCiAgICAgICAgICAgICAgICBjd2Q9c3RyKGN3ZCksCiAgICAgICAgICAgICAgICBlbnY9ZW52LAogICAgICAgICAgICAgICAgc3RkaW49c3VicHJvY2Vzcy5QSVBFLAogICAgICAgICAgICAgICAgc3Rkb3V0PXN1YnByb2Nlc3MuUElQRSwKICAgICAgICAgICAgICAgIHN0ZGVycj1zdWJwcm9jZXNzLlBJUEUsCiAgICAgICAgICAgICAgICB0ZXh0PVRydWUsCiAgICAgICAgICAgICAgICBidWZzaXplPTEsCiAgICAgICAgICAgICAgICBwcmVleGVjX2ZuPXByZWV4ZWNfZm4sCiAgICAgICAgICAgICkKCiAgICAgICAgICAgIGFzc2VydCBwcm9jZXNzLnN0ZGluIGlzIG5vdCBOb25lCiAgICAgICAgICAgIGFzc2VydCBwcm9jZXNzLnN0ZG91dCBpcyBub3QgTm9uZQogICAgICAgICAgICBhc3NlcnQgcHJvY2Vzcy5zdGRlcnIgaXMgbm90IE5vbmUKCiAgICAgICAgICAgIGlmIHN0ZGluOgogICAgICAgICAgICAgICAgcHJvY2Vzcy5zdGRpbi53cml0ZShzdGRpbikKICAgICAgICAgICAgcHJvY2Vzcy5zdGRpbi5jbG9zZSgpCgogICAgICAgICAgICBkZWYgX3B1bXAoCiAgICAgICAgICAgICAgICBzdHJlYW06IEFueSwKICAgICAgICAgICAgICAgIGhhbmRsZTogQW55LAogICAgICAgICAgICAgICAgY2FsbGJhY2s6IE9wdGlvbmFsW0NhbGxhYmxlW1tzdHJdLCBOb25lXV0sCiAgICAgICAgICAgICkgLT4gTm9uZToKICAgICAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgICAgICBmb3IgbGluZSBpbiBpdGVyKHN0cmVhbS5yZWFkbGluZSwgIiIpOgogICAgICAgICAgICAgICAgICAgICAgICBpZiBub3QgbGluZToKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJyZWFrCiAgICAgICAgICAgICAgICAgICAgICAgIGhhbmRsZS53cml0ZShsaW5lKQogICAgICAgICAgICAgICAgICAgICAgICBoYW5kbGUuZmx1c2goKQogICAgICAgICAgICAgICAgICAgICAgICBpZiBjYWxsYmFjayBpcyBub3QgTm9uZToKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNhbGxiYWNrKGxpbmUpCiAgICAgICAgICAgICAgICBmaW5hbGx5OgogICAgICAgICAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgICAgICAgICAgc3RyZWFtLmNsb3NlKCkKICAgICAgICAgICAgICAgICAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgICAgICAgICAgICAgICAgICBwYXNzCgogICAgICAgICAgICBzdGRvdXRfdGhyZWFkID0gdGhyZWFkaW5nLlRocmVhZCgKICAgICAgICAgICAgICAgIHRhcmdldD1fcHVtcCwKICAgICAgICAgICAgICAgIGFyZ3M9KHByb2Nlc3Muc3Rkb3V0LCBvdXRfaGFuZGxlLCBvbl9zdGRvdXRfbGluZSksCiAgICAgICAgICAgICAgICBkYWVtb249VHJ1ZSwKICAgICAgICAgICAgKQogICAgICAgICAgICBzdGRlcnJfdGhyZWFkID0gdGhyZWFkaW5nLlRocmVhZCgKICAgICAgICAgICAgICAgIHRhcmdldD1fcHVtcCwKICAgICAgICAgICAgICAgIGFyZ3M9KHByb2Nlc3Muc3RkZXJyLCBlcnJfaGFuZGxlLCBvbl9zdGRlcnJfbGluZSksCiAgICAgICAgICAgICAgICBkYWVtb249VHJ1ZSwKICAgICAgICAgICAgKQogICAgICAgICAgICBzdGRvdXRfdGhyZWFkLnN0YXJ0KCkKICAgICAgICAgICAgc3RkZXJyX3RocmVhZC5zdGFydCgpCgogICAgICAgICAgICByZXR1cm5fY29kZSA9IGludChwcm9jZXNzLndhaXQoKSkKICAgICAgICAgICAgc3Rkb3V0X3RocmVhZC5qb2luKHRpbWVvdXQ9NS4wKQogICAgICAgICAgICBzdGRlcnJfdGhyZWFkLmpvaW4odGltZW91dD01LjApCiAgICAgICAgICAgIHJldHVybiByZXR1cm5fY29kZQo=
+"""Sandbox and run-local HOME management for standalone Codex loop agent."""
+
+from __future__ import annotations
+
+import os
+import shutil
+import subprocess
+import threading
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Callable, Dict, Iterable, List, Optional
+
+from .linux_landlock import (
+    LandlockPolicy,
+    LandlockUnavailable,
+    apply_landlock,
+    landlock_abi_version,
+)
+
+
+class SandboxError(RuntimeError):
+    """Base sandbox error."""
+
+
+@dataclass(frozen=True, slots=True)
+class SandboxLayout:
+    """Run-local filesystem layout for Codex."""
+
+    workspace: Path
+    home_dir: Path
+    codex_home: Path
+    tmp_dir: Path
+    logs_dir: Path
+
+
+def _normalize_paths(paths: Iterable[Path]) -> List[Path]:
+    normalized: List[Path] = []
+    seen: set[str] = set()
+    for raw in paths:
+        if raw is None:
+            continue
+        path = Path(raw).expanduser()
+        try:
+            resolved = path.resolve()
+        except OSError:
+            resolved = path
+        key = str(resolved)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        normalized.append(resolved)
+    return normalized
+
+
+def _existing_paths(paths: Iterable[Path]) -> List[Path]:
+    rows: List[Path] = []
+    for path in _normalize_paths(paths):
+        try:
+            if path.exists():
+                rows.append(path)
+        except OSError:
+            continue
+    return rows
+
+
+def _collect_binary_paths(binary_path: str) -> List[Path]:
+    rows: List[Path] = []
+    normalized = str(binary_path or "").strip()
+    if normalized:
+        rows.append(Path(normalized))
+
+    if normalized and not os.path.isabs(normalized):
+        resolved = shutil.which(normalized)
+        if resolved:
+            rows.append(Path(resolved))
+
+    if not normalized:
+        resolved = shutil.which("codex")
+        if resolved:
+            rows.append(Path(resolved))
+
+    out: List[Path] = []
+    for path in _existing_paths(rows):
+        out.append(path)
+        out.append(path.parent)
+        if path.parent != path.parent.parent:
+            out.append(path.parent.parent)
+    return _existing_paths(out)
+
+
+def _default_system_ro_paths() -> List[Path]:
+    return _existing_paths(
+        [
+            Path("/usr"),
+            Path("/bin"),
+            Path("/sbin"),
+            Path("/lib"),
+            Path("/lib64"),
+            Path("/etc"),
+            Path("/run"),
+            Path("/var/run"),
+        ]
+    )
+
+
+def _default_system_rw_paths() -> List[Path]:
+    return _existing_paths([Path("/dev"), Path("/tmp"), Path("/var/tmp")])
+
+
+def _looks_like_virtualenv_bin(path: Path) -> bool:
+    candidate = Path(path).expanduser()
+    text = str(candidate).lower()
+    if text.endswith("/.venv/bin"):
+        return True
+    if "/.venv/" in text or "/venv/" in text or "/virtualenv/" in text:
+        return True
+    try:
+        cfg = candidate.parent / "pyvenv.cfg"
+        if candidate.name == "bin" and cfg.exists():
+            return True
+    except OSError:
+        return False
+    return False
+
+
+class RunnerSandbox:
+    """Build run-local HOME and optional Linux Landlock preexec."""
+
+    def __init__(
+        self,
+        *,
+        workspace: Path,
+        codex_binary: str,
+        enable_landlock: bool,
+    ) -> None:
+        root = Path(workspace).expanduser().resolve()
+        self.layout = SandboxLayout(
+            workspace=root,
+            home_dir=root / ".runner_home",
+            codex_home=root / ".runner_home" / ".codex",
+            tmp_dir=root / ".sandbox_tmp",
+            logs_dir=root / "logs",
+        )
+        self.codex_binary = codex_binary
+        self.enable_landlock = bool(enable_landlock)
+
+        self.layout.workspace.mkdir(parents=True, exist_ok=True)
+        self.layout.home_dir.mkdir(parents=True, exist_ok=True)
+        self.layout.codex_home.mkdir(parents=True, exist_ok=True)
+        self.layout.tmp_dir.mkdir(parents=True, exist_ok=True)
+        self.layout.logs_dir.mkdir(parents=True, exist_ok=True)
+
+        if self.enable_landlock:
+            try:
+                landlock_abi_version()
+            except LandlockUnavailable as exc:
+                raise SandboxError(f"Landlock is unavailable: {exc}") from exc
+
+    def seed_codex_home(self) -> None:
+        """Best-effort copy of host Codex config/auth into run-local CODEX_HOME."""
+
+        host_codex_home = Path.home() / ".codex"
+        for filename in ("config.toml", "auth.json"):
+            source = host_codex_home / filename
+            target = self.layout.codex_home / filename
+            try:
+                if not source.is_file() or source.is_symlink():
+                    continue
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(source, target)
+            except OSError:
+                continue
+
+    def build_env(self, base_env: Optional[Dict[str, str]] = None) -> Dict[str, str]:
+        env = dict(base_env or os.environ)
+
+        env["HOME"] = str(self.layout.home_dir)
+        env["CODEX_HOME"] = str(self.layout.codex_home)
+        env["TMPDIR"] = str(self.layout.tmp_dir)
+
+        env.pop("VIRTUAL_ENV", None)
+        env.pop("CONDA_PREFIX", None)
+        env.pop("PYTHONHOME", None)
+
+        env["PATH"] = self._build_path(env.get("PATH", ""))
+        shim_bin = self._ensure_python_shim_dir()
+        env["PATH"] = f"{shim_bin}:{env['PATH']}"
+        return env
+
+    def build_preexec_fn(self, *, workdir: Path, prior: Optional[Callable[[], None]] = None) -> Optional[Callable[[], None]]:
+        if not self.enable_landlock:
+            return prior
+
+        policy = self._build_landlock_policy(workdir=workdir)
+
+        def _apply() -> None:
+            apply_landlock(policy)
+
+        if prior is None:
+            return _apply
+
+        def _chained() -> None:
+            prior()
+            _apply()
+
+        return _chained
+
+    def _build_path(self, inherited: str) -> str:
+        parts: List[str] = [
+            "/usr/local/sbin",
+            "/usr/local/bin",
+            "/usr/sbin",
+            "/usr/bin",
+            "/sbin",
+            "/bin",
+        ]
+
+        for path in _collect_binary_paths(self.codex_binary):
+            if path.is_dir():
+                parts.append(str(path))
+            else:
+                parts.append(str(path.parent))
+
+        for token in str(inherited or "").split(":"):
+            normalized = token.strip()
+            if normalized:
+                if _looks_like_virtualenv_bin(Path(normalized)):
+                    continue
+                parts.append(normalized)
+
+        deduped: List[str] = []
+        seen: set[str] = set()
+        for item in parts:
+            if item in seen:
+                continue
+            seen.add(item)
+            deduped.append(item)
+        return ":".join(deduped)
+
+    def _ensure_python_shim_dir(self) -> str:
+        """Provide a stable `python` command that resolves to system `python3`."""
+
+        shim_dir = self.layout.home_dir / "bin"
+        shim_path = shim_dir / "python"
+        shim_content = "#!/usr/bin/env bash\nexec python3 \"$@\"\n"
+
+        try:
+            shim_dir.mkdir(parents=True, exist_ok=True)
+            if (not shim_path.exists()) or (shim_path.read_text(encoding="utf-8") != shim_content):
+                shim_path.write_text(shim_content, encoding="utf-8")
+            shim_path.chmod(0o755)
+        except OSError:
+            return "/usr/bin"
+        return str(shim_dir)
+
+    def _build_landlock_policy(self, *, workdir: Path) -> LandlockPolicy:
+        workdir = Path(workdir).resolve()
+
+        ro_paths: List[Path] = []
+        ro_paths.extend(_default_system_ro_paths())
+        ro_paths.extend(_collect_binary_paths(self.codex_binary))
+
+        rw_paths: List[Path] = [
+            self.layout.workspace,
+            self.layout.home_dir,
+            self.layout.codex_home,
+            self.layout.tmp_dir,
+            self.layout.logs_dir,
+            workdir,
+        ]
+        rw_paths.extend(_default_system_rw_paths())
+
+        normalized_rw = _normalize_paths(rw_paths)
+        rw_set = {str(path) for path in normalized_rw}
+        normalized_ro = [path for path in _normalize_paths(ro_paths) if str(path) not in rw_set]
+
+        return LandlockPolicy(
+            ro_paths=tuple(normalized_ro),
+            rw_paths=tuple(normalized_rw),
+        )
+
+    def run_subprocess(
+        self,
+        *,
+        command: List[str],
+        cwd: Path,
+        env: Dict[str, str],
+        stdin: str,
+        stdout_path: Path,
+        stderr_path: Path,
+        on_stdout_line: Optional[Callable[[str], None]] = None,
+        on_stderr_line: Optional[Callable[[str], None]] = None,
+    ) -> int:
+        """Run subprocess and stream output to log files."""
+
+        cwd = Path(cwd).resolve()
+        stdout_path.parent.mkdir(parents=True, exist_ok=True)
+        stderr_path.parent.mkdir(parents=True, exist_ok=True)
+
+        preexec_fn = self.build_preexec_fn(workdir=cwd)
+
+        with stdout_path.open("w", encoding="utf-8") as out_handle, stderr_path.open(
+            "w", encoding="utf-8"
+        ) as err_handle:
+            process = subprocess.Popen(
+                command,
+                cwd=str(cwd),
+                env=env,
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                bufsize=1,
+                preexec_fn=preexec_fn,
+            )
+
+            assert process.stdin is not None
+            assert process.stdout is not None
+            assert process.stderr is not None
+
+            if stdin:
+                process.stdin.write(stdin)
+            process.stdin.close()
+
+            def _pump(
+                stream: Any,
+                handle: Any,
+                callback: Optional[Callable[[str], None]],
+            ) -> None:
+                try:
+                    for line in iter(stream.readline, ""):
+                        if not line:
+                            break
+                        handle.write(line)
+                        handle.flush()
+                        if callback is not None:
+                            callback(line)
+                finally:
+                    try:
+                        stream.close()
+                    except Exception:
+                        pass
+
+            stdout_thread = threading.Thread(
+                target=_pump,
+                args=(process.stdout, out_handle, on_stdout_line),
+                daemon=True,
+            )
+            stderr_thread = threading.Thread(
+                target=_pump,
+                args=(process.stderr, err_handle, on_stderr_line),
+                daemon=True,
+            )
+            stdout_thread.start()
+            stderr_thread.start()
+
+            return_code = int(process.wait())
+            stdout_thread.join(timeout=5.0)
+            stderr_thread.join(timeout=5.0)
+            return return_code

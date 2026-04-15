@@ -1,1 +1,181 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJVdGlsaXR5IHRvIGluc3BlY3QgY29tcGV0aXRpb24gbG9ncyBhbmQgcmVwb3J0IHRoZSBsYXN0IGVycm9yIGNvdW50IGZvciBlYWNoIExMTS4iIiIKCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKCmltcG9ydCBhcmdwYXJzZQpmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKaW1wb3J0IHJlCmZyb20gdHlwaW5nIGltcG9ydCBEaWN0LCBJdGVyYWJsZSwgTGlzdCwgU2V0CgpOQU1FX1JFR0VYID0gcmUuY29tcGlsZShyIk5BTUU6XHMqKD9QPGxsbT5bXixcbl0rKSIpCkVSUk9SX1JFR0VYID0gcmUuY29tcGlsZSgKICAgIHIiVHJ5XHMrKD9QPGNvdW50PlxkKylccytFcnJvciBnZW5lcmF0aW5nIHJlc3BvbnNlIHdpdGhccysoP1A8bGxtPlxTKykiCikKCiMgVXBkYXRlIHRoZXNlIGxpc3RzIHdoZW4geW91IHByZWZlciB0byBoYXJkY29kZSBkZWZhdWx0cyBpbnN0ZWFkIG9mIHN1cHBseWluZyBDTEkgZmxhZ3MuClBSRVNFVF9GT0xERVJTOiBMaXN0W3N0cl0gPSBbCiAgICAjIEV4YW1wbGU6ICJydW5fNTAwMF84bGxtX3Byb2JsZW1zX2NvbnRlc3QzX2NyZWRpdHNfbGltaXRfMTBNXzIwMjUxMTE5XzE2Mzg1MyIsCiAgICAjICJydW5fNTAwMF84bGxtX3Byb2JsZW1zX2NvbnRlc3QzX2NyZWRpdHNfbGltaXRfMTBNXzIwMjUxMTE5XzEyMTcwMiIsCiAgICAjICJydW5fNTAwMF84bGxtX3Byb2JsZW1zX2NvbnRlc3QzX2NyZWRpdHNfbGltaXRfMTBNXzIwMjUxMTE5XzE2Mzg1MyIsCiAgICAjICJydW5fNTAwMF84bGxtX3Byb2JsZW1zX2NvbnRlc3QzX2NyZWRpdHNfbGltaXRfMTBNXzIwMjUxMTE5XzE2MzkxOSIsCiAgICAjICJydW5fNTAwMF84bGxtX3Byb2JsZW1zX2NvbnRlc3QzX2NyZWRpdHNfbGltaXRfMTBNXzIwMjUxMTE5XzE2Mzk1MyIsCiAgICAjICJydW5fNTAwMF84bGxtX3Byb2JsZW1zX2NvbnRlc3QzX2NyZWRpdHNfbGltaXRfNDBNXzIwMjUxMTE5XzE2NDAyMCIsCiAgICAjICJydW5fNTAwMF9wMTFfcHJvYmxlbXNfY29udGVzdDNfY29tcGV0aXRpb25fbWFpbl8yMDI1MTExOV8xMjE3MDkiLAogICAgIyAicnVuXzUwMDBfcDEyX3Byb2JsZW1zX2NvbnRlc3QzX2NvbXBldGl0aW9uX21haW5fMjAyNTExMTlfMTIxNzExIiwKICAgICMgInJ1bl81MDAwX3AyMV9wcm9ibGVtc19jb250ZXN0M19jb21wZXRpdGlvbl9tYWluXzIwMjUxMTE5XzEyMTczMyIsCiAgICAjICJydW5fNTAwMF9wMjJfcHJvYmxlbXNfY29udGVzdDNfY29tcGV0aXRpb25fbWFpbl8yMDI1MTExOV8xMjE3MzUiCiAgICAicnVuXzUwMDBfOGxsbV9wcm9ibGVtc19jb250ZXN0M19jcmVkaXRzX2xpbWl0XzEwTV8yMDI1MTExOV8xODUzMDkiLAogICAgInJ1bl81MDAwXzhsbG1fcHJvYmxlbXNfY29udGVzdDNfY3JlZGl0c19saW1pdF8xME1fMjAyNTExMTlfMTkwMjA4IiwKICAgICJydW5fNTAwMF84bGxtX3Byb2JsZW1zX2NvbnRlc3QzX2NyZWRpdHNfbGltaXRfMTBNXzIwMjUxMTE5XzE5MDIxMCIsCiAgICAicnVuXzUwMDBfOGxsbV9wcm9ibGVtc19jb250ZXN0M19jcmVkaXRzX2xpbWl0XzEwTV8yMDI1MTExOV8xOTAyMTIiLAogICAgInJ1bl81MDAwXzhsbG1fcHJvYmxlbXNfY29udGVzdDNfY3JlZGl0c19saW1pdF80ME1fMjAyNTExMTlfMTkwMjE0IiwKICAgICJydW5fNTAwMF9wMTFfcHJvYmxlbXNfY29udGVzdDNfY29tcGV0aXRpb25fbWFpbl8yMDI1MTExOV8xOTAxNTkiLAogICAgInJ1bl81MDAwX3AxMl9wcm9ibGVtc19jb250ZXN0M19jb21wZXRpdGlvbl9tYWluXzIwMjUxMTE5XzE5MDIwMyIsCiAgICAicnVuXzUwMDBfcDIxX3Byb2JsZW1zX2NvbnRlc3QzX2NvbXBldGl0aW9uX21haW5fMjAyNTExMTlfMTkwMjA1IiwKICAgICJydW5fNTAwMF9wMjJfcHJvYmxlbXNfY29udGVzdDNfY29tcGV0aXRpb25fbWFpbl8yMDI1MTExOV8xOTAyMDYiCgpdClBSRVNFVF9MTE1TOiBMaXN0W3N0cl0gPSBbCiAgICAjIEV4YW1wbGU6ICJjbGF1ZGUtc29ubmV0LTQtMjAyNTA1MTQiLAogICAgICJjbGF1ZGUtc29ubmV0LTQtMjAyNTA1MTQiLAogICAgICJkZWVwc2Vlay12MyIsCiAgICAgImRlZXBzZWVrLXYzLjEiLAogICAgICJnZW1pbmktMi41LXBybyIsCiAgICAgImdsbS00LjUiLAogICAgICJncHQtNS1jb2RleCIsCiAgICAgImtpbWktazItMDkwNSIsCiAgICAgInF3ZW4zLTIzNWIiCl0KCgpkZWYgcGFyc2VfYXJncygpIC0+IGFyZ3BhcnNlLk5hbWVzcGFjZToKICAgIHBhcnNlciA9IGFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyKAogICAgICAgIGRlc2NyaXB0aW9uPSgKICAgICAgICAgICAgIlJldmVyc2Utc2VhcmNoIGNvbXBldGl0aW9uIGxvZ3MgYW5kIHJlcG9ydCB0aGUgbGFzdCBvYnNlcnZlZCBlcnJvciBjb3VudCAiCiAgICAgICAgICAgICJmb3IgZWFjaCByZXF1ZXN0ZWQgTExNLiIKICAgICAgICApCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLWJhc2UtZGlyIiwKICAgICAgICB0eXBlPVBhdGgsCiAgICAgICAgZGVmYXVsdD1QYXRoKCJsb2dzL3J1bl9sb2dzIiksCiAgICAgICAgaGVscD0iQmFzZSBkaXJlY3RvcnkgY29udGFpbmluZyBjb21wZXRpdGlvbiBydW4gZm9sZGVycyAoZGVmYXVsdDogbG9ncy9ydW5fbG9ncykiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1mb2xkZXJzIiwKICAgICAgICBuYXJncz0iKyIsCiAgICAgICAgaGVscD0oCiAgICAgICAgICAgICJSZWxhdGl2ZSBmb2xkZXIgbmFtZXMgKGluc2lkZSBiYXNlLWRpcikgdGhhdCBzaG91bGQgYmUgc2Nhbm5lZC4gIgogICAgICAgICAgICAiSWYgb21pdHRlZCwgdGhlIFBSRVNFVF9GT0xERVJTIGxpc3QgYXQgdGhlIHRvcCBvZiB0aGUgc2NyaXB0IGlzIHVzZWQuIgogICAgICAgICksCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLWxsbXMiLAogICAgICAgIG5hcmdzPSIrIiwKICAgICAgICBoZWxwPSgKICAgICAgICAgICAgIkxMTSBuYW1lcyB0byBzZWFyY2ggZm9yIChleGFjdCBtYXRjaCkuICIKICAgICAgICAgICAgIklmIG9taXR0ZWQsIHRoZSBQUkVTRVRfTExNUyBsaXN0IGF0IHRoZSB0b3Agb2YgdGhlIHNjcmlwdCBpcyB1c2VkLiIKICAgICAgICApLAogICAgKQogICAgcmV0dXJuIHBhcnNlci5wYXJzZV9hcmdzKCkKCgpkZWYgZGlzY292ZXJfbG9nX2ZpbGVzKGZvbGRlcjogUGF0aCkgLT4gTGlzdFtQYXRoXToKICAgICIiIlJldHVybiBjYW5kaWRhdGUgbG9nIGZpbGVzIGluc2lkZSB0aGUgZm9sZGVyIHNvcnRlZCBieSBtdGltZSBkZXNjZW5kaW5nLiIiIgogICAgZGlyZWN0X2xvZ3MgPSBzb3J0ZWQoZm9sZGVyLmdsb2IoIioubG9nIiksIGtleT1sYW1iZGEgcDogcC5zdGF0KCkuc3RfbXRpbWUsIHJldmVyc2U9VHJ1ZSkKICAgIGlmIGRpcmVjdF9sb2dzOgogICAgICAgIHJldHVybiBkaXJlY3RfbG9ncwogICAgIyBGYWxsIGJhY2sgdG8gYSByZWN1cnNpdmUgc2VhcmNoIGlmIHRoZSBzaGFsbG93IHNjYW4gY29tZXMgdXAgZW1wdHkuCiAgICBkZWVwX2xvZ3MgPSBzb3J0ZWQoZm9sZGVyLnJnbG9iKCIqLmxvZyIpLCBrZXk9bGFtYmRhIHA6IHAuc3RhdCgpLnN0X210aW1lLCByZXZlcnNlPVRydWUpCiAgICByZXR1cm4gZGVlcF9sb2dzCgoKZGVmIHNjYW5fbG9nX2Zvcl9sbG1zKGxvZ19wYXRoOiBQYXRoLCBwZW5kaW5nX2xsbXM6IEl0ZXJhYmxlW3N0cl0pIC0+IERpY3Rbc3RyLCBpbnRdOgogICAgIiIiU2NhbiBhIHNpbmdsZSBsb2cgZmlsZSBmcm9tIGJvdHRvbSB0byB0b3AgZm9yIHRoZSBwcm92aWRlZCBMTE1zLiIiIgogICAgcGVuZGluZzogU2V0W3N0cl0gPSBzZXQocGVuZGluZ19sbG1zKQogICAgaWYgbm90IHBlbmRpbmc6CiAgICAgICAgcmV0dXJuIHt9CgogICAgdHJ5OgogICAgICAgIHdpdGggbG9nX3BhdGgub3BlbigiciIsIGVuY29kaW5nPSJ1dGYtOCIsIGVycm9ycz0iaWdub3JlIikgYXMgaGFuZGxlOgogICAgICAgICAgICBsaW5lcyA9IGhhbmRsZS5yZWFkbGluZXMoKQogICAgZXhjZXB0IEZpbGVOb3RGb3VuZEVycm9yOgogICAgICAgIHJldHVybiB7fQoKICAgIGZvdW5kOiBEaWN0W3N0ciwgaW50XSA9IHt9CiAgICBmb3IgbGluZSBpbiByZXZlcnNlZChsaW5lcyk6CiAgICAgICAgaWYgbm90IHBlbmRpbmc6CiAgICAgICAgICAgIGJyZWFrCgogICAgICAgIGlmICJFcnJvciBnZW5lcmF0aW5nIHJlc3BvbnNlIHdpdGgiIGluIGxpbmU6CiAgICAgICAgICAgIGVycm9yX21hdGNoID0gRVJST1JfUkVHRVguc2VhcmNoKGxpbmUpCiAgICAgICAgICAgIGlmIGVycm9yX21hdGNoOgogICAgICAgICAgICAgICAgbGxtID0gZXJyb3JfbWF0Y2guZ3JvdXAoImxsbSIpCiAgICAgICAgICAgICAgICBpZiBsbG0gaW4gcGVuZGluZzoKICAgICAgICAgICAgICAgICAgICBmb3VuZFtsbG1dID0gaW50KGVycm9yX21hdGNoLmdyb3VwKCJjb3VudCIpKQogICAgICAgICAgICAgICAgICAgIHBlbmRpbmcucmVtb3ZlKGxsbSkKICAgICAgICAgICAgICAgICAgICBjb250aW51ZQoKICAgICAgICBpZiAiTkFNRToiIGluIGxpbmU6CiAgICAgICAgICAgIG5hbWVfbWF0Y2ggPSBOQU1FX1JFR0VYLnNlYXJjaChsaW5lKQogICAgICAgICAgICBpZiBuYW1lX21hdGNoOgogICAgICAgICAgICAgICAgbGxtX25hbWUgPSBuYW1lX21hdGNoLmdyb3VwKCJsbG0iKS5zdHJpcCgpCiAgICAgICAgICAgICAgICBpZiBsbG1fbmFtZSBpbiBwZW5kaW5nOgogICAgICAgICAgICAgICAgICAgIGZvdW5kW2xsbV9uYW1lXSA9IDAKICAgICAgICAgICAgICAgICAgICBwZW5kaW5nLnJlbW92ZShsbG1fbmFtZSkKCiAgICByZXR1cm4gZm91bmQKCgpkZWYgc3VtbWFyaXplX2ZvbGRlcihmb2xkZXI6IFBhdGgsIGxsbXM6IExpc3Rbc3RyXSkgLT4gRGljdFtzdHIsIGludCB8IE5vbmVdOgogICAgIiIiUmV0dXJuIHRoZSBsYXN0IG9ic2VydmVkIGVycm9yIGNvdW50IHBlciBMTE0gZm9yIGEgc2luZ2xlIGZvbGRlci4iIiIKICAgIGxvZ19maWxlcyA9IGRpc2NvdmVyX2xvZ19maWxlcyhmb2xkZXIpCiAgICByZXN1bHRzOiBEaWN0W3N0ciwgaW50IHwgTm9uZV0gPSB7bGxtOiBOb25lIGZvciBsbG0gaW4gbGxtc30KCiAgICBpZiBub3QgbG9nX2ZpbGVzOgogICAgICAgIHJldHVybiByZXN1bHRzCgogICAgZm9yIGxvZ19wYXRoIGluIGxvZ19maWxlczoKICAgICAgICByZW1haW5pbmcgPSBbbGxtIGZvciBsbG0sIHZhbHVlIGluIHJlc3VsdHMuaXRlbXMoKSBpZiB2YWx1ZSBpcyBOb25lXQogICAgICAgIGlmIG5vdCByZW1haW5pbmc6CiAgICAgICAgICAgIGJyZWFrCiAgICAgICAgbGF0ZXN0X2hpdHMgPSBzY2FuX2xvZ19mb3JfbGxtcyhsb2dfcGF0aCwgcmVtYWluaW5nKQogICAgICAgIGZvciBsbG0sIGNvdW50IGluIGxhdGVzdF9oaXRzLml0ZW1zKCk6CiAgICAgICAgICAgIHJlc3VsdHNbbGxtXSA9IGNvdW50CgogICAgcmV0dXJuIHJlc3VsdHMKCgpkZWYgZm9ybWF0X3Jlc3VsdCh2YWx1ZTogaW50IHwgTm9uZSkgLT4gc3RyOgogICAgaWYgdmFsdWUgaXMgTm9uZToKICAgICAgICByZXR1cm4gIm5vdCBmb3VuZCIKICAgIGlmIHZhbHVlID09IDA6CiAgICAgICAgcmV0dXJuICIwIGVycm9yIChsYXRlc3QgcmVjb3JkIGlzIE5BTUUpIgogICAgcmV0dXJuIGYie3ZhbHVlfSBlcnJvcihzKSIKCgpkZWYgbWFpbigpIC0+IE5vbmU6CiAgICBhcmdzID0gcGFyc2VfYXJncygpCiAgICBiYXNlX2RpcjogUGF0aCA9IGFyZ3MuYmFzZV9kaXIKICAgIGZvbGRlcnMgPSBhcmdzLmZvbGRlcnMgaWYgYXJncy5mb2xkZXJzIGVsc2UgUFJFU0VUX0ZPTERFUlMKICAgIGxsbXMgPSBhcmdzLmxsbXMgaWYgYXJncy5sbG1zIGVsc2UgUFJFU0VUX0xMTVMKICAgIGlmIG5vdCBmb2xkZXJzOgogICAgICAgIHJhaXNlIFN5c3RlbUV4aXQoIk5vIGZvbGRlcnMgc3VwcGxpZWQgKENMSSBmbGFnIG9yIFBSRVNFVF9GT0xERVJTKS4iKQogICAgaWYgbm90IGxsbXM6CiAgICAgICAgcmFpc2UgU3lzdGVtRXhpdCgiTm8gTExNcyBzdXBwbGllZCAoQ0xJIGZsYWcgb3IgUFJFU0VUX0xMTVMpLiIpCgogICAgZm9yIGZvbGRlcl9uYW1lIGluIGZvbGRlcnM6CiAgICAgICAgZm9sZGVyX3BhdGggPSBiYXNlX2RpciAvIGZvbGRlcl9uYW1lCiAgICAgICAgcHJpbnQoZiJcbj09PSB7Zm9sZGVyX25hbWV9ID09PSIpCiAgICAgICAgaWYgbm90IGZvbGRlcl9wYXRoLmV4aXN0cygpOgogICAgICAgICAgICBwcmludCgiICBGb2xkZXIgbWlzc2luZywgc2tpcC4iKQogICAgICAgICAgICBjb250aW51ZQoKICAgICAgICBsbG1fc3RhdHVzID0gc3VtbWFyaXplX2ZvbGRlcihmb2xkZXJfcGF0aCwgbGxtcykKICAgICAgICBmb3IgbGxtIGluIGxsbXM6CiAgICAgICAgICAgIHByaW50KGYiICB7bGxtfToge2Zvcm1hdF9yZXN1bHQobGxtX3N0YXR1c1tsbG1dKX0iKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK
+#!/usr/bin/env python3
+"""Utility to inspect competition logs and report the last error count for each LLM."""
+
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+import re
+from typing import Dict, Iterable, List, Set
+
+NAME_REGEX = re.compile(r"NAME:\s*(?P<llm>[^,\n]+)")
+ERROR_REGEX = re.compile(
+    r"Try\s+(?P<count>\d+)\s+Error generating response with\s+(?P<llm>\S+)"
+)
+
+# Update these lists when you prefer to hardcode defaults instead of supplying CLI flags.
+PRESET_FOLDERS: List[str] = [
+    # Example: "run_5000_8llm_problems_contest3_credits_limit_10M_20251119_163853",
+    # "run_5000_8llm_problems_contest3_credits_limit_10M_20251119_121702",
+    # "run_5000_8llm_problems_contest3_credits_limit_10M_20251119_163853",
+    # "run_5000_8llm_problems_contest3_credits_limit_10M_20251119_163919",
+    # "run_5000_8llm_problems_contest3_credits_limit_10M_20251119_163953",
+    # "run_5000_8llm_problems_contest3_credits_limit_40M_20251119_164020",
+    # "run_5000_p11_problems_contest3_competition_main_20251119_121709",
+    # "run_5000_p12_problems_contest3_competition_main_20251119_121711",
+    # "run_5000_p21_problems_contest3_competition_main_20251119_121733",
+    # "run_5000_p22_problems_contest3_competition_main_20251119_121735"
+    "run_5000_8llm_problems_contest3_credits_limit_10M_20251119_185309",
+    "run_5000_8llm_problems_contest3_credits_limit_10M_20251119_190208",
+    "run_5000_8llm_problems_contest3_credits_limit_10M_20251119_190210",
+    "run_5000_8llm_problems_contest3_credits_limit_10M_20251119_190212",
+    "run_5000_8llm_problems_contest3_credits_limit_40M_20251119_190214",
+    "run_5000_p11_problems_contest3_competition_main_20251119_190159",
+    "run_5000_p12_problems_contest3_competition_main_20251119_190203",
+    "run_5000_p21_problems_contest3_competition_main_20251119_190205",
+    "run_5000_p22_problems_contest3_competition_main_20251119_190206"
+
+]
+PRESET_LLMS: List[str] = [
+    # Example: "claude-sonnet-4-20250514",
+     "claude-sonnet-4-20250514",
+     "deepseek-v3",
+     "deepseek-v3.1",
+     "gemini-2.5-pro",
+     "glm-4.5",
+     "gpt-5-codex",
+     "kimi-k2-0905",
+     "qwen3-235b"
+]
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Reverse-search competition logs and report the last observed error count "
+            "for each requested LLM."
+        )
+    )
+    parser.add_argument(
+        "--base-dir",
+        type=Path,
+        default=Path("logs/run_logs"),
+        help="Base directory containing competition run folders (default: logs/run_logs)",
+    )
+    parser.add_argument(
+        "--folders",
+        nargs="+",
+        help=(
+            "Relative folder names (inside base-dir) that should be scanned. "
+            "If omitted, the PRESET_FOLDERS list at the top of the script is used."
+        ),
+    )
+    parser.add_argument(
+        "--llms",
+        nargs="+",
+        help=(
+            "LLM names to search for (exact match). "
+            "If omitted, the PRESET_LLMS list at the top of the script is used."
+        ),
+    )
+    return parser.parse_args()
+
+
+def discover_log_files(folder: Path) -> List[Path]:
+    """Return candidate log files inside the folder sorted by mtime descending."""
+    direct_logs = sorted(folder.glob("*.log"), key=lambda p: p.stat().st_mtime, reverse=True)
+    if direct_logs:
+        return direct_logs
+    # Fall back to a recursive search if the shallow scan comes up empty.
+    deep_logs = sorted(folder.rglob("*.log"), key=lambda p: p.stat().st_mtime, reverse=True)
+    return deep_logs
+
+
+def scan_log_for_llms(log_path: Path, pending_llms: Iterable[str]) -> Dict[str, int]:
+    """Scan a single log file from bottom to top for the provided LLMs."""
+    pending: Set[str] = set(pending_llms)
+    if not pending:
+        return {}
+
+    try:
+        with log_path.open("r", encoding="utf-8", errors="ignore") as handle:
+            lines = handle.readlines()
+    except FileNotFoundError:
+        return {}
+
+    found: Dict[str, int] = {}
+    for line in reversed(lines):
+        if not pending:
+            break
+
+        if "Error generating response with" in line:
+            error_match = ERROR_REGEX.search(line)
+            if error_match:
+                llm = error_match.group("llm")
+                if llm in pending:
+                    found[llm] = int(error_match.group("count"))
+                    pending.remove(llm)
+                    continue
+
+        if "NAME:" in line:
+            name_match = NAME_REGEX.search(line)
+            if name_match:
+                llm_name = name_match.group("llm").strip()
+                if llm_name in pending:
+                    found[llm_name] = 0
+                    pending.remove(llm_name)
+
+    return found
+
+
+def summarize_folder(folder: Path, llms: List[str]) -> Dict[str, int | None]:
+    """Return the last observed error count per LLM for a single folder."""
+    log_files = discover_log_files(folder)
+    results: Dict[str, int | None] = {llm: None for llm in llms}
+
+    if not log_files:
+        return results
+
+    for log_path in log_files:
+        remaining = [llm for llm, value in results.items() if value is None]
+        if not remaining:
+            break
+        latest_hits = scan_log_for_llms(log_path, remaining)
+        for llm, count in latest_hits.items():
+            results[llm] = count
+
+    return results
+
+
+def format_result(value: int | None) -> str:
+    if value is None:
+        return "not found"
+    if value == 0:
+        return "0 error (latest record is NAME)"
+    return f"{value} error(s)"
+
+
+def main() -> None:
+    args = parse_args()
+    base_dir: Path = args.base_dir
+    folders = args.folders if args.folders else PRESET_FOLDERS
+    llms = args.llms if args.llms else PRESET_LLMS
+    if not folders:
+        raise SystemExit("No folders supplied (CLI flag or PRESET_FOLDERS).")
+    if not llms:
+        raise SystemExit("No LLMs supplied (CLI flag or PRESET_LLMS).")
+
+    for folder_name in folders:
+        folder_path = base_dir / folder_name
+        print(f"\n=== {folder_name} ===")
+        if not folder_path.exists():
+            print("  Folder missing, skip.")
+            continue
+
+        llm_status = summarize_folder(folder_path, llms)
+        for llm in llms:
+            print(f"  {llm}: {format_result(llm_status[llm])}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,1 +1,548 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJCb290c3RyYXAgVVNBQ09BcmVuYSBjb21wZXRpdGlvbiArIHBhcnRpY2lwYW50LXNwZWNpZmljIGdhdGV3YXkgY3JlZGVudGlhbHMgZm9yIGluZmluaXRlX3RyZWUuIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQgYXJncGFyc2UKaW1wb3J0IGpzb24KaW1wb3J0IG9zCmZyb20gZGF0YWNsYXNzZXMgaW1wb3J0IGRhdGFjbGFzcwpmcm9tIHR5cGluZyBpbXBvcnQgQW55LCBEaWN0LCBMaXN0LCBPcHRpb25hbAoKaW1wb3J0IHJlcXVlc3RzCgoKREVGQVVMVF9BUElfQkFTRSA9ICJodHRwOi8vMTI3LjAuMC4xOjUwMDAiCkRFRkFVTFRfVElUTEUgPSAiaW5maW5pdGVfdHJlZSB2cyBVU0FDT0FyZW5hIgpERUZBVUxUX0RFU0NSSVBUSU9OID0gIkNvbXBldGl0aW9uIGJvb3RzdHJhcHBlZCBmb3IgaW5maW5pdGVfdHJlZSBhZ2VudHMiCkRFRkFVTFRfQ09NUEVUSVRJT05fTUFYX1RPS0VOUyA9IDEwMDAwMApJTlQzMl9NQVggPSAoMioqMzEpIC0gMQpJTlQ2NF9NQVggPSAoMioqNjMpIC0gMQoKCmRlZiBfbm9ybWFsaXplX2Jhc2UodXJsOiBzdHIpIC0+IHN0cjoKICAgIHZhbHVlID0gKHVybCBvciAiIikuc3RyaXAoKQogICAgaWYgbm90IHZhbHVlOgogICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoImFwaSBiYXNlIHVybCBtdXN0IG5vdCBiZSBlbXB0eSIpCiAgICByZXR1cm4gdmFsdWUucnN0cmlwKCIvIikKCgpkZWYgX3BhcnNlX3Byb2JsZW1faWRzKHJhdzogc3RyKSAtPiBMaXN0W3N0cl06CiAgICB2YWx1ZXMgPSBbdG9rZW4uc3RyaXAoKSBmb3IgdG9rZW4gaW4gKHJhdyBvciAiIikuc3BsaXQoIiwiKSBpZiB0b2tlbi5zdHJpcCgpXQogICAgaWYgbm90IHZhbHVlczoKICAgICAgICByZXR1cm4gW10KCiAgICBpZiBsZW4odmFsdWVzKSA9PSAxOgogICAgICAgIGNhbmRpZGF0ZSA9IHZhbHVlc1swXQogICAgICAgIGlmIG9zLnBhdGguaXNmaWxlKGNhbmRpZGF0ZSk6CiAgICAgICAgICAgIHdpdGggb3BlbihjYW5kaWRhdGUsICJyIiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgZjoKICAgICAgICAgICAgICAgIGxvYWRlZCA9IGpzb24ubG9hZChmKQoKICAgICAgICAgICAgaWYgaXNpbnN0YW5jZShsb2FkZWQsIGxpc3QpOgogICAgICAgICAgICAgICAgcmV0dXJuIFtzdHIoaXRlbSkuc3RyaXAoKSBmb3IgaXRlbSBpbiBsb2FkZWQgaWYgc3RyKGl0ZW0pLnN0cmlwKCldCgogICAgICAgICAgICBpZiBpc2luc3RhbmNlKGxvYWRlZCwgZGljdCk6CiAgICAgICAgICAgICAgICBmb3Iga2V5IGluICgicHJvYmxlbV9pZHMiLCAicHJvYmxlbXMiLCAiaWRzIik6CiAgICAgICAgICAgICAgICAgICAgYXJyID0gbG9hZGVkLmdldChrZXkpCiAgICAgICAgICAgICAgICAgICAgaWYgaXNpbnN0YW5jZShhcnIsIGxpc3QpOgogICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gW3N0cihpdGVtKS5zdHJpcCgpIGZvciBpdGVtIGluIGFyciBpZiBzdHIoaXRlbSkuc3RyaXAoKV0KICAgICAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoCiAgICAgICAgICAgICAgICAgICAgZiJwcm9ibGVtIGlkIGZpbGUge2NhbmRpZGF0ZSFyfSBtdXN0IGNvbnRhaW4gYSBsaXN0LCAiCiAgICAgICAgICAgICAgICAgICAgIm9yIGEgZGljdCB3aXRoIG9uZSBvZiBrZXlzOiBwcm9ibGVtX2lkcy9wcm9ibGVtcy9pZHMiCiAgICAgICAgICAgICAgICApCgogICAgICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGYicHJvYmxlbSBpZCBmaWxlIHtjYW5kaWRhdGUhcn0gbXVzdCBiZSBhIEpTT04gbGlzdCBvciBvYmplY3QiKQoKICAgICAgICBpZiBjYW5kaWRhdGUuZW5kc3dpdGgoIi5qc29uIikgb3IgIi8iIGluIGNhbmRpZGF0ZSBvciAiXFwiIGluIGNhbmRpZGF0ZToKICAgICAgICAgICAgcmFpc2UgRmlsZU5vdEZvdW5kRXJyb3IoCiAgICAgICAgICAgICAgICBmInByb2JsZW0gaWQgZmlsZSBub3QgZm91bmQ6IHtjYW5kaWRhdGUhcn0uICIKICAgICAgICAgICAgICAgICJQYXNzIGFuIGV4aXN0aW5nIEpTT04gZmlsZSBwYXRoLCBvciBwYXNzIGNvbW1hLXNlcGFyYXRlZCBwcm9ibGVtIElEcy4iCiAgICAgICAgICAgICkKCiAgICByZXR1cm4gdmFsdWVzCgoKZGVmIF9zYWZlX25hbWUobmFtZTogc3RyKSAtPiBzdHI6CiAgICBjbGVhbmVkID0gIiIuam9pbihjaCBpZiAoY2guaXNhbG51bSgpIG9yIGNoIGluICItXy4iKSBlbHNlICJfIiBmb3IgY2ggaW4gbmFtZS5zdHJpcCgpKQogICAgcmV0dXJuIGNsZWFuZWQgb3IgImFnZW50IgoKCmRlZiBfbG9hZF9jb21wZXRpdGlvbl9jb25maWcocGF0aDogc3RyKSAtPiBEaWN0W3N0ciwgQW55XToKICAgIGNhbmRpZGF0ZSA9IChwYXRoIG9yICIiKS5zdHJpcCgpCiAgICBpZiBub3QgY2FuZGlkYXRlOgogICAgICAgIHJldHVybiB7fQogICAgaWYgbm90IG9zLnBhdGguaXNmaWxlKGNhbmRpZGF0ZSk6CiAgICAgICAgcmFpc2UgRmlsZU5vdEZvdW5kRXJyb3IoZiJjb21wZXRpdGlvbiBjb25maWcgZmlsZSBub3QgZm91bmQ6IHtjYW5kaWRhdGUhcn0iKQoKICAgIHdpdGggb3BlbihjYW5kaWRhdGUsICJyIiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgZjoKICAgICAgICBsb2FkZWQgPSBqc29uLmxvYWQoZikKICAgIGlmIG5vdCBpc2luc3RhbmNlKGxvYWRlZCwgZGljdCk6CiAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmImNvbXBldGl0aW9uIGNvbmZpZyBmaWxlIG11c3QgY29udGFpbiBhIEpTT04gb2JqZWN0OiB7Y2FuZGlkYXRlIXJ9IikKCiAgICBydWxlcyA9IGxvYWRlZC5nZXQoInJ1bGVzIikKICAgIGlmIHJ1bGVzIGlzIG5vdCBOb25lIGFuZCBub3QgaXNpbnN0YW5jZShydWxlcywgZGljdCk6CiAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmIidydWxlcycgbXVzdCBiZSBhIEpTT04gb2JqZWN0IGluIGNvbXBldGl0aW9uIGNvbmZpZzoge2NhbmRpZGF0ZSFyfSIpCiAgICByZXR1cm4gbG9hZGVkCgoKZGVmIF9waWNrX3RleHRfdmFsdWUodmFsdWU6IEFueSwgKiwgZmFsbGJhY2s6IHN0cikgLT4gc3RyOgogICAgaWYgdmFsdWUgaXMgTm9uZToKICAgICAgICByZXR1cm4gZmFsbGJhY2sKICAgIG5vcm1hbGl6ZWQgPSBzdHIodmFsdWUpLnN0cmlwKCkKICAgIHJldHVybiBub3JtYWxpemVkIG9yIGZhbGxiYWNrCgoKZGVmIF9waWNrX2ludF92YWx1ZSgKICAgIHZhbHVlOiBBbnksCiAgICAqLAogICAgZmFsbGJhY2s6IGludCwKICAgIGZpZWxkX25hbWU6IHN0ciwKICAgIG1pbl92YWx1ZTogaW50IHwgTm9uZSA9IE5vbmUsCiAgICBtYXhfdmFsdWU6IGludCB8IE5vbmUgPSBOb25lLAopIC0+IGludDoKICAgIGlmIHZhbHVlIGlzIE5vbmU6CiAgICAgICAgcmVzdWx0ID0gZmFsbGJhY2sKICAgIGVsaWYgaXNpbnN0YW5jZSh2YWx1ZSwgYm9vbCk6CiAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmIntmaWVsZF9uYW1lfSBtdXN0IGJlIGFuIGludGVnZXIsIGdvdCB7dmFsdWUhcn0iKQogICAgZWxpZiBpc2luc3RhbmNlKHZhbHVlLCBmbG9hdCk6CiAgICAgICAgaWYgbm90IHZhbHVlLmlzX2ludGVnZXIoKToKICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmIntmaWVsZF9uYW1lfSBtdXN0IGJlIGFuIGludGVnZXIsIGdvdCB7dmFsdWUhcn0iKQogICAgICAgIHJlc3VsdCA9IGludCh2YWx1ZSkKICAgIGVsc2U6CiAgICAgICAgdHJ5OgogICAgICAgICAgICByZXN1bHQgPSBpbnQodmFsdWUpCiAgICAgICAgZXhjZXB0IChUeXBlRXJyb3IsIFZhbHVlRXJyb3IpIGFzIGV4YzoKICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmIntmaWVsZF9uYW1lfSBtdXN0IGJlIGFuIGludGVnZXIsIGdvdCB7dmFsdWUhcn0iKSBmcm9tIGV4YwoKICAgIGlmIG1pbl92YWx1ZSBpcyBub3QgTm9uZSBhbmQgcmVzdWx0IDwgbWluX3ZhbHVlOgogICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoCiAgICAgICAgICAgIGYie2ZpZWxkX25hbWV9IG11c3QgYmUgPj0ge21pbl92YWx1ZX0sIGdvdCB7cmVzdWx0IXJ9IgogICAgICAgICkKICAgIGlmIG1heF92YWx1ZSBpcyBub3QgTm9uZSBhbmQgcmVzdWx0ID4gbWF4X3ZhbHVlOgogICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoCiAgICAgICAgICAgIGYie2ZpZWxkX25hbWV9IG11c3QgYmUgPD0ge21heF92YWx1ZX0sIGdvdCB7cmVzdWx0IXJ9IgogICAgICAgICkKICAgIHJldHVybiByZXN1bHQKCgpAZGF0YWNsYXNzCmNsYXNzIFNldHVwUmVzdWx0OgogICAgYXBpX2Jhc2U6IHN0cgogICAgY29tcGV0aXRpb25faWQ6IHN0cgogICAgcHJvYmxlbV9pZDogT3B0aW9uYWxbc3RyXQogICAgcGFydGljaXBhbnRzOiBMaXN0W0RpY3Rbc3RyLCBBbnldXQoKCmNsYXNzIEFyZW5hQ2xpZW50OgogICAgZGVmIF9faW5pdF9fKHNlbGYsIGJhc2VfdXJsOiBzdHIsIHRpbWVvdXQ6IGZsb2F0ID0gMzAuMCkgLT4gTm9uZToKICAgICAgICBzZWxmLmJhc2VfdXJsID0gX25vcm1hbGl6ZV9iYXNlKGJhc2VfdXJsKQogICAgICAgIHNlbGYudGltZW91dCA9IHRpbWVvdXQKICAgICAgICBzZWxmLnNlc3Npb24gPSByZXF1ZXN0cy5TZXNzaW9uKCkKCiAgICBkZWYgX3JlcXVlc3Qoc2VsZiwgbWV0aG9kOiBzdHIsIHBhdGg6IHN0ciwgcGF5bG9hZDogT3B0aW9uYWxbRGljdFtzdHIsIEFueV1dID0gTm9uZSkgLT4gRGljdFtzdHIsIEFueV06CiAgICAgICAgdXJsID0gZiJ7c2VsZi5iYXNlX3VybH17cGF0aH0iCiAgICAgICAgdHJ5OgogICAgICAgICAgICByZXNwb25zZSA9IHNlbGYuc2Vzc2lvbi5yZXF1ZXN0KG1ldGhvZCwgdXJsLCBqc29uPXBheWxvYWQsIHRpbWVvdXQ9c2VsZi50aW1lb3V0KQogICAgICAgIGV4Y2VwdCByZXF1ZXN0cy5SZXF1ZXN0RXhjZXB0aW9uIGFzIGV4YzoKICAgICAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKGYibmV0d29yayBlcnJvciBmb3Ige21ldGhvZH0ge3BhdGh9OiB7ZXhjfSIpIGZyb20gZXhjCgogICAgICAgIGRhdGE6IE9wdGlvbmFsW0RpY3Rbc3RyLCBBbnldXSA9IE5vbmUKICAgICAgICBwYXJzZV9lcnJvcjogT3B0aW9uYWxbRXhjZXB0aW9uXSA9IE5vbmUKICAgICAgICB0cnk6CiAgICAgICAgICAgIGRlY29kZWQgPSByZXNwb25zZS5qc29uKCkKICAgICAgICAgICAgaWYgaXNpbnN0YW5jZShkZWNvZGVkLCBkaWN0KToKICAgICAgICAgICAgICAgIGRhdGEgPSBkZWNvZGVkCiAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBleGM6ICAjIHByYWdtYTogbm8gY292ZXIgLSBkZWZlbnNpdmUgb24gbWFsZm9ybWVkIHVwc3RyZWFtIHJlcGxpZXMKICAgICAgICAgICAgcGFyc2VfZXJyb3IgPSBleGMKCiAgICAgICAgaWYgcmVzcG9uc2Uuc3RhdHVzX2NvZGUgPj0gNDAwOgogICAgICAgICAgICBpZiBpc2luc3RhbmNlKGRhdGEsIGRpY3QpOgogICAgICAgICAgICAgICAgbWVzc2FnZSA9IGRhdGEuZ2V0KCJtZXNzYWdlIikgb3IgZGF0YS5nZXQoImVycm9yIikgb3Igc3RyKGRhdGEpCiAgICAgICAgICAgIGVsc2U6CiAgICAgICAgICAgICAgICBib2R5X3RleHQgPSAocmVzcG9uc2UudGV4dCBvciAiIikuc3RyaXAoKQogICAgICAgICAgICAgICAgbWVzc2FnZSA9IGJvZHlfdGV4dFs6NTAwXSBpZiBib2R5X3RleHQgZWxzZSByZXNwb25zZS5yZWFzb24KICAgICAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKAogICAgICAgICAgICAgICAgZiJIVFRQIHtyZXNwb25zZS5zdGF0dXNfY29kZX0gZm9yIHttZXRob2R9IHtwYXRofToge21lc3NhZ2V9IgogICAgICAgICAgICApCgogICAgICAgIGlmIHBhcnNlX2Vycm9yIGlzIG5vdCBOb25lOgogICAgICAgICAgICByYWlzZSBSdW50aW1lRXJyb3IoCiAgICAgICAgICAgICAgICBmImZhaWxlZCB0byBwYXJzZSBKU09OIHJlc3BvbnNlIGZvciB7bWV0aG9kfSB7cGF0aH06IHtwYXJzZV9lcnJvcn0iCiAgICAgICAgICAgICkgZnJvbSBwYXJzZV9lcnJvcgogICAgICAgIGlmIGRhdGEgaXMgTm9uZToKICAgICAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKGYicmVzcG9uc2UgZm9yIHttZXRob2R9IHtwYXRofSBpcyBub3QgYSBKU09OIG9iamVjdCIpCgogICAgICAgIGlmIGRhdGEuZ2V0KCJzdGF0dXMiKSAhPSAic3VjY2VzcyI6CiAgICAgICAgICAgIHJhaXNlIFJ1bnRpbWVFcnJvcihmIkFQSSBjYWxsIGZhaWxlZCAoe3BhdGh9KToge2RhdGEuZ2V0KCdtZXNzYWdlJywgJ3Vua25vd24gZXJyb3InKX0iKQogICAgICAgIHJldHVybiBkYXRhCgogICAgZGVmIGNyZWF0ZV9jb21wZXRpdGlvbigKICAgICAgICBzZWxmLAogICAgICAgICosCiAgICAgICAgdGl0bGU6IHN0ciwKICAgICAgICBkZXNjcmlwdGlvbjogc3RyLAogICAgICAgIHByb2JsZW1faWRzOiBMaXN0W3N0cl0sCiAgICAgICAgbWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQ6IGludCwKICAgICAgICBydWxlczogT3B0aW9uYWxbRGljdFtzdHIsIEFueV1dID0gTm9uZSwKICAgICkgLT4gc3RyOgogICAgICAgIHBheWxvYWQgPSB7CiAgICAgICAgICAgICJ0aXRsZSI6IHRpdGxlLAogICAgICAgICAgICAiZGVzY3JpcHRpb24iOiBkZXNjcmlwdGlvbiwKICAgICAgICAgICAgInByb2JsZW1faWRzIjogcHJvYmxlbV9pZHMsCiAgICAgICAgICAgICJtYXhfdG9rZW5zX3Blcl9wYXJ0aWNpcGFudCI6IG1heF90b2tlbnNfcGVyX3BhcnRpY2lwYW50LAogICAgICAgIH0KICAgICAgICBpZiBydWxlcyBpcyBub3QgTm9uZToKICAgICAgICAgICAgcGF5bG9hZFsicnVsZXMiXSA9IHJ1bGVzCiAgICAgICAgZGF0YSA9IHNlbGYuX3JlcXVlc3QoIlBPU1QiLCAiL2FwaS9jb21wZXRpdGlvbnMvY3JlYXRlIiwgcGF5bG9hZD1wYXlsb2FkKQogICAgICAgIGNvbXBldGl0aW9uID0gZGF0YS5nZXQoImRhdGEiLCB7fSkuZ2V0KCJjb21wZXRpdGlvbiIsIHt9KQogICAgICAgIGNvbXBldGl0aW9uX2lkID0gY29tcGV0aXRpb24uZ2V0KCJpZCIpCiAgICAgICAgaWYgbm90IGNvbXBldGl0aW9uX2lkOgogICAgICAgICAgICByYWlzZSBSdW50aW1lRXJyb3IoZiJtaXNzaW5nIGNvbXBldGl0aW9uIGlkIGluIHJlc3BvbnNlOiB7ZGF0YX0iKQogICAgICAgIHJldHVybiBzdHIoY29tcGV0aXRpb25faWQpCgogICAgZGVmIGxpc3RfcHJvYmxlbXMoc2VsZiwgY29tcGV0aXRpb25faWQ6IHN0cikgLT4gTGlzdFtEaWN0W3N0ciwgQW55XV06CiAgICAgICAgZGF0YSA9IHNlbGYuX3JlcXVlc3QoIkdFVCIsIGYiL2FwaS9wcm9ibGVtcy9saXN0L3tjb21wZXRpdGlvbl9pZH0iKQogICAgICAgIHJhdyA9IGRhdGEuZ2V0KCJkYXRhIiwgW10pCiAgICAgICAgcmV0dXJuIHJhdyBpZiBpc2luc3RhbmNlKHJhdywgbGlzdCkgZWxzZSBbXQoKICAgIGRlZiBjcmVhdGVfcGFydGljaXBhbnRzX2JhdGNoKAogICAgICAgIHNlbGYsCiAgICAgICAgKiwKICAgICAgICBjb21wZXRpdGlvbl9pZDogc3RyLAogICAgICAgIHBhcnRpY2lwYW50X25hbWVzOiBMaXN0W3N0cl0sCiAgICAgICAgbGltaXRfdG9rZW5zOiBpbnQsCiAgICAgICAgbGFtYmRhX3ZhbHVlOiBpbnQsCiAgICAgICAgdXBzdHJlYW1fYXBpX2Jhc2VfdXJsOiBzdHIsCiAgICAgICAgdXBzdHJlYW1fYXBpX2tleTogc3RyLAogICAgKSAtPiBMaXN0W0RpY3Rbc3RyLCBBbnldXToKICAgICAgICBwYXJ0aWNpcGFudHNfcGF5bG9hZDogTGlzdFtEaWN0W3N0ciwgQW55XV0gPSBbXQogICAgICAgIGZvciBuYW1lIGluIHBhcnRpY2lwYW50X25hbWVzOgogICAgICAgICAgICByb3c6IERpY3Rbc3RyLCBBbnldID0geyJuYW1lIjogbmFtZX0KICAgICAgICAgICAgaWYgdXBzdHJlYW1fYXBpX2Jhc2VfdXJsOgogICAgICAgICAgICAgICAgcm93WyJhcGlfYmFzZV91cmwiXSA9IHVwc3RyZWFtX2FwaV9iYXNlX3VybAogICAgICAgICAgICBpZiB1cHN0cmVhbV9hcGlfa2V5OgogICAgICAgICAgICAgICAgcm93WyJhcGlfa2V5Il0gPSB1cHN0cmVhbV9hcGlfa2V5CiAgICAgICAgICAgIHBhcnRpY2lwYW50c19wYXlsb2FkLmFwcGVuZChyb3cpCgogICAgICAgIHBheWxvYWQgPSB7CiAgICAgICAgICAgICJkZWZhdWx0X2xpbWl0X3Rva2VucyI6IGxpbWl0X3Rva2VucywKICAgICAgICAgICAgImRlZmF1bHRfbGFtYmRhX3ZhbHVlIjogbGFtYmRhX3ZhbHVlLAogICAgICAgICAgICAicGFydGljaXBhbnRzIjogcGFydGljaXBhbnRzX3BheWxvYWQsCiAgICAgICAgfQogICAgICAgIGRhdGEgPSBzZWxmLl9yZXF1ZXN0KCJQT1NUIiwgZiIvYXBpL3BhcnRpY2lwYW50cy9jcmVhdGVfYmF0Y2gve2NvbXBldGl0aW9uX2lkfSIsIHBheWxvYWQ9cGF5bG9hZCkKICAgICAgICBjcmVhdGVkID0gZGF0YS5nZXQoImRhdGEiLCB7fSkuZ2V0KCJjcmVhdGVkIiwgW10pCiAgICAgICAgZXJyb3JzID0gZGF0YS5nZXQoImRhdGEiLCB7fSkuZ2V0KCJlcnJvcnMiLCBbXSkKICAgICAgICBpZiBlcnJvcnM6CiAgICAgICAgICAgIHJhaXNlIFJ1bnRpbWVFcnJvcihmImJhdGNoIGNyZWF0ZSByZXR1cm5lZCBlcnJvcnM6IHtlcnJvcnN9IikKICAgICAgICBpZiBub3QgaXNpbnN0YW5jZShjcmVhdGVkLCBsaXN0KSBvciBub3QgY3JlYXRlZDoKICAgICAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKCJiYXRjaCBjcmVhdGUgcmV0dXJuZWQgbm8gcGFydGljaXBhbnRzIikKICAgICAgICByZXR1cm4gY3JlYXRlZAoKICAgIGRlZiBnZXRfZ2F0ZXdheV9jcmVkZW50aWFscyhzZWxmLCBjb21wZXRpdGlvbl9pZDogc3RyLCBwYXJ0aWNpcGFudF9pZDogc3RyKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICBkYXRhID0gc2VsZi5fcmVxdWVzdCgKICAgICAgICAgICAgIkdFVCIsCiAgICAgICAgICAgIGYiL2FwaS9wYXJ0aWNpcGFudHMvZ2F0ZXdheV9jcmVkZW50aWFscy97Y29tcGV0aXRpb25faWR9L3twYXJ0aWNpcGFudF9pZH0iLAogICAgICAgICkKICAgICAgICBwYXlsb2FkID0gZGF0YS5nZXQoImRhdGEiKQogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKHBheWxvYWQsIGRpY3QpOgogICAgICAgICAgICByYWlzZSBSdW50aW1lRXJyb3IoCiAgICAgICAgICAgICAgICAiZ2F0ZXdheSBjcmVkZW50aWFscyByZXNwb25zZSBwYXlsb2FkIGlzIG1pc3Npbmcgb3IgaW52YWxpZCAiCiAgICAgICAgICAgICAgICBmIihjb21wZXRpdGlvbl9pZD17Y29tcGV0aXRpb25faWR9LCBwYXJ0aWNpcGFudF9pZD17cGFydGljaXBhbnRfaWR9KSIKICAgICAgICAgICAgKQogICAgICAgIHJldHVybiBwYXlsb2FkCgoKZGVmIF9idWlsZF9wYXJ0aWNpcGFudF9uYW1lcygKICAgIGV4cGxpY2l0X25hbWVzOiBMaXN0W3N0cl0sCiAgICAqLAogICAgY291bnQ6IGludCwKICAgIHByZWZpeDogc3RyLAopIC0+IExpc3Rbc3RyXToKICAgIG5hbWVzID0gW25hbWUuc3RyaXAoKSBmb3IgbmFtZSBpbiBleHBsaWNpdF9uYW1lcyBpZiBuYW1lIGFuZCBuYW1lLnN0cmlwKCldCiAgICBpZiBjb3VudCA+IDA6CiAgICAgICAgd2lkdGggPSBsZW4oc3RyKGNvdW50KSkKICAgICAgICBmb3IgaWR4IGluIHJhbmdlKDEsIGNvdW50ICsgMSk6CiAgICAgICAgICAgIG5hbWVzLmFwcGVuZChmIntwcmVmaXh9LXtpZHg6MHt3aWR0aH1kfSIpCiAgICBkZWR1cGVkOiBMaXN0W3N0cl0gPSBbXQogICAgc2VlbiA9IHNldCgpCiAgICBmb3IgbmFtZSBpbiBuYW1lczoKICAgICAgICBpZiBuYW1lIGluIHNlZW46CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgc2Vlbi5hZGQobmFtZSkKICAgICAgICBkZWR1cGVkLmFwcGVuZChuYW1lKQogICAgcmV0dXJuIGRlZHVwZWQKCgpkZWYgc2V0dXAoYXJnczogYXJncGFyc2UuTmFtZXNwYWNlKSAtPiBTZXR1cFJlc3VsdDoKICAgIGNvbXBldGl0aW9uX2NvbmZpZyA9IF9sb2FkX2NvbXBldGl0aW9uX2NvbmZpZyhhcmdzLmNvbXBldGl0aW9uX2NvbmZpZykKCiAgICBlZmZlY3RpdmVfYXBpX2Jhc2UgPSBhcmdzLmFwaV9iYXNlCiAgICBpZiBhcmdzLmFwaV9iYXNlID09IERFRkFVTFRfQVBJX0JBU0U6CiAgICAgICAgY2ZnX2FwaV9iYXNlID0gY29tcGV0aXRpb25fY29uZmlnLmdldCgiYXBpX2Jhc2UiKQogICAgICAgIGlmIGlzaW5zdGFuY2UoY2ZnX2FwaV9iYXNlLCBzdHIpIGFuZCBjZmdfYXBpX2Jhc2Uuc3RyaXAoKToKICAgICAgICAgICAgZWZmZWN0aXZlX2FwaV9iYXNlID0gY2ZnX2FwaV9iYXNlLnN0cmlwKCkKCiAgICBwYXJ0aWNpcGFudF9uYW1lcyA9IF9idWlsZF9wYXJ0aWNpcGFudF9uYW1lcygKICAgICAgICBhcmdzLnBhcnRpY2lwYW50X25hbWUsCiAgICAgICAgY291bnQ9YXJncy5wYXJ0aWNpcGFudF9jb3VudCwKICAgICAgICBwcmVmaXg9YXJncy5wYXJ0aWNpcGFudF9wcmVmaXgsCiAgICApCiAgICBpZiBub3QgcGFydGljaXBhbnRfbmFtZXM6CiAgICAgICAgcmFpc2UgVmFsdWVFcnJvcigiYXQgbGVhc3Qgb25lIHBhcnRpY2lwYW50IGlzIHJlcXVpcmVkICgtLXBhcnRpY2lwYW50LW5hbWUgb3IgLS1wYXJ0aWNpcGFudC1jb3VudCkiKQoKICAgIGNsaWVudCA9IEFyZW5hQ2xpZW50KGVmZmVjdGl2ZV9hcGlfYmFzZSwgdGltZW91dD1hcmdzLnRpbWVvdXQpCgogICAgaWYgYXJncy5jcmVhdGVfY29tcGV0aXRpb246CiAgICAgICAgcHJvYmxlbV9pZHMgPSBfcGFyc2VfcHJvYmxlbV9pZHMoYXJncy5wcm9ibGVtX2lkcykKICAgICAgICBpZiBub3QgcHJvYmxlbV9pZHM6CiAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoIi0tcHJvYmxlbS1pZHMgaXMgcmVxdWlyZWQgd2hlbiAtLWNyZWF0ZS1jb21wZXRpdGlvbiBpcyBzZXQiKQoKICAgICAgICBjZmdfdGl0bGUgPSBjb21wZXRpdGlvbl9jb25maWcuZ2V0KCJjb21wZXRpdGlvbl90aXRsZSIpCiAgICAgICAgaWYgY2ZnX3RpdGxlIGlzIE5vbmU6CiAgICAgICAgICAgIGNmZ190aXRsZSA9IGNvbXBldGl0aW9uX2NvbmZpZy5nZXQoInRpdGxlIikKICAgICAgICBjZmdfZGVzY3JpcHRpb24gPSBjb21wZXRpdGlvbl9jb25maWcuZ2V0KCJjb21wZXRpdGlvbl9kZXNjcmlwdGlvbiIpCiAgICAgICAgaWYgY2ZnX2Rlc2NyaXB0aW9uIGlzIE5vbmU6CiAgICAgICAgICAgIGNmZ19kZXNjcmlwdGlvbiA9IGNvbXBldGl0aW9uX2NvbmZpZy5nZXQoImRlc2NyaXB0aW9uIikKICAgICAgICBjZmdfbWF4X3Rva2VucyA9IGNvbXBldGl0aW9uX2NvbmZpZy5nZXQoIm1heF90b2tlbnNfcGVyX3BhcnRpY2lwYW50IikKICAgICAgICBjZmdfcnVsZXMgPSBjb21wZXRpdGlvbl9jb25maWcuZ2V0KCJydWxlcyIpCgogICAgICAgIHRpdGxlID0gYXJncy50aXRsZQogICAgICAgIGlmIGFyZ3MudGl0bGUgPT0gREVGQVVMVF9USVRMRToKICAgICAgICAgICAgdGl0bGUgPSBfcGlja190ZXh0X3ZhbHVlKGNmZ190aXRsZSwgZmFsbGJhY2s9REVGQVVMVF9USVRMRSkKCiAgICAgICAgZGVzY3JpcHRpb24gPSBhcmdzLmRlc2NyaXB0aW9uCiAgICAgICAgaWYgYXJncy5kZXNjcmlwdGlvbiA9PSBERUZBVUxUX0RFU0NSSVBUSU9OOgogICAgICAgICAgICBkZXNjcmlwdGlvbiA9IF9waWNrX3RleHRfdmFsdWUoY2ZnX2Rlc2NyaXB0aW9uLCBmYWxsYmFjaz1ERUZBVUxUX0RFU0NSSVBUSU9OKQoKICAgICAgICBtYXhfdG9rZW5zX3Blcl9wYXJ0aWNpcGFudCA9IGFyZ3MuY29tcGV0aXRpb25fbWF4X3Rva2VucwogICAgICAgIGlmIGFyZ3MuY29tcGV0aXRpb25fbWF4X3Rva2VucyA9PSBERUZBVUxUX0NPTVBFVElUSU9OX01BWF9UT0tFTlM6CiAgICAgICAgICAgIG1heF90b2tlbnNfcGVyX3BhcnRpY2lwYW50ID0gX3BpY2tfaW50X3ZhbHVlKAogICAgICAgICAgICAgICAgY2ZnX21heF90b2tlbnMsCiAgICAgICAgICAgICAgICBmYWxsYmFjaz1ERUZBVUxUX0NPTVBFVElUSU9OX01BWF9UT0tFTlMsCiAgICAgICAgICAgICAgICBmaWVsZF9uYW1lPSJtYXhfdG9rZW5zX3Blcl9wYXJ0aWNpcGFudCIsCiAgICAgICAgICAgICAgICBtaW5fdmFsdWU9MCwKICAgICAgICAgICAgICAgIG1heF92YWx1ZT1JTlQ2NF9NQVgsCiAgICAgICAgICAgICkKICAgICAgICBlbHNlOgogICAgICAgICAgICBtYXhfdG9rZW5zX3Blcl9wYXJ0aWNpcGFudCA9IF9waWNrX2ludF92YWx1ZSgKICAgICAgICAgICAgICAgIG1heF90b2tlbnNfcGVyX3BhcnRpY2lwYW50LAogICAgICAgICAgICAgICAgZmFsbGJhY2s9REVGQVVMVF9DT01QRVRJVElPTl9NQVhfVE9LRU5TLAogICAgICAgICAgICAgICAgZmllbGRfbmFtZT0ibWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQiLAogICAgICAgICAgICAgICAgbWluX3ZhbHVlPTAsCiAgICAgICAgICAgICAgICBtYXhfdmFsdWU9SU5UNjRfTUFYLAogICAgICAgICAgICApCgogICAgICAgIGNvbXBldGl0aW9uX2lkID0gY2xpZW50LmNyZWF0ZV9jb21wZXRpdGlvbigKICAgICAgICAgICAgdGl0bGU9dGl0bGUsCiAgICAgICAgICAgIGRlc2NyaXB0aW9uPWRlc2NyaXB0aW9uLAogICAgICAgICAgICBwcm9ibGVtX2lkcz1wcm9ibGVtX2lkcywKICAgICAgICAgICAgbWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQ9bWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQsCiAgICAgICAgICAgIHJ1bGVzPWNmZ19ydWxlcyBpZiBpc2luc3RhbmNlKGNmZ19ydWxlcywgZGljdCkgZWxzZSBOb25lLAogICAgICAgICkKICAgIGVsc2U6CiAgICAgICAgaWYgbm90IGFyZ3MuY29tcGV0aXRpb25faWQ6CiAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoIi0tY29tcGV0aXRpb24taWQgaXMgcmVxdWlyZWQgd2hlbiBub3QgY3JlYXRpbmcgY29tcGV0aXRpb24iKQogICAgICAgIGNvbXBldGl0aW9uX2lkID0gYXJncy5jb21wZXRpdGlvbl9pZAoKICAgIHByb2JsZW1zID0gY2xpZW50Lmxpc3RfcHJvYmxlbXMoY29tcGV0aXRpb25faWQpCiAgICBwcm9ibGVtX2lkID0gYXJncy5wcm9ibGVtX2lkCiAgICBpZiBub3QgcHJvYmxlbV9pZCBhbmQgcHJvYmxlbXM6CiAgICAgICAgZmlyc3RfcHJvYmxlbSA9IHByb2JsZW1zWzBdCiAgICAgICAgdmFsdWUgPSBmaXJzdF9wcm9ibGVtLmdldCgiaWQiKQogICAgICAgIGlmIHZhbHVlIGlzIG5vdCBOb25lOgogICAgICAgICAgICBwcm9ibGVtX2lkID0gc3RyKHZhbHVlKQoKICAgIGNyZWF0ZWQgPSBjbGllbnQuY3JlYXRlX3BhcnRpY2lwYW50c19iYXRjaCgKICAgICAgICBjb21wZXRpdGlvbl9pZD1jb21wZXRpdGlvbl9pZCwKICAgICAgICBwYXJ0aWNpcGFudF9uYW1lcz1wYXJ0aWNpcGFudF9uYW1lcywKICAgICAgICBsaW1pdF90b2tlbnM9X3BpY2tfaW50X3ZhbHVlKAogICAgICAgICAgICBhcmdzLnBhcnRpY2lwYW50X2xpbWl0X3Rva2VucywKICAgICAgICAgICAgZmFsbGJhY2s9MTAwMDAwMDAsCiAgICAgICAgICAgIGZpZWxkX25hbWU9InBhcnRpY2lwYW50X2xpbWl0X3Rva2VucyIsCiAgICAgICAgICAgIG1pbl92YWx1ZT0wLAogICAgICAgICAgICBtYXhfdmFsdWU9SU5UNjRfTUFYLAogICAgICAgICksCiAgICAgICAgbGFtYmRhX3ZhbHVlPV9waWNrX2ludF92YWx1ZSgKICAgICAgICAgICAgYXJncy5wYXJ0aWNpcGFudF9sYW1iZGEsCiAgICAgICAgICAgIGZhbGxiYWNrPTEwMCwKICAgICAgICAgICAgZmllbGRfbmFtZT0icGFydGljaXBhbnRfbGFtYmRhIiwKICAgICAgICAgICAgbWluX3ZhbHVlPTAsCiAgICAgICAgICAgIG1heF92YWx1ZT1JTlQzMl9NQVgsCiAgICAgICAgKSwKICAgICAgICB1cHN0cmVhbV9hcGlfYmFzZV91cmw9KGFyZ3MudXBzdHJlYW1fYXBpX2Jhc2VfdXJsIG9yICIiKS5zdHJpcCgpLAogICAgICAgIHVwc3RyZWFtX2FwaV9rZXk9KGFyZ3MudXBzdHJlYW1fYXBpX2tleSBvciAiIikuc3RyaXAoKSwKICAgICkKCiAgICBwYXJ0aWNpcGFudHM6IExpc3RbRGljdFtzdHIsIEFueV1dID0gW10KICAgIGZvciByb3cgaW4gY3JlYXRlZDoKICAgICAgICBwYXJ0aWNpcGFudF9pZCA9IHN0cihyb3cuZ2V0KCJpZCIpIG9yICIiKQogICAgICAgIGlmIG5vdCBwYXJ0aWNpcGFudF9pZDoKICAgICAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKGYicGFydGljaXBhbnQgcmVjb3JkIG1pc3NpbmcgaWQ6IHtyb3d9IikKICAgICAgICBnYXRld2F5ID0gY2xpZW50LmdldF9nYXRld2F5X2NyZWRlbnRpYWxzKGNvbXBldGl0aW9uX2lkLCBwYXJ0aWNpcGFudF9pZCkKICAgICAgICBwYXJ0aWNpcGFudHMuYXBwZW5kKAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAibmFtZSI6IHJvdy5nZXQoIm5hbWUiKSwKICAgICAgICAgICAgICAgICJwYXJ0aWNpcGFudF9pZCI6IHBhcnRpY2lwYW50X2lkLAogICAgICAgICAgICAgICAgImdhdGV3YXlfYmFzZV91cmwiOiBnYXRld2F5LmdldCgiZ2F0ZXdheV9iYXNlX3VybCIpLAogICAgICAgICAgICAgICAgIm9wZW5haV9hcGlfYmFzZSI6IGdhdGV3YXkuZ2V0KCJvcGVuYWlfYXBpX2Jhc2UiKSwKICAgICAgICAgICAgICAgICJvcGVuYWlfYXBpX2tleSI6IGdhdGV3YXkuZ2V0KCJvcGVuYWlfYXBpX2tleSIpLAogICAgICAgICAgICB9CiAgICAgICAgKQoKICAgIHJldHVybiBTZXR1cFJlc3VsdCgKICAgICAgICBhcGlfYmFzZT1lZmZlY3RpdmVfYXBpX2Jhc2UsCiAgICAgICAgY29tcGV0aXRpb25faWQ9Y29tcGV0aXRpb25faWQsCiAgICAgICAgcHJvYmxlbV9pZD1wcm9ibGVtX2lkLAogICAgICAgIHBhcnRpY2lwYW50cz1wYXJ0aWNpcGFudHMsCiAgICApCgoKZGVmIF9wcmludF9zdW1tYXJ5KHJlc3VsdDogU2V0dXBSZXN1bHQsIGFyZ3M6IGFyZ3BhcnNlLk5hbWVzcGFjZSkgLT4gTm9uZToKICAgIHBheWxvYWQgPSB7CiAgICAgICAgImFwaV9iYXNlIjogcmVzdWx0LmFwaV9iYXNlLAogICAgICAgICJjb21wZXRpdGlvbl9pZCI6IHJlc3VsdC5jb21wZXRpdGlvbl9pZCwKICAgICAgICAicHJvYmxlbV9pZCI6IHJlc3VsdC5wcm9ibGVtX2lkLAogICAgICAgICJwYXJ0aWNpcGFudHMiOiByZXN1bHQucGFydGljaXBhbnRzLAogICAgfQogICAgcHJpbnQoIj09PSBzZXR1cCBzdW1tYXJ5ID09PSIpCiAgICBwcmludChqc29uLmR1bXBzKHBheWxvYWQsIGluZGVudD0yLCBlbnN1cmVfYXNjaWk9RmFsc2UpKQogICAgcHJpbnQoIiIpCiAgICBwcmludCgiPT09IGluZmluaXRlX3RyZWUgZW52IHNuaXBwZXRzID09PSIpCgogICAgZm9yIGl0ZW0gaW4gcmVzdWx0LnBhcnRpY2lwYW50czoKICAgICAgICBuYW1lID0gc3RyKGl0ZW0uZ2V0KCJuYW1lIikgb3IgImFnZW50IikKICAgICAgICBwYXJ0aWNpcGFudF9pZCA9IHN0cihpdGVtLmdldCgicGFydGljaXBhbnRfaWQiKSkKICAgICAgICBzYWZlX25hbWUgPSBfc2FmZV9uYW1lKG5hbWUpCiAgICAgICAgb3BlbmFpX2FwaV9iYXNlID0gc3RyKGl0ZW0uZ2V0KCJvcGVuYWlfYXBpX2Jhc2UiKSBvciAiIikKICAgICAgICBvcGVuYWlfYXBpX2tleSA9IHN0cihpdGVtLmdldCgib3BlbmFpX2FwaV9rZXkiKSBvciAiIikKCiAgICAgICAgcHJpbnQoZiIjIHtuYW1lfSIpCiAgICAgICAgcHJpbnQoZiJleHBvcnQgVVNBQ09BUkVOQV9CQVNFX1VSTD17anNvbi5kdW1wcyhyZXN1bHQuYXBpX2Jhc2UpfSIpCiAgICAgICAgcHJpbnQoZiJleHBvcnQgVVNBQ09BUkVOQV9DT01QRVRJVElPTl9JRD17anNvbi5kdW1wcyhyZXN1bHQuY29tcGV0aXRpb25faWQpfSIpCiAgICAgICAgcHJpbnQoZiJleHBvcnQgVVNBQ09BUkVOQV9QQVJUSUNJUEFOVF9JRD17anNvbi5kdW1wcyhwYXJ0aWNpcGFudF9pZCl9IikKICAgICAgICBpZiByZXN1bHQucHJvYmxlbV9pZDoKICAgICAgICAgICAgcHJpbnQoZiJleHBvcnQgVVNBQ09BUkVOQV9QUk9CTEVNX0lEPXtqc29uLmR1bXBzKHJlc3VsdC5wcm9ibGVtX2lkKX0iKQogICAgICAgIHByaW50KGYiZXhwb3J0IE9QRU5BSV9BUElfQkFTRT17anNvbi5kdW1wcyhvcGVuYWlfYXBpX2Jhc2UpfSIpCiAgICAgICAgcHJpbnQoZiJleHBvcnQgT1BFTkFJX0JBU0VfVVJMPXtqc29uLmR1bXBzKG9wZW5haV9hcGlfYmFzZSl9IikKICAgICAgICBwcmludChmImV4cG9ydCBPUEVOQUlfQVBJX0tFWT17anNvbi5kdW1wcyhvcGVuYWlfYXBpX2tleSl9IikKICAgICAgICBwcmludCgKICAgICAgICAgICAgInV2IHJ1biBtYWluLnB5ICIKICAgICAgICAgICAgIi0tY29uZmlnIHVzYWNvQXJlbmEgIgogICAgICAgICAgICBmIi0tb3V0cHV0IGhpc3RvcnkvdXNhY29BcmVuYS97c2FmZV9uYW1lfSAiCiAgICAgICAgICAgICItLWxsbS1iYWNrZW5kIGNvZGV4ICIKICAgICAgICAgICAgZiItLWl0ZXJhdGlvbnMge2FyZ3MuaXRlcmF0aW9uc30gIgogICAgICAgICAgICAiLS1sbG0taXNvbGF0ZSIKICAgICAgICApCiAgICAgICAgcHJpbnQoIiIpCgoKZGVmIGJ1aWxkX3BhcnNlcigpIC0+IGFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyOgogICAgcGFyc2VyID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoCiAgICAgICAgZGVzY3JpcHRpb249KAogICAgICAgICAgICAiQ3JlYXRlIG9yIHJldXNlIGEgVVNBQ09BcmVuYSBjb21wZXRpdGlvbiwgcmVnaXN0ZXIgb25lIG9yIG11bHRpcGxlICIKICAgICAgICAgICAgImluZmluaXRlX3RyZWUgcGFydGljaXBhbnRzLCBhbmQgcHJpbnQgcGFydGljaXBhbnQtc3BlY2lmaWMgZ2F0ZXdheSBjcmVkZW50aWFscy4iCiAgICAgICAgKQogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1hcGktYmFzZSIsIGRlZmF1bHQ9REVGQVVMVF9BUElfQkFTRSwgaGVscD0iVVNBQ09BcmVuYSBiYXNlIFVSTCIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLXRpbWVvdXQiLCB0eXBlPWZsb2F0LCBkZWZhdWx0PTMwLjAsIGhlbHA9IkhUVFAgdGltZW91dCBpbiBzZWNvbmRzIikKCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLWNyZWF0ZS1jb21wZXRpdGlvbiIsCiAgICAgICAgYWN0aW9uPSJzdG9yZV90cnVlIiwKICAgICAgICBoZWxwPSJDcmVhdGUgYSBuZXcgY29tcGV0aXRpb24gYmVmb3JlIGFkZGluZyBwYXJ0aWNpcGFudHMiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1jb21wZXRpdGlvbi1jb25maWciLAogICAgICAgIGRlZmF1bHQ9IiIsCiAgICAgICAgaGVscD0oCiAgICAgICAgICAgICJPcHRpb25hbCBKU09OIGNvbmZpZyBwYXRoIChlLmcuIGNvbmZpZy9jb21wZXRpdGlvbl9tYWluLmpzb24pLiAiCiAgICAgICAgICAgICJXaGVuIGNyZWF0aW5nIGEgY29tcGV0aXRpb24sIHVzZXMgaXRzIHJ1bGVzL3RpdGxlL2Rlc2NyaXB0aW9uL21heF90b2tlbnNfcGVyX3BhcnRpY2lwYW50OyAiCiAgICAgICAgICAgICJDTEkgYXJndW1lbnRzIHdpdGggbm9uLWRlZmF1bHQgdmFsdWVzIG92ZXJyaWRlIGNvbmZpZyB2YWx1ZXMuIgogICAgICAgICksCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLWNvbXBldGl0aW9uLWlkIiwgZGVmYXVsdD0iIiwgaGVscD0iRXhpc3RpbmcgY29tcGV0aXRpb24gaWQiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS10aXRsZSIsIGRlZmF1bHQ9REVGQVVMVF9USVRMRSwgaGVscD0iQ29tcGV0aXRpb24gdGl0bGUiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1kZXNjcmlwdGlvbiIsIGRlZmF1bHQ9REVGQVVMVF9ERVNDUklQVElPTiwgaGVscD0iQ29tcGV0aXRpb24gZGVzY3JpcHRpb24iKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1wcm9ibGVtLWlkcyIsCiAgICAgICAgZGVmYXVsdD0iIiwKICAgICAgICBoZWxwPSJDb21tYS1zZXBhcmF0ZWQgcHJvYmxlbSBJRHMsIG9yIGEgSlNPTiBmaWxlIHBhdGggd2hlbiBjcmVhdGluZyBhIGNvbXBldGl0aW9uIiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tY29tcGV0aXRpb24tbWF4LXRva2VucyIsCiAgICAgICAgdHlwZT1pbnQsCiAgICAgICAgZGVmYXVsdD1ERUZBVUxUX0NPTVBFVElUSU9OX01BWF9UT0tFTlMsCiAgICAgICAgaGVscD0ibWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQgd2hlbiBjcmVhdGluZyBhIGNvbXBldGl0aW9uIiwKICAgICkKCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLXBhcnRpY2lwYW50LW5hbWUiLAogICAgICAgIGFjdGlvbj0iYXBwZW5kIiwKICAgICAgICBkZWZhdWx0PVtdLAogICAgICAgIGhlbHA9IlBhcnRpY2lwYW50IG5hbWUgKGNhbiBiZSByZXBlYXRlZCkiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1wYXJ0aWNpcGFudC1jb3VudCIsCiAgICAgICAgdHlwZT1pbnQsCiAgICAgICAgZGVmYXVsdD0wLAogICAgICAgIGhlbHA9IkF1dG8tZ2VuZXJhdGUgdGhpcyBtYW55IHBhcnRpY2lwYW50cyB1c2luZyAtLXBhcnRpY2lwYW50LXByZWZpeCIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLXBhcnRpY2lwYW50LXByZWZpeCIsCiAgICAgICAgZGVmYXVsdD0iaW5maW5pdGUtdHJlZS1hZ2VudCIsCiAgICAgICAgaGVscD0iUHJlZml4IHVzZWQgd2l0aCAtLXBhcnRpY2lwYW50LWNvdW50IiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tcGFydGljaXBhbnQtbGltaXQtdG9rZW5zIiwKICAgICAgICB0eXBlPWludCwKICAgICAgICBkZWZhdWx0PTEwMDAwMDAwLAogICAgICAgIGhlbHA9IlBhcnRpY2lwYW50IHRva2VuIGxpbWl0IiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tcGFydGljaXBhbnQtbGFtYmRhIiwKICAgICAgICB0eXBlPWludCwKICAgICAgICBkZWZhdWx0PTEwMCwKICAgICAgICBoZWxwPSJQYXJ0aWNpcGFudCBsYW1iZGEgdmFsdWUiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1wcm9ibGVtLWlkIiwKICAgICAgICBkZWZhdWx0PSIiLAogICAgICAgIGhlbHA9IlByb2JsZW0gaWQgdXNlZCBieSBpbmZpbml0ZV90cmVlIGV2YWx1YXRlLnB5IChkZWZhdWx0OiBmaXJzdCBwcm9ibGVtIGluIGNvbXBldGl0aW9uKSIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLXVwc3RyZWFtLWFwaS1iYXNlLXVybCIsCiAgICAgICAgZGVmYXVsdD0iIiwKICAgICAgICBoZWxwPSgKICAgICAgICAgICAgIk9wdGlvbmFsIHVwc3RyZWFtIExMTSBBUEkgYmFzZSBVUkwgc3RvcmVkIHBlciBwYXJ0aWNpcGFudC4gIgogICAgICAgICAgICAiSWYgb21pdHRlZCwgc2VydmVyIGZhbGxzIGJhY2sgdG8gVVNBQ09BUkVOQV9VUFNUUkVBTV9BUElfQkFTRV9VUkwgZW52aXJvbm1lbnQgdmFyaWFibGUuIgogICAgICAgICksCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLXVwc3RyZWFtLWFwaS1rZXkiLAogICAgICAgIGRlZmF1bHQ9IiIsCiAgICAgICAgaGVscD0oCiAgICAgICAgICAgICJPcHRpb25hbCB1cHN0cmVhbSBMTE0gQVBJIGtleSBzdG9yZWQgcGVyIHBhcnRpY2lwYW50LiAiCiAgICAgICAgICAgICJJZiBvbWl0dGVkLCBzZXJ2ZXIgZmFsbHMgYmFjayB0byBVU0FDT0FSRU5BX1VQU1RSRUFNX0FQSV9LRVkgZW52aXJvbm1lbnQgdmFyaWFibGUuIgogICAgICAgICksCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLWl0ZXJhdGlvbnMiLAogICAgICAgIHR5cGU9aW50LAogICAgICAgIGRlZmF1bHQ9MjAwLAogICAgICAgIGhlbHA9IlN1Z2dlc3RlZCBpdGVyYXRpb24gY291bnQgcHJpbnRlZCBpbiB0aGUgcnVuIGNvbW1hbmQiLAogICAgKQogICAgcmV0dXJuIHBhcnNlcgoKCmRlZiBtYWluKCkgLT4gTm9uZToKICAgIHBhcnNlciA9IGJ1aWxkX3BhcnNlcigpCiAgICBhcmdzID0gcGFyc2VyLnBhcnNlX2FyZ3MoKQogICAgdHJ5OgogICAgICAgIHJlc3VsdCA9IHNldHVwKGFyZ3MpCiAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGV4YzoKICAgICAgICBwYXJzZXIuZXhpdCgxLCBmIkVSUk9SOiB7ZXhjfVxuIikKICAgIF9wcmludF9zdW1tYXJ5KHJlc3VsdCwgYXJncykKCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgbWFpbigpCg==
+#!/usr/bin/env python3
+"""Bootstrap USACOArena competition + participant-specific gateway credentials for infinite_tree."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+from dataclasses import dataclass
+from typing import Any, Dict, List, Optional
+
+import requests
+
+
+DEFAULT_API_BASE = "http://127.0.0.1:5000"
+DEFAULT_TITLE = "infinite_tree vs USACOArena"
+DEFAULT_DESCRIPTION = "Competition bootstrapped for infinite_tree agents"
+DEFAULT_COMPETITION_MAX_TOKENS = 100000
+INT32_MAX = (2**31) - 1
+INT64_MAX = (2**63) - 1
+
+
+def _normalize_base(url: str) -> str:
+    value = (url or "").strip()
+    if not value:
+        raise ValueError("api base url must not be empty")
+    return value.rstrip("/")
+
+
+def _parse_problem_ids(raw: str) -> List[str]:
+    values = [token.strip() for token in (raw or "").split(",") if token.strip()]
+    if not values:
+        return []
+
+    if len(values) == 1:
+        candidate = values[0]
+        if os.path.isfile(candidate):
+            with open(candidate, "r", encoding="utf-8") as f:
+                loaded = json.load(f)
+
+            if isinstance(loaded, list):
+                return [str(item).strip() for item in loaded if str(item).strip()]
+
+            if isinstance(loaded, dict):
+                for key in ("problem_ids", "problems", "ids"):
+                    arr = loaded.get(key)
+                    if isinstance(arr, list):
+                        return [str(item).strip() for item in arr if str(item).strip()]
+                raise ValueError(
+                    f"problem id file {candidate!r} must contain a list, "
+                    "or a dict with one of keys: problem_ids/problems/ids"
+                )
+
+            raise ValueError(f"problem id file {candidate!r} must be a JSON list or object")
+
+        if candidate.endswith(".json") or "/" in candidate or "\\" in candidate:
+            raise FileNotFoundError(
+                f"problem id file not found: {candidate!r}. "
+                "Pass an existing JSON file path, or pass comma-separated problem IDs."
+            )
+
+    return values
+
+
+def _safe_name(name: str) -> str:
+    cleaned = "".join(ch if (ch.isalnum() or ch in "-_.") else "_" for ch in name.strip())
+    return cleaned or "agent"
+
+
+def _load_competition_config(path: str) -> Dict[str, Any]:
+    candidate = (path or "").strip()
+    if not candidate:
+        return {}
+    if not os.path.isfile(candidate):
+        raise FileNotFoundError(f"competition config file not found: {candidate!r}")
+
+    with open(candidate, "r", encoding="utf-8") as f:
+        loaded = json.load(f)
+    if not isinstance(loaded, dict):
+        raise ValueError(f"competition config file must contain a JSON object: {candidate!r}")
+
+    rules = loaded.get("rules")
+    if rules is not None and not isinstance(rules, dict):
+        raise ValueError(f"'rules' must be a JSON object in competition config: {candidate!r}")
+    return loaded
+
+
+def _pick_text_value(value: Any, *, fallback: str) -> str:
+    if value is None:
+        return fallback
+    normalized = str(value).strip()
+    return normalized or fallback
+
+
+def _pick_int_value(
+    value: Any,
+    *,
+    fallback: int,
+    field_name: str,
+    min_value: int | None = None,
+    max_value: int | None = None,
+) -> int:
+    if value is None:
+        result = fallback
+    elif isinstance(value, bool):
+        raise ValueError(f"{field_name} must be an integer, got {value!r}")
+    elif isinstance(value, float):
+        if not value.is_integer():
+            raise ValueError(f"{field_name} must be an integer, got {value!r}")
+        result = int(value)
+    else:
+        try:
+            result = int(value)
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"{field_name} must be an integer, got {value!r}") from exc
+
+    if min_value is not None and result < min_value:
+        raise ValueError(
+            f"{field_name} must be >= {min_value}, got {result!r}"
+        )
+    if max_value is not None and result > max_value:
+        raise ValueError(
+            f"{field_name} must be <= {max_value}, got {result!r}"
+        )
+    return result
+
+
+@dataclass
+class SetupResult:
+    api_base: str
+    competition_id: str
+    problem_id: Optional[str]
+    participants: List[Dict[str, Any]]
+
+
+class ArenaClient:
+    def __init__(self, base_url: str, timeout: float = 30.0) -> None:
+        self.base_url = _normalize_base(base_url)
+        self.timeout = timeout
+        self.session = requests.Session()
+
+    def _request(self, method: str, path: str, payload: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        url = f"{self.base_url}{path}"
+        try:
+            response = self.session.request(method, url, json=payload, timeout=self.timeout)
+        except requests.RequestException as exc:
+            raise RuntimeError(f"network error for {method} {path}: {exc}") from exc
+
+        data: Optional[Dict[str, Any]] = None
+        parse_error: Optional[Exception] = None
+        try:
+            decoded = response.json()
+            if isinstance(decoded, dict):
+                data = decoded
+        except Exception as exc:  # pragma: no cover - defensive on malformed upstream replies
+            parse_error = exc
+
+        if response.status_code >= 400:
+            if isinstance(data, dict):
+                message = data.get("message") or data.get("error") or str(data)
+            else:
+                body_text = (response.text or "").strip()
+                message = body_text[:500] if body_text else response.reason
+            raise RuntimeError(
+                f"HTTP {response.status_code} for {method} {path}: {message}"
+            )
+
+        if parse_error is not None:
+            raise RuntimeError(
+                f"failed to parse JSON response for {method} {path}: {parse_error}"
+            ) from parse_error
+        if data is None:
+            raise RuntimeError(f"response for {method} {path} is not a JSON object")
+
+        if data.get("status") != "success":
+            raise RuntimeError(f"API call failed ({path}): {data.get('message', 'unknown error')}")
+        return data
+
+    def create_competition(
+        self,
+        *,
+        title: str,
+        description: str,
+        problem_ids: List[str],
+        max_tokens_per_participant: int,
+        rules: Optional[Dict[str, Any]] = None,
+    ) -> str:
+        payload = {
+            "title": title,
+            "description": description,
+            "problem_ids": problem_ids,
+            "max_tokens_per_participant": max_tokens_per_participant,
+        }
+        if rules is not None:
+            payload["rules"] = rules
+        data = self._request("POST", "/api/competitions/create", payload=payload)
+        competition = data.get("data", {}).get("competition", {})
+        competition_id = competition.get("id")
+        if not competition_id:
+            raise RuntimeError(f"missing competition id in response: {data}")
+        return str(competition_id)
+
+    def list_problems(self, competition_id: str) -> List[Dict[str, Any]]:
+        data = self._request("GET", f"/api/problems/list/{competition_id}")
+        raw = data.get("data", [])
+        return raw if isinstance(raw, list) else []
+
+    def create_participants_batch(
+        self,
+        *,
+        competition_id: str,
+        participant_names: List[str],
+        limit_tokens: int,
+        lambda_value: int,
+        upstream_api_base_url: str,
+        upstream_api_key: str,
+    ) -> List[Dict[str, Any]]:
+        participants_payload: List[Dict[str, Any]] = []
+        for name in participant_names:
+            row: Dict[str, Any] = {"name": name}
+            if upstream_api_base_url:
+                row["api_base_url"] = upstream_api_base_url
+            if upstream_api_key:
+                row["api_key"] = upstream_api_key
+            participants_payload.append(row)
+
+        payload = {
+            "default_limit_tokens": limit_tokens,
+            "default_lambda_value": lambda_value,
+            "participants": participants_payload,
+        }
+        data = self._request("POST", f"/api/participants/create_batch/{competition_id}", payload=payload)
+        created = data.get("data", {}).get("created", [])
+        errors = data.get("data", {}).get("errors", [])
+        if errors:
+            raise RuntimeError(f"batch create returned errors: {errors}")
+        if not isinstance(created, list) or not created:
+            raise RuntimeError("batch create returned no participants")
+        return created
+
+    def get_gateway_credentials(self, competition_id: str, participant_id: str) -> Dict[str, Any]:
+        data = self._request(
+            "GET",
+            f"/api/participants/gateway_credentials/{competition_id}/{participant_id}",
+        )
+        payload = data.get("data")
+        if not isinstance(payload, dict):
+            raise RuntimeError(
+                "gateway credentials response payload is missing or invalid "
+                f"(competition_id={competition_id}, participant_id={participant_id})"
+            )
+        return payload
+
+
+def _build_participant_names(
+    explicit_names: List[str],
+    *,
+    count: int,
+    prefix: str,
+) -> List[str]:
+    names = [name.strip() for name in explicit_names if name and name.strip()]
+    if count > 0:
+        width = len(str(count))
+        for idx in range(1, count + 1):
+            names.append(f"{prefix}-{idx:0{width}d}")
+    deduped: List[str] = []
+    seen = set()
+    for name in names:
+        if name in seen:
+            continue
+        seen.add(name)
+        deduped.append(name)
+    return deduped
+
+
+def setup(args: argparse.Namespace) -> SetupResult:
+    competition_config = _load_competition_config(args.competition_config)
+
+    effective_api_base = args.api_base
+    if args.api_base == DEFAULT_API_BASE:
+        cfg_api_base = competition_config.get("api_base")
+        if isinstance(cfg_api_base, str) and cfg_api_base.strip():
+            effective_api_base = cfg_api_base.strip()
+
+    participant_names = _build_participant_names(
+        args.participant_name,
+        count=args.participant_count,
+        prefix=args.participant_prefix,
+    )
+    if not participant_names:
+        raise ValueError("at least one participant is required (--participant-name or --participant-count)")
+
+    client = ArenaClient(effective_api_base, timeout=args.timeout)
+
+    if args.create_competition:
+        problem_ids = _parse_problem_ids(args.problem_ids)
+        if not problem_ids:
+            raise ValueError("--problem-ids is required when --create-competition is set")
+
+        cfg_title = competition_config.get("competition_title")
+        if cfg_title is None:
+            cfg_title = competition_config.get("title")
+        cfg_description = competition_config.get("competition_description")
+        if cfg_description is None:
+            cfg_description = competition_config.get("description")
+        cfg_max_tokens = competition_config.get("max_tokens_per_participant")
+        cfg_rules = competition_config.get("rules")
+
+        title = args.title
+        if args.title == DEFAULT_TITLE:
+            title = _pick_text_value(cfg_title, fallback=DEFAULT_TITLE)
+
+        description = args.description
+        if args.description == DEFAULT_DESCRIPTION:
+            description = _pick_text_value(cfg_description, fallback=DEFAULT_DESCRIPTION)
+
+        max_tokens_per_participant = args.competition_max_tokens
+        if args.competition_max_tokens == DEFAULT_COMPETITION_MAX_TOKENS:
+            max_tokens_per_participant = _pick_int_value(
+                cfg_max_tokens,
+                fallback=DEFAULT_COMPETITION_MAX_TOKENS,
+                field_name="max_tokens_per_participant",
+                min_value=0,
+                max_value=INT64_MAX,
+            )
+        else:
+            max_tokens_per_participant = _pick_int_value(
+                max_tokens_per_participant,
+                fallback=DEFAULT_COMPETITION_MAX_TOKENS,
+                field_name="max_tokens_per_participant",
+                min_value=0,
+                max_value=INT64_MAX,
+            )
+
+        competition_id = client.create_competition(
+            title=title,
+            description=description,
+            problem_ids=problem_ids,
+            max_tokens_per_participant=max_tokens_per_participant,
+            rules=cfg_rules if isinstance(cfg_rules, dict) else None,
+        )
+    else:
+        if not args.competition_id:
+            raise ValueError("--competition-id is required when not creating competition")
+        competition_id = args.competition_id
+
+    problems = client.list_problems(competition_id)
+    problem_id = args.problem_id
+    if not problem_id and problems:
+        first_problem = problems[0]
+        value = first_problem.get("id")
+        if value is not None:
+            problem_id = str(value)
+
+    created = client.create_participants_batch(
+        competition_id=competition_id,
+        participant_names=participant_names,
+        limit_tokens=_pick_int_value(
+            args.participant_limit_tokens,
+            fallback=10000000,
+            field_name="participant_limit_tokens",
+            min_value=0,
+            max_value=INT64_MAX,
+        ),
+        lambda_value=_pick_int_value(
+            args.participant_lambda,
+            fallback=100,
+            field_name="participant_lambda",
+            min_value=0,
+            max_value=INT32_MAX,
+        ),
+        upstream_api_base_url=(args.upstream_api_base_url or "").strip(),
+        upstream_api_key=(args.upstream_api_key or "").strip(),
+    )
+
+    participants: List[Dict[str, Any]] = []
+    for row in created:
+        participant_id = str(row.get("id") or "")
+        if not participant_id:
+            raise RuntimeError(f"participant record missing id: {row}")
+        gateway = client.get_gateway_credentials(competition_id, participant_id)
+        participants.append(
+            {
+                "name": row.get("name"),
+                "participant_id": participant_id,
+                "gateway_base_url": gateway.get("gateway_base_url"),
+                "openai_api_base": gateway.get("openai_api_base"),
+                "openai_api_key": gateway.get("openai_api_key"),
+            }
+        )
+
+    return SetupResult(
+        api_base=effective_api_base,
+        competition_id=competition_id,
+        problem_id=problem_id,
+        participants=participants,
+    )
+
+
+def _print_summary(result: SetupResult, args: argparse.Namespace) -> None:
+    payload = {
+        "api_base": result.api_base,
+        "competition_id": result.competition_id,
+        "problem_id": result.problem_id,
+        "participants": result.participants,
+    }
+    print("=== setup summary ===")
+    print(json.dumps(payload, indent=2, ensure_ascii=False))
+    print("")
+    print("=== infinite_tree env snippets ===")
+
+    for item in result.participants:
+        name = str(item.get("name") or "agent")
+        participant_id = str(item.get("participant_id"))
+        safe_name = _safe_name(name)
+        openai_api_base = str(item.get("openai_api_base") or "")
+        openai_api_key = str(item.get("openai_api_key") or "")
+
+        print(f"# {name}")
+        print(f"export USACOARENA_BASE_URL={json.dumps(result.api_base)}")
+        print(f"export USACOARENA_COMPETITION_ID={json.dumps(result.competition_id)}")
+        print(f"export USACOARENA_PARTICIPANT_ID={json.dumps(participant_id)}")
+        if result.problem_id:
+            print(f"export USACOARENA_PROBLEM_ID={json.dumps(result.problem_id)}")
+        print(f"export OPENAI_API_BASE={json.dumps(openai_api_base)}")
+        print(f"export OPENAI_BASE_URL={json.dumps(openai_api_base)}")
+        print(f"export OPENAI_API_KEY={json.dumps(openai_api_key)}")
+        print(
+            "uv run main.py "
+            "--config usacoArena "
+            f"--output history/usacoArena/{safe_name} "
+            "--llm-backend codex "
+            f"--iterations {args.iterations} "
+            "--llm-isolate"
+        )
+        print("")
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Create or reuse a USACOArena competition, register one or multiple "
+            "infinite_tree participants, and print participant-specific gateway credentials."
+        )
+    )
+    parser.add_argument("--api-base", default=DEFAULT_API_BASE, help="USACOArena base URL")
+    parser.add_argument("--timeout", type=float, default=30.0, help="HTTP timeout in seconds")
+
+    parser.add_argument(
+        "--create-competition",
+        action="store_true",
+        help="Create a new competition before adding participants",
+    )
+    parser.add_argument(
+        "--competition-config",
+        default="",
+        help=(
+            "Optional JSON config path (e.g. config/competition_main.json). "
+            "When creating a competition, uses its rules/title/description/max_tokens_per_participant; "
+            "CLI arguments with non-default values override config values."
+        ),
+    )
+    parser.add_argument("--competition-id", default="", help="Existing competition id")
+    parser.add_argument("--title", default=DEFAULT_TITLE, help="Competition title")
+    parser.add_argument("--description", default=DEFAULT_DESCRIPTION, help="Competition description")
+    parser.add_argument(
+        "--problem-ids",
+        default="",
+        help="Comma-separated problem IDs, or a JSON file path when creating a competition",
+    )
+    parser.add_argument(
+        "--competition-max-tokens",
+        type=int,
+        default=DEFAULT_COMPETITION_MAX_TOKENS,
+        help="max_tokens_per_participant when creating a competition",
+    )
+
+    parser.add_argument(
+        "--participant-name",
+        action="append",
+        default=[],
+        help="Participant name (can be repeated)",
+    )
+    parser.add_argument(
+        "--participant-count",
+        type=int,
+        default=0,
+        help="Auto-generate this many participants using --participant-prefix",
+    )
+    parser.add_argument(
+        "--participant-prefix",
+        default="infinite-tree-agent",
+        help="Prefix used with --participant-count",
+    )
+    parser.add_argument(
+        "--participant-limit-tokens",
+        type=int,
+        default=10000000,
+        help="Participant token limit",
+    )
+    parser.add_argument(
+        "--participant-lambda",
+        type=int,
+        default=100,
+        help="Participant lambda value",
+    )
+    parser.add_argument(
+        "--problem-id",
+        default="",
+        help="Problem id used by infinite_tree evaluate.py (default: first problem in competition)",
+    )
+    parser.add_argument(
+        "--upstream-api-base-url",
+        default="",
+        help=(
+            "Optional upstream LLM API base URL stored per participant. "
+            "If omitted, server falls back to USACOARENA_UPSTREAM_API_BASE_URL environment variable."
+        ),
+    )
+    parser.add_argument(
+        "--upstream-api-key",
+        default="",
+        help=(
+            "Optional upstream LLM API key stored per participant. "
+            "If omitted, server falls back to USACOARENA_UPSTREAM_API_KEY environment variable."
+        ),
+    )
+    parser.add_argument(
+        "--iterations",
+        type=int,
+        default=200,
+        help="Suggested iteration count printed in the run command",
+    )
+    return parser
+
+
+def main() -> None:
+    parser = build_parser()
+    args = parser.parse_args()
+    try:
+        result = setup(args)
+    except Exception as exc:
+        parser.exit(1, f"ERROR: {exc}\n")
+    _print_summary(result, args)
+
+
+if __name__ == "__main__":
+    main()

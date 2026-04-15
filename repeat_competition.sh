@@ -1,1 +1,171 @@
-IyEvYmluL2Jhc2gKCiMgU2NyaXB0IHRvIHJlcGVhdCB0aGUgY29tcGV0aXRpb25fcnVuIGNvbW1hbmQKCnNldCAtZQoKIyBEZWZhdWx0IHBhcmFtZXRlcnMKQ09NUEVUSVRJT05fQ09ORklHPSJjb25maWcvY29tcGV0aXRpb25fbWFpbi5qc29uIgpDT01QRVRJVE9SU19DT05GSUc9ImNvbmZpZy85bGxtLmpzb24iClBPUlQ9IjUwMDEiClBST0JMRU1fSURTPSJjb25maWcvcHJvYmxlbXNfY29udGVzdDEuanNvbiIKUkVQRUFUX0NPVU5UPTMKREVMQVk9MApMT0dfRElSPSIiCgojIFNob3cgdXNhZ2UgaW5mb3JtYXRpb24Kc2hvd191c2FnZSgpIHsKICAgIGVjaG8gIlVzYWdlOiAkMCBbT1BUSU9OU10iCiAgICBlY2hvICIiCiAgICBlY2hvICJPcHRpb25zOiIKICAgIGVjaG8gIiAgLS1jb21wZXRpdGlvbi1jb25maWcgRklMRSAgIENvbXBldGl0aW9uIGNvbmZpZyAoZGVmYXVsdDogY29uZmlnL2NvbXBldGl0aW9uX21haW4uanNvbikiCiAgICBlY2hvICIgIC0tY29tcGV0aXRvcnMtY29uZmlnIEZJTEUgICBDb21wZXRpdG9ycyBjb25maWcgKGRlZmF1bHQ6IGNvbmZpZy85bGxtLmpzb24pIgogICAgZWNobyAiICAtLXBvcnQgUE9SVCAgICAgICAgICAgICAgICAgU2VydmVyIHBvcnQgKGRlZmF1bHQ6IDUwMDEpIgogICAgZWNobyAiICAtLXByb2JsZW0taWRzIEZJTEUgICAgICAgICAgUHJvYmxlbSBJRHMgZmlsZSAoZGVmYXVsdDogY29uZmlnL3Byb2JsZW1zX2NvbnRlc3QxLmpzb24pIgogICAgZWNobyAiICAtLXJlcGVhdCBOICAgICAgICAgICAgICAgICAgTnVtYmVyIG9mIHRpbWVzIHRvIHJlcGVhdCAoZGVmYXVsdDogMSkiCiAgICBlY2hvICIgIC0tZGVsYXkgU0VDT05EUyAgICAgICAgICAgICBEZWxheSBiZXR3ZWVuIHJ1bnMgaW4gc2Vjb25kcyAoZGVmYXVsdDogMCkiCiAgICBlY2hvICIgIC0tbG9nLWRpciBESVIgICAgICAgICAgICAgICBEaXJlY3RvcnkgdG8gc2F2ZSBsb2dzIChvcHRpb25hbCkiCiAgICBlY2hvICIgIC1oLCAtLWhlbHAgICAgICAgICAgICAgICAgICBTaG93IHRoaXMgaGVscCBtZXNzYWdlIgogICAgZWNobyAiIgogICAgZWNobyAiRXhhbXBsZXM6IgogICAgZWNobyAiICAjIFJ1biB0aGUgZGVmYXVsdCBjb25maWd1cmF0aW9uIGZpdmUgdGltZXMiCiAgICBlY2hvICIgICQwIC0tcmVwZWF0IDUiCiAgICBlY2hvICIiCiAgICBlY2hvICIgICMgVXNlIGFsdGVybmF0ZSBjb25maWd1cmF0aW9uIGZpbGVzIgogICAgZWNobyAiICAkMCAtLWNvbXBldGl0b3JzLWNvbmZpZyBjb25maWcvMTBsbG0uanNvbiAtLXByb2JsZW0taWRzIGNvbmZpZy9wcm9ibGVtc19jb250ZXN0Mi5qc29uIC0tcmVwZWF0IDMiCiAgICBlY2hvICIiCiAgICBlY2hvICIgICMgUmVwZWF0IHJ1bnMgd2l0aCBkZWxheSBhbmQgbG9nZ2luZyIKICAgIGVjaG8gIiAgJDAgLS1yZXBlYXQgMTAgLS1kZWxheSA2MCAtLWxvZy1kaXIgbG9ncy9jb250ZXN0X3J1bnMiCiAgICBlY2hvICIiCiAgICBlY2hvICJEZWZhdWx0IGNvbW1hbmQgdGhhdCB3aWxsIGJlIHJ1bjoiCiAgICBlY2hvICJjb21wZXRpdGlvbl9ydW4gLS1jb21wZXRpdGlvbi1jb25maWcgJENPTVBFVElUSU9OX0NPTkZJRyAtLWNvbXBldGl0b3JzLWNvbmZpZyAkQ09NUEVUSVRPUlNfQ09ORklHIC0tcG9ydCAkUE9SVCAtLXByb2JsZW0taWRzICRQUk9CTEVNX0lEUyIKfQoKIyBQYXJzZSBjb21tYW5kLWxpbmUgYXJndW1lbnRzCndoaWxlIFtbICQjIC1ndCAwIF1dOyBkbwogICAgY2FzZSAkMSBpbgogICAgICAgIC0tY29tcGV0aXRpb24tY29uZmlnKQogICAgICAgICAgICBDT01QRVRJVElPTl9DT05GSUc9IiQyIgogICAgICAgICAgICBzaGlmdCAyCiAgICAgICAgICAgIDs7CiAgICAgICAgLS1jb21wZXRpdG9ycy1jb25maWcpCiAgICAgICAgICAgIENPTVBFVElUT1JTX0NPTkZJRz0iJDIiCiAgICAgICAgICAgIHNoaWZ0IDIKICAgICAgICAgICAgOzsKICAgICAgICAtLXBvcnQpCiAgICAgICAgICAgIFBPUlQ9IiQyIgogICAgICAgICAgICBzaGlmdCAyCiAgICAgICAgICAgIDs7CiAgICAgICAgLS1wcm9ibGVtLWlkcykKICAgICAgICAgICAgUFJPQkxFTV9JRFM9IiQyIgogICAgICAgICAgICBzaGlmdCAyCiAgICAgICAgICAgIDs7CiAgICAgICAgLS1yZXBlYXQpCiAgICAgICAgICAgIFJFUEVBVF9DT1VOVD0iJDIiCiAgICAgICAgICAgIHNoaWZ0IDIKICAgICAgICAgICAgOzsKICAgICAgICAtLWRlbGF5KQogICAgICAgICAgICBERUxBWT0iJDIiCiAgICAgICAgICAgIHNoaWZ0IDIKICAgICAgICAgICAgOzsKICAgICAgICAtLWxvZy1kaXIpCiAgICAgICAgICAgIExPR19ESVI9IiQyIgogICAgICAgICAgICBzaGlmdCAyCiAgICAgICAgICAgIDs7CiAgICAgICAgLWh8LS1oZWxwKQogICAgICAgICAgICBzaG93X3VzYWdlCiAgICAgICAgICAgIGV4aXQgMAogICAgICAgICAgICA7OwogICAgICAgICopCiAgICAgICAgICAgIGVjaG8gIlVua25vd24gb3B0aW9uOiAkMSIKICAgICAgICAgICAgc2hvd191c2FnZQogICAgICAgICAgICBleGl0IDEKICAgICAgICAgICAgOzsKICAgIGVzYWMKZG9uZQoKIyBDb25maWd1cmUgbG9nIGRpcmVjdG9yeQppZiBbWyAtbiAiJExPR19ESVIiIF1dOyB0aGVuCiAgICBta2RpciAtcCAiJExPR19ESVIiCiAgICBlY2hvICJMb2dzIHdpbGwgYmUgc2F2ZWQgdG86ICRMT0dfRElSIgpmaQoKIyBEaXNwbGF5IGNvbmZpZ3VyYXRpb24KZWNobyAiPT09IENvbXBldGl0aW9uIFJ1bm5lciBDb25maWd1cmF0aW9uID09PSIKZWNobyAiQ29tcGV0aXRpb24gY29uZmlnOiAkQ09NUEVUSVRJT05fQ09ORklHIgplY2hvICJDb21wZXRpdG9ycyBjb25maWc6ICRDT01QRVRJVE9SU19DT05GSUciCmVjaG8gIlBvcnQ6ICRQT1JUIgplY2hvICJQcm9ibGVtIElEczogJFBST0JMRU1fSURTIgplY2hvICJSZXBlYXQgY291bnQ6ICRSRVBFQVRfQ09VTlQiCmVjaG8gIkRlbGF5IGJldHdlZW4gcnVuczogJHtERUxBWX1zIgplY2hvICJMb2cgZGlyZWN0b3J5OiAke0xPR19ESVI6LSIobm9uZSAtIG91dHB1dCB0byBjb25zb2xlKSJ9IgplY2hvICIiCgojIEJ1aWxkIHRoZSBjb21tYW5kCkNPTU1BTkQ9ImNvbXBldGl0aW9uX3J1biAtLWNvbXBldGl0aW9uLWNvbmZpZyAkQ09NUEVUSVRJT05fQ09ORklHIC0tY29tcGV0aXRvcnMtY29uZmlnICRDT01QRVRJVE9SU19DT05GSUcgLS1wb3J0ICRQT1JUIC0tcHJvYmxlbS1pZHMgJFBST0JMRU1fSURTIgoKZWNobyAiQ29tbWFuZCB0byBydW46ICRDT01NQU5EIgplY2hvICIiCgojIEV4ZWN1dGUgcmVwZWF0ZWQgcnVucwpTVUNDRVNTX0NPVU5UPTAKRkFJTEVEX0NPVU5UPTAKCmZvciBpIGluICQoc2VxIDEgJFJFUEVBVF9DT1VOVCk7IGRvCiAgICBlY2hvICI9PT0gQ29tcGV0aXRpb24gUnVuICRpLyRSRVBFQVRfQ09VTlQgPT09IgogICAgZWNobyAiU3RhcnRpbmcgYXQ6ICQoZGF0ZSkiCgogICAgIyBDb25maWd1cmUgdGhlIGxvZyBmaWxlCiAgICBpZiBbWyAtbiAiJExPR19ESVIiIF1dOyB0aGVuCiAgICAgICAgTE9HX0ZJTEU9IiRMT0dfRElSL2NvbXBldGl0aW9uXyR7aX1fJChkYXRlICslWSVtJWRfJUglTSVTKS5sb2ciCiAgICAgICAgZWNobyAiTG9nIGZpbGU6ICRMT0dfRklMRSIKCiAgICAgICAgIyBSdW4gdGhlIGNvbW1hbmQgYW5kIGNhcHR1cmUgbG9ncwogICAgICAgIGVjaG8gIlJ1bm5pbmc6ICRDT01NQU5EIiB8IHRlZSAiJExPR19GSUxFIgogICAgICAgIGlmIGV2YWwgIiRDT01NQU5EIiA+PiAiJExPR19GSUxFIiAyPiYxOyB0aGVuCiAgICAgICAgICAgIGVjaG8gIkNvbXBldGl0aW9uIHJ1biAkaTogU1VDQ0VTUyIKICAgICAgICAgICAgKChTVUNDRVNTX0NPVU5UKyspKQogICAgICAgIGVsc2UKICAgICAgICAgICAgZWNobyAiQ29tcGV0aXRpb24gcnVuICRpOiBGQUlMRUQgKHNlZSAkTE9HX0ZJTEUgZm9yIGRldGFpbHMpIgogICAgICAgICAgICAoKEZBSUxFRF9DT1VOVCsrKSkKICAgICAgICBmaQogICAgZWxzZQogICAgICAgICMgUnVuIHRoZSBjb21tYW5kIGRpcmVjdGx5CiAgICAgICAgZWNobyAiUnVubmluZzogJENPTU1BTkQiCiAgICAgICAgaWYgZXZhbCAiJENPTU1BTkQiOyB0aGVuCiAgICAgICAgICAgIGVjaG8gIkNvbXBldGl0aW9uIHJ1biAkaTogU1VDQ0VTUyIKICAgICAgICAgICAgKChTVUNDRVNTX0NPVU5UKyspKQogICAgICAgIGVsc2UKICAgICAgICAgICAgZWNobyAiQ29tcGV0aXRpb24gcnVuICRpOiBGQUlMRUQiCiAgICAgICAgICAgICgoRkFJTEVEX0NPVU5UKyspKQogICAgICAgIGZpCiAgICBmaQoKICAgIGVjaG8gIkNvbXBsZXRlZCBhdDogJChkYXRlKSIKCiAgICAjIFdhaXQgYmVmb3JlIHRoZSBuZXh0IHJ1biB3aGVuIGFwcGxpY2FibGUKICAgIGlmIFtbICRpIC1sdCAkUkVQRUFUX0NPVU5UICYmICRERUxBWSAtZ3QgMCBdXTsgdGhlbgogICAgICAgIGVjaG8gIldhaXRpbmcgJHtERUxBWX1zIGJlZm9yZSBuZXh0IHJ1bi4uLiIKICAgICAgICBzbGVlcCAkREVMQVkKICAgIGZpCgogICAgZWNobyAiIgpkb25lCgojIERpc3BsYXkgZmluYWwgc3RhdGlzdGljcwplY2hvICI9PT0gRmluYWwgU3VtbWFyeSA9PT0iCmVjaG8gIlRvdGFsIGNvbXBldGl0aW9uczogJFJFUEVBVF9DT1VOVCIKZWNobyAiU3VjY2Vzc2Z1bDogJFNVQ0NFU1NfQ09VTlQiCmVjaG8gIkZhaWxlZDogJEZBSUxFRF9DT1VOVCIKZWNobyAiU3VjY2VzcyByYXRlOiAkKChTVUNDRVNTX0NPVU5UICogMTAwIC8gUkVQRUFUX0NPVU5UKSklIgoKaWYgW1sgLW4gIiRMT0dfRElSIiBdXTsgdGhlbgogICAgZWNobyAiQWxsIGxvZ3Mgc2F2ZWQgaW46ICRMT0dfRElSIgpmaQoKIyBTZXQgZXhpdCBjb2RlCmlmIFtbICRGQUlMRURfQ09VTlQgLWd0IDAgXV07IHRoZW4KICAgIGV4aXQgMQplbHNlCiAgICBleGl0IDAKZmk=
+#!/bin/bash
+
+# Script to repeat the competition_run command
+
+set -e
+
+# Default parameters
+COMPETITION_CONFIG="config/competition_main.json"
+COMPETITORS_CONFIG="config/9llm.json"
+PORT="5001"
+PROBLEM_IDS="config/problems_contest1.json"
+REPEAT_COUNT=3
+DELAY=0
+LOG_DIR=""
+
+# Show usage information
+show_usage() {
+    echo "Usage: $0 [OPTIONS]"
+    echo ""
+    echo "Options:"
+    echo "  --competition-config FILE   Competition config (default: config/competition_main.json)"
+    echo "  --competitors-config FILE   Competitors config (default: config/9llm.json)"
+    echo "  --port PORT                 Server port (default: 5001)"
+    echo "  --problem-ids FILE          Problem IDs file (default: config/problems_contest1.json)"
+    echo "  --repeat N                  Number of times to repeat (default: 1)"
+    echo "  --delay SECONDS             Delay between runs in seconds (default: 0)"
+    echo "  --log-dir DIR               Directory to save logs (optional)"
+    echo "  -h, --help                  Show this help message"
+    echo ""
+    echo "Examples:"
+    echo "  # Run the default configuration five times"
+    echo "  $0 --repeat 5"
+    echo ""
+    echo "  # Use alternate configuration files"
+    echo "  $0 --competitors-config config/10llm.json --problem-ids config/problems_contest2.json --repeat 3"
+    echo ""
+    echo "  # Repeat runs with delay and logging"
+    echo "  $0 --repeat 10 --delay 60 --log-dir logs/contest_runs"
+    echo ""
+    echo "Default command that will be run:"
+    echo "competition_run --competition-config $COMPETITION_CONFIG --competitors-config $COMPETITORS_CONFIG --port $PORT --problem-ids $PROBLEM_IDS"
+}
+
+# Parse command-line arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --competition-config)
+            COMPETITION_CONFIG="$2"
+            shift 2
+            ;;
+        --competitors-config)
+            COMPETITORS_CONFIG="$2"
+            shift 2
+            ;;
+        --port)
+            PORT="$2"
+            shift 2
+            ;;
+        --problem-ids)
+            PROBLEM_IDS="$2"
+            shift 2
+            ;;
+        --repeat)
+            REPEAT_COUNT="$2"
+            shift 2
+            ;;
+        --delay)
+            DELAY="$2"
+            shift 2
+            ;;
+        --log-dir)
+            LOG_DIR="$2"
+            shift 2
+            ;;
+        -h|--help)
+            show_usage
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            show_usage
+            exit 1
+            ;;
+    esac
+done
+
+# Configure log directory
+if [[ -n "$LOG_DIR" ]]; then
+    mkdir -p "$LOG_DIR"
+    echo "Logs will be saved to: $LOG_DIR"
+fi
+
+# Display configuration
+echo "=== Competition Runner Configuration ==="
+echo "Competition config: $COMPETITION_CONFIG"
+echo "Competitors config: $COMPETITORS_CONFIG"
+echo "Port: $PORT"
+echo "Problem IDs: $PROBLEM_IDS"
+echo "Repeat count: $REPEAT_COUNT"
+echo "Delay between runs: ${DELAY}s"
+echo "Log directory: ${LOG_DIR:-"(none - output to console)"}"
+echo ""
+
+# Build the command
+COMMAND="competition_run --competition-config $COMPETITION_CONFIG --competitors-config $COMPETITORS_CONFIG --port $PORT --problem-ids $PROBLEM_IDS"
+
+echo "Command to run: $COMMAND"
+echo ""
+
+# Execute repeated runs
+SUCCESS_COUNT=0
+FAILED_COUNT=0
+
+for i in $(seq 1 $REPEAT_COUNT); do
+    echo "=== Competition Run $i/$REPEAT_COUNT ==="
+    echo "Starting at: $(date)"
+
+    # Configure the log file
+    if [[ -n "$LOG_DIR" ]]; then
+        LOG_FILE="$LOG_DIR/competition_${i}_$(date +%Y%m%d_%H%M%S).log"
+        echo "Log file: $LOG_FILE"
+
+        # Run the command and capture logs
+        echo "Running: $COMMAND" | tee "$LOG_FILE"
+        if eval "$COMMAND" >> "$LOG_FILE" 2>&1; then
+            echo "Competition run $i: SUCCESS"
+            ((SUCCESS_COUNT++))
+        else
+            echo "Competition run $i: FAILED (see $LOG_FILE for details)"
+            ((FAILED_COUNT++))
+        fi
+    else
+        # Run the command directly
+        echo "Running: $COMMAND"
+        if eval "$COMMAND"; then
+            echo "Competition run $i: SUCCESS"
+            ((SUCCESS_COUNT++))
+        else
+            echo "Competition run $i: FAILED"
+            ((FAILED_COUNT++))
+        fi
+    fi
+
+    echo "Completed at: $(date)"
+
+    # Wait before the next run when applicable
+    if [[ $i -lt $REPEAT_COUNT && $DELAY -gt 0 ]]; then
+        echo "Waiting ${DELAY}s before next run..."
+        sleep $DELAY
+    fi
+
+    echo ""
+done
+
+# Display final statistics
+echo "=== Final Summary ==="
+echo "Total competitions: $REPEAT_COUNT"
+echo "Successful: $SUCCESS_COUNT"
+echo "Failed: $FAILED_COUNT"
+echo "Success rate: $((SUCCESS_COUNT * 100 / REPEAT_COUNT))%"
+
+if [[ -n "$LOG_DIR" ]]; then
+    echo "All logs saved in: $LOG_DIR"
+fi
+
+# Set exit code
+if [[ $FAILED_COUNT -gt 0 ]]; then
+    exit 1
+else
+    exit 0
+fi

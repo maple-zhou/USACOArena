@@ -1,1 +1,299 @@
-IiIiCkNvbXBldGl0aW9uLXJlbGF0ZWQgY2xhc3NlcyBmb3IgVVNBQ09BcmVuYSBwbGF0Zm9ybS4KClRoaXMgbW9kdWxlIGNvbnRhaW5zIHRoZSBDb21wZXRpdG9yIGNsYXNzIHdoaWNoIHNlcnZlcyBhcyBhbiBvcHRpbWl6ZWQgYnJpZGdlCmJldHdlZW4gQWdlbnQgYW5kIFBhcnRpY2lwYW50IGRhdGEsIG1pbmltaXppbmcgQVBJIGNhbGxzIGFuZCBzdGF0ZSBtYW5hZ2VtZW50IG92ZXJoZWFkLgoiIiIKCmltcG9ydCByZXF1ZXN0cwpmcm9tIHR5cGluZyBpbXBvcnQgRGljdCwgTGlzdCwgT3B0aW9uYWwsIFR1cGxlLCBBbnksIFRZUEVfQ0hFQ0tJTkcKZnJvbSB1c2Fjb2FyZW5hLnV0aWxzLmxvZ2dlcl9jb25maWcgaW1wb3J0IGdldF9sb2dnZXIKCmlmIFRZUEVfQ0hFQ0tJTkc6CiAgICBmcm9tIGFnZW50cyBpbXBvcnQgQWdlbnQKCmxvZ2dlciA9IGdldF9sb2dnZXIoImNvbXBldGl0aW9uIikKCgpjbGFzcyBDb21wZXRpdG9yOgogICAgIiIiT3B0aW1pemVkIGJyaWRnZSBiZXR3ZWVuIEFnZW50IGFuZCBQYXJ0aWNpcGFudCBkYXRhIiIiCiAgICAKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBuYW1lOiBzdHIsIGFnZW50OiAiQWdlbnQiLCBsaW1pdF90b2tlbnM6IGludCA9IDEwMDAwMDAwKToKICAgICAgICBzZWxmLm5hbWUgPSBuYW1lCiAgICAgICAgc2VsZi5hcGlfYmFzZTogT3B0aW9uYWxbc3RyXSA9IE5vbmUKICAgICAgICBzZWxmLmFnZW50ID0gYWdlbnQKICAgICAgICBzZWxmLnBhcnRpY2lwYW50X2lkOiBPcHRpb25hbFtzdHJdID0gTm9uZQogICAgICAgIHNlbGYuY29tcGV0aXRpb25faWQ6IE9wdGlvbmFsW3N0cl0gPSBOb25lCiAgICAgICAgCiAgICAgICAgIyBTdG9yZSBpbml0aWFsaXphdGlvbiBwYXJhbWV0ZXJzCiAgICAgICAgc2VsZi5saW1pdF90b2tlbnMgPSBsaW1pdF90b2tlbnMKCiAgICBkZWYgX2J1aWxkX2FnZW50X3Byb2ZpbGUoc2VsZikgLT4gRGljdFtzdHIsIEFueV06CiAgICAgICAgIiIiQnVpbGQgYSBzdGFibGUgcGFydGljaXBhbnQgYWdlbnQgcHJvZmlsZSBmb3Igc2VydmVyLXNpZGUgZ2F0ZXdheSB1c2UuIiIiCiAgICAgICAgcmVxdWVzdF9mb3JtYXQgPSBnZXRhdHRyKHNlbGYuYWdlbnQsICJyZXF1ZXN0X2Zvcm1hdCIsIE5vbmUpCiAgICAgICAgcmVzcG9uc2VfZm9ybWF0ID0gZ2V0YXR0cihzZWxmLmFnZW50LCAicmVzcG9uc2VfZm9ybWF0IiwgTm9uZSkKICAgICAgICBjYXBhYmlsaXRpZXMgPSBbInJlYWRfcHJvYmxlbSIsICJzdWJtaXRfc29sdXRpb24iLCAicmVxdWVzdF9oaW50IiwgInRlc3RfY29kZSJdCgogICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICJ2ZXJzaW9uIjogIjEuMCIsCiAgICAgICAgICAgICJhZ2VudF90eXBlIjogImdlbmVyaWNfYXBpX2FnZW50IiwKICAgICAgICAgICAgInRyYW5zcG9ydCI6ICJvcGVuYWlfY29tcGF0aWJsZV9odHRwIiwKICAgICAgICAgICAgImVudHJ5cG9pbnQiOiAiIiwKICAgICAgICAgICAgImNhcGFiaWxpdGllcyI6IGNhcGFiaWxpdGllcywKICAgICAgICAgICAgIm1jcCI6IHsiZW5hYmxlZCI6IEZhbHNlLCAic2VydmVycyI6IFtdfSwKICAgICAgICAgICAgInJlcXVlc3RfZm9ybWF0IjogcmVxdWVzdF9mb3JtYXQgaWYgaXNpbnN0YW5jZShyZXF1ZXN0X2Zvcm1hdCwgZGljdCkgZWxzZSB7fSwKICAgICAgICAgICAgInJlc3BvbnNlX2Zvcm1hdCI6IHJlc3BvbnNlX2Zvcm1hdCBpZiBpc2luc3RhbmNlKHJlc3BvbnNlX2Zvcm1hdCwgZGljdCkgZWxzZSB7fSwKICAgICAgICAgICAgIm1ldGFkYXRhIjogewogICAgICAgICAgICAgICAgIm1vZGVsX2lkIjogZ2V0YXR0cihzZWxmLmFnZW50LCAibW9kZWxfaWQiLCAiIiksCiAgICAgICAgICAgICAgICAicnVudGltZSI6IHNlbGYuYWdlbnQuX19jbGFzc19fLl9fbmFtZV9fLAogICAgICAgICAgICB9LAogICAgICAgIH0KICAgIAogICAgIyBQcm9wZXJ0aWVzIHdpdGggZGlyZWN0IEFQSSBhY2Nlc3MKICAgIEBwcm9wZXJ0eQogICAgZGVmIHJlbWFpbmluZ190b2tlbnMoc2VsZikgLT4gaW50OgogICAgICAgICIiIkdldCByZW1haW5pbmcgdG9rZW5zIGZyb20gQVBJIiIiCiAgICAgICAgc3RhdGUgPSBzZWxmLmdldF9wYXJ0aWNpcGFudF9zdGF0ZSgpCiAgICAgICAgcmV0dXJuIHN0YXRlLmdldCgicmVtYWluaW5nX3Rva2VucyIsIDApCiAgICAKICAgIEBwcm9wZXJ0eQogICAgZGVmIHNjb3JlKHNlbGYpIC0+IGludDoKICAgICAgICAiIiJHZXQgY3VycmVudCBzY29yZSBmcm9tIEFQSSIiIgogICAgICAgIHN0YXRlID0gc2VsZi5nZXRfcGFydGljaXBhbnRfc3RhdGUoKQogICAgICAgIHJldHVybiBzdGF0ZS5nZXQoInNjb3JlIiwgMCkKICAgIAogICAgCiAgICBAcHJvcGVydHkKICAgIGRlZiBpc19ydW5uaW5nKHNlbGYpIC0+IGJvb2w6CiAgICAgICAgIiIiR2V0IHJ1bm5pbmcgc3RhdHVzIGZyb20gQVBJIiIiCiAgICAgICAgc3RhdGUgPSBzZWxmLmdldF9wYXJ0aWNpcGFudF9zdGF0ZSgpCiAgICAgICAgcmV0dXJuIHN0YXRlLmdldCgiaXNfcnVubmluZyIsIFRydWUpCiAgICAKICAgIEBwcm9wZXJ0eQogICAgZGVmIHRlcm1pbmF0aW9uX3JlYXNvbihzZWxmKSAtPiBPcHRpb25hbFtzdHJdOgogICAgICAgICIiIkdldCB0ZXJtaW5hdGlvbiByZWFzb24gZnJvbSBBUEkiIiIKICAgICAgICBzdGF0ZSA9IHNlbGYuZ2V0X3BhcnRpY2lwYW50X3N0YXRlKCkKICAgICAgICByZXR1cm4gc3RhdGUuZ2V0KCJ0ZXJtaW5hdGlvbl9yZWFzb24iKQoKICAgIGRlZiBfZW5zdXJlX3BhcnRpY2lwYW50KHNlbGYpOgogICAgICAgICIiIkVuc3VyZSBwYXJ0aWNpcGFudCBpcyBhdmFpbGFibGUsIHJhaXNlIGVycm9yIGlmIG5vdCIiIgogICAgICAgIGlmIHNlbGYucGFydGljaXBhbnRfaWQgaXMgTm9uZToKICAgICAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKCJDb21wZXRpdG9yIG5vdCBwcm9wZXJseSBpbml0aWFsaXplZC4gQ2FsbCBqb2luX2NvbXBldGl0aW9uIGZpcnN0LiIpCiAgICAKICAgIGRlZiBnZXRfcGFydGljaXBhbnRfc3RhdGUoc2VsZikgLT4gRGljdDoKICAgICAgICAiIiJHZXQgY3VycmVudCBwYXJ0aWNpcGFudCBzdGF0ZSBmcm9tIEFQSSIiIgogICAgICAgIHNlbGYuX2Vuc3VyZV9wYXJ0aWNpcGFudCgpCiAgICAgICAgIyBBZGQgcmV0cnkgbWVjaGFuaXNtLCB1cCB0byAxMDAwMCB0aW1lcywgd2l0aCAxMCBzZWNvbmRzIGludGVydmFsIGJldHdlZW4gZWFjaCByZXRyeS4KICAgICAgICBtYXhfcmV0cmllcyA9IDEwMDAwMAogICAgICAgIGltcG9ydCB0aW1lCiAgICAgICAgZm9yIGF0dGVtcHQgaW4gcmFuZ2UobWF4X3JldHJpZXMpOgogICAgICAgICAgICB0cnk6CiAgICAgICAgICAgICAgICByZXNwb25zZSA9IHJlcXVlc3RzLmdldCgKICAgICAgICAgICAgICAgICAgICBmIntzZWxmLmFwaV9iYXNlfS9hcGkvcGFydGljaXBhbnRzL2dldF9zb2x2ZWRfcHJvYmxlbXMve3NlbGYuY29tcGV0aXRpb25faWR9L3tzZWxmLnBhcnRpY2lwYW50X2lkfSIsCiAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICByZXNwb25zZS5yYWlzZV9mb3Jfc3RhdHVzKCkKCiAgICAgICAgICAgICAgICByZXN1bHQgPSByZXNwb25zZS5qc29uKCkKICAgICAgICAgICAgICAgIGlmIHJlc3VsdFsic3RhdHVzIl0gPT0gInN1Y2Nlc3MiOgogICAgICAgICAgICAgICAgICAgIHJldHVybiByZXN1bHRbImRhdGEiXQogICAgICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgICAgICBsb2dnZXIud2FybmluZyhmIkZhaWxlZCB0byBnZXQgcGFydGljaXBhbnQgc3RhdGU6IHtyZXN1bHQuZ2V0KCdtZXNzYWdlJywgJ1Vua25vd24gZXJyb3InKX0iKQogICAgICAgICAgICAgICAgICAgIHJldHVybiB7fQogICAgICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgICAgICBsb2dnZXIuZXJyb3IoZiJFcnJvciBnZXR0aW5nIHBhcnRpY2lwYW50IHN0YXRlIChhdHRlbXB0IHthdHRlbXB0KzF9L3ttYXhfcmV0cmllc30pOiB7ZX0iKQogICAgICAgICAgICAgICAgaWYgYXR0ZW1wdCA8IG1heF9yZXRyaWVzIC0gMToKICAgICAgICAgICAgICAgICAgICB0aW1lLnNsZWVwKDE1KQogICAgICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgICAgICByZXR1cm4ge30KICAgIAogICAgZGVmIGpvaW5fY29tcGV0aXRpb24oc2VsZiwgYXBpX2Jhc2U6IHN0ciwgY29tcGV0aXRpb25faWQ6IHN0ciwgbGFtYmRhXzogaW50KToKICAgICAgICAiIiJKb2luIGEgY29tcGV0aXRpb24gYnkgY3JlYXRpbmcgYSBwYXJ0aWNpcGFudCB2aWEgQVBJIiIiCiAgICAgICAgc2VsZi5hcGlfYmFzZSA9IGFwaV9iYXNlCiAgICAgICAgc2VsZi5jb21wZXRpdGlvbl9pZCA9IGNvbXBldGl0aW9uX2lkCiAgICAgICAgCiAgICAgICAgdHJ5OgogICAgICAgICAgICBwYXJ0aWNpcGFudF9yZXNwb25zZSA9IHJlcXVlc3RzLnBvc3QoCiAgICAgICAgICAgICAgICBmIntzZWxmLmFwaV9iYXNlfS9hcGkvcGFydGljaXBhbnRzL2NyZWF0ZS97Y29tcGV0aXRpb25faWR9IiwKICAgICAgICAgICAgICAgIGpzb249ewogICAgICAgICAgICAgICAgICAgICJuYW1lIjogc2VsZi5uYW1lLAogICAgICAgICAgICAgICAgICAgICJhcGlfYmFzZV91cmwiOiBzZWxmLmFnZW50LmFwaV9iYXNlX3VybCwKICAgICAgICAgICAgICAgICAgICAiYXBpX2tleSI6IHNlbGYuYWdlbnQuYXBpX2tleSwKICAgICAgICAgICAgICAgICAgICAibGltaXRfdG9rZW5zIjogc2VsZi5saW1pdF90b2tlbnMsCiAgICAgICAgICAgICAgICAgICAgImxhbWJkYV92YWx1ZSI6IGxhbWJkYV8sCiAgICAgICAgICAgICAgICAgICAgImFnZW50X3Byb2ZpbGUiOiBzZWxmLl9idWlsZF9hZ2VudF9wcm9maWxlKCksCiAgICAgICAgICAgICAgICB9LCAKICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJDb250ZW50LVR5cGUiOiAiYXBwbGljYXRpb24vanNvbiJ9CiAgICAgICAgICAgICkKCiAgICAgICAgICAgIHBhcnRpY2lwYW50X3Jlc3BvbnNlLnJhaXNlX2Zvcl9zdGF0dXMoKQogICAgICAgICAgICBwYXJ0aWNpcGFudF9yZXN1bHQgPSBwYXJ0aWNpcGFudF9yZXNwb25zZS5qc29uKCkKICAgICAgICAgICAgCiAgICAgICAgICAgIGlmIHBhcnRpY2lwYW50X3Jlc3VsdFsic3RhdHVzIl0gIT0gInN1Y2Nlc3MiOgogICAgICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmIkZhaWxlZCB0byByZWdpc3RlciB7c2VsZi5uYW1lfToge3BhcnRpY2lwYW50X3Jlc3VsdC5nZXQoJ21lc3NhZ2UnLCAnVW5rbm93biBlcnJvcicpfSIpCiAgICAgICAgICAgIAogICAgICAgICAgICBzZWxmLnBhcnRpY2lwYW50X2lkID0gcGFydGljaXBhbnRfcmVzdWx0WyJkYXRhIl1bImlkIl0KICAgICAgICAgICAgCiAgICAgICAgICAgIHJldHVybiBzZWxmLnBhcnRpY2lwYW50X2lkICAgCiAgICAgICAgICAgIAogICAgICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICAgICAgbG9nZ2VyLmVycm9yKGYiRmFpbGVkIHRvIGpvaW4gY29tcGV0aXRpb246IHtlfSIpCiAgICAgICAgICAgIHJhaXNlCiAgICAKICAgIGRlZiB0ZXJtaW5hdGUoc2VsZiwgcmVhc29uOiBzdHIpIC0+IE5vbmU6CiAgICAgICAgIiIiVGVybWluYXRlIHRoZSBjb21wZXRpdG9yIGJ5IHVwZGF0aW5nIHN0YXRlIHZpYSBBUEkiIiIKICAgICAgICBzZWxmLl9lbnN1cmVfcGFydGljaXBhbnQoKQogICAgICAgIAogICAgICAgIHRyeToKICAgICAgICAgICAgcmVzcG9uc2UgPSByZXF1ZXN0cy5wb3N0KAogICAgICAgICAgICAgICAgZiJ7c2VsZi5hcGlfYmFzZX0vYXBpL3BhcnRpY2lwYW50cy90ZXJtaW5hdGUve3NlbGYuY29tcGV0aXRpb25faWR9L3tzZWxmLnBhcnRpY2lwYW50X2lkfSIsCiAgICAgICAgICAgICAgICBqc29uPXsicmVhc29uIjogcmVhc29ufSwKICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJDb250ZW50LVR5cGUiOiAiYXBwbGljYXRpb24vanNvbiJ9CiAgICAgICAgICAgICkKICAgICAgICAgICAgcmVzcG9uc2UucmFpc2VfZm9yX3N0YXR1cygpCiAgICAgICAgICAgIAogICAgICAgICAgICBsb2dnZXIuaW5mbyhmIkNvbXBldGl0b3Ige3NlbGYubmFtZX0gdGVybWluYXRlZDoge3JlYXNvbn0iKQogICAgICAgICAgICAKICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgIGxvZ2dlci5lcnJvcihmIkZhaWxlZCB0byB0ZXJtaW5hdGUgY29tcGV0aXRvcjoge2V9IikKICAgIAogICAgCiAgICBkZWYgdmlld19wcm9ibGVtcyhzZWxmKSAtPiBEaWN0OgogICAgICAgICIiIkdldCBsaXN0IG9mIGNvbXBldGl0aW9uIHByb2JsZW1zIiIiCiAgICAgICAgc2VsZi5fZW5zdXJlX3BhcnRpY2lwYW50KCkKICAgICAgICAKICAgICAgICAKICAgICAgICB0cnk6CiAgICAgICAgICAgIHJlc3BvbnNlID0gcmVxdWVzdHMuZ2V0KGYie3NlbGYuYXBpX2Jhc2V9L2FwaS9wcm9ibGVtcy9saXN0L3tzZWxmLmNvbXBldGl0aW9uX2lkfSIpCiAgICAgICAgICAgIHJlc3BvbnNlLnJhaXNlX2Zvcl9zdGF0dXMoKQogICAgICAgICAgICAKICAgICAgICAgICAgcmVzdWx0ID0gcmVzcG9uc2UuanNvbigpCiAgICAgICAgICAgIGlmIHJlc3VsdFsic3RhdHVzIl0gIT0gInN1Y2Nlc3MiOgogICAgICAgICAgICAgICAgcmV0dXJuIHsiZXJyb3IiOiBmIkFQSSBlcnJvcjoge3Jlc3VsdC5nZXQoJ21lc3NhZ2UnLCAnVW5rbm93biBlcnJvcicpfSJ9CiAgICAgICAgICAgIAogICAgICAgICAgICByZXR1cm4geyJwcm9ibGVtcyI6IHJlc3VsdFsiZGF0YSJdfQogICAgICAgICAgICAKICAgICAgICBleGNlcHQgcmVxdWVzdHMuZXhjZXB0aW9ucy5SZXF1ZXN0RXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgIHJldHVybiB7ImVycm9yIjogZiJGYWlsZWQgdG8gZmV0Y2ggcHJvYmxlbXM6IHtzdHIoZSl9In0KICAgIAogICAgZGVmIHZpZXdfcHJvYmxlbShzZWxmLCBwcm9ibGVtX2lkOiBzdHIpIC0+IERpY3Q6CiAgICAgICAgIiIiR2V0IGRldGFpbHMgb2YgYSBzcGVjaWZpYyBwcm9ibGVtIiIiCiAgICAgICAgc2VsZi5fZW5zdXJlX3BhcnRpY2lwYW50KCkKICAgICAgICAKICAgICAgICB0cnk6CiAgICAgICAgICAgIHJlc3BvbnNlID0gcmVxdWVzdHMuZ2V0KAogICAgICAgICAgICAgICAgZiJ7c2VsZi5hcGlfYmFzZX0vYXBpL3Byb2JsZW1zL2dldC97c2VsZi5jb21wZXRpdGlvbl9pZH0ve3Byb2JsZW1faWR9IgogICAgICAgICAgICApCiAgICAgICAgICAgIHJlc3BvbnNlLnJhaXNlX2Zvcl9zdGF0dXMoKQogICAgICAgICAgICAKICAgICAgICAgICAgcmVzdWx0ID0gcmVzcG9uc2UuanNvbigpCiAgICAgICAgICAgIGlmIHJlc3VsdFsic3RhdHVzIl0gIT0gInN1Y2Nlc3MiOgogICAgICAgICAgICAgICAgcmV0dXJuIHsiZXJyb3IiOiBmIkFQSSBlcnJvcjoge3Jlc3VsdC5nZXQoJ21lc3NhZ2UnLCAnVW5rbm93biBlcnJvcicpfSJ9CiAgICAgICAgICAgIAogICAgICAgICAgICByZXR1cm4geyJwcm9ibGVtIjogcmVzdWx0WyJkYXRhIl19CiAgICAgICAgICAgIAogICAgICAgIGV4Y2VwdCByZXF1ZXN0cy5leGNlcHRpb25zLlJlcXVlc3RFeGNlcHRpb24gYXMgZToKICAgICAgICAgICAgcmV0dXJuIHsiZXJyb3IiOiBmIkZhaWxlZCB0byBmZXRjaCBwcm9ibGVtOiB7c3RyKGUpfSJ9CiAgICAKICAgIGRlZiBnZXRfaGludChzZWxmLCBwcm9ibGVtX2lkOiBzdHIsIGhpbnRfbGV2ZWw6IGludCwgaGludF9rbm93bGVkZ2U6IE9wdGlvbmFsW3N0cl0gPSBOb25lLCBwcm9ibGVtX2RpZmZpY3VsdHk6IE9wdGlvbmFsW3N0cl0gPSBOb25lKSAtPiBEaWN0OgogICAgICAgICIiIkdldCBhIGhpbnQgZm9yIGEgc3BlY2lmaWMgcHJvYmxlbSIiIgogICAgICAgIHNlbGYuX2Vuc3VyZV9wYXJ0aWNpcGFudCgpCiAgICAgICAgCiAgICAgICAgdHJ5OgogICAgICAgICAgICByZXF1ZXN0X2RhdGE6IERpY3Rbc3RyLCBBbnldID0geyJoaW50X2xldmVsIjogaGludF9sZXZlbH0KICAgICAgICAgICAgaWYgcHJvYmxlbV9pZCBpcyBub3QgTm9uZToKICAgICAgICAgICAgICAgIHJlcXVlc3RfZGF0YVsicHJvYmxlbV9pZCJdID0gcHJvYmxlbV9pZAogICAgICAgICAgICAKICAgICAgICAgICAgIyBBZGQgb3B0aW9uYWwgcGFyYW1ldGVycyBiYXNlZCBvbiBoaW50IGxldmVsCiAgICAgICAgICAgIGlmIGhpbnRfa25vd2xlZGdlIGlzIG5vdCBOb25lOgogICAgICAgICAgICAgICAgcmVxdWVzdF9kYXRhWyJoaW50X2tub3dsZWRnZSJdID0gaGludF9rbm93bGVkZ2UKICAgICAgICAgICAgaWYgcHJvYmxlbV9kaWZmaWN1bHR5IGlzIG5vdCBOb25lOgogICAgICAgICAgICAgICAgcmVxdWVzdF9kYXRhWyJwcm9ibGVtX2RpZmZpY3VsdHkiXSA9IHByb2JsZW1fZGlmZmljdWx0eQogICAgICAgICAgICAKICAgICAgICAgICAgIyBGb3IgaGludCBsZXZlbHMgdGhhdCBkb24ndCByZXF1aXJlIHByb2JsZW1faWQgKGxpa2UgbGV2ZWwgMCBzdHJhdGVneSBoaW50cykKICAgICAgICAgICAgdXJsID0gZiJ7c2VsZi5hcGlfYmFzZX0vYXBpL2hpbnRzL2dldC97c2VsZi5jb21wZXRpdGlvbl9pZH0ve3NlbGYucGFydGljaXBhbnRfaWR9IgogICAgICAgICAgICByZXNwb25zZSA9IHJlcXVlc3RzLnBvc3QodXJsLCBqc29uPXJlcXVlc3RfZGF0YSkKICAgICAgICAgICAgcmVzcG9uc2UucmFpc2VfZm9yX3N0YXR1cygpCiAgICAgICAgICAgIAogICAgICAgICAgICByZXN1bHQgPSByZXNwb25zZS5qc29uKCkKICAgICAgICAgICAgaWYgcmVzdWx0WyJzdGF0dXMiXSAhPSAic3VjY2VzcyI6CiAgICAgICAgICAgICAgICByZXR1cm4geyJlcnJvciI6IGYiQVBJIGVycm9yOiB7cmVzdWx0LmdldCgnbWVzc2FnZScsICdVbmtub3duIGVycm9yJyl9In0KICAgICAgICAgICAgCiAgICAgICAgICAgIHJldHVybiByZXN1bHRbImRhdGEiXQoKICAgICAgICBleGNlcHQgcmVxdWVzdHMuZXhjZXB0aW9ucy5SZXF1ZXN0RXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgIHJldHVybiB7ImVycm9yIjogZiJGYWlsZWQgdG8gZ2V0IGhpbnQ6IHtzdHIoZSl9In0KICAgIAogICAgZGVmIHN1Ym1pdF9zb2x1dGlvbihzZWxmLCBwcm9ibGVtX2lkOiBzdHIsIGNvZGU6IHN0ciwgbGFuZ3VhZ2U6IHN0ciA9ICJjcHAiKSAtPiBEaWN0OgogICAgICAgICIiIlN1Ym1pdCBhIHNvbHV0aW9uIGZvciBhIHByb2JsZW0iIiIKICAgICAgICBzZWxmLl9lbnN1cmVfcGFydGljaXBhbnQoKQogICAgICAgIAogICAgICAgIHRyeToKICAgICAgICAgICAgcmVzcG9uc2UgPSByZXF1ZXN0cy5wb3N0KAogICAgICAgICAgICAgICAgZiJ7c2VsZi5hcGlfYmFzZX0vYXBpL3N1Ym1pc3Npb25zL2NyZWF0ZS97c2VsZi5jb21wZXRpdGlvbl9pZH0ve3NlbGYucGFydGljaXBhbnRfaWR9L3twcm9ibGVtX2lkfSIsCiAgICAgICAgICAgICAgICBqc29uPXsiY29kZSI6IGNvZGUsICJsYW5ndWFnZSI6IGxhbmd1YWdlfQogICAgICAgICAgICApCiAgICAgICAgICAgIHJlc3BvbnNlLnJhaXNlX2Zvcl9zdGF0dXMoKQogICAgICAgICAgICAKICAgICAgICAgICAgcmVzdWx0ID0gcmVzcG9uc2UuanNvbigpCiAgICAgICAgICAgIGlmIHJlc3VsdFsic3RhdHVzIl0gIT0gInN1Y2Nlc3MiOgogICAgICAgICAgICAgICAgcmV0dXJuIHsiZXJyb3IiOiBmIkFQSSBlcnJvcjoge3Jlc3VsdC5nZXQoJ21lc3NhZ2UnLCAnVW5rbm93biBlcnJvcicpfSJ9CiAgICAgICAgICAgIAogICAgICAgICAgICByZXR1cm4geyJzdWJtaXNzaW9uIjogcmVzdWx0WyJkYXRhIl19CiAgICAgICAgICAgIAogICAgICAgIGV4Y2VwdCByZXF1ZXN0cy5leGNlcHRpb25zLlJlcXVlc3RFeGNlcHRpb24gYXMgZToKICAgICAgICAgICAgcmV0dXJuIHsiZXJyb3IiOiBmIkZhaWxlZCB0byBzdWJtaXQgc29sdXRpb246IHtzdHIoZSl9In0KCiAgICBkZWYgdGVzdF9jb2RlKAogICAgICAgIHNlbGYsCiAgICAgICAgcHJvYmxlbV9pZDogc3RyLAogICAgICAgIGNvZGU6IHN0ciwKICAgICAgICBsYW5ndWFnZTogc3RyID0gImNwcCIsCiAgICAgICAgdGVzdF9jYXNlczogTGlzdFtEaWN0XSA9IE5vbmUsCiAgICAgICAgdGltZV9saW1pdF9tczogaW50ID0gNTAwMCwKICAgICAgICBtZW1vcnlfbGltaXRfbWI6IGludCA9IDI1NiwKICAgICkgLT4gRGljdDoKICAgICAgICAiIiJUZXN0IGNvZGUgd2l0aCBjdXN0b20gdGVzdCBjYXNlcyIiIgogICAgICAgIHNlbGYuX2Vuc3VyZV9wYXJ0aWNpcGFudCgpCgogICAgICAgIHRyeToKICAgICAgICAgICAgaWYgdGVzdF9jYXNlcyBpcyBOb25lOgogICAgICAgICAgICAgICAgdGVzdF9jYXNlcyA9IFtdCgogICAgICAgICAgICByZXNwb25zZSA9IHJlcXVlc3RzLnBvc3QoCiAgICAgICAgICAgICAgICBmIntzZWxmLmFwaV9iYXNlfS9hcGkvdGVzdF9jb2RlL3tzZWxmLmNvbXBldGl0aW9uX2lkfS97c2VsZi5wYXJ0aWNpcGFudF9pZH0iLAogICAgICAgICAgICAgICAganNvbj17CiAgICAgICAgICAgICAgICAgICAgInByb2JsZW1faWQiOiBwcm9ibGVtX2lkLAogICAgICAgICAgICAgICAgICAgICJjb2RlIjogY29kZSwKICAgICAgICAgICAgICAgICAgICAibGFuZ3VhZ2UiOiBsYW5ndWFnZSwKICAgICAgICAgICAgICAgICAgICAidGVzdF9jYXNlcyI6IHRlc3RfY2FzZXMsCiAgICAgICAgICAgICAgICAgICAgInRpbWVfbGltaXRfbXMiOiB0aW1lX2xpbWl0X21zLAogICAgICAgICAgICAgICAgICAgICJtZW1vcnlfbGltaXRfbWIiOiBtZW1vcnlfbGltaXRfbWIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgKQogICAgICAgICAgICByZXNwb25zZS5yYWlzZV9mb3Jfc3RhdHVzKCkKCiAgICAgICAgICAgIHJlc3VsdCA9IHJlc3BvbnNlLmpzb24oKQogICAgICAgICAgICBpZiByZXN1bHRbInN0YXR1cyJdICE9ICJzdWNjZXNzIjoKICAgICAgICAgICAgICAgIHJldHVybiB7ImVycm9yIjogZiJBUEkgZXJyb3I6IHtyZXN1bHQuZ2V0KCdtZXNzYWdlJywgJ1Vua25vd24gZXJyb3InKX0ifQoKICAgICAgICAgICAgcmV0dXJuIHsidGVzdF9yZXN1bHQiOiByZXN1bHRbImRhdGEiXX0KCiAgICAgICAgZXhjZXB0IHJlcXVlc3RzLmV4Y2VwdGlvbnMuUmVxdWVzdEV4Y2VwdGlvbiBhcyBlOgogICAgICAgICAgICByZXR1cm4geyJlcnJvciI6IGYiRmFpbGVkIHRvIHRlc3QgY29kZToge3N0cihlKX0ifQoKICAgIGRlZiB2aWV3X3JhbmtpbmdzKHNlbGYpIC0+IERpY3Q6CiAgICAgICAgIiIiR2V0IGN1cnJlbnQgY29tcGV0aXRpb24gcmFua2luZ3MiIiIKICAgICAgICBzZWxmLl9lbnN1cmVfcGFydGljaXBhbnQoKQogICAgICAgIAogICAgICAgIHRyeToKICAgICAgICAgICAgcmVzcG9uc2UgPSByZXF1ZXN0cy5nZXQoZiJ7c2VsZi5hcGlfYmFzZX0vYXBpL3JhbmtpbmdzL2dldC97c2VsZi5jb21wZXRpdGlvbl9pZH0iKQogICAgICAgICAgICByZXNwb25zZS5yYWlzZV9mb3Jfc3RhdHVzKCkKICAgICAgICAgICAgCiAgICAgICAgICAgIHJlc3VsdCA9IHJlc3BvbnNlLmpzb24oKQogICAgICAgICAgICBpZiByZXN1bHRbInN0YXR1cyJdICE9ICJzdWNjZXNzIjoKICAgICAgICAgICAgICAgIHJldHVybiB7ImVycm9yIjogZiJBUEkgZXJyb3I6IHtyZXN1bHQuZ2V0KCdtZXNzYWdlJywgJ1Vua25vd24gZXJyb3InKX0ifQogICAgICAgICAgICAKICAgICAgICAgICAgcmV0dXJuIHsicmFua2luZ3MiOiByZXN1bHRbImRhdGEiXX0KICAgICAgICAgICAgCiAgICAgICAgZXhjZXB0IHJlcXVlc3RzLmV4Y2VwdGlvbnMuUmVxdWVzdEV4Y2VwdGlvbiBhcyBlOgogICAgICAgICAgICByZXR1cm4geyJlcnJvciI6IGYiRmFpbGVkIHRvIGZldGNoIHJhbmtpbmdzOiB7c3RyKGUpfSJ9Cg==
+"""
+Competition-related classes for USACOArena platform.
+
+This module contains the Competitor class which serves as an optimized bridge
+between Agent and Participant data, minimizing API calls and state management overhead.
+"""
+
+import requests
+from typing import Dict, List, Optional, Tuple, Any, TYPE_CHECKING
+from usacoarena.utils.logger_config import get_logger
+
+if TYPE_CHECKING:
+    from agents import Agent
+
+logger = get_logger("competition")
+
+
+class Competitor:
+    """Optimized bridge between Agent and Participant data"""
+    
+    def __init__(self, name: str, agent: "Agent", limit_tokens: int = 10000000):
+        self.name = name
+        self.api_base: Optional[str] = None
+        self.agent = agent
+        self.participant_id: Optional[str] = None
+        self.competition_id: Optional[str] = None
+        
+        # Store initialization parameters
+        self.limit_tokens = limit_tokens
+
+    def _build_agent_profile(self) -> Dict[str, Any]:
+        """Build a stable participant agent profile for server-side gateway use."""
+        request_format = getattr(self.agent, "request_format", None)
+        response_format = getattr(self.agent, "response_format", None)
+        capabilities = ["read_problem", "submit_solution", "request_hint", "test_code"]
+
+        return {
+            "version": "1.0",
+            "agent_type": "generic_api_agent",
+            "transport": "openai_compatible_http",
+            "entrypoint": "",
+            "capabilities": capabilities,
+            "mcp": {"enabled": False, "servers": []},
+            "request_format": request_format if isinstance(request_format, dict) else {},
+            "response_format": response_format if isinstance(response_format, dict) else {},
+            "metadata": {
+                "model_id": getattr(self.agent, "model_id", ""),
+                "runtime": self.agent.__class__.__name__,
+            },
+        }
+    
+    # Properties with direct API access
+    @property
+    def remaining_tokens(self) -> int:
+        """Get remaining tokens from API"""
+        state = self.get_participant_state()
+        return state.get("remaining_tokens", 0)
+    
+    @property
+    def score(self) -> int:
+        """Get current score from API"""
+        state = self.get_participant_state()
+        return state.get("score", 0)
+    
+    
+    @property
+    def is_running(self) -> bool:
+        """Get running status from API"""
+        state = self.get_participant_state()
+        return state.get("is_running", True)
+    
+    @property
+    def termination_reason(self) -> Optional[str]:
+        """Get termination reason from API"""
+        state = self.get_participant_state()
+        return state.get("termination_reason")
+
+    def _ensure_participant(self):
+        """Ensure participant is available, raise error if not"""
+        if self.participant_id is None:
+            raise RuntimeError("Competitor not properly initialized. Call join_competition first.")
+    
+    def get_participant_state(self) -> Dict:
+        """Get current participant state from API"""
+        self._ensure_participant()
+        # Add retry mechanism, up to 10000 times, with 10 seconds interval between each retry.
+        max_retries = 100000
+        import time
+        for attempt in range(max_retries):
+            try:
+                response = requests.get(
+                    f"{self.api_base}/api/participants/get_solved_problems/{self.competition_id}/{self.participant_id}",
+                )
+                response.raise_for_status()
+
+                result = response.json()
+                if result["status"] == "success":
+                    return result["data"]
+                else:
+                    logger.warning(f"Failed to get participant state: {result.get('message', 'Unknown error')}")
+                    return {}
+            except Exception as e:
+                logger.error(f"Error getting participant state (attempt {attempt+1}/{max_retries}): {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(15)
+                else:
+                    return {}
+    
+    def join_competition(self, api_base: str, competition_id: str, lambda_: int):
+        """Join a competition by creating a participant via API"""
+        self.api_base = api_base
+        self.competition_id = competition_id
+        
+        try:
+            participant_response = requests.post(
+                f"{self.api_base}/api/participants/create/{competition_id}",
+                json={
+                    "name": self.name,
+                    "api_base_url": self.agent.api_base_url,
+                    "api_key": self.agent.api_key,
+                    "limit_tokens": self.limit_tokens,
+                    "lambda_value": lambda_,
+                    "agent_profile": self._build_agent_profile(),
+                }, 
+                headers={"Content-Type": "application/json"}
+            )
+
+            participant_response.raise_for_status()
+            participant_result = participant_response.json()
+            
+            if participant_result["status"] != "success":
+                raise ValueError(f"Failed to register {self.name}: {participant_result.get('message', 'Unknown error')}")
+            
+            self.participant_id = participant_result["data"]["id"]
+            
+            return self.participant_id   
+            
+        except Exception as e:
+            logger.error(f"Failed to join competition: {e}")
+            raise
+    
+    def terminate(self, reason: str) -> None:
+        """Terminate the competitor by updating state via API"""
+        self._ensure_participant()
+        
+        try:
+            response = requests.post(
+                f"{self.api_base}/api/participants/terminate/{self.competition_id}/{self.participant_id}",
+                json={"reason": reason},
+                headers={"Content-Type": "application/json"}
+            )
+            response.raise_for_status()
+            
+            logger.info(f"Competitor {self.name} terminated: {reason}")
+            
+        except Exception as e:
+            logger.error(f"Failed to terminate competitor: {e}")
+    
+    
+    def view_problems(self) -> Dict:
+        """Get list of competition problems"""
+        self._ensure_participant()
+        
+        
+        try:
+            response = requests.get(f"{self.api_base}/api/problems/list/{self.competition_id}")
+            response.raise_for_status()
+            
+            result = response.json()
+            if result["status"] != "success":
+                return {"error": f"API error: {result.get('message', 'Unknown error')}"}
+            
+            return {"problems": result["data"]}
+            
+        except requests.exceptions.RequestException as e:
+            return {"error": f"Failed to fetch problems: {str(e)}"}
+    
+    def view_problem(self, problem_id: str) -> Dict:
+        """Get details of a specific problem"""
+        self._ensure_participant()
+        
+        try:
+            response = requests.get(
+                f"{self.api_base}/api/problems/get/{self.competition_id}/{problem_id}"
+            )
+            response.raise_for_status()
+            
+            result = response.json()
+            if result["status"] != "success":
+                return {"error": f"API error: {result.get('message', 'Unknown error')}"}
+            
+            return {"problem": result["data"]}
+            
+        except requests.exceptions.RequestException as e:
+            return {"error": f"Failed to fetch problem: {str(e)}"}
+    
+    def get_hint(self, problem_id: str, hint_level: int, hint_knowledge: Optional[str] = None, problem_difficulty: Optional[str] = None) -> Dict:
+        """Get a hint for a specific problem"""
+        self._ensure_participant()
+        
+        try:
+            request_data: Dict[str, Any] = {"hint_level": hint_level}
+            if problem_id is not None:
+                request_data["problem_id"] = problem_id
+            
+            # Add optional parameters based on hint level
+            if hint_knowledge is not None:
+                request_data["hint_knowledge"] = hint_knowledge
+            if problem_difficulty is not None:
+                request_data["problem_difficulty"] = problem_difficulty
+            
+            # For hint levels that don't require problem_id (like level 0 strategy hints)
+            url = f"{self.api_base}/api/hints/get/{self.competition_id}/{self.participant_id}"
+            response = requests.post(url, json=request_data)
+            response.raise_for_status()
+            
+            result = response.json()
+            if result["status"] != "success":
+                return {"error": f"API error: {result.get('message', 'Unknown error')}"}
+            
+            return result["data"]
+
+        except requests.exceptions.RequestException as e:
+            return {"error": f"Failed to get hint: {str(e)}"}
+    
+    def submit_solution(self, problem_id: str, code: str, language: str = "cpp") -> Dict:
+        """Submit a solution for a problem"""
+        self._ensure_participant()
+        
+        try:
+            response = requests.post(
+                f"{self.api_base}/api/submissions/create/{self.competition_id}/{self.participant_id}/{problem_id}",
+                json={"code": code, "language": language}
+            )
+            response.raise_for_status()
+            
+            result = response.json()
+            if result["status"] != "success":
+                return {"error": f"API error: {result.get('message', 'Unknown error')}"}
+            
+            return {"submission": result["data"]}
+            
+        except requests.exceptions.RequestException as e:
+            return {"error": f"Failed to submit solution: {str(e)}"}
+
+    def test_code(
+        self,
+        problem_id: str,
+        code: str,
+        language: str = "cpp",
+        test_cases: List[Dict] = None,
+        time_limit_ms: int = 5000,
+        memory_limit_mb: int = 256,
+    ) -> Dict:
+        """Test code with custom test cases"""
+        self._ensure_participant()
+
+        try:
+            if test_cases is None:
+                test_cases = []
+
+            response = requests.post(
+                f"{self.api_base}/api/test_code/{self.competition_id}/{self.participant_id}",
+                json={
+                    "problem_id": problem_id,
+                    "code": code,
+                    "language": language,
+                    "test_cases": test_cases,
+                    "time_limit_ms": time_limit_ms,
+                    "memory_limit_mb": memory_limit_mb
+                }
+            )
+            response.raise_for_status()
+
+            result = response.json()
+            if result["status"] != "success":
+                return {"error": f"API error: {result.get('message', 'Unknown error')}"}
+
+            return {"test_result": result["data"]}
+
+        except requests.exceptions.RequestException as e:
+            return {"error": f"Failed to test code: {str(e)}"}
+
+    def view_rankings(self) -> Dict:
+        """Get current competition rankings"""
+        self._ensure_participant()
+        
+        try:
+            response = requests.get(f"{self.api_base}/api/rankings/get/{self.competition_id}")
+            response.raise_for_status()
+            
+            result = response.json()
+            if result["status"] != "success":
+                return {"error": f"API error: {result.get('message', 'Unknown error')}"}
+            
+            return {"rankings": result["data"]}
+            
+        except requests.exceptions.RequestException as e:
+            return {"error": f"Failed to fetch rankings: {str(e)}"}

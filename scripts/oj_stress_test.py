@@ -1,1 +1,302 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiIKTGVnYWN5IE9KIHN0cmVzcy10ZXN0aW5nIHV0aWxpdHkuCgpUaGlzIHNjcmlwdCB0YXJnZXRzIHRoZSBvbGQgYC9jb21waWxlLWFuZC1leGVjdXRlYCBwcm90b2NvbCBkaXJlY3RseSBhbmQgaXMKa2VwdCBvbmx5IGZvciBoaXN0b3JpY2FsIGRlYnVnZ2luZyByZWZlcmVuY2UuIEl0IGlzIG5vdCBwYXJ0IG9mIHRoZSBwcmltYXJ5Ckh5ZHJvLWJhc2VkIG9wZW4tc291cmNlIGRlcGxveW1lbnQgcGF0aC4KIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQgYXJncGFyc2UKaW1wb3J0IGpzb24KaW1wb3J0IHJhbmRvbQppbXBvcnQgc3RhdGlzdGljcwppbXBvcnQgc3RyaW5nCmltcG9ydCB0aW1lCmZyb20gY29uY3VycmVudC5mdXR1cmVzIGltcG9ydCBUaHJlYWRQb29sRXhlY3V0b3IsIGFzX2NvbXBsZXRlZApmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKZnJvbSB0eXBpbmcgaW1wb3J0IERpY3QsIEl0ZXJhYmxlLCBMaXN0LCBPcHRpb25hbAoKaW1wb3J0IHJlcXVlc3RzCgoKTEFOR1VBR0VfQ09ERSA9IHsKICAgICJjcHAiOiAiY3BwIiwKICAgICJweXRob24iOiAicHkxMiIsCiAgICAiamF2YSI6ICJqYXZhMjEiLAp9CgoKZGVmIGxvYWRfc291cmNlKGFyZ3M6IGFyZ3BhcnNlLk5hbWVzcGFjZSkgLT4gc3RyOgogICAgIiIiTG9hZCBzb3VyY2UgY29kZSBmcm9tIGFyZ3VtZW50cyBvciBmYWxsIGJhY2sgdG8gYSBkZWZhdWx0IHN1bW1hdGlvbiB0ZW1wbGF0ZS4iIiIKICAgIGlmIGFyZ3MuY29kZV9maWxlOgogICAgICAgIHJldHVybiBQYXRoKGFyZ3MuY29kZV9maWxlKS5yZWFkX3RleHQoZW5jb2Rpbmc9InV0Zi04IikKCiAgICBpZiBhcmdzLmxhbmd1YWdlID09ICJjcHAiOgogICAgICAgIHJldHVybiAoCiAgICAgICAgICAgICIjaW5jbHVkZSA8Yml0cy9zdGRjKysuaD5cbiIKICAgICAgICAgICAgInVzaW5nIG5hbWVzcGFjZSBzdGQ7XG4iCiAgICAgICAgICAgICJpbnQgbWFpbigpe2lvczo6c3luY193aXRoX3N0ZGlvKGZhbHNlKTtjaW4udGllKG51bGxwdHIpOyIKICAgICAgICAgICAgImxvbmcgbG9uZyB4LHN1bT0wO3doaWxlKGNpbj4+eClzdW0rPXg7Y291dDw8c3VtPDxcIlxcblwiO3JldHVybiAwO31cbiIKICAgICAgICApCiAgICBpZiBhcmdzLmxhbmd1YWdlID09ICJweXRob24iOgogICAgICAgIHJldHVybiAoCiAgICAgICAgICAgICJpbXBvcnQgc3lzXG4iCiAgICAgICAgICAgICJkYXRhID0gc3lzLnN0ZGluLnJlYWQoKS5zdHJpcCgpLnNwbGl0KClcbiIKICAgICAgICAgICAgInRvdGFsID0gc3VtKGludCh4KSBmb3IgeCBpbiBkYXRhKSBpZiBkYXRhIGVsc2UgMFxuIgogICAgICAgICAgICAicHJpbnQodG90YWwpXG4iCiAgICAgICAgKQogICAgaWYgYXJncy5sYW5ndWFnZSA9PSAiamF2YSI6CiAgICAgICAgcmV0dXJuICgKICAgICAgICAgICAgImltcG9ydCBqYXZhLmlvLio7XG4iCiAgICAgICAgICAgICJpbXBvcnQgamF2YS51dGlsLio7XG4iCiAgICAgICAgICAgICJwdWJsaWMgY2xhc3MgTWFpbntwdWJsaWMgc3RhdGljIHZvaWQgbWFpbihTdHJpbmdbXSBhcmdzKXRocm93cyBFeGNlcHRpb257IgogICAgICAgICAgICAidmFyIGJyPW5ldyBCdWZmZXJlZElucHV0U3RyZWFtKFN5c3RlbS5pbik7dmFyIHNiPW5ldyBTdHJpbmdCdWlsZGVyKCk7IgogICAgICAgICAgICAiaW50IGM7d2hpbGUoKGM9YnIucmVhZCgpKSE9LTEpe2lmKCFDaGFyYWN0ZXIuaXNXaGl0ZXNwYWNlKGMpKXtzYi5hcHBlbmQoKGNoYXIpYyk7fWVsc2V7c2IuYXBwZW5kKCcgJyk7fX0iCiAgICAgICAgICAgICJsb25nIHN1bT0wO2ZvcihTdHJpbmcgdG9rZW46c2IudG9TdHJpbmcoKS50cmltKCkuc3BsaXQoXCIgXCIpKXtpZighdG9rZW4uaXNFbXB0eSgpKXtzdW0rPUxvbmcucGFyc2VMb25nKHRva2VuKTt9fSIKICAgICAgICAgICAgIlN5c3RlbS5vdXQucHJpbnRsbihzdW0pO319XG4iCiAgICAgICAgKQoKICAgIHJhaXNlIFZhbHVlRXJyb3IoZiJVbnN1cHBvcnRlZCBsYW5ndWFnZToge2FyZ3MubGFuZ3VhZ2V9IikKCgpkZWYgbG9hZF9kYXRhc2V0KHBhdGg6IE9wdGlvbmFsW3N0cl0pIC0+IExpc3RbTGlzdFtpbnRdXToKICAgICIiIkxvYWQgdGVzdCBkYXRhIGZyb20gSlNPTi90ZXh0OyByZXR1cm4gYW4gZW1wdHkgbGlzdCB0byB0cmlnZ2VyIG9uLXRoZS1mbHkgZ2VuZXJhdGlvbi4iIiIKICAgIGlmIG5vdCBwYXRoOgogICAgICAgIHJldHVybiBbXQoKICAgIGRhdGFzZXRfcGF0aCA9IFBhdGgocGF0aCkKICAgIGlmIG5vdCBkYXRhc2V0X3BhdGguZXhpc3RzKCk6CiAgICAgICAgcmFpc2UgRmlsZU5vdEZvdW5kRXJyb3IoZiJEYXRhc2V0IGZpbGUgZG9lcyBub3QgZXhpc3Q6IHtkYXRhc2V0X3BhdGh9IikKCiAgICBpZiBkYXRhc2V0X3BhdGguc3VmZml4Lmxvd2VyKCkgaW4geyIuanNvbiIsICIuanNvbmwifToKICAgICAgICBjYXNlczogTGlzdFtMaXN0W2ludF1dID0gW10KICAgICAgICBmb3IgbGluZSBpbiBkYXRhc2V0X3BhdGgucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIpLnNwbGl0bGluZXMoKToKICAgICAgICAgICAgaWYgbm90IGxpbmUuc3RyaXAoKToKICAgICAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgICAgIHBheWxvYWQgPSBqc29uLmxvYWRzKGxpbmUpCiAgICAgICAgICAgIGlmIGlzaW5zdGFuY2UocGF5bG9hZCwgZGljdCkgYW5kICJudW1iZXJzIiBpbiBwYXlsb2FkOgogICAgICAgICAgICAgICAgY2FzZXMuYXBwZW5kKFtpbnQoeCkgZm9yIHggaW4gcGF5bG9hZFsibnVtYmVycyJdXSkKICAgICAgICAgICAgZWxpZiBpc2luc3RhbmNlKHBheWxvYWQsIGxpc3QpOgogICAgICAgICAgICAgICAgY2FzZXMuYXBwZW5kKFtpbnQoeCkgZm9yIHggaW4gcGF5bG9hZF0pCiAgICAgICAgICAgIGVsc2U6CiAgICAgICAgICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGYiVW5hYmxlIHRvIHBhcnNlIGRhdGFzZXQgbGluZToge2xpbmV9IikKICAgICAgICByZXR1cm4gY2FzZXMKCiAgICAjIEludGVycHJldCBwbGFpbi1udW1iZXIgdGV4dCBieSBsaW5lLCBzcGxpdHRpbmcgb24gd2hpdGVzcGFjZSBvciBjb21tYXMKICAgIGNhc2VzID0gW10KICAgIGZvciBsaW5lIGluIGRhdGFzZXRfcGF0aC5yZWFkX3RleHQoZW5jb2Rpbmc9InV0Zi04Iikuc3BsaXRsaW5lcygpOgogICAgICAgIHRva2VucyA9IFt0b2tlbi5zdHJpcCgpIGZvciB0b2tlbiBpbiBsaW5lLnJlcGxhY2UoIiwiLCAiICIpLnNwbGl0KCkgaWYgdG9rZW4uc3RyaXAoKV0KICAgICAgICBpZiB0b2tlbnM6CiAgICAgICAgICAgIGNhc2VzLmFwcGVuZChbaW50KHRva2VuKSBmb3IgdG9rZW4gaW4gdG9rZW5zXSkKICAgIHJldHVybiBjYXNlcwoKCmRlZiBnZW5lcmF0ZV9udW1iZXJzKHJuZzogcmFuZG9tLlJhbmRvbSwgY291bnQ6IGludCwgbWFnbml0dWRlOiBpbnQpIC0+IExpc3RbaW50XToKICAgICIiIkdlbmVyYXRlIHJhbmRvbSBpbnRlZ2VycyB0byBwb3B1bGF0ZSBzdGRpbi4iIiIKICAgIGxpbWl0ID0gMTAgKiogbWFnbml0dWRlCiAgICByZXR1cm4gW3JuZy5yYW5kcmFuZ2UoLWxpbWl0LCBsaW1pdCkgZm9yIF8gaW4gcmFuZ2UoY291bnQpXQoKCmRlZiBidWlsZF9wYXlsb2FkcygKICAgIGFyZ3M6IGFyZ3BhcnNlLk5hbWVzcGFjZSwKICAgIHNvdXJjZV9jb2RlOiBzdHIsCiAgICBkYXRhc2V0OiBJdGVyYWJsZVtMaXN0W2ludF1dLAopIC0+IEl0ZXJhYmxlW0RpY3RdOgogICAgIiIiWWllbGQgcmVxdWVzdCBwYXlsb2FkcyBkcml2ZW4gYnkgY3VzdG9tIGRhdGEgb3IgcmFuZG9tIGdlbmVyYXRpb24uIiIiCiAgICBybmcgPSByYW5kb20uUmFuZG9tKGFyZ3Muc2VlZCkKCiAgICBmb3IgaWR4IGluIHJhbmdlKGFyZ3MudG90YWxfcmVxdWVzdHMpOgogICAgICAgIGlmIGRhdGFzZXQ6CiAgICAgICAgICAgIG51bWJlcnMgPSBuZXh0KGRhdGFzZXQpCiAgICAgICAgZWxzZToKICAgICAgICAgICAgY291bnQgPSBybmcucmFuZGludChhcmdzLm1pbl9udW1iZXJzLCBhcmdzLm1heF9udW1iZXJzKQogICAgICAgICAgICBudW1iZXJzID0gZ2VuZXJhdGVfbnVtYmVycyhybmcsIGNvdW50LCBhcmdzLm51bWJlcl9tYWduaXR1ZGUpCgogICAgICAgIHN0ZGluID0gIiAiLmpvaW4oc3RyKG51bSkgZm9yIG51bSBpbiBudW1iZXJzKSArICJcbiIKICAgICAgICBleHBlY3RlZCA9IGYie3N1bShudW1iZXJzKX1cbiIKCiAgICAgICAgY29tcGlsZV9zZWN0aW9uID0gewogICAgICAgICAgICAibGFuZ3VhZ2UiOiBMQU5HVUFHRV9DT0RFW2FyZ3MubGFuZ3VhZ2VdLAogICAgICAgICAgICAic291cmNlX2NvZGUiOiBzb3VyY2VfY29kZSwKICAgICAgICB9CgogICAgICAgIGlmIGFyZ3MubGFuZ3VhZ2UgPT0gImNwcCI6CiAgICAgICAgICAgIGNvbXBpbGVfc2VjdGlvblsiY29tcGlsZXJfb3B0aW9ucyJdID0gWyItTzIiLCAiLXN0ZD1jKysxNyJdCgogICAgICAgIHBheWxvYWQgPSB7CiAgICAgICAgICAgICJjb21waWxlIjogY29tcGlsZV9zZWN0aW9uLAogICAgICAgICAgICAiZXhlY3V0ZSI6IHsKICAgICAgICAgICAgICAgICJzdGRpbiI6IHN0ZGluIGlmIG5vdCBhcmdzLm5vX3N0ZGluIGVsc2UgIiIsCiAgICAgICAgICAgICAgICAidGltZW91dF9tcyI6IGFyZ3MudGltZW91dF9tcywKICAgICAgICAgICAgICAgICJmaWxlX2lvX25hbWUiOiBOb25lLAogICAgICAgICAgICB9LAogICAgICAgICAgICAidGVzdF9jYXNlIjogewogICAgICAgICAgICAgICAgImNoZWNrZXJfdHlwZSI6ICJzdHJpY3RfZGlmZiIsCiAgICAgICAgICAgICAgICAiZXhwZWN0ZWRfb3V0cHV0IjogZXhwZWN0ZWQsCiAgICAgICAgICAgIH0sCiAgICAgICAgfQoKICAgICAgICB5aWVsZCBpZHgsIHBheWxvYWQKCgpkZWYgY3ljbGVfZGF0YXNldChkYXRhc2V0OiBMaXN0W0xpc3RbaW50XV0pIC0+IEl0ZXJhYmxlW0xpc3RbaW50XV06CiAgICAiIiJDeWNsZSB0aHJvdWdoIGEgZmluaXRlIGRhdGFzZXQgdG8gc3VzdGFpbiBsb25nLXJ1bm5pbmcgdGVzdHMuIiIiCiAgICB3aGlsZSBUcnVlOgogICAgICAgIGZvciBjYXNlIGluIGRhdGFzZXQ6CiAgICAgICAgICAgIHlpZWxkIGNhc2UKCgpkZWYgZGVzY3JpYmVfbGF0ZW5jeShsYXRlbmNpZXM6IExpc3RbZmxvYXRdKSAtPiBzdHI6CiAgICAiIiJQcm9kdWNlIGEgaHVtYW4tcmVhZGFibGUgbGF0ZW5jeSBzdW1tYXJ5LiIiIgogICAgcDk1ID0gc3RhdGlzdGljcy5xdWFudGlsZXMobGF0ZW5jaWVzLCBuPTEwMClbOTRdIGlmIGxlbihsYXRlbmNpZXMpID49IDIgZWxzZSBsYXRlbmNpZXNbMF0KICAgIHJldHVybiAoCiAgICAgICAgZiJhdmc9e3N0YXRpc3RpY3MubWVhbihsYXRlbmNpZXMpOi4zZn1zICIKICAgICAgICBmInA5NT17cDk1Oi4zZn1zICIKICAgICAgICBmIm1heD17bWF4KGxhdGVuY2llcyk6LjNmfXMgIgogICAgICAgIGYibWluPXttaW4obGF0ZW5jaWVzKTouM2Z9cyIKICAgICkKCgpkZWYgd29ya2VyKAogICAgZW5kcG9pbnQ6IHN0ciwKICAgIHBheWxvYWQ6IERpY3QsCiAgICB0aW1lb3V0OiBmbG9hdCwKKSAtPiBEaWN0OgogICAgIiIiU2VuZCBhIHNpbmdsZSByZXF1ZXN0IGFuZCByZWNvcmQgbWV0cmljcy4iIiIKICAgIHNlbnRfYXQgPSB0aW1lLnBlcmZfY291bnRlcigpCiAgICB0cnk6CiAgICAgICAgcmVzcG9uc2UgPSByZXF1ZXN0cy5wb3N0KGVuZHBvaW50LCBqc29uPXBheWxvYWQsIHRpbWVvdXQ9dGltZW91dCkKICAgICAgICBsYXRlbmN5ID0gdGltZS5wZXJmX2NvdW50ZXIoKSAtIHNlbnRfYXQKICAgICAgICBzdGF0dXNfY29kZSA9IHJlc3BvbnNlLnN0YXR1c19jb2RlCgogICAgICAgIGJvZHkgPSByZXNwb25zZS5qc29uKCkKICAgICAgICBpZiBpc2luc3RhbmNlKGJvZHksIGRpY3QpIGFuZCAiYm9keSIgaW4gYm9keSBhbmQgaXNpbnN0YW5jZShib2R5WyJib2R5Il0sIHN0cik6CiAgICAgICAgICAgIGJvZHkgPSBqc29uLmxvYWRzKGJvZHlbImJvZHkiXSkKCiAgICAgICAgY29tcGlsZV9yZXN1bHQgPSBib2R5LmdldCgiY29tcGlsZSIsIHt9KQogICAgICAgIGV4ZWN1dGVfcmVzdWx0ID0gYm9keS5nZXQoImV4ZWN1dGUiLCB7fSkKCiAgICAgICAgdmVyZGljdCA9IGV4ZWN1dGVfcmVzdWx0LmdldCgidmVyZGljdCIpCiAgICAgICAgY29tcGlsZV9vayA9IGNvbXBpbGVfcmVzdWx0LmdldCgiZXhpdF9jb2RlIiwgMCkgPT0gMAoKICAgICAgICBzdWNjZXNzID0gKAogICAgICAgICAgICBzdGF0dXNfY29kZSA9PSAyMDAKICAgICAgICAgICAgYW5kIGNvbXBpbGVfb2sKICAgICAgICAgICAgYW5kIHZlcmRpY3QgPT0gImFjY2VwdGVkIgogICAgICAgICkKCiAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgInN1Y2Nlc3MiOiBzdWNjZXNzLAogICAgICAgICAgICAibGF0ZW5jeSI6IGxhdGVuY3ksCiAgICAgICAgICAgICJzdGF0dXNfY29kZSI6IHN0YXR1c19jb2RlLAogICAgICAgICAgICAidmVyZGljdCI6IHZlcmRpY3QsCiAgICAgICAgICAgICJjb21waWxlX2V4aXQiOiBjb21waWxlX3Jlc3VsdC5nZXQoImV4aXRfY29kZSIpLAogICAgICAgICAgICAiZXhlY3V0ZV9leGl0IjogZXhlY3V0ZV9yZXN1bHQuZ2V0KCJleGl0X2NvZGUiKSwKICAgICAgICAgICAgImV4ZWN1dGVfd2FsbCI6IGV4ZWN1dGVfcmVzdWx0LmdldCgid2FsbF90aW1lIiksCiAgICAgICAgICAgICJleGVjdXRlX21lbSI6IGV4ZWN1dGVfcmVzdWx0LmdldCgibWVtb3J5X3VzYWdlIiksCiAgICAgICAgICAgICJzdGRlcnIiOiBleGVjdXRlX3Jlc3VsdC5nZXQoInN0ZGVyciIpIG9yIGNvbXBpbGVfcmVzdWx0LmdldCgic3RkZXJyIiksCiAgICAgICAgfQogICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBleGM6CiAgICAgICAgbGF0ZW5jeSA9IHRpbWUucGVyZl9jb3VudGVyKCkgLSBzZW50X2F0CiAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgInN1Y2Nlc3MiOiBGYWxzZSwKICAgICAgICAgICAgImxhdGVuY3kiOiBsYXRlbmN5LAogICAgICAgICAgICAic3RhdHVzX2NvZGUiOiBOb25lLAogICAgICAgICAgICAidmVyZGljdCI6IE5vbmUsCiAgICAgICAgICAgICJjb21waWxlX2V4aXQiOiBOb25lLAogICAgICAgICAgICAiZXhlY3V0ZV9leGl0IjogTm9uZSwKICAgICAgICAgICAgImV4ZWN1dGVfd2FsbCI6IE5vbmUsCiAgICAgICAgICAgICJleGVjdXRlX21lbSI6IE5vbmUsCiAgICAgICAgICAgICJzdGRlcnIiOiBzdHIoZXhjKSwKICAgICAgICB9CgoKZGVmIHN0cmVzcyhlbmRwb2ludDogc3RyLCBwYXlsb2FkczogSXRlcmFibGVbRGljdF0sIGNvbmN1cnJlbmN5OiBpbnQsIHRpbWVvdXQ6IGZsb2F0KSAtPiBEaWN0OgogICAgIiIiRXhlY3V0ZSB0aGUgc3RyZXNzIHRlc3Qgd2l0aCB0aGUgY29uZmlndXJlZCBjb25jdXJyZW5jeSBhbmQgYWdncmVnYXRlIHJlc3VsdHMuIiIiCiAgICBsYXRlbmNpZXM6IExpc3RbZmxvYXRdID0gW10KICAgIHN1Y2Nlc3NlcyA9IDAKICAgIGZhaWx1cmVzOiBMaXN0W0RpY3RdID0gW10KCiAgICB3aXRoIFRocmVhZFBvb2xFeGVjdXRvcihtYXhfd29ya2Vycz1jb25jdXJyZW5jeSkgYXMgZXhlY3V0b3I6CiAgICAgICAgZnV0dXJlcyA9IHsKICAgICAgICAgICAgZXhlY3V0b3Iuc3VibWl0KHdvcmtlciwgZW5kcG9pbnQsIHBheWxvYWQsIHRpbWVvdXQpOiBpZHgKICAgICAgICAgICAgZm9yIGlkeCwgcGF5bG9hZCBpbiBwYXlsb2FkcwogICAgICAgIH0KCiAgICAgICAgZm9yIGZ1dHVyZSBpbiBhc19jb21wbGV0ZWQoZnV0dXJlcyk6CiAgICAgICAgICAgIHJlc3VsdCA9IGZ1dHVyZS5yZXN1bHQoKQogICAgICAgICAgICBsYXRlbmNpZXMuYXBwZW5kKHJlc3VsdFsibGF0ZW5jeSJdKQogICAgICAgICAgICBpZiByZXN1bHRbInN1Y2Nlc3MiXToKICAgICAgICAgICAgICAgIHN1Y2Nlc3NlcyArPSAxCiAgICAgICAgICAgIGVsc2U6CiAgICAgICAgICAgICAgICBmYWlsdXJlcy5hcHBlbmQocmVzdWx0KQoKICAgIHJldHVybiB7CiAgICAgICAgImxhdGVuY2llcyI6IGxhdGVuY2llcywKICAgICAgICAic3VjY2Vzc2VzIjogc3VjY2Vzc2VzLAogICAgICAgICJmYWlsdXJlcyI6IGZhaWx1cmVzLAogICAgfQoKCmRlZiBwYXJzZV9hcmdzKCkgLT4gYXJncGFyc2UuTmFtZXNwYWNlOgogICAgcGFyc2VyID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoCiAgICAgICAgZGVzY3JpcHRpb249IkxlZ2FjeSBzdHJlc3MgdGVzdCBmb3IgYSByYXcgL2NvbXBpbGUtYW5kLWV4ZWN1dGUgZW5kcG9pbnQuIiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tZW5kcG9pbnQiLCBkZWZhdWx0PSJodHRwOi8vbG9jYWxob3N0OjEwMDg2L2NvbXBpbGUtYW5kLWV4ZWN1dGUiLCBoZWxwPSJMZWdhY3kgcmF3IE9KIGVuZHBvaW50IikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tbGFuZ3VhZ2UiLCBjaG9pY2VzPWxpc3QoTEFOR1VBR0VfQ09ERSksIGRlZmF1bHQ9ImNwcCIsIGhlbHA9IlByb2dyYW1taW5nIGxhbmd1YWdlIHRvIHRlc3QiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1jb2RlLWZpbGUiLCBoZWxwPSJQYXRoIHRvIGEgY3VzdG9tIHNvdXJjZSBmaWxlIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tZGF0YXNldCIsIGhlbHA9IkxvYWQgaW5wdXQgY2FzZXMgZnJvbSBhIEpTT04vdGV4dCBmaWxlIChjeWNsZWQpIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tdG90YWwtcmVxdWVzdHMiLCB0eXBlPWludCwgZGVmYXVsdD0xMDAsIGhlbHA9IlRvdGFsIG51bWJlciBvZiByZXF1ZXN0cyIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLWNvbmN1cnJlbmN5IiwgdHlwZT1pbnQsIGRlZmF1bHQ9OCwgaGVscD0iTWF4aW11bSBjb25jdXJyZW5jeSIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLXRpbWVvdXQtbXMiLCB0eXBlPWludCwgZGVmYXVsdD0zMDAwLCBoZWxwPSJPSiBleGVjdXRpb24gdGltZW91dCBpbiBtaWxsaXNlY29uZHMiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1odHRwLXRpbWVvdXQiLCB0eXBlPWZsb2F0LCBkZWZhdWx0PTEwLjAsIGhlbHA9IkhUVFAgdGltZW91dCBpbiBzZWNvbmRzIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tbWluLW51bWJlcnMiLCB0eXBlPWludCwgZGVmYXVsdD0yLCBoZWxwPSJNaW5pbXVtIG51bWJlcnMgd2hlbiBnZW5lcmF0aW5nIHJhbmRvbSBpbnB1dCIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLW1heC1udW1iZXJzIiwgdHlwZT1pbnQsIGRlZmF1bHQ9NDA5NiwgaGVscD0iTWF4aW11bSBudW1iZXJzIHdoZW4gZ2VuZXJhdGluZyByYW5kb20gaW5wdXQiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1udW1iZXItbWFnbml0dWRlIiwgdHlwZT1pbnQsIGRlZmF1bHQ9NiwgaGVscD0iTWFnbml0dWRlIGZvciByYW5kb20gaW50ZWdlcnMgKDEwXm0pIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tbm8tc3RkaW4iLCBhY3Rpb249InN0b3JlX3RydWUiLCBoZWxwPSJEaXNhYmxlIHN0ZGluIHRvIGlzb2xhdGUgY29tcGlsYXRpb24gdGhyb3VnaHB1dCIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLXNlZWQiLCB0eXBlPWludCwgZGVmYXVsdD0yMDI1LCBoZWxwPSJSYW5kb20gc2VlZCBmb3IgcmVwcm9kdWNpYmlsaXR5IikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tc2F2ZS1mYWlsdXJlcyIsIGhlbHA9IldyaXRlIGZhaWxpbmcgY2FzZXMgdG8gYSBKU09OTCBmaWxlIikKICAgIHJldHVybiBwYXJzZXIucGFyc2VfYXJncygpCgoKZGVmIG1haW4oKSAtPiBOb25lOgogICAgYXJncyA9IHBhcnNlX2FyZ3MoKQogICAgc291cmNlX2NvZGUgPSBsb2FkX3NvdXJjZShhcmdzKQoKICAgIGRhdGFzZXQgPSBsb2FkX2RhdGFzZXQoYXJncy5kYXRhc2V0KQogICAgZGF0YXNldF9pdGVyID0gY3ljbGVfZGF0YXNldChkYXRhc2V0KSBpZiBkYXRhc2V0IGVsc2UgKCkKCiAgICBwYXlsb2FkX2l0ZXJhYmxlID0gYnVpbGRfcGF5bG9hZHMoYXJncywgc291cmNlX2NvZGUsIGRhdGFzZXRfaXRlcikKICAgIHN1bW1hcnkgPSBzdHJlc3MoYXJncy5lbmRwb2ludCwgcGF5bG9hZF9pdGVyYWJsZSwgYXJncy5jb25jdXJyZW5jeSwgYXJncy5odHRwX3RpbWVvdXQpCgogICAgc3VjY2Vzc19yYXRlID0gc3VtbWFyeVsic3VjY2Vzc2VzIl0gLyBhcmdzLnRvdGFsX3JlcXVlc3RzICogMTAwCiAgICBsYXRlbmNpZXMgPSBzdW1tYXJ5WyJsYXRlbmNpZXMiXQoKICAgIHByaW50KCI9PT0gT0ogU3RyZXNzIFRlc3QgUmVwb3J0ID09PSIpCiAgICBwcmludChmIkVuZHBvaW50OiB7YXJncy5lbmRwb2ludH0iKQogICAgcHJpbnQoZiJUb3RhbCByZXF1ZXN0czoge2FyZ3MudG90YWxfcmVxdWVzdHN9IikKICAgIHByaW50KGYiQ29uY3VycmVuY3k6IHthcmdzLmNvbmN1cnJlbmN5fSIpCiAgICBwcmludChmIlN1Y2Nlc3MgcmF0ZToge3N1bW1hcnlbJ3N1Y2Nlc3NlcyddfSAvIHthcmdzLnRvdGFsX3JlcXVlc3RzfSAoe3N1Y2Nlc3NfcmF0ZTouMmZ9JSkiKQogICAgcHJpbnQoZiJMYXRlbmN5OiB7ZGVzY3JpYmVfbGF0ZW5jeShsYXRlbmNpZXMpfSIpCgogICAgaWYgc3VtbWFyeVsiZmFpbHVyZXMiXToKICAgICAgICBwcmludChmIkZhaWx1cmUgc2FtcGxlcyAoe2xlbihzdW1tYXJ5WydmYWlsdXJlcyddKX0pOiIpCiAgICAgICAgZm9yIGZhaWx1cmUgaW4gc3VtbWFyeVsiZmFpbHVyZXMiXVs6NV06CiAgICAgICAgICAgIHByaW50KAogICAgICAgICAgICAgICAgZiItIHZlcmRpY3Q9e2ZhaWx1cmVbJ3ZlcmRpY3QnXX0gc3RhdHVzPXtmYWlsdXJlWydzdGF0dXNfY29kZSddfSAiCiAgICAgICAgICAgICAgICBmInN0ZGVycj17ZmFpbHVyZVsnc3RkZXJyJ10hcn0gbGF0ZW5jeT17ZmFpbHVyZVsnbGF0ZW5jeSddOi4zZn1zIgogICAgICAgICAgICApCgogICAgICAgIGlmIGFyZ3Muc2F2ZV9mYWlsdXJlczoKICAgICAgICAgICAgb3V0cHV0X3BhdGggPSBQYXRoKGFyZ3Muc2F2ZV9mYWlsdXJlcykKICAgICAgICAgICAgd2l0aCBvdXRwdXRfcGF0aC5vcGVuKCJ3IiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgZnA6CiAgICAgICAgICAgICAgICBmb3IgZmFpbHVyZSBpbiBzdW1tYXJ5WyJmYWlsdXJlcyJdOgogICAgICAgICAgICAgICAgICAgIGZwLndyaXRlKGpzb24uZHVtcHMoZmFpbHVyZSwgZW5zdXJlX2FzY2lpPUZhbHNlKSArICJcbiIpCiAgICAgICAgICAgIHByaW50KGYiRmFpbHVyZSBkZXRhaWxzIHdyaXR0ZW4gdG8ge291dHB1dF9wYXRofSIpCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIG1haW4oKQo=
+#!/usr/bin/env python3
+"""
+Legacy OJ stress-testing utility.
+
+This script targets the old `/compile-and-execute` protocol directly and is
+kept only for historical debugging reference. It is not part of the primary
+Hydro-based open-source deployment path.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import random
+import statistics
+import string
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
+from typing import Dict, Iterable, List, Optional
+
+import requests
+
+
+LANGUAGE_CODE = {
+    "cpp": "cpp",
+    "python": "py12",
+    "java": "java21",
+}
+
+
+def load_source(args: argparse.Namespace) -> str:
+    """Load source code from arguments or fall back to a default summation template."""
+    if args.code_file:
+        return Path(args.code_file).read_text(encoding="utf-8")
+
+    if args.language == "cpp":
+        return (
+            "#include <bits/stdc++.h>\n"
+            "using namespace std;\n"
+            "int main(){ios::sync_with_stdio(false);cin.tie(nullptr);"
+            "long long x,sum=0;while(cin>>x)sum+=x;cout<<sum<<\"\\n\";return 0;}\n"
+        )
+    if args.language == "python":
+        return (
+            "import sys\n"
+            "data = sys.stdin.read().strip().split()\n"
+            "total = sum(int(x) for x in data) if data else 0\n"
+            "print(total)\n"
+        )
+    if args.language == "java":
+        return (
+            "import java.io.*;\n"
+            "import java.util.*;\n"
+            "public class Main{public static void main(String[] args)throws Exception{"
+            "var br=new BufferedInputStream(System.in);var sb=new StringBuilder();"
+            "int c;while((c=br.read())!=-1){if(!Character.isWhitespace(c)){sb.append((char)c);}else{sb.append(' ');}}"
+            "long sum=0;for(String token:sb.toString().trim().split(\" \")){if(!token.isEmpty()){sum+=Long.parseLong(token);}}"
+            "System.out.println(sum);}}\n"
+        )
+
+    raise ValueError(f"Unsupported language: {args.language}")
+
+
+def load_dataset(path: Optional[str]) -> List[List[int]]:
+    """Load test data from JSON/text; return an empty list to trigger on-the-fly generation."""
+    if not path:
+        return []
+
+    dataset_path = Path(path)
+    if not dataset_path.exists():
+        raise FileNotFoundError(f"Dataset file does not exist: {dataset_path}")
+
+    if dataset_path.suffix.lower() in {".json", ".jsonl"}:
+        cases: List[List[int]] = []
+        for line in dataset_path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            payload = json.loads(line)
+            if isinstance(payload, dict) and "numbers" in payload:
+                cases.append([int(x) for x in payload["numbers"]])
+            elif isinstance(payload, list):
+                cases.append([int(x) for x in payload])
+            else:
+                raise ValueError(f"Unable to parse dataset line: {line}")
+        return cases
+
+    # Interpret plain-number text by line, splitting on whitespace or commas
+    cases = []
+    for line in dataset_path.read_text(encoding="utf-8").splitlines():
+        tokens = [token.strip() for token in line.replace(",", " ").split() if token.strip()]
+        if tokens:
+            cases.append([int(token) for token in tokens])
+    return cases
+
+
+def generate_numbers(rng: random.Random, count: int, magnitude: int) -> List[int]:
+    """Generate random integers to populate stdin."""
+    limit = 10 ** magnitude
+    return [rng.randrange(-limit, limit) for _ in range(count)]
+
+
+def build_payloads(
+    args: argparse.Namespace,
+    source_code: str,
+    dataset: Iterable[List[int]],
+) -> Iterable[Dict]:
+    """Yield request payloads driven by custom data or random generation."""
+    rng = random.Random(args.seed)
+
+    for idx in range(args.total_requests):
+        if dataset:
+            numbers = next(dataset)
+        else:
+            count = rng.randint(args.min_numbers, args.max_numbers)
+            numbers = generate_numbers(rng, count, args.number_magnitude)
+
+        stdin = " ".join(str(num) for num in numbers) + "\n"
+        expected = f"{sum(numbers)}\n"
+
+        compile_section = {
+            "language": LANGUAGE_CODE[args.language],
+            "source_code": source_code,
+        }
+
+        if args.language == "cpp":
+            compile_section["compiler_options"] = ["-O2", "-std=c++17"]
+
+        payload = {
+            "compile": compile_section,
+            "execute": {
+                "stdin": stdin if not args.no_stdin else "",
+                "timeout_ms": args.timeout_ms,
+                "file_io_name": None,
+            },
+            "test_case": {
+                "checker_type": "strict_diff",
+                "expected_output": expected,
+            },
+        }
+
+        yield idx, payload
+
+
+def cycle_dataset(dataset: List[List[int]]) -> Iterable[List[int]]:
+    """Cycle through a finite dataset to sustain long-running tests."""
+    while True:
+        for case in dataset:
+            yield case
+
+
+def describe_latency(latencies: List[float]) -> str:
+    """Produce a human-readable latency summary."""
+    p95 = statistics.quantiles(latencies, n=100)[94] if len(latencies) >= 2 else latencies[0]
+    return (
+        f"avg={statistics.mean(latencies):.3f}s "
+        f"p95={p95:.3f}s "
+        f"max={max(latencies):.3f}s "
+        f"min={min(latencies):.3f}s"
+    )
+
+
+def worker(
+    endpoint: str,
+    payload: Dict,
+    timeout: float,
+) -> Dict:
+    """Send a single request and record metrics."""
+    sent_at = time.perf_counter()
+    try:
+        response = requests.post(endpoint, json=payload, timeout=timeout)
+        latency = time.perf_counter() - sent_at
+        status_code = response.status_code
+
+        body = response.json()
+        if isinstance(body, dict) and "body" in body and isinstance(body["body"], str):
+            body = json.loads(body["body"])
+
+        compile_result = body.get("compile", {})
+        execute_result = body.get("execute", {})
+
+        verdict = execute_result.get("verdict")
+        compile_ok = compile_result.get("exit_code", 0) == 0
+
+        success = (
+            status_code == 200
+            and compile_ok
+            and verdict == "accepted"
+        )
+
+        return {
+            "success": success,
+            "latency": latency,
+            "status_code": status_code,
+            "verdict": verdict,
+            "compile_exit": compile_result.get("exit_code"),
+            "execute_exit": execute_result.get("exit_code"),
+            "execute_wall": execute_result.get("wall_time"),
+            "execute_mem": execute_result.get("memory_usage"),
+            "stderr": execute_result.get("stderr") or compile_result.get("stderr"),
+        }
+    except Exception as exc:
+        latency = time.perf_counter() - sent_at
+        return {
+            "success": False,
+            "latency": latency,
+            "status_code": None,
+            "verdict": None,
+            "compile_exit": None,
+            "execute_exit": None,
+            "execute_wall": None,
+            "execute_mem": None,
+            "stderr": str(exc),
+        }
+
+
+def stress(endpoint: str, payloads: Iterable[Dict], concurrency: int, timeout: float) -> Dict:
+    """Execute the stress test with the configured concurrency and aggregate results."""
+    latencies: List[float] = []
+    successes = 0
+    failures: List[Dict] = []
+
+    with ThreadPoolExecutor(max_workers=concurrency) as executor:
+        futures = {
+            executor.submit(worker, endpoint, payload, timeout): idx
+            for idx, payload in payloads
+        }
+
+        for future in as_completed(futures):
+            result = future.result()
+            latencies.append(result["latency"])
+            if result["success"]:
+                successes += 1
+            else:
+                failures.append(result)
+
+    return {
+        "latencies": latencies,
+        "successes": successes,
+        "failures": failures,
+    }
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Legacy stress test for a raw /compile-and-execute endpoint.",
+    )
+    parser.add_argument("--endpoint", default="http://localhost:10086/compile-and-execute", help="Legacy raw OJ endpoint")
+    parser.add_argument("--language", choices=list(LANGUAGE_CODE), default="cpp", help="Programming language to test")
+    parser.add_argument("--code-file", help="Path to a custom source file")
+    parser.add_argument("--dataset", help="Load input cases from a JSON/text file (cycled)")
+    parser.add_argument("--total-requests", type=int, default=100, help="Total number of requests")
+    parser.add_argument("--concurrency", type=int, default=8, help="Maximum concurrency")
+    parser.add_argument("--timeout-ms", type=int, default=3000, help="OJ execution timeout in milliseconds")
+    parser.add_argument("--http-timeout", type=float, default=10.0, help="HTTP timeout in seconds")
+    parser.add_argument("--min-numbers", type=int, default=2, help="Minimum numbers when generating random input")
+    parser.add_argument("--max-numbers", type=int, default=4096, help="Maximum numbers when generating random input")
+    parser.add_argument("--number-magnitude", type=int, default=6, help="Magnitude for random integers (10^m)")
+    parser.add_argument("--no-stdin", action="store_true", help="Disable stdin to isolate compilation throughput")
+    parser.add_argument("--seed", type=int, default=2025, help="Random seed for reproducibility")
+    parser.add_argument("--save-failures", help="Write failing cases to a JSONL file")
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    source_code = load_source(args)
+
+    dataset = load_dataset(args.dataset)
+    dataset_iter = cycle_dataset(dataset) if dataset else ()
+
+    payload_iterable = build_payloads(args, source_code, dataset_iter)
+    summary = stress(args.endpoint, payload_iterable, args.concurrency, args.http_timeout)
+
+    success_rate = summary["successes"] / args.total_requests * 100
+    latencies = summary["latencies"]
+
+    print("=== OJ Stress Test Report ===")
+    print(f"Endpoint: {args.endpoint}")
+    print(f"Total requests: {args.total_requests}")
+    print(f"Concurrency: {args.concurrency}")
+    print(f"Success rate: {summary['successes']} / {args.total_requests} ({success_rate:.2f}%)")
+    print(f"Latency: {describe_latency(latencies)}")
+
+    if summary["failures"]:
+        print(f"Failure samples ({len(summary['failures'])}):")
+        for failure in summary["failures"][:5]:
+            print(
+                f"- verdict={failure['verdict']} status={failure['status_code']} "
+                f"stderr={failure['stderr']!r} latency={failure['latency']:.3f}s"
+            )
+
+        if args.save_failures:
+            output_path = Path(args.save_failures)
+            with output_path.open("w", encoding="utf-8") as fp:
+                for failure in summary["failures"]:
+                    fp.write(json.dumps(failure, ensure_ascii=False) + "\n")
+            print(f"Failure details written to {output_path}")
+
+
+if __name__ == "__main__":
+    main()

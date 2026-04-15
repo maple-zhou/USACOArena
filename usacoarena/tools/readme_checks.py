@@ -1,1 +1,102 @@
-ZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gdHlwaW5nIGltcG9ydCBJdGVyYWJsZSwgTGlzdAoKClBST0pFQ1RfUk9PVCA9IFBhdGgoX19maWxlX18pLnJlc29sdmUoKS5wYXJlbnRzWzJdClJFQURNRV9QQVRIID0gUFJPSkVDVF9ST09UIC8gIlJFQURNRS5tZCIKClJFUVVJUkVEX1NFQ1RJT05TOiB0dXBsZVtzdHIsIC4uLl0gPSAoCiAgICAiIyMgUGFwZXIgQ29tcGFuaW9uIiwKICAgICIjIyBJbnN0YWxsYXRpb24iLAogICAgIiMjIFF1aWNrIFN0YXJ0IiwKICAgICIjIyBDaXRhdGlvbiIsCiAgICAiIyMgUmVwb3NpdG9yeSBMYXlvdXQiLAogICAgIiMjIFN1cHBvcnQgJiBMaWNlbnNlIiwKKQoKCmRlZiBfY2hlY2tfcmVxdWlyZWRfc2VjdGlvbnMoY29udGVudDogc3RyKSAtPiBMaXN0W3N0cl06CiAgICBlcnJvcnM6IExpc3Rbc3RyXSA9IFtdCiAgICBmb3Igc2VjdGlvbiBpbiBSRVFVSVJFRF9TRUNUSU9OUzoKICAgICAgICBpZiBzZWN0aW9uIG5vdCBpbiBjb250ZW50OgogICAgICAgICAgICBlcnJvcnMuYXBwZW5kKGYiTWlzc2luZyByZXF1aXJlZCBzZWN0aW9uOiB7c2VjdGlvbn0iKQogICAgcmV0dXJuIGVycm9ycwoKCmRlZiBfY2hlY2tfa2V5d29yZHMoY29udGVudDogc3RyKSAtPiBMaXN0W3N0cl06CiAgICBrZXl3b3JkczogSXRlcmFibGVbdHVwbGVbc3RyLCBzdHJdXSA9ICgKICAgICAgICAoCiAgICAgICAgICAgICJDcmVkaXQtQnVkZ2V0ZWQgSUNQQy1TdHlsZSBDb2Rpbmc6IFdoZW4gQWdlbnRzIE11c3QgUGF5IGZvciBFdmVyeSBEZWNpc2lvbiIsCiAgICAgICAgICAgICJSRUFETUUgbXVzdCByZWZlcmVuY2UgdGhlIElDTFIgMjAyNiBwYXBlciB0aXRsZSBleHBsaWNpdGx5LiIsCiAgICAgICAgKSwKICAgICAgICAoCiAgICAgICAgICAgICJQdWJsaXNoZWQgYXMgYSBjb25mZXJlbmNlIHBhcGVyIGF0IElDTFIgMjAyNiIsCiAgICAgICAgICAgICJSRUFETUUgbXVzdCBtZW50aW9uIHRoZSBJQ0xSIDIwMjYgcHVibGljYXRpb24gc3RhdHVzIGV4cGxpY2l0bHkuIiwKICAgICAgICApLAogICAgICAgICgiYGBgYmlidGV4IiwgIlJFQURNRSBtdXN0IGluY2x1ZGUgYSBCaWJUZVggY2l0YXRpb24gYmxvY2suIiksCiAgICAgICAgKAogICAgICAgICAgICAiZG9jcy9wYXBlcl9yZXByb2R1Y3Rpb24ubWQiLAogICAgICAgICAgICAiUkVBRE1FIG11c3QgcG9pbnQgcmVhZGVycyB0byB0aGUgZnVsbCBwYXBlciByZXByb2R1Y3Rpb24gZ3VpZGUuIiwKICAgICAgICApLAogICAgICAgICgKICAgICAgICAgICAgImh0dHBzOi8vZ2l0aHViLmNvbS9tYXBsZS16aG91L1VTQUNPQXJlbmFfaHlkcm8iLAogICAgICAgICAgICAiUkVBRE1FIG11c3QgcmVmZXJlbmNlIHRoZSBwdWJsaWMgVVNBQ09BcmVuYV9oeWRybyByZXBvc2l0b3J5IFVSTC4iLAogICAgICAgICksCiAgICAgICAgKAogICAgICAgICAgICAiaHR0cHM6Ly8xZHJ2Lm1zL3UvYy8xZWY3YjdiYWMwZGE1N2U2L0lRRExrODQwSzdrS1FJY2FudHNkdTJWc0FYVVVWUXN1Q3hxYmtZTzBMMHNKeTBVP2U9TDZnWHVEIiwKICAgICAgICAgICAgIlJFQURNRSBtdXN0IGluY2x1ZGUgdGhlIHJlbGVhc2VkIEh5ZHJvIGFkZG9uIHBhY2thZ2UgbGluay4iLAogICAgICAgICksCiAgICAgICAgKAogICAgICAgICAgICAiaHR0cHM6Ly8xZHJ2Lm1zL3UvYy8xZWY3YjdiYWMwZGE1N2U2L0lRQnlSbjBQU2xoZ1FZUzFrd1BqYlMyQkFjQjE3dmFnUWZQaDFqSU5kYy1NWkVvP2U9ZEJuSGlIIiwKICAgICAgICAgICAgIlJFQURNRSBtdXN0IGluY2x1ZGUgdGhlIHJlbGVhc2VkIEh5ZHJvIHByb2JsZW1zZXQgemlwIGxpbmsuIiwKICAgICAgICApLAogICAgICAgICgKICAgICAgICAgICAgImh0dHBzOi8vMWRydi5tcy91L2MvMWVmN2I3YmFjMGRhNTdlNi9JUUN6WEg0czRBYjdSSmlTa3B6YmtPNWVBZHdyRXpSQkxXMDVSVGxReVdrbmtMbz9lPWhTakI1WCIsCiAgICAgICAgICAgICJSRUFETUUgbXVzdCBpbmNsdWRlIHRoZSByZWxlYXNlZCBsb2NhbCByZXNvdXJjZSBkYXRhc2V0IGxpbmsuIiwKICAgICAgICApLAogICAgKQogICAgZXJyb3JzOiBMaXN0W3N0cl0gPSBbXQogICAgZm9yIHRva2VuLCBtZXNzYWdlIGluIGtleXdvcmRzOgogICAgICAgIGlmIHRva2VuIG5vdCBpbiBjb250ZW50OgogICAgICAgICAgICBlcnJvcnMuYXBwZW5kKG1lc3NhZ2UpCiAgICByZXR1cm4gZXJyb3JzCgoKZGVmIF9jaGVja19sZW5ndGgobGluZXM6IGxpc3Rbc3RyXSkgLT4gTGlzdFtzdHJdOgogICAgaWYgbGVuKGxpbmVzKSA+IDI2MDoKICAgICAgICByZXR1cm4gW2YiUkVBRE1FLm1kIGhhcyB7bGVuKGxpbmVzKX0gbGluZXM7IGtlZXAgdGhlIGZpbGUgd2l0aGluIDI2MCBsaW5lcy4iXQogICAgcmV0dXJuIFtdCgoKZGVmIHZhbGlkYXRlX3JlYWRtZShwYXRoOiBQYXRoID0gUkVBRE1FX1BBVEgpIC0+IGxpc3Rbc3RyXToKICAgICIiIlJldHVybiBhIGxpc3Qgb2YgdmFsaWRhdGlvbiBlcnJvcnMgZm9yIFJFQURNRS5tZC4iIiIKCiAgICBpZiBub3QgcGF0aC5leGlzdHMoKToKICAgICAgICByZXR1cm4gW2YiUkVBRE1FIGZpbGUgbm90IGZvdW5kOiB7cGF0aH0iXQoKICAgIGNvbnRlbnQgPSBwYXRoLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKQogICAgbGluZXMgPSBjb250ZW50LnNwbGl0bGluZXMoKQoKICAgIGVycm9yczogTGlzdFtzdHJdID0gW10KICAgIGVycm9ycy5leHRlbmQoX2NoZWNrX3JlcXVpcmVkX3NlY3Rpb25zKGNvbnRlbnQpKQogICAgZXJyb3JzLmV4dGVuZChfY2hlY2tfa2V5d29yZHMoY29udGVudCkpCiAgICBlcnJvcnMuZXh0ZW5kKF9jaGVja19sZW5ndGgobGluZXMpKQoKICAgIHJldHVybiBlcnJvcnMKCgpkZWYgbWFpbigpIC0+IGludDoKICAgIGVycm9ycyA9IHZhbGlkYXRlX3JlYWRtZSgpCiAgICBpZiBlcnJvcnM6CiAgICAgICAgZm9yIGVyciBpbiBlcnJvcnM6CiAgICAgICAgICAgIHByaW50KGYiW0VSUk9SXSB7ZXJyfSIpCiAgICAgICAgcmV0dXJuIDEKCiAgICBwcmludCgiUkVBRE1FIHZhbGlkYXRpb24gcGFzc2VkIOKchSIpCiAgICByZXR1cm4gMAoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICByYWlzZSBTeXN0ZW1FeGl0KG1haW4oKSkK
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Iterable, List
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+README_PATH = PROJECT_ROOT / "README.md"
+
+REQUIRED_SECTIONS: tuple[str, ...] = (
+    "## Paper Companion",
+    "## Installation",
+    "## Quick Start",
+    "## Citation",
+    "## Repository Layout",
+    "## Support & License",
+)
+
+
+def _check_required_sections(content: str) -> List[str]:
+    errors: List[str] = []
+    for section in REQUIRED_SECTIONS:
+        if section not in content:
+            errors.append(f"Missing required section: {section}")
+    return errors
+
+
+def _check_keywords(content: str) -> List[str]:
+    keywords: Iterable[tuple[str, str]] = (
+        (
+            "Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision",
+            "README must reference the ICLR 2026 paper title explicitly.",
+        ),
+        (
+            "Published as a conference paper at ICLR 2026",
+            "README must mention the ICLR 2026 publication status explicitly.",
+        ),
+        ("```bibtex", "README must include a BibTeX citation block."),
+        (
+            "docs/paper_reproduction.md",
+            "README must point readers to the full paper reproduction guide.",
+        ),
+        (
+            "https://github.com/maple-zhou/USACOArena_hydro",
+            "README must reference the public USACOArena_hydro repository URL.",
+        ),
+        (
+            "https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDLk840K7kKQIcantsdu2VsAXUUVQsuCxqbkYO0L0sJy0U?e=L6gXuD",
+            "README must include the released Hydro addon package link.",
+        ),
+        (
+            "https://1drv.ms/u/c/1ef7b7bac0da57e6/IQByRn0PSlhgQYS1kwPjbS2BAcB17vagQfPh1jINdc-MZEo?e=dBnHiH",
+            "README must include the released Hydro problemset zip link.",
+        ),
+        (
+            "https://1drv.ms/u/c/1ef7b7bac0da57e6/IQCzXH4s4Ab7RJiSkpzbkO5eAdwrEzRBLW05RTlQyWknkLo?e=hSjB5X",
+            "README must include the released local resource dataset link.",
+        ),
+    )
+    errors: List[str] = []
+    for token, message in keywords:
+        if token not in content:
+            errors.append(message)
+    return errors
+
+
+def _check_length(lines: list[str]) -> List[str]:
+    if len(lines) > 260:
+        return [f"README.md has {len(lines)} lines; keep the file within 260 lines."]
+    return []
+
+
+def validate_readme(path: Path = README_PATH) -> list[str]:
+    """Return a list of validation errors for README.md."""
+
+    if not path.exists():
+        return [f"README file not found: {path}"]
+
+    content = path.read_text(encoding="utf-8")
+    lines = content.splitlines()
+
+    errors: List[str] = []
+    errors.extend(_check_required_sections(content))
+    errors.extend(_check_keywords(content))
+    errors.extend(_check_length(lines))
+
+    return errors
+
+
+def main() -> int:
+    errors = validate_readme()
+    if errors:
+        for err in errors:
+            print(f"[ERROR] {err}")
+        return 1
+
+    print("README validation passed ✅")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

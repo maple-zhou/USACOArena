@@ -1,1 +1,138 @@
-IyBjb21wZXRpdGlvbl9zeXN0ZW0vc3RyYXRlZ3lfbG9hZGVyLnB5CmltcG9ydCBqc29uCmltcG9ydCBvcwpmcm9tIHR5cGluZyBpbXBvcnQgRGljdCwgTGlzdCwgT3B0aW9uYWwsIEFueQoKY2xhc3MgU3RyYXRlZ3lMb2FkZXI6CiAgICAiIiJMb2FkIGFuZCBwcm92aWRlIGNvbXBldGl0aXZlIHByb2dyYW1taW5nIHN0cmF0ZWd5IGNvbnRlbnQiIiIKICAgIAogICAgZGVmIF9faW5pdF9fKHNlbGYsIGRhdGFfcGF0aDogT3B0aW9uYWxbc3RyXSA9IE5vbmUpOgogICAgICAgIGlmIGRhdGFfcGF0aCBpcyBOb25lOgogICAgICAgICAgICAjIFRyeSB0byBmaW5kIHRoZSBwYXRoIHJlbGF0aXZlIHRvIHRoZSBjdXJyZW50IGZpbGUKICAgICAgICAgICAgY3VycmVudF9kaXIgPSBvcy5wYXRoLmRpcm5hbWUob3MucGF0aC5hYnNwYXRoKF9fZmlsZV9fKSkKICAgICAgICAgICAgcG9zc2libGVfcGF0aHMgPSBbCiAgICAgICAgICAgICAgICBvcy5wYXRoLmpvaW4oY3VycmVudF9kaXIsICIuLiIsICIuLiIsICJkYXRhc2V0IiwgImNvcnB1c2VzIiwgIlVTQUNPX3N0cmF0ZWd5Lmpzb24iKSwKICAgICAgICAgICAgICAgICJkYXRhc2V0L2NvcnB1c2VzL1VTQUNPX3N0cmF0ZWd5Lmpzb24iICAjIEZhbGxiYWNrIHRvIHRoZSBvcmlnaW5hbCBwYXRoCiAgICAgICAgICAgIF0KICAgICAgICAgICAgCiAgICAgICAgICAgIGZvciBwYXRoIGluIHBvc3NpYmxlX3BhdGhzOgogICAgICAgICAgICAgICAgaWYgb3MucGF0aC5leGlzdHMocGF0aCk6CiAgICAgICAgICAgICAgICAgICAgc2VsZi5kYXRhX3BhdGggPSBwYXRoCiAgICAgICAgICAgICAgICAgICAgYnJlYWsKICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIHNlbGYuZGF0YV9wYXRoID0gImRhdGFzZXQvY29ycHVzZXMvVVNBQ09fc3RyYXRlZ3kuanNvbiIgICMgVXNlIGFzIGRlZmF1bHQgaWYgbm90aGluZyBmb3VuZAogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHNlbGYuZGF0YV9wYXRoID0gZGF0YV9wYXRoCiAgICAgICAgICAgIAogICAgICAgIHNlbGYuc3RyYXRlZ3lfZGF0YSA9IHt9CiAgICAgICAgc2VsZi5fbG9hZF9zdHJhdGVneSgpCiAgICAKICAgIGRlZiBfbG9hZF9zdHJhdGVneShzZWxmKToKICAgICAgICAiIiJMb2FkIHRoZSBzdHJhdGVneSBjb250ZW50IiIiCiAgICAgICAgaWYgb3MucGF0aC5leGlzdHMoc2VsZi5kYXRhX3BhdGgpOgogICAgICAgICAgICB0cnk6CiAgICAgICAgICAgICAgICB3aXRoIG9wZW4oc2VsZi5kYXRhX3BhdGgsICdyJywgZW5jb2Rpbmc9J3V0Zi04JykgYXMgZjoKICAgICAgICAgICAgICAgICAgICBzZWxmLnN0cmF0ZWd5X2RhdGEgPSBqc29uLmxvYWQoZikKICAgICAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOgogICAgICAgICAgICAgICAgc2VsZi5zdHJhdGVneV9kYXRhID0ge30KICAgICAgICBlbHNlOgogICAgICAgICAgICBzZWxmLnN0cmF0ZWd5X2RhdGEgPSB7fQogICAgCiAgICBkZWYgZ2V0X2NvcmVfcGhpbG9zb3BoeShzZWxmKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICAiIiJHZXQgY29yZSBjb21wZXRpdGl2ZSBwcm9ncmFtbWluZyBwaGlsb3NvcGh5IiIiCiAgICAgICAgcmV0dXJuIHNlbGYuc3RyYXRlZ3lfZGF0YS5nZXQoJ2NvcmVfcGhpbG9zb3BoeScsIHt9KQogICAgCiAgICBkZWYgZ2V0X2RlYnVnZ2luZ19jaGVja2xpc3Qoc2VsZikgLT4gRGljdFtzdHIsIEFueV06CiAgICAgICAgIiIiR2V0IGRlYnVnZ2luZyBhbmQgZXJyb3ItY2hlY2tpbmcgY2hlY2tsaXN0IiIiCiAgICAgICAgcmV0dXJuIHNlbGYuc3RyYXRlZ3lfZGF0YS5nZXQoJ2RlYnVnZ2luZ19jaGVja2xpc3QnLCB7fSkKICAgIAogICAgZGVmIGdldF9jb250ZXN0X3N0cmF0ZWd5KHNlbGYpIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgICIiIkdldCBjb250ZXN0IHN0cmF0ZWd5IGd1aWRlbGluZXMiIiIKICAgICAgICByZXR1cm4gc2VsZi5zdHJhdGVneV9kYXRhLmdldCgnY29udGVzdF9zdHJhdGVneScsIHt9KQogICAgCiAgICBkZWYgZ2V0X2FsbF9zdHJhdGVnaWVzKHNlbGYpIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgICIiIkdldCBhbGwgc3RyYXRlZ3kgY29udGVudCIiIgogICAgICAgIHJldHVybiBzZWxmLnN0cmF0ZWd5X2RhdGEKICAgIAogICAgZGVmIGdldF9zdHJhdGVneV9ieV9jYXRlZ29yeShzZWxmLCBjYXRlZ29yeTogc3RyKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICAiIiJHZXQgc3RyYXRlZ3kgY29udGVudCBieSBjYXRlZ29yeSIiIgogICAgICAgIHJldHVybiBzZWxmLnN0cmF0ZWd5X2RhdGEuZ2V0KGNhdGVnb3J5LCB7fSkKICAgIAogICAgZGVmIGdldF9kZWJ1Z2dpbmdfdGlwcyhzZWxmKSAtPiBMaXN0W3N0cl06CiAgICAgICAgIiIiR2V0IGxpc3Qgb2YgZGVidWdnaW5nIHRpcHMiIiIKICAgICAgICBjaGVja2xpc3QgPSBzZWxmLmdldF9kZWJ1Z2dpbmdfY2hlY2tsaXN0KCkKICAgICAgICByZXR1cm4gY2hlY2tsaXN0LmdldCgnZ2VuZXJhbF90cm91Ymxlc2hvb3RpbmcnLCBbXSkKICAgIAogICAgZGVmIGdldF9lcnJvcl9zcGVjaWZpY19ndWlkYW5jZShzZWxmKSAtPiBEaWN0W3N0ciwgc3RyXToKICAgICAgICAiIiJHZXQgZXJyb3Itc3BlY2lmaWMgZ3VpZGFuY2UiIiIKICAgICAgICBjaGVja2xpc3QgPSBzZWxmLmdldF9kZWJ1Z2dpbmdfY2hlY2tsaXN0KCkKICAgICAgICByZXR1cm4gY2hlY2tsaXN0LmdldCgnZXJyb3Jfc3BlY2lmaWNfZ3VpZGFuY2UnLCB7fSkKICAgIAogICAgZGVmIGdldF9jb250ZXN0X3RpcHMoc2VsZikgLT4gTGlzdFtzdHJdOgogICAgICAgICIiIkdldCBsaXN0IG9mIGNvbnRlc3Qgc3RyYXRlZ3kgdGlwcyIiIgogICAgICAgIHN0cmF0ZWd5ID0gc2VsZi5nZXRfY29udGVzdF9zdHJhdGVneSgpCiAgICAgICAgcmV0dXJuIHN0cmF0ZWd5LmdldCgnZ2VuZXJhbF9hcHByb2FjaF9hbmRfdGltaW5nJywgW10pCiAgICAKICAgIGRlZiBnZXRfaW1wbGVtZW50YXRpb25fdGFjdGljcyhzZWxmKSAtPiBEaWN0W3N0ciwgc3RyXToKICAgICAgICAiIiJHZXQgaW1wbGVtZW50YXRpb24gdGFjdGljcyIiIgogICAgICAgIHN0cmF0ZWd5ID0gc2VsZi5nZXRfY29udGVzdF9zdHJhdGVneSgpCiAgICAgICAgcmV0dXJuIHN0cmF0ZWd5LmdldCgnaW1wbGVtZW50YXRpb25fdGFjdGljcycsIHt9KQogICAgCiAgICBkZWYgaXNfbG9hZGVkKHNlbGYpIC0+IGJvb2w6CiAgICAgICAgIiIiQ2hlY2sgaWYgc3RyYXRlZ3kgaXMgbG9hZGVkIiIiCiAgICAgICAgcmV0dXJuIGxlbihzZWxmLnN0cmF0ZWd5X2RhdGEpID4gMAogICAgCiAgICBkZWYgZm9ybWF0X3N0cmF0ZWd5X2Zvcl9oaW50KHNlbGYpIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgICIiIkZvcm1hdCBzdHJhdGVneSBkYXRhIGZvciBoaW50IGRpc3BsYXkgLSByZXR1cm5zIGFsbCBjb250ZW50IGZyb20gc3RyYXRlZ3kuanNvbiIiIgogICAgICAgIGlmIG5vdCBzZWxmLmlzX2xvYWRlZCgpOgogICAgICAgICAgICByZXR1cm4geyJlcnJvciI6ICJTdHJhdGVneSBkYXRhIG5vdCBsb2FkZWQifQogICAgICAgIAogICAgICAgIHJldHVybiBzZWxmLnN0cmF0ZWd5X2RhdGEKICAgIAogICAgZGVmIGdldF9yYW5kb21fdGlwKHNlbGYsIGNhdGVnb3J5OiBzdHIgPSAiZGVidWdnaW5nIikgLT4gT3B0aW9uYWxbc3RyXToKICAgICAgICAiIiJHZXQgYSByYW5kb20gdGlwIGZyb20gYSBzcGVjaWZpYyBjYXRlZ29yeSIiIgogICAgICAgIGltcG9ydCByYW5kb20KICAgICAgICAKICAgICAgICBpZiBjYXRlZ29yeSA9PSAiZGVidWdnaW5nIjoKICAgICAgICAgICAgdGlwcyA9IHNlbGYuZ2V0X2RlYnVnZ2luZ190aXBzKCkKICAgICAgICBlbGlmIGNhdGVnb3J5ID09ICJjb250ZXN0IjoKICAgICAgICAgICAgdGlwcyA9IHNlbGYuZ2V0X2NvbnRlc3RfdGlwcygpCiAgICAgICAgZWxzZToKICAgICAgICAgICAgcmV0dXJuIE5vbmUKICAgICAgICAKICAgICAgICBpZiB0aXBzOgogICAgICAgICAgICByZXR1cm4gcmFuZG9tLmNob2ljZSh0aXBzKQogICAgICAgIHJldHVybiBOb25lCiAgICAKICAgIGRlZiBzZWFyY2hfc3RyYXRlZ3koc2VsZiwgcXVlcnk6IHN0cikgLT4gTGlzdFtEaWN0W3N0ciwgQW55XV06CiAgICAgICAgIiIiU2VhcmNoIHN0cmF0ZWd5IGNvbnRlbnQgZm9yIHNwZWNpZmljIHRvcGljcyIiIgogICAgICAgIGlmIG5vdCBzZWxmLmlzX2xvYWRlZCgpOgogICAgICAgICAgICByZXR1cm4gW10KICAgICAgICAKICAgICAgICBxdWVyeV9sb3dlciA9IHF1ZXJ5Lmxvd2VyKCkKICAgICAgICByZXN1bHRzID0gW10KICAgICAgICAKICAgICAgICAjIFNlYXJjaCB0aHJvdWdoIGFsbCBzdHJhdGVneSBzZWN0aW9ucwogICAgICAgIGZvciBzZWN0aW9uX25hbWUsIHNlY3Rpb25fZGF0YSBpbiBzZWxmLnN0cmF0ZWd5X2RhdGEuaXRlbXMoKToKICAgICAgICAgICAgaWYgaXNpbnN0YW5jZShzZWN0aW9uX2RhdGEsIGRpY3QpOgogICAgICAgICAgICAgICAgZm9yIGtleSwgdmFsdWUgaW4gc2VjdGlvbl9kYXRhLml0ZW1zKCk6CiAgICAgICAgICAgICAgICAgICAgaWYgaXNpbnN0YW5jZSh2YWx1ZSwgc3RyKSBhbmQgcXVlcnlfbG93ZXIgaW4gdmFsdWUubG93ZXIoKToKICAgICAgICAgICAgICAgICAgICAgICAgcmVzdWx0cy5hcHBlbmQoewogICAgICAgICAgICAgICAgICAgICAgICAgICAgInNlY3Rpb24iOiBzZWN0aW9uX25hbWUsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAidG9waWMiOiBrZXksCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiY29udGVudCI6IHZhbHVlLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgInJlbGV2YW5jZSI6IHZhbHVlLmxvd2VyKCkuY291bnQocXVlcnlfbG93ZXIpCiAgICAgICAgICAgICAgICAgICAgICAgIH0pCiAgICAgICAgICAgICAgICAgICAgZWxpZiBpc2luc3RhbmNlKHZhbHVlLCBsaXN0KToKICAgICAgICAgICAgICAgICAgICAgICAgZm9yIGksIGl0ZW0gaW4gZW51bWVyYXRlKHZhbHVlKToKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmIGlzaW5zdGFuY2UoaXRlbSwgc3RyKSBhbmQgcXVlcnlfbG93ZXIgaW4gaXRlbS5sb3dlcigpOgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlc3VsdHMuYXBwZW5kKHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInNlY3Rpb24iOiBzZWN0aW9uX25hbWUsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ0b3BpYyI6IGYie2tleX1be2l9XSIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJjb250ZW50IjogaXRlbSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInJlbGV2YW5jZSI6IGl0ZW0ubG93ZXIoKS5jb3VudChxdWVyeV9sb3dlcikKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9KQogICAgICAgIAogICAgICAgICMgU29ydCBieSByZWxldmFuY2UKICAgICAgICByZXN1bHRzLnNvcnQoa2V5PWxhbWJkYSB4OiB4WydyZWxldmFuY2UnXSwgcmV2ZXJzZT1UcnVlKQogICAgICAgIHJldHVybiByZXN1bHRzCg==
+# competition_system/strategy_loader.py
+import json
+import os
+from typing import Dict, List, Optional, Any
+
+class StrategyLoader:
+    """Load and provide competitive programming strategy content"""
+    
+    def __init__(self, data_path: Optional[str] = None):
+        if data_path is None:
+            # Try to find the path relative to the current file
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            possible_paths = [
+                os.path.join(current_dir, "..", "..", "dataset", "corpuses", "USACO_strategy.json"),
+                "dataset/corpuses/USACO_strategy.json"  # Fallback to the original path
+            ]
+            
+            for path in possible_paths:
+                if os.path.exists(path):
+                    self.data_path = path
+                    break
+            else:
+                self.data_path = "dataset/corpuses/USACO_strategy.json"  # Use as default if nothing found
+        else:
+            self.data_path = data_path
+            
+        self.strategy_data = {}
+        self._load_strategy()
+    
+    def _load_strategy(self):
+        """Load the strategy content"""
+        if os.path.exists(self.data_path):
+            try:
+                with open(self.data_path, 'r', encoding='utf-8') as f:
+                    self.strategy_data = json.load(f)
+            except Exception as e:
+                self.strategy_data = {}
+        else:
+            self.strategy_data = {}
+    
+    def get_core_philosophy(self) -> Dict[str, Any]:
+        """Get core competitive programming philosophy"""
+        return self.strategy_data.get('core_philosophy', {})
+    
+    def get_debugging_checklist(self) -> Dict[str, Any]:
+        """Get debugging and error-checking checklist"""
+        return self.strategy_data.get('debugging_checklist', {})
+    
+    def get_contest_strategy(self) -> Dict[str, Any]:
+        """Get contest strategy guidelines"""
+        return self.strategy_data.get('contest_strategy', {})
+    
+    def get_all_strategies(self) -> Dict[str, Any]:
+        """Get all strategy content"""
+        return self.strategy_data
+    
+    def get_strategy_by_category(self, category: str) -> Dict[str, Any]:
+        """Get strategy content by category"""
+        return self.strategy_data.get(category, {})
+    
+    def get_debugging_tips(self) -> List[str]:
+        """Get list of debugging tips"""
+        checklist = self.get_debugging_checklist()
+        return checklist.get('general_troubleshooting', [])
+    
+    def get_error_specific_guidance(self) -> Dict[str, str]:
+        """Get error-specific guidance"""
+        checklist = self.get_debugging_checklist()
+        return checklist.get('error_specific_guidance', {})
+    
+    def get_contest_tips(self) -> List[str]:
+        """Get list of contest strategy tips"""
+        strategy = self.get_contest_strategy()
+        return strategy.get('general_approach_and_timing', [])
+    
+    def get_implementation_tactics(self) -> Dict[str, str]:
+        """Get implementation tactics"""
+        strategy = self.get_contest_strategy()
+        return strategy.get('implementation_tactics', {})
+    
+    def is_loaded(self) -> bool:
+        """Check if strategy is loaded"""
+        return len(self.strategy_data) > 0
+    
+    def format_strategy_for_hint(self) -> Dict[str, Any]:
+        """Format strategy data for hint display - returns all content from strategy.json"""
+        if not self.is_loaded():
+            return {"error": "Strategy data not loaded"}
+        
+        return self.strategy_data
+    
+    def get_random_tip(self, category: str = "debugging") -> Optional[str]:
+        """Get a random tip from a specific category"""
+        import random
+        
+        if category == "debugging":
+            tips = self.get_debugging_tips()
+        elif category == "contest":
+            tips = self.get_contest_tips()
+        else:
+            return None
+        
+        if tips:
+            return random.choice(tips)
+        return None
+    
+    def search_strategy(self, query: str) -> List[Dict[str, Any]]:
+        """Search strategy content for specific topics"""
+        if not self.is_loaded():
+            return []
+        
+        query_lower = query.lower()
+        results = []
+        
+        # Search through all strategy sections
+        for section_name, section_data in self.strategy_data.items():
+            if isinstance(section_data, dict):
+                for key, value in section_data.items():
+                    if isinstance(value, str) and query_lower in value.lower():
+                        results.append({
+                            "section": section_name,
+                            "topic": key,
+                            "content": value,
+                            "relevance": value.lower().count(query_lower)
+                        })
+                    elif isinstance(value, list):
+                        for i, item in enumerate(value):
+                            if isinstance(item, str) and query_lower in item.lower():
+                                results.append({
+                                    "section": section_name,
+                                    "topic": f"{key}[{i}]",
+                                    "content": item,
+                                    "relevance": item.lower().count(query_lower)
+                                })
+        
+        # Sort by relevance
+        results.sort(key=lambda x: x['relevance'], reverse=True)
+        return results

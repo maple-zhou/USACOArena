@@ -1,1 +1,186 @@
-IyEvYmluL2Jhc2gKCiMgRXhpdCBpbW1lZGlhdGVseSBvbiBlcnJvcgpzZXQgLWUKCiMgRGVmYXVsdCBwYXJhbWV0ZXJzCkNPTkNVUlJFTkNZPTEwCkJBU0VfT0pfUE9SVD04MDAwCkJBU0VfU0VSVkVSX1BPUlQ9NTAwMApDT01QRVRJVE9SU19DT05GSUc9ImNvbmZpZy8xcHJvLmpzb24iClBST0JMRU1fSURTX0xJU1Q9IiIgICMgUG9wdWxhdGVkIHZpYSBDTEkgYXJndW1lbnRzIG9yIGF1dG8tZGlzY292ZXJ5ClRPVEFMX1JVTlM9MCAgIyBBdXRvbWF0aWNhbGx5IHNldCBiYXNlZCBvbiB0aGUgbnVtYmVyIG9mIHByb2JsZW0gZmlsZXMKCiMgRGlzcGxheSB1c2FnZSBpbnN0cnVjdGlvbnMKc2hvd191c2FnZSgpIHsKICAgIGVjaG8gIlVzYWdlOiAkMCBbT1BUSU9OU10iCiAgICBlY2hvICJPcHRpb25zOiIKICAgIGVjaG8gIiAgLS1jb25jdXJyZW5jeSBOICAgICAgICAgICAgIE51bWJlciBvZiBjb25jdXJyZW50IHJ1bnMgKGRlZmF1bHQ6IDEwKSIKICAgIGVjaG8gIiAgLS1iYXNlLW9qLXBvcnQgUE9SVCAgICAgICAgIEJhc2UgT0ogcG9ydCwgd2lsbCBpbmNyZW1lbnQgKGRlZmF1bHQ6IDgwMDApIgogICAgZWNobyAiICAtLWJhc2Utc2VydmVyLXBvcnQgUE9SVCAgICAgQmFzZSBzZXJ2ZXIgcG9ydCwgd2lsbCBpbmNyZW1lbnQgKGRlZmF1bHQ6IDUwMDApIgogICAgZWNobyAiICAtLWNvbXBldGl0b3JzLWNvbmZpZyBGSUxFICAgQ29tcGV0aXRvcnMgY29uZmlnIGZpbGUgKGRlZmF1bHQ6IGNvbmZpZy8xcHJvLmpzb24pIgogICAgZWNobyAiICAtLXByb2JsZW0taWRzLWxpc3QgRklMRVMgICAgQ29tbWEtc2VwYXJhdGVkIGxpc3Qgb2YgcHJvYmxlbSBJRCBmaWxlcyIKICAgIGVjaG8gIiAgLS1wcm9ibGVtLXBhdHRlcm4gUEFUVEVSTiAgIFBhdHRlcm4gdG8gZmluZCBwcm9ibGVtIGZpbGVzIChlLmcuLCAnY29uZmlnL3Byb2JsZW1fKi5qc29uJykiCiAgICBlY2hvICIgIC1oLCAtLWhlbHAgICAgICAgICAgICAgICAgICBTaG93IHRoaXMgaGVscCBtZXNzYWdlIgogICAgZWNobyAiIgogICAgZWNobyAiRXhhbXBsZXM6IgogICAgZWNobyAiICAjIFVzZSBzcGVjaWZpYyBwcm9ibGVtIGZpbGVzIgogICAgZWNobyAiICAkMCAtLXByb2JsZW0taWRzLWxpc3QgJ2NvbmZpZy9wcm9ibGVtXzE0NjcuanNvbixjb25maWcvcHJvYmxlbV8xNDY4Lmpzb24sY29uZmlnL3Byb2JsZW1fMTQ2OS5qc29uJyIKICAgIGVjaG8gIiIKICAgIGVjaG8gIiAgIyBBdXRvLWRpc2NvdmVyIGFsbCBwcm9ibGVtIGZpbGVzIgogICAgZWNobyAiICAkMCAtLXByb2JsZW0tcGF0dGVybiAnY29uZmlnL3Byb2JsZW1fKi5qc29uJyIKICAgIGVjaG8gIiIKICAgIGVjaG8gIiAgIyBDdXN0b20gY29uY3VycmVuY3kgYW5kIHBvcnRzIgogICAgZWNobyAiICAkMCAtLWNvbmN1cnJlbmN5IDUgLS1iYXNlLW9qLXBvcnQgOTEwMCAtLXByb2JsZW0tcGF0dGVybiAnY29uZmlnL3Byb2JsZW1fKi5qc29uJyIKICAgIGVjaG8gIiIKICAgIGVjaG8gIkVhY2ggY29tcGV0aXRpb24gd2lsbCBydW4gd2l0aCBhIGRpZmZlcmVudCBwcm9ibGVtIGZpbGUgYW5kIHVuaXF1ZSBwb3J0cy4iCn0KCiMgUGFyc2UgY29tbWFuZC1saW5lIGFyZ3VtZW50cwp3aGlsZSBbWyAkIyAtZ3QgMCBdXTsgZG8KICAgIGNhc2UgJDEgaW4KICAgICAgICAtLWNvbmN1cnJlbmN5KQogICAgICAgICAgICBDT05DVVJSRU5DWT0iJDIiCiAgICAgICAgICAgIHNoaWZ0IDIKICAgICAgICAgICAgOzsKICAgICAgICAtLWJhc2Utb2otcG9ydCkKICAgICAgICAgICAgQkFTRV9PSl9QT1JUPSIkMiIKICAgICAgICAgICAgc2hpZnQgMgogICAgICAgICAgICA7OwogICAgICAgIC0tYmFzZS1zZXJ2ZXItcG9ydCkKICAgICAgICAgICAgQkFTRV9TRVJWRVJfUE9SVD0iJDIiCiAgICAgICAgICAgIHNoaWZ0IDIKICAgICAgICAgICAgOzsKICAgICAgICAtLWNvbXBldGl0b3JzLWNvbmZpZykKICAgICAgICAgICAgQ09NUEVUSVRPUlNfQ09ORklHPSIkMiIKICAgICAgICAgICAgc2hpZnQgMgogICAgICAgICAgICA7OwogICAgICAgIC0tcHJvYmxlbS1pZHMtbGlzdCkKICAgICAgICAgICAgUFJPQkxFTV9JRFNfTElTVD0iJDIiCiAgICAgICAgICAgIHNoaWZ0IDIKICAgICAgICAgICAgOzsKICAgICAgICAtLXByb2JsZW0tcGF0dGVybikKICAgICAgICAgICAgUFJPQkxFTV9QQVRURVJOPSIkMiIKICAgICAgICAgICAgc2hpZnQgMgogICAgICAgICAgICA7OwogICAgICAgIC1ofC0taGVscCkKICAgICAgICAgICAgc2hvd191c2FnZQogICAgICAgICAgICBleGl0IDAKICAgICAgICAgICAgOzsKICAgICAgICAqKQogICAgICAgICAgICBlY2hvICJVbmtub3duIG9wdGlvbjogJDEiCiAgICAgICAgICAgIHNob3dfdXNhZ2UKICAgICAgICAgICAgZXhpdCAxCiAgICAgICAgICAgIDs7CiAgICBlc2FjCmRvbmUKCiMgQnVpbGQgdGhlIGxpc3Qgb2YgcHJvYmxlbSBmaWxlcwppZiBbWyAtbiAiJFBST0JMRU1fUEFUVEVSTiIgXV07IHRoZW4KICAgIGVjaG8gIkZpbmRpbmcgcHJvYmxlbSBmaWxlcyB3aXRoIHBhdHRlcm46ICRQUk9CTEVNX1BBVFRFUk4iCiAgICBQUk9CTEVNX0ZJTEVTPSgkKGxzICRQUk9CTEVNX1BBVFRFUk4gMj4vZGV2L251bGwgfCBzb3J0KSkKZWxpZiBbWyAtbiAiJFBST0JMRU1fSURTX0xJU1QiIF1dOyB0aGVuCiAgICBlY2hvICJVc2luZyBwcm92aWRlZCBwcm9ibGVtIGZpbGVzIGxpc3QiCiAgICBJRlM9JywnIHJlYWQgLXJhIFBST0JMRU1fRklMRVMgPDw8ICIkUFJPQkxFTV9JRFNfTElTVCIKZWxzZQogICAgZWNobyAiQXV0by1kaXNjb3ZlcmluZyBwcm9ibGVtIGZpbGVzIGluIGNvbmZpZy8gZGlyZWN0b3J5Li4uIgogICAgUFJPQkxFTV9GSUxFUz0oJChscyBjb25maWcvcHJvYmxlbV8qLmpzb24gMj4vZGV2L251bGwgfCBzb3J0KSkKZmkKCiMgRW5zdXJlIGF0IGxlYXN0IG9uZSBwcm9ibGVtIGZpbGUgaXMgYXZhaWxhYmxlCmlmIFtbICR7I1BST0JMRU1fRklMRVNbQF19IC1lcSAwIF1dOyB0aGVuCiAgICBlY2hvICJFcnJvcjogTm8gcHJvYmxlbSBmaWxlcyBmb3VuZCEiCiAgICBlY2hvICJQbGVhc2UgdXNlIC0tcHJvYmxlbS1pZHMtbGlzdCBvciAtLXByb2JsZW0tcGF0dGVybiB0byBzcGVjaWZ5IHByb2JsZW0gZmlsZXMuIgogICAgZWNobyAiT3IgbWFrZSBzdXJlIHByb2JsZW0gZmlsZXMgZXhpc3QgaW4gY29uZmlnLyBkaXJlY3Rvcnkgd2l0aCBwYXR0ZXJuIHByb2JsZW1fKi5qc29uIgogICAgZXhpdCAxCmZpCgpUT1RBTF9SVU5TPSR7I1BST0JMRU1fRklMRVNbQF19CgplY2hvICJTdGFydGluZyBiYXRjaCBjb21wZXRpdGlvbiBleGVjdXRpb24uLi4iCmVjaG8gIkNvbmZpZ3VyYXRpb246IgplY2hvICIgIENvbmN1cnJlbmN5OiAkQ09OQ1VSUkVOQ1kiCmVjaG8gIiAgVG90YWwgcnVuczogJFRPVEFMX1JVTlMiCmVjaG8gIiAgQmFzZSBPSiBwb3J0OiAkQkFTRV9PSl9QT1JUIgplY2hvICIgIEJhc2Ugc2VydmVyIHBvcnQ6ICRCQVNFX1NFUlZFUl9QT1JUIgplY2hvICIgIENvbXBldGl0b3JzIGNvbmZpZzogJENPTVBFVElUT1JTX0NPTkZJRyIKZWNobyAiIgplY2hvICJQcm9ibGVtIGZpbGVzIHRvIHJ1bjoiCmZvciBpIGluICIkeyFQUk9CTEVNX0ZJTEVTW0BdfSI7IGRvCiAgICBlY2hvICIgIENvbXBldGl0aW9uICRpOiAke1BST0JMRU1fRklMRVNbJGldfSIKZG9uZQplY2hvICIiCgojIENyZWF0ZSBsb2cgZGlyZWN0b3J5CkxPR19ESVI9ImxvZ3MvYmF0Y2hfJChkYXRlICslWSVtJWRfJUglTSVTKSIKbWtkaXIgLXAgIiRMT0dfRElSIgoKZWNobyAiTG9ncyB3aWxsIGJlIHNhdmVkIHRvOiAkTE9HX0RJUiIKZWNobyAiIgoKIyBSdW4gYSBzaW5nbGUgY29tcGV0aXRpb24KcnVuX2NvbXBldGl0aW9uKCkgewogICAgbG9jYWwgcnVuX2lkPSQxCiAgICBsb2NhbCBwcm9ibGVtX2ZpbGU9JDIKICAgIGxvY2FsIG9qX3BvcnQ9JCgoQkFTRV9PSl9QT1JUICsgcnVuX2lkKSkKICAgIGxvY2FsIHNlcnZlcl9wb3J0PSQoKEJBU0VfU0VSVkVSX1BPUlQgKyBydW5faWQpKQogICAgbG9jYWwgbG9nX2ZpbGU9IiRMT0dfRElSL2NvbXBldGl0aW9uXyR7cnVuX2lkfS5sb2ciCgogICAgZWNobyAiU3RhcnRpbmcgY29tcGV0aXRpb24gJHJ1bl9pZCAoT0o6JG9qX3BvcnQsIFNlcnZlcjokc2VydmVyX3BvcnQsIFByb2JsZW06JHByb2JsZW1fZmlsZSkuLi4iCiAgICBlY2hvICJTdGFydGluZyBjb21wZXRpdGlvbiAkcnVuX2lkIChPSjokb2pfcG9ydCwgU2VydmVyOiRzZXJ2ZXJfcG9ydCwgUHJvYmxlbTokcHJvYmxlbV9maWxlKS4uLiIgPj4gIiRsb2dfZmlsZSIKCiAgICAjIFJ1biB0aGUgY29tcGV0aXRpb24gYW5kIGNhcHR1cmUgYWxsIG91dHB1dCBpbiB0aGUgbG9nIGZpbGUKICAgIC4vcnVuX2Z1bGxfY29tcGV0aXRpb24uc2ggXAogICAgICAgIC0tb2otcG9ydCAiJG9qX3BvcnQiIFwKICAgICAgICAtLXNlcnZlci1wb3J0ICIkc2VydmVyX3BvcnQiIFwKICAgICAgICAtLWNvbXBldGl0b3JzLWNvbmZpZyAiJENPTVBFVElUT1JTX0NPTkZJRyIgXAogICAgICAgIC0tcHJvYmxlbS1pZHMgIiRwcm9ibGVtX2ZpbGUiIFwKICAgICAgICA+PiAiJGxvZ19maWxlIiAyPiYxCgogICAgbG9jYWwgZXhpdF9jb2RlPSQ/CiAgICBpZiBbICRleGl0X2NvZGUgLWVxIDAgXTsgdGhlbgogICAgICAgIGVjaG8gIkNvbXBldGl0aW9uICRydW5faWQgKCRwcm9ibGVtX2ZpbGUpIGNvbXBsZXRlZCBzdWNjZXNzZnVsbHkiCiAgICAgICAgZWNobyAiQ29tcGV0aXRpb24gJHJ1bl9pZCAoJHByb2JsZW1fZmlsZSkgY29tcGxldGVkIHN1Y2Nlc3NmdWxseSIgPj4gIiRsb2dfZmlsZSIKICAgIGVsc2UKICAgICAgICBlY2hvICJDb21wZXRpdGlvbiAkcnVuX2lkICgkcHJvYmxlbV9maWxlKSBmYWlsZWQgd2l0aCBleGl0IGNvZGUgJGV4aXRfY29kZSIKICAgICAgICBlY2hvICJDb21wZXRpdGlvbiAkcnVuX2lkICgkcHJvYmxlbV9maWxlKSBmYWlsZWQgd2l0aCBleGl0IGNvZGUgJGV4aXRfY29kZSIgPj4gIiRsb2dfZmlsZSIKICAgIGZpCgogICAgcmV0dXJuICRleGl0X2NvZGUKfQoKIyBDb25jdXJyZW5jeSBjb250cm9sCmV4cG9ydCAtZiBydW5fY29tcGV0aXRpb24KZXhwb3J0IExPR19ESVIgQkFTRV9PSl9QT1JUIEJBU0VfU0VSVkVSX1BPUlQgQ09NUEVUSVRPUlNfQ09ORklHCgojIEJ1aWxkIHRhc2sgbGlzdCBpbiB0aGUgZm9ybWF0OiBydW5faWQgcHJvYmxlbV9maWxlClRBU0tfTElTVD0iIgpmb3IgaSBpbiAkKHNlcSAwICQoKFRPVEFMX1JVTlMtMSkpKTsgZG8KICAgIFRBU0tfTElTVD0iJFRBU0tfTElTVCRpICR7UFJPQkxFTV9GSUxFU1skaV19XG4iCmRvbmUKCiMgVXNlIEdOVSBwYXJhbGxlbCBvciB4YXJncyBmb3IgY29uY3VycmVudCBleGVjdXRpb24KaWYgY29tbWFuZCAtdiBwYXJhbGxlbCA+L2Rldi9udWxsIDI+JjE7IHRoZW4KICAgIGVjaG8gIlVzaW5nIEdOVSBwYXJhbGxlbCBmb3IgY29uY3VycmVudCBleGVjdXRpb24uLi4iCiAgICBlY2hvIC1lICIkVEFTS19MSVNUIiB8IHBhcmFsbGVsIC1qICIkQ09OQ1VSUkVOQ1kiIC0tY29sc2VwICcgJyBydW5fY29tcGV0aXRpb24gezF9IHsyfQplbHNlCiAgICBlY2hvICJVc2luZyB4YXJncyBmb3IgY29uY3VycmVudCBleGVjdXRpb24uLi4iCiAgICBlY2hvIC1lICIkVEFTS19MSVNUIiB8IHhhcmdzIC1uIDIgLVAgIiRDT05DVVJSRU5DWSIgLUkge30gYmFzaCAtYyAncnVuX2NvbXBldGl0aW9uICQxICIkMiInIF8ge30KZmkKCmVjaG8gIiIKZWNobyAiQWxsIGNvbXBldGl0aW9ucyBjb21wbGV0ZWQhIgplY2hvICJDaGVjayBsb2dzIGluOiAkTE9HX0RJUiIKCiMgR2VuZXJhdGUgc3VtbWFyeSByZXBvcnQKZWNobyAiIgplY2hvICI9PT0gQ29tcGV0aXRpb24gU3VtbWFyeSA9PT0iCmZvciBpIGluICQoc2VxIDAgJCgoVE9UQUxfUlVOUy0xKSkpOyBkbwogICAgbG9nX2ZpbGU9IiRMT0dfRElSL2NvbXBldGl0aW9uXyR7aX0ubG9nIgogICAgcHJvYmxlbV9maWxlPSIke1BST0JMRU1fRklMRVNbJGldfSIKICAgIGlmIGdyZXAgLXEgIkNvbXBldGl0aW9uIGNvbXBsZXRlZCEiICIkbG9nX2ZpbGUiIDI+L2Rldi9udWxsOyB0aGVuCiAgICAgICAgZWNobyAiQ29tcGV0aXRpb24gJGkgKCRwcm9ibGVtX2ZpbGUpOiBTVUNDRVNTIgogICAgZWxzZQogICAgICAgIGVjaG8gIkNvbXBldGl0aW9uICRpICgkcHJvYmxlbV9maWxlKTogRkFJTEVEIgogICAgZmkKZG9uZQo=
+#!/bin/bash
+
+# Exit immediately on error
+set -e
+
+# Default parameters
+CONCURRENCY=10
+BASE_OJ_PORT=8000
+BASE_SERVER_PORT=5000
+COMPETITORS_CONFIG="config/1pro.json"
+PROBLEM_IDS_LIST=""  # Populated via CLI arguments or auto-discovery
+TOTAL_RUNS=0  # Automatically set based on the number of problem files
+
+# Display usage instructions
+show_usage() {
+    echo "Usage: $0 [OPTIONS]"
+    echo "Options:"
+    echo "  --concurrency N             Number of concurrent runs (default: 10)"
+    echo "  --base-oj-port PORT         Base OJ port, will increment (default: 8000)"
+    echo "  --base-server-port PORT     Base server port, will increment (default: 5000)"
+    echo "  --competitors-config FILE   Competitors config file (default: config/1pro.json)"
+    echo "  --problem-ids-list FILES    Comma-separated list of problem ID files"
+    echo "  --problem-pattern PATTERN   Pattern to find problem files (e.g., 'config/problem_*.json')"
+    echo "  -h, --help                  Show this help message"
+    echo ""
+    echo "Examples:"
+    echo "  # Use specific problem files"
+    echo "  $0 --problem-ids-list 'config/problem_1467.json,config/problem_1468.json,config/problem_1469.json'"
+    echo ""
+    echo "  # Auto-discover all problem files"
+    echo "  $0 --problem-pattern 'config/problem_*.json'"
+    echo ""
+    echo "  # Custom concurrency and ports"
+    echo "  $0 --concurrency 5 --base-oj-port 9100 --problem-pattern 'config/problem_*.json'"
+    echo ""
+    echo "Each competition will run with a different problem file and unique ports."
+}
+
+# Parse command-line arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --concurrency)
+            CONCURRENCY="$2"
+            shift 2
+            ;;
+        --base-oj-port)
+            BASE_OJ_PORT="$2"
+            shift 2
+            ;;
+        --base-server-port)
+            BASE_SERVER_PORT="$2"
+            shift 2
+            ;;
+        --competitors-config)
+            COMPETITORS_CONFIG="$2"
+            shift 2
+            ;;
+        --problem-ids-list)
+            PROBLEM_IDS_LIST="$2"
+            shift 2
+            ;;
+        --problem-pattern)
+            PROBLEM_PATTERN="$2"
+            shift 2
+            ;;
+        -h|--help)
+            show_usage
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            show_usage
+            exit 1
+            ;;
+    esac
+done
+
+# Build the list of problem files
+if [[ -n "$PROBLEM_PATTERN" ]]; then
+    echo "Finding problem files with pattern: $PROBLEM_PATTERN"
+    PROBLEM_FILES=($(ls $PROBLEM_PATTERN 2>/dev/null | sort))
+elif [[ -n "$PROBLEM_IDS_LIST" ]]; then
+    echo "Using provided problem files list"
+    IFS=',' read -ra PROBLEM_FILES <<< "$PROBLEM_IDS_LIST"
+else
+    echo "Auto-discovering problem files in config/ directory..."
+    PROBLEM_FILES=($(ls config/problem_*.json 2>/dev/null | sort))
+fi
+
+# Ensure at least one problem file is available
+if [[ ${#PROBLEM_FILES[@]} -eq 0 ]]; then
+    echo "Error: No problem files found!"
+    echo "Please use --problem-ids-list or --problem-pattern to specify problem files."
+    echo "Or make sure problem files exist in config/ directory with pattern problem_*.json"
+    exit 1
+fi
+
+TOTAL_RUNS=${#PROBLEM_FILES[@]}
+
+echo "Starting batch competition execution..."
+echo "Configuration:"
+echo "  Concurrency: $CONCURRENCY"
+echo "  Total runs: $TOTAL_RUNS"
+echo "  Base OJ port: $BASE_OJ_PORT"
+echo "  Base server port: $BASE_SERVER_PORT"
+echo "  Competitors config: $COMPETITORS_CONFIG"
+echo ""
+echo "Problem files to run:"
+for i in "${!PROBLEM_FILES[@]}"; do
+    echo "  Competition $i: ${PROBLEM_FILES[$i]}"
+done
+echo ""
+
+# Create log directory
+LOG_DIR="logs/batch_$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$LOG_DIR"
+
+echo "Logs will be saved to: $LOG_DIR"
+echo ""
+
+# Run a single competition
+run_competition() {
+    local run_id=$1
+    local problem_file=$2
+    local oj_port=$((BASE_OJ_PORT + run_id))
+    local server_port=$((BASE_SERVER_PORT + run_id))
+    local log_file="$LOG_DIR/competition_${run_id}.log"
+
+    echo "Starting competition $run_id (OJ:$oj_port, Server:$server_port, Problem:$problem_file)..."
+    echo "Starting competition $run_id (OJ:$oj_port, Server:$server_port, Problem:$problem_file)..." >> "$log_file"
+
+    # Run the competition and capture all output in the log file
+    ./run_full_competition.sh \
+        --oj-port "$oj_port" \
+        --server-port "$server_port" \
+        --competitors-config "$COMPETITORS_CONFIG" \
+        --problem-ids "$problem_file" \
+        >> "$log_file" 2>&1
+
+    local exit_code=$?
+    if [ $exit_code -eq 0 ]; then
+        echo "Competition $run_id ($problem_file) completed successfully"
+        echo "Competition $run_id ($problem_file) completed successfully" >> "$log_file"
+    else
+        echo "Competition $run_id ($problem_file) failed with exit code $exit_code"
+        echo "Competition $run_id ($problem_file) failed with exit code $exit_code" >> "$log_file"
+    fi
+
+    return $exit_code
+}
+
+# Concurrency control
+export -f run_competition
+export LOG_DIR BASE_OJ_PORT BASE_SERVER_PORT COMPETITORS_CONFIG
+
+# Build task list in the format: run_id problem_file
+TASK_LIST=""
+for i in $(seq 0 $((TOTAL_RUNS-1))); do
+    TASK_LIST="$TASK_LIST$i ${PROBLEM_FILES[$i]}\n"
+done
+
+# Use GNU parallel or xargs for concurrent execution
+if command -v parallel >/dev/null 2>&1; then
+    echo "Using GNU parallel for concurrent execution..."
+    echo -e "$TASK_LIST" | parallel -j "$CONCURRENCY" --colsep ' ' run_competition {1} {2}
+else
+    echo "Using xargs for concurrent execution..."
+    echo -e "$TASK_LIST" | xargs -n 2 -P "$CONCURRENCY" -I {} bash -c 'run_competition $1 "$2"' _ {}
+fi
+
+echo ""
+echo "All competitions completed!"
+echo "Check logs in: $LOG_DIR"
+
+# Generate summary report
+echo ""
+echo "=== Competition Summary ==="
+for i in $(seq 0 $((TOTAL_RUNS-1))); do
+    log_file="$LOG_DIR/competition_${i}.log"
+    problem_file="${PROBLEM_FILES[$i]}"
+    if grep -q "Competition completed!" "$log_file" 2>/dev/null; then
+        echo "Competition $i ($problem_file): SUCCESS"
+    else
+        echo "Competition $i ($problem_file): FAILED"
+    fi
+done

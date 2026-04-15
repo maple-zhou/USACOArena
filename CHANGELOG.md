@@ -1,1 +1,11 @@
-IyBDaGFuZ2Vsb2cKCkFsbCBub3RhYmxlIGNoYW5nZXMgdG8gdGhpcyBwcm9qZWN0IHdpbGwgYmUgZG9jdW1lbnRlZCBpbiB0aGlzIGZpbGUuCgojIyBbVW5yZWxlYXNlZF0KLSBFc3RhYmxpc2ggdGhlIGluaXRpYWwgcmVsZWFzZS1yZWFkeSB2ZXJzaW9uOgogIC0gU3RyZWFtbGluZWQgUkVBRE1FIGFuZCBhZGRlZCBOZXVySVBTIDIwMjUgTEFXIFdvcmtzaG9wIGNpdGF0aW9uCiAgLSBBZGRlZCBgZG9jcy9xdWlja3N0YXJ0Lm1kYCwgYGRvY3MvcmVsZWFzZS9gLCBhbmQgYGRvY3Mvc2VjdXJpdHkvYCBkb2N1bWVudGF0aW9uIHNldHMKICAtIEludHJvZHVjZWQgYGRldGVjdC1zZWNyZXRzYCBhbmQgdGhlIGByZWxlYXNlX2F1ZGl0YCBhdXRvbWF0aW9uIHNjcmlwdHMKICAtIEFkZGVkIGB0ZXN0cy91bml0L2AgY292ZXJhZ2UgZm9yIFJFQURNRSBhbmQgcmVsZWFzZS1jaGVja2xpc3Qgc3RydWN0dXJlIHZhbGlkYXRpb24KICAtIENvbmZpZ3VyZWQgR2l0SHViIEFjdGlvbnMgQ0kgdG8gcnVuIHRoZSByZWxlYXNlIGF1ZGl0Cg==
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [Unreleased]
+- Establish the initial release-ready version:
+  - Streamlined README and added NeurIPS 2025 LAW Workshop citation
+  - Added `docs/quickstart.md`, `docs/release/`, and `docs/security/` documentation sets
+  - Introduced `detect-secrets` and the `release_audit` automation scripts
+  - Added `tests/unit/` coverage for README and release-checklist structure validation
+  - Configured GitHub Actions CI to run the release audit

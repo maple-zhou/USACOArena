@@ -1,1 +1,262 @@
-IyEvYmluL2Jhc2gKCiMgTGlnaHR3ZWlnaHQgbXVsdGktaW5zdGFuY2UgbWFuYWdlciBmb3IgVVNBQ09BcmVuYSBBUEkgc2VydmVycyBiYWNrZWQgYnkgYSBzaGFyZWQgSHlkcm8gZGVwbG95bWVudC4Kc2V0IC1lCgpTRVJWSUNFX0lOU1RBTkNFUz0xMApTRVJWRVJfQkFTRV9QT1JUPTUwMDAKQ0hFQ0tfSU5URVJWQUw9MTAKSFlEUk9fQkFTRV9VUkw9IiR7SFlEUk9fQkFTRV9VUkw6LWh0dHA6Ly8xMjcuMC4wLjE6ODg4OH0iCkhZRFJPX0FQSV9UT0tFTj0iJHtIWURST19BUElfVE9LRU46LX0iCkxPR19ESVI9ImxvZ3Mvc2VydmljZXMiClBJRF9ESVI9InBpZHMiCgpta2RpciAtcCAiJExPR19ESVIiICIkUElEX0RJUiIKClNFUlZJQ0VfU1RBVFVTX0ZJTEU9IiRQSURfRElSL3NlcnZpY2Vfc3RhdHVzLmpzb24iCgpzaG93X3VzYWdlKCkgewogICAgZWNobyAiVXNhZ2U6ICQwIENPTU1BTkQgW09QVElPTlNdIgogICAgZWNobyAiIgogICAgZWNobyAiQ29tbWFuZHM6IgogICAgZWNobyAiICBzdGFydCAgICAgICAgICAgICAgICAgICAgICAgU3RhcnQgYWxsIHNlcnZlciBpbnN0YW5jZXMiCiAgICBlY2hvICIgIHN0b3AgICAgICAgICAgICAgICAgICAgICAgICBTdG9wIGFsbCBzZXJ2ZXIgaW5zdGFuY2VzIgogICAgZWNobyAiICByZXN0YXJ0ICAgICAgICAgICAgICAgICAgICAgUmVzdGFydCBhbGwgc2VydmVyIGluc3RhbmNlcyIKICAgIGVjaG8gIiAgc3RhdHVzICAgICAgICAgICAgICAgICAgICAgIFNob3cgc3RhdHVzIG9mIGFsbCBzZXJ2aWNlcyIKICAgIGVjaG8gIiAgbW9uaXRvciAgICAgICAgICAgICAgICAgICAgIFN0YXJ0IG1vbml0b3JpbmcgZGFlbW9uIgogICAgZWNobyAiICBsaXN0LXBvcnRzICAgICAgICAgICAgICAgICAgTGlzdCBhdmFpbGFibGUgc2VydmljZSBwb3J0cyIKICAgIGVjaG8gIiIKICAgIGVjaG8gIk9wdGlvbnM6IgogICAgZWNobyAiICAtLWluc3RhbmNlcyBOICAgICAgICAgICAgICAgTnVtYmVyIG9mIHNlcnZpY2UgaW5zdGFuY2VzIChkZWZhdWx0OiAxMCkiCiAgICBlY2hvICIgIC0tc2VydmVyLWJhc2UtcG9ydCBQT1JUICAgICBCYXNlIHBvcnQgZm9yIGNvbXBldGl0aW9uIHNlcnZlcnMgKGRlZmF1bHQ6IDUwMDApIgogICAgZWNobyAiICAtLWNoZWNrLWludGVydmFsIFNFQ09ORFMgICAgSGVhbHRoIGNoZWNrIGludGVydmFsIChkZWZhdWx0OiAxMCkiCiAgICBlY2hvICIgIC0taHlkcm8tYmFzZS11cmwgVVJMICAgICAgICBTaGFyZWQgSHlkcm8gYmFzZSBVUkwiCiAgICBlY2hvICIgIC0taHlkcm8tYXBpLXRva2VuIFRPS0VOICAgICBTaGFyZWQgSHlkcm8gYWRkb24gdG9rZW4iCn0KCnBhcnNlX2FyZ3MoKSB7CiAgICBDT01NQU5EPSIiCiAgICB3aGlsZSBbWyAkIyAtZ3QgMCBdXTsgZG8KICAgICAgICBjYXNlICQxIGluCiAgICAgICAgICAgIHN0YXJ0fHN0b3B8cmVzdGFydHxzdGF0dXN8bW9uaXRvcnxsaXN0LXBvcnRzKQogICAgICAgICAgICAgICAgQ09NTUFORD0iJDEiCiAgICAgICAgICAgICAgICBzaGlmdAogICAgICAgICAgICAgICAgOzsKICAgICAgICAgICAgLS1pbnN0YW5jZXMpCiAgICAgICAgICAgICAgICBTRVJWSUNFX0lOU1RBTkNFUz0iJDIiCiAgICAgICAgICAgICAgICBzaGlmdCAyCiAgICAgICAgICAgICAgICA7OwogICAgICAgICAgICAtLXNlcnZlci1iYXNlLXBvcnQpCiAgICAgICAgICAgICAgICBTRVJWRVJfQkFTRV9QT1JUPSIkMiIKICAgICAgICAgICAgICAgIHNoaWZ0IDIKICAgICAgICAgICAgICAgIDs7CiAgICAgICAgICAgIC0tY2hlY2staW50ZXJ2YWwpCiAgICAgICAgICAgICAgICBDSEVDS19JTlRFUlZBTD0iJDIiCiAgICAgICAgICAgICAgICBzaGlmdCAyCiAgICAgICAgICAgICAgICA7OwogICAgICAgICAgICAtLWh5ZHJvLWJhc2UtdXJsKQogICAgICAgICAgICAgICAgSFlEUk9fQkFTRV9VUkw9IiQyIgogICAgICAgICAgICAgICAgc2hpZnQgMgogICAgICAgICAgICAgICAgOzsKICAgICAgICAgICAgLS1oeWRyby1hcGktdG9rZW4pCiAgICAgICAgICAgICAgICBIWURST19BUElfVE9LRU49IiQyIgogICAgICAgICAgICAgICAgc2hpZnQgMgogICAgICAgICAgICAgICAgOzsKICAgICAgICAgICAgLWh8LS1oZWxwKQogICAgICAgICAgICAgICAgc2hvd191c2FnZQogICAgICAgICAgICAgICAgZXhpdCAwCiAgICAgICAgICAgICAgICA7OwogICAgICAgICAgICAqKQogICAgICAgICAgICAgICAgZWNobyAiVW5rbm93biBvcHRpb246ICQxIgogICAgICAgICAgICAgICAgc2hvd191c2FnZQogICAgICAgICAgICAgICAgZXhpdCAxCiAgICAgICAgICAgICAgICA7OwogICAgICAgIGVzYWMKICAgIGRvbmUKCiAgICBpZiBbWyAteiAiJENPTU1BTkQiIF1dOyB0aGVuCiAgICAgICAgZWNobyAiRXJyb3I6IE5vIGNvbW1hbmQgc3BlY2lmaWVkIgogICAgICAgIHNob3dfdXNhZ2UKICAgICAgICBleGl0IDEKICAgIGZpCn0KCmNoZWNrX3NlcnZpY2VfaGVhbHRoKCkgewogICAgbG9jYWwgc2VydmljZV90eXBlPSQxCiAgICBsb2NhbCB2YWx1ZT0kMgoKICAgIGNhc2UgJHNlcnZpY2VfdHlwZSBpbgogICAgICAgICJoeWRybyIpCiAgICAgICAgICAgIGN1cmwgLXMgLS1tYXgtdGltZSAzICIke3ZhbHVlJS99L3VzYWNvYXJlbmEvYXBpL2hlYWx0aCIgPi9kZXYvbnVsbCAyPiYxCiAgICAgICAgICAgIDs7CiAgICAgICAgInNlcnZlciIpCiAgICAgICAgICAgIGN1cmwgLXMgLS1tYXgtdGltZSAzICJodHRwOi8vbG9jYWxob3N0OiR2YWx1ZS9oZWFsdGgiID4vZGV2L251bGwgMj4mMQogICAgICAgICAgICA7OwogICAgICAgICopCiAgICAgICAgICAgIHJldHVybiAxCiAgICAgICAgICAgIDs7CiAgICBlc2FjCn0KCnN0YXJ0X3NlcnZlcl9pbnN0YW5jZSgpIHsKICAgIGxvY2FsIGluc3RhbmNlX2lkPSQxCiAgICBsb2NhbCBzZXJ2ZXJfcG9ydD0kKChTRVJWRVJfQkFTRV9QT1JUICsgaW5zdGFuY2VfaWQpKQogICAgbG9jYWwgcGlkX2ZpbGU9IiRQSURfRElSL3NlcnZlcl8ke2luc3RhbmNlX2lkfS5waWQiCiAgICBsb2NhbCBsb2dfZmlsZT0iJExPR19ESVIvc2VydmVyXyR7aW5zdGFuY2VfaWR9LmxvZyIKCiAgICBlY2hvICJTdGFydGluZyBzZXJ2ZXIgaW5zdGFuY2UgJGluc3RhbmNlX2lkIG9uIHBvcnQgJHNlcnZlcl9wb3J0Li4uIgoKICAgIG5vaHVwIGNvbXBldGl0aW9uX3NlcnZlciBcCiAgICAgICAgLS1jb25maWcgY29uZmlnL3NlcnZlcl9jb25maWcuanNvbiBcCiAgICAgICAgLS1wb3J0ICIkc2VydmVyX3BvcnQiIFwKICAgICAgICAtLWh5ZHJvLWJhc2UtdXJsICIkSFlEUk9fQkFTRV9VUkwiIFwKICAgICAgICAtLWh5ZHJvLWFwaS10b2tlbiAiJEhZRFJPX0FQSV9UT0tFTiIgXAogICAgICAgID4+ICIkbG9nX2ZpbGUiIDI+JjEgJgoKICAgIGVjaG8gJCEgPiAiJHBpZF9maWxlIgp9CgpzdG9wX3NlcnZlcl9pbnN0YW5jZSgpIHsKICAgIGxvY2FsIGluc3RhbmNlX2lkPSQxCiAgICBsb2NhbCBwaWRfZmlsZT0iJFBJRF9ESVIvc2VydmVyXyR7aW5zdGFuY2VfaWR9LnBpZCIKCiAgICBlY2hvICJTdG9wcGluZyBzZXJ2ZXIgaW5zdGFuY2UgJGluc3RhbmNlX2lkLi4uIgogICAgaWYgW1sgLWYgIiRwaWRfZmlsZSIgXV07IHRoZW4KICAgICAgICBsb2NhbCBwaWQKICAgICAgICBwaWQ9JChjYXQgIiRwaWRfZmlsZSIpCiAgICAgICAgaWYga2lsbCAtMCAiJHBpZCIgMj4vZGV2L251bGw7IHRoZW4KICAgICAgICAgICAga2lsbCAiJHBpZCIKICAgICAgICAgICAgc2xlZXAgMgogICAgICAgICAgICBpZiBraWxsIC0wICIkcGlkIiAyPi9kZXYvbnVsbDsgdGhlbgogICAgICAgICAgICAgICAga2lsbCAtOSAiJHBpZCIKICAgICAgICAgICAgZmkKICAgICAgICBmaQogICAgICAgIHJtIC1mICIkcGlkX2ZpbGUiCiAgICBmaQp9CgpzdGFydF9zZXJ2aWNlcygpIHsKICAgIGVjaG8gIlN0YXJ0aW5nICRTRVJWSUNFX0lOU1RBTkNFUyBzZXJ2ZXIgaW5zdGFuY2VzIGFnYWluc3QgSHlkcm86ICRIWURST19CQVNFX1VSTCIKCiAgICBjYXQgPiAiJFNFUlZJQ0VfU1RBVFVTX0ZJTEUiIDw8RU9GCnsKICAgICJpbnN0YW5jZXMiOiAkU0VSVklDRV9JTlNUQU5DRVMsCiAgICAic2VydmVyX2Jhc2VfcG9ydCI6ICRTRVJWRVJfQkFTRV9QT1JULAogICAgImh5ZHJvX2Jhc2VfdXJsIjogIiRIWURST19CQVNFX1VSTCIsCiAgICAic3RhcnRlZF9hdCI6ICIkKGRhdGUgLUlzZWNvbmRzKSIKfQpFT0YKCiAgICBmb3IgaSBpbiAkKHNlcSAwICQoKFNFUlZJQ0VfSU5TVEFOQ0VTLTEpKSk7IGRvCiAgICAgICAgc3RhcnRfc2VydmVyX2luc3RhbmNlICIkaSIKICAgICAgICBzbGVlcCAyCiAgICBkb25lCgogICAgZWNobyAiIgogICAgZWNobyAiQWxsIHNlcnZpY2VzIHN0YXJ0ZWQuIgogICAgbGlzdF9zZXJ2aWNlX3BvcnRzCn0KCnN0b3Bfc2VydmljZXMoKSB7CiAgICBlY2hvICJTdG9wcGluZyBhbGwgc2VydmVyIGluc3RhbmNlcy4uLiIKICAgIGZvciBpIGluICQoc2VxIDAgJCgoU0VSVklDRV9JTlNUQU5DRVMtMSkpKTsgZG8KICAgICAgICBzdG9wX3NlcnZlcl9pbnN0YW5jZSAiJGkiCiAgICBkb25lCiAgICBybSAtZiAiJFNFUlZJQ0VfU1RBVFVTX0ZJTEUiCiAgICBlY2hvICJBbGwgc2VydmljZXMgc3RvcHBlZC4iCn0KCnNob3dfc3RhdHVzKCkgewogICAgZWNobyAiU2VydmljZSBTdGF0dXM6IgogICAgZWNobyAiPT09PT09PT09PT09PT09IgoKICAgIGlmIFtbICEgLWYgIiRTRVJWSUNFX1NUQVRVU19GSUxFIiBdXTsgdGhlbgogICAgICAgIGVjaG8gIk5vIHNlcnZpY2VzIHJ1bm5pbmcuIgogICAgICAgIHJldHVybgogICAgZmkKCiAgICBpZiBjaGVja19zZXJ2aWNlX2hlYWx0aCAiaHlkcm8iICIkSFlEUk9fQkFTRV9VUkwiOyB0aGVuCiAgICAgICAgZWNobyAiU2hhcmVkIEh5ZHJvOiDinJMgKCRIWURST19CQVNFX1VSTCkiCiAgICBlbHNlCiAgICAgICAgZWNobyAiU2hhcmVkIEh5ZHJvOiDinJcgKCRIWURST19CQVNFX1VSTCkiCiAgICBmaQoKICAgIGZvciBpIGluICQoc2VxIDAgJCgoU0VSVklDRV9JTlNUQU5DRVMtMSkpKTsgZG8KICAgICAgICBsb2NhbCBzZXJ2ZXJfcG9ydD0kKChTRVJWRVJfQkFTRV9QT1JUICsgaSkpCiAgICAgICAgcHJpbnRmICJJbnN0YW5jZSAlZDogIiAiJGkiCiAgICAgICAgaWYgY2hlY2tfc2VydmljZV9oZWFsdGggInNlcnZlciIgIiRzZXJ2ZXJfcG9ydCI7IHRoZW4KICAgICAgICAgICAgcHJpbnRmICJTZXJ2ZXIoOiVkKT3inJMiICIkc2VydmVyX3BvcnQiCiAgICAgICAgZWxzZQogICAgICAgICAgICBwcmludGYgIlNlcnZlcig6JWQpPeKclyIgIiRzZXJ2ZXJfcG9ydCIKICAgICAgICBmaQogICAgICAgIGVjaG8KICAgIGRvbmUKfQoKbGlzdF9zZXJ2aWNlX3BvcnRzKCkgewogICAgaWYgW1sgISAtZiAiJFNFUlZJQ0VfU1RBVFVTX0ZJTEUiIF1dOyB0aGVuCiAgICAgICAgZWNobyAiTm8gc2VydmljZXMgcnVubmluZy4iCiAgICAgICAgcmV0dXJuCiAgICBmaQoKICAgIGVjaG8gIkF2YWlsYWJsZSBTZXJ2aWNlIEVuZHBvaW50czoiCiAgICBlY2hvICI9PT09PT09PT09PT09PT09PT09PT09PT09PT09IgogICAgZWNobyAiU2hhcmVkIEh5ZHJvOiAkSFlEUk9fQkFTRV9VUkwiCiAgICBmb3IgaSBpbiAkKHNlcSAwICQoKFNFUlZJQ0VfSU5TVEFOQ0VTLTEpKSk7IGRvCiAgICAgICAgbG9jYWwgc2VydmVyX3BvcnQ9JCgoU0VSVkVSX0JBU0VfUE9SVCArIGkpKQogICAgICAgIGVjaG8gIkluc3RhbmNlICRpOiBodHRwOi8vbG9jYWxob3N0OiRzZXJ2ZXJfcG9ydCIKICAgIGRvbmUKfQoKc3RhcnRfbW9uaXRvcmluZygpIHsKICAgIGVjaG8gIlN0YXJ0aW5nIHNlcnZpY2UgbW9uaXRvcmluZyAoaW50ZXJ2YWw6ICR7Q0hFQ0tfSU5URVJWQUx9cykuLi4iCiAgICBlY2hvICJQcmVzcyBDdHJsK0MgdG8gc3RvcCBtb25pdG9yaW5nIgoKICAgIHdoaWxlIHRydWU7IGRvCiAgICAgICAgZm9yIGkgaW4gJChzZXEgMCAkKChTRVJWSUNFX0lOU1RBTkNFUy0xKSkpOyBkbwogICAgICAgICAgICBsb2NhbCBzZXJ2ZXJfcG9ydD0kKChTRVJWRVJfQkFTRV9QT1JUICsgaSkpCiAgICAgICAgICAgIGlmICEgY2hlY2tfc2VydmljZV9oZWFsdGggInNlcnZlciIgIiRzZXJ2ZXJfcG9ydCI7IHRoZW4KICAgICAgICAgICAgICAgIGVjaG8gIiQoZGF0ZSk6IHNlcnZlciBpbnN0YW5jZSAkaSBpcyBkb3duLCByZXN0YXJ0aW5nLi4uIgogICAgICAgICAgICAgICAgc3RvcF9zZXJ2ZXJfaW5zdGFuY2UgIiRpIgogICAgICAgICAgICAgICAgc2xlZXAgMgogICAgICAgICAgICAgICAgc3RhcnRfc2VydmVyX2luc3RhbmNlICIkaSIKICAgICAgICAgICAgICAgIHNsZWVwIDMKICAgICAgICAgICAgZmkKICAgICAgICBkb25lCiAgICAgICAgc2xlZXAgIiRDSEVDS19JTlRFUlZBTCIKICAgIGRvbmUKfQoKbWFpbigpIHsKICAgIHBhcnNlX2FyZ3MgIiRAIgoKICAgIGNhc2UgIiRDT01NQU5EIiBpbgogICAgICAgIHN0YXJ0KQogICAgICAgICAgICBzdGFydF9zZXJ2aWNlcwogICAgICAgICAgICA7OwogICAgICAgIHN0b3ApCiAgICAgICAgICAgIHN0b3Bfc2VydmljZXMKICAgICAgICAgICAgOzsKICAgICAgICByZXN0YXJ0KQogICAgICAgICAgICBzdG9wX3NlcnZpY2VzCiAgICAgICAgICAgIHNsZWVwIDIKICAgICAgICAgICAgc3RhcnRfc2VydmljZXMKICAgICAgICAgICAgOzsKICAgICAgICBzdGF0dXMpCiAgICAgICAgICAgIHNob3dfc3RhdHVzCiAgICAgICAgICAgIDs7CiAgICAgICAgbW9uaXRvcikKICAgICAgICAgICAgc3RhcnRfbW9uaXRvcmluZwogICAgICAgICAgICA7OwogICAgICAgIGxpc3QtcG9ydHMpCiAgICAgICAgICAgIGxpc3Rfc2VydmljZV9wb3J0cwogICAgICAgICAgICA7OwogICAgICAgICopCiAgICAgICAgICAgIGVjaG8gIlVua25vd24gY29tbWFuZDogJENPTU1BTkQiCiAgICAgICAgICAgIHNob3dfdXNhZ2UKICAgICAgICAgICAgZXhpdCAxCiAgICAgICAgICAgIDs7CiAgICBlc2FjCn0KCm1haW4gIiRAIgo=
+#!/bin/bash
+
+# Lightweight multi-instance manager for USACOArena API servers backed by a shared Hydro deployment.
+set -e
+
+SERVICE_INSTANCES=10
+SERVER_BASE_PORT=5000
+CHECK_INTERVAL=10
+HYDRO_BASE_URL="${HYDRO_BASE_URL:-http://127.0.0.1:8888}"
+HYDRO_API_TOKEN="${HYDRO_API_TOKEN:-}"
+LOG_DIR="logs/services"
+PID_DIR="pids"
+
+mkdir -p "$LOG_DIR" "$PID_DIR"
+
+SERVICE_STATUS_FILE="$PID_DIR/service_status.json"
+
+show_usage() {
+    echo "Usage: $0 COMMAND [OPTIONS]"
+    echo ""
+    echo "Commands:"
+    echo "  start                       Start all server instances"
+    echo "  stop                        Stop all server instances"
+    echo "  restart                     Restart all server instances"
+    echo "  status                      Show status of all services"
+    echo "  monitor                     Start monitoring daemon"
+    echo "  list-ports                  List available service ports"
+    echo ""
+    echo "Options:"
+    echo "  --instances N               Number of service instances (default: 10)"
+    echo "  --server-base-port PORT     Base port for competition servers (default: 5000)"
+    echo "  --check-interval SECONDS    Health check interval (default: 10)"
+    echo "  --hydro-base-url URL        Shared Hydro base URL"
+    echo "  --hydro-api-token TOKEN     Shared Hydro addon token"
+}
+
+parse_args() {
+    COMMAND=""
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            start|stop|restart|status|monitor|list-ports)
+                COMMAND="$1"
+                shift
+                ;;
+            --instances)
+                SERVICE_INSTANCES="$2"
+                shift 2
+                ;;
+            --server-base-port)
+                SERVER_BASE_PORT="$2"
+                shift 2
+                ;;
+            --check-interval)
+                CHECK_INTERVAL="$2"
+                shift 2
+                ;;
+            --hydro-base-url)
+                HYDRO_BASE_URL="$2"
+                shift 2
+                ;;
+            --hydro-api-token)
+                HYDRO_API_TOKEN="$2"
+                shift 2
+                ;;
+            -h|--help)
+                show_usage
+                exit 0
+                ;;
+            *)
+                echo "Unknown option: $1"
+                show_usage
+                exit 1
+                ;;
+        esac
+    done
+
+    if [[ -z "$COMMAND" ]]; then
+        echo "Error: No command specified"
+        show_usage
+        exit 1
+    fi
+}
+
+check_service_health() {
+    local service_type=$1
+    local value=$2
+
+    case $service_type in
+        "hydro")
+            curl -s --max-time 3 "${value%/}/usacoarena/api/health" >/dev/null 2>&1
+            ;;
+        "server")
+            curl -s --max-time 3 "http://localhost:$value/health" >/dev/null 2>&1
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+start_server_instance() {
+    local instance_id=$1
+    local server_port=$((SERVER_BASE_PORT + instance_id))
+    local pid_file="$PID_DIR/server_${instance_id}.pid"
+    local log_file="$LOG_DIR/server_${instance_id}.log"
+
+    echo "Starting server instance $instance_id on port $server_port..."
+
+    nohup competition_server \
+        --config config/server_config.json \
+        --port "$server_port" \
+        --hydro-base-url "$HYDRO_BASE_URL" \
+        --hydro-api-token "$HYDRO_API_TOKEN" \
+        >> "$log_file" 2>&1 &
+
+    echo $! > "$pid_file"
+}
+
+stop_server_instance() {
+    local instance_id=$1
+    local pid_file="$PID_DIR/server_${instance_id}.pid"
+
+    echo "Stopping server instance $instance_id..."
+    if [[ -f "$pid_file" ]]; then
+        local pid
+        pid=$(cat "$pid_file")
+        if kill -0 "$pid" 2>/dev/null; then
+            kill "$pid"
+            sleep 2
+            if kill -0 "$pid" 2>/dev/null; then
+                kill -9 "$pid"
+            fi
+        fi
+        rm -f "$pid_file"
+    fi
+}
+
+start_services() {
+    echo "Starting $SERVICE_INSTANCES server instances against Hydro: $HYDRO_BASE_URL"
+
+    cat > "$SERVICE_STATUS_FILE" <<EOF
+{
+    "instances": $SERVICE_INSTANCES,
+    "server_base_port": $SERVER_BASE_PORT,
+    "hydro_base_url": "$HYDRO_BASE_URL",
+    "started_at": "$(date -Iseconds)"
+}
+EOF
+
+    for i in $(seq 0 $((SERVICE_INSTANCES-1))); do
+        start_server_instance "$i"
+        sleep 2
+    done
+
+    echo ""
+    echo "All services started."
+    list_service_ports
+}
+
+stop_services() {
+    echo "Stopping all server instances..."
+    for i in $(seq 0 $((SERVICE_INSTANCES-1))); do
+        stop_server_instance "$i"
+    done
+    rm -f "$SERVICE_STATUS_FILE"
+    echo "All services stopped."
+}
+
+show_status() {
+    echo "Service Status:"
+    echo "==============="
+
+    if [[ ! -f "$SERVICE_STATUS_FILE" ]]; then
+        echo "No services running."
+        return
+    fi
+
+    if check_service_health "hydro" "$HYDRO_BASE_URL"; then
+        echo "Shared Hydro: ✓ ($HYDRO_BASE_URL)"
+    else
+        echo "Shared Hydro: ✗ ($HYDRO_BASE_URL)"
+    fi
+
+    for i in $(seq 0 $((SERVICE_INSTANCES-1))); do
+        local server_port=$((SERVER_BASE_PORT + i))
+        printf "Instance %d: " "$i"
+        if check_service_health "server" "$server_port"; then
+            printf "Server(:%d)=✓" "$server_port"
+        else
+            printf "Server(:%d)=✗" "$server_port"
+        fi
+        echo
+    done
+}
+
+list_service_ports() {
+    if [[ ! -f "$SERVICE_STATUS_FILE" ]]; then
+        echo "No services running."
+        return
+    fi
+
+    echo "Available Service Endpoints:"
+    echo "============================"
+    echo "Shared Hydro: $HYDRO_BASE_URL"
+    for i in $(seq 0 $((SERVICE_INSTANCES-1))); do
+        local server_port=$((SERVER_BASE_PORT + i))
+        echo "Instance $i: http://localhost:$server_port"
+    done
+}
+
+start_monitoring() {
+    echo "Starting service monitoring (interval: ${CHECK_INTERVAL}s)..."
+    echo "Press Ctrl+C to stop monitoring"
+
+    while true; do
+        for i in $(seq 0 $((SERVICE_INSTANCES-1))); do
+            local server_port=$((SERVER_BASE_PORT + i))
+            if ! check_service_health "server" "$server_port"; then
+                echo "$(date): server instance $i is down, restarting..."
+                stop_server_instance "$i"
+                sleep 2
+                start_server_instance "$i"
+                sleep 3
+            fi
+        done
+        sleep "$CHECK_INTERVAL"
+    done
+}
+
+main() {
+    parse_args "$@"
+
+    case "$COMMAND" in
+        start)
+            start_services
+            ;;
+        stop)
+            stop_services
+            ;;
+        restart)
+            stop_services
+            sleep 2
+            start_services
+            ;;
+        status)
+            show_status
+            ;;
+        monitor)
+            start_monitoring
+            ;;
+        list-ports)
+            list_service_ports
+            ;;
+        *)
+            echo "Unknown command: $COMMAND"
+            show_usage
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"

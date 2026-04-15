@@ -1,1 +1,33 @@
-IiIiCk1vZGVscyBwYWNrYWdlIGZvciBVU0FDT0FyZW5hIHBsYXRmb3JtLgoKVGhpcyBwYWNrYWdlIGNvbnRhaW5zIGRhdGEgbW9kZWxzIGFuZCBiYXNlIGNsYXNzZXMgdXNlZCB0aHJvdWdob3V0IHRoZSBzeXN0ZW0uCiIiIgoKZnJvbSAubW9kZWxzIGltcG9ydCAoCiAgICBDYXNlLAogICAgQ29tcGV0aXRpb24sCiAgICBMZXZlbCwKICAgIFBhcnRpY2lwYW50LAogICAgUHJvYmxlbSwKICAgIFN1Ym1pc3Npb24sCiAgICBTdWJtaXNzaW9uU3RhdHVzLAogICAgZ2VuZXJhdGVfaWQKKQoKZnJvbSAuYWdlbnQgaW1wb3J0IEFnZW50CgpfX2FsbF9fID0gWwogICAgIyBEYXRhIG1vZGVscwogICAgIkNhc2UiLAogICAgIkNvbXBldGl0aW9uIiwgCiAgICAiTGV2ZWwiLAogICAgIlBhcnRpY2lwYW50IiwKICAgICJQcm9ibGVtIiwKICAgICJTdWJtaXNzaW9uIiwKICAgICJTdWJtaXNzaW9uU3RhdHVzIiwKICAgICJnZW5lcmF0ZV9pZCIsCiAgICAKICAgICMgQWdlbnQgYmFzZSBjbGFzcwogICAgIkFnZW50IgpdIAo=
+"""
+Models package for USACOArena platform.
+
+This package contains data models and base classes used throughout the system.
+"""
+
+from .models import (
+    Case,
+    Competition,
+    Level,
+    Participant,
+    Problem,
+    Submission,
+    SubmissionStatus,
+    generate_id
+)
+
+from .agent import Agent
+
+__all__ = [
+    # Data models
+    "Case",
+    "Competition", 
+    "Level",
+    "Participant",
+    "Problem",
+    "Submission",
+    "SubmissionStatus",
+    "generate_id",
+    
+    # Agent base class
+    "Agent"
+] 

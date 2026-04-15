@@ -1,1 +1,152 @@
-IyBIeWRybyBEZXBsb3ltZW50IGFuZCBVc2FnZQoKVVNBQ09BcmVuYSBub3cgdXNlcyBbSHlkcm9dKGh0dHBzOi8vZ2l0aHViLmNvbS9oeWRyby1kZXYvSHlkcm8pIGFzIHRoZSBqdWRnZSwgcHJvYmxlbS1tYW5hZ2VtZW50IHN5c3RlbSwgYW5kIHZpc3VhbGl6YXRpb24gZnJvbnRlbmQuIFRoaXMgcmVwb3NpdG9yeSBwdWJsaXNoZXMgYSBIeWRybyBhZGRvbiBzb3VyY2UgZGlyZWN0b3J5IHBsdXMgYSByZWxlYXNlZCBhZGRvbiBwYWNrYWdlIGFuZCBhIHJlbGVhc2VkIEh5ZHJvIHByb2JsZW1zZXQgemlwIGZvciBkZXBsb3ltZW50LgoKIyMgUmVsZWFzZWQgQXJ0aWZhY3RzCgotIEh5ZHJvIGFkZG9uIHBhY2thZ2U6IGBodHRwczovLzFkcnYubXMvdS9jLzFlZjdiN2JhYzBkYTU3ZTYvSVFETGs4NDBLN2tLUUljYW50c2R1MlZzQVhVVVZRc3VDeHFia1lPMEwwc0p5MFU/ZT1MNmdYdURgCi0gSHlkcm8gcHJvYmxlbXNldCB6aXA6IGBodHRwczovLzFkcnYubXMvdS9jLzFlZjdiN2JhYzBkYTU3ZTYvSVFCeVJuMFBTbGhnUVlTMWt3UGpiUzJCQWNCMTd2YWdRZlBoMWpJTmRjLU1aRW8/ZT1kQm5IaUhgCgpUaGUgcmVjb21tZW5kZWQgb3Blbi1zb3VyY2UgZGVwbG95bWVudCBwYXRoIGlzIHRvIGRvd25sb2FkIHRoZXNlIHR3byBhcnRpZmFjdHMgZGlyZWN0bHkgaW5zdGVhZCBvZiByZWJ1aWxkaW5nIHRoZW0gbG9jYWxseS4KCiMjIDEuIENsb25lIGFuZCBJbnN0YWxsIEh5ZHJvCgpDbG9uZSB0aGUgb2ZmaWNpYWwgSHlkcm8gcmVwb3NpdG9yeToKCmBgYGJhc2gKZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9oeWRyby1kZXYvSHlkcm8uZ2l0IC4uL0h5ZHJvCmNkIC4uL0h5ZHJvCmBgYAoKSW5zdGFsbCBhbmQgc3RhcnQgSHlkcm8gdXNpbmcgdGhlIG9mZmljaWFsIHNldHVwIGZsb3cgZG9jdW1lbnRlZCBieSBIeWRybyBpdHNlbGYuIEEgY29tbW9uIG9uZS1saW5lIGluc3RhbGxhdGlvbiBlbnRyeSBpczoKCmBgYGJhc2gKTEFORz16aCAuIDwoY3VybCBodHRwczovL2h5ZHJvLmFjL3NldHVwLnNoKQpgYGAKCkFmdGVyIEh5ZHJvIGlzIHVwLCBjb25maXJtIHRoYXQgdGhlIHdlYiBVSSBpcyByZWFjaGFibGUuIEEgdHlwaWNhbCBsb2NhbCBkZXBsb3ltZW50IGxpc3RlbnMgb246CgpgYGB0ZXh0Cmh0dHA6Ly8xMjcuMC4wLjE6ODg4OApgYGAKCiMjIDIuIEluc3RhbGwgdGhlIFVTQUNPQXJlbmEgSHlkcm8gQWRkb24KCkRvd25sb2FkIGFuZCBleHRyYWN0IHRoZSByZWxlYXNlZCBhZGRvbiBwYWNrYWdlIG9uIHRoZSBIeWRybyBtYWNoaW5lLCB0aGVuIHJlZ2lzdGVyIHRoZSBleHRyYWN0ZWQgYWRkb24gZGlyZWN0b3J5OgoKYGBgYmFzaAp0YXIgLXh6ZiB1c2Fjb2FyZW5hX2h5ZHJvX3BsdWdpbl92MC4xLjAudGFyLmd6Cmh5ZHJvb2ogYWRkb24gYWRkIC9wYXRoL3RvL3VzYWNvYXJlbmFfaHlkcm9fcGx1Z2luX3YwLjEuMC9oeWRyb19wbHVnaW5fdXNhY29hcmVuYQpgYGAKClJlc3RhcnQgSHlkcm8gYWZ0ZXIgYWRkaW5nIHRoZSBhZGRvbiBzbyB0aGUgcm91dGUgdGFibGUgYW5kIHNldHRpbmdzIHNjaGVtYSBhcmUgcmVsb2FkZWQuCgpUaGUgYWRkb24gZXhwb3J0cyB0aGUgZm9sbG93aW5nIG1hY2hpbmUtZmFjaW5nIGVuZHBvaW50cyB1bmRlciBhIGNvbmZpZ3VyYWJsZSBiYXNlIHBhdGg6CgotIGBHRVQgL3VzYWNvYXJlbmEvYXBpL2hlYWx0aGAKLSBgR0VUIC91c2Fjb2FyZW5hL2FwaS9wcm9ibGVtc2AKLSBgR0VUIC91c2Fjb2FyZW5hL2FwaS9wcm9ibGVtcy86cHJvYmxlbUlkYAotIGBHRVQgL3VzYWNvYXJlbmEvYXBpL3Jlc29sdmU/cHJvYmxlbV9pZD0uLi5gCi0gYFBPU1QgL3VzYWNvYXJlbmEvYXBpL3N1Ym1pc3Npb25zYAotIGBHRVQgL3VzYWNvYXJlbmEvYXBpL3JlY29yZHMvOnJlY29yZElkYAotIGBQT1NUIC91c2Fjb2FyZW5hL2FwaS9wcmV0ZXN0YAoKIyMgMy4gQ29uZmlndXJlIEFkZG9uIFNldHRpbmdzCgpUaGUgYWRkb24gcmVnaXN0ZXJzIHR3byBIeWRybyBzeXN0ZW0gc2V0dGluZ3M6CgotIGB1c2Fjb2FyZW5hSHlkcm8uYXBpQmFzZWAKLSBgdXNhY29hcmVuYUh5ZHJvLmFwaVRva2VuYAoKUmVjb21tZW5kZWQgdmFsdWVzOgoKYGBgdGV4dAp1c2Fjb2FyZW5hSHlkcm8uYXBpQmFzZT0vdXNhY29hcmVuYS9hcGkKdXNhY29hcmVuYUh5ZHJvLmFwaVRva2VuPTxzdHJvbmctcmFuZG9tLXRva2VuPgpgYGAKCklmIHlvdSBwcmVmZXIgbm90IHRvIHJlcXVpcmUgYSB0b2tlbiBvbiBhIHRydXN0ZWQgbG9jYWwgZGVwbG95bWVudCwgbGVhdmUgYGFwaVRva2VuYCBlbXB0eS4gRm9yIGFueSBzaGFyZWQgb3IgZXhwb3NlZCBlbnZpcm9ubWVudCwgc2V0IGEgdG9rZW4uCgpVU0FDT0FyZW5hIHNob3VsZCB0aGVuIHVzZSB0aGUgc2FtZSB2YWx1ZXMgaW4gYGNvbmZpZy9zZXJ2ZXJfY29uZmlnLmpzb25gOgoKYGBganNvbgp7CiAgImh5ZHJvIjogewogICAgImJhc2VfdXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6ODg4OCIsCiAgICAiYXBpX2Jhc2UiOiAiL3VzYWNvYXJlbmEvYXBpIiwKICAgICJhcGlfdG9rZW4iOiAiPHNhbWUtdG9rZW4tb3ItZW1wdHk+IgogIH0KfQpgYGAKCiMjIDQuIEltcG9ydCB0aGUgUmVsZWFzZWQgUHJvYmxlbXNldCBaaXAKClRoZSByZWxlYXNlZCBIeWRybyBwcm9ibGVtc2V0IGFyY2hpdmUgaXMgYWxyZWFkeSBub3JtYWxpemVkIGZvciBVU0FDT0FyZW5hLiBJdCBwcmVzZXJ2ZXMgSHlkcm8tbmF0aXZlIHN0cnVjdHVyZSBhbmQgaW5jbHVkZXMgdGhlIGB1c2Fjb2FyZW5hLXByb2JsZW0taWQ6PGRpcmVjdG9yeV9uYW1lPmAgdGFncyBuZWVkZWQgdG8gbWFwIEh5ZHJvLW5hdGl2ZSBwcm9ibGVtcyBiYWNrIHRvIHBhcGVyLWZhY2luZyBsb25nIElEcyBzdWNoIGFzIGAxNDUyX3BsYXRpbnVtX2FsbF9wYWlyc19zaW1pbGFyaXR5YC4KCiMjIDUuIEltcG9ydCB0aGUgUHJvYmxlbXNldCBpbnRvIEh5ZHJvCgpVc2UgdGhlIEh5ZHJvIGFkbWluIFVJIHRvIGltcG9ydCB0aGUgbm9ybWFsaXplZCB6aXAgaW50byB0aGUgdGFyZ2V0IGRvbWFpbi4KClJlY29tbWVuZGVkIGltcG9ydCBwcm9jZWR1cmU6CgoxLiBDcmVhdGUgb3IgY2hvb3NlIHRoZSBIeWRybyBkb21haW4gdGhhdCB3aWxsIGhvc3QgdGhlIFVTQUNPQXJlbmEgcHJvYmxlbXNldC4KMi4gT3BlbiBIeWRybydzIHByb2JsZW0gaW1wb3J0IHBhZ2UuCjMuIFVwbG9hZCB0aGUgcmVsZWFzZWQgYHVzYWNvYXJlbmFfaHlkcm9fcHJvYmxlbXNldF9ub3JtYWxpemVkLnppcGAuCjQuIFdhaXQgZm9yIHRoZSBpbXBvcnQgdGFzayB0byBmaW5pc2guCjUuIFZlcmlmeSB0aGF0IHNldmVyYWwga25vd24gcHJvYmxlbXMgY2FuIGJlIG9wZW5lZCBpbiB0aGUgVUkuCgpBZnRlciBpbXBvcnQsIHRlc3QgYWxpYXMgcmVzb2x1dGlvbiB0aHJvdWdoIHRoZSBhZGRvbjoKCmBgYGJhc2gKY3VybCAtSCAiQXV0aG9yaXphdGlvbjogQmVhcmVyIDx0b2tlbj4iIFwKICAiaHR0cDovLzEyNy4wLjAuMTo4ODg4L3VzYWNvYXJlbmEvYXBpL3Jlc29sdmU/cHJvYmxlbV9pZD0xNDUyX3BsYXRpbnVtX2FsbF9wYWlyc19zaW1pbGFyaXR5IgpgYGAKCllvdSBzaG91bGQgcmVjZWl2ZSBKU09OIHRoYXQgaW5jbHVkZXMgdGhlIHJlc29sdmVkIEh5ZHJvIHByb2JsZW0gZG9jLgoKIyMgNi4gV2lyZSBIeWRybyBpbnRvIFVTQUNPQXJlbmEKClN0YXJ0IHRoZSBVU0FDT0FyZW5hIHNlcnZlciBhZ2FpbnN0IEh5ZHJvOgoKYGBgYmFzaApjZCAvcGF0aC90by9VU0FDT0FyZW5hX2h5ZHJvCnV2IHJ1biBweXRob24gLW0gdXNhY29hcmVuYS5tYWluIFwKICAtLWNvbmZpZyBjb25maWcvc2VydmVyX2NvbmZpZy5qc29uIFwKICAtLWhvc3QgMC4wLjAuMCBcCiAgLS1wb3J0IDUwMDAgXAogIC0taHlkcm8tYmFzZS11cmwgaHR0cDovLzEyNy4wLjAuMTo4ODg4IFwKICAtLWh5ZHJvLWFwaS10b2tlbiAiPHRva2VuPiIKYGBgCgpUaGVuIHZlcmlmeSBib3RoIHNpZGVzOgoKYGBgYmFzaApjdXJsIGh0dHA6Ly8xMjcuMC4wLjE6NTAwMC9hcGkvc3lzdGVtL29qLXN0YXR1cwpjdXJsIGh0dHA6Ly8xMjcuMC4wLjE6NTAwMC9hcGkvcHJvYmxlbS1saWJyYXJ5CmBgYAoKVGhlIGZpcnN0IGVuZHBvaW50IGNoZWNrcyBIeWRybyBjb25uZWN0aXZpdHkuIFRoZSBzZWNvbmQgbGlzdHMgcHJvYmxlbXMgdGhyb3VnaCB0aGUgSHlkcm8tYmFja2VkIGxvYWRlci4KCiMjIDcuIERlYnVnIE9uZSBTdWJtaXNzaW9uIEFnYWluc3QgSHlkcm8KCllvdSBjYW4gc3RpbGwgcnVuIHNpbmdsZS1wcm9ibGVtIG9yIGFkLWhvYyBjaGVja3MgdGhyb3VnaCBVU0FDT0FyZW5hLCBidXQgdGhleSBub3cgcm91dGUgdGhyb3VnaCBIeWRybzoKCmBgYGJhc2gKdXYgcnVuIHB5dGhvbiBzY3JpcHRzL3J1bl9zb2xvX2FnZW50LnB5IFwKICAtLXByb2JsZW0taWQgMTQ1Ml9wbGF0aW51bV9hbGxfcGFpcnNfc2ltaWxhcml0eSBcCiAgLS1hZ2VudC1jb25maWcgY29uZmlnL3BhcGVyL2NvbXBldGl0b3JzL3NvbG9fZ3B0NS5qc29uIFwKICAtLW9qLWVuZHBvaW50IGh0dHA6Ly8xMjcuMC4wLjE6ODg4OApgYGAKCkluIHRoaXMgSHlkcm8tYmFzZWQgcmVsZWFzZSwgYC0tb2otZW5kcG9pbnRgIGlzIHJldGFpbmVkIG9ubHkgYXMgYSBjb21wYXRpYmlsaXR5IGFsaWFzIGZvciB0aGUgSHlkcm8gYmFzZSBVUkwuCgojIyA4LiBSZWxlYXNlIEJvdW5kYXJ5CgpUaGUgaW50ZW5kZWQgb3Blbi1zb3VyY2UgcmVsZWFzZSBib3VuZGFyeSBpczoKCi0gYFVTQUNPQXJlbmFfaHlkcm9gIHJlcG9zaXRvcnk6IGNvbXBldGl0aW9uIGZyYW1ld29yaywgZG9jcywgYWRkb24gc291cmNlLCBub3JtYWxpemF0aW9uIHRvb2xpbmcKLSBleHRlcm5hbCBhZGRvbiBwYWNrYWdlOiByZWxlYXNlZCBgdXNhY29hcmVuYV9oeWRyb19wbHVnaW5fdjAuMS4wLnRhci5nemAKLSBleHRlcm5hbCBIeWRybyBwcm9ibGVtc2V0IHppcDogcmVsZWFzZWQgYHVzYWNvYXJlbmFfaHlkcm9fcHJvYmxlbXNldF9ub3JtYWxpemVkLnppcGAKLSBIeWRybyBjb3JlOiBjbG9uZWQgc2VwYXJhdGVseSBmcm9tIHRoZSBvZmZpY2lhbCB1cHN0cmVhbSByZXBvc2l0b3J5CgpUaGlzIGtlZXBzIHRoZSBwdWJsaXNoZWQgVVNBQ09BcmVuYSByZXBvc2l0b3J5IGxpZ2h0d2VpZ2h0IHdoaWxlIHN0aWxsIHByb3ZpZGluZyBhIHJlcHJvZHVjaWJsZSBIeWRybyBpbnRlZ3JhdGlvbiBwYXRoLgo=
+# Hydro Deployment and Usage
+
+USACOArena now uses [Hydro](https://github.com/hydro-dev/Hydro) as the judge, problem-management system, and visualization frontend. This repository publishes a Hydro addon source directory plus a released addon package and a released Hydro problemset zip for deployment.
+
+## Released Artifacts
+
+- Hydro addon package: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDLk840K7kKQIcantsdu2VsAXUUVQsuCxqbkYO0L0sJy0U?e=L6gXuD`
+- Hydro problemset zip: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQByRn0PSlhgQYS1kwPjbS2BAcB17vagQfPh1jINdc-MZEo?e=dBnHiH`
+
+The recommended open-source deployment path is to download these two artifacts directly instead of rebuilding them locally.
+
+## 1. Clone and Install Hydro
+
+Clone the official Hydro repository:
+
+```bash
+git clone https://github.com/hydro-dev/Hydro.git ../Hydro
+cd ../Hydro
+```
+
+Install and start Hydro using the official setup flow documented by Hydro itself. A common one-line installation entry is:
+
+```bash
+LANG=zh . <(curl https://hydro.ac/setup.sh)
+```
+
+After Hydro is up, confirm that the web UI is reachable. A typical local deployment listens on:
+
+```text
+http://127.0.0.1:8888
+```
+
+## 2. Install the USACOArena Hydro Addon
+
+Download and extract the released addon package on the Hydro machine, then register the extracted addon directory:
+
+```bash
+tar -xzf usacoarena_hydro_plugin_v0.1.0.tar.gz
+hydrooj addon add /path/to/usacoarena_hydro_plugin_v0.1.0/hydro_plugin_usacoarena
+```
+
+Restart Hydro after adding the addon so the route table and settings schema are reloaded.
+
+The addon exports the following machine-facing endpoints under a configurable base path:
+
+- `GET /usacoarena/api/health`
+- `GET /usacoarena/api/problems`
+- `GET /usacoarena/api/problems/:problemId`
+- `GET /usacoarena/api/resolve?problem_id=...`
+- `POST /usacoarena/api/submissions`
+- `GET /usacoarena/api/records/:recordId`
+- `POST /usacoarena/api/pretest`
+
+## 3. Configure Addon Settings
+
+The addon registers two Hydro system settings:
+
+- `usacoarenaHydro.apiBase`
+- `usacoarenaHydro.apiToken`
+
+Recommended values:
+
+```text
+usacoarenaHydro.apiBase=/usacoarena/api
+usacoarenaHydro.apiToken=<strong-random-token>
+```
+
+If you prefer not to require a token on a trusted local deployment, leave `apiToken` empty. For any shared or exposed environment, set a token.
+
+USACOArena should then use the same values in `config/server_config.json`:
+
+```json
+{
+  "hydro": {
+    "base_url": "http://127.0.0.1:8888",
+    "api_base": "/usacoarena/api",
+    "api_token": "<same-token-or-empty>"
+  }
+}
+```
+
+## 4. Import the Released Problemset Zip
+
+The released Hydro problemset archive is already normalized for USACOArena. It preserves Hydro-native structure and includes the `usacoarena-problem-id:<directory_name>` tags needed to map Hydro-native problems back to paper-facing long IDs such as `1452_platinum_all_pairs_similarity`.
+
+## 5. Import the Problemset into Hydro
+
+Use the Hydro admin UI to import the normalized zip into the target domain.
+
+Recommended import procedure:
+
+1. Create or choose the Hydro domain that will host the USACOArena problemset.
+2. Open Hydro's problem import page.
+3. Upload the released `usacoarena_hydro_problemset_normalized.zip`.
+4. Wait for the import task to finish.
+5. Verify that several known problems can be opened in the UI.
+
+After import, test alias resolution through the addon:
+
+```bash
+curl -H "Authorization: Bearer <token>" \
+  "http://127.0.0.1:8888/usacoarena/api/resolve?problem_id=1452_platinum_all_pairs_similarity"
+```
+
+You should receive JSON that includes the resolved Hydro problem doc.
+
+## 6. Wire Hydro into USACOArena
+
+Start the USACOArena server against Hydro:
+
+```bash
+cd /path/to/USACOArena_hydro
+uv run python -m usacoarena.main \
+  --config config/server_config.json \
+  --host 0.0.0.0 \
+  --port 5000 \
+  --hydro-base-url http://127.0.0.1:8888 \
+  --hydro-api-token "<token>"
+```
+
+Then verify both sides:
+
+```bash
+curl http://127.0.0.1:5000/api/system/oj-status
+curl http://127.0.0.1:5000/api/problem-library
+```
+
+The first endpoint checks Hydro connectivity. The second lists problems through the Hydro-backed loader.
+
+## 7. Debug One Submission Against Hydro
+
+You can still run single-problem or ad-hoc checks through USACOArena, but they now route through Hydro:
+
+```bash
+uv run python scripts/run_solo_agent.py \
+  --problem-id 1452_platinum_all_pairs_similarity \
+  --agent-config config/paper/competitors/solo_gpt5.json \
+  --oj-endpoint http://127.0.0.1:8888
+```
+
+In this Hydro-based release, `--oj-endpoint` is retained only as a compatibility alias for the Hydro base URL.
+
+## 8. Release Boundary
+
+The intended open-source release boundary is:
+
+- `USACOArena_hydro` repository: competition framework, docs, addon source, normalization tooling
+- external addon package: released `usacoarena_hydro_plugin_v0.1.0.tar.gz`
+- external Hydro problemset zip: released `usacoarena_hydro_problemset_normalized.zip`
+- Hydro core: cloned separately from the official upstream repository
+
+This keeps the published USACOArena repository lightweight while still providing a reproducible Hydro integration path.

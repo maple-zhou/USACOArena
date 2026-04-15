@@ -1,1 +1,509 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJTY3JpcHQgdGhhdCBvcmNoZXN0cmF0ZXMgYW4gZW5kLXRvLWVuZCBydW4gZm9yIGEgc2luZ2xlLXByb2JsZW0gTExNIGFnZW50LiIiIgoKZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IGFyZ3BhcnNlCmltcG9ydCBsb2dnaW5nCmltcG9ydCByZQpmcm9tIGRhdGV0aW1lIGltcG9ydCBkYXRldGltZQpmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKZnJvbSB0eXBpbmcgaW1wb3J0IERpY3QsIExpc3QsIE9wdGlvbmFsLCBUdXBsZQoKZnJvbSB1c2Fjb2FyZW5hLmVuZ2luZS5qdWRnZSBpbXBvcnQgSnVkZ2UKZnJvbSB1c2Fjb2FyZW5hLm1vZGVscy5tb2RlbHMgaW1wb3J0IFN1Ym1pc3Npb24sIFN1Ym1pc3Npb25TdGF0dXMsIGdlbmVyYXRlX2lkCmZyb20gdXNhY29hcmVuYS5zb2xvIGltcG9ydCAoCiAgICBBdHRlbXB0TG9nRW50cnksCiAgICBMTE1DbGllbnQsCiAgICBMTE1Db25maWcsCiAgICBMTE1Vc2FnZSwKICAgIFNvbG9Qcm9tcHRCdWlsZGVyLAogICAgU29sb1J1bkxvZ2dlciwKKQpmcm9tIHVzYWNvYXJlbmEudXRpbHMubG9nZ2VyX2NvbmZpZyBpbXBvcnQgZ2V0X2xvZ2dlciwgc2V0dXBfbG9nZ2luZwoKbG9nZ2VyID0gZ2V0X2xvZ2dlcigic29sb19ydW5uZXIiKQoKCmRlZiBwYXJzZV9hcmdzKCkgLT4gYXJncGFyc2UuTmFtZXNwYWNlOgogICAgcGFyc2VyID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoCiAgICAgICAgZGVzY3JpcHRpb249IlJ1biBhIHNpbmdsZS1wcm9ibGVtIExMTSBhZ2VudCBhbmQgbG9nIGp1ZGdpbmcgcmVzdWx0cyIKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tcHJvYmxlbS1pZCIsCiAgICAgICAgYWN0aW9uPSJhcHBlbmQiLAogICAgICAgIGRlc3Q9InByb2JsZW1faWRzIiwKICAgICAgICByZXF1aXJlZD1UcnVlLAogICAgICAgIGhlbHA9IlVTQUNPIHByb2JsZW0gSUQocyk7IHByb3ZpZGUgbXVsdGlwbGUgZW50cmllcyBvciBjb21tYS1zZXBhcmF0ZWQgbGlzdCIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLWFnZW50LWNvbmZpZyIsIHJlcXVpcmVkPVRydWUsIGhlbHA9IlBhdGggdG8gdGhlIExMTSBjb25maWd1cmF0aW9uIGZpbGUiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1jb21wZXRpdG9yLW5hbWUiLAogICAgICAgIGhlbHA9IlNlbGVjdCBhIGNvbXBldGl0b3Igd2hlbiB0aGUgY29uZmlnIGxpc3RzIG11bHRpcGxlIGVudHJpZXMiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1wcm9tcHQtZmlsZSIsCiAgICAgICAgZGVmYXVsdD0icHJvbXB0cy9zb2xvX2FnZW50X3Byb21wdC50eHQiLAogICAgICAgIGhlbHA9IlBhdGggdG8gdGhlIHByb21wdCB0ZW1wbGF0ZSIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLWxhbmd1YWdlIiwKICAgICAgICBkZWZhdWx0PSJjcHAiLAogICAgICAgIGhlbHA9IlN1Ym1pc3Npb24gbGFuZ3VhZ2UgKGUuZy4sIGNwcC9weXRob24vamF2YSkiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1tYXgtcmV0cmllcyIsCiAgICAgICAgdHlwZT1pbnQsCiAgICAgICAgZGVmYXVsdD0zLAogICAgICAgIGRlc3Q9Im1heF9yZXRyaWVzIiwKICAgICAgICBoZWxwPSJNYXhpbXVtIHJldHJpZXMgYWZ0ZXIgYSBmYWlsZWQgTExNIGNhbGw7IDAgbWVhbnMgdW5saW1pdGVkIiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tbWF4LWF0dGVtcHRzIiwKICAgICAgICB0eXBlPWludCwKICAgICAgICBkZXN0PSJtYXhfcmV0cmllcyIsCiAgICAgICAgaGVscD1hcmdwYXJzZS5TVVBQUkVTUywKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tdG9rZW4tbGltaXQiLAogICAgICAgIHR5cGU9aW50LAogICAgICAgIGRlZmF1bHQ9MTAwMDAwMCwKICAgICAgICBoZWxwPSJDdW11bGF0aXZlIHRva2VuIHRocmVzaG9sZDsgc3RvcCBhbGwgcHJvYmxlbXMgb25jZSBleGNlZWRlZCAoZGVmYXVsdCAxLDAwMCwwMDApIiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tb2otZW5kcG9pbnQiLAogICAgICAgIGRlZmF1bHQ9Imh0dHA6Ly8xMjcuMC4wLjE6ODg4OCIsCiAgICAgICAgaGVscD0iSHlkcm8gYmFzZSBVUkw7IHJldGFpbmVkIHVuZGVyIHRoZSBsZWdhY3kgZmxhZyBuYW1lIGZvciBjb21wYXRpYmlsaXR5IiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tZGF0YXNldC1yb290IiwKICAgICAgICBoZWxwPSJPcHRpb25hbCBkYXRhc2V0IHJvb3QiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1sb2ctZGlyIiwKICAgICAgICBoZWxwPSJPcHRpb25hbCBsb2cgb3V0cHV0IGRpcmVjdG9yeSIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLWRyeS1ydW4iLAogICAgICAgIGFjdGlvbj0ic3RvcmVfdHJ1ZSIsCiAgICAgICAgaGVscD0iR2VuZXJhdGUgY29kZSBvbmx5IHdpdGhvdXQgY29udGFjdGluZyB0aGUganVkZ2UiLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS10aW1lb3V0IiwKICAgICAgICB0eXBlPWZsb2F0LAogICAgICAgIGRlZmF1bHQ9MzAwLjAsCiAgICAgICAgaGVscD0iTExNIHJlcXVlc3QgdGltZW91dCAoc2Vjb25kcykiLAogICAgKQogICAgcmV0dXJuIHBhcnNlci5wYXJzZV9hcmdzKCkKCgpkZWYgZGVmYXVsdF9sb2dfZGlyKHByb2JsZW1faWRzOiBMaXN0W3N0cl0sIGFnZW50X2NvbmZpZzogc3RyKSAtPiBQYXRoOgogICAgdGltZXN0YW1wID0gZGF0ZXRpbWUubm93KCkuc3RyZnRpbWUoIiVZJW0lZF8lSCVNJVMiKQogICAgc2FmZV9hZ2VudF9jb25maWcgPSByZS5zdWIociJbXkEtWmEtejAtOV8tXSIsICJfIiwgYWdlbnRfY29uZmlnKQogICAgaWYgbGVuKHByb2JsZW1faWRzKSA9PSAxOgogICAgICAgIHNhZmVfcHJvYmxlbSA9IHJlLnN1YihyIlteQS1aYS16MC05Xy1dIiwgIl8iLCBwcm9ibGVtX2lkc1swXSkKICAgICAgICBzdWZmaXggPSBmIntzYWZlX2FnZW50X2NvbmZpZ31fe3NhZmVfcHJvYmxlbX0iCiAgICBlbHNlOgogICAgICAgIHN1ZmZpeCA9IGYie3NhZmVfYWdlbnRfY29uZmlnfV9iYXRjaCIKICAgIHJldHVybiBQYXRoKCJsb2dzL3NvbG9fcnVucyIpIC8gZiJ7dGltZXN0YW1wfV97c3VmZml4fSIKCgpkZWYgZXh0cmFjdF9jb2RlKGNvbnRlbnQ6IHN0ciwgbGFuZ3VhZ2U6IHN0cikgLT4gc3RyOgogICAgIiIiRXh0cmFjdCBhIGNvZGUgYmxvY2sgZnJvbSB0aGUgbW9kZWwgcmVzcG9uc2UuIiIiCiAgICBmZW5jZV9wYXR0ZXJuID0gcmUuY29tcGlsZShyImBgYCg/OihbXHcrIy1dKylcbik/KC4qPylgYGAiLCByZS5ET1RBTEwpCiAgICBtYXRjaGVzID0gZmVuY2VfcGF0dGVybi5maW5kYWxsKGNvbnRlbnQpCiAgICBpZiBtYXRjaGVzOgogICAgICAgIHRhcmdldCA9IE5vbmUKICAgICAgICBsYW5nX2xvd2VyID0gbGFuZ3VhZ2UubG93ZXIoKQogICAgICAgIGZvciBsYW5nLCBjb2RlIGluIG1hdGNoZXM6CiAgICAgICAgICAgIGxhbmcgPSAobGFuZyBvciAiIikuc3RyaXAoKS5sb3dlcigpCiAgICAgICAgICAgIGlmIG5vdCBsYW5nOgogICAgICAgICAgICAgICAgdGFyZ2V0ID0gY29kZQogICAgICAgICAgICAgICAgYnJlYWsKICAgICAgICAgICAgaWYgbGFuZyBpbiB7bGFuZ19sb3dlciwgX2xhbmd1YWdlX2FsaWFzKGxhbmdfbG93ZXIpfToKICAgICAgICAgICAgICAgIHRhcmdldCA9IGNvZGUKICAgICAgICAgICAgICAgIGJyZWFrCiAgICAgICAgaWYgdGFyZ2V0IGlzIE5vbmU6CiAgICAgICAgICAgIHRhcmdldCA9IG1hdGNoZXNbMF1bMV0KICAgICAgICByZXR1cm4gdGFyZ2V0LnN0cmlwKCkKICAgIHJldHVybiBjb250ZW50LnN0cmlwKCkKCgpkZWYgX2xhbmd1YWdlX2FsaWFzKGxhbmd1YWdlOiBzdHIpIC0+IHN0cjoKICAgIGlmIGxhbmd1YWdlID09ICJjcHAiOgogICAgICAgIHJldHVybiAiYysrIgogICAgaWYgbGFuZ3VhZ2UgPT0gImMrKyI6CiAgICAgICAgcmV0dXJuICJjcHAiCiAgICBpZiBsYW5ndWFnZSA9PSAicHkiOgogICAgICAgIHJldHVybiAicHl0aG9uIgogICAgcmV0dXJuIGxhbmd1YWdlCgoKZGVmIF91c2FnZV90b3RhbF90b2tlbnModXNhZ2U6IE9wdGlvbmFsW0xMTVVzYWdlXSkgLT4gaW50OgogICAgaWYgbm90IHVzYWdlOgogICAgICAgIHJldHVybiAwCiAgICBpZiB1c2FnZS50b3RhbF90b2tlbnMgaXMgbm90IE5vbmU6CiAgICAgICAgcmV0dXJuIHVzYWdlLnRvdGFsX3Rva2VucwogICAgcHJvbXB0ID0gdXNhZ2UucHJvbXB0X3Rva2VucyBvciAwCiAgICBjb21wbGV0aW9uID0gdXNhZ2UuY29tcGxldGlvbl90b2tlbnMgb3IgMAogICAgcmV0dXJuIHByb21wdCArIGNvbXBsZXRpb24KCgpkZWYgX2NhbGxfbGxtX3dpdGhfcmV0cnkoCiAgICBjbGllbnQ6IExMTUNsaWVudCwKICAgIG1lc3NhZ2VzOiBMaXN0W0RpY3Rbc3RyLCBzdHJdXSwKICAgIG1heF9yZXRyaWVzOiBpbnQsCikgLT4gVHVwbGVbc3RyLCBPcHRpb25hbFtMTE1Vc2FnZV1dOgogICAgYXR0ZW1wdHMgPSAwCiAgICB3aGlsZSBUcnVlOgogICAgICAgIHRyeToKICAgICAgICAgICAgcmV0dXJuIGNsaWVudC5pbmZlcihtZXNzYWdlcykKICAgICAgICBleGNlcHQgUnVudGltZUVycm9yIGFzIGV4YzoKICAgICAgICAgICAgYXR0ZW1wdHMgKz0gMQogICAgICAgICAgICBsb2dnZXIud2FybmluZygiTExNIGNhbGwgZmFpbGVkLCByZXRyeSAlZDogJXMiLCBhdHRlbXB0cywgZXhjKQogICAgICAgICAgICBpZiBtYXhfcmV0cmllcyBhbmQgYXR0ZW1wdHMgPj0gbWF4X3JldHJpZXM6CiAgICAgICAgICAgICAgICByYWlzZSBSdW50aW1lRXJyb3IoCiAgICAgICAgICAgICAgICAgICAgZiJMTE0gY2FsbCBmYWlsZWQge2F0dGVtcHRzfSB0aW1lcyBjb25zZWN1dGl2ZWx5OyBhYm9ydGluZzoge2V4Y30iCiAgICAgICAgICAgICAgICApIGZyb20gZXhjCgoKZGVmIGJ1aWxkX2ZlZWRiYWNrKHN1Ym1pc3Npb246IFN1Ym1pc3Npb24sIHRvdGFsX2Nhc2VzOiBPcHRpb25hbFtpbnRdKSAtPiBzdHI6CiAgICAiIiJHZW5lcmF0ZSBzdHJ1Y3R1cmVkIGZlZWRiYWNrIHRleHQgYmFzZWQgb24ganVkZ2luZyByZXN1bHRzLiIiIgogICAgdG90YWxfYXZhaWxhYmxlID0gdG90YWxfY2FzZXMgb3IgbWF4KGxlbihzdWJtaXNzaW9uLnRlc3RfcmVzdWx0cyksIDApCiAgICBwYXNzZWRfY291bnQgPSBzdW0oMSBmb3IgdHIgaW4gc3VibWlzc2lvbi50ZXN0X3Jlc3VsdHMgaWYgdHIuc3RhdHVzID09IFN1Ym1pc3Npb25TdGF0dXMuQUNDRVBURUQpCiAgICBmYWlsZWRfY2FzZXMgPSBbKGlkeCwgdHIpIGZvciBpZHgsIHRyIGluIGVudW1lcmF0ZShzdWJtaXNzaW9uLnRlc3RfcmVzdWx0cywgc3RhcnQ9MSkgaWYgdHIuc3RhdHVzICE9IFN1Ym1pc3Npb25TdGF0dXMuQUNDRVBURURdCgogICAgbGluZXM6IExpc3Rbc3RyXSA9IFtdCiAgICBpZiBub3QgZmFpbGVkX2Nhc2VzOgogICAgICAgIGxpbmVzLmFwcGVuZCgKICAgICAgICAgICAgZiJZb3VyIG1vc3QgcmVjZW50IHN1Ym1pc3Npb24gcGFzc2VkIHtwYXNzZWRfY291bnR9L3t0b3RhbF9hdmFpbGFibGUgb3IgcGFzc2VkX2NvdW50fSB0ZXN0IGNhc2VzLiAiCiAgICAgICAgICAgICJBbGwgdGVzdHMgcGFzc2VkLiIKICAgICAgICApCiAgICAgICAgcmV0dXJuICJcbiIuam9pbihsaW5lcykKCiAgICBmYWlsZWRfaW5kZXgsIGZhaWxlZF9jYXNlID0gZmFpbGVkX2Nhc2VzWzBdCiAgICBmYWlsdXJlX3N0YXR1cyA9IGZhaWxlZF9jYXNlLnN0YXR1cy52YWx1ZSBpZiBoYXNhdHRyKGZhaWxlZF9jYXNlLnN0YXR1cywgInZhbHVlIikgZWxzZSBmYWlsZWRfY2FzZS5zdGF0dXMKICAgIGxpbmVzLmFwcGVuZCgKICAgICAgICBmIllvdXIgbW9zdCByZWNlbnQgc3VibWlzc2lvbiBwYXNzZWQge3Bhc3NlZF9jb3VudH0ve3RvdGFsX2F2YWlsYWJsZSBvciBsZW4oc3VibWlzc2lvbi50ZXN0X3Jlc3VsdHMpfSB0ZXN0IGNhc2VzLiAiCiAgICAgICAgZiJUZXN0IGNhc2Uge2ZhaWxlZF9pbmRleH0gZmFpbGVkIHdpdGggc3RhdHVzIHtmYWlsdXJlX3N0YXR1c30uIgogICAgKQoKICAgIGlmIGZhaWxlZF9jYXNlLnRlc3RfY2FzZV9pZDoKICAgICAgICBsaW5lcy5hcHBlbmQoZiJGYWlsZWQgdGVzdCBjYXNlIElEOiB7ZmFpbGVkX2Nhc2UudGVzdF9jYXNlX2lkfS4iKQogICAgaWYgZmFpbGVkX2Nhc2UuZXJyb3JfbWVzc2FnZToKICAgICAgICBsaW5lcy5hcHBlbmQoZiJFcnJvciBtZXNzYWdlOiB7ZmFpbGVkX2Nhc2UuZXJyb3JfbWVzc2FnZS5zdHJpcCgpWzo1MDBdfSIpCiAgICBpZiBmYWlsZWRfY2FzZS5vdXRwdXQgYW5kIGlzaW5zdGFuY2UoZmFpbGVkX2Nhc2Uub3V0cHV0LCBzdHIpIGFuZCBmYWlsZWRfY2FzZS5vdXRwdXQuc3RyaXAoKToKICAgICAgICBsaW5lcy5hcHBlbmQoZiJQcm9ncmFtIG91dHB1dDpcbntmYWlsZWRfY2FzZS5vdXRwdXQuc3RyaXAoKVs6NTAwXX0iKQoKICAgIGxpbmVzLmFwcGVuZCgiUGxlYXNlIHJldmlzZSB0aGUgc29sdXRpb24gYW5kIHN1Ym1pdCB0aGUgY29tcGxldGUgY29kZSBhZ2Fpbi4iKQogICAgcmV0dXJuICJcbiIuam9pbihsaW5lcykKCgpkZWYgc3VtbWFyaXNlX2F0dGVtcHQoc3VibWlzc2lvbjogU3VibWlzc2lvbiwgdG90YWxfY2FzZXM6IE9wdGlvbmFsW2ludF0pIC0+IERpY3Rbc3RyLCBpbnRdOgogICAgcGFzc2VkID0gc3VtKDEgZm9yIHRyIGluIHN1Ym1pc3Npb24udGVzdF9yZXN1bHRzIGlmIHRyLnN0YXR1cyA9PSBTdWJtaXNzaW9uU3RhdHVzLkFDQ0VQVEVEKQogICAgaWYgdG90YWxfY2FzZXMgaXMgTm9uZToKICAgICAgICB0b3RhbF9jYXNlcyA9IG1heChwYXNzZWQsIGxlbihzdWJtaXNzaW9uLnRlc3RfcmVzdWx0cykpCiAgICByZXR1cm4geyJwYXNzZWQiOiBwYXNzZWQsICJ0b3RhbCI6IHRvdGFsX2Nhc2VzfQoKCmRlZiBtYWluKCkgLT4gaW50OgogICAgYXJncyA9IHBhcnNlX2FyZ3MoKQogICAgcmF3X3Byb2JsZW1fdmFsdWVzID0gW10KICAgIGZvciBpdGVtIGluIGFyZ3MucHJvYmxlbV9pZHM6CiAgICAgICAgcmF3X3Byb2JsZW1fdmFsdWVzLmV4dGVuZChbcC5zdHJpcCgpIGZvciBwIGluIGl0ZW0uc3BsaXQoIiwiKSBpZiBwLnN0cmlwKCldKQogICAgcHJvYmxlbV9pZHMgPSByYXdfcHJvYmxlbV92YWx1ZXMKICAgIGlmIG5vdCBwcm9ibGVtX2lkczoKICAgICAgICByYWlzZSBWYWx1ZUVycm9yKCJBdCBsZWFzdCBvbmUgcHJvYmxlbS1pZCBpcyByZXF1aXJlZCIpCgogICAgbG9nX3Jvb3QgPSBQYXRoKGFyZ3MubG9nX2RpcikgaWYgYXJncy5sb2dfZGlyIGVsc2UgZGVmYXVsdF9sb2dfZGlyKHByb2JsZW1faWRzLCBhcmdzLmFnZW50X2NvbmZpZykKICAgIGxvZ19yb290Lm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKICAgIHNldHVwX2xvZ2dpbmcobGV2ZWw9IklORk8iLCBsb2dfZmlsZT1zdHIobG9nX3Jvb3QgLyAicnVubmVyLmxvZyIpKQoKICAgIGJ1aWxkZXIgPSBTb2xvUHJvbXB0QnVpbGRlcihhcmdzLnByb21wdF9maWxlLCBkYXRhc2V0X3Jvb3Q9YXJncy5kYXRhc2V0X3Jvb3QpCiAgICBjb25maWcgPSBMTE1Db25maWcuZnJvbV9maWxlKGFyZ3MuYWdlbnRfY29uZmlnLCBjb21wZXRpdG9yX25hbWU9YXJncy5jb21wZXRpdG9yX25hbWUpCiAgICBjbGllbnQgPSBMTE1DbGllbnQoY29uZmlnLCB0aW1lb3V0PWFyZ3MudGltZW91dCkKICAgIGp1ZGdlID0gTm9uZSBpZiBhcmdzLmRyeV9ydW4gZWxzZSBKdWRnZShval9lbmRwb2ludD1hcmdzLm9qX2VuZHBvaW50KQoKICAgIGxvZ2dlci5pbmZvKAogICAgICAgICJTdGFydGluZyBzaW5nbGUtcHJvYmxlbSBydW46IHByb2JsZW1zPSVzLCBhZ2VudD0lcywgdG9rZW4tbGltaXQ9JXMiLAogICAgICAgIHByb2JsZW1faWRzLAogICAgICAgIGNvbmZpZy5uYW1lLAogICAgICAgIGFyZ3MudG9rZW5fbGltaXQsCiAgICApCgogICAgdG90YWxfdG9rZW5zX2NvbnN1bWVkID0gMAogICAgdG90YWxfcHJvbXB0X3Rva2Vuc19jb25zdW1lZCA9IDAKICAgIHRvdGFsX2NvbXBsZXRpb25fdG9rZW5zX2NvbnN1bWVkID0gMAogICAgc29sdmVkX3Byb2JsZW1zID0gMAogICAgdG9rZW5fbGltaXRfcmVhY2hlZCA9IEZhbHNlCgogICAgZm9yIGluZGV4LCBwcm9ibGVtX2lkIGluIGVudW1lcmF0ZShwcm9ibGVtX2lkcywgc3RhcnQ9MSk6CiAgICAgICAgc2FmZV9wcm9ibGVtID0gcmUuc3ViKHIiW15BLVphLXowLTlfLV0iLCAiXyIsIHByb2JsZW1faWQpCiAgICAgICAgcHJvYmxlbV9sb2dfZGlyID0gKAogICAgICAgICAgICBsb2dfcm9vdAogICAgICAgICAgICBpZiBsZW4ocHJvYmxlbV9pZHMpID09IDEgYW5kIGFyZ3MubG9nX2RpcgogICAgICAgICAgICBlbHNlIGxvZ19yb290IC8gc2FmZV9wcm9ibGVtCiAgICAgICAgKQogICAgICAgIHByb2JsZW1fbG9nX2Rpci5ta2RpcihwYXJlbnRzPVRydWUsIGV4aXN0X29rPVRydWUpCgogICAgICAgIGJ1bmRsZSA9IGJ1aWxkZXIuYnVpbGQocHJvYmxlbV9pZCwgcHJlZmVycmVkX2xhbmd1YWdlPWFyZ3MubGFuZ3VhZ2UpCiAgICAgICAgdG90YWxfY2FzZXMgPSBsZW4oYnVpbGRlci5sb2FkX3Rlc3RfY2FzZXMocHJvYmxlbV9pZCkpIG9yIE5vbmUKCiAgICAgICAgcnVuX2xvZ2dlciA9IFNvbG9SdW5Mb2dnZXIocHJvYmxlbV9sb2dfZGlyKQogICAgICAgIHJ1bl9sb2dnZXIuc3RhcnRfcnVuKAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAicHJvYmxlbV9pZCI6IHByb2JsZW1faWQsCiAgICAgICAgICAgICAgICAiYWdlbnRfbmFtZSI6IGNvbmZpZy5uYW1lLAogICAgICAgICAgICAgICAgImxhbmd1YWdlIjogYXJncy5sYW5ndWFnZSwKICAgICAgICAgICAgICAgICJval9lbmRwb2ludCI6IGFyZ3Mub2pfZW5kcG9pbnQsCiAgICAgICAgICAgICAgICAibWF4X3JldHJpZXMiOiBhcmdzLm1heF9yZXRyaWVzLAogICAgICAgICAgICAgICAgImRyeV9ydW4iOiBhcmdzLmRyeV9ydW4sCiAgICAgICAgICAgICAgICAidG9rZW5fbGltaXQiOiBhcmdzLnRva2VuX2xpbWl0LAogICAgICAgICAgICAgICAgInByb2JsZW1faW5kZXgiOiBpbmRleCwKICAgICAgICAgICAgICAgICJ0b3RhbF9wcm9ibGVtcyI6IGxlbihwcm9ibGVtX2lkcyksCiAgICAgICAgICAgIH0KICAgICAgICApCgogICAgICAgIG1lc3NhZ2VzOiBMaXN0W0RpY3Rbc3RyLCBzdHJdXSA9IFsKICAgICAgICAgICAgeyJyb2xlIjogInN5c3RlbSIsICJjb250ZW50IjogYnVuZGxlLnN5c3RlbV9wcm9tcHR9LAogICAgICAgICAgICB7InJvbGUiOiAidXNlciIsICJjb250ZW50IjogYnVuZGxlLnVzZXJfcHJvbXB0fSwKICAgICAgICBdCgogICAgICAgIHByb2JsZW1fdG9rZW5zID0gMAogICAgICAgIHByb2JsZW1fcHJvbXB0X3Rva2VucyA9IDAKICAgICAgICBwcm9ibGVtX2NvbXBsZXRpb25fdG9rZW5zID0gMAogICAgICAgIHByb2JsZW1fc29sdmVkID0gRmFsc2UKCiAgICAgICAgYXR0ZW1wdCA9IDAKICAgICAgICB3aGlsZSBUcnVlOgogICAgICAgICAgICBhdHRlbXB0ICs9IDEKICAgICAgICAgICAgbG9nZ2VyLmluZm8oIlslc10gQXR0ZW1wdCAlZCIsIHByb2JsZW1faWQsIGF0dGVtcHQpCiAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgIHJlc3BvbnNlX3RleHQsIHVzYWdlID0gX2NhbGxfbGxtX3dpdGhfcmV0cnkoCiAgICAgICAgICAgICAgICAgICAgY2xpZW50LCBtZXNzYWdlcywgYXJncy5tYXhfcmV0cmllcwogICAgICAgICAgICAgICAgKQogICAgICAgICAgICBleGNlcHQgUnVudGltZUVycm9yIGFzIGV4YzoKICAgICAgICAgICAgICAgIGxvZ2dlci5lcnJvcigiTExNIHJldHJpZXMgZXhoYXVzdGVkOiAlcyIsIGV4YykKICAgICAgICAgICAgICAgIGVudHJ5ID0gQXR0ZW1wdExvZ0VudHJ5KAogICAgICAgICAgICAgICAgICAgIGF0dGVtcHQ9YXR0ZW1wdCwKICAgICAgICAgICAgICAgICAgICBsYW5ndWFnZT1hcmdzLmxhbmd1YWdlLAogICAgICAgICAgICAgICAgICAgIGNvZGU9IiIsCiAgICAgICAgICAgICAgICAgICAgcHJvbXB0X3Rva2Vucz1Ob25lLAogICAgICAgICAgICAgICAgICAgIGNvbXBsZXRpb25fdG9rZW5zPU5vbmUsCiAgICAgICAgICAgICAgICAgICAgdG90YWxfdG9rZW5zPU5vbmUsCiAgICAgICAgICAgICAgICAgICAganVkZ2Vfc3RhdHVzPSJMTE1fUkVUUllfRVhIQVVTVEVEIiwKICAgICAgICAgICAgICAgICAgICBwYXNzZWRfY2FzZXM9Tm9uZSwKICAgICAgICAgICAgICAgICAgICB0b3RhbF9jYXNlcz10b3RhbF9jYXNlcywKICAgICAgICAgICAgICAgICAgICBlcnJvcl9tZXNzYWdlPXN0cihleGMpLAogICAgICAgICAgICAgICAgICAgIHByb21wdF90b2tlbnNfY3VtdWxhdGl2ZV9wcm9ibGVtPXByb2JsZW1fcHJvbXB0X3Rva2VucywKICAgICAgICAgICAgICAgICAgICBjb21wbGV0aW9uX3Rva2Vuc19jdW11bGF0aXZlX3Byb2JsZW09cHJvYmxlbV9jb21wbGV0aW9uX3Rva2VucywKICAgICAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnNfY3VtdWxhdGl2ZV9wcm9ibGVtPXByb2JsZW1fdG9rZW5zLAogICAgICAgICAgICAgICAgICAgIHByb21wdF90b2tlbnNfY3VtdWxhdGl2ZV9ydW49dG90YWxfcHJvbXB0X3Rva2Vuc19jb25zdW1lZCwKICAgICAgICAgICAgICAgICAgICBjb21wbGV0aW9uX3Rva2Vuc19jdW11bGF0aXZlX3J1bj10b3RhbF9jb21wbGV0aW9uX3Rva2Vuc19jb25zdW1lZCwKICAgICAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnNfY3VtdWxhdGl2ZV9ydW49dG90YWxfdG9rZW5zX2NvbnN1bWVkLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgcnVuX2xvZ2dlci5sb2dfYXR0ZW1wdChlbnRyeSwgbWVzc2FnZXM9W2RpY3QobSkgZm9yIG0gaW4gbWVzc2FnZXNdKQogICAgICAgICAgICAgICAgdG9rZW5fbGltaXRfcmVhY2hlZCA9IGJvb2woCiAgICAgICAgICAgICAgICAgICAgYXJncy50b2tlbl9saW1pdCBhbmQgdG90YWxfdG9rZW5zX2NvbnN1bWVkID49IGFyZ3MudG9rZW5fbGltaXQKICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgIGJyZWFrCgogICAgICAgICAgICBjb2RlID0gZXh0cmFjdF9jb2RlKHJlc3BvbnNlX3RleHQsIGFyZ3MubGFuZ3VhZ2UpCiAgICAgICAgICAgIHByb21wdF90b2tlbnMgPSAodXNhZ2UucHJvbXB0X3Rva2VucyBvciAwKSBpZiB1c2FnZSBlbHNlIDAKICAgICAgICAgICAgY29tcGxldGlvbl90b2tlbnMgPSAodXNhZ2UuY29tcGxldGlvbl90b2tlbnMgb3IgMCkgaWYgdXNhZ2UgZWxzZSAwCiAgICAgICAgICAgIGF0dGVtcHRfdG9rZW5zID0gX3VzYWdlX3RvdGFsX3Rva2Vucyh1c2FnZSkKICAgICAgICAgICAgdG90YWxfcHJvbXB0X3Rva2Vuc19jb25zdW1lZCArPSBwcm9tcHRfdG9rZW5zCiAgICAgICAgICAgIHRvdGFsX2NvbXBsZXRpb25fdG9rZW5zX2NvbnN1bWVkICs9IGNvbXBsZXRpb25fdG9rZW5zCiAgICAgICAgICAgIHRvdGFsX3Rva2Vuc19jb25zdW1lZCArPSBhdHRlbXB0X3Rva2VucwogICAgICAgICAgICBwcm9ibGVtX3Byb21wdF90b2tlbnMgKz0gcHJvbXB0X3Rva2VucwogICAgICAgICAgICBwcm9ibGVtX2NvbXBsZXRpb25fdG9rZW5zICs9IGNvbXBsZXRpb25fdG9rZW5zCiAgICAgICAgICAgIHByb2JsZW1fdG9rZW5zICs9IGF0dGVtcHRfdG9rZW5zCgogICAgICAgICAgICBpZiBub3QgY29kZToKICAgICAgICAgICAgICAgIGxvZ2dlci53YXJuaW5nKCJbJXNdIE5vIGNvZGUgZXh0cmFjdGVkIGZyb20gbW9kZWwgcmVzcG9uc2UgKGF0dGVtcHQgJWQpIiwgcHJvYmxlbV9pZCwgYXR0ZW1wdCkKICAgICAgICAgICAgICAgIG1lc3NhZ2VzLmFwcGVuZCh7InJvbGUiOiAiYXNzaXN0YW50IiwgImNvbnRlbnQiOiByZXNwb25zZV90ZXh0fSkKICAgICAgICAgICAgICAgIGVudHJ5ID0gQXR0ZW1wdExvZ0VudHJ5KAogICAgICAgICAgICAgICAgICAgIGF0dGVtcHQ9YXR0ZW1wdCwKICAgICAgICAgICAgICAgICAgICBsYW5ndWFnZT1hcmdzLmxhbmd1YWdlLAogICAgICAgICAgICAgICAgICAgIGNvZGU9cmVzcG9uc2VfdGV4dCwKICAgICAgICAgICAgICAgICAgICBwcm9tcHRfdG9rZW5zPXVzYWdlLnByb21wdF90b2tlbnMgaWYgdXNhZ2UgZWxzZSBOb25lLAogICAgICAgICAgICAgICAgICAgIGNvbXBsZXRpb25fdG9rZW5zPXVzYWdlLmNvbXBsZXRpb25fdG9rZW5zIGlmIHVzYWdlIGVsc2UgTm9uZSwKICAgICAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnM9dXNhZ2UudG90YWxfdG9rZW5zIGlmIHVzYWdlIGVsc2UgTm9uZSwKICAgICAgICAgICAgICAgICAgICBqdWRnZV9zdGF0dXM9Ik5PX0NPREUiLAogICAgICAgICAgICAgICAgICAgIHBhc3NlZF9jYXNlcz1Ob25lLAogICAgICAgICAgICAgICAgICAgIHRvdGFsX2Nhc2VzPXRvdGFsX2Nhc2VzLAogICAgICAgICAgICAgICAgICAgIGVycm9yX21lc3NhZ2U9Ik5vIGNvZGUgYmxvY2sgZGV0ZWN0ZWQgaW4gbW9kZWwgcmVzcG9uc2UiLAogICAgICAgICAgICAgICAgICAgIHByb21wdF90b2tlbnNfY3VtdWxhdGl2ZV9wcm9ibGVtPXByb2JsZW1fcHJvbXB0X3Rva2VucywKICAgICAgICAgICAgICAgICAgICBjb21wbGV0aW9uX3Rva2Vuc19jdW11bGF0aXZlX3Byb2JsZW09cHJvYmxlbV9jb21wbGV0aW9uX3Rva2VucywKICAgICAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnNfY3VtdWxhdGl2ZV9wcm9ibGVtPXByb2JsZW1fdG9rZW5zLAogICAgICAgICAgICAgICAgICAgIHByb21wdF90b2tlbnNfY3VtdWxhdGl2ZV9ydW49dG90YWxfcHJvbXB0X3Rva2Vuc19jb25zdW1lZCwKICAgICAgICAgICAgICAgICAgICBjb21wbGV0aW9uX3Rva2Vuc19jdW11bGF0aXZlX3J1bj10b3RhbF9jb21wbGV0aW9uX3Rva2Vuc19jb25zdW1lZCwKICAgICAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnNfY3VtdWxhdGl2ZV9ydW49dG90YWxfdG9rZW5zX2NvbnN1bWVkLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgcnVuX2xvZ2dlci5sb2dfYXR0ZW1wdChlbnRyeSwgbWVzc2FnZXM9W2RpY3QobSkgZm9yIG0gaW4gbWVzc2FnZXNdKQogICAgICAgICAgICAgICAgaWYgYXJncy50b2tlbl9saW1pdCBhbmQgdG90YWxfdG9rZW5zX2NvbnN1bWVkID49IGFyZ3MudG9rZW5fbGltaXQ6CiAgICAgICAgICAgICAgICAgICAgdG9rZW5fbGltaXRfcmVhY2hlZCA9IFRydWUKICAgICAgICAgICAgICAgICAgICBicmVhawogICAgICAgICAgICAgICAgbWVzc2FnZXMuYXBwZW5kKAogICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgInJvbGUiOiAidXNlciIsCiAgICAgICAgICAgICAgICAgICAgICAgICJjb250ZW50IjogIkNvZGUgd2FzIG5vdCBkZXRlY3RlZC4gUGxlYXNlIG91dHB1dCB0aGUgZnVsbCBzb2x1dGlvbiBpbnNpZGUgYSBjb2RlIGJsb2NrLiIsCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgY29udGludWUKCiAgICAgICAgICAgIGlmIGFyZ3MuZHJ5X3J1bjoKICAgICAgICAgICAgICAgIG1lc3NhZ2VzLmFwcGVuZCh7InJvbGUiOiAiYXNzaXN0YW50IiwgImNvbnRlbnQiOiByZXNwb25zZV90ZXh0fSkKICAgICAgICAgICAgICAgIGVudHJ5ID0gQXR0ZW1wdExvZ0VudHJ5KAogICAgICAgICAgICAgICAgICAgIGF0dGVtcHQ9YXR0ZW1wdCwKICAgICAgICAgICAgICAgICAgICBsYW5ndWFnZT1hcmdzLmxhbmd1YWdlLAogICAgICAgICAgICAgICAgICAgIGNvZGU9Y29kZSwKICAgICAgICAgICAgICAgICAgICBwcm9tcHRfdG9rZW5zPXVzYWdlLnByb21wdF90b2tlbnMgaWYgdXNhZ2UgZWxzZSBOb25lLAogICAgICAgICAgICAgICAgICAgIGNvbXBsZXRpb25fdG9rZW5zPXVzYWdlLmNvbXBsZXRpb25fdG9rZW5zIGlmIHVzYWdlIGVsc2UgTm9uZSwKICAgICAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnM9dXNhZ2UudG90YWxfdG9rZW5zIGlmIHVzYWdlIGVsc2UgTm9uZSwKICAgICAgICAgICAgICAgICAgICBqdWRnZV9zdGF0dXM9IkRSWV9SVU4iLAogICAgICAgICAgICAgICAgICAgIHBhc3NlZF9jYXNlcz1Ob25lLAogICAgICAgICAgICAgICAgICAgIHRvdGFsX2Nhc2VzPXRvdGFsX2Nhc2VzLAogICAgICAgICAgICAgICAgICAgIGVycm9yX21lc3NhZ2U9IkRyeS1ydW4gbW9kZSBza2lwcGVkIGp1ZGdpbmciLAogICAgICAgICAgICAgICAgICAgIHByb21wdF90b2tlbnNfY3VtdWxhdGl2ZV9wcm9ibGVtPXByb2JsZW1fcHJvbXB0X3Rva2VucywKICAgICAgICAgICAgICAgICAgICBjb21wbGV0aW9uX3Rva2Vuc19jdW11bGF0aXZlX3Byb2JsZW09cHJvYmxlbV9jb21wbGV0aW9uX3Rva2VucywKICAgICAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnNfY3VtdWxhdGl2ZV9wcm9ibGVtPXByb2JsZW1fdG9rZW5zLAogICAgICAgICAgICAgICAgICAgIHByb21wdF90b2tlbnNfY3VtdWxhdGl2ZV9ydW49dG90YWxfcHJvbXB0X3Rva2Vuc19jb25zdW1lZCwKICAgICAgICAgICAgICAgICAgICBjb21wbGV0aW9uX3Rva2Vuc19jdW11bGF0aXZlX3J1bj10b3RhbF9jb21wbGV0aW9uX3Rva2Vuc19jb25zdW1lZCwKICAgICAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnNfY3VtdWxhdGl2ZV9ydW49dG90YWxfdG9rZW5zX2NvbnN1bWVkLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgcnVuX2xvZ2dlci5sb2dfYXR0ZW1wdChlbnRyeSwgbWVzc2FnZXM9W2RpY3QobSkgZm9yIG0gaW4gbWVzc2FnZXNdKQogICAgICAgICAgICAgICAgbG9nZ2VyLmluZm8oIlslc10gRHJ5LXJ1biBtb2RlOiBjb2RlIGdlbmVyYXRlZC4iLCBwcm9ibGVtX2lkKQogICAgICAgICAgICAgICAgcHJvYmxlbV9zb2x2ZWQgPSBUcnVlCiAgICAgICAgICAgICAgICBicmVhawoKICAgICAgICAgICAgc3VibWlzc2lvbiA9IFN1Ym1pc3Npb24oCiAgICAgICAgICAgICAgICBpZD1nZW5lcmF0ZV9pZCgpLAogICAgICAgICAgICAgICAgY29tcGV0aXRpb25faWQ9InNvbG8iLAogICAgICAgICAgICAgICAgcGFydGljaXBhbnRfaWQ9Y29uZmlnLm5hbWUsCiAgICAgICAgICAgICAgICBwcm9ibGVtX2lkPWJ1bmRsZS5wcm9ibGVtLmlkLAogICAgICAgICAgICAgICAgY29kZT1jb2RlLAogICAgICAgICAgICAgICAgbGFuZ3VhZ2U9YXJncy5sYW5ndWFnZSwKICAgICAgICAgICAgICAgIHN1Ym1pdHRlZF9hdD1kYXRldGltZS5ub3coKSwKICAgICAgICAgICAgKQoKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgc3VibWlzc2lvbiA9IGp1ZGdlLmV2YWx1YXRlX3N1Ym1pc3Npb24oc3VibWlzc2lvbiwgYnVuZGxlLnByb2JsZW0pCiAgICAgICAgICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZXhjOgogICAgICAgICAgICAgICAgbG9nZ2VyLmVycm9yKCJKdWRnZSBzZXJ2aWNlIGNhbGwgZmFpbGVkOiAlcyIsIGV4YykKICAgICAgICAgICAgICAgIG1lc3NhZ2VzLmFwcGVuZCh7InJvbGUiOiAiYXNzaXN0YW50IiwgImNvbnRlbnQiOiByZXNwb25zZV90ZXh0fSkKICAgICAgICAgICAgICAgIGVudHJ5ID0gQXR0ZW1wdExvZ0VudHJ5KAogICAgICAgICAgICAgICAgICAgIGF0dGVtcHQ9YXR0ZW1wdCwKICAgICAgICAgICAgICAgICAgICBsYW5ndWFnZT1hcmdzLmxhbmd1YWdlLAogICAgICAgICAgICAgICAgICAgIGNvZGU9Y29kZSwKICAgICAgICAgICAgICAgICAgICBwcm9tcHRfdG9rZW5zPXVzYWdlLnByb21wdF90b2tlbnMgaWYgdXNhZ2UgZWxzZSBOb25lLAogICAgICAgICAgICAgICAgICAgIGNvbXBsZXRpb25fdG9rZW5zPXVzYWdlLmNvbXBsZXRpb25fdG9rZW5zIGlmIHVzYWdlIGVsc2UgTm9uZSwKICAgICAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnM9dXNhZ2UudG90YWxfdG9rZW5zIGlmIHVzYWdlIGVsc2UgTm9uZSwKICAgICAgICAgICAgICAgICAgICBqdWRnZV9zdGF0dXM9IkpVREdFX0VSUk9SIiwKICAgICAgICAgICAgICAgICAgICBwYXNzZWRfY2FzZXM9Tm9uZSwKICAgICAgICAgICAgICAgICAgICB0b3RhbF9jYXNlcz10b3RhbF9jYXNlcywKICAgICAgICAgICAgICAgICAgICBlcnJvcl9tZXNzYWdlPXN0cihleGMpLAogICAgICAgICAgICAgICAgICAgIHByb21wdF90b2tlbnNfY3VtdWxhdGl2ZV9wcm9ibGVtPXByb2JsZW1fcHJvbXB0X3Rva2VucywKICAgICAgICAgICAgICAgICAgICBjb21wbGV0aW9uX3Rva2Vuc19jdW11bGF0aXZlX3Byb2JsZW09cHJvYmxlbV9jb21wbGV0aW9uX3Rva2VucywKICAgICAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnNfY3VtdWxhdGl2ZV9wcm9ibGVtPXByb2JsZW1fdG9rZW5zLAogICAgICAgICAgICAgICAgICAgIHByb21wdF90b2tlbnNfY3VtdWxhdGl2ZV9ydW49dG90YWxfcHJvbXB0X3Rva2Vuc19jb25zdW1lZCwKICAgICAgICAgICAgICAgICAgICBjb21wbGV0aW9uX3Rva2Vuc19jdW11bGF0aXZlX3J1bj10b3RhbF9jb21wbGV0aW9uX3Rva2Vuc19jb25zdW1lZCwKICAgICAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnNfY3VtdWxhdGl2ZV9ydW49dG90YWxfdG9rZW5zX2NvbnN1bWVkLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgcnVuX2xvZ2dlci5sb2dfYXR0ZW1wdChlbnRyeSwgbWVzc2FnZXM9W2RpY3QobSkgZm9yIG0gaW4gbWVzc2FnZXNdKQogICAgICAgICAgICAgICAgaWYgYXJncy50b2tlbl9saW1pdCBhbmQgdG90YWxfdG9rZW5zX2NvbnN1bWVkID49IGFyZ3MudG9rZW5fbGltaXQ6CiAgICAgICAgICAgICAgICAgICAgdG9rZW5fbGltaXRfcmVhY2hlZCA9IFRydWUKICAgICAgICAgICAgICAgICAgICBicmVhawogICAgICAgICAgICAgICAgbWVzc2FnZXMuYXBwZW5kKAogICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAgICAgInJvbGUiOiAidXNlciIsCiAgICAgICAgICAgICAgICAgICAgICAgICJjb250ZW50IjogZiJKdWRnaW5nIGZhaWxlZDoge2V4Y30uIFBsZWFzZSBvdXRwdXQgdGhlIGNvZGUgYWdhaW4uIiwKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICBjb250aW51ZQoKICAgICAgICAgICAgc3VtbWFyeSA9IHN1bW1hcmlzZV9hdHRlbXB0KHN1Ym1pc3Npb24sIHRvdGFsX2Nhc2VzKQogICAgICAgICAgICBzdGF0dXNfdmFsdWUgPSBzdWJtaXNzaW9uLnN0YXR1cy52YWx1ZSBpZiBoYXNhdHRyKHN1Ym1pc3Npb24uc3RhdHVzLCAidmFsdWUiKSBlbHNlIHN1Ym1pc3Npb24uc3RhdHVzCiAgICAgICAgICAgIGxvZ2dlci5pbmZvKAogICAgICAgICAgICAgICAgIlslc10gSnVkZ2UgcmVzdWx0OiAlcywgc2FtcGxlcyAlcy8lcyIsCiAgICAgICAgICAgICAgICBwcm9ibGVtX2lkLAogICAgICAgICAgICAgICAgc3RhdHVzX3ZhbHVlLAogICAgICAgICAgICAgICAgc3VtbWFyeVsicGFzc2VkIl0sCiAgICAgICAgICAgICAgICBzdW1tYXJ5WyJ0b3RhbCJdLAogICAgICAgICAgICApCgogICAgICAgICAgICBtZXNzYWdlcy5hcHBlbmQoeyJyb2xlIjogImFzc2lzdGFudCIsICJjb250ZW50IjogcmVzcG9uc2VfdGV4dH0pCiAgICAgICAgICAgIGVudHJ5ID0gQXR0ZW1wdExvZ0VudHJ5KAogICAgICAgICAgICAgICAgYXR0ZW1wdD1hdHRlbXB0LAogICAgICAgICAgICAgICAgbGFuZ3VhZ2U9YXJncy5sYW5ndWFnZSwKICAgICAgICAgICAgICAgIGNvZGU9Y29kZSwKICAgICAgICAgICAgICAgIHByb21wdF90b2tlbnM9dXNhZ2UucHJvbXB0X3Rva2VucyBpZiB1c2FnZSBlbHNlIE5vbmUsCiAgICAgICAgICAgICAgICBjb21wbGV0aW9uX3Rva2Vucz11c2FnZS5jb21wbGV0aW9uX3Rva2VucyBpZiB1c2FnZSBlbHNlIE5vbmUsCiAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnM9dXNhZ2UudG90YWxfdG9rZW5zIGlmIHVzYWdlIGVsc2UgTm9uZSwKICAgICAgICAgICAgICAgIGp1ZGdlX3N0YXR1cz1zdGF0dXNfdmFsdWUsCiAgICAgICAgICAgICAgICBwYXNzZWRfY2FzZXM9c3VtbWFyeVsicGFzc2VkIl0sCiAgICAgICAgICAgICAgICB0b3RhbF9jYXNlcz1zdW1tYXJ5WyJ0b3RhbCJdLAogICAgICAgICAgICAgICAgZXJyb3JfbWVzc2FnZT1Ob25lLAogICAgICAgICAgICAgICAgcHJvbXB0X3Rva2Vuc19jdW11bGF0aXZlX3Byb2JsZW09cHJvYmxlbV9wcm9tcHRfdG9rZW5zLAogICAgICAgICAgICAgICAgY29tcGxldGlvbl90b2tlbnNfY3VtdWxhdGl2ZV9wcm9ibGVtPXByb2JsZW1fY29tcGxldGlvbl90b2tlbnMsCiAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnNfY3VtdWxhdGl2ZV9wcm9ibGVtPXByb2JsZW1fdG9rZW5zLAogICAgICAgICAgICAgICAgcHJvbXB0X3Rva2Vuc19jdW11bGF0aXZlX3J1bj10b3RhbF9wcm9tcHRfdG9rZW5zX2NvbnN1bWVkLAogICAgICAgICAgICAgICAgY29tcGxldGlvbl90b2tlbnNfY3VtdWxhdGl2ZV9ydW49dG90YWxfY29tcGxldGlvbl90b2tlbnNfY29uc3VtZWQsCiAgICAgICAgICAgICAgICB0b3RhbF90b2tlbnNfY3VtdWxhdGl2ZV9ydW49dG90YWxfdG9rZW5zX2NvbnN1bWVkLAogICAgICAgICAgICApCiAgICAgICAgICAgIHJ1bl9sb2dnZXIubG9nX2F0dGVtcHQoZW50cnksIG1lc3NhZ2VzPVtkaWN0KG0pIGZvciBtIGluIG1lc3NhZ2VzXSkKCiAgICAgICAgICAgIGlmIHN1Ym1pc3Npb24uc3RhdHVzID09IFN1Ym1pc3Npb25TdGF0dXMuQUNDRVBURUQ6CiAgICAgICAgICAgICAgICBsb2dnZXIuaW5mbygiWyVzXSBBbGwgdGVzdHMgcGFzc2VkLiIsIHByb2JsZW1faWQpCiAgICAgICAgICAgICAgICBwcm9ibGVtX3NvbHZlZCA9IFRydWUKICAgICAgICAgICAgICAgIGJyZWFrCgogICAgICAgICAgICBmZWVkYmFjayA9IGJ1aWxkX2ZlZWRiYWNrKHN1Ym1pc3Npb24sIHRvdGFsX2Nhc2VzKQogICAgICAgICAgICBtZXNzYWdlcy5hcHBlbmQoeyJyb2xlIjogInVzZXIiLCAiY29udGVudCI6IGZlZWRiYWNrfSkKCiAgICAgICAgICAgIGlmIGFyZ3MudG9rZW5fbGltaXQgYW5kIHRvdGFsX3Rva2Vuc19jb25zdW1lZCA+PSBhcmdzLnRva2VuX2xpbWl0OgogICAgICAgICAgICAgICAgdG9rZW5fbGltaXRfcmVhY2hlZCA9IFRydWUKICAgICAgICAgICAgICAgIGJyZWFrCiAgICAgICAgICAgICMgQ29udGludWUgdG8gdGhlIG5leHQgYXR0ZW1wdAoKICAgICAgICBpZiB0b2tlbl9saW1pdF9yZWFjaGVkOgogICAgICAgICAgICBydW5fbG9nZ2VyLmZpbmFsaXplKAogICAgICAgICAgICAgICAgInRva2VuX2xpbWl0IiwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAiYXR0ZW1wdHMiOiBhdHRlbXB0LAogICAgICAgICAgICAgICAgICAgICJwcm9ibGVtX3Rva2VucyI6IHByb2JsZW1fdG9rZW5zLAogICAgICAgICAgICAgICAgICAgICJwcm9ibGVtX3Byb21wdF90b2tlbnMiOiBwcm9ibGVtX3Byb21wdF90b2tlbnMsCiAgICAgICAgICAgICAgICAgICAgInByb2JsZW1fY29tcGxldGlvbl90b2tlbnMiOiBwcm9ibGVtX2NvbXBsZXRpb25fdG9rZW5zLAogICAgICAgICAgICAgICAgICAgICJ0b3RhbF90b2tlbnMiOiB0b3RhbF90b2tlbnNfY29uc3VtZWQsCiAgICAgICAgICAgICAgICAgICAgInRvdGFsX3Byb21wdF90b2tlbnMiOiB0b3RhbF9wcm9tcHRfdG9rZW5zX2NvbnN1bWVkLAogICAgICAgICAgICAgICAgICAgICJ0b3RhbF9jb21wbGV0aW9uX3Rva2VucyI6IHRvdGFsX2NvbXBsZXRpb25fdG9rZW5zX2NvbnN1bWVkLAogICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgKQogICAgICAgICAgICBicmVhawoKICAgICAgICBydW5fbG9nZ2VyLmZpbmFsaXplKAogICAgICAgICAgICAic3VjY2VzcyIgaWYgcHJvYmxlbV9zb2x2ZWQgZWxzZSAiZmFpbGVkIiwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgImF0dGVtcHRzIjogYXR0ZW1wdCwKICAgICAgICAgICAgICAgICJwcm9ibGVtX3Rva2VucyI6IHByb2JsZW1fdG9rZW5zLAogICAgICAgICAgICAgICAgInByb2JsZW1fcHJvbXB0X3Rva2VucyI6IHByb2JsZW1fcHJvbXB0X3Rva2VucywKICAgICAgICAgICAgICAgICJwcm9ibGVtX2NvbXBsZXRpb25fdG9rZW5zIjogcHJvYmxlbV9jb21wbGV0aW9uX3Rva2VucywKICAgICAgICAgICAgICAgICJ0b3RhbF90b2tlbnMiOiB0b3RhbF90b2tlbnNfY29uc3VtZWQsCiAgICAgICAgICAgICAgICAidG90YWxfcHJvbXB0X3Rva2VucyI6IHRvdGFsX3Byb21wdF90b2tlbnNfY29uc3VtZWQsCiAgICAgICAgICAgICAgICAidG90YWxfY29tcGxldGlvbl90b2tlbnMiOiB0b3RhbF9jb21wbGV0aW9uX3Rva2Vuc19jb25zdW1lZCwKICAgICAgICAgICAgfSwKICAgICAgICApCgogICAgICAgIGlmIHByb2JsZW1fc29sdmVkOgogICAgICAgICAgICBzb2x2ZWRfcHJvYmxlbXMgKz0gMQogICAgICAgIGlmIG5vdCBwcm9ibGVtX3NvbHZlZCBhbmQgYXJncy5kcnlfcnVuOgogICAgICAgICAgICAjIFRyZWF0IGRyeSBydW4gYXMgc3VjY2VzcwogICAgICAgICAgICBzb2x2ZWRfcHJvYmxlbXMgKz0gMQoKICAgIGlmIHRva2VuX2xpbWl0X3JlYWNoZWQ6CiAgICAgICAgcmV0dXJuIDEKICAgIHJldHVybiAwIGlmIHNvbHZlZF9wcm9ibGVtcyA9PSBsZW4ocHJvYmxlbV9pZHMpIGVsc2UgMQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICByYWlzZSBTeXN0ZW1FeGl0KG1haW4oKSkK
+#!/usr/bin/env python3
+"""Script that orchestrates an end-to-end run for a single-problem LLM agent."""
+
+from __future__ import annotations
+
+import argparse
+import logging
+import re
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+from usacoarena.engine.judge import Judge
+from usacoarena.models.models import Submission, SubmissionStatus, generate_id
+from usacoarena.solo import (
+    AttemptLogEntry,
+    LLMClient,
+    LLMConfig,
+    LLMUsage,
+    SoloPromptBuilder,
+    SoloRunLogger,
+)
+from usacoarena.utils.logger_config import get_logger, setup_logging
+
+logger = get_logger("solo_runner")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Run a single-problem LLM agent and log judging results"
+    )
+    parser.add_argument(
+        "--problem-id",
+        action="append",
+        dest="problem_ids",
+        required=True,
+        help="USACO problem ID(s); provide multiple entries or comma-separated list",
+    )
+    parser.add_argument("--agent-config", required=True, help="Path to the LLM configuration file")
+    parser.add_argument(
+        "--competitor-name",
+        help="Select a competitor when the config lists multiple entries",
+    )
+    parser.add_argument(
+        "--prompt-file",
+        default="prompts/solo_agent_prompt.txt",
+        help="Path to the prompt template",
+    )
+    parser.add_argument(
+        "--language",
+        default="cpp",
+        help="Submission language (e.g., cpp/python/java)",
+    )
+    parser.add_argument(
+        "--max-retries",
+        type=int,
+        default=3,
+        dest="max_retries",
+        help="Maximum retries after a failed LLM call; 0 means unlimited",
+    )
+    parser.add_argument(
+        "--max-attempts",
+        type=int,
+        dest="max_retries",
+        help=argparse.SUPPRESS,
+    )
+    parser.add_argument(
+        "--token-limit",
+        type=int,
+        default=1000000,
+        help="Cumulative token threshold; stop all problems once exceeded (default 1,000,000)",
+    )
+    parser.add_argument(
+        "--oj-endpoint",
+        default="http://127.0.0.1:8888",
+        help="Hydro base URL; retained under the legacy flag name for compatibility",
+    )
+    parser.add_argument(
+        "--dataset-root",
+        help="Optional dataset root",
+    )
+    parser.add_argument(
+        "--log-dir",
+        help="Optional log output directory",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Generate code only without contacting the judge",
+    )
+    parser.add_argument(
+        "--timeout",
+        type=float,
+        default=300.0,
+        help="LLM request timeout (seconds)",
+    )
+    return parser.parse_args()
+
+
+def default_log_dir(problem_ids: List[str], agent_config: str) -> Path:
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    safe_agent_config = re.sub(r"[^A-Za-z0-9_-]", "_", agent_config)
+    if len(problem_ids) == 1:
+        safe_problem = re.sub(r"[^A-Za-z0-9_-]", "_", problem_ids[0])
+        suffix = f"{safe_agent_config}_{safe_problem}"
+    else:
+        suffix = f"{safe_agent_config}_batch"
+    return Path("logs/solo_runs") / f"{timestamp}_{suffix}"
+
+
+def extract_code(content: str, language: str) -> str:
+    """Extract a code block from the model response."""
+    fence_pattern = re.compile(r"```(?:([\w+#-]+)\n)?(.*?)```", re.DOTALL)
+    matches = fence_pattern.findall(content)
+    if matches:
+        target = None
+        lang_lower = language.lower()
+        for lang, code in matches:
+            lang = (lang or "").strip().lower()
+            if not lang:
+                target = code
+                break
+            if lang in {lang_lower, _language_alias(lang_lower)}:
+                target = code
+                break
+        if target is None:
+            target = matches[0][1]
+        return target.strip()
+    return content.strip()
+
+
+def _language_alias(language: str) -> str:
+    if language == "cpp":
+        return "c++"
+    if language == "c++":
+        return "cpp"
+    if language == "py":
+        return "python"
+    return language
+
+
+def _usage_total_tokens(usage: Optional[LLMUsage]) -> int:
+    if not usage:
+        return 0
+    if usage.total_tokens is not None:
+        return usage.total_tokens
+    prompt = usage.prompt_tokens or 0
+    completion = usage.completion_tokens or 0
+    return prompt + completion
+
+
+def _call_llm_with_retry(
+    client: LLMClient,
+    messages: List[Dict[str, str]],
+    max_retries: int,
+) -> Tuple[str, Optional[LLMUsage]]:
+    attempts = 0
+    while True:
+        try:
+            return client.infer(messages)
+        except RuntimeError as exc:
+            attempts += 1
+            logger.warning("LLM call failed, retry %d: %s", attempts, exc)
+            if max_retries and attempts >= max_retries:
+                raise RuntimeError(
+                    f"LLM call failed {attempts} times consecutively; aborting: {exc}"
+                ) from exc
+
+
+def build_feedback(submission: Submission, total_cases: Optional[int]) -> str:
+    """Generate structured feedback text based on judging results."""
+    total_available = total_cases or max(len(submission.test_results), 0)
+    passed_count = sum(1 for tr in submission.test_results if tr.status == SubmissionStatus.ACCEPTED)
+    failed_cases = [(idx, tr) for idx, tr in enumerate(submission.test_results, start=1) if tr.status != SubmissionStatus.ACCEPTED]
+
+    lines: List[str] = []
+    if not failed_cases:
+        lines.append(
+            f"Your most recent submission passed {passed_count}/{total_available or passed_count} test cases. "
+            "All tests passed."
+        )
+        return "\n".join(lines)
+
+    failed_index, failed_case = failed_cases[0]
+    failure_status = failed_case.status.value if hasattr(failed_case.status, "value") else failed_case.status
+    lines.append(
+        f"Your most recent submission passed {passed_count}/{total_available or len(submission.test_results)} test cases. "
+        f"Test case {failed_index} failed with status {failure_status}."
+    )
+
+    if failed_case.test_case_id:
+        lines.append(f"Failed test case ID: {failed_case.test_case_id}.")
+    if failed_case.error_message:
+        lines.append(f"Error message: {failed_case.error_message.strip()[:500]}")
+    if failed_case.output and isinstance(failed_case.output, str) and failed_case.output.strip():
+        lines.append(f"Program output:\n{failed_case.output.strip()[:500]}")
+
+    lines.append("Please revise the solution and submit the complete code again.")
+    return "\n".join(lines)
+
+
+def summarise_attempt(submission: Submission, total_cases: Optional[int]) -> Dict[str, int]:
+    passed = sum(1 for tr in submission.test_results if tr.status == SubmissionStatus.ACCEPTED)
+    if total_cases is None:
+        total_cases = max(passed, len(submission.test_results))
+    return {"passed": passed, "total": total_cases}
+
+
+def main() -> int:
+    args = parse_args()
+    raw_problem_values = []
+    for item in args.problem_ids:
+        raw_problem_values.extend([p.strip() for p in item.split(",") if p.strip()])
+    problem_ids = raw_problem_values
+    if not problem_ids:
+        raise ValueError("At least one problem-id is required")
+
+    log_root = Path(args.log_dir) if args.log_dir else default_log_dir(problem_ids, args.agent_config)
+    log_root.mkdir(parents=True, exist_ok=True)
+    setup_logging(level="INFO", log_file=str(log_root / "runner.log"))
+
+    builder = SoloPromptBuilder(args.prompt_file, dataset_root=args.dataset_root)
+    config = LLMConfig.from_file(args.agent_config, competitor_name=args.competitor_name)
+    client = LLMClient(config, timeout=args.timeout)
+    judge = None if args.dry_run else Judge(oj_endpoint=args.oj_endpoint)
+
+    logger.info(
+        "Starting single-problem run: problems=%s, agent=%s, token-limit=%s",
+        problem_ids,
+        config.name,
+        args.token_limit,
+    )
+
+    total_tokens_consumed = 0
+    total_prompt_tokens_consumed = 0
+    total_completion_tokens_consumed = 0
+    solved_problems = 0
+    token_limit_reached = False
+
+    for index, problem_id in enumerate(problem_ids, start=1):
+        safe_problem = re.sub(r"[^A-Za-z0-9_-]", "_", problem_id)
+        problem_log_dir = (
+            log_root
+            if len(problem_ids) == 1 and args.log_dir
+            else log_root / safe_problem
+        )
+        problem_log_dir.mkdir(parents=True, exist_ok=True)
+
+        bundle = builder.build(problem_id, preferred_language=args.language)
+        total_cases = len(builder.load_test_cases(problem_id)) or None
+
+        run_logger = SoloRunLogger(problem_log_dir)
+        run_logger.start_run(
+            {
+                "problem_id": problem_id,
+                "agent_name": config.name,
+                "language": args.language,
+                "oj_endpoint": args.oj_endpoint,
+                "max_retries": args.max_retries,
+                "dry_run": args.dry_run,
+                "token_limit": args.token_limit,
+                "problem_index": index,
+                "total_problems": len(problem_ids),
+            }
+        )
+
+        messages: List[Dict[str, str]] = [
+            {"role": "system", "content": bundle.system_prompt},
+            {"role": "user", "content": bundle.user_prompt},
+        ]
+
+        problem_tokens = 0
+        problem_prompt_tokens = 0
+        problem_completion_tokens = 0
+        problem_solved = False
+
+        attempt = 0
+        while True:
+            attempt += 1
+            logger.info("[%s] Attempt %d", problem_id, attempt)
+            try:
+                response_text, usage = _call_llm_with_retry(
+                    client, messages, args.max_retries
+                )
+            except RuntimeError as exc:
+                logger.error("LLM retries exhausted: %s", exc)
+                entry = AttemptLogEntry(
+                    attempt=attempt,
+                    language=args.language,
+                    code="",
+                    prompt_tokens=None,
+                    completion_tokens=None,
+                    total_tokens=None,
+                    judge_status="LLM_RETRY_EXHAUSTED",
+                    passed_cases=None,
+                    total_cases=total_cases,
+                    error_message=str(exc),
+                    prompt_tokens_cumulative_problem=problem_prompt_tokens,
+                    completion_tokens_cumulative_problem=problem_completion_tokens,
+                    total_tokens_cumulative_problem=problem_tokens,
+                    prompt_tokens_cumulative_run=total_prompt_tokens_consumed,
+                    completion_tokens_cumulative_run=total_completion_tokens_consumed,
+                    total_tokens_cumulative_run=total_tokens_consumed,
+                )
+                run_logger.log_attempt(entry, messages=[dict(m) for m in messages])
+                token_limit_reached = bool(
+                    args.token_limit and total_tokens_consumed >= args.token_limit
+                )
+                break
+
+            code = extract_code(response_text, args.language)
+            prompt_tokens = (usage.prompt_tokens or 0) if usage else 0
+            completion_tokens = (usage.completion_tokens or 0) if usage else 0
+            attempt_tokens = _usage_total_tokens(usage)
+            total_prompt_tokens_consumed += prompt_tokens
+            total_completion_tokens_consumed += completion_tokens
+            total_tokens_consumed += attempt_tokens
+            problem_prompt_tokens += prompt_tokens
+            problem_completion_tokens += completion_tokens
+            problem_tokens += attempt_tokens
+
+            if not code:
+                logger.warning("[%s] No code extracted from model response (attempt %d)", problem_id, attempt)
+                messages.append({"role": "assistant", "content": response_text})
+                entry = AttemptLogEntry(
+                    attempt=attempt,
+                    language=args.language,
+                    code=response_text,
+                    prompt_tokens=usage.prompt_tokens if usage else None,
+                    completion_tokens=usage.completion_tokens if usage else None,
+                    total_tokens=usage.total_tokens if usage else None,
+                    judge_status="NO_CODE",
+                    passed_cases=None,
+                    total_cases=total_cases,
+                    error_message="No code block detected in model response",
+                    prompt_tokens_cumulative_problem=problem_prompt_tokens,
+                    completion_tokens_cumulative_problem=problem_completion_tokens,
+                    total_tokens_cumulative_problem=problem_tokens,
+                    prompt_tokens_cumulative_run=total_prompt_tokens_consumed,
+                    completion_tokens_cumulative_run=total_completion_tokens_consumed,
+                    total_tokens_cumulative_run=total_tokens_consumed,
+                )
+                run_logger.log_attempt(entry, messages=[dict(m) for m in messages])
+                if args.token_limit and total_tokens_consumed >= args.token_limit:
+                    token_limit_reached = True
+                    break
+                messages.append(
+                    {
+                        "role": "user",
+                        "content": "Code was not detected. Please output the full solution inside a code block.",
+                    }
+                )
+                continue
+
+            if args.dry_run:
+                messages.append({"role": "assistant", "content": response_text})
+                entry = AttemptLogEntry(
+                    attempt=attempt,
+                    language=args.language,
+                    code=code,
+                    prompt_tokens=usage.prompt_tokens if usage else None,
+                    completion_tokens=usage.completion_tokens if usage else None,
+                    total_tokens=usage.total_tokens if usage else None,
+                    judge_status="DRY_RUN",
+                    passed_cases=None,
+                    total_cases=total_cases,
+                    error_message="Dry-run mode skipped judging",
+                    prompt_tokens_cumulative_problem=problem_prompt_tokens,
+                    completion_tokens_cumulative_problem=problem_completion_tokens,
+                    total_tokens_cumulative_problem=problem_tokens,
+                    prompt_tokens_cumulative_run=total_prompt_tokens_consumed,
+                    completion_tokens_cumulative_run=total_completion_tokens_consumed,
+                    total_tokens_cumulative_run=total_tokens_consumed,
+                )
+                run_logger.log_attempt(entry, messages=[dict(m) for m in messages])
+                logger.info("[%s] Dry-run mode: code generated.", problem_id)
+                problem_solved = True
+                break
+
+            submission = Submission(
+                id=generate_id(),
+                competition_id="solo",
+                participant_id=config.name,
+                problem_id=bundle.problem.id,
+                code=code,
+                language=args.language,
+                submitted_at=datetime.now(),
+            )
+
+            try:
+                submission = judge.evaluate_submission(submission, bundle.problem)
+            except Exception as exc:
+                logger.error("Judge service call failed: %s", exc)
+                messages.append({"role": "assistant", "content": response_text})
+                entry = AttemptLogEntry(
+                    attempt=attempt,
+                    language=args.language,
+                    code=code,
+                    prompt_tokens=usage.prompt_tokens if usage else None,
+                    completion_tokens=usage.completion_tokens if usage else None,
+                    total_tokens=usage.total_tokens if usage else None,
+                    judge_status="JUDGE_ERROR",
+                    passed_cases=None,
+                    total_cases=total_cases,
+                    error_message=str(exc),
+                    prompt_tokens_cumulative_problem=problem_prompt_tokens,
+                    completion_tokens_cumulative_problem=problem_completion_tokens,
+                    total_tokens_cumulative_problem=problem_tokens,
+                    prompt_tokens_cumulative_run=total_prompt_tokens_consumed,
+                    completion_tokens_cumulative_run=total_completion_tokens_consumed,
+                    total_tokens_cumulative_run=total_tokens_consumed,
+                )
+                run_logger.log_attempt(entry, messages=[dict(m) for m in messages])
+                if args.token_limit and total_tokens_consumed >= args.token_limit:
+                    token_limit_reached = True
+                    break
+                messages.append(
+                    {
+                        "role": "user",
+                        "content": f"Judging failed: {exc}. Please output the code again.",
+                    }
+                )
+                continue
+
+            summary = summarise_attempt(submission, total_cases)
+            status_value = submission.status.value if hasattr(submission.status, "value") else submission.status
+            logger.info(
+                "[%s] Judge result: %s, samples %s/%s",
+                problem_id,
+                status_value,
+                summary["passed"],
+                summary["total"],
+            )
+
+            messages.append({"role": "assistant", "content": response_text})
+            entry = AttemptLogEntry(
+                attempt=attempt,
+                language=args.language,
+                code=code,
+                prompt_tokens=usage.prompt_tokens if usage else None,
+                completion_tokens=usage.completion_tokens if usage else None,
+                total_tokens=usage.total_tokens if usage else None,
+                judge_status=status_value,
+                passed_cases=summary["passed"],
+                total_cases=summary["total"],
+                error_message=None,
+                prompt_tokens_cumulative_problem=problem_prompt_tokens,
+                completion_tokens_cumulative_problem=problem_completion_tokens,
+                total_tokens_cumulative_problem=problem_tokens,
+                prompt_tokens_cumulative_run=total_prompt_tokens_consumed,
+                completion_tokens_cumulative_run=total_completion_tokens_consumed,
+                total_tokens_cumulative_run=total_tokens_consumed,
+            )
+            run_logger.log_attempt(entry, messages=[dict(m) for m in messages])
+
+            if submission.status == SubmissionStatus.ACCEPTED:
+                logger.info("[%s] All tests passed.", problem_id)
+                problem_solved = True
+                break
+
+            feedback = build_feedback(submission, total_cases)
+            messages.append({"role": "user", "content": feedback})
+
+            if args.token_limit and total_tokens_consumed >= args.token_limit:
+                token_limit_reached = True
+                break
+            # Continue to the next attempt
+
+        if token_limit_reached:
+            run_logger.finalize(
+                "token_limit",
+                {
+                    "attempts": attempt,
+                    "problem_tokens": problem_tokens,
+                    "problem_prompt_tokens": problem_prompt_tokens,
+                    "problem_completion_tokens": problem_completion_tokens,
+                    "total_tokens": total_tokens_consumed,
+                    "total_prompt_tokens": total_prompt_tokens_consumed,
+                    "total_completion_tokens": total_completion_tokens_consumed,
+                },
+            )
+            break
+
+        run_logger.finalize(
+            "success" if problem_solved else "failed",
+            {
+                "attempts": attempt,
+                "problem_tokens": problem_tokens,
+                "problem_prompt_tokens": problem_prompt_tokens,
+                "problem_completion_tokens": problem_completion_tokens,
+                "total_tokens": total_tokens_consumed,
+                "total_prompt_tokens": total_prompt_tokens_consumed,
+                "total_completion_tokens": total_completion_tokens_consumed,
+            },
+        )
+
+        if problem_solved:
+            solved_problems += 1
+        if not problem_solved and args.dry_run:
+            # Treat dry run as success
+            solved_problems += 1
+
+    if token_limit_reached:
+        return 1
+    return 0 if solved_problems == len(problem_ids) else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,1 +1,254 @@
-IiIiSFRUUCBjbGllbnQgZm9yIHRoZSBVU0FDT0FyZW5hIEh5ZHJvIHBsdWdpbiBBUEkuIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQgb3MKaW1wb3J0IHRpbWUKZnJvbSB0eXBpbmcgaW1wb3J0IEFueSwgRGljdCwgTGlzdCwgT3B0aW9uYWwKCmltcG9ydCByZXF1ZXN0cwoKZnJvbSB1c2Fjb2FyZW5hLnV0aWxzLmxvZ2dlcl9jb25maWcgaW1wb3J0IGdldF9sb2dnZXIKCmxvZ2dlciA9IGdldF9sb2dnZXIoImh5ZHJvX2NsaWVudCIpCgoKY2xhc3MgSHlkcm9DbGllbnRFcnJvcihSdW50aW1lRXJyb3IpOgogICAgIiIiUmFpc2VkIHdoZW4gdGhlIEh5ZHJvIHBsdWdpbiBBUEkgcmV0dXJucyBhbiBlcnJvci4iIiIKCgpjbGFzcyBIeWRyb0NsaWVudDoKICAgICIiIlRoaW4gSFRUUCBjbGllbnQgZm9yIG1hY2hpbmUtZmFjaW5nIEh5ZHJvIHBsdWdpbiBlbmRwb2ludHMuIiIiCgogICAgZGVmIF9faW5pdF9fKAogICAgICAgIHNlbGYsCiAgICAgICAgYmFzZV91cmw6IHN0ciwKICAgICAgICAqLAogICAgICAgIGFwaV90b2tlbjogT3B0aW9uYWxbc3RyXSA9IE5vbmUsCiAgICAgICAgYXBpX2Jhc2U6IHN0ciA9ICIvdXNhY29hcmVuYS9hcGkiLAogICAgICAgIHRpbWVvdXRfc2Vjb25kczogZmxvYXQgPSAzMC4wLAogICAgICAgIHBvbGxfaW50ZXJ2YWxfc2Vjb25kczogZmxvYXQgPSAwLjUsCiAgICAgICAgc3VibWlzc2lvbl90aW1lb3V0X3NlY29uZHM6IGZsb2F0ID0gMTIwLjAsCiAgICAgICAgc2Vzc2lvbjogT3B0aW9uYWxbcmVxdWVzdHMuU2Vzc2lvbl0gPSBOb25lLAogICAgKSAtPiBOb25lOgogICAgICAgIGJhc2UgPSAoYmFzZV91cmwgb3IgIiIpLnN0cmlwKCkucnN0cmlwKCIvIikKICAgICAgICBpZiBub3QgYmFzZToKICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcigiSHlkcm8gYmFzZSBVUkwgbXVzdCBub3QgYmUgZW1wdHkiKQoKICAgICAgICBzZWxmLmJhc2VfdXJsID0gYmFzZQogICAgICAgIHNlbGYuYXBpX2Jhc2UgPSAiLyIgKyAoYXBpX2Jhc2Ugb3IgInVzYWNvYXJlbmEvYXBpIikuc3RyaXAoIi8iKQogICAgICAgIHNlbGYudGltZW91dF9zZWNvbmRzID0gbWF4KDEuMCwgZmxvYXQodGltZW91dF9zZWNvbmRzKSkKICAgICAgICBzZWxmLnBvbGxfaW50ZXJ2YWxfc2Vjb25kcyA9IG1heCgwLjEsIGZsb2F0KHBvbGxfaW50ZXJ2YWxfc2Vjb25kcykpCiAgICAgICAgc2VsZi5zdWJtaXNzaW9uX3RpbWVvdXRfc2Vjb25kcyA9IG1heCgxLjAsIGZsb2F0KHN1Ym1pc3Npb25fdGltZW91dF9zZWNvbmRzKSkKICAgICAgICBzZWxmLmFwaV90b2tlbiA9IChhcGlfdG9rZW4gb3IgIiIpLnN0cmlwKCkKICAgICAgICBzZWxmLnNlc3Npb24gPSBzZXNzaW9uIG9yIHJlcXVlc3RzLlNlc3Npb24oKQoKICAgIEBjbGFzc21ldGhvZAogICAgZGVmIGZyb21fZW52KGNscykgLT4gT3B0aW9uYWxbIkh5ZHJvQ2xpZW50Il06CiAgICAgICAgYmFzZV91cmwgPSAob3MuZW52aXJvbi5nZXQoIlVTQUNPQVJFTkFfSFlEUk9fQkFTRV9VUkwiLCAiIikgb3IgIiIpLnN0cmlwKCkKICAgICAgICBpZiBub3QgYmFzZV91cmw6CiAgICAgICAgICAgIHJldHVybiBOb25lCiAgICAgICAgcmV0dXJuIGNscygKICAgICAgICAgICAgYmFzZV91cmw9YmFzZV91cmwsCiAgICAgICAgICAgIGFwaV90b2tlbj1vcy5lbnZpcm9uLmdldCgiVVNBQ09BUkVOQV9IWURST19BUElfVE9LRU4iKSwKICAgICAgICAgICAgYXBpX2Jhc2U9b3MuZW52aXJvbi5nZXQoIlVTQUNPQVJFTkFfSFlEUk9fQVBJX0JBU0UiLCAiL3VzYWNvYXJlbmEvYXBpIiksCiAgICAgICAgICAgIHRpbWVvdXRfc2Vjb25kcz1mbG9hdCgKICAgICAgICAgICAgICAgIG9zLmVudmlyb24uZ2V0KCJVU0FDT0FSRU5BX0hZRFJPX1RJTUVPVVRfU0VDT05EUyIsICIzMCIpIG9yICIzMCIKICAgICAgICAgICAgKSwKICAgICAgICAgICAgcG9sbF9pbnRlcnZhbF9zZWNvbmRzPWZsb2F0KAogICAgICAgICAgICAgICAgb3MuZW52aXJvbi5nZXQoIlVTQUNPQVJFTkFfSFlEUk9fUE9MTF9JTlRFUlZBTF9TRUNPTkRTIiwgIjAuNSIpIG9yICIwLjUiCiAgICAgICAgICAgICksCiAgICAgICAgICAgIHN1Ym1pc3Npb25fdGltZW91dF9zZWNvbmRzPWZsb2F0KAogICAgICAgICAgICAgICAgb3MuZW52aXJvbi5nZXQoIlVTQUNPQVJFTkFfSFlEUk9fU1VCTUlTU0lPTl9USU1FT1VUX1NFQ09ORFMiLCAiMTIwIikKICAgICAgICAgICAgICAgIG9yICIxMjAiCiAgICAgICAgICAgICksCiAgICAgICAgKQoKICAgIGRlZiBjbG9uZV93aXRoX292ZXJyaWRlcygKICAgICAgICBzZWxmLAogICAgICAgICosCiAgICAgICAgdGltZW91dF9zZWNvbmRzOiBPcHRpb25hbFtmbG9hdF0gPSBOb25lLAogICAgICAgIHBvbGxfaW50ZXJ2YWxfc2Vjb25kczogT3B0aW9uYWxbZmxvYXRdID0gTm9uZSwKICAgICAgICBzdWJtaXNzaW9uX3RpbWVvdXRfc2Vjb25kczogT3B0aW9uYWxbZmxvYXRdID0gTm9uZSwKICAgICkgLT4gIkh5ZHJvQ2xpZW50IjoKICAgICAgICByZXR1cm4gSHlkcm9DbGllbnQoCiAgICAgICAgICAgIGJhc2VfdXJsPXNlbGYuYmFzZV91cmwsCiAgICAgICAgICAgIGFwaV90b2tlbj1zZWxmLmFwaV90b2tlbiwKICAgICAgICAgICAgYXBpX2Jhc2U9c2VsZi5hcGlfYmFzZSwKICAgICAgICAgICAgdGltZW91dF9zZWNvbmRzPXRpbWVvdXRfc2Vjb25kcyBvciBzZWxmLnRpbWVvdXRfc2Vjb25kcywKICAgICAgICAgICAgcG9sbF9pbnRlcnZhbF9zZWNvbmRzPXBvbGxfaW50ZXJ2YWxfc2Vjb25kcyBvciBzZWxmLnBvbGxfaW50ZXJ2YWxfc2Vjb25kcywKICAgICAgICAgICAgc3VibWlzc2lvbl90aW1lb3V0X3NlY29uZHM9KAogICAgICAgICAgICAgICAgc3VibWlzc2lvbl90aW1lb3V0X3NlY29uZHMgb3Igc2VsZi5zdWJtaXNzaW9uX3RpbWVvdXRfc2Vjb25kcwogICAgICAgICAgICApLAogICAgICAgICAgICBzZXNzaW9uPXNlbGYuc2Vzc2lvbiwKICAgICAgICApCgogICAgZGVmIGhlYWx0aChzZWxmKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICByZXR1cm4gc2VsZi5fcmVxdWVzdCgiR0VUIiwgIi9oZWFsdGgiKQoKICAgIGRlZiBsaXN0X3Byb2JsZW1zKAogICAgICAgIHNlbGYsICosIGxldmVsOiBPcHRpb25hbFtzdHJdID0gTm9uZSwgZGV0YWlsOiBib29sID0gRmFsc2UKICAgICkgLT4gTGlzdFtEaWN0W3N0ciwgQW55XV06CiAgICAgICAgcGFyYW1zOiBEaWN0W3N0ciwgQW55XSA9IHt9CiAgICAgICAgaWYgbGV2ZWw6CiAgICAgICAgICAgIHBhcmFtc1sibGV2ZWwiXSA9IGxldmVsCiAgICAgICAgaWYgZGV0YWlsOgogICAgICAgICAgICBwYXJhbXNbImRldGFpbCJdID0gImZ1bGwiCiAgICAgICAgZGF0YSA9IHNlbGYuX3JlcXVlc3QoIkdFVCIsICIvcHJvYmxlbXMiLCBwYXJhbXM9cGFyYW1zKQogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKGRhdGEsIGxpc3QpOgogICAgICAgICAgICByYWlzZSBIeWRyb0NsaWVudEVycm9yKCJIeWRybyBwbHVnaW4gcmV0dXJuZWQgbm9uLWxpc3QgcHJvYmxlbSBwYXlsb2FkIikKICAgICAgICByZXR1cm4gW3JvdyBmb3Igcm93IGluIGRhdGEgaWYgaXNpbnN0YW5jZShyb3csIGRpY3QpXQoKICAgIGRlZiBnZXRfcHJvYmxlbShzZWxmLCBwcm9ibGVtX2lkOiBzdHIpIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgIGRhdGEgPSBzZWxmLl9yZXF1ZXN0KCJHRVQiLCBmIi9wcm9ibGVtcy97cHJvYmxlbV9pZH0iKQogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKGRhdGEsIGRpY3QpOgogICAgICAgICAgICByYWlzZSBIeWRyb0NsaWVudEVycm9yKCJIeWRybyBwbHVnaW4gcmV0dXJuZWQgaW52YWxpZCBwcm9ibGVtIGRldGFpbCIpCiAgICAgICAgcmV0dXJuIGRhdGEKCiAgICBkZWYgZ2V0X3Byb2JsZW1fc29sdXRpb24oc2VsZiwgcHJvYmxlbV9pZDogc3RyKSAtPiBPcHRpb25hbFtzdHJdOgogICAgICAgIHRyeToKICAgICAgICAgICAgZGF0YSA9IHNlbGYuX3JlcXVlc3QoIkdFVCIsIGYiL3Byb2JsZW1zL3twcm9ibGVtX2lkfS9zb2x1dGlvbiIpCiAgICAgICAgZXhjZXB0IEh5ZHJvQ2xpZW50RXJyb3I6CiAgICAgICAgICAgIHJldHVybiBOb25lCiAgICAgICAgaWYgbm90IGlzaW5zdGFuY2UoZGF0YSwgZGljdCk6CiAgICAgICAgICAgIHJldHVybiBOb25lCiAgICAgICAgY29udGVudCA9IGRhdGEuZ2V0KCJjb250ZW50IikKICAgICAgICByZXR1cm4gc3RyKGNvbnRlbnQpIGlmIGlzaW5zdGFuY2UoY29udGVudCwgc3RyKSBhbmQgY29udGVudC5zdHJpcCgpIGVsc2UgTm9uZQoKICAgIGRlZiByZXNvbHZlX3Byb2JsZW0oc2VsZiwgcHJvYmxlbV9pZDogc3RyKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICBkYXRhID0gc2VsZi5fcmVxdWVzdCgiR0VUIiwgIi9yZXNvbHZlIiwgcGFyYW1zPXsicHJvYmxlbV9pZCI6IHByb2JsZW1faWR9KQogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKGRhdGEsIGRpY3QpOgogICAgICAgICAgICByYWlzZSBIeWRyb0NsaWVudEVycm9yKCJIeWRybyBwbHVnaW4gcmV0dXJuZWQgaW52YWxpZCByZXNvbHZlIHBheWxvYWQiKQogICAgICAgIHJldHVybiBkYXRhCgogICAgZGVmIHN1Ym1pdF9zb2x1dGlvbigKICAgICAgICBzZWxmLCBwcm9ibGVtX2lkOiBzdHIsIGNvZGU6IHN0ciwgbGFuZ3VhZ2U6IHN0cgogICAgKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICBkYXRhID0gc2VsZi5fcmVxdWVzdCgKICAgICAgICAgICAgIlBPU1QiLAogICAgICAgICAgICAiL3N1Ym1pc3Npb25zIiwKICAgICAgICAgICAganNvbl9kYXRhPXsKICAgICAgICAgICAgICAgICJwcm9ibGVtX2lkIjogcHJvYmxlbV9pZCwKICAgICAgICAgICAgICAgICJjb2RlIjogY29kZSwKICAgICAgICAgICAgICAgICJsYW5ndWFnZSI6IGxhbmd1YWdlLAogICAgICAgICAgICB9LAogICAgICAgICkKICAgICAgICBpZiBub3QgaXNpbnN0YW5jZShkYXRhLCBkaWN0KToKICAgICAgICAgICAgcmFpc2UgSHlkcm9DbGllbnRFcnJvcigiSHlkcm8gcGx1Z2luIHJldHVybmVkIGludmFsaWQgc3VibWlzc2lvbiBwYXlsb2FkIikKICAgICAgICByZXR1cm4gZGF0YQoKICAgIGRlZiBwcmV0ZXN0KAogICAgICAgIHNlbGYsCiAgICAgICAgcHJvYmxlbV9pZDogc3RyLAogICAgICAgIGNvZGU6IHN0ciwKICAgICAgICBsYW5ndWFnZTogc3RyLAogICAgICAgIGlucHV0czogTGlzdFtzdHJdLAogICAgKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICBkYXRhID0gc2VsZi5fcmVxdWVzdCgKICAgICAgICAgICAgIlBPU1QiLAogICAgICAgICAgICAiL3ByZXRlc3QiLAogICAgICAgICAgICBqc29uX2RhdGE9ewogICAgICAgICAgICAgICAgInByb2JsZW1faWQiOiBwcm9ibGVtX2lkLAogICAgICAgICAgICAgICAgImNvZGUiOiBjb2RlLAogICAgICAgICAgICAgICAgImxhbmd1YWdlIjogbGFuZ3VhZ2UsCiAgICAgICAgICAgICAgICAiaW5wdXRzIjogaW5wdXRzLAogICAgICAgICAgICB9LAogICAgICAgICkKICAgICAgICBpZiBub3QgaXNpbnN0YW5jZShkYXRhLCBkaWN0KToKICAgICAgICAgICAgcmFpc2UgSHlkcm9DbGllbnRFcnJvcigiSHlkcm8gcGx1Z2luIHJldHVybmVkIGludmFsaWQgcHJldGVzdCBwYXlsb2FkIikKICAgICAgICByZXR1cm4gZGF0YQoKICAgIGRlZiBnZXRfcmVjb3JkKHNlbGYsIHJlY29yZF9pZDogc3RyKSAtPiBEaWN0W3N0ciwgQW55XToKICAgICAgICBkYXRhID0gc2VsZi5fcmVxdWVzdCgiR0VUIiwgZiIvcmVjb3Jkcy97cmVjb3JkX2lkfSIpCiAgICAgICAgaWYgbm90IGlzaW5zdGFuY2UoZGF0YSwgZGljdCk6CiAgICAgICAgICAgIHJhaXNlIEh5ZHJvQ2xpZW50RXJyb3IoIkh5ZHJvIHBsdWdpbiByZXR1cm5lZCBpbnZhbGlkIHJlY29yZCBwYXlsb2FkIikKICAgICAgICByZXR1cm4gZGF0YQoKICAgIGRlZiB3YWl0X2Zvcl9yZWNvcmQoCiAgICAgICAgc2VsZiwKICAgICAgICByZWNvcmRfaWQ6IHN0ciwKICAgICAgICAqLAogICAgICAgIHRpbWVvdXRfc2Vjb25kczogT3B0aW9uYWxbZmxvYXRdID0gTm9uZSwKICAgICAgICBwb2xsX2ludGVydmFsX3NlY29uZHM6IE9wdGlvbmFsW2Zsb2F0XSA9IE5vbmUsCiAgICApIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgIHRpbWVvdXQgPSAoCiAgICAgICAgICAgIHNlbGYuc3VibWlzc2lvbl90aW1lb3V0X3NlY29uZHMKICAgICAgICAgICAgaWYgdGltZW91dF9zZWNvbmRzIGlzIE5vbmUKICAgICAgICAgICAgZWxzZSBtYXgoMS4wLCBmbG9hdCh0aW1lb3V0X3NlY29uZHMpKQogICAgICAgICkKICAgICAgICBpbnRlcnZhbCA9ICgKICAgICAgICAgICAgc2VsZi5wb2xsX2ludGVydmFsX3NlY29uZHMKICAgICAgICAgICAgaWYgcG9sbF9pbnRlcnZhbF9zZWNvbmRzIGlzIE5vbmUKICAgICAgICAgICAgZWxzZSBtYXgoMC4xLCBmbG9hdChwb2xsX2ludGVydmFsX3NlY29uZHMpKQogICAgICAgICkKCiAgICAgICAgZGVhZGxpbmUgPSB0aW1lLm1vbm90b25pYygpICsgdGltZW91dAogICAgICAgIGxhc3RfcGF5bG9hZDogT3B0aW9uYWxbRGljdFtzdHIsIEFueV1dID0gTm9uZQoKICAgICAgICB3aGlsZSB0aW1lLm1vbm90b25pYygpIDwgZGVhZGxpbmU6CiAgICAgICAgICAgIHBheWxvYWQgPSBzZWxmLmdldF9yZWNvcmQocmVjb3JkX2lkKQogICAgICAgICAgICBsYXN0X3BheWxvYWQgPSBwYXlsb2FkCiAgICAgICAgICAgIGlmIGJvb2wocGF5bG9hZC5nZXQoImZpbmlzaGVkIikpOgogICAgICAgICAgICAgICAgcmV0dXJuIHBheWxvYWQKICAgICAgICAgICAgdGltZS5zbGVlcChpbnRlcnZhbCkKCiAgICAgICAgcmFpc2UgSHlkcm9DbGllbnRFcnJvcigKICAgICAgICAgICAgZiJUaW1lZCBvdXQgd2hpbGUgd2FpdGluZyBmb3IgSHlkcm8gcmVjb3JkIHtyZWNvcmRfaWR9LiAiCiAgICAgICAgICAgIGYiTGFzdCBwYXlsb2FkOiB7bGFzdF9wYXlsb2FkfSIKICAgICAgICApCgogICAgZGVmIF9yZXF1ZXN0KAogICAgICAgIHNlbGYsCiAgICAgICAgbWV0aG9kOiBzdHIsCiAgICAgICAgcGF0aDogc3RyLAogICAgICAgICosCiAgICAgICAgcGFyYW1zOiBPcHRpb25hbFtEaWN0W3N0ciwgQW55XV0gPSBOb25lLAogICAgICAgIGpzb25fZGF0YTogT3B0aW9uYWxbRGljdFtzdHIsIEFueV1dID0gTm9uZSwKICAgICkgLT4gQW55OgogICAgICAgIHVybCA9IGYie3NlbGYuYmFzZV91cmx9e3NlbGYuYXBpX2Jhc2V9e3BhdGh9IgogICAgICAgIGhlYWRlcnMgPSB7CiAgICAgICAgICAgICJBY2NlcHQiOiAiYXBwbGljYXRpb24vanNvbiIsCiAgICAgICAgfQogICAgICAgIGlmIHNlbGYuYXBpX3Rva2VuOgogICAgICAgICAgICBoZWFkZXJzWyJBdXRob3JpemF0aW9uIl0gPSBmIkJlYXJlciB7c2VsZi5hcGlfdG9rZW59IgogICAgICAgICAgICBoZWFkZXJzWyJYLVVTQUNPQXJlbmEtVG9rZW4iXSA9IHNlbGYuYXBpX3Rva2VuCgogICAgICAgIHRyeToKICAgICAgICAgICAgcmVzcG9uc2UgPSBzZWxmLnNlc3Npb24ucmVxdWVzdCgKICAgICAgICAgICAgICAgIG1ldGhvZD1tZXRob2QsCiAgICAgICAgICAgICAgICB1cmw9dXJsLAogICAgICAgICAgICAgICAgcGFyYW1zPXBhcmFtcywKICAgICAgICAgICAgICAgIGpzb249anNvbl9kYXRhLAogICAgICAgICAgICAgICAgaGVhZGVycz1oZWFkZXJzLAogICAgICAgICAgICAgICAgdGltZW91dD1zZWxmLnRpbWVvdXRfc2Vjb25kcywKICAgICAgICAgICAgKQogICAgICAgIGV4Y2VwdCByZXF1ZXN0cy5SZXF1ZXN0RXhjZXB0aW9uIGFzIGV4YzoKICAgICAgICAgICAgcmFpc2UgSHlkcm9DbGllbnRFcnJvcigKICAgICAgICAgICAgICAgIGYiRmFpbGVkIHRvIGNhbGwgSHlkcm8gcGx1Z2luIGVuZHBvaW50IHttZXRob2R9IHt1cmx9OiB7ZXhjfSIKICAgICAgICAgICAgKSBmcm9tIGV4YwoKICAgICAgICB0cnk6CiAgICAgICAgICAgIHBheWxvYWQgPSByZXNwb25zZS5qc29uKCkKICAgICAgICBleGNlcHQgVmFsdWVFcnJvciBhcyBleGM6CiAgICAgICAgICAgIHJhaXNlIEh5ZHJvQ2xpZW50RXJyb3IoCiAgICAgICAgICAgICAgICBmIkh5ZHJvIHBsdWdpbiBlbmRwb2ludCB7bWV0aG9kfSB7dXJsfSByZXR1cm5lZCBub24tSlNPTiBib2R5OiAiCiAgICAgICAgICAgICAgICBmInN0YXR1cz17cmVzcG9uc2Uuc3RhdHVzX2NvZGV9LCBib2R5PXtyZXNwb25zZS50ZXh0Wzo1MDBdfSIKICAgICAgICAgICAgKSBmcm9tIGV4YwoKICAgICAgICBpZiBub3QgcmVzcG9uc2Uub2s6CiAgICAgICAgICAgIG1lc3NhZ2UgPSBwYXlsb2FkLmdldCgiZXJyb3IiKSBpZiBpc2luc3RhbmNlKHBheWxvYWQsIGRpY3QpIGVsc2UgTm9uZQogICAgICAgICAgICByYWlzZSBIeWRyb0NsaWVudEVycm9yKAogICAgICAgICAgICAgICAgZiJIeWRybyBwbHVnaW4gZW5kcG9pbnQge21ldGhvZH0ge3VybH0gZmFpbGVkIHdpdGggIgogICAgICAgICAgICAgICAgZiJIVFRQIHtyZXNwb25zZS5zdGF0dXNfY29kZX06IHttZXNzYWdlIG9yIHBheWxvYWR9IgogICAgICAgICAgICApCgogICAgICAgIGlmIGlzaW5zdGFuY2UocGF5bG9hZCwgZGljdCk6CiAgICAgICAgICAgIGlmIHBheWxvYWQuZ2V0KCJvayIpIGlzIEZhbHNlOgogICAgICAgICAgICAgICAgcmFpc2UgSHlkcm9DbGllbnRFcnJvcigKICAgICAgICAgICAgICAgICAgICBmIkh5ZHJvIHBsdWdpbiBlbmRwb2ludCB7bWV0aG9kfSB7dXJsfSByZXR1cm5lZCBlcnJvcjogIgogICAgICAgICAgICAgICAgICAgIGYie3BheWxvYWQuZ2V0KCdlcnJvcicpIG9yIHBheWxvYWR9IgogICAgICAgICAgICAgICAgKQogICAgICAgICAgICBpZiAiZGF0YSIgaW4gcGF5bG9hZDoKICAgICAgICAgICAgICAgIHJldHVybiBwYXlsb2FkWyJkYXRhIl0KCiAgICAgICAgcmV0dXJuIHBheWxvYWQK
+"""HTTP client for the USACOArena Hydro plugin API."""
+
+from __future__ import annotations
+
+import os
+import time
+from typing import Any, Dict, List, Optional
+
+import requests
+
+from usacoarena.utils.logger_config import get_logger
+
+logger = get_logger("hydro_client")
+
+
+class HydroClientError(RuntimeError):
+    """Raised when the Hydro plugin API returns an error."""
+
+
+class HydroClient:
+    """Thin HTTP client for machine-facing Hydro plugin endpoints."""
+
+    def __init__(
+        self,
+        base_url: str,
+        *,
+        api_token: Optional[str] = None,
+        api_base: str = "/usacoarena/api",
+        timeout_seconds: float = 30.0,
+        poll_interval_seconds: float = 0.5,
+        submission_timeout_seconds: float = 120.0,
+        session: Optional[requests.Session] = None,
+    ) -> None:
+        base = (base_url or "").strip().rstrip("/")
+        if not base:
+            raise ValueError("Hydro base URL must not be empty")
+
+        self.base_url = base
+        self.api_base = "/" + (api_base or "usacoarena/api").strip("/")
+        self.timeout_seconds = max(1.0, float(timeout_seconds))
+        self.poll_interval_seconds = max(0.1, float(poll_interval_seconds))
+        self.submission_timeout_seconds = max(1.0, float(submission_timeout_seconds))
+        self.api_token = (api_token or "").strip()
+        self.session = session or requests.Session()
+
+    @classmethod
+    def from_env(cls) -> Optional["HydroClient"]:
+        base_url = (os.environ.get("USACOARENA_HYDRO_BASE_URL", "") or "").strip()
+        if not base_url:
+            return None
+        return cls(
+            base_url=base_url,
+            api_token=os.environ.get("USACOARENA_HYDRO_API_TOKEN"),
+            api_base=os.environ.get("USACOARENA_HYDRO_API_BASE", "/usacoarena/api"),
+            timeout_seconds=float(
+                os.environ.get("USACOARENA_HYDRO_TIMEOUT_SECONDS", "30") or "30"
+            ),
+            poll_interval_seconds=float(
+                os.environ.get("USACOARENA_HYDRO_POLL_INTERVAL_SECONDS", "0.5") or "0.5"
+            ),
+            submission_timeout_seconds=float(
+                os.environ.get("USACOARENA_HYDRO_SUBMISSION_TIMEOUT_SECONDS", "120")
+                or "120"
+            ),
+        )
+
+    def clone_with_overrides(
+        self,
+        *,
+        timeout_seconds: Optional[float] = None,
+        poll_interval_seconds: Optional[float] = None,
+        submission_timeout_seconds: Optional[float] = None,
+    ) -> "HydroClient":
+        return HydroClient(
+            base_url=self.base_url,
+            api_token=self.api_token,
+            api_base=self.api_base,
+            timeout_seconds=timeout_seconds or self.timeout_seconds,
+            poll_interval_seconds=poll_interval_seconds or self.poll_interval_seconds,
+            submission_timeout_seconds=(
+                submission_timeout_seconds or self.submission_timeout_seconds
+            ),
+            session=self.session,
+        )
+
+    def health(self) -> Dict[str, Any]:
+        return self._request("GET", "/health")
+
+    def list_problems(
+        self, *, level: Optional[str] = None, detail: bool = False
+    ) -> List[Dict[str, Any]]:
+        params: Dict[str, Any] = {}
+        if level:
+            params["level"] = level
+        if detail:
+            params["detail"] = "full"
+        data = self._request("GET", "/problems", params=params)
+        if not isinstance(data, list):
+            raise HydroClientError("Hydro plugin returned non-list problem payload")
+        return [row for row in data if isinstance(row, dict)]
+
+    def get_problem(self, problem_id: str) -> Dict[str, Any]:
+        data = self._request("GET", f"/problems/{problem_id}")
+        if not isinstance(data, dict):
+            raise HydroClientError("Hydro plugin returned invalid problem detail")
+        return data
+
+    def get_problem_solution(self, problem_id: str) -> Optional[str]:
+        try:
+            data = self._request("GET", f"/problems/{problem_id}/solution")
+        except HydroClientError:
+            return None
+        if not isinstance(data, dict):
+            return None
+        content = data.get("content")
+        return str(content) if isinstance(content, str) and content.strip() else None
+
+    def resolve_problem(self, problem_id: str) -> Dict[str, Any]:
+        data = self._request("GET", "/resolve", params={"problem_id": problem_id})
+        if not isinstance(data, dict):
+            raise HydroClientError("Hydro plugin returned invalid resolve payload")
+        return data
+
+    def submit_solution(
+        self, problem_id: str, code: str, language: str
+    ) -> Dict[str, Any]:
+        data = self._request(
+            "POST",
+            "/submissions",
+            json_data={
+                "problem_id": problem_id,
+                "code": code,
+                "language": language,
+            },
+        )
+        if not isinstance(data, dict):
+            raise HydroClientError("Hydro plugin returned invalid submission payload")
+        return data
+
+    def pretest(
+        self,
+        problem_id: str,
+        code: str,
+        language: str,
+        inputs: List[str],
+    ) -> Dict[str, Any]:
+        data = self._request(
+            "POST",
+            "/pretest",
+            json_data={
+                "problem_id": problem_id,
+                "code": code,
+                "language": language,
+                "inputs": inputs,
+            },
+        )
+        if not isinstance(data, dict):
+            raise HydroClientError("Hydro plugin returned invalid pretest payload")
+        return data
+
+    def get_record(self, record_id: str) -> Dict[str, Any]:
+        data = self._request("GET", f"/records/{record_id}")
+        if not isinstance(data, dict):
+            raise HydroClientError("Hydro plugin returned invalid record payload")
+        return data
+
+    def wait_for_record(
+        self,
+        record_id: str,
+        *,
+        timeout_seconds: Optional[float] = None,
+        poll_interval_seconds: Optional[float] = None,
+    ) -> Dict[str, Any]:
+        timeout = (
+            self.submission_timeout_seconds
+            if timeout_seconds is None
+            else max(1.0, float(timeout_seconds))
+        )
+        interval = (
+            self.poll_interval_seconds
+            if poll_interval_seconds is None
+            else max(0.1, float(poll_interval_seconds))
+        )
+
+        deadline = time.monotonic() + timeout
+        last_payload: Optional[Dict[str, Any]] = None
+
+        while time.monotonic() < deadline:
+            payload = self.get_record(record_id)
+            last_payload = payload
+            if bool(payload.get("finished")):
+                return payload
+            time.sleep(interval)
+
+        raise HydroClientError(
+            f"Timed out while waiting for Hydro record {record_id}. "
+            f"Last payload: {last_payload}"
+        )
+
+    def _request(
+        self,
+        method: str,
+        path: str,
+        *,
+        params: Optional[Dict[str, Any]] = None,
+        json_data: Optional[Dict[str, Any]] = None,
+    ) -> Any:
+        url = f"{self.base_url}{self.api_base}{path}"
+        headers = {
+            "Accept": "application/json",
+        }
+        if self.api_token:
+            headers["Authorization"] = f"Bearer {self.api_token}"
+            headers["X-USACOArena-Token"] = self.api_token
+
+        try:
+            response = self.session.request(
+                method=method,
+                url=url,
+                params=params,
+                json=json_data,
+                headers=headers,
+                timeout=self.timeout_seconds,
+            )
+        except requests.RequestException as exc:
+            raise HydroClientError(
+                f"Failed to call Hydro plugin endpoint {method} {url}: {exc}"
+            ) from exc
+
+        try:
+            payload = response.json()
+        except ValueError as exc:
+            raise HydroClientError(
+                f"Hydro plugin endpoint {method} {url} returned non-JSON body: "
+                f"status={response.status_code}, body={response.text[:500]}"
+            ) from exc
+
+        if not response.ok:
+            message = payload.get("error") if isinstance(payload, dict) else None
+            raise HydroClientError(
+                f"Hydro plugin endpoint {method} {url} failed with "
+                f"HTTP {response.status_code}: {message or payload}"
+            )
+
+        if isinstance(payload, dict):
+            if payload.get("ok") is False:
+                raise HydroClientError(
+                    f"Hydro plugin endpoint {method} {url} returned error: "
+                    f"{payload.get('error') or payload}"
+                )
+            if "data" in payload:
+                return payload["data"]
+
+        return payload

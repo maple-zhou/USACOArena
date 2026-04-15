@@ -1,1 +1,258 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJVbmlmaWVkIGJlbmNobWFyayBDTEkgZm9yIFVTQUNPQXJlbmEuIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQgYXJncGFyc2UKaW1wb3J0IGpzb24KZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gdHlwaW5nIGltcG9ydCBBbnksIERpY3QsIE9wdGlvbmFsCgppbXBvcnQgcmVxdWVzdHMKCmZyb20gdXNhY29hcmVuYS5iZW5jaG1hcmsuY29uZmlnIGltcG9ydCAoCiAgICBCZW5jaG1hcmtDb25maWdFcnJvciwKICAgIGJ1aWxkX2JlbmNobWFya190ZW1wbGF0ZSwKICAgIGxvYWRfYmVuY2htYXJrX2NvbmZpZywKKQpmcm9tIHVzYWNvYXJlbmEuYmVuY2htYXJrLnJlcG9ydGluZyBpbXBvcnQgc2F2ZV9yZXBvcnRfYnVuZGxlCgoKZGVmIF9yZXF1ZXN0X2pzb24oCiAgICBtZXRob2Q6IHN0ciwKICAgIGJhc2U6IHN0ciwKICAgIHBhdGg6IHN0ciwKICAgICosCiAgICBwYXlsb2FkOiBPcHRpb25hbFtEaWN0W3N0ciwgQW55XV0gPSBOb25lLAogICAgdGltZW91dDogZmxvYXQgPSAzMC4wLAopIC0+IERpY3Rbc3RyLCBBbnldOgogICAgdXJsID0gZiJ7YmFzZS5yc3RyaXAoJy8nKX17cGF0aH0iCiAgICByZXNwb25zZSA9IHJlcXVlc3RzLnJlcXVlc3QobWV0aG9kPW1ldGhvZCwgdXJsPXVybCwganNvbj1wYXlsb2FkLCB0aW1lb3V0PXRpbWVvdXQpCiAgICByZXNwb25zZS5yYWlzZV9mb3Jfc3RhdHVzKCkKICAgIGRhdGEgPSByZXNwb25zZS5qc29uKCkKICAgIGlmIG5vdCBpc2luc3RhbmNlKGRhdGEsIGRpY3QpOgogICAgICAgIHJhaXNlIFJ1bnRpbWVFcnJvcihmIlVuZXhwZWN0ZWQgcmVzcG9uc2UgZnJvbSB7dXJsfTogbm90IGEgSlNPTiBvYmplY3QiKQogICAgcmV0dXJuIGRhdGEKCgpkZWYgY21kX2luaXRfdGVtcGxhdGUoYXJnczogYXJncGFyc2UuTmFtZXNwYWNlKSAtPiBpbnQ6CiAgICBvdXRwdXQgPSBQYXRoKGFyZ3Mub3V0cHV0KQogICAgaWYgb3V0cHV0LmV4aXN0cygpIGFuZCBub3QgYXJncy5mb3JjZToKICAgICAgICByYWlzZSBSdW50aW1lRXJyb3IoZiJSZWZ1c2luZyB0byBvdmVyd3JpdGUgZXhpc3RpbmcgZmlsZToge291dHB1dH0iKQoKICAgIG91dHB1dC5wYXJlbnQubWtkaXIocGFyZW50cz1UcnVlLCBleGlzdF9vaz1UcnVlKQogICAgb3V0cHV0LndyaXRlX3RleHQoCiAgICAgICAganNvbi5kdW1wcyhidWlsZF9iZW5jaG1hcmtfdGVtcGxhdGUoKSwgZW5zdXJlX2FzY2lpPUZhbHNlLCBpbmRlbnQ9MikgKyAiXG4iLAogICAgICAgIGVuY29kaW5nPSJ1dGYtOCIsCiAgICApCiAgICBwcmludChmIlRlbXBsYXRlIHdyaXR0ZW4gdG86IHtvdXRwdXR9IikKICAgIHJldHVybiAwCgoKZGVmIGNtZF9zZXR1cChhcmdzOiBhcmdwYXJzZS5OYW1lc3BhY2UpIC0+IGludDoKICAgIGNmZyA9IGxvYWRfYmVuY2htYXJrX2NvbmZpZyhQYXRoKGFyZ3MuY29uZmlnKSkKICAgIGFwaV9iYXNlID0gY2ZnWyJhcGlfYmFzZSJdCiAgICBjb21wZXRpdGlvbl9jZmcgPSBjZmdbImNvbXBldGl0aW9uIl0KCiAgICBjcmVhdGVfcGF5bG9hZCA9IHsKICAgICAgICAidGl0bGUiOiBjb21wZXRpdGlvbl9jZmdbInRpdGxlIl0sCiAgICAgICAgImRlc2NyaXB0aW9uIjogY29tcGV0aXRpb25fY2ZnWyJkZXNjcmlwdGlvbiJdLAogICAgICAgICJwcm9ibGVtX2lkcyI6IGNvbXBldGl0aW9uX2NmZ1sicHJvYmxlbV9pZHMiXSwKICAgICAgICAibWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQiOiBjb21wZXRpdGlvbl9jZmdbIm1heF90b2tlbnNfcGVyX3BhcnRpY2lwYW50Il0sCiAgICAgICAgInJ1bGVzIjogY29tcGV0aXRpb25fY2ZnLmdldCgicnVsZXMiLCB7fSksCiAgICB9CgogICAgY3JlYXRlX3JlcyA9IF9yZXF1ZXN0X2pzb24oCiAgICAgICAgIlBPU1QiLAogICAgICAgIGFwaV9iYXNlLAogICAgICAgICIvYXBpL2NvbXBldGl0aW9ucy9jcmVhdGUiLAogICAgICAgIHBheWxvYWQ9Y3JlYXRlX3BheWxvYWQsCiAgICAgICAgdGltZW91dD1hcmdzLnRpbWVvdXQsCiAgICApCiAgICBpZiBjcmVhdGVfcmVzLmdldCgic3RhdHVzIikgIT0gInN1Y2Nlc3MiOgogICAgICAgIHJhaXNlIFJ1bnRpbWVFcnJvcihjcmVhdGVfcmVzLmdldCgibWVzc2FnZSIsICJGYWlsZWQgdG8gY3JlYXRlIGNvbXBldGl0aW9uIikpCgogICAgY29tcGV0aXRpb25fZGF0YSA9IGNyZWF0ZV9yZXMuZ2V0KCJkYXRhIiwge30pLmdldCgiY29tcGV0aXRpb24iLCB7fSkKICAgIGNvbXBldGl0aW9uX2lkID0gc3RyKGNvbXBldGl0aW9uX2RhdGEuZ2V0KCJpZCIpIG9yICIiKS5zdHJpcCgpCiAgICBpZiBub3QgY29tcGV0aXRpb25faWQ6CiAgICAgICAgcmFpc2UgUnVudGltZUVycm9yKCJDcmVhdGUgY29tcGV0aXRpb24gcmVzcG9uc2UgbWlzc2luZyBjb21wZXRpdGlvbiBJRCIpCgogICAgcGFydGljaXBhbnRzID0gY2ZnWyJwYXJ0aWNpcGFudHMiXQogICAgZGVmYXVsdF9sYW1iZGEgPSBpbnQoCiAgICAgICAgY29tcGV0aXRpb25fY2ZnLmdldCgicnVsZXMiLCB7fSkuZ2V0KCJsYW1iZGEiLCBhcmdzLmRlZmF1bHRfbGFtYmRhX3ZhbHVlKQogICAgKQoKICAgIGJhdGNoX3BheWxvYWQgPSB7CiAgICAgICAgImRlZmF1bHRfbGltaXRfdG9rZW5zIjogY29tcGV0aXRpb25fY2ZnWyJtYXhfdG9rZW5zX3Blcl9wYXJ0aWNpcGFudCJdLAogICAgICAgICJkZWZhdWx0X2xhbWJkYV92YWx1ZSI6IGRlZmF1bHRfbGFtYmRhLAogICAgICAgICJwYXJ0aWNpcGFudHMiOiBwYXJ0aWNpcGFudHMsCiAgICB9CgogICAgYmF0Y2hfcmVzID0gX3JlcXVlc3RfanNvbigKICAgICAgICAiUE9TVCIsCiAgICAgICAgYXBpX2Jhc2UsCiAgICAgICAgZiIvYXBpL3BhcnRpY2lwYW50cy9jcmVhdGVfYmF0Y2gve2NvbXBldGl0aW9uX2lkfSIsCiAgICAgICAgcGF5bG9hZD1iYXRjaF9wYXlsb2FkLAogICAgICAgIHRpbWVvdXQ9YXJncy50aW1lb3V0LAogICAgKQogICAgaWYgYmF0Y2hfcmVzLmdldCgic3RhdHVzIikgIT0gInN1Y2Nlc3MiOgogICAgICAgIHJhaXNlIFJ1bnRpbWVFcnJvcihiYXRjaF9yZXMuZ2V0KCJtZXNzYWdlIiwgIkZhaWxlZCB0byBjcmVhdGUgcGFydGljaXBhbnRzIikpCgogICAgYmF0Y2hfZGF0YSA9IGJhdGNoX3Jlcy5nZXQoImRhdGEiLCB7fSkKICAgIGNyZWF0ZWQgPSBiYXRjaF9kYXRhLmdldCgiY3JlYXRlZCIsIFtdKSBpZiBpc2luc3RhbmNlKGJhdGNoX2RhdGEsIGRpY3QpIGVsc2UgW10KICAgIGVycm9ycyA9IGJhdGNoX2RhdGEuZ2V0KCJlcnJvcnMiLCBbXSkgaWYgaXNpbnN0YW5jZShiYXRjaF9kYXRhLCBkaWN0KSBlbHNlIFtdCgogICAgcGFydGljaXBhbnRfZW50cmllcyA9IFtdCiAgICBmb3IgaXRlbSBpbiBjcmVhdGVkOgogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKGl0ZW0sIGRpY3QpOgogICAgICAgICAgICBjb250aW51ZQogICAgICAgIHBhcnRpY2lwYW50X2lkID0gc3RyKGl0ZW0uZ2V0KCJpZCIpIG9yICIiKS5zdHJpcCgpCiAgICAgICAgZ2F0ZXdheSA9IE5vbmUKICAgICAgICBpZiBwYXJ0aWNpcGFudF9pZDoKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgY3JlZF9yZXMgPSBfcmVxdWVzdF9qc29uKAogICAgICAgICAgICAgICAgICAgICJHRVQiLAogICAgICAgICAgICAgICAgICAgIGFwaV9iYXNlLAogICAgICAgICAgICAgICAgICAgIGYiL2FwaS9wYXJ0aWNpcGFudHMvZ2F0ZXdheV9jcmVkZW50aWFscy97Y29tcGV0aXRpb25faWR9L3twYXJ0aWNpcGFudF9pZH0iLAogICAgICAgICAgICAgICAgICAgIHRpbWVvdXQ9YXJncy50aW1lb3V0LAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgaWYgY3JlZF9yZXMuZ2V0KCJzdGF0dXMiKSA9PSAic3VjY2VzcyI6CiAgICAgICAgICAgICAgICAgICAgZ2F0ZXdheSA9IGNyZWRfcmVzLmdldCgiZGF0YSIpCiAgICAgICAgICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgICAgICAgICBnYXRld2F5ID0gTm9uZQoKICAgICAgICBwYXJ0aWNpcGFudF9lbnRyaWVzLmFwcGVuZCgKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgInBhcnRpY2lwYW50X2lkIjogcGFydGljaXBhbnRfaWQsCiAgICAgICAgICAgICAgICAibmFtZSI6IGl0ZW0uZ2V0KCJuYW1lIiksCiAgICAgICAgICAgICAgICAiYWdlbnRfcHJvZmlsZSI6IGl0ZW0uZ2V0KCJhZ2VudF9wcm9maWxlIiwge30pLAogICAgICAgICAgICAgICAgImdhdGV3YXkiOiBnYXRld2F5LAogICAgICAgICAgICB9CiAgICAgICAgKQoKICAgIG91dHB1dF9kaXIgPSBQYXRoKGFyZ3Mub3V0cHV0X2RpciBvciBjZmdbInJlcG9ydCJdWyJvdXRwdXRfZGlyIl0pCiAgICBvdXRwdXRfZGlyLm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKICAgIG1hbmlmZXN0X3BhdGggPSBvdXRwdXRfZGlyIC8gZiJzZXR1cF9tYW5pZmVzdF97Y29tcGV0aXRpb25faWR9Lmpzb24iCgogICAgbWFuaWZlc3QgPSB7CiAgICAgICAgImdlbmVyYXRlZF9hdCI6IGRhdGV0aW1lLnV0Y25vdygpLmlzb2Zvcm1hdCgpICsgIloiLAogICAgICAgICJhcGlfYmFzZSI6IGFwaV9iYXNlLAogICAgICAgICJjb21wZXRpdGlvbl9pZCI6IGNvbXBldGl0aW9uX2lkLAogICAgICAgICJjb21wZXRpdGlvbiI6IGNvbXBldGl0aW9uX2RhdGEsCiAgICAgICAgInBhcnRpY2lwYW50c19jcmVhdGVkIjogcGFydGljaXBhbnRfZW50cmllcywKICAgICAgICAicGFydGljaXBhbnRfZXJyb3JzIjogZXJyb3JzLAogICAgICAgICJzb3VyY2VfY29uZmlnIjogc3RyKFBhdGgoYXJncy5jb25maWcpLnJlc29sdmUoKSksCiAgICB9CiAgICBtYW5pZmVzdF9wYXRoLndyaXRlX3RleHQoCiAgICAgICAganNvbi5kdW1wcyhtYW5pZmVzdCwgZW5zdXJlX2FzY2lpPUZhbHNlLCBpbmRlbnQ9MikgKyAiXG4iLAogICAgICAgIGVuY29kaW5nPSJ1dGYtOCIsCiAgICApCgogICAgcHJpbnQoZiJjb21wZXRpdGlvbl9pZD17Y29tcGV0aXRpb25faWR9IikKICAgIHByaW50KGYicGFydGljaXBhbnRzX2NyZWF0ZWQ9e2xlbihwYXJ0aWNpcGFudF9lbnRyaWVzKX0iKQogICAgcHJpbnQoZiJwYXJ0aWNpcGFudF9lcnJvcnM9e2xlbihlcnJvcnMpfSIpCiAgICBwcmludChmIm1hbmlmZXN0PXttYW5pZmVzdF9wYXRofSIpCgogICAgaWYgZXJyb3JzIGFuZCBhcmdzLmZhaWxfb25fZXJyb3JzOgogICAgICAgIHJldHVybiAyCiAgICByZXR1cm4gMAoKCmRlZiBjbWRfcmVwb3J0KGFyZ3M6IGFyZ3BhcnNlLk5hbWVzcGFjZSkgLT4gaW50OgogICAgcmVwb3J0X3JlcyA9IF9yZXF1ZXN0X2pzb24oCiAgICAgICAgIkdFVCIsCiAgICAgICAgYXJncy5hcGlfYmFzZSwKICAgICAgICBmIi9hcGkvbWV0cmljcy9pbnRlbGxpZ2VuY2Uve2FyZ3MuY29tcGV0aXRpb25faWR9P2Zvcm1hdD1qc29uJmluY2x1ZGVfdGVzdF9wb2ludHM9eyd0cnVlJyBpZiBhcmdzLmluY2x1ZGVfdGVzdF9wb2ludHMgZWxzZSAnZmFsc2UnfSIsCiAgICAgICAgdGltZW91dD1hcmdzLnRpbWVvdXQsCiAgICApCiAgICBpZiByZXBvcnRfcmVzLmdldCgic3RhdHVzIikgIT0gInN1Y2Nlc3MiOgogICAgICAgIHJhaXNlIFJ1bnRpbWVFcnJvcihyZXBvcnRfcmVzLmdldCgibWVzc2FnZSIsICJGYWlsZWQgdG8gZmV0Y2ggaW50ZWxsaWdlbmNlIG1ldHJpY3MiKSkKCiAgICByZXBvcnQgPSByZXBvcnRfcmVzLmdldCgiZGF0YSIsIHt9KQogICAgaWYgbm90IGlzaW5zdGFuY2UocmVwb3J0LCBkaWN0KToKICAgICAgICByYWlzZSBSdW50aW1lRXJyb3IoIk1ldHJpY3MgQVBJIHJldHVybmVkIGludmFsaWQgcmVwb3J0IHBheWxvYWQiKQoKICAgIG91dHB1dF9kaXIgPSBQYXRoKGFyZ3Mub3V0cHV0X2RpciBvciBmInJlcG9ydHMvaW50ZWxsaWdlbmNlL3thcmdzLmNvbXBldGl0aW9uX2lkfSIpCiAgICBhcnRpZmFjdHMgPSBzYXZlX3JlcG9ydF9idW5kbGUocmVwb3J0LCBvdXRwdXRfZGlyKQoKICAgIHByaW50KGYiY29tcGV0aXRpb25faWQ9e2FyZ3MuY29tcGV0aXRpb25faWR9IikKICAgIGZvciBrZXksIHBhdGggaW4gYXJ0aWZhY3RzLml0ZW1zKCk6CiAgICAgICAgcHJpbnQoZiJ7a2V5fT17cGF0aH0iKQogICAgcmV0dXJuIDAKCgpkZWYgY21kX3Ntb2tlKGFyZ3M6IGFyZ3BhcnNlLk5hbWVzcGFjZSkgLT4gaW50OgogICAgaGVhbHRoID0gX3JlcXVlc3RfanNvbigiR0VUIiwgYXJncy5hcGlfYmFzZSwgIi9oZWFsdGgiLCB0aW1lb3V0PWFyZ3MudGltZW91dCkKICAgIHByaW50KGYiaGVhbHRoPXtoZWFsdGguZ2V0KCdzdGF0dXMnKX0iKQoKICAgIGlmIGFyZ3MuY29tcGV0aXRpb25faWQ6CiAgICAgICAgbWV0cmljcyA9IF9yZXF1ZXN0X2pzb24oCiAgICAgICAgICAgICJHRVQiLAogICAgICAgICAgICBhcmdzLmFwaV9iYXNlLAogICAgICAgICAgICBmIi9hcGkvbWV0cmljcy9pbnRlbGxpZ2VuY2Uve2FyZ3MuY29tcGV0aXRpb25faWR9P2Zvcm1hdD1qc29uIiwKICAgICAgICAgICAgdGltZW91dD1hcmdzLnRpbWVvdXQsCiAgICAgICAgKQogICAgICAgIHByaW50KGYibWV0cmljcz17bWV0cmljcy5nZXQoJ3N0YXR1cycpfSIpCgogICAgcmV0dXJuIDAKCgpkZWYgYnVpbGRfcGFyc2VyKCkgLT4gYXJncGFyc2UuQXJndW1lbnRQYXJzZXI6CiAgICBwYXJzZXIgPSBhcmdwYXJzZS5Bcmd1bWVudFBhcnNlcigKICAgICAgICBkZXNjcmlwdGlvbj0iVVNBQ09BcmVuYSBiZW5jaG1hcmsgQ0xJIChzZXR1cC9yZXBvcnQvc21va2UpIgogICAgKQogICAgc3ViID0gcGFyc2VyLmFkZF9zdWJwYXJzZXJzKGRlc3Q9ImNvbW1hbmQiLCByZXF1aXJlZD1UcnVlKQoKICAgIGluaXRfcCA9IHN1Yi5hZGRfcGFyc2VyKCJpbml0LXRlbXBsYXRlIiwgaGVscD0iV3JpdGUgYmVuY2htYXJrIGNvbmZpZyB0ZW1wbGF0ZSIpCiAgICBpbml0X3AuYWRkX2FyZ3VtZW50KAogICAgICAgICItLW91dHB1dCIsIGRlZmF1bHQ9ImNvbmZpZy9iZW5jaG1hcmtfdGVtcGxhdGUuanNvbiIsIGhlbHA9Ik91dHB1dCB0ZW1wbGF0ZSBwYXRoIgogICAgKQogICAgaW5pdF9wLmFkZF9hcmd1bWVudCgiLS1mb3JjZSIsIGFjdGlvbj0ic3RvcmVfdHJ1ZSIsIGhlbHA9Ik92ZXJ3cml0ZSBleGlzdGluZyBmaWxlIikKICAgIGluaXRfcC5zZXRfZGVmYXVsdHMoZnVuYz1jbWRfaW5pdF90ZW1wbGF0ZSkKCiAgICBzZXR1cF9wID0gc3ViLmFkZF9wYXJzZXIoInNldHVwIiwgaGVscD0iQ3JlYXRlIGNvbXBldGl0aW9uIGFuZCByZWdpc3RlciBwYXJ0aWNpcGFudHMiKQogICAgc2V0dXBfcC5hZGRfYXJndW1lbnQoIi0tY29uZmlnIiwgcmVxdWlyZWQ9VHJ1ZSwgaGVscD0iQmVuY2htYXJrIGNvbmZpZyBwYXRoIChqc29uL3lhbWwpIikKICAgIHNldHVwX3AuYWRkX2FyZ3VtZW50KCItLXRpbWVvdXQiLCB0eXBlPWZsb2F0LCBkZWZhdWx0PTMwLjAsIGhlbHA9IkhUVFAgdGltZW91dCBzZWNvbmRzIikKICAgIHNldHVwX3AuYWRkX2FyZ3VtZW50KCItLWRlZmF1bHQtbGFtYmRhLXZhbHVlIiwgdHlwZT1pbnQsIGRlZmF1bHQ9MTAwKQogICAgc2V0dXBfcC5hZGRfYXJndW1lbnQoIi0tb3V0cHV0LWRpciIsIGRlZmF1bHQ9IiIsIGhlbHA9Ik1hbmlmZXN0IG91dHB1dCBkaXJlY3RvcnkiKQogICAgc2V0dXBfcC5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tZmFpbC1vbi1lcnJvcnMiLAogICAgICAgIGFjdGlvbj0ic3RvcmVfdHJ1ZSIsCiAgICAgICAgaGVscD0iUmV0dXJuIG5vbi16ZXJvIGlmIGFueSBwYXJ0aWNpcGFudCBjcmVhdGlvbiBmYWlsZWQiLAogICAgKQogICAgc2V0dXBfcC5zZXRfZGVmYXVsdHMoZnVuYz1jbWRfc2V0dXApCgogICAgcmVwb3J0X3AgPSBzdWIuYWRkX3BhcnNlcigicmVwb3J0IiwgaGVscD0iRmV0Y2ggbWV0cmljcyBhbmQgZXhwb3J0IHJlcG9ydCBhcnRpZmFjdHMiKQogICAgcmVwb3J0X3AuYWRkX2FyZ3VtZW50KCItLWFwaS1iYXNlIiwgcmVxdWlyZWQ9VHJ1ZSwgaGVscD0iVVNBQ09BcmVuYSBBUEkgYmFzZSBVUkwiKQogICAgcmVwb3J0X3AuYWRkX2FyZ3VtZW50KCItLWNvbXBldGl0aW9uLWlkIiwgcmVxdWlyZWQ9VHJ1ZSkKICAgIHJlcG9ydF9wLmFkZF9hcmd1bWVudCgiLS10aW1lb3V0IiwgdHlwZT1mbG9hdCwgZGVmYXVsdD0zMC4wKQogICAgcmVwb3J0X3AuYWRkX2FyZ3VtZW50KCItLW91dHB1dC1kaXIiLCBkZWZhdWx0PSIiLCBoZWxwPSJSZXBvcnQgb3V0cHV0IGRpcmVjdG9yeSIpCiAgICByZXBvcnRfcC5hZGRfYXJndW1lbnQoIi0taW5jbHVkZS10ZXN0LXBvaW50cyIsIGFjdGlvbj0ic3RvcmVfdHJ1ZSIpCiAgICByZXBvcnRfcC5zZXRfZGVmYXVsdHMoZnVuYz1jbWRfcmVwb3J0KQoKICAgIHNtb2tlX3AgPSBzdWIuYWRkX3BhcnNlcigic21va2UiLCBoZWxwPSJCYXNpYyBlbmRwb2ludCBzbW9rZSBjaGVja3MiKQogICAgc21va2VfcC5hZGRfYXJndW1lbnQoIi0tYXBpLWJhc2UiLCByZXF1aXJlZD1UcnVlLCBoZWxwPSJVU0FDT0FyZW5hIEFQSSBiYXNlIFVSTCIpCiAgICBzbW9rZV9wLmFkZF9hcmd1bWVudCgiLS1jb21wZXRpdGlvbi1pZCIsIGRlZmF1bHQ9IiIpCiAgICBzbW9rZV9wLmFkZF9hcmd1bWVudCgiLS10aW1lb3V0IiwgdHlwZT1mbG9hdCwgZGVmYXVsdD0xNS4wKQogICAgc21va2VfcC5zZXRfZGVmYXVsdHMoZnVuYz1jbWRfc21va2UpCgogICAgcmV0dXJuIHBhcnNlcgoKCmRlZiBtYWluKCkgLT4gaW50OgogICAgcGFyc2VyID0gYnVpbGRfcGFyc2VyKCkKICAgIGFyZ3MgPSBwYXJzZXIucGFyc2VfYXJncygpCgogICAgdHJ5OgogICAgICAgIHJldHVybiBpbnQoYXJncy5mdW5jKGFyZ3MpKQogICAgZXhjZXB0IEJlbmNobWFya0NvbmZpZ0Vycm9yIGFzIGV4YzoKICAgICAgICBwYXJzZXIuZXhpdCgyLCBmIkNPTkZJRyBFUlJPUjoge2V4Y31cbiIpCiAgICBleGNlcHQgcmVxdWVzdHMuUmVxdWVzdEV4Y2VwdGlvbiBhcyBleGM6CiAgICAgICAgcGFyc2VyLmV4aXQoMiwgZiJIVFRQIEVSUk9SOiB7ZXhjfVxuIikKICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZXhjOiAgIyBweWxpbnQ6IGRpc2FibGU9YnJvYWQtZXhjZXB0CiAgICAgICAgcGFyc2VyLmV4aXQoMiwgZiJFUlJPUjoge2V4Y31cbiIpCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIHJhaXNlIFN5c3RlbUV4aXQobWFpbigpKQo=
+#!/usr/bin/env python3
+"""Unified benchmark CLI for USACOArena."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, Optional
+
+import requests
+
+from usacoarena.benchmark.config import (
+    BenchmarkConfigError,
+    build_benchmark_template,
+    load_benchmark_config,
+)
+from usacoarena.benchmark.reporting import save_report_bundle
+
+
+def _request_json(
+    method: str,
+    base: str,
+    path: str,
+    *,
+    payload: Optional[Dict[str, Any]] = None,
+    timeout: float = 30.0,
+) -> Dict[str, Any]:
+    url = f"{base.rstrip('/')}{path}"
+    response = requests.request(method=method, url=url, json=payload, timeout=timeout)
+    response.raise_for_status()
+    data = response.json()
+    if not isinstance(data, dict):
+        raise RuntimeError(f"Unexpected response from {url}: not a JSON object")
+    return data
+
+
+def cmd_init_template(args: argparse.Namespace) -> int:
+    output = Path(args.output)
+    if output.exists() and not args.force:
+        raise RuntimeError(f"Refusing to overwrite existing file: {output}")
+
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(
+        json.dumps(build_benchmark_template(), ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    print(f"Template written to: {output}")
+    return 0
+
+
+def cmd_setup(args: argparse.Namespace) -> int:
+    cfg = load_benchmark_config(Path(args.config))
+    api_base = cfg["api_base"]
+    competition_cfg = cfg["competition"]
+
+    create_payload = {
+        "title": competition_cfg["title"],
+        "description": competition_cfg["description"],
+        "problem_ids": competition_cfg["problem_ids"],
+        "max_tokens_per_participant": competition_cfg["max_tokens_per_participant"],
+        "rules": competition_cfg.get("rules", {}),
+    }
+
+    create_res = _request_json(
+        "POST",
+        api_base,
+        "/api/competitions/create",
+        payload=create_payload,
+        timeout=args.timeout,
+    )
+    if create_res.get("status") != "success":
+        raise RuntimeError(create_res.get("message", "Failed to create competition"))
+
+    competition_data = create_res.get("data", {}).get("competition", {})
+    competition_id = str(competition_data.get("id") or "").strip()
+    if not competition_id:
+        raise RuntimeError("Create competition response missing competition ID")
+
+    participants = cfg["participants"]
+    default_lambda = int(
+        competition_cfg.get("rules", {}).get("lambda", args.default_lambda_value)
+    )
+
+    batch_payload = {
+        "default_limit_tokens": competition_cfg["max_tokens_per_participant"],
+        "default_lambda_value": default_lambda,
+        "participants": participants,
+    }
+
+    batch_res = _request_json(
+        "POST",
+        api_base,
+        f"/api/participants/create_batch/{competition_id}",
+        payload=batch_payload,
+        timeout=args.timeout,
+    )
+    if batch_res.get("status") != "success":
+        raise RuntimeError(batch_res.get("message", "Failed to create participants"))
+
+    batch_data = batch_res.get("data", {})
+    created = batch_data.get("created", []) if isinstance(batch_data, dict) else []
+    errors = batch_data.get("errors", []) if isinstance(batch_data, dict) else []
+
+    participant_entries = []
+    for item in created:
+        if not isinstance(item, dict):
+            continue
+        participant_id = str(item.get("id") or "").strip()
+        gateway = None
+        if participant_id:
+            try:
+                cred_res = _request_json(
+                    "GET",
+                    api_base,
+                    f"/api/participants/gateway_credentials/{competition_id}/{participant_id}",
+                    timeout=args.timeout,
+                )
+                if cred_res.get("status") == "success":
+                    gateway = cred_res.get("data")
+            except Exception:
+                gateway = None
+
+        participant_entries.append(
+            {
+                "participant_id": participant_id,
+                "name": item.get("name"),
+                "agent_profile": item.get("agent_profile", {}),
+                "gateway": gateway,
+            }
+        )
+
+    output_dir = Path(args.output_dir or cfg["report"]["output_dir"])
+    output_dir.mkdir(parents=True, exist_ok=True)
+    manifest_path = output_dir / f"setup_manifest_{competition_id}.json"
+
+    manifest = {
+        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "api_base": api_base,
+        "competition_id": competition_id,
+        "competition": competition_data,
+        "participants_created": participant_entries,
+        "participant_errors": errors,
+        "source_config": str(Path(args.config).resolve()),
+    }
+    manifest_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    print(f"competition_id={competition_id}")
+    print(f"participants_created={len(participant_entries)}")
+    print(f"participant_errors={len(errors)}")
+    print(f"manifest={manifest_path}")
+
+    if errors and args.fail_on_errors:
+        return 2
+    return 0
+
+
+def cmd_report(args: argparse.Namespace) -> int:
+    report_res = _request_json(
+        "GET",
+        args.api_base,
+        f"/api/metrics/intelligence/{args.competition_id}?format=json&include_test_points={'true' if args.include_test_points else 'false'}",
+        timeout=args.timeout,
+    )
+    if report_res.get("status") != "success":
+        raise RuntimeError(report_res.get("message", "Failed to fetch intelligence metrics"))
+
+    report = report_res.get("data", {})
+    if not isinstance(report, dict):
+        raise RuntimeError("Metrics API returned invalid report payload")
+
+    output_dir = Path(args.output_dir or f"reports/intelligence/{args.competition_id}")
+    artifacts = save_report_bundle(report, output_dir)
+
+    print(f"competition_id={args.competition_id}")
+    for key, path in artifacts.items():
+        print(f"{key}={path}")
+    return 0
+
+
+def cmd_smoke(args: argparse.Namespace) -> int:
+    health = _request_json("GET", args.api_base, "/health", timeout=args.timeout)
+    print(f"health={health.get('status')}")
+
+    if args.competition_id:
+        metrics = _request_json(
+            "GET",
+            args.api_base,
+            f"/api/metrics/intelligence/{args.competition_id}?format=json",
+            timeout=args.timeout,
+        )
+        print(f"metrics={metrics.get('status')}")
+
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="USACOArena benchmark CLI (setup/report/smoke)"
+    )
+    sub = parser.add_subparsers(dest="command", required=True)
+
+    init_p = sub.add_parser("init-template", help="Write benchmark config template")
+    init_p.add_argument(
+        "--output", default="config/benchmark_template.json", help="Output template path"
+    )
+    init_p.add_argument("--force", action="store_true", help="Overwrite existing file")
+    init_p.set_defaults(func=cmd_init_template)
+
+    setup_p = sub.add_parser("setup", help="Create competition and register participants")
+    setup_p.add_argument("--config", required=True, help="Benchmark config path (json/yaml)")
+    setup_p.add_argument("--timeout", type=float, default=30.0, help="HTTP timeout seconds")
+    setup_p.add_argument("--default-lambda-value", type=int, default=100)
+    setup_p.add_argument("--output-dir", default="", help="Manifest output directory")
+    setup_p.add_argument(
+        "--fail-on-errors",
+        action="store_true",
+        help="Return non-zero if any participant creation failed",
+    )
+    setup_p.set_defaults(func=cmd_setup)
+
+    report_p = sub.add_parser("report", help="Fetch metrics and export report artifacts")
+    report_p.add_argument("--api-base", required=True, help="USACOArena API base URL")
+    report_p.add_argument("--competition-id", required=True)
+    report_p.add_argument("--timeout", type=float, default=30.0)
+    report_p.add_argument("--output-dir", default="", help="Report output directory")
+    report_p.add_argument("--include-test-points", action="store_true")
+    report_p.set_defaults(func=cmd_report)
+
+    smoke_p = sub.add_parser("smoke", help="Basic endpoint smoke checks")
+    smoke_p.add_argument("--api-base", required=True, help="USACOArena API base URL")
+    smoke_p.add_argument("--competition-id", default="")
+    smoke_p.add_argument("--timeout", type=float, default=15.0)
+    smoke_p.set_defaults(func=cmd_smoke)
+
+    return parser
+
+
+def main() -> int:
+    parser = build_parser()
+    args = parser.parse_args()
+
+    try:
+        return int(args.func(args))
+    except BenchmarkConfigError as exc:
+        parser.exit(2, f"CONFIG ERROR: {exc}\n")
+    except requests.RequestException as exc:
+        parser.exit(2, f"HTTP ERROR: {exc}\n")
+    except Exception as exc:  # pylint: disable=broad-except
+        parser.exit(2, f"ERROR: {exc}\n")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

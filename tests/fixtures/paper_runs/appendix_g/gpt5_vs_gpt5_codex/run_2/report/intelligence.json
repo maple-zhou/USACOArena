@@ -1,1 +1,9 @@
-ewogICJjb21wZXRpdGlvbiI6IHsiaWQiOiAiZ3B0NS1mYW1pbHktMiIsICJ0aXRsZSI6ICJHUFQ1IHZzIENvZGV4IiwgImRlc2NyaXB0aW9uIjogImZpeHR1cmUiLCAicHJvYmxlbV9jb3VudCI6IDR9LAogICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0wNC0xNFQwMzowNTowMFoiLAogICJzdW1tYXJ5IjogeyJwYXJ0aWNpcGFudF9jb3VudCI6IDIsICJ0ZXJtaW5hdGVkX2NvdW50IjogMiwgImF2Z19pbnRlbGxpZ2VuY2Vfc2NvcmUiOiA3OC4wLCAidG9wX3BhcnRpY2lwYW50IjogImdwdC01LTIwMjUtMDgtMDcifSwKICAicm93cyI6IFsKICAgIHsibmFtZSI6ICJncHQtNS0yMDI1LTA4LTA3IiwgImFyZW5hX3JhbmsiOiAxLCAicHJvYmxlbV9wYXNzX3Njb3JlIjogMjEsICJzY29yZSI6IDIxLjAsICJzdWJtaXNzaW9uX2NvdW50IjogMzEsICJhY2NlcHRlZF9jb3VudCI6IDQsICJhdHRlbXB0ZWRfcHJvYmxlbXMiOiAyNiwgImNvbnN1bWVkX2NyZWRpdCI6IDE0MDAwMDAwfSwKICAgIHsibmFtZSI6ICJncHQtNS1jb2RleCIsICJhcmVuYV9yYW5rIjogMiwgInByb2JsZW1fcGFzc19zY29yZSI6IDgsICJzY29yZSI6IDguMCwgInN1Ym1pc3Npb25fY291bnQiOiAyMiwgImFjY2VwdGVkX2NvdW50IjogMTUsICJhdHRlbXB0ZWRfcHJvYmxlbXMiOiAxNiwgImNvbnN1bWVkX2NyZWRpdCI6IDgwMDAwMDB9CiAgXQp9Cg==
+{
+  "competition": {"id": "gpt5-family-2", "title": "GPT5 vs Codex", "description": "fixture", "problem_count": 4},
+  "generated_at": "2026-04-14T03:05:00Z",
+  "summary": {"participant_count": 2, "terminated_count": 2, "avg_intelligence_score": 78.0, "top_participant": "gpt-5-2025-08-07"},
+  "rows": [
+    {"name": "gpt-5-2025-08-07", "arena_rank": 1, "problem_pass_score": 21, "score": 21.0, "submission_count": 31, "accepted_count": 4, "attempted_problems": 26, "consumed_credit": 14000000},
+    {"name": "gpt-5-codex", "arena_rank": 2, "problem_pass_score": 8, "score": 8.0, "submission_count": 22, "accepted_count": 15, "attempted_problems": 16, "consumed_credit": 8000000}
+  ]
+}

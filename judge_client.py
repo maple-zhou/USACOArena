@@ -1,1 +1,150 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJTaW1wbGUgY2xpZW50IGZvciB0aGUgVVNBQ08gQXJlbmEganVkZ2Ugc2VydmVyLiIiIgoKZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IGFyZ3BhcnNlCmltcG9ydCBqc29uCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5lcnJvcgppbXBvcnQgdXJsbGliLnJlcXVlc3QKZnJvbSB0eXBpbmcgaW1wb3J0IEFueSwgRGljdCwgSXRlcmFibGUKCgpkZWYgcGFyc2VfYXJncygpIC0+IGFyZ3BhcnNlLk5hbWVzcGFjZToKICAgIHBhcnNlciA9IGFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyKAogICAgICAgIGRlc2NyaXB0aW9uPSJTdWJtaXQgY29kZSB0byB0aGUganVkZ2Ugc2VydmVyIGFuZCBwcmludCBwZXItdGVzdCByZXN1bHRzLiIKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgImNvZGVfcGF0aCIsCiAgICAgICAgaGVscD0iUGF0aCB0byB0aGUgc291cmNlIGZpbGUgdG8gc3VibWl0LiIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLXByb2JsZW0taWQiLAogICAgICAgIHJlcXVpcmVkPVRydWUsCiAgICAgICAgaGVscD0iUHJvYmxlbSBpZGVudGlmaWVyLCBlLmcuIDE1MjRfcGxhdGludW1fZm9ya2xpZnRfY2VydGlmaWVkLiIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLWxhbmd1YWdlIiwKICAgICAgICBkZWZhdWx0PSJjcHAiLAogICAgICAgIGhlbHA9Ikxhbmd1YWdlIHN0cmluZyBleHBlY3RlZCBieSB0aGUganVkZ2UgKGRlZmF1bHQ6IGNwcCkuIiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tdXJsIiwKICAgICAgICBkZWZhdWx0PSJodHRwOi8vMTI3LjAuMC4xOjgwODEvYXBpL2p1ZGdlL2V2YWx1YXRlIiwKICAgICAgICBoZWxwPSJKdWRnZSBzZXJ2ZXIgZW5kcG9pbnQgKGRlZmF1bHQ6IGh0dHA6Ly8xMjcuMC4wLjE6ODA4MS9hcGkvanVkZ2UvZXZhbHVhdGUpLiIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLXBhcnRpY2lwYW50LWlkIiwKICAgICAgICBoZWxwPSJPcHRpb25hbCBwYXJ0aWNpcGFudCBpZGVudGlmaWVyIHBhc3NlZCB0aHJvdWdoIHRvIHRoZSBqdWRnZS4iLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1zdWJtaXNzaW9uLWlkIiwKICAgICAgICBoZWxwPSJPcHRpb25hbCBzdWJtaXNzaW9uIGlkZW50aWZpZXIgcGFzc2VkIHRocm91Z2ggdG8gdGhlIGp1ZGdlLiIsCiAgICApCiAgICByZXR1cm4gcGFyc2VyLnBhcnNlX2FyZ3MoKQoKCmRlZiBsb2FkX2NvZGUocGF0aDogc3RyKSAtPiBzdHI6CiAgICB0cnk6CiAgICAgICAgd2l0aCBvcGVuKHBhdGgsICJyIiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgc291cmNlOgogICAgICAgICAgICByZXR1cm4gc291cmNlLnJlYWQoKQogICAgZXhjZXB0IE9TRXJyb3IgYXMgZXhjOiAgIyBwcmFnbWE6IG5vIGNvdmVyIC0gQ0xJIGNvbnZlbmllbmNlCiAgICAgICAgcHJpbnQoZiJGYWlsZWQgdG8gcmVhZCBjb2RlIGZyb20ge3BhdGh9OiB7ZXhjfSIsIGZpbGU9c3lzLnN0ZGVycikKICAgICAgICBzeXMuZXhpdCgxKQoKCmRlZiBidWlsZF9wYXlsb2FkKGFyZ3M6IGFyZ3BhcnNlLk5hbWVzcGFjZSwgY29kZTogc3RyKSAtPiBEaWN0W3N0ciwgQW55XToKICAgIHBheWxvYWQ6IERpY3Rbc3RyLCBBbnldID0gewogICAgICAgICJwcm9ibGVtX2lkIjogYXJncy5wcm9ibGVtX2lkLAogICAgICAgICJsYW5ndWFnZSI6IGFyZ3MubGFuZ3VhZ2UsCiAgICAgICAgImNvZGUiOiBjb2RlLAogICAgfQogICAgaWYgYXJncy5wYXJ0aWNpcGFudF9pZDoKICAgICAgICBwYXlsb2FkWyJwYXJ0aWNpcGFudF9pZCJdID0gYXJncy5wYXJ0aWNpcGFudF9pZAogICAgaWYgYXJncy5zdWJtaXNzaW9uX2lkOgogICAgICAgIHBheWxvYWRbInN1Ym1pc3Npb25faWQiXSA9IGFyZ3Muc3VibWlzc2lvbl9pZAogICAgcmV0dXJuIHBheWxvYWQKCgpkZWYgcG9zdF9qc29uKHVybDogc3RyLCBwYXlsb2FkOiBEaWN0W3N0ciwgQW55XSkgLT4gRGljdFtzdHIsIEFueV06CiAgICBib2R5ID0ganNvbi5kdW1wcyhwYXlsb2FkKS5lbmNvZGUoInV0Zi04IikKICAgIHJlcXVlc3QgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KAogICAgICAgIHVybCwKICAgICAgICBkYXRhPWJvZHksCiAgICAgICAgaGVhZGVycz17IkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIn0sCiAgICAgICAgbWV0aG9kPSJQT1NUIiwKICAgICkKICAgIHRyeToKICAgICAgICB3aXRoIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxdWVzdCkgYXMgcmVzcG9uc2U6CiAgICAgICAgICAgIHJhdyA9IHJlc3BvbnNlLnJlYWQoKQogICAgICAgICAgICBlbmNvZGluZyA9IHJlc3BvbnNlLmhlYWRlcnMuZ2V0X2NvbnRlbnRfY2hhcnNldCgidXRmLTgiKQogICAgZXhjZXB0IHVybGxpYi5lcnJvci5IVFRQRXJyb3IgYXMgZXhjOgogICAgICAgIGRldGFpbCA9IGV4Yy5yZWFkKCkuZGVjb2RlKCJ1dGYtOCIsIGVycm9ycz0icmVwbGFjZSIpCiAgICAgICAgcHJpbnQoZiJKdWRnZSByZXF1ZXN0IGZhaWxlZCB3aXRoIEhUVFAge2V4Yy5jb2RlfToge2RldGFpbH0iLCBmaWxlPXN5cy5zdGRlcnIpCiAgICAgICAgc3lzLmV4aXQoMSkKICAgIGV4Y2VwdCB1cmxsaWIuZXJyb3IuVVJMRXJyb3IgYXMgZXhjOgogICAgICAgIHByaW50KGYiVW5hYmxlIHRvIHJlYWNoIGp1ZGdlIHNlcnZlciBhdCB7dXJsfToge2V4Yy5yZWFzb259IiwgZmlsZT1zeXMuc3RkZXJyKQogICAgICAgIHN5cy5leGl0KDEpCgogICAgdHJ5OgogICAgICAgIHJldHVybiBqc29uLmxvYWRzKHJhdy5kZWNvZGUoZW5jb2RpbmcpKQogICAgZXhjZXB0IGpzb24uSlNPTkRlY29kZUVycm9yIGFzIGV4YzoKICAgICAgICBwcmludChmIkZhaWxlZCB0byBkZWNvZGUgcmVzcG9uc2UgYXMgSlNPTjoge2V4Y30iLCBmaWxlPXN5cy5zdGRlcnIpCiAgICAgICAgc3lzLmV4aXQoMSkKCgpkZWYgaXRlcl90ZXN0X3Jlc3VsdHMocmVzcG9uc2U6IERpY3Rbc3RyLCBBbnldKSAtPiBJdGVyYWJsZVtEaWN0W3N0ciwgQW55XV06CiAgICBpZiBpc2luc3RhbmNlKHJlc3BvbnNlLmdldCgidGVzdF9yZXN1bHRzIiksIGxpc3QpOgogICAgICAgIHJldHVybiByZXNwb25zZVsidGVzdF9yZXN1bHRzIl0KICAgIHN1Ym1pc3Npb24gPSByZXNwb25zZS5nZXQoInN1Ym1pc3Npb24iKQogICAgaWYgaXNpbnN0YW5jZShzdWJtaXNzaW9uLCBkaWN0KSBhbmQgaXNpbnN0YW5jZShzdWJtaXNzaW9uLmdldCgidGVzdF9yZXN1bHRzIiksIGxpc3QpOgogICAgICAgIHJldHVybiBzdWJtaXNzaW9uWyJ0ZXN0X3Jlc3VsdHMiXQogICAgcmV0dXJuICgpCgoKZGVmIHByaW50X3Jlc3VsdHMocmVzdWx0czogSXRlcmFibGVbRGljdFtzdHIsIEFueV1dKSAtPiBOb25lOgogICAgZm91bmQgPSBGYWxzZQogICAgZm9yIGluZGV4LCByZXN1bHQgaW4gZW51bWVyYXRlKHJlc3VsdHMsIHN0YXJ0PTEpOgogICAgICAgIGZvdW5kID0gVHJ1ZQogICAgICAgIGNhc2VfaWQgPSByZXN1bHQuZ2V0KCJ0ZXN0X2Nhc2VfaWQiKSBvciBmImNhc2Vfe2luZGV4fSIKICAgICAgICBzdGF0dXMgPSByZXN1bHQuZ2V0KCJzdGF0dXMiKSBvciAiVU5LTk9XTiIKICAgICAgICBkZXRhaWxzID0gW10KICAgICAgICBydW50aW1lID0gcmVzdWx0LmdldCgicnVudGltZV9tcyIpCiAgICAgICAgaWYgcnVudGltZSBpcyBub3QgTm9uZToKICAgICAgICAgICAgZGV0YWlscy5hcHBlbmQoZiJ0aW1lPXtydW50aW1lfW1zIikKICAgICAgICBtZW1vcnkgPSByZXN1bHQuZ2V0KCJtZW1vcnlfa2IiKQogICAgICAgIGlmIG1lbW9yeSBpcyBub3QgTm9uZToKICAgICAgICAgICAgZGV0YWlscy5hcHBlbmQoZiJtZW09e21lbW9yeX1LQiIpCiAgICAgICAgbWVzc2FnZSA9IHJlc3VsdC5nZXQoImVycm9yX21lc3NhZ2UiKQogICAgICAgIHN1ZmZpeCA9ICIiCiAgICAgICAgaWYgZGV0YWlsczoKICAgICAgICAgICAgc3VmZml4ICs9ICIgKCIgKyAiLCAiLmpvaW4oc3RyKGQpIGZvciBkIGluIGRldGFpbHMpICsgIikiCiAgICAgICAgaWYgbWVzc2FnZToKICAgICAgICAgICAgc3VmZml4ICs9IGYiIHwgZXJyb3I6IHttZXNzYWdlLnN0cmlwKCl9IgogICAgICAgIHByaW50KGYie2Nhc2VfaWR9OiB7c3RhdHVzfXtzdWZmaXh9IikKICAgIGlmIG5vdCBmb3VuZDoKICAgICAgICBwcmludCgiTm8gdGVzdCByZXN1bHRzIHJldHVybmVkIGJ5IGp1ZGdlLiIsIGZpbGU9c3lzLnN0ZGVycikKCgpkZWYgbWFpbigpIC0+IE5vbmU6CiAgICBhcmdzID0gcGFyc2VfYXJncygpCiAgICBjb2RlID0gbG9hZF9jb2RlKGFyZ3MuY29kZV9wYXRoKQogICAgcGF5bG9hZCA9IGJ1aWxkX3BheWxvYWQoYXJncywgY29kZSkKICAgIHJlc3BvbnNlID0gcG9zdF9qc29uKGFyZ3MudXJsLCBwYXlsb2FkKQogICAgaWYgbm90IHJlc3BvbnNlLmdldCgib2siLCBGYWxzZSk6CiAgICAgICAgZXJyb3JfbWVzc2FnZSA9IHJlc3BvbnNlLmdldCgiZXJyb3IiLCAiVW5rbm93biBlcnJvciIpCiAgICAgICAgcHJpbnQoZiJKdWRnZSByZXR1cm5lZCBlcnJvcjoge2Vycm9yX21lc3NhZ2V9IiwgZmlsZT1zeXMuc3RkZXJyKQogICAgICAgIHN5cy5leGl0KDEpCiAgICBwcmludF9yZXN1bHRzKGl0ZXJfdGVzdF9yZXN1bHRzKHJlc3BvbnNlKSkKICAgIHN1bW1hcnkgPSByZXNwb25zZS5nZXQoInN1bW1hcnkiKQogICAgaWYgaXNpbnN0YW5jZShzdW1tYXJ5LCBkaWN0KToKICAgICAgICBwYXNzZWQgPSBzdW1tYXJ5LmdldCgicGFzc2VkIikKICAgICAgICB0b3RhbCA9IHN1bW1hcnkuZ2V0KCJ0b3RhbCIpCiAgICAgICAgc3RhdHVzID0gc3VtbWFyeS5nZXQoInN0YXR1cyIpCiAgICAgICAgaWYgcGFzc2VkIGlzIG5vdCBOb25lIGFuZCB0b3RhbCBpcyBub3QgTm9uZSBhbmQgc3RhdHVzOgogICAgICAgICAgICBwcmludChmIlN1bW1hcnk6IHtwYXNzZWR9L3t0b3RhbH0ge3N0YXR1c30iKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK
+#!/usr/bin/env python3
+"""Simple client for the USACO Arena judge server."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import urllib.error
+import urllib.request
+from typing import Any, Dict, Iterable
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Submit code to the judge server and print per-test results."
+    )
+    parser.add_argument(
+        "code_path",
+        help="Path to the source file to submit.",
+    )
+    parser.add_argument(
+        "--problem-id",
+        required=True,
+        help="Problem identifier, e.g. 1524_platinum_forklift_certified.",
+    )
+    parser.add_argument(
+        "--language",
+        default="cpp",
+        help="Language string expected by the judge (default: cpp).",
+    )
+    parser.add_argument(
+        "--url",
+        default="http://127.0.0.1:8081/api/judge/evaluate",
+        help="Judge server endpoint (default: http://127.0.0.1:8081/api/judge/evaluate).",
+    )
+    parser.add_argument(
+        "--participant-id",
+        help="Optional participant identifier passed through to the judge.",
+    )
+    parser.add_argument(
+        "--submission-id",
+        help="Optional submission identifier passed through to the judge.",
+    )
+    return parser.parse_args()
+
+
+def load_code(path: str) -> str:
+    try:
+        with open(path, "r", encoding="utf-8") as source:
+            return source.read()
+    except OSError as exc:  # pragma: no cover - CLI convenience
+        print(f"Failed to read code from {path}: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+
+def build_payload(args: argparse.Namespace, code: str) -> Dict[str, Any]:
+    payload: Dict[str, Any] = {
+        "problem_id": args.problem_id,
+        "language": args.language,
+        "code": code,
+    }
+    if args.participant_id:
+        payload["participant_id"] = args.participant_id
+    if args.submission_id:
+        payload["submission_id"] = args.submission_id
+    return payload
+
+
+def post_json(url: str, payload: Dict[str, Any]) -> Dict[str, Any]:
+    body = json.dumps(payload).encode("utf-8")
+    request = urllib.request.Request(
+        url,
+        data=body,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request) as response:
+            raw = response.read()
+            encoding = response.headers.get_content_charset("utf-8")
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")
+        print(f"Judge request failed with HTTP {exc.code}: {detail}", file=sys.stderr)
+        sys.exit(1)
+    except urllib.error.URLError as exc:
+        print(f"Unable to reach judge server at {url}: {exc.reason}", file=sys.stderr)
+        sys.exit(1)
+
+    try:
+        return json.loads(raw.decode(encoding))
+    except json.JSONDecodeError as exc:
+        print(f"Failed to decode response as JSON: {exc}", file=sys.stderr)
+        sys.exit(1)
+
+
+def iter_test_results(response: Dict[str, Any]) -> Iterable[Dict[str, Any]]:
+    if isinstance(response.get("test_results"), list):
+        return response["test_results"]
+    submission = response.get("submission")
+    if isinstance(submission, dict) and isinstance(submission.get("test_results"), list):
+        return submission["test_results"]
+    return ()
+
+
+def print_results(results: Iterable[Dict[str, Any]]) -> None:
+    found = False
+    for index, result in enumerate(results, start=1):
+        found = True
+        case_id = result.get("test_case_id") or f"case_{index}"
+        status = result.get("status") or "UNKNOWN"
+        details = []
+        runtime = result.get("runtime_ms")
+        if runtime is not None:
+            details.append(f"time={runtime}ms")
+        memory = result.get("memory_kb")
+        if memory is not None:
+            details.append(f"mem={memory}KB")
+        message = result.get("error_message")
+        suffix = ""
+        if details:
+            suffix += " (" + ", ".join(str(d) for d in details) + ")"
+        if message:
+            suffix += f" | error: {message.strip()}"
+        print(f"{case_id}: {status}{suffix}")
+    if not found:
+        print("No test results returned by judge.", file=sys.stderr)
+
+
+def main() -> None:
+    args = parse_args()
+    code = load_code(args.code_path)
+    payload = build_payload(args, code)
+    response = post_json(args.url, payload)
+    if not response.get("ok", False):
+        error_message = response.get("error", "Unknown error")
+        print(f"Judge returned error: {error_message}", file=sys.stderr)
+        sys.exit(1)
+    print_results(iter_test_results(response))
+    summary = response.get("summary")
+    if isinstance(summary, dict):
+        passed = summary.get("passed")
+        total = summary.get("total")
+        status = summary.get("status")
+        if passed is not None and total is not None and status:
+            print(f"Summary: {passed}/{total} {status}")
+
+
+if __name__ == "__main__":
+    main()

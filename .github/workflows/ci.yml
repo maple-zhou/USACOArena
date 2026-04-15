@@ -1,1 +1,42 @@
-bmFtZTogQ0kKCm9uOgogIHB1c2g6CiAgICBicmFuY2hlczogWyJtYWluIiwgIm1hc3RlciJdCiAgcHVsbF9yZXF1ZXN0OgoKam9iczoKICBxdWFsaXR5OgogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgc3RlcHM6CiAgICAgIC0gbmFtZTogQ2hlY2tvdXQgcmVwb3NpdG9yeQogICAgICAgIHVzZXM6IGFjdGlvbnMvY2hlY2tvdXRAdjQKCiAgICAgIC0gbmFtZTogSW5zdGFsbCB1dgogICAgICAgIHJ1bjogfAogICAgICAgICAgY3VybCAtTHNTZiBodHRwczovL2FzdHJhbC5zaC91di9pbnN0YWxsLnNoIHwgc2gKICAgICAgICAgIGVjaG8gIn4vLmxvY2FsL2JpbiIgPj4gJEdJVEhVQl9QQVRICgogICAgICAtIG5hbWU6IFNldCB1cCBQeXRob24KICAgICAgICB1c2VzOiBhY3Rpb25zL3NldHVwLXB5dGhvbkB2NQogICAgICAgIHdpdGg6CiAgICAgICAgICBweXRob24tdmVyc2lvbjogIjMuMTEiCgogICAgICAtIG5hbWU6IFN5bmMgZGVwZW5kZW5jaWVzCiAgICAgICAgcnVuOiB1diBzeW5jIC0tZGV2CgogICAgICAtIG5hbWU6IFJ1biBsaW50ZXJzIGFuZCB0ZXN0cwogICAgICAgIHJ1bjogfAogICAgICAgICAgdXYgcnVuIHJ1ZmYgY2hlY2sKICAgICAgICAgIHV2IHJ1biBibGFjayAtLWNoZWNrCiAgICAgICAgICB1diBydW4gbXlweQogICAgICAgICAgdXYgcnVuIHB5dGVzdAoKICAgICAgLSBuYW1lOiBSdW4gcmVsZWFzZSBhdWRpdAogICAgICAgIHJ1bjogdXYgcnVuIC4vc2NyaXB0cy9yZWxlYXNlX2F1ZGl0LnNoIC0tb3V0cHV0IGRvY3Mvc2VjdXJpdHkvc2Nhbi1jaS5qc29uCgogICAgICAtIG5hbWU6IFVwbG9hZCBhdWRpdCByZXBvcnQKICAgICAgICB1c2VzOiBhY3Rpb25zL3VwbG9hZC1hcnRpZmFjdEB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBuYW1lOiByZWxlYXNlLWF1ZGl0LXJlcG9ydAogICAgICAgICAgcGF0aDogZG9jcy9zZWN1cml0eS9zY2FuLWNpLmpzb24K
+name: CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "~/.local/bin" >> $GITHUB_PATH
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sync dependencies
+        run: uv sync --dev
+
+      - name: Run linters and tests
+        run: |
+          uv run ruff check
+          uv run black --check
+          uv run mypy
+          uv run pytest
+
+      - name: Run release audit
+        run: uv run ./scripts/release_audit.sh --output docs/security/scan-ci.json
+
+      - name: Upload audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-audit-report
+          path: docs/security/scan-ci.json

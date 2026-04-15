@@ -1,1 +1,168 @@
-IyEvYmluL2Jhc2gKCiMgQ29tcGV0aXRpb24gcnVuIGxvb3Agc2NyaXB0CiMgVXNhZ2U6IC4vcnVuX2NvbXBldGl0aW9uX2xvb3Auc2ggPHJ1bl9jb3VudD4gWy0tc2VydmVyLWFyZ3MgIi4uLiJdIFstLWNsaWVudC1hcmdzICIuLi4iXQoKIyBDaGVjayBwYXJhbWV0ZXJzCmlmIFsgJCMgLWVxIDAgXTsgdGhlbgogICAgZWNobyAiVXNhZ2U6ICQwIDxydW5fY291bnQ+IFstLXNlcnZlci1hcmdzIFwiLi4uXCJdIFstLWNsaWVudC1hcmdzIFwiLi4uXCJdIgogICAgZWNobyAiRXhhbXBsZTogJDAgNSAtLXNlcnZlci1hcmdzIFwiLS1jb25maWcgY29uZmlnL3NlcnZlcl9jb25maWcuanNvbiAtLXBvcnQgNTAwMFwiIC0tY2xpZW50LWFyZ3MgXCItLWNvbXBldGl0b3JzX2NvbmZpZyBjb25maWcvMXYzLmpzb24gLS1wcm9ibGVtX2lkcyBwcm9ibGVtcy50eHRcIiIKICAgIGV4aXQgMQpmaQoKIyBHZXQgcnVuIGNvdW50Ck49JDEKc2hpZnQKCiMgUGFyc2Ugc2VydmVyL2NsaWVudCBhcmd1bWVudHMKU0VSVkVSX0FSR1M9IiIKQ0xJRU5UX0FSR1M9IiIKCndoaWxlIFtbICQjIC1ndCAwIF1dOyBkbwogICAgY2FzZSAiJDEiIGluCiAgICAgICAgLS1zZXJ2ZXItYXJncykKICAgICAgICAgICAgU0VSVkVSX0FSR1M9IiQyIgogICAgICAgICAgICBzaGlmdCAyCiAgICAgICAgICAgIDs7CiAgICAgICAgLS1jbGllbnQtYXJncykKICAgICAgICAgICAgQ0xJRU5UX0FSR1M9IiQyIgogICAgICAgICAgICBzaGlmdCAyCiAgICAgICAgICAgIDs7CiAgICAgICAgKikKICAgICAgICAgICAgZWNobyAiVW5rbm93biBwYXJhbWV0ZXI6ICQxIgogICAgICAgICAgICBleGl0IDEKICAgICAgICAgICAgOzsKICAgIGVzYWMKZG9uZQoKZWNobyAiU3RhcnRpbmcgY29tcGV0aXRpb24gbG9vcCwgdG90YWwgcnVuczogJE4iCmVjaG8gIj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCgojIENyZWF0ZSBsb2cgZGlyCm1rZGlyIC1wIGxvZ3MvY29tcGV0aXRpb25fbG9vcHMKdGltZXN0YW1wPSQoZGF0ZSArIiVZJW0lZF8lSCVNJVMiKQpsb2dfZmlsZT0ibG9ncy9jb21wZXRpdGlvbl9sb29wcy9sb29wXyR7dGltZXN0YW1wfS5sb2ciCgojIFJlY29yZCBzdGFydCB0aW1lCmVjaG8gIkNvbXBldGl0aW9uIGxvb3Agc3RhcnQgdGltZTogJChkYXRlKSIgfCB0ZWUgLWEgIiRsb2dfZmlsZSIKCmZvciAoKGk9MTsgaTw9TjsgaSsrKSk7IGRvCiAgICBlY2hvICIiCiAgICBlY2hvICI9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IgogICAgZWNobyAiUm91bmQgJGkgKG9mICROKSIKICAgIGVjaG8gIlN0YXJ0IHRpbWU6ICQoZGF0ZSkiCiAgICBlY2hvICI9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IiB8IHRlZSAtYSAiJGxvZ19maWxlIgogICAgZWNobyAiUm91bmQgJGkgc3RhcnQgdGltZTogJChkYXRlKSIgfCB0ZWUgLWEgIiRsb2dfZmlsZSIKICAgIAogICAgIyBTdGFydCBjb21wZXRpdGlvbl9zZXJ2ZXIKICAgICMgZWNobyAiU3RhcnRpbmcgY29tcGV0aXRpb25fc2VydmVyLi4uIgogICAgZWNobyAiU3RhcnRpbmcgY29tcGV0aXRpb25fc2VydmVyLi4uIiB8IHRlZSAtYSAiJGxvZ19maWxlIgogICAgCiAgICAjIFN0YXJ0IHNlcnZlciBkaXJlY3RseSAoYmFja2dyb3VuZCkKICAgIHNvdXJjZSAudmVudi9iaW4vYWN0aXZhdGUKICAgIGV2YWwgY29tcGV0aXRpb25fc2VydmVyICRTRVJWRVJfQVJHUyA+ICJsb2dzL2NvbXBldGl0aW9uX2xvb3BzL3NlcnZlcl9yb3VuZF8ke2l9LmxvZyIgMj4mMSAmCiAgICBzZXJ2ZXJfcGlkPSQhCiAgICAKICAgICMgZWNobyAiU2VydmVyIHByb2Nlc3MgSUQ6ICRzZXJ2ZXJfcGlkIgogICAgZWNobyAiU2VydmVyIHByb2Nlc3MgSUQ6ICRzZXJ2ZXJfcGlkIiB8IHRlZSAtYSAiJGxvZ19maWxlIgogICAgCiAgICAjIFdhaXQgZm9yIHNlcnZlciB0byBzdGFydAogICAgIyBlY2hvICJXYWl0aW5nIGZvciBzZXJ2ZXIgdG8gc3RhcnQuLi4iCiAgICBlY2hvICJXYWl0aW5nIGZvciBzZXJ2ZXIgdG8gc3RhcnQuLi4iIHwgdGVlIC1hICIkbG9nX2ZpbGUiCiAgICAKICAgICMgQ2hlY2sgaWYgc2VydmVyIHN0YXJ0ZWQgKHdhaXQgdXAgdG8gNjAgc2Vjb25kcykKICAgIHNlcnZlcl9zdGFydGVkPWZhbHNlCiAgICAKICAgICMgRXh0cmFjdCBwb3J0IGZyb20gU0VSVkVSX0FSR1MsIGRlZmF1bHQgNTAwMAogICAgcG9ydD01MDAwCiAgICBpZiBbWyAiJFNFUlZFUl9BUkdTIiA9PSAqIi0tcG9ydCIqIF1dOyB0aGVuCiAgICAgICAgcG9ydD0kKGVjaG8gIiRTRVJWRVJfQVJHUyIgfCBncmVwIC1vIC0tICctLXBvcnQgWzAtOV0qJyB8IGF3ayAne3ByaW50ICQyfScpCiAgICBmaQoKICAgIGVjaG8gInBvcnQ6ICRwb3J0IgogICAgCiAgICBmb3IgKCh3YWl0X3RpbWU9MDsgd2FpdF90aW1lPDYwOyB3YWl0X3RpbWUrKykpOyBkbwogICAgICAgIGlmIGN1cmwgLXMgImh0dHA6Ly9sb2NhbGhvc3Q6JHtwb3J0fS9hcGkvc3lzdGVtL29qLXN0YXR1cyIgPiAvZGV2L251bGwgMj4mMTsgdGhlbgogICAgICAgICAgICBzZXJ2ZXJfc3RhcnRlZD10cnVlCiAgICAgICAgICAgIGJyZWFrCiAgICAgICAgZmkKICAgICAgICBlY2hvICJXYWl0aW5nIGZvciBzZXJ2ZXIgdG8gc3RhcnQuLi4gKCQoKHdhaXRfdGltZSsxKSkvNjApIgogICAgICAgIHNsZWVwIDEKICAgIGRvbmUKICAgIAogICAgaWYgWyAiJHNlcnZlcl9zdGFydGVkIiA9IGZhbHNlIF07IHRoZW4KICAgICAgICBlY2hvICJFcnJvcjogU2VydmVyIHN0YXJ0dXAgdGltZW91dCIKICAgICAgICBlY2hvICJFcnJvcjogU2VydmVyIHN0YXJ0dXAgdGltZW91dCIgfCB0ZWUgLWEgIiRsb2dfZmlsZSIKICAgICAgICAjIENsZWFuIHVwIHByb2Nlc3NlcwogICAgICAgIGlmIFsgISAteiAiJHNlcnZlcl9waWQiIF07IHRoZW4KICAgICAgICAgICAga2lsbCAkc2VydmVyX3BpZCAyPi9kZXYvbnVsbAogICAgICAgICAgICBzbGVlcCAyCiAgICAgICAgICAgICMgSWYgcHJvY2VzcyBzdGlsbCBleGlzdHMsIGZvcmNlIGtpbGwKICAgICAgICAgICAgaWYga2lsbCAtMCAkc2VydmVyX3BpZCAyPi9kZXYvbnVsbDsgdGhlbgogICAgICAgICAgICAgICAga2lsbCAtOSAkc2VydmVyX3BpZCAyPi9kZXYvbnVsbAogICAgICAgICAgICBmaQogICAgICAgIGZpCiAgICAgICAgY29udGludWUKICAgIGZpCiAgICAKICAgIHNsZWVwIDUKICAgICMgZWNobyAiU2VydmVyIHN0YXJ0ZWQsIHN0YXJ0aW5nIGNvbXBldGl0aW9uX3J1bi4uLiIKICAgIGVjaG8gIlNlcnZlciBzdGFydGVkLCBzdGFydGluZyBjb21wZXRpdGlvbl9ydW4uLi4iIHwgdGVlIC1hICIkbG9nX2ZpbGUiCiAgICAKICAgICMgU3RhcnQgY29tcGV0aXRpb25fcnVuIGNsaWVudCAoZm9yZWdyb3VuZCkKICAgICMgZWNobyAiUnVubmluZyBjb21wZXRpdGlvbl9ydW4gY2xpZW50Li4uIgogICAgZWNobyAiUnVubmluZyBjb21wZXRpdGlvbl9ydW4gY2xpZW50Li4uIiB8IHRlZSAtYSAiJGxvZ19maWxlIgogICAgCiAgICBzb3VyY2UgLnZlbnYvYmluL2FjdGl2YXRlCiAgICBldmFsIGNvbXBldGl0aW9uX3J1biAkQ0xJRU5UX0FSR1MgPiAibG9ncy9jb21wZXRpdGlvbl9sb29wcy9jbGllbnRfcm91bmRfJHtpfS5sb2ciIDI+JjEKICAgIGNsaWVudF9leGl0X2NvZGU9JD8KICAgIAogICAgdGltZXN0YW1wPSQoZGF0ZSArIiVZJW0lZF8lSCVNJVMiKQogICAgIyBlY2hvICJDbGllbnQgcnVuIGNvbXBsZXRlZCwgZXhpdCBjb2RlOiAkY2xpZW50X2V4aXRfY29kZSIKICAgIGVjaG8gIkNsaWVudCBydW4gY29tcGxldGVkLCBleGl0IGNvZGU6ICRjbGllbnRfZXhpdF9jb2RlIGV4aXQgdGltZTogJHRpbWVzdGFtcCIgfCB0ZWUgLWEgIiRsb2dfZmlsZSIKICAgIAogICAgc2xlZXAgNQogICAgIyBlY2hvICJDbGllbnQgcnVuIGNvbXBsZXRlZCwgc2h1dHRpbmcgZG93biBzZXJ2ZXIuLi4iCiAgICB0aW1lc3RhbXA9JChkYXRlICsiJVklbSVkXyVIJU0lUyIpCiAgICBlY2hvICJDbGllbnQgcnVuIGNvbXBsZXRlZCwgc2h1dHRpbmcgZG93biBzZXJ2ZXIuLi4gc2h1dGRvd24gdGltZTogJHRpbWVzdGFtcCIgfCB0ZWUgLWEgIiRsb2dfZmlsZSIKICAgIAogICAgIyBTaHV0ZG93biBzZXJ2ZXIKICAgIGlmIFsgISAteiAiJHNlcnZlcl9waWQiIF07IHRoZW4KICAgICAgICAjIGVjaG8gIlNodXR0aW5nIGRvd24gc2VydmVyIHByb2Nlc3MgJHNlcnZlcl9waWQuLi4iCiAgICAgICAgZWNobyAiU2h1dHRpbmcgZG93biBzZXJ2ZXIgcHJvY2VzczogJHNlcnZlcl9waWQuLi4iIHwgdGVlIC1hICIkbG9nX2ZpbGUiCiAgICAgICAgCiAgICAgICAgIyBDaGVjayBhbmQga2lsbCBwcm9jZXNzZXMgb24gc3BlY2lmaWMgcG9ydAogICAgICAgIHBvcnQ9JChwcyAtbyBhcmdzPSAtcCAkc2VydmVyX3BpZCAyPi9kZXYvbnVsbCB8IGdyZXAgLW8gLS0gJy0tcG9ydCBbMC05XSonIHwgYXdrICd7cHJpbnQgJDJ9JykKICAgICAgICBpZiBbICEgLXogIiRwb3J0IiBdOyB0aGVuCiAgICAgICAgICAgIGVjaG8gIkNsZWFuaW5nIHVwIHByb2Nlc3NlcyBvbiBwb3J0OiAkcG9ydC4uLiIKICAgICAgICAgICAgZnVzZXIgLWsgJHBvcnQvdGNwIDI+L2Rldi9udWxsCiAgICAgICAgZmkKICAgICAgICAKICAgICAgICAjIFdhaXQgZm9yIHBvcnQgdG8gYmUgcmVsZWFzZWQKICAgICAgICBzbGVlcCAyCiAgICBmaQogICAgCiAgICAjIFdhaXQgZm9yIHNlcnZlciB0byBmdWxseSBzaHV0ZG93bgogICAgc2xlZXAgMwogICAgCiAgICBlY2hvICJSb3VuZCAkaSBjb21wbGV0ZWQiCiAgICBlY2hvICJFbmQgdGltZTogJChkYXRlKSIKICAgIGVjaG8gIlJvdW5kICRpIGVuZCB0aW1lOiAkKGRhdGUpIiB8IHRlZSAtYSAiJGxvZ19maWxlIgogICAgCiAgICAjIElmIG5vdCB0aGUgbGFzdCByb3VuZCwgd2FpdCBiZWZvcmUgc3RhcnRpbmcgbmV4dCByb3VuZAogICAgaWYgWyAkaSAtbHQgJE4gXTsgdGhlbgogICAgICAgIGVjaG8gIldhaXRpbmcgNSBzZWNvbmRzIGJlZm9yZSBzdGFydGluZyBuZXh0IHJvdW5kLi4uIgogICAgICAgIGVjaG8gIldhaXRpbmcgNSBzZWNvbmRzIGJlZm9yZSBzdGFydGluZyBuZXh0IHJvdW5kLi4uIiB8IHRlZSAtYSAiJGxvZ19maWxlIgogICAgICAgIHNsZWVwIDUKICAgIGZpCmRvbmUKCmJhc2ggY29udmVydF9hbGxfanNvbl90b19jc3Yuc2ggPiAiJGxvZ19maWxlIiAyPiYxCgplY2hvICIiCmVjaG8gIj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCmVjaG8gIkFsbCAkTiByb3VuZHMgY29tcGxldGVkISIKZWNobyAiRW5kIHRpbWU6ICQoZGF0ZSkiCmVjaG8gIkxvZyBmaWxlOiAkbG9nX2ZpbGUiCmVjaG8gIj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iIHwgdGVlIC1hICIkbG9nX2ZpbGUiCmVjaG8gIkFsbCAkTiByb3VuZHMgY29tcGxldGVkISBFbmQgdGltZTogJChkYXRlKSIgfCB0ZWUgLWEgIiRsb2dfZmlsZSI=
+#!/bin/bash
+
+# Competition run loop script
+# Usage: ./run_competition_loop.sh <run_count> [--server-args "..."] [--client-args "..."]
+
+# Check parameters
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <run_count> [--server-args \"...\"] [--client-args \"...\"]"
+    echo "Example: $0 5 --server-args \"--config config/server_config.json --port 5000\" --client-args \"--competitors_config config/1v3.json --problem_ids problems.txt\""
+    exit 1
+fi
+
+# Get run count
+N=$1
+shift
+
+# Parse server/client arguments
+SERVER_ARGS=""
+CLIENT_ARGS=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --server-args)
+            SERVER_ARGS="$2"
+            shift 2
+            ;;
+        --client-args)
+            CLIENT_ARGS="$2"
+            shift 2
+            ;;
+        *)
+            echo "Unknown parameter: $1"
+            exit 1
+            ;;
+    esac
+done
+
+echo "Starting competition loop, total runs: $N"
+echo "=================================="
+
+# Create log dir
+mkdir -p logs/competition_loops
+timestamp=$(date +"%Y%m%d_%H%M%S")
+log_file="logs/competition_loops/loop_${timestamp}.log"
+
+# Record start time
+echo "Competition loop start time: $(date)" | tee -a "$log_file"
+
+for ((i=1; i<=N; i++)); do
+    echo ""
+    echo "=================================="
+    echo "Round $i (of $N)"
+    echo "Start time: $(date)"
+    echo "==================================" | tee -a "$log_file"
+    echo "Round $i start time: $(date)" | tee -a "$log_file"
+    
+    # Start competition_server
+    # echo "Starting competition_server..."
+    echo "Starting competition_server..." | tee -a "$log_file"
+    
+    # Start server directly (background)
+    source .venv/bin/activate
+    eval competition_server $SERVER_ARGS > "logs/competition_loops/server_round_${i}.log" 2>&1 &
+    server_pid=$!
+    
+    # echo "Server process ID: $server_pid"
+    echo "Server process ID: $server_pid" | tee -a "$log_file"
+    
+    # Wait for server to start
+    # echo "Waiting for server to start..."
+    echo "Waiting for server to start..." | tee -a "$log_file"
+    
+    # Check if server started (wait up to 60 seconds)
+    server_started=false
+    
+    # Extract port from SERVER_ARGS, default 5000
+    port=5000
+    if [[ "$SERVER_ARGS" == *"--port"* ]]; then
+        port=$(echo "$SERVER_ARGS" | grep -o -- '--port [0-9]*' | awk '{print $2}')
+    fi
+
+    echo "port: $port"
+    
+    for ((wait_time=0; wait_time<60; wait_time++)); do
+        if curl -s "http://localhost:${port}/api/system/oj-status" > /dev/null 2>&1; then
+            server_started=true
+            break
+        fi
+        echo "Waiting for server to start... ($((wait_time+1))/60)"
+        sleep 1
+    done
+    
+    if [ "$server_started" = false ]; then
+        echo "Error: Server startup timeout"
+        echo "Error: Server startup timeout" | tee -a "$log_file"
+        # Clean up processes
+        if [ ! -z "$server_pid" ]; then
+            kill $server_pid 2>/dev/null
+            sleep 2
+            # If process still exists, force kill
+            if kill -0 $server_pid 2>/dev/null; then
+                kill -9 $server_pid 2>/dev/null
+            fi
+        fi
+        continue
+    fi
+    
+    sleep 5
+    # echo "Server started, starting competition_run..."
+    echo "Server started, starting competition_run..." | tee -a "$log_file"
+    
+    # Start competition_run client (foreground)
+    # echo "Running competition_run client..."
+    echo "Running competition_run client..." | tee -a "$log_file"
+    
+    source .venv/bin/activate
+    eval competition_run $CLIENT_ARGS > "logs/competition_loops/client_round_${i}.log" 2>&1
+    client_exit_code=$?
+    
+    timestamp=$(date +"%Y%m%d_%H%M%S")
+    # echo "Client run completed, exit code: $client_exit_code"
+    echo "Client run completed, exit code: $client_exit_code exit time: $timestamp" | tee -a "$log_file"
+    
+    sleep 5
+    # echo "Client run completed, shutting down server..."
+    timestamp=$(date +"%Y%m%d_%H%M%S")
+    echo "Client run completed, shutting down server... shutdown time: $timestamp" | tee -a "$log_file"
+    
+    # Shutdown server
+    if [ ! -z "$server_pid" ]; then
+        # echo "Shutting down server process $server_pid..."
+        echo "Shutting down server process: $server_pid..." | tee -a "$log_file"
+        
+        # Check and kill processes on specific port
+        port=$(ps -o args= -p $server_pid 2>/dev/null | grep -o -- '--port [0-9]*' | awk '{print $2}')
+        if [ ! -z "$port" ]; then
+            echo "Cleaning up processes on port: $port..."
+            fuser -k $port/tcp 2>/dev/null
+        fi
+        
+        # Wait for port to be released
+        sleep 2
+    fi
+    
+    # Wait for server to fully shutdown
+    sleep 3
+    
+    echo "Round $i completed"
+    echo "End time: $(date)"
+    echo "Round $i end time: $(date)" | tee -a "$log_file"
+    
+    # If not the last round, wait before starting next round
+    if [ $i -lt $N ]; then
+        echo "Waiting 5 seconds before starting next round..."
+        echo "Waiting 5 seconds before starting next round..." | tee -a "$log_file"
+        sleep 5
+    fi
+done
+
+bash convert_all_json_to_csv.sh > "$log_file" 2>&1
+
+echo ""
+echo "=================================="
+echo "All $N rounds completed!"
+echo "End time: $(date)"
+echo "Log file: $log_file"
+echo "==================================" | tee -a "$log_file"
+echo "All $N rounds completed! End time: $(date)" | tee -a "$log_file"

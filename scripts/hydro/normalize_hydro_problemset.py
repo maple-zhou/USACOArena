@@ -1,1 +1,105 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJOb3JtYWxpemUgYSBIeWRybyBwcm9ibGVtc2V0IHppcCBmb3IgVVNBQ09BcmVuYSByZWxlYXNlIHVzYWdlLgoKVGhpcyBzY3JpcHQgcHJlc2VydmVzIHRoZSBvcmlnaW5hbCBIeWRybyBwYWNrYWdlIHN0cnVjdHVyZSB3aGlsZSBpbmplY3RpbmcgYQpzdGFibGUgdGFnIGZvciBlYWNoIHBhcGVyLWZhY2luZyBsb25nIHByb2JsZW0gaWQ6CgogICAgdXNhY29hcmVuYS1wcm9ibGVtLWlkOjxkaXJlY3RvcnlfbmFtZT4KClRoYXQgdGFnIGlzIGxhdGVyIGNvbnN1bWVkIGJ5IHRoZSBIeWRybyBwbHVnaW4gdG8gcmVzb2x2ZQpgMTQ1Ml9wbGF0aW51bV9hbGxfcGFpcnNfc2ltaWxhcml0eWAgc3R5bGUgSURzIHRvIEh5ZHJvJ3MgaW50ZXJuYWwgcHJvYmxlbSBkb2NzLgoiIiIKCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKCmltcG9ydCBhcmdwYXJzZQppbXBvcnQgb3MKaW1wb3J0IHNodXRpbAppbXBvcnQgdGVtcGZpbGUKaW1wb3J0IHppcGZpbGUKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCgoKVEFHX1BSRUZJWCA9ICJ1c2Fjb2FyZW5hLXByb2JsZW0taWQ6IgoKCmRlZiB1cGRhdGVfcHJvYmxlbV95YW1sKHlhbWxfdGV4dDogc3RyLCBsb25nX3Byb2JsZW1faWQ6IHN0cikgLT4gc3RyOgogICAgdGFnX2xpbmUgPSBmJyAgLSAie1RBR19QUkVGSVh9e2xvbmdfcHJvYmxlbV9pZH0iJwoKICAgIGlmIGYie1RBR19QUkVGSVh9e2xvbmdfcHJvYmxlbV9pZH0iIGluIHlhbWxfdGV4dDoKICAgICAgICByZXR1cm4geWFtbF90ZXh0CgogICAgbGluZXMgPSB5YW1sX3RleHQuc3BsaXRsaW5lcygpCiAgICBmb3IgaWR4LCBsaW5lIGluIGVudW1lcmF0ZShsaW5lcyk6CiAgICAgICAgaWYgbGluZS5zdHJpcCgpID09ICJ0YWc6IjoKICAgICAgICAgICAgaW5zZXJ0X2F0ID0gaWR4ICsgMQogICAgICAgICAgICB3aGlsZSBpbnNlcnRfYXQgPCBsZW4obGluZXMpIGFuZCBsaW5lc1tpbnNlcnRfYXRdLnN0YXJ0c3dpdGgoIiAgLSAiKToKICAgICAgICAgICAgICAgIGluc2VydF9hdCArPSAxCiAgICAgICAgICAgIGxpbmVzLmluc2VydChpbnNlcnRfYXQsIHRhZ19saW5lKQogICAgICAgICAgICByZXR1cm4gIlxuIi5qb2luKGxpbmVzKSArICgiXG4iIGlmIHlhbWxfdGV4dC5lbmRzd2l0aCgiXG4iKSBlbHNlICIiKQoKICAgIGlmIGxpbmVzIGFuZCBsaW5lc1stMV0uc3RyaXAoKToKICAgICAgICBsaW5lcy5hcHBlbmQoIiIpCiAgICBsaW5lcy5hcHBlbmQoInRhZzoiKQogICAgbGluZXMuYXBwZW5kKHRhZ19saW5lKQogICAgcmV0dXJuICJcbiIuam9pbihsaW5lcykgKyAoIlxuIiBpZiB5YW1sX3RleHQuZW5kc3dpdGgoIlxuIikgb3Igbm90IGxpbmVzIGVsc2UgIlxuIikKCgpkZWYgbm9ybWFsaXplX3Byb2JsZW1zZXQoaW5wdXRfemlwOiBQYXRoLCBvdXRwdXRfemlwOiBQYXRoKSAtPiBOb25lOgogICAgaWYgbm90IGlucHV0X3ppcC5leGlzdHMoKToKICAgICAgICByYWlzZSBGaWxlTm90Rm91bmRFcnJvcihmIklucHV0IHppcCBub3QgZm91bmQ6IHtpbnB1dF96aXB9IikKCiAgICBvdXRwdXRfemlwLnBhcmVudC5ta2RpcihwYXJlbnRzPVRydWUsIGV4aXN0X29rPVRydWUpCgogICAgd2l0aCB0ZW1wZmlsZS5UZW1wb3JhcnlEaXJlY3RvcnkocHJlZml4PSJ1c2Fjb2FyZW5hX2h5ZHJvX25vcm1fIikgYXMgdG1wZGlyOgogICAgICAgIHdvcmtkaXIgPSBQYXRoKHRtcGRpcikgLyAid29yayIKICAgICAgICB3b3JrZGlyLm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKCiAgICAgICAgd2l0aCB6aXBmaWxlLlppcEZpbGUoaW5wdXRfemlwLCAiciIpIGFzIHpmOgogICAgICAgICAgICB6Zi5leHRyYWN0YWxsKHdvcmtkaXIpCgogICAgICAgIGZvciBwcm9ibGVtX3lhbWwgaW4gd29ya2Rpci5yZ2xvYigicHJvYmxlbS55YW1sIik6CiAgICAgICAgICAgIHByb2JsZW1fZGlyID0gcHJvYmxlbV95YW1sLnBhcmVudAogICAgICAgICAgICBsb25nX3Byb2JsZW1faWQgPSBwcm9ibGVtX2Rpci5uYW1lCiAgICAgICAgICAgIG9yaWdpbmFsID0gcHJvYmxlbV95YW1sLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKQogICAgICAgICAgICB1cGRhdGVkID0gdXBkYXRlX3Byb2JsZW1feWFtbChvcmlnaW5hbCwgbG9uZ19wcm9ibGVtX2lkKQogICAgICAgICAgICBpZiB1cGRhdGVkICE9IG9yaWdpbmFsOgogICAgICAgICAgICAgICAgcHJvYmxlbV95YW1sLndyaXRlX3RleHQodXBkYXRlZCwgZW5jb2Rpbmc9InV0Zi04IikKCiAgICAgICAgaWYgb3V0cHV0X3ppcC5leGlzdHMoKToKICAgICAgICAgICAgb3V0cHV0X3ppcC51bmxpbmsoKQoKICAgICAgICBhcmNoaXZlX2Jhc2UgPSBvdXRwdXRfemlwLndpdGhfc3VmZml4KCIiKQogICAgICAgIHRtcF9hcmNoaXZlID0gc2h1dGlsLm1ha2VfYXJjaGl2ZSgKICAgICAgICAgICAgc3RyKGFyY2hpdmVfYmFzZSksCiAgICAgICAgICAgICJ6aXAiLAogICAgICAgICAgICByb290X2Rpcj13b3JrZGlyLAogICAgICAgICkKICAgICAgICBvcy5yZXBsYWNlKHRtcF9hcmNoaXZlLCBvdXRwdXRfemlwKQoKCmRlZiBwYXJzZV9hcmdzKCkgLT4gYXJncGFyc2UuTmFtZXNwYWNlOgogICAgcGFyc2VyID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoCiAgICAgICAgZGVzY3JpcHRpb249IkluamVjdCBVU0FDT0FyZW5hIGFsaWFzIHRhZ3MgaW50byBhIEh5ZHJvIHByb2JsZW1zZXQgemlwIgogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1pbnB1dC16aXAiLAogICAgICAgIGRlZmF1bHQ9Imh5ZHJvX3Byb2JsZW1zZXQuemlwIiwKICAgICAgICBoZWxwPSJQYXRoIHRvIHRoZSBvcmlnaW5hbCBIeWRybyBwcm9ibGVtc2V0IHppcCIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLW91dHB1dC16aXAiLAogICAgICAgIHJlcXVpcmVkPVRydWUsCiAgICAgICAgaGVscD0iUGF0aCB0byB0aGUgbm9ybWFsaXplZCBvdXRwdXQgemlwIiwKICAgICkKICAgIHJldHVybiBwYXJzZXIucGFyc2VfYXJncygpCgoKZGVmIG1haW4oKSAtPiBOb25lOgogICAgYXJncyA9IHBhcnNlX2FyZ3MoKQogICAgbm9ybWFsaXplX3Byb2JsZW1zZXQoUGF0aChhcmdzLmlucHV0X3ppcCksIFBhdGgoYXJncy5vdXRwdXRfemlwKSkKICAgIHByaW50KGYiTm9ybWFsaXplZCBIeWRybyBwcm9ibGVtc2V0IHdyaXR0ZW4gdG8ge2FyZ3Mub3V0cHV0X3ppcH0iKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK
+#!/usr/bin/env python3
+"""Normalize a Hydro problemset zip for USACOArena release usage.
+
+This script preserves the original Hydro package structure while injecting a
+stable tag for each paper-facing long problem id:
+
+    usacoarena-problem-id:<directory_name>
+
+That tag is later consumed by the Hydro plugin to resolve
+`1452_platinum_all_pairs_similarity` style IDs to Hydro's internal problem docs.
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import shutil
+import tempfile
+import zipfile
+from pathlib import Path
+
+
+TAG_PREFIX = "usacoarena-problem-id:"
+
+
+def update_problem_yaml(yaml_text: str, long_problem_id: str) -> str:
+    tag_line = f'  - "{TAG_PREFIX}{long_problem_id}"'
+
+    if f"{TAG_PREFIX}{long_problem_id}" in yaml_text:
+        return yaml_text
+
+    lines = yaml_text.splitlines()
+    for idx, line in enumerate(lines):
+        if line.strip() == "tag:":
+            insert_at = idx + 1
+            while insert_at < len(lines) and lines[insert_at].startswith("  - "):
+                insert_at += 1
+            lines.insert(insert_at, tag_line)
+            return "\n".join(lines) + ("\n" if yaml_text.endswith("\n") else "")
+
+    if lines and lines[-1].strip():
+        lines.append("")
+    lines.append("tag:")
+    lines.append(tag_line)
+    return "\n".join(lines) + ("\n" if yaml_text.endswith("\n") or not lines else "\n")
+
+
+def normalize_problemset(input_zip: Path, output_zip: Path) -> None:
+    if not input_zip.exists():
+        raise FileNotFoundError(f"Input zip not found: {input_zip}")
+
+    output_zip.parent.mkdir(parents=True, exist_ok=True)
+
+    with tempfile.TemporaryDirectory(prefix="usacoarena_hydro_norm_") as tmpdir:
+        workdir = Path(tmpdir) / "work"
+        workdir.mkdir(parents=True, exist_ok=True)
+
+        with zipfile.ZipFile(input_zip, "r") as zf:
+            zf.extractall(workdir)
+
+        for problem_yaml in workdir.rglob("problem.yaml"):
+            problem_dir = problem_yaml.parent
+            long_problem_id = problem_dir.name
+            original = problem_yaml.read_text(encoding="utf-8")
+            updated = update_problem_yaml(original, long_problem_id)
+            if updated != original:
+                problem_yaml.write_text(updated, encoding="utf-8")
+
+        if output_zip.exists():
+            output_zip.unlink()
+
+        archive_base = output_zip.with_suffix("")
+        tmp_archive = shutil.make_archive(
+            str(archive_base),
+            "zip",
+            root_dir=workdir,
+        )
+        os.replace(tmp_archive, output_zip)
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Inject USACOArena alias tags into a Hydro problemset zip"
+    )
+    parser.add_argument(
+        "--input-zip",
+        default="hydro_problemset.zip",
+        help="Path to the original Hydro problemset zip",
+    )
+    parser.add_argument(
+        "--output-zip",
+        required=True,
+        help="Path to the normalized output zip",
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    normalize_problemset(Path(args.input_zip), Path(args.output_zip))
+    print(f"Normalized Hydro problemset written to {args.output_zip}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,1 +1,299 @@
-IiIiCkJlYXV0aWZ1bCBsb2dnaW5nIGNvbmZpZ3VyYXRpb24gZm9yIFVTQUNPQXJlbmEKClRoaXMgbW9kdWxlIHByb3ZpZGVzIGEgdW5pZmllZCBsb2dnaW5nIGNvbmZpZ3VyYXRpb24gdGhhdCBjcmVhdGVzCmJlYXV0aWZ1bCwgY29sb3JlZCBvdXRwdXQgc2ltaWxhciB0byBsb2d1cnUgbGlicmFyeSwgYW5kIGluY2x1ZGVzCmNvbnZlcnNhdGlvbiBsb2dnaW5nIGZ1bmN0aW9uYWxpdHkuCiIiIgoKaW1wb3J0IGxvZ2dpbmcKaW1wb3J0IHN5cwppbXBvcnQgcmUKaW1wb3J0IGpzb24KaW1wb3J0IG9zCmZyb20gdHlwaW5nIGltcG9ydCBPcHRpb25hbCwgTGlzdCwgRGljdApmcm9tIGRhdGV0aW1lIGltcG9ydCBkYXRldGltZQoKY2xhc3MgQ29sb3JlZEZvcm1hdHRlcihsb2dnaW5nLkZvcm1hdHRlcik6CiAgICAiIiJGb3JtYXR0ZXIgdGhhdCBhZGRzIGNvbG9ycyB0byBjb25zb2xlIG91dHB1dCIiIgogICAgCiAgICBDT0xPUlMgPSB7CiAgICAgICAgJ0RFQlVHJzogJ1wwMzNbMzJtJywgICAgICAjIEdyZWVuIHRleHQKICAgICAgICAnSU5GTyc6ICdcMDMzWzM2bScsICAgICAgICMgQ3lhbiB0ZXh0CiAgICAgICAgJ1dBUk5JTkcnOiAnXDAzM1szM20nLCAgICAjIFllbGxvdyB0ZXh0CiAgICAgICAgJ0VSUk9SJzogJ1wwMzNbMzFtJywgICAgICAjIFJlZCB0ZXh0CiAgICAgICAgJ0NSSVRJQ0FMJzogJ1wwMzNbNDFtXDAzM1s5N20nLCAjIFJlZCBiYWNrZ3JvdW5kICsgd2hpdGUgdGV4dAogICAgICAgICdSRVNFVCc6ICdcMDMzWzBtJwogICAgfQoKICAgIEFOU0lfRVNDQVBFID0gcmUuY29tcGlsZShyJ1x4MUIoPzpbQC1aXFwtX118XFtbMC0/XSpbIC0vXSpbQC1+XSknKQoKICAgIGRlZiBmb3JtYXQoc2VsZiwgcmVjb3JkKToKICAgICAgICAjIElmIG5vdCBjb25zb2xlIG91dHB1dCwgdXNlIG5vcm1hbCBmb3JtYXR0aW5nCiAgICAgICAgaWYgbm90IHNlbGYuaXNfY29uc29sZV9vdXRwdXQoKToKICAgICAgICAgICAgcmV0dXJuIHN1cGVyKCkuZm9ybWF0KHJlY29yZCkKICAgICAgICAgICAgCiAgICAgICAgIyBTYXZlIG9yaWdpbmFsIGF0dHJpYnV0ZXMKICAgICAgICBvcmlnaW5hbF9sZXZlbG5hbWUgPSByZWNvcmQubGV2ZWxuYW1lCiAgICAgICAgb3JpZ2luYWxfbXNnID0gcmVjb3JkLm1zZwogICAgICAgIAogICAgICAgICMgR2V0IGNvbG9yCiAgICAgICAgY29sb3IgPSBzZWxmLkNPTE9SUy5nZXQocmVjb3JkLmxldmVsbmFtZSwgJycpCiAgICAgICAgcmVzZXQgPSBzZWxmLkNPTE9SU1snUkVTRVQnXQogICAgICAgIAogICAgICAgICMgT25seSBhZGQgY29sb3IgdG8gbG9nIGxldmVsIGFuZCBtZXNzYWdlCiAgICAgICAgcmVjb3JkLmxldmVsbmFtZSA9IGYie2NvbG9yfXtvcmlnaW5hbF9sZXZlbG5hbWV9e3Jlc2V0fSIKICAgICAgICByZWNvcmQubXNnID0gZiJ7Y29sb3J9e29yaWdpbmFsX21zZ317cmVzZXR9IgogICAgICAgIAogICAgICAgICMgRm9ybWF0IG1lc3NhZ2UKICAgICAgICBmb3JtYXR0ZWRfbWVzc2FnZSA9IHN1cGVyKCkuZm9ybWF0KHJlY29yZCkKICAgICAgICAKICAgICAgICAjIFJlc3RvcmUgb3JpZ2luYWwgYXR0cmlidXRlcwogICAgICAgIHJlY29yZC5sZXZlbG5hbWUgPSBvcmlnaW5hbF9sZXZlbG5hbWUKICAgICAgICByZWNvcmQubXNnID0gb3JpZ2luYWxfbXNnCiAgICAgICAgCiAgICAgICAgcmV0dXJuIGZvcm1hdHRlZF9tZXNzYWdlCgogICAgZGVmIGZvcm1hdF93aXRob3V0X2NvbG9yKHNlbGYsIHJlY29yZCk6CiAgICAgICAgIiIiRm9ybWF0IGxvZyByZWNvcmQgd2l0aG91dCBhZGRpbmcgY29sb3IgY29kZXMiIiIKICAgICAgICBmb3JtYXR0ZWQgPSBzdXBlcigpLmZvcm1hdChyZWNvcmQpCiAgICAgICAgIyBSZW1vdmUgYWxsIEFOU0kgZXNjYXBlIHNlcXVlbmNlcwogICAgICAgIHJldHVybiBzZWxmLkFOU0lfRVNDQVBFLnN1YignJywgZm9ybWF0dGVkKQogICAgCiAgICBkZWYgaXNfY29uc29sZV9vdXRwdXQoc2VsZik6CiAgICAgICAgIiIiQ2hlY2sgaWYgaXQncyBjb25zb2xlIG91dHB1dCIiIgogICAgICAgICMgRGV0ZXJtaW5lIGlmIGl0J3MgY29uc29sZSBvdXRwdXQgYnkgY2hlY2tpbmcgaGFuZGxlciB0eXBlCiAgICAgICAgZm9yIGhhbmRsZXIgaW4gbG9nZ2luZy5nZXRMb2dnZXIoKS5oYW5kbGVyczoKICAgICAgICAgICAgaWYgaXNpbnN0YW5jZShoYW5kbGVyLCBsb2dnaW5nLlN0cmVhbUhhbmRsZXIpIGFuZCBoYW5kbGVyLmZvcm1hdHRlciA9PSBzZWxmOgogICAgICAgICAgICAgICAgcmV0dXJuIFRydWUKICAgICAgICByZXR1cm4gRmFsc2UKCgpjbGFzcyBOb0NvbG9yRm9ybWF0dGVyKENvbG9yZWRGb3JtYXR0ZXIpOgogICAgIiIiRm9ybWF0dGVyIHdpdGhvdXQgY29sb3JzLCB1c2VkIGZvciBmaWxlIG91dHB1dCIiIgogICAgZGVmIGZvcm1hdChzZWxmLCByZWNvcmQpOgogICAgICAgIHJldHVybiBzZWxmLmZvcm1hdF93aXRob3V0X2NvbG9yKHJlY29yZCkKCgpjbGFzcyBDb252ZXJzYXRpb25Mb2dnZXI6CiAgICAiIiJMb2dnZXIgZm9yIHNhdmluZyBhbmQgbG9hZGluZyBjb252ZXJzYXRpb24gaGlzdG9yaWVzIiIiCiAgICAKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBsb2dfZGlyOiBzdHIgPSAibG9ncyIpOgogICAgICAgICIiIgogICAgICAgIEluaXRpYWxpemUgdGhlIGNvbnZlcnNhdGlvbiBsb2dnZXIKICAgICAgICAKICAgICAgICBBcmdzOgogICAgICAgICAgICBsb2dfZGlyOiBEaXJlY3RvcnkgdG8gc3RvcmUgY29udmVyc2F0aW9uIGxvZ3MKICAgICAgICAiIiIKICAgICAgICBzZWxmLmxvZ19kaXIgPSBsb2dfZGlyCiAgICAgICAgb3MubWFrZWRpcnMobG9nX2RpciwgZXhpc3Rfb2s9VHJ1ZSkKICAgICAgICBzZWxmLl9sb2dnZXIgPSBnZXRfbG9nZ2VyKCJjb252ZXJzYXRpb25fbG9nZ2VyIikKICAgIAogICAgZGVmIF9nZXRfbG9nX3BhdGgoc2VsZiwgYWdlbnRfbmFtZTogc3RyLCBzZXNzaW9uX2lkOiBPcHRpb25hbFtzdHJdID0gTm9uZSkgLT4gc3RyOgogICAgICAgICIiIkdldCB0aGUgcGF0aCBmb3IgdGhlIGxvZyBmaWxlIiIiCiAgICAgICAgaWYgc2Vzc2lvbl9pZCBpcyBOb25lOgogICAgICAgICAgICBzZXNzaW9uX2lkID0gZGF0ZXRpbWUubm93KCkuc3RyZnRpbWUoIiVZJW0lZF8lSCVNJVMiKQogICAgICAgIAogICAgICAgICMgQ3JlYXRlIHN1YmRpcmVjdG9yeSBmb3IgZWFjaCBBZ2VudAogICAgICAgIGFnZW50X2RpciA9IG9zLnBhdGguam9pbihzZWxmLmxvZ19kaXIsIGFnZW50X25hbWUpCiAgICAgICAgb3MubWFrZWRpcnMoYWdlbnRfZGlyLCBleGlzdF9vaz1UcnVlKQogICAgICAgIAogICAgICAgIHJldHVybiBvcy5wYXRoLmpvaW4oYWdlbnRfZGlyLCBmInthZ2VudF9uYW1lfV9sb2dfe3Nlc3Npb25faWR9Lmpzb24iKQogICAgCiAgICBkZWYgc2F2ZV9jb252ZXJzYXRpb24oCiAgICAgICAgc2VsZiwKICAgICAgICBhZ2VudF9uYW1lOiBzdHIsCiAgICAgICAgY29udmVyc2F0aW9uX2hpc3Rvcnk6IExpc3RbRGljdF0sCiAgICAgICAgc2Vzc2lvbl9pZDogT3B0aW9uYWxbc3RyXSA9IE5vbmUsCiAgICAgICAgbWV0YWRhdGE6IE9wdGlvbmFsW0RpY3RdID0gTm9uZQogICAgKSAtPiBzdHI6CiAgICAgICAgIiIiCiAgICAgICAgU2F2ZSBjb252ZXJzYXRpb24gaGlzdG9yeSB0byBhIGZpbGUKICAgICAgICAKICAgICAgICBBcmdzOgogICAgICAgICAgICBhZ2VudF9uYW1lOiBOYW1lIG9mIHRoZSBhZ2VudAogICAgICAgICAgICBjb252ZXJzYXRpb25faGlzdG9yeTogTGlzdCBvZiBjb252ZXJzYXRpb24gbWVzc2FnZXMKICAgICAgICAgICAgc2Vzc2lvbl9pZDogT3B0aW9uYWwgc2Vzc2lvbiBpZGVudGlmaWVyCiAgICAgICAgICAgIG1ldGFkYXRhOiBPcHRpb25hbCBtZXRhZGF0YSBhYm91dCB0aGUgY29udmVyc2F0aW9uCiAgICAgICAgCiAgICAgICAgUmV0dXJuczoKICAgICAgICAgICAgUGF0aCB0byB0aGUgc2F2ZWQgbG9nIGZpbGUKICAgICAgICAiIiIKICAgICAgICBsb2dfcGF0aCA9IHNlbGYuX2dldF9sb2dfcGF0aChhZ2VudF9uYW1lLCBzZXNzaW9uX2lkKQoKICAgICAgICAjIE9ubHkgc2F2ZSB0aGUgbGF0ZXN0IGNvbnZlcnNhdGlvbiByZWNvcmQKICAgICAgICBtZXNzYWdlID0gY29udmVyc2F0aW9uX2hpc3RvcnlbLTFdIGlmIGNvbnZlcnNhdGlvbl9oaXN0b3J5IGVsc2UgTm9uZQogICAgICAgIAogICAgICAgIGlmIG1lc3NhZ2U6CiAgICAgICAgICAgIGxvZ19kYXRhX2Z1bGwgPSB7CiAgICAgICAgICAgICAgICAiYWdlbnRfbmFtZSI6IGFnZW50X25hbWUsCiAgICAgICAgICAgICAgICAic2Vzc2lvbl9pZCI6IHNlc3Npb25faWQsCiAgICAgICAgICAgICAgICAidGltZXN0YW1wIjogZGF0ZXRpbWUubm93KCkuaXNvZm9ybWF0KCksCiAgICAgICAgICAgICAgICBmIm1lc3NhZ2V7ZGF0ZXRpbWUubm93KCkuaXNvZm9ybWF0KCl9IjogbWVzc2FnZSwgICMgT25seSBzYXZlIHRoZSBsYXRlc3Qgb25lCiAgICAgICAgICAgICAgICAjICJtZXRhZGF0YSI6IG1ldGFkYXRhIG9yIHt9CiAgICAgICAgICAgIH0KICAgICAgICAgICAgbG9nX2RhdGEgPSB7CiAgICAgICAgICAgICAgICBmIm1lc3NhZ2V7ZGF0ZXRpbWUubm93KCkuaXNvZm9ybWF0KCl9IjogbWVzc2FnZSwgICMgT25seSBzYXZlIHRoZSBsYXRlc3Qgb25lCiAgICAgICAgICAgIH0KICAgICAgICB0cnk6CiAgICAgICAgICAgIGZpbGVfZXhpc3RzID0gb3MucGF0aC5leGlzdHMobG9nX3BhdGgpIGFuZCBvcy5wYXRoLmdldHNpemUobG9nX3BhdGgpID4gMAogICAgICAgICAgICBpZiBmaWxlX2V4aXN0czoKICAgICAgICAgICAgICAgICMgUmVhZCBmcm9tIGVuZCBvZiBmaWxlIGZvcndhcmQgdG8gZmluZCB0aGUgbGFzdCAifSIgcG9zaXRpb24KICAgICAgICAgICAgICAgIHdpdGggb3Blbihsb2dfcGF0aCwgJ3IrJywgZW5jb2Rpbmc9J3V0Zi04JykgYXMgZjoKICAgICAgICAgICAgICAgICAgICAjIE1vdmUgdG8gZW5kIG9mIGZpbGUKICAgICAgICAgICAgICAgICAgICBmLnNlZWsoMCwgMikKICAgICAgICAgICAgICAgICAgICBmaWxlX3NpemUgPSBmLnRlbGwoKQogICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICMgUmVhZCBjaGFyYWN0ZXIgYnkgY2hhcmFjdGVyIGZyb20gZW5kIGZvcndhcmQgdG8gZmluZCB0aGUgbGFzdCAifSIKICAgICAgICAgICAgICAgICAgICBwb3MgPSBmaWxlX3NpemUgLSAxCiAgICAgICAgICAgICAgICAgICAgd2hpbGUgcG9zID49IDA6CiAgICAgICAgICAgICAgICAgICAgICAgIGYuc2Vlayhwb3MpCiAgICAgICAgICAgICAgICAgICAgICAgIGNoYXIgPSBmLnJlYWQoMSkKICAgICAgICAgICAgICAgICAgICAgICAgaWYgY2hhciA9PSAnfSc6CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAjIEZvdW5kIHRoZSBsYXN0ICJ9IiwgaW5zZXJ0IG5ldyBjb250ZW50IGJlZm9yZSBpdAogICAgICAgICAgICAgICAgICAgICAgICAgICAgYnJlYWsKICAgICAgICAgICAgICAgICAgICAgICAgcG9zIC09IDEKICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICBpZiBwb3MgPj0gMDoKICAgICAgICAgICAgICAgICAgICAgICAgIyBSZW1vdmUge30gZnJvbSBsb2dfZGF0YSwga2VlcCBvbmx5IGNvbnRlbnQKICAgICAgICAgICAgICAgICAgICAgICAgbG9nX2RhdGFfc3RyID0ganNvbi5kdW1wcyhsb2dfZGF0YSwgaW5kZW50PTIsIGVuc3VyZV9hc2NpaT1GYWxzZSkKICAgICAgICAgICAgICAgICAgICAgICAgIyBSZW1vdmUgZmlyc3QgYW5kIGxhc3QgbGluZXMgKHJlbW92ZSB7fSkKICAgICAgICAgICAgICAgICAgICAgICAgbG9nX2RhdGFfbGluZXMgPSBsb2dfZGF0YV9zdHIuc3BsaXQoJ1xuJylbMTotMV0KICAgICAgICAgICAgICAgICAgICAgICAgbG9nX2RhdGFfY29udGVudCA9ICdcbicuam9pbihsb2dfZGF0YV9saW5lcykKICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICMgTW92ZSB0byAifSIgcG9zaXRpb24KICAgICAgICAgICAgICAgICAgICAgICAgZi5zZWVrKHBvcykKICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICMgSW5zZXJ0IG5ldyBjb250ZW50CiAgICAgICAgICAgICAgICAgICAgICAgIGYud3JpdGUoJyxcbicgKyBsb2dfZGF0YV9jb250ZW50ICsgJ1xufScpCiAgICAgICAgICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgICAgICAgICAgIyBJZiAifSIgbm90IGZvdW5kLCBhcHBlbmQgZGlyZWN0bHkKICAgICAgICAgICAgICAgICAgICAgICAgZi5zZWVrKDAsIDIpICAjIE1vdmUgdG8gZW5kIG9mIGZpbGUKICAgICAgICAgICAgICAgICAgICAgICAgZi53cml0ZSgnLFxuJykKICAgICAgICAgICAgICAgICAgICAgICAganNvbi5kdW1wKGxvZ19kYXRhLCBmLCBpbmRlbnQ9MiwgZW5zdXJlX2FzY2lpPUZhbHNlKQogICAgICAgICAgICAgICAgICAgICAgICBmLndyaXRlKCdcbn0nKQogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAjIHNlbGYuX2xvZ2dlci5pbmZvKGYiVXBkYXRlZCBjb252ZXJzYXRpb24gbG9nIHRvIHtsb2dfcGF0aH0sIGxvZ19kYXRhOiB7bG9nX2RhdGF9IikKICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIHdpdGggb3Blbihsb2dfcGF0aCwgJ3cnLCBlbmNvZGluZz0ndXRmLTgnKSBhcyBmOgogICAgICAgICAgICAgICAgICAgIGpzb24uZHVtcChsb2dfZGF0YV9mdWxsLCBmLCBpbmRlbnQ9MiwgZW5zdXJlX2FzY2lpPUZhbHNlKQoKICAgICAgICAgICAgICAgICMgc2VsZi5fbG9nZ2VyLmluZm8oZiJTYXZlZCBjb252ZXJzYXRpb24gbG9nIHRvIHtsb2dfcGF0aH0sIGxvZ19kYXRhX2Z1bGw6IHtsb2dfZGF0YV9mdWxsfSIpCiAgICAgICAgICAgIHJldHVybiBsb2dfcGF0aAogICAgICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICAgICAgc2VsZi5fbG9nZ2VyLmVycm9yKGYiRmFpbGVkIHRvIHNhdmUgY29udmVyc2F0aW9uIGxvZzoge2V9IikKICAgICAgICAgICAgcmFpc2UKICAgIAogICAgZGVmIGxvYWRfY29udmVyc2F0aW9uKHNlbGYsIGxvZ19wYXRoOiBzdHIpIC0+IERpY3Q6CiAgICAgICAgIiIiCiAgICAgICAgTG9hZCBjb252ZXJzYXRpb24gaGlzdG9yeSBmcm9tIGEgZmlsZQogICAgICAgIAogICAgICAgIEFyZ3M6CiAgICAgICAgICAgIGxvZ19wYXRoOiBQYXRoIHRvIHRoZSBsb2cgZmlsZQogICAgICAgIAogICAgICAgIFJldHVybnM6CiAgICAgICAgICAgIERpY3Rpb25hcnkgY29udGFpbmluZyB0aGUgY29udmVyc2F0aW9uIGRhdGEKICAgICAgICAiIiIKICAgICAgICB0cnk6CiAgICAgICAgICAgIHdpdGggb3Blbihsb2dfcGF0aCwgJ3InLCBlbmNvZGluZz0ndXRmLTgnKSBhcyBmOgogICAgICAgICAgICAgICAgcmV0dXJuIGpzb24ubG9hZChmKQogICAgICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICAgICAgc2VsZi5fbG9nZ2VyLmVycm9yKGYiRmFpbGVkIHRvIGxvYWQgY29udmVyc2F0aW9uIGxvZyBmcm9tIHtsb2dfcGF0aH06IHtlfSIpCiAgICAgICAgICAgIHJhaXNlCiAgICAKICAgIGRlZiBsaXN0X2NvbnZlcnNhdGlvbnMoc2VsZiwgYWdlbnRfbmFtZTogT3B0aW9uYWxbc3RyXSA9IE5vbmUpIC0+IExpc3Rbc3RyXToKICAgICAgICAiIiIKICAgICAgICBMaXN0IGF2YWlsYWJsZSBjb252ZXJzYXRpb24gbG9ncwogICAgICAgIAogICAgICAgIEFyZ3M6CiAgICAgICAgICAgIGFnZW50X25hbWU6IE9wdGlvbmFsIGFnZW50IG5hbWUgdG8gZmlsdGVyIGxvZ3MKICAgICAgICAKICAgICAgICBSZXR1cm5zOgogICAgICAgICAgICBMaXN0IG9mIGxvZyBmaWxlIHBhdGhzCiAgICAgICAgIiIiCiAgICAgICAgaWYgbm90IG9zLnBhdGguZXhpc3RzKHNlbGYubG9nX2Rpcik6CiAgICAgICAgICAgIHJldHVybiBbXQogICAgICAgICAgICAKICAgICAgICBwYXR0ZXJuID0gZiJ7YWdlbnRfbmFtZX1fKi5qc29uIiBpZiBhZ2VudF9uYW1lIGVsc2UgIiouanNvbiIKICAgICAgICByZXR1cm4gc29ydGVkKFsKICAgICAgICAgICAgb3MucGF0aC5qb2luKHNlbGYubG9nX2RpciwgZikKICAgICAgICAgICAgZm9yIGYgaW4gb3MubGlzdGRpcihzZWxmLmxvZ19kaXIpCiAgICAgICAgICAgIGlmIGYuZW5kc3dpdGgoJy5qc29uJykgYW5kIChub3QgYWdlbnRfbmFtZSBvciBmLnN0YXJ0c3dpdGgoZiJ7YWdlbnRfbmFtZX1fIikpCiAgICAgICAgXSkKCgpkZWYgc2V0dXBfbG9nZ2luZygKICAgIGxldmVsOiBzdHIgPSAiSU5GTyIsCiAgICBsb2dfZmlsZTogT3B0aW9uYWxbc3RyXSA9IE5vbmUsCiAgICBlbmFibGVfY29sb3JzOiBib29sID0gVHJ1ZQopIC0+IE5vbmU6CiAgICAiIiIKICAgIFNldHVwIGJlYXV0aWZ1bCBsb2dnaW5nIGNvbmZpZ3VyYXRpb24KICAgIAogICAgQXJnczoKICAgICAgICBsZXZlbDogTG9nZ2luZyBsZXZlbCAoREVCVUcsIElORk8sIFdBUk5JTkcsIEVSUk9SLCBDUklUSUNBTCkKICAgICAgICBsb2dfZmlsZTogT3B0aW9uYWwgbG9nIGZpbGUgcGF0aAogICAgICAgIGVuYWJsZV9jb2xvcnM6IFdoZXRoZXIgdG8gZW5hYmxlIGNvbG9yZWQgb3V0cHV0IGZvciBjb25zb2xlCiAgICAiIiIKICAgICMgUmVtb3ZlIGV4aXN0aW5nIGhhbmRsZXJzIHRvIGF2b2lkIGR1cGxpY2F0ZXMKICAgIGZvciBoYW5kbGVyIGluIGxvZ2dpbmcucm9vdC5oYW5kbGVyc1s6XToKICAgICAgICBsb2dnaW5nLnJvb3QucmVtb3ZlSGFuZGxlcihoYW5kbGVyKQogICAgCiAgICAjIEJhc2ljIGxvZyBmb3JtYXQKICAgIGJhc2VfZm9ybWF0ID0gJyUoYXNjdGltZSlzLiUobXNlY3MpMDNkIHwgJShsZXZlbG5hbWUpLThzIHwgJShmaWxlbmFtZSlzOiUobGluZW5vKWQgLSAlKGZ1bmNOYW1lKXMgLSAlKG1lc3NhZ2UpcycKICAgIGRhdGVfZm9ybWF0ID0gJyVZLSVtLSVkICVIOiVNOiVTJwogICAgCiAgICAjIENyZWF0ZSBjb25zb2xlIGhhbmRsZXIKICAgIGNvbnNvbGVfaGFuZGxlciA9IGxvZ2dpbmcuU3RyZWFtSGFuZGxlcihzeXMuc3Rkb3V0KQogICAgY29uc29sZV9oYW5kbGVyLnNldExldmVsKGdldGF0dHIobG9nZ2luZywgbGV2ZWwudXBwZXIoKSkpCiAgICAKICAgICMgQ2hvb3NlIGZvcm1hdHRlciBiYXNlZCBvbiBlbmFibGVfY29sb3JzIHBhcmFtZXRlcgogICAgaWYgZW5hYmxlX2NvbG9yczoKICAgICAgICBjb25zb2xlX2Zvcm1hdHRlciA9IENvbG9yZWRGb3JtYXR0ZXIoYmFzZV9mb3JtYXQsIGRhdGVmbXQ9ZGF0ZV9mb3JtYXQpCiAgICBlbHNlOgogICAgICAgIGNvbnNvbGVfZm9ybWF0dGVyID0gTm9Db2xvckZvcm1hdHRlcihiYXNlX2Zvcm1hdCwgZGF0ZWZtdD1kYXRlX2Zvcm1hdCkKICAgIAogICAgY29uc29sZV9oYW5kbGVyLnNldEZvcm1hdHRlcihjb25zb2xlX2Zvcm1hdHRlcikKICAgIGxvZ2dpbmcucm9vdC5hZGRIYW5kbGVyKGNvbnNvbGVfaGFuZGxlcikKICAgIAogICAgIyBJZiBsb2cgZmlsZSBpcyBzcGVjaWZpZWQsIGNyZWF0ZSBmaWxlIGhhbmRsZXIKICAgIGlmIGxvZ19maWxlOgogICAgICAgIGZpbGVfaGFuZGxlciA9IGxvZ2dpbmcuRmlsZUhhbmRsZXIobG9nX2ZpbGUsIG1vZGU9J3cnLCBlbmNvZGluZz0ndXRmLTgnKQogICAgICAgIGZpbGVfaGFuZGxlci5zZXRMZXZlbChsb2dnaW5nLkRFQlVHKSAgIyBGaWxlIHJlY29yZHMgYWxsIGxvZyBsZXZlbHMKICAgICAgICBmaWxlX2Zvcm1hdHRlciA9IE5vQ29sb3JGb3JtYXR0ZXIoYmFzZV9mb3JtYXQsIGRhdGVmbXQ9ZGF0ZV9mb3JtYXQpCiAgICAgICAgZmlsZV9oYW5kbGVyLnNldEZvcm1hdHRlcihmaWxlX2Zvcm1hdHRlcikKICAgICAgICBsb2dnaW5nLnJvb3QuYWRkSGFuZGxlcihmaWxlX2hhbmRsZXIpCiAgICAKICAgICMgU2V0IHJvb3QgbG9nZ2VyIGxldmVsCiAgICBsb2dnaW5nLnJvb3Quc2V0TGV2ZWwobG9nZ2luZy5ERUJVRykKCgpkZWYgZ2V0X2xvZ2dlcihuYW1lOiBzdHIpIC0+IGxvZ2dpbmcuTG9nZ2VyOgogICAgIiIiCiAgICBHZXQgYSBsb2dnZXIgd2l0aCB0aGUgc3BlY2lmaWVkIG5hbWUKICAgIAogICAgQXJnczoKICAgICAgICBuYW1lOiBMb2dnZXIgbmFtZQogICAgICAgIAogICAgUmV0dXJuczoKICAgICAgICBDb25maWd1cmVkIGxvZ2dlciBpbnN0YW5jZQogICAgIiIiCiAgICByZXR1cm4gbG9nZ2luZy5nZXRMb2dnZXIobmFtZSkKCgpkZWYgZ2V0X2NvbnZlcnNhdGlvbl9sb2dnZXIobG9nX2Rpcjogc3RyID0gImxvZ3MiKSAtPiBDb252ZXJzYXRpb25Mb2dnZXI6CiAgICAiIiIKICAgIEdldCBhIGNvbnZlcnNhdGlvbiBsb2dnZXIgaW5zdGFuY2UKICAgIAogICAgQXJnczoKICAgICAgICBsb2dfZGlyOiBEaXJlY3RvcnkgdG8gc3RvcmUgY29udmVyc2F0aW9uIGxvZ3MKICAgICAgICAKICAgIFJldHVybnM6CiAgICAgICAgQ29udmVyc2F0aW9uTG9nZ2VyIGluc3RhbmNlCiAgICAiIiIKICAgIHJldHVybiBDb252ZXJzYXRpb25Mb2dnZXIobG9nX2RpcikKCgojIERlZmF1bHQgc2V0dXAgd2hlbiBtb2R1bGUgaXMgaW1wb3J0ZWQKaWYgbm90IGxvZ2dpbmcucm9vdC5oYW5kbGVyczoKICAgIHNldHVwX2xvZ2dpbmcoKSAK
+"""
+Beautiful logging configuration for USACOArena
+
+This module provides a unified logging configuration that creates
+beautiful, colored output similar to loguru library, and includes
+conversation logging functionality.
+"""
+
+import logging
+import sys
+import re
+import json
+import os
+from typing import Optional, List, Dict
+from datetime import datetime
+
+class ColoredFormatter(logging.Formatter):
+    """Formatter that adds colors to console output"""
+    
+    COLORS = {
+        'DEBUG': '\033[32m',      # Green text
+        'INFO': '\033[36m',       # Cyan text
+        'WARNING': '\033[33m',    # Yellow text
+        'ERROR': '\033[31m',      # Red text
+        'CRITICAL': '\033[41m\033[97m', # Red background + white text
+        'RESET': '\033[0m'
+    }
+
+    ANSI_ESCAPE = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+
+    def format(self, record):
+        # If not console output, use normal formatting
+        if not self.is_console_output():
+            return super().format(record)
+            
+        # Save original attributes
+        original_levelname = record.levelname
+        original_msg = record.msg
+        
+        # Get color
+        color = self.COLORS.get(record.levelname, '')
+        reset = self.COLORS['RESET']
+        
+        # Only add color to log level and message
+        record.levelname = f"{color}{original_levelname}{reset}"
+        record.msg = f"{color}{original_msg}{reset}"
+        
+        # Format message
+        formatted_message = super().format(record)
+        
+        # Restore original attributes
+        record.levelname = original_levelname
+        record.msg = original_msg
+        
+        return formatted_message
+
+    def format_without_color(self, record):
+        """Format log record without adding color codes"""
+        formatted = super().format(record)
+        # Remove all ANSI escape sequences
+        return self.ANSI_ESCAPE.sub('', formatted)
+    
+    def is_console_output(self):
+        """Check if it's console output"""
+        # Determine if it's console output by checking handler type
+        for handler in logging.getLogger().handlers:
+            if isinstance(handler, logging.StreamHandler) and handler.formatter == self:
+                return True
+        return False
+
+
+class NoColorFormatter(ColoredFormatter):
+    """Formatter without colors, used for file output"""
+    def format(self, record):
+        return self.format_without_color(record)
+
+
+class ConversationLogger:
+    """Logger for saving and loading conversation histories"""
+    
+    def __init__(self, log_dir: str = "logs"):
+        """
+        Initialize the conversation logger
+        
+        Args:
+            log_dir: Directory to store conversation logs
+        """
+        self.log_dir = log_dir
+        os.makedirs(log_dir, exist_ok=True)
+        self._logger = get_logger("conversation_logger")
+    
+    def _get_log_path(self, agent_name: str, session_id: Optional[str] = None) -> str:
+        """Get the path for the log file"""
+        if session_id is None:
+            session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        # Create subdirectory for each Agent
+        agent_dir = os.path.join(self.log_dir, agent_name)
+        os.makedirs(agent_dir, exist_ok=True)
+        
+        return os.path.join(agent_dir, f"{agent_name}_log_{session_id}.json")
+    
+    def save_conversation(
+        self,
+        agent_name: str,
+        conversation_history: List[Dict],
+        session_id: Optional[str] = None,
+        metadata: Optional[Dict] = None
+    ) -> str:
+        """
+        Save conversation history to a file
+        
+        Args:
+            agent_name: Name of the agent
+            conversation_history: List of conversation messages
+            session_id: Optional session identifier
+            metadata: Optional metadata about the conversation
+        
+        Returns:
+            Path to the saved log file
+        """
+        log_path = self._get_log_path(agent_name, session_id)
+
+        # Only save the latest conversation record
+        message = conversation_history[-1] if conversation_history else None
+        
+        if message:
+            log_data_full = {
+                "agent_name": agent_name,
+                "session_id": session_id,
+                "timestamp": datetime.now().isoformat(),
+                f"message{datetime.now().isoformat()}": message,  # Only save the latest one
+                # "metadata": metadata or {}
+            }
+            log_data = {
+                f"message{datetime.now().isoformat()}": message,  # Only save the latest one
+            }
+        try:
+            file_exists = os.path.exists(log_path) and os.path.getsize(log_path) > 0
+            if file_exists:
+                # Read from end of file forward to find the last "}" position
+                with open(log_path, 'r+', encoding='utf-8') as f:
+                    # Move to end of file
+                    f.seek(0, 2)
+                    file_size = f.tell()
+                    
+                    # Read character by character from end forward to find the last "}"
+                    pos = file_size - 1
+                    while pos >= 0:
+                        f.seek(pos)
+                        char = f.read(1)
+                        if char == '}':
+                            # Found the last "}", insert new content before it
+                            break
+                        pos -= 1
+                    
+                    if pos >= 0:
+                        # Remove {} from log_data, keep only content
+                        log_data_str = json.dumps(log_data, indent=2, ensure_ascii=False)
+                        # Remove first and last lines (remove {})
+                        log_data_lines = log_data_str.split('\n')[1:-1]
+                        log_data_content = '\n'.join(log_data_lines)
+                        
+                        # Move to "}" position
+                        f.seek(pos)
+                        
+                        # Insert new content
+                        f.write(',\n' + log_data_content + '\n}')
+                    else:
+                        # If "}" not found, append directly
+                        f.seek(0, 2)  # Move to end of file
+                        f.write(',\n')
+                        json.dump(log_data, f, indent=2, ensure_ascii=False)
+                        f.write('\n}')
+                
+                # self._logger.info(f"Updated conversation log to {log_path}, log_data: {log_data}")
+            else:
+                with open(log_path, 'w', encoding='utf-8') as f:
+                    json.dump(log_data_full, f, indent=2, ensure_ascii=False)
+
+                # self._logger.info(f"Saved conversation log to {log_path}, log_data_full: {log_data_full}")
+            return log_path
+        except Exception as e:
+            self._logger.error(f"Failed to save conversation log: {e}")
+            raise
+    
+    def load_conversation(self, log_path: str) -> Dict:
+        """
+        Load conversation history from a file
+        
+        Args:
+            log_path: Path to the log file
+        
+        Returns:
+            Dictionary containing the conversation data
+        """
+        try:
+            with open(log_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception as e:
+            self._logger.error(f"Failed to load conversation log from {log_path}: {e}")
+            raise
+    
+    def list_conversations(self, agent_name: Optional[str] = None) -> List[str]:
+        """
+        List available conversation logs
+        
+        Args:
+            agent_name: Optional agent name to filter logs
+        
+        Returns:
+            List of log file paths
+        """
+        if not os.path.exists(self.log_dir):
+            return []
+            
+        pattern = f"{agent_name}_*.json" if agent_name else "*.json"
+        return sorted([
+            os.path.join(self.log_dir, f)
+            for f in os.listdir(self.log_dir)
+            if f.endswith('.json') and (not agent_name or f.startswith(f"{agent_name}_"))
+        ])
+
+
+def setup_logging(
+    level: str = "INFO",
+    log_file: Optional[str] = None,
+    enable_colors: bool = True
+) -> None:
+    """
+    Setup beautiful logging configuration
+    
+    Args:
+        level: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+        log_file: Optional log file path
+        enable_colors: Whether to enable colored output for console
+    """
+    # Remove existing handlers to avoid duplicates
+    for handler in logging.root.handlers[:]:
+        logging.root.removeHandler(handler)
+    
+    # Basic log format
+    base_format = '%(asctime)s.%(msecs)03d | %(levelname)-8s | %(filename)s:%(lineno)d - %(funcName)s - %(message)s'
+    date_format = '%Y-%m-%d %H:%M:%S'
+    
+    # Create console handler
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(getattr(logging, level.upper()))
+    
+    # Choose formatter based on enable_colors parameter
+    if enable_colors:
+        console_formatter = ColoredFormatter(base_format, datefmt=date_format)
+    else:
+        console_formatter = NoColorFormatter(base_format, datefmt=date_format)
+    
+    console_handler.setFormatter(console_formatter)
+    logging.root.addHandler(console_handler)
+    
+    # If log file is specified, create file handler
+    if log_file:
+        file_handler = logging.FileHandler(log_file, mode='w', encoding='utf-8')
+        file_handler.setLevel(logging.DEBUG)  # File records all log levels
+        file_formatter = NoColorFormatter(base_format, datefmt=date_format)
+        file_handler.setFormatter(file_formatter)
+        logging.root.addHandler(file_handler)
+    
+    # Set root logger level
+    logging.root.setLevel(logging.DEBUG)
+
+
+def get_logger(name: str) -> logging.Logger:
+    """
+    Get a logger with the specified name
+    
+    Args:
+        name: Logger name
+        
+    Returns:
+        Configured logger instance
+    """
+    return logging.getLogger(name)
+
+
+def get_conversation_logger(log_dir: str = "logs") -> ConversationLogger:
+    """
+    Get a conversation logger instance
+    
+    Args:
+        log_dir: Directory to store conversation logs
+        
+    Returns:
+        ConversationLogger instance
+    """
+    return ConversationLogger(log_dir)
+
+
+# Default setup when module is imported
+if not logging.root.handlers:
+    setup_logging() 

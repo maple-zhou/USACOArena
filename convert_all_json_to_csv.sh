@@ -1,1 +1,123 @@
-IyEvYmluL2Jhc2gKCiMgSlNPTiB0byBDU1YgYmF0Y2ggY29udmVyc2lvbiBzY3JpcHQKIyBUcmF2ZXJzZSBhbGwgc3ViZGlyZWN0b3JpZXMgaW4gcnVuX2xvZ3MgZm9sZGVyLCBjb252ZXJ0IGZpcnN0LWxldmVsIEpTT04gZmlsZXMgdG8gQ1NWCgojIFNldCBjb2xvciBvdXRwdXQKUkVEPSdcMDMzWzA7MzFtJwpHUkVFTj0nXDAzM1swOzMybScKWUVMTE9XPSdcMDMzWzE7MzNtJwpCTFVFPSdcMDMzWzA7MzRtJwpOQz0nXDAzM1swbScgIyBObyBDb2xvcgoKIyBMb2cgZnVuY3Rpb25zCmxvZ19pbmZvKCkgewogICAgZWNobyAtZSAiJHtCTFVFfVtJTkZPXSR7TkN9ICQxIgp9Cgpsb2dfc3VjY2VzcygpIHsKICAgIGVjaG8gLWUgIiR7R1JFRU59W1NVQ0NFU1NdJHtOQ30gJDEiCn0KCmxvZ193YXJuaW5nKCkgewogICAgZWNobyAtZSAiJHtZRUxMT1d9W1dBUk5JTkddJHtOQ30gJDEiCn0KCmxvZ19lcnJvcigpIHsKICAgIGVjaG8gLWUgIiR7UkVEfVtFUlJPUl0ke05DfSAkMSIKfQoKIyBDaGVjayBpZiBjb252ZXJ0ZXIgc2NyaXB0IGV4aXN0cwpDT05WRVJURVJfU0NSSVBUPSJqc29uX3RvX2Nzdl9jb252ZXJ0ZXIucHkiCmlmIFsgISAtZiAiJENPTlZFUlRFUl9TQ1JJUFQiIF07IHRoZW4KICAgIGxvZ19lcnJvciAiQ29udmVydGVyIHNjcmlwdCAkQ09OVkVSVEVSX1NDUklQVCBkb2VzIG5vdCBleGlzdCEiCiAgICBleGl0IDEKZmkKCiMgQ2hlY2sgaWYgcnVuX2xvZ3MgZGlyZWN0b3J5IGV4aXN0cwpSVU5fTE9HU19ESVI9ImxvZ3MvcnVuX2xvZ3MiCmlmIFsgISAtZCAiJFJVTl9MT0dTX0RJUiIgXTsgdGhlbgogICAgbG9nX2Vycm9yICJydW5fbG9ncyBkaXJlY3RvcnkgJFJVTl9MT0dTX0RJUiBkb2VzIG5vdCBleGlzdCEiCiAgICBleGl0IDEKZmkKCmxvZ19pbmZvICJTdGFydGluZyBiYXRjaCBjb252ZXJzaW9uIG9mIEpTT04gZmlsZXMgdG8gQ1NWLi4uIgoKIyBTdGF0aXN0aWNzIHZhcmlhYmxlcwp0b3RhbF9kaXJzPTAKcHJvY2Vzc2VkX2RpcnM9MAp0b3RhbF9maWxlcz0wCmNvbnZlcnRlZF9maWxlcz0wCnNraXBwZWRfZmlsZXM9MApmYWlsZWRfZmlsZXM9MAoKIyBUcmF2ZXJzZSBhbGwgc3ViZGlyZWN0b3JpZXMgaW4gcnVuX2xvZ3MKZm9yIGRpciBpbiAiJFJVTl9MT0dTX0RJUiIvKi87IGRvCiAgICBpZiBbIC1kICIkZGlyIiBdOyB0aGVuCiAgICAgICAgdG90YWxfZGlycz0kKCh0b3RhbF9kaXJzICsgMSkpCiAgICAgICAgZGlyX25hbWU9JChiYXNlbmFtZSAiJGRpciIpCiAgICAgICAgbG9nX2luZm8gIlByb2Nlc3NpbmcgZGlyZWN0b3J5OiAkZGlyX25hbWUiCiAgICAgICAgCiAgICAgICAgIyBGaW5kIGZpcnN0LWxldmVsIEpTT04gZmlsZXMgaW4gdGhpcyBkaXJlY3RvcnkgKGV4Y2x1ZGluZyBmaWxlcyBpbiBzdWJkaXJlY3RvcmllcykKICAgICAgICBqc29uX2ZpbGVzPSgpCiAgICAgICAgd2hpbGUgSUZTPSByZWFkIC1yIC1kICcnIGZpbGU7IGRvCiAgICAgICAgICAgIGpzb25fZmlsZXMrPSgiJGZpbGUiKQogICAgICAgIGRvbmUgPCA8KGZpbmQgIiRkaXIiIC1tYXhkZXB0aCAxIC1uYW1lICIqLmpzb24iIC10eXBlIGYgLXByaW50MCkKICAgICAgICAKICAgICAgICBpZiBbICR7I2pzb25fZmlsZXNbQF19IC1lcSAwIF07IHRoZW4KICAgICAgICAgICAgbG9nX3dhcm5pbmcgIk5vIEpTT04gZmlsZXMgZm91bmQgaW4gZGlyZWN0b3J5ICRkaXJfbmFtZSIKICAgICAgICAgICAgY29udGludWUKICAgICAgICBmaQogICAgICAgIAogICAgICAgIHByb2Nlc3NlZF9kaXJzPSQoKHByb2Nlc3NlZF9kaXJzICsgMSkpCiAgICAgICAgCiAgICAgICAgIyBQcm9jZXNzIGVhY2ggSlNPTiBmaWxlCiAgICAgICAgZm9yIGpzb25fZmlsZSBpbiAiJHtqc29uX2ZpbGVzW0BdfSI7IGRvCiAgICAgICAgICAgIHRvdGFsX2ZpbGVzPSQoKHRvdGFsX2ZpbGVzICsgMSkpCiAgICAgICAgICAgIGZpbGVuYW1lPSQoYmFzZW5hbWUgIiRqc29uX2ZpbGUiKQogICAgICAgICAgICAKICAgICAgICAgICAgIyBHZW5lcmF0ZSBDU1YgZmlsZW5hbWUgKGluIHRoZSBzYW1lIGRpcmVjdG9yeSBhcyBKU09OIGZpbGUpCiAgICAgICAgICAgIGNzdl9maWxlPSIke2pzb25fZmlsZSUuanNvbn0uY3N2IgogICAgICAgICAgICAKICAgICAgICAgICAgIyBDaGVjayBpZiBDU1YgZmlsZSBhbHJlYWR5IGV4aXN0cwogICAgICAgICAgICBpZiBbIC1mICIkY3N2X2ZpbGUiIF07IHRoZW4KICAgICAgICAgICAgICAgIGxvZ193YXJuaW5nICIgIOKaoCBDU1YgZmlsZSBhbHJlYWR5IGV4aXN0cywgc2tpcHBpbmc6ICQoYmFzZW5hbWUgIiRjc3ZfZmlsZSIpIgogICAgICAgICAgICAgICAgc2tpcHBlZF9maWxlcz0kKChza2lwcGVkX2ZpbGVzICsgMSkpCiAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICBmaQogICAgICAgICAgICAKICAgICAgICAgICAgbG9nX2luZm8gIiAgQ29udmVydGluZzogJGZpbGVuYW1lIC0+ICQoYmFzZW5hbWUgIiRjc3ZfZmlsZSIpIgogICAgICAgICAgICAKICAgICAgICAgICAgIyBDYWxsIGNvbnZlcnRlciBzY3JpcHQKICAgICAgICAgICAgaWYgcHl0aG9uMyAiJENPTlZFUlRFUl9TQ1JJUFQiICIkanNvbl9maWxlIiAiJGNzdl9maWxlIiA+IC9kZXYvbnVsbCAyPiYxOyB0aGVuCiAgICAgICAgICAgICAgICBsb2dfc3VjY2VzcyAiICDinJMgU3VjY2Vzc2Z1bGx5IGNvbnZlcnRlZDogJGZpbGVuYW1lIgogICAgICAgICAgICAgICAgY29udmVydGVkX2ZpbGVzPSQoKGNvbnZlcnRlZF9maWxlcyArIDEpKQogICAgICAgICAgICBlbHNlCiAgICAgICAgICAgICAgICBsb2dfZXJyb3IgIiAg4pyXIENvbnZlcnNpb24gZmFpbGVkOiAkZmlsZW5hbWUiCiAgICAgICAgICAgICAgICBmYWlsZWRfZmlsZXM9JCgoZmFpbGVkX2ZpbGVzICsgMSkpCiAgICAgICAgICAgIGZpCiAgICAgICAgZG9uZQogICAgZmkKZG9uZQoKIyBPdXRwdXQgc3RhdGlzdGljcwplY2hvCmxvZ19pbmZvICI9PT0gQ29udmVyc2lvbiBTdGF0aXN0aWNzID09PSIKbG9nX2luZm8gIlRvdGFsIGRpcmVjdG9yaWVzOiAkdG90YWxfZGlycyIKbG9nX2luZm8gIlByb2Nlc3NlZCBkaXJlY3RvcmllczogJHByb2Nlc3NlZF9kaXJzIgpsb2dfaW5mbyAiVG90YWwgZmlsZXM6ICR0b3RhbF9maWxlcyIKbG9nX3N1Y2Nlc3MgIlN1Y2Nlc3NmdWxseSBjb252ZXJ0ZWQ6ICRjb252ZXJ0ZWRfZmlsZXMiCmxvZ193YXJuaW5nICJTa2lwcGVkIGV4aXN0aW5nOiAkc2tpcHBlZF9maWxlcyIKaWYgWyAkZmFpbGVkX2ZpbGVzIC1ndCAwIF07IHRoZW4KICAgIGxvZ19lcnJvciAiQ29udmVyc2lvbiBmYWlsZWQ6ICRmYWlsZWRfZmlsZXMiCmVsc2UKICAgIGxvZ19zdWNjZXNzICJDb252ZXJzaW9uIGZhaWxlZDogJGZhaWxlZF9maWxlcyIKZmkKCiMgSWYgdGhlcmUgYXJlIGZhaWxlZCBmaWxlcywgcHJvdmlkZSBzdWdnZXN0aW9ucwppZiBbICRmYWlsZWRfZmlsZXMgLWd0IDAgXTsgdGhlbgogICAgZWNobwogICAgbG9nX3dhcm5pbmcgIlN1Z2dlc3QgY2hlY2tpbmcgaWYgdGhlIGZhaWxlZCBKU09OIGZpbGVzIGhhdmUgY29ycmVjdCBmb3JtYXQiCmZpCgpsb2dfaW5mbyAiQmF0Y2ggY29udmVyc2lvbiBjb21wbGV0ZWQhIiA=
+#!/bin/bash
+
+# JSON to CSV batch conversion script
+# Traverse all subdirectories in run_logs folder, convert first-level JSON files to CSV
+
+# Set color output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Log functions
+log_info() {
+    echo -e "${BLUE}[INFO]${NC} $1"
+}
+
+log_success() {
+    echo -e "${GREEN}[SUCCESS]${NC} $1"
+}
+
+log_warning() {
+    echo -e "${YELLOW}[WARNING]${NC} $1"
+}
+
+log_error() {
+    echo -e "${RED}[ERROR]${NC} $1"
+}
+
+# Check if converter script exists
+CONVERTER_SCRIPT="json_to_csv_converter.py"
+if [ ! -f "$CONVERTER_SCRIPT" ]; then
+    log_error "Converter script $CONVERTER_SCRIPT does not exist!"
+    exit 1
+fi
+
+# Check if run_logs directory exists
+RUN_LOGS_DIR="logs/run_logs"
+if [ ! -d "$RUN_LOGS_DIR" ]; then
+    log_error "run_logs directory $RUN_LOGS_DIR does not exist!"
+    exit 1
+fi
+
+log_info "Starting batch conversion of JSON files to CSV..."
+
+# Statistics variables
+total_dirs=0
+processed_dirs=0
+total_files=0
+converted_files=0
+skipped_files=0
+failed_files=0
+
+# Traverse all subdirectories in run_logs
+for dir in "$RUN_LOGS_DIR"/*/; do
+    if [ -d "$dir" ]; then
+        total_dirs=$((total_dirs + 1))
+        dir_name=$(basename "$dir")
+        log_info "Processing directory: $dir_name"
+        
+        # Find first-level JSON files in this directory (excluding files in subdirectories)
+        json_files=()
+        while IFS= read -r -d '' file; do
+            json_files+=("$file")
+        done < <(find "$dir" -maxdepth 1 -name "*.json" -type f -print0)
+        
+        if [ ${#json_files[@]} -eq 0 ]; then
+            log_warning "No JSON files found in directory $dir_name"
+            continue
+        fi
+        
+        processed_dirs=$((processed_dirs + 1))
+        
+        # Process each JSON file
+        for json_file in "${json_files[@]}"; do
+            total_files=$((total_files + 1))
+            filename=$(basename "$json_file")
+            
+            # Generate CSV filename (in the same directory as JSON file)
+            csv_file="${json_file%.json}.csv"
+            
+            # Check if CSV file already exists
+            if [ -f "$csv_file" ]; then
+                log_warning "  ⚠ CSV file already exists, skipping: $(basename "$csv_file")"
+                skipped_files=$((skipped_files + 1))
+                continue
+            fi
+            
+            log_info "  Converting: $filename -> $(basename "$csv_file")"
+            
+            # Call converter script
+            if python3 "$CONVERTER_SCRIPT" "$json_file" "$csv_file" > /dev/null 2>&1; then
+                log_success "  ✓ Successfully converted: $filename"
+                converted_files=$((converted_files + 1))
+            else
+                log_error "  ✗ Conversion failed: $filename"
+                failed_files=$((failed_files + 1))
+            fi
+        done
+    fi
+done
+
+# Output statistics
+echo
+log_info "=== Conversion Statistics ==="
+log_info "Total directories: $total_dirs"
+log_info "Processed directories: $processed_dirs"
+log_info "Total files: $total_files"
+log_success "Successfully converted: $converted_files"
+log_warning "Skipped existing: $skipped_files"
+if [ $failed_files -gt 0 ]; then
+    log_error "Conversion failed: $failed_files"
+else
+    log_success "Conversion failed: $failed_files"
+fi
+
+# If there are failed files, provide suggestions
+if [ $failed_files -gt 0 ]; then
+    echo
+    log_warning "Suggest checking if the failed JSON files have correct format"
+fi
+
+log_info "Batch conversion completed!" 

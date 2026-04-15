@@ -1,1 +1,14 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uCiIiIkxpbnQgUkVBRE1FIHN0cnVjdHVyZSB0byBlbnN1cmUgcmVsZWFzZSBjb21wbGlhbmNlLiIiIgoKZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKZnJvbSB1c2Fjb2FyZW5hLnRvb2xzIGltcG9ydCByZWFkbWVfY2hlY2tzCgoKZGVmIG1haW4oKSAtPiBpbnQ6CiAgICByZXR1cm4gcmVhZG1lX2NoZWNrcy5tYWluKCkKCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgcmFpc2UgU3lzdGVtRXhpdChtYWluKCkpCg==
+#!/usr/bin/env python
+"""Lint README structure to ensure release compliance."""
+
+from __future__ import annotations
+
+from usacoarena.tools import readme_checks
+
+
+def main() -> int:
+    return readme_checks.main()
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

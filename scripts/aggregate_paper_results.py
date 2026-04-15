@@ -1,1 +1,49 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJBZ2dyZWdhdGUgcmVwZWF0ZWQgcGFwZXIgcnVucyBpbnRvIHB1YmxpY2F0aW9uLXJlYWR5IHN1bW1hcnkgdGFibGVzLiIiIgoKZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IGFyZ3BhcnNlCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKZnJvbSB1c2Fjb2FyZW5hLmJlbmNobWFyay5wYXBlcl9hZ2dyZWdhdGlvbiBpbXBvcnQgYWdncmVnYXRlX3BhcGVyX3J1bnMKCgpkZWYgYnVpbGRfcGFyc2VyKCkgLT4gYXJncGFyc2UuQXJndW1lbnRQYXJzZXI6CiAgICBwYXJzZXIgPSBhcmdwYXJzZS5Bcmd1bWVudFBhcnNlcigKICAgICAgICBkZXNjcmlwdGlvbj0iQWdncmVnYXRlIHJ1bnMvcGFwZXIvLi4uIG91dHB1dHMgaW50byBUYWJsZSAyIC8gVGFibGUgOCAvIFRhYmxlIDkgc3R5bGUgc3VtbWFyaWVzLiIKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tcnVucy1yb290IiwKICAgICAgICBkZWZhdWx0PSJydW5zL3BhcGVyIiwKICAgICAgICBoZWxwPSJSb290IGRpcmVjdG9yeSBjb250YWluaW5nIHRoZSBwYXBlciByZXByb2R1Y3Rpb24gcnVuIGxheW91dC4iLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1vdXRwdXQtZGlyIiwKICAgICAgICBkZWZhdWx0PSJydW5zL3BhcGVyL2FnZ3JlZ2F0ZWQiLAogICAgICAgIGhlbHA9IkRpcmVjdG9yeSB3aGVyZSBhZ2dyZWdhdGVkIEpTT04vQ1NWL01hcmtkb3duIGFydGlmYWN0cyBhcmUgd3JpdHRlbi4iLAogICAgKQogICAgcmV0dXJuIHBhcnNlcgoKCmRlZiBtYWluKCkgLT4gaW50OgogICAgcGFyc2VyID0gYnVpbGRfcGFyc2VyKCkKICAgIGFyZ3MgPSBwYXJzZXIucGFyc2VfYXJncygpCgogICAgcnVuc19yb290ID0gUGF0aChhcmdzLnJ1bnNfcm9vdCkuZXhwYW5kdXNlcigpLnJlc29sdmUoKQogICAgb3V0cHV0X2RpciA9IFBhdGgoYXJncy5vdXRwdXRfZGlyKS5leHBhbmR1c2VyKCkucmVzb2x2ZSgpCiAgICBvdXRwdXRfZGlyLm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKCiAgICBtYW5pZmVzdCA9IGFnZ3JlZ2F0ZV9wYXBlcl9ydW5zKHJ1bnNfcm9vdCwgb3V0cHV0X2RpcikKICAgIHByaW50KGYicnVuc19yb290PXtydW5zX3Jvb3R9IikKICAgIHByaW50KGYib3V0cHV0X2Rpcj17b3V0cHV0X2Rpcn0iKQogICAgcHJpbnQoZiJtYW5pZmVzdD17bWFuaWZlc3RbJ21hbmlmZXN0J119IikKICAgIHdhcm5pbmdzID0gbWFuaWZlc3QuZ2V0KCJ3YXJuaW5ncyIsIFtdKQogICAgcHJpbnQoZiJ3YXJuaW5ncz17bGVuKHdhcm5pbmdzKX0iKQogICAgZm9yIGtleSwgYXJ0aWZhY3RzIGluIG1hbmlmZXN0LmdldCgiZ2VuZXJhdGVkX3NlY3Rpb25zIiwge30pLml0ZW1zKCk6CiAgICAgICAgcHJpbnQoZiJ7a2V5fT17YXJ0aWZhY3RzLmdldCgnbWFya2Rvd24nLCAnJyl9IikKICAgIHJldHVybiAwCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIHJhaXNlIFN5c3RlbUV4aXQobWFpbigpKQo=
+#!/usr/bin/env python3
+"""Aggregate repeated paper runs into publication-ready summary tables."""
+
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
+from usacoarena.benchmark.paper_aggregation import aggregate_paper_runs
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Aggregate runs/paper/... outputs into Table 2 / Table 8 / Table 9 style summaries."
+    )
+    parser.add_argument(
+        "--runs-root",
+        default="runs/paper",
+        help="Root directory containing the paper reproduction run layout.",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default="runs/paper/aggregated",
+        help="Directory where aggregated JSON/CSV/Markdown artifacts are written.",
+    )
+    return parser
+
+
+def main() -> int:
+    parser = build_parser()
+    args = parser.parse_args()
+
+    runs_root = Path(args.runs_root).expanduser().resolve()
+    output_dir = Path(args.output_dir).expanduser().resolve()
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    manifest = aggregate_paper_runs(runs_root, output_dir)
+    print(f"runs_root={runs_root}")
+    print(f"output_dir={output_dir}")
+    print(f"manifest={manifest['manifest']}")
+    warnings = manifest.get("warnings", [])
+    print(f"warnings={len(warnings)}")
+    for key, artifacts in manifest.get("generated_sections", {}).items():
+        print(f"{key}={artifacts.get('markdown', '')}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

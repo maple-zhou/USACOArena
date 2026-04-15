@@ -1,1 +1,9 @@
-IiIiClNpbmdsZSBBZ2VudCBJbXBsZW1lbnRhdGlvbiBmb3IgVVNBQ09BcmVuYQoKVGhpcyBtb2R1bGUgcHJvdmlkZXMgZ2VuZXJpYyBhZ2VudCBpbXBsZW1lbnRhdGlvbnMgdGhhdCBjYW4gd29yayB3aXRoIHZhcmlvdXMgTExNIHByb3ZpZGVycy4KIiIiCgpmcm9tIC5zaW5nbGVfYWdlbnQgaW1wb3J0IEdlbmVyaWNBUElBZ2VudCwgU3RyZWFtaW5nR2VuZXJpY0FQSUFnZW50CgpfX2FsbF9fID0gWyJHZW5lcmljQVBJQWdlbnQiLCAiU3RyZWFtaW5nR2VuZXJpY0FQSUFnZW50Il0gCg==
+"""
+Single Agent Implementation for USACOArena
+
+This module provides generic agent implementations that can work with various LLM providers.
+"""
+
+from .single_agent import GenericAPIAgent, StreamingGenericAPIAgent
+
+__all__ = ["GenericAPIAgent", "StreamingGenericAPIAgent"] 

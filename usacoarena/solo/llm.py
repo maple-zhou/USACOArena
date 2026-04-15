@@ -1,1 +1,211 @@
-IiIiQ2xpZW50IHdyYXBwZXIgZm9yIGRpcmVjdCBMTE0gQVBJIGludGVyYWN0aW9ucy4iIiIKCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKCmltcG9ydCBqc29uCmltcG9ydCBvcwpmcm9tIGRhdGFjbGFzc2VzIGltcG9ydCBkYXRhY2xhc3MKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gdHlwaW5nIGltcG9ydCBBbnksIERpY3QsIExpc3QsIE9wdGlvbmFsLCBUdXBsZQoKaW1wb3J0IHJlcXVlc3RzCgpmcm9tIHVzYWNvYXJlbmEudXRpbHMubG9nZ2VyX2NvbmZpZyBpbXBvcnQgZ2V0X2xvZ2dlcgoKbG9nZ2VyID0gZ2V0X2xvZ2dlcigic29sb19sbG0iKQoKCkBkYXRhY2xhc3MKY2xhc3MgTExNVXNhZ2U6CiAgICAiIiJDYXB0dXJlIHRva2VuIHN0YXRpc3RpY3MgZm9yIGEgc2luZ2xlIGluZmVyZW5jZS4iIiIKCiAgICBwcm9tcHRfdG9rZW5zOiBPcHRpb25hbFtpbnRdCiAgICBjb21wbGV0aW9uX3Rva2VuczogT3B0aW9uYWxbaW50XQogICAgdG90YWxfdG9rZW5zOiBPcHRpb25hbFtpbnRdCgogICAgQGNsYXNzbWV0aG9kCiAgICBkZWYgZnJvbV9wYXlsb2FkKGNscywgcGF5bG9hZDogT3B0aW9uYWxbRGljdFtzdHIsIEFueV1dKSAtPiAiTExNVXNhZ2UiOgogICAgICAgIGlmIG5vdCBwYXlsb2FkOgogICAgICAgICAgICByZXR1cm4gY2xzKE5vbmUsIE5vbmUsIE5vbmUpCiAgICAgICAgcHJvbXB0ID0gcGF5bG9hZC5nZXQoInByb21wdF90b2tlbnMiKQogICAgICAgIGNvbXBsZXRpb24gPSBwYXlsb2FkLmdldCgiY29tcGxldGlvbl90b2tlbnMiKQogICAgICAgIHRvdGFsID0gcGF5bG9hZC5nZXQoInRvdGFsX3Rva2VucyIpCiAgICAgICAgaWYgdG90YWwgaXMgTm9uZSBhbmQgcHJvbXB0IGlzIG5vdCBOb25lIGFuZCBjb21wbGV0aW9uIGlzIG5vdCBOb25lOgogICAgICAgICAgICB0b3RhbCA9IHByb21wdCArIGNvbXBsZXRpb24KICAgICAgICByZXR1cm4gY2xzKHByb21wdCwgY29tcGxldGlvbiwgdG90YWwpCgoKQGRhdGFjbGFzcwpjbGFzcyBMTE1Db25maWc6CiAgICAiIiJDb25maWd1cmF0aW9uIGNvbnRhaW5lciBmb3IgYW4gTExNIHNlcnZpY2UuIiIiCgogICAgbmFtZTogc3RyCiAgICBtb2RlbF9pZDogc3RyCiAgICBhcGlfYmFzZV91cmw6IHN0cgogICAgYXBpX2tleTogc3RyCiAgICByZXF1ZXN0X2Zvcm1hdDogRGljdFtzdHIsIEFueV0KICAgIHJlc3BvbnNlX2Zvcm1hdDogRGljdFtzdHIsIEFueV0KCiAgICBAY2xhc3NtZXRob2QKICAgIGRlZiBmcm9tX2ZpbGUoY2xzLCBwYXRoOiBzdHIsIGNvbXBldGl0b3JfbmFtZTogT3B0aW9uYWxbc3RyXSA9IE5vbmUpIC0+ICJMTE1Db25maWciOgogICAgICAgIGNvbmZpZ19wYXRoID0gUGF0aChwYXRoKQogICAgICAgIGlmIG5vdCBjb25maWdfcGF0aC5leGlzdHMoKToKICAgICAgICAgICAgcmFpc2UgRmlsZU5vdEZvdW5kRXJyb3IoZiJMTE0gY29uZmlndXJhdGlvbiBmaWxlIG5vdCBmb3VuZDoge3BhdGh9IikKCiAgICAgICAgZGF0YSA9IGpzb24ubG9hZHMoY29uZmlnX3BhdGgucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIpKQogICAgICAgIGlmICJjb21wZXRpdG9ycyIgaW4gZGF0YToKICAgICAgICAgICAgZW50cmllcyA9IGRhdGFbImNvbXBldGl0b3JzIl0KICAgICAgICAgICAgaWYgY29tcGV0aXRvcl9uYW1lOgogICAgICAgICAgICAgICAgbWF0Y2hlcyA9IFtjIGZvciBjIGluIGVudHJpZXMgaWYgYy5nZXQoIm5hbWUiKSA9PSBjb21wZXRpdG9yX25hbWVdCiAgICAgICAgICAgICAgICBpZiBub3QgbWF0Y2hlczoKICAgICAgICAgICAgICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGYiTm8gY29tcGV0aXRvciBuYW1lZCB7Y29tcGV0aXRvcl9uYW1lfSBmb3VuZCBpbiB0aGUgY29uZmlndXJhdGlvbiIpCiAgICAgICAgICAgICAgICBlbnRyeSA9IG1hdGNoZXNbMF0KICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIGlmIGxlbihlbnRyaWVzKSAhPSAxOgogICAgICAgICAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoIkNvbmZpZ3VyYXRpb24gY29udGFpbnMgbXVsdGlwbGUgY29tcGV0aXRvcnM7IHVzZSAtLWNvbXBldGl0b3ItbmFtZSB0byBzcGVjaWZ5IHRoZSB0YXJnZXQiKQogICAgICAgICAgICAgICAgZW50cnkgPSBlbnRyaWVzWzBdCiAgICAgICAgZWxzZToKICAgICAgICAgICAgZW50cnkgPSBkYXRhCgogICAgICAgIHJlcXVpcmVkID0gWyJuYW1lIiwgIm1vZGVsX2lkIiwgImFwaV9iYXNlX3VybCIsICJhcGlfa2V5Il0KICAgICAgICBtaXNzaW5nID0gW2tleSBmb3Iga2V5IGluIHJlcXVpcmVkIGlmIGtleSBub3QgaW4gZW50cnldCiAgICAgICAgaWYgbWlzc2luZzoKICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmIkxMTSBjb25maWd1cmF0aW9uIG1pc3NpbmcgZmllbGRzOiB7bWlzc2luZ30iKQoKICAgICAgICByZXF1ZXN0X2Zvcm1hdCA9IGVudHJ5LmdldCgicmVxdWVzdF9mb3JtYXQiKSBvciB7CiAgICAgICAgICAgICJ1cmwiOiAiL3YxL2NoYXQvY29tcGxldGlvbnMiLAogICAgICAgICAgICAibWV0aG9kIjogIlBPU1QiLAogICAgICAgICAgICAiaGVhZGVycyI6IHsKICAgICAgICAgICAgICAgICJDb250ZW50LVR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsCiAgICAgICAgICAgICAgICAiQXV0aG9yaXphdGlvbiI6ICJCZWFyZXIge2FwaV9rZXl9IgogICAgICAgICAgICB9LAogICAgICAgICAgICAiYm9keV90ZW1wbGF0ZSI6IHsKICAgICAgICAgICAgICAgICJtb2RlbCI6ICJ7bW9kZWxfaWR9IiwKICAgICAgICAgICAgICAgICJtZXNzYWdlcyI6ICJ7bWVzc2FnZXN9IiwKICAgICAgICAgICAgICAgICJ0ZW1wZXJhdHVyZSI6IDAuMAogICAgICAgICAgICB9CiAgICAgICAgfQogICAgICAgIHJlc3BvbnNlX2Zvcm1hdCA9IGVudHJ5LmdldCgicmVzcG9uc2VfZm9ybWF0Iikgb3IgewogICAgICAgICAgICAicmVzcG9uc2VfcGF0aCI6ICJjaG9pY2VzWzBdLm1lc3NhZ2UuY29udGVudCIsCiAgICAgICAgICAgICJ1c2FnZV9wYXRoIjogInVzYWdlIgogICAgICAgIH0KCiAgICAgICAgcmV0dXJuIGNscygKICAgICAgICAgICAgbmFtZT1lbnRyeVsibmFtZSJdLAogICAgICAgICAgICBtb2RlbF9pZD1lbnRyeVsibW9kZWxfaWQiXSwKICAgICAgICAgICAgYXBpX2Jhc2VfdXJsPSgKICAgICAgICAgICAgICAgIHN0cihlbnRyeS5nZXQoImFwaV9iYXNlX3VybCIpIG9yICIiKQogICAgICAgICAgICAgICAgb3Igc3RyKG9zLmVudmlyb24uZ2V0KHN0cihlbnRyeS5nZXQoImFwaV9iYXNlX3VybF9lbnYiKSBvciAiIikuc3RyaXAoKSwgIiIpIG9yICIiKQogICAgICAgICAgICApLnJzdHJpcCgiLyIpLAogICAgICAgICAgICBhcGlfa2V5PSgKICAgICAgICAgICAgICAgIHN0cihlbnRyeS5nZXQoImFwaV9rZXkiKSBvciAiIikKICAgICAgICAgICAgICAgIG9yIHN0cihvcy5lbnZpcm9uLmdldChzdHIoZW50cnkuZ2V0KCJhcGlfa2V5X2VudiIpIG9yICIiKS5zdHJpcCgpLCAiIikgb3IgIiIpCiAgICAgICAgICAgICksCiAgICAgICAgICAgIHJlcXVlc3RfZm9ybWF0PXJlcXVlc3RfZm9ybWF0LAogICAgICAgICAgICByZXNwb25zZV9mb3JtYXQ9cmVzcG9uc2VfZm9ybWF0LAogICAgICAgICkKCiAgICBkZWYgcHJlcGFyZV9yZXF1ZXN0KHNlbGYsIG1lc3NhZ2VzOiBMaXN0W0RpY3Rbc3RyLCBzdHJdXSkgLT4gVHVwbGVbc3RyLCBzdHIsIERpY3Rbc3RyLCBzdHJdLCBEaWN0W3N0ciwgQW55XV06CiAgICAgICAgIiIiR2VuZXJhdGUgcmVxdWVzdCBjb21wb25lbnRzIGJhc2VkIG9uIHRoZSBjb25maWd1cmVkIHRlbXBsYXRlLiIiIgogICAgICAgIG1ldGhvZCA9IHNlbGYucmVxdWVzdF9mb3JtYXQuZ2V0KCJtZXRob2QiLCAiUE9TVCIpCiAgICAgICAgdXJsID0gc2VsZi5yZXF1ZXN0X2Zvcm1hdC5nZXQoInVybCIsICIiKQogICAgICAgIGlmIG5vdCB1cmwuc3RhcnRzd2l0aCgiaHR0cCIpOgogICAgICAgICAgICB1cmwgPSBmIntzZWxmLmFwaV9iYXNlX3VybH17dXJsfSIKCiAgICAgICAgaGVhZGVycyA9IHsKICAgICAgICAgICAga2V5OiB2YWx1ZS5mb3JtYXQoYXBpX2tleT1zZWxmLmFwaV9rZXkpCiAgICAgICAgICAgIGZvciBrZXksIHZhbHVlIGluIHNlbGYucmVxdWVzdF9mb3JtYXQuZ2V0KCJoZWFkZXJzIiwge30pLml0ZW1zKCkKICAgICAgICB9CgogICAgICAgIGJvZHlfdGVtcGxhdGUgPSBzZWxmLnJlcXVlc3RfZm9ybWF0LmdldCgiYm9keV90ZW1wbGF0ZSIsIHt9KS5jb3B5KCkKICAgICAgICBwYXlsb2FkOiBEaWN0W3N0ciwgQW55XSA9IHt9CiAgICAgICAgZm9yIGtleSwgdmFsdWUgaW4gYm9keV90ZW1wbGF0ZS5pdGVtcygpOgogICAgICAgICAgICBpZiBpc2luc3RhbmNlKHZhbHVlLCBzdHIpOgogICAgICAgICAgICAgICAgcGF5bG9hZFtrZXldID0gdmFsdWUuZm9ybWF0KAogICAgICAgICAgICAgICAgICAgIG1vZGVsX2lkPXNlbGYubW9kZWxfaWQsCiAgICAgICAgICAgICAgICAgICAgbWVzc2FnZXM9anNvbi5kdW1wcyhtZXNzYWdlcywgZW5zdXJlX2FzY2lpPUZhbHNlKQogICAgICAgICAgICAgICAgKQogICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgcGF5bG9hZFtrZXldID0gdmFsdWUKCiAgICAgICAgaWYgIm1lc3NhZ2VzIiBpbiBwYXlsb2FkIGFuZCBpc2luc3RhbmNlKHBheWxvYWRbIm1lc3NhZ2VzIl0sIHN0cik6CiAgICAgICAgICAgIHBheWxvYWRbIm1lc3NhZ2VzIl0gPSBqc29uLmxvYWRzKHBheWxvYWRbIm1lc3NhZ2VzIl0pCiAgICAgICAgZWxzZToKICAgICAgICAgICAgcGF5bG9hZC5zZXRkZWZhdWx0KCJtZXNzYWdlcyIsIG1lc3NhZ2VzKQoKICAgICAgICBwYXlsb2FkLnNldGRlZmF1bHQoIm1vZGVsIiwgc2VsZi5tb2RlbF9pZCkKICAgICAgICByZXR1cm4gbWV0aG9kLCB1cmwsIGhlYWRlcnMsIHBheWxvYWQKCiAgICBkZWYgZXh0cmFjdF9jb250ZW50KHNlbGYsIHJlc3BvbnNlX2pzb246IERpY3Rbc3RyLCBBbnldKSAtPiBzdHI6CiAgICAgICAgIiIiRXh0cmFjdCB0aGUgbW9kZWwgb3V0cHV0IGZvbGxvd2luZyB0aGUgY29uZmlndXJlZCBwYXRoLiIiIgogICAgICAgIHBhdGggPSBzZWxmLnJlc3BvbnNlX2Zvcm1hdC5nZXQoInJlc3BvbnNlX3BhdGgiLCAiY2hvaWNlc1swXS5tZXNzYWdlLmNvbnRlbnQiKQogICAgICAgIHJldHVybiBfZGlnX3ZhbHVlKHJlc3BvbnNlX2pzb24sIHBhdGgpCgogICAgZGVmIGV4dHJhY3RfdXNhZ2Uoc2VsZiwgcmVzcG9uc2VfanNvbjogRGljdFtzdHIsIEFueV0pIC0+IExMTVVzYWdlOgogICAgICAgICIiIkV4dHJhY3QgdXNhZ2UgaW5mb3JtYXRpb24gZnJvbSB0aGUgcmVzcG9uc2UuIiIiCiAgICAgICAgdXNhZ2VfcGF0aCA9IHNlbGYucmVzcG9uc2VfZm9ybWF0LmdldCgidXNhZ2VfcGF0aCIsICJ1c2FnZSIpCiAgICAgICAgdXNhZ2UgPSBfZGlnX3ZhbHVlKHJlc3BvbnNlX2pzb24sIHVzYWdlX3BhdGgsIGRlZmF1bHQ9Tm9uZSkKICAgICAgICByZXR1cm4gTExNVXNhZ2UuZnJvbV9wYXlsb2FkKHVzYWdlIGlmIGlzaW5zdGFuY2UodXNhZ2UsIGRpY3QpIGVsc2UgTm9uZSkKCgpjbGFzcyBMTE1DbGllbnQ6CiAgICAiIiJMaWdodHdlaWdodCBMTE0gQVBJIGNsaWVudCBmb3Igc2VuZGluZyBwcm9tcHRzIGFuZCByZXR1cm5pbmcgY29kZS4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgY29uZmlnOiBMTE1Db25maWcsIHRpbWVvdXQ6IGZsb2F0ID0gMTIwLjApOgogICAgICAgIHNlbGYuX2NvbmZpZyA9IGNvbmZpZwogICAgICAgIHNlbGYuX3RpbWVvdXQgPSB0aW1lb3V0CgogICAgZGVmIGluZmVyKHNlbGYsIG1lc3NhZ2VzOiBMaXN0W0RpY3Rbc3RyLCBzdHJdXSkgLT4gVHVwbGVbc3RyLCBMTE1Vc2FnZV06CiAgICAgICAgIiIiRXhlY3V0ZSBhIHNpbmdsZSBpbmZlcmVuY2UgY2FsbC4iIiIKICAgICAgICBtZXRob2QsIHVybCwgaGVhZGVycywgcGF5bG9hZCA9IHNlbGYuX2NvbmZpZy5wcmVwYXJlX3JlcXVlc3QobWVzc2FnZXMpCiAgICAgICAgdHJ5OgogICAgICAgICAgICByZXNwb25zZSA9IHJlcXVlc3RzLnJlcXVlc3QoCiAgICAgICAgICAgICAgICBtZXRob2Q9bWV0aG9kLAogICAgICAgICAgICAgICAgdXJsPXVybCwKICAgICAgICAgICAgICAgIGhlYWRlcnM9aGVhZGVycywKICAgICAgICAgICAgICAgIGpzb249cGF5bG9hZCwKICAgICAgICAgICAgICAgIHRpbWVvdXQ9c2VsZi5fdGltZW91dCwKICAgICAgICAgICAgKQogICAgICAgICAgICByZXNwb25zZS5yYWlzZV9mb3Jfc3RhdHVzKCkKICAgICAgICBleGNlcHQgcmVxdWVzdHMuUmVxdWVzdEV4Y2VwdGlvbiBhcyBleGM6CiAgICAgICAgICAgIHJhaXNlIFJ1bnRpbWVFcnJvcihmIkxMTSByZXF1ZXN0IGZhaWxlZDoge2V4Y30iKSBmcm9tIGV4YwoKICAgICAgICB0cnk6CiAgICAgICAgICAgIHJlc3BvbnNlX2pzb24gPSByZXNwb25zZS5qc29uKCkKICAgICAgICBleGNlcHQgVmFsdWVFcnJvciBhcyBleGM6CiAgICAgICAgICAgIHJhaXNlIFJ1bnRpbWVFcnJvcigiTExNIHJldHVybmVkIGludmFsaWQgSlNPTiBkYXRhIikgZnJvbSBleGMKCiAgICAgICAgY29udGVudCA9IHNlbGYuX2NvbmZpZy5leHRyYWN0X2NvbnRlbnQocmVzcG9uc2VfanNvbikKICAgICAgICBpZiBub3QgaXNpbnN0YW5jZShjb250ZW50LCBzdHIpOgogICAgICAgICAgICByYWlzZSBSdW50aW1lRXJyb3IoIlVuYWJsZSB0byBleHRyYWN0IHRleHR1YWwgY29udGVudCBmcm9tIExMTSByZXNwb25zZSIpCgogICAgICAgIHVzYWdlID0gc2VsZi5fY29uZmlnLmV4dHJhY3RfdXNhZ2UocmVzcG9uc2VfanNvbikKICAgICAgICByZXR1cm4gY29udGVudCwgdXNhZ2UKCgpkZWYgX2RpZ192YWx1ZShkYXRhOiBEaWN0W3N0ciwgQW55XSwgcGF0aDogc3RyLCBkZWZhdWx0OiBBbnkgPSBOb25lKSAtPiBBbnk6CiAgICAiIiJSZXNvbHZlIGEgbmVzdGVkIGZpZWxkIHVzaW5nIGRvdHRlZCBvciBzbGFzaC1kZWxpbWl0ZWQgc3ludGF4LiIiIgogICAgaWYgbm90IHBhdGg6CiAgICAgICAgcmV0dXJuIGRhdGEKICAgIGN1cnJlbnQ6IEFueSA9IGRhdGEKICAgIGZvciBzZWdtZW50IGluIHBhdGgucmVwbGFjZSgiLyIsICIuIikuc3BsaXQoJy4nKToKICAgICAgICBpZiBzZWdtZW50ID09ICIiOgogICAgICAgICAgICBjb250aW51ZQogICAgICAgIGlmICdbJyBpbiBzZWdtZW50IGFuZCBzZWdtZW50LmVuZHN3aXRoKCddJyk6CiAgICAgICAgICAgIGtleSwgaW5kZXhfc3RyID0gc2VnbWVudFs6LTFdLnNwbGl0KCdbJywgMSkKICAgICAgICAgICAgY3VycmVudCA9IGN1cnJlbnQuZ2V0KGtleSkgaWYgaXNpbnN0YW5jZShjdXJyZW50LCBkaWN0KSBlbHNlIGRlZmF1bHQKICAgICAgICAgICAgaWYgY3VycmVudCBpcyBkZWZhdWx0OgogICAgICAgICAgICAgICAgcmV0dXJuIGRlZmF1bHQKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgaW5kZXggPSBpbnQoaW5kZXhfc3RyKQogICAgICAgICAgICAgICAgY3VycmVudCA9IGN1cnJlbnRbaW5kZXhdCiAgICAgICAgICAgIGV4Y2VwdCAoVmFsdWVFcnJvciwgSW5kZXhFcnJvciwgVHlwZUVycm9yKToKICAgICAgICAgICAgICAgIHJldHVybiBkZWZhdWx0CiAgICAgICAgZWxzZToKICAgICAgICAgICAgaWYgaXNpbnN0YW5jZShjdXJyZW50LCBkaWN0KToKICAgICAgICAgICAgICAgIGN1cnJlbnQgPSBjdXJyZW50LmdldChzZWdtZW50LCBkZWZhdWx0KQogICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgcmV0dXJuIGRlZmF1bHQKICAgICAgICBpZiBjdXJyZW50IGlzIE5vbmU6CiAgICAgICAgICAgIHJldHVybiBkZWZhdWx0CiAgICByZXR1cm4gY3VycmVudAo=
+"""Client wrapper for direct LLM API interactions."""
+
+from __future__ import annotations
+
+import json
+import os
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+
+import requests
+
+from usacoarena.utils.logger_config import get_logger
+
+logger = get_logger("solo_llm")
+
+
+@dataclass
+class LLMUsage:
+    """Capture token statistics for a single inference."""
+
+    prompt_tokens: Optional[int]
+    completion_tokens: Optional[int]
+    total_tokens: Optional[int]
+
+    @classmethod
+    def from_payload(cls, payload: Optional[Dict[str, Any]]) -> "LLMUsage":
+        if not payload:
+            return cls(None, None, None)
+        prompt = payload.get("prompt_tokens")
+        completion = payload.get("completion_tokens")
+        total = payload.get("total_tokens")
+        if total is None and prompt is not None and completion is not None:
+            total = prompt + completion
+        return cls(prompt, completion, total)
+
+
+@dataclass
+class LLMConfig:
+    """Configuration container for an LLM service."""
+
+    name: str
+    model_id: str
+    api_base_url: str
+    api_key: str
+    request_format: Dict[str, Any]
+    response_format: Dict[str, Any]
+
+    @classmethod
+    def from_file(cls, path: str, competitor_name: Optional[str] = None) -> "LLMConfig":
+        config_path = Path(path)
+        if not config_path.exists():
+            raise FileNotFoundError(f"LLM configuration file not found: {path}")
+
+        data = json.loads(config_path.read_text(encoding="utf-8"))
+        if "competitors" in data:
+            entries = data["competitors"]
+            if competitor_name:
+                matches = [c for c in entries if c.get("name") == competitor_name]
+                if not matches:
+                    raise ValueError(f"No competitor named {competitor_name} found in the configuration")
+                entry = matches[0]
+            else:
+                if len(entries) != 1:
+                    raise ValueError("Configuration contains multiple competitors; use --competitor-name to specify the target")
+                entry = entries[0]
+        else:
+            entry = data
+
+        required = ["name", "model_id", "api_base_url", "api_key"]
+        missing = [key for key in required if key not in entry]
+        if missing:
+            raise ValueError(f"LLM configuration missing fields: {missing}")
+
+        request_format = entry.get("request_format") or {
+            "url": "/v1/chat/completions",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer {api_key}"
+            },
+            "body_template": {
+                "model": "{model_id}",
+                "messages": "{messages}",
+                "temperature": 0.0
+            }
+        }
+        response_format = entry.get("response_format") or {
+            "response_path": "choices[0].message.content",
+            "usage_path": "usage"
+        }
+
+        return cls(
+            name=entry["name"],
+            model_id=entry["model_id"],
+            api_base_url=(
+                str(entry.get("api_base_url") or "")
+                or str(os.environ.get(str(entry.get("api_base_url_env") or "").strip(), "") or "")
+            ).rstrip("/"),
+            api_key=(
+                str(entry.get("api_key") or "")
+                or str(os.environ.get(str(entry.get("api_key_env") or "").strip(), "") or "")
+            ),
+            request_format=request_format,
+            response_format=response_format,
+        )
+
+    def prepare_request(self, messages: List[Dict[str, str]]) -> Tuple[str, str, Dict[str, str], Dict[str, Any]]:
+        """Generate request components based on the configured template."""
+        method = self.request_format.get("method", "POST")
+        url = self.request_format.get("url", "")
+        if not url.startswith("http"):
+            url = f"{self.api_base_url}{url}"
+
+        headers = {
+            key: value.format(api_key=self.api_key)
+            for key, value in self.request_format.get("headers", {}).items()
+        }
+
+        body_template = self.request_format.get("body_template", {}).copy()
+        payload: Dict[str, Any] = {}
+        for key, value in body_template.items():
+            if isinstance(value, str):
+                payload[key] = value.format(
+                    model_id=self.model_id,
+                    messages=json.dumps(messages, ensure_ascii=False)
+                )
+            else:
+                payload[key] = value
+
+        if "messages" in payload and isinstance(payload["messages"], str):
+            payload["messages"] = json.loads(payload["messages"])
+        else:
+            payload.setdefault("messages", messages)
+
+        payload.setdefault("model", self.model_id)
+        return method, url, headers, payload
+
+    def extract_content(self, response_json: Dict[str, Any]) -> str:
+        """Extract the model output following the configured path."""
+        path = self.response_format.get("response_path", "choices[0].message.content")
+        return _dig_value(response_json, path)
+
+    def extract_usage(self, response_json: Dict[str, Any]) -> LLMUsage:
+        """Extract usage information from the response."""
+        usage_path = self.response_format.get("usage_path", "usage")
+        usage = _dig_value(response_json, usage_path, default=None)
+        return LLMUsage.from_payload(usage if isinstance(usage, dict) else None)
+
+
+class LLMClient:
+    """Lightweight LLM API client for sending prompts and returning code."""
+
+    def __init__(self, config: LLMConfig, timeout: float = 120.0):
+        self._config = config
+        self._timeout = timeout
+
+    def infer(self, messages: List[Dict[str, str]]) -> Tuple[str, LLMUsage]:
+        """Execute a single inference call."""
+        method, url, headers, payload = self._config.prepare_request(messages)
+        try:
+            response = requests.request(
+                method=method,
+                url=url,
+                headers=headers,
+                json=payload,
+                timeout=self._timeout,
+            )
+            response.raise_for_status()
+        except requests.RequestException as exc:
+            raise RuntimeError(f"LLM request failed: {exc}") from exc
+
+        try:
+            response_json = response.json()
+        except ValueError as exc:
+            raise RuntimeError("LLM returned invalid JSON data") from exc
+
+        content = self._config.extract_content(response_json)
+        if not isinstance(content, str):
+            raise RuntimeError("Unable to extract textual content from LLM response")
+
+        usage = self._config.extract_usage(response_json)
+        return content, usage
+
+
+def _dig_value(data: Dict[str, Any], path: str, default: Any = None) -> Any:
+    """Resolve a nested field using dotted or slash-delimited syntax."""
+    if not path:
+        return data
+    current: Any = data
+    for segment in path.replace("/", ".").split('.'):
+        if segment == "":
+            continue
+        if '[' in segment and segment.endswith(']'):
+            key, index_str = segment[:-1].split('[', 1)
+            current = current.get(key) if isinstance(current, dict) else default
+            if current is default:
+                return default
+            try:
+                index = int(index_str)
+                current = current[index]
+            except (ValueError, IndexError, TypeError):
+                return default
+        else:
+            if isinstance(current, dict):
+                current = current.get(segment, default)
+            else:
+                return default
+        if current is None:
+            return default
+    return current

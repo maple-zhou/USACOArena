@@ -1,1 +1,80 @@
-IiIiQ29uc3RydWN0IHByb21wdHMgZm9yIHNpbmdsZS1wcm9ibGVtIExMTSBleGVjdXRpb24uIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgpmcm9tIGRhdGFjbGFzc2VzIGltcG9ydCBkYXRhY2xhc3MKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gdHlwaW5nIGltcG9ydCBPcHRpb25hbCwgVHVwbGUKCmZyb20gdXNhY29hcmVuYS5tb2RlbHMubW9kZWxzIGltcG9ydCBQcm9ibGVtCmZyb20gdXNhY29hcmVuYS51dGlscy5wcm9ibGVtX2xvYWRlciBpbXBvcnQgVVNBQ09Qcm9ibGVtTG9hZGVyCmZyb20gdXNhY29hcmVuYS51dGlscy5sb2dnZXJfY29uZmlnIGltcG9ydCBnZXRfbG9nZ2VyCgpsb2dnZXIgPSBnZXRfbG9nZ2VyKCJzb2xvX3Byb21wdCIpCgoKQGRhdGFjbGFzcwpjbGFzcyBQcm9tcHRCdW5kbGU6CiAgICAiIiJCdW5kbGUgdGhlIHByb2JsZW0gc3RhdGVtZW50IHdpdGggc3lzdGVtIGFuZCB1c2VyIHByb21wdHMuIiIiCgogICAgcHJvYmxlbTogUHJvYmxlbQogICAgc3lzdGVtX3Byb21wdDogc3RyCiAgICB1c2VyX3Byb21wdDogc3RyCgoKY2xhc3MgU29sb1Byb21wdEJ1aWxkZXI6CiAgICAiIiJMb2FkIHByb2JsZW1zIGFuZCBjb21wb3NlIHRoZSBmaW5hbCB0ZW1wbGF0ZWQgcHJvbXB0cy4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgcHJvbXB0X3BhdGg6IHN0ciwgZGF0YXNldF9yb290OiBPcHRpb25hbFtzdHJdID0gTm9uZSkgLT4gTm9uZToKICAgICAgICBzZWxmLl9wcm9tcHRfcGF0aCA9IFBhdGgocHJvbXB0X3BhdGgpCiAgICAgICAgaWYgbm90IHNlbGYuX3Byb21wdF9wYXRoLmV4aXN0cygpOgogICAgICAgICAgICByYWlzZSBGaWxlTm90Rm91bmRFcnJvcihmIlByb21wdCB0ZW1wbGF0ZSBub3QgZm91bmQ6IHtzZWxmLl9wcm9tcHRfcGF0aH0iKQoKICAgICAgICBpZiBkYXRhc2V0X3Jvb3Q6CiAgICAgICAgICAgIGxvYWRlciA9IFVTQUNPUHJvYmxlbUxvYWRlcihkYXRhX3BhdGg9ZGF0YXNldF9yb290KQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIGxvYWRlciA9IFVTQUNPUHJvYmxlbUxvYWRlcigpCiAgICAgICAgc2VsZi5fbG9hZGVyID0gbG9hZGVyCgogICAgZGVmIGJ1aWxkKHNlbGYsIHByb2JsZW1faWQ6IHN0ciwgcHJlZmVycmVkX2xhbmd1YWdlOiBPcHRpb25hbFtzdHJdID0gTm9uZSkgLT4gUHJvbXB0QnVuZGxlOgogICAgICAgICIiIkxvYWQgcHJvYmxlbSBtZXRhZGF0YSBhbmQgYXNzZW1ibGUgcHJvbXB0cy4iIiIKICAgICAgICBwcm9ibGVtID0gc2VsZi5fbG9hZGVyLmxvYWRfcHJvYmxlbShwcm9ibGVtX2lkKQogICAgICAgIGlmIG5vdCBwcm9ibGVtOgogICAgICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGYiUHJvYmxlbSB7cHJvYmxlbV9pZH0gaXMgdW5hdmFpbGFibGU7IGVuc3VyZSB0aGUgZGF0YXNldCBpcyBwcmVwYXJlZC4iKQoKICAgICAgICBzeXN0ZW1fcHJvbXB0ID0gc2VsZi5fcHJvbXB0X3BhdGgucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIpLnN0cmlwKCkKICAgICAgICB1c2VyX3Byb21wdCA9IHNlbGYuX2Fzc2VtYmxlX3VzZXJfcHJvbXB0KHByb2JsZW0sIHByZWZlcnJlZF9sYW5ndWFnZSkKICAgICAgICByZXR1cm4gUHJvbXB0QnVuZGxlKHByb2JsZW09cHJvYmxlbSwgc3lzdGVtX3Byb21wdD1zeXN0ZW1fcHJvbXB0LCB1c2VyX3Byb21wdD11c2VyX3Byb21wdCkKCiAgICBkZWYgX2Fzc2VtYmxlX3VzZXJfcHJvbXB0KHNlbGYsIHByb2JsZW06IFByb2JsZW0sIHByZWZlcnJlZF9sYW5ndWFnZTogT3B0aW9uYWxbc3RyXSkgLT4gc3RyOgogICAgICAgICIiIkNvbnN0cnVjdCB0aGUgdXNlci1mYWNpbmcgcHJvbXB0IHdpdGggdGhlIGZ1bGwgc3RhdGVtZW50LiIiIgogICAgICAgIGhlYWRlciA9IFsKICAgICAgICAgICAgIiMgUHJvYmxlbSBEZXRhaWxzIiwKICAgICAgICAgICAgZiJJRDoge3Byb2JsZW0uaWR9IiwKICAgICAgICAgICAgZiJUaXRsZToge3Byb2JsZW0udGl0bGV9IiwKICAgICAgICAgICAgZiJUaW1lIExpbWl0OiB7cHJvYmxlbS50aW1lX2xpbWl0X21zfSBtcyIsCiAgICAgICAgICAgIGYiTWVtb3J5IExpbWl0OiB7cHJvYmxlbS5tZW1vcnlfbGltaXRfbWJ9IE1CIiwKICAgICAgICAgICAgIiIsCiAgICAgICAgICAgICIjIyBTdGF0ZW1lbnQiLAogICAgICAgICAgICBwcm9ibGVtLmRlc2NyaXB0aW9uLnN0cmlwKCksCiAgICAgICAgXQogICAgICAgIGlmIHByZWZlcnJlZF9sYW5ndWFnZToKICAgICAgICAgICAgaGVhZGVyLmluc2VydCg0LCBmIlBsZWFzZSBpbXBsZW1lbnQgdGhlIHNvbHV0aW9uIGluIHtwcmVmZXJyZWRfbGFuZ3VhZ2V9IGFuZCByZXR1cm4gb25seSB0aGUgY29tcGxldGUgY29kZS4iKQogICAgICAgIHBhcnRzID0gWyJcbiIuam9pbihoZWFkZXIpXQoKICAgICAgICBpZiBwcm9ibGVtLnNhbXBsZV9jYXNlczoKICAgICAgICAgICAgc2FtcGxlX2xpbmVzID0gWyIiLCAiIyMgU2FtcGxlIElucHV0IC8gT3V0cHV0Il0KICAgICAgICAgICAgZm9yIGlkeCwgY2FzZSBpbiBlbnVtZXJhdGUocHJvYmxlbS5zYW1wbGVfY2FzZXMsIHN0YXJ0PTEpOgogICAgICAgICAgICAgICAgc2FtcGxlX2xpbmVzLmFwcGVuZChmIiMjIyBTYW1wbGUge2lkeH0iKQogICAgICAgICAgICAgICAgc2FtcGxlX2xpbmVzLmFwcGVuZCgiSW5wdXQ6IikKICAgICAgICAgICAgICAgIHNhbXBsZV9saW5lcy5hcHBlbmQoZiJgYGBcbntjYXNlLmlucHV0X2RhdGEuc3RyaXAoKX1cbmBgYCIpCiAgICAgICAgICAgICAgICBzYW1wbGVfbGluZXMuYXBwZW5kKCJPdXRwdXQ6IikKICAgICAgICAgICAgICAgIHNhbXBsZV9saW5lcy5hcHBlbmQoZiJgYGBcbntjYXNlLmV4cGVjdGVkX291dHB1dC5zdHJpcCgpfVxuYGBgIikKICAgICAgICAgICAgcGFydHMuYXBwZW5kKCJcbiIuam9pbihzYW1wbGVfbGluZXMpKQoKICAgICAgICBwYXJ0cy5hcHBlbmQoIlJldHVybiBvbmx5IHRoZSBmaW5hbCBjb2RlIHdpdGhvdXQgYW55IGFkZGl0aW9uYWwgY29tbWVudGFyeS4iKQogICAgICAgIHJldHVybiAiXG5cbiIuam9pbihwYXJ0cykKCiAgICBkZWYgbG9hZF90ZXN0X2Nhc2VzKHNlbGYsIHByb2JsZW1faWQ6IHN0cik6CiAgICAgICAgIiIiRXhwb3NlIGEgaGVscGVyIGZvciBzY3JpcHRzIHRoYXQgbmVlZCB0aGUgZnVsbCB0ZXN0IHNldC4iIiIKICAgICAgICByZXR1cm4gc2VsZi5fbG9hZGVyLmxvYWRfdGVzdF9jYXNlcyhwcm9ibGVtX2lkKQo=
+"""Construct prompts for single-problem LLM execution."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Optional, Tuple
+
+from usacoarena.models.models import Problem
+from usacoarena.utils.problem_loader import USACOProblemLoader
+from usacoarena.utils.logger_config import get_logger
+
+logger = get_logger("solo_prompt")
+
+
+@dataclass
+class PromptBundle:
+    """Bundle the problem statement with system and user prompts."""
+
+    problem: Problem
+    system_prompt: str
+    user_prompt: str
+
+
+class SoloPromptBuilder:
+    """Load problems and compose the final templated prompts."""
+
+    def __init__(self, prompt_path: str, dataset_root: Optional[str] = None) -> None:
+        self._prompt_path = Path(prompt_path)
+        if not self._prompt_path.exists():
+            raise FileNotFoundError(f"Prompt template not found: {self._prompt_path}")
+
+        if dataset_root:
+            loader = USACOProblemLoader(data_path=dataset_root)
+        else:
+            loader = USACOProblemLoader()
+        self._loader = loader
+
+    def build(self, problem_id: str, preferred_language: Optional[str] = None) -> PromptBundle:
+        """Load problem metadata and assemble prompts."""
+        problem = self._loader.load_problem(problem_id)
+        if not problem:
+            raise ValueError(f"Problem {problem_id} is unavailable; ensure the dataset is prepared.")
+
+        system_prompt = self._prompt_path.read_text(encoding="utf-8").strip()
+        user_prompt = self._assemble_user_prompt(problem, preferred_language)
+        return PromptBundle(problem=problem, system_prompt=system_prompt, user_prompt=user_prompt)
+
+    def _assemble_user_prompt(self, problem: Problem, preferred_language: Optional[str]) -> str:
+        """Construct the user-facing prompt with the full statement."""
+        header = [
+            "# Problem Details",
+            f"ID: {problem.id}",
+            f"Title: {problem.title}",
+            f"Time Limit: {problem.time_limit_ms} ms",
+            f"Memory Limit: {problem.memory_limit_mb} MB",
+            "",
+            "## Statement",
+            problem.description.strip(),
+        ]
+        if preferred_language:
+            header.insert(4, f"Please implement the solution in {preferred_language} and return only the complete code.")
+        parts = ["\n".join(header)]
+
+        if problem.sample_cases:
+            sample_lines = ["", "## Sample Input / Output"]
+            for idx, case in enumerate(problem.sample_cases, start=1):
+                sample_lines.append(f"### Sample {idx}")
+                sample_lines.append("Input:")
+                sample_lines.append(f"```\n{case.input_data.strip()}\n```")
+                sample_lines.append("Output:")
+                sample_lines.append(f"```\n{case.expected_output.strip()}\n```")
+            parts.append("\n".join(sample_lines))
+
+        parts.append("Return only the final code without any additional commentary.")
+        return "\n\n".join(parts)
+
+    def load_test_cases(self, problem_id: str):
+        """Expose a helper for scripts that need the full test set."""
+        return self._loader.load_test_cases(problem_id)

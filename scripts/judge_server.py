@@ -1,1 +1,210 @@
-IiIiRmxhc2sgc2VydmljZSB0aGF0IGV4cG9zZXMgSFRUUCBlbmRwb2ludHMgZm9yIHJlbW90ZSBqdWRnaW5nLiIiIgoKZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IGFyZ3BhcnNlCmltcG9ydCBvcwpmcm9tIGRhdGFjbGFzc2VzIGltcG9ydCBkYXRhY2xhc3MKZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUsIHRpbWV6b25lCmZyb20gdHlwaW5nIGltcG9ydCBBbnksIERpY3QsIE9wdGlvbmFsLCBUdXBsZQoKZnJvbSBmbGFzayBpbXBvcnQgRmxhc2ssIGpzb25pZnksIHJlcXVlc3QKCmZyb20gdXNhY29hcmVuYS5lbmdpbmUuanVkZ2UgaW1wb3J0IEp1ZGdlCmZyb20gdXNhY29hcmVuYS5tb2RlbHMubW9kZWxzIGltcG9ydCAoCiAgICBDb21wZXRpdGlvbiwKICAgIFN1Ym1pc3Npb24sCiAgICBTdWJtaXNzaW9uU3RhdHVzLAogICAgZ2VuZXJhdGVfaWQsCikKZnJvbSB1c2Fjb2FyZW5hLnV0aWxzLmxvZ2dlcl9jb25maWcgaW1wb3J0IGdldF9sb2dnZXIKZnJvbSB1c2Fjb2FyZW5hLnV0aWxzLnByb2JsZW1fbG9hZGVyIGltcG9ydCBVU0FDT1Byb2JsZW1Mb2FkZXIKCkxPR0dFUiA9IGdldF9sb2dnZXIoImp1ZGdlX3NlcnZlciIpCgoKZGVmIF9idWlsZF9mZWVkYmFjayhzdWJtaXNzaW9uOiBTdWJtaXNzaW9uLCB0b3RhbF9jYXNlczogT3B0aW9uYWxbaW50XSkgLT4gc3RyOgogICAgIiIiUHJvZHVjZSBzdHJ1Y3R1cmVkIHRleHR1YWwgZmVlZGJhY2sgZm9yIHRoZSBsYXRlc3Qgc3VibWlzc2lvbi4iIiIKICAgIHRvdGFsX2F2YWlsYWJsZSA9IHRvdGFsX2Nhc2VzIG9yIG1heChsZW4oc3VibWlzc2lvbi50ZXN0X3Jlc3VsdHMpLCAwKQogICAgcGFzc2VkX2NvdW50ID0gc3VtKDEgZm9yIHRyIGluIHN1Ym1pc3Npb24udGVzdF9yZXN1bHRzIGlmIHRyLnN0YXR1cyA9PSBTdWJtaXNzaW9uU3RhdHVzLkFDQ0VQVEVEKQogICAgZmFpbGVkX2Nhc2VzID0gWwogICAgICAgIChpZHgsIHRyKQogICAgICAgIGZvciBpZHgsIHRyIGluIGVudW1lcmF0ZShzdWJtaXNzaW9uLnRlc3RfcmVzdWx0cywgc3RhcnQ9MSkKICAgICAgICBpZiB0ci5zdGF0dXMgIT0gU3VibWlzc2lvblN0YXR1cy5BQ0NFUFRFRAogICAgXQoKICAgIGlmIG5vdCBmYWlsZWRfY2FzZXM6CiAgICAgICAgcmV0dXJuICgKICAgICAgICAgICAgZiJZb3VyIG1vc3QgcmVjZW50IHN1Ym1pc3Npb24gcGFzc2VkIHtwYXNzZWRfY291bnR9L3t0b3RhbF9hdmFpbGFibGUgb3IgcGFzc2VkX2NvdW50fSB0ZXN0IGNhc2VzLiAiCiAgICAgICAgICAgICJBbGwgYXZhaWxhYmxlIHRlc3RzIHBhc3NlZC4iCiAgICAgICAgKQoKICAgIGZhaWxlZF9pbmRleCwgZmFpbGVkX2Nhc2UgPSBmYWlsZWRfY2FzZXNbMF0KICAgIGZhaWx1cmVfc3RhdHVzID0gZmFpbGVkX2Nhc2Uuc3RhdHVzLnZhbHVlIGlmIGhhc2F0dHIoZmFpbGVkX2Nhc2Uuc3RhdHVzLCAidmFsdWUiKSBlbHNlIHN0cihmYWlsZWRfY2FzZS5zdGF0dXMpCiAgICBwYXJ0cyA9IFsKICAgICAgICAoCiAgICAgICAgICAgIGYiWW91ciBtb3N0IHJlY2VudCBzdWJtaXNzaW9uIHBhc3NlZCB7cGFzc2VkX2NvdW50fS97dG90YWxfYXZhaWxhYmxlIG9yIGxlbihzdWJtaXNzaW9uLnRlc3RfcmVzdWx0cyl9ICIKICAgICAgICAgICAgZiJ0ZXN0IGNhc2VzLiBUZXN0IGNhc2Uge2ZhaWxlZF9pbmRleH0gZmFpbGVkIHdpdGggc3RhdHVzIHtmYWlsdXJlX3N0YXR1c30uIgogICAgICAgICksCiAgICBdCiAgICBpZiBmYWlsZWRfY2FzZS50ZXN0X2Nhc2VfaWQ6CiAgICAgICAgcGFydHMuYXBwZW5kKGYiRmFpbGVkIHRlc3QgY2FzZSBJRDoge2ZhaWxlZF9jYXNlLnRlc3RfY2FzZV9pZH0uIikKICAgIGlmIGZhaWxlZF9jYXNlLmVycm9yX21lc3NhZ2U6CiAgICAgICAgcGFydHMuYXBwZW5kKGYiRXJyb3IgbWVzc2FnZToge2ZhaWxlZF9jYXNlLmVycm9yX21lc3NhZ2Uuc3RyaXAoKVs6NTAwXX0iKQogICAgaWYgZmFpbGVkX2Nhc2Uub3V0cHV0IGFuZCBpc2luc3RhbmNlKGZhaWxlZF9jYXNlLm91dHB1dCwgc3RyKSBhbmQgZmFpbGVkX2Nhc2Uub3V0cHV0LnN0cmlwKCk6CiAgICAgICAgcGFydHMuYXBwZW5kKGYiUHJvZ3JhbSBvdXRwdXQ6XG57ZmFpbGVkX2Nhc2Uub3V0cHV0LnN0cmlwKClbOjUwMF19IikKICAgIHBhcnRzLmFwcGVuZCgiUGxlYXNlIHJldmlzZSB0aGUgc29sdXRpb24gYW5kIHN1Ym1pdCB0aGUgY29tcGxldGUgc291cmNlIGNvZGUgYWdhaW4uIikKICAgIHJldHVybiAiXG4iLmpvaW4ocGFydHMpCgoKZGVmIF9zdW1tYXJpc2Vfc3VibWlzc2lvbihzdWJtaXNzaW9uOiBTdWJtaXNzaW9uLCB0b3RhbF9jYXNlczogT3B0aW9uYWxbaW50XSkgLT4gRGljdFtzdHIsIEFueV06CiAgICAiIiJCdWlsZCBhIHN1bW1hcnkgcGF5bG9hZCBmb3IgdGhlIHN1Ym1pc3Npb24gcmVzdWx0cy4iIiIKICAgIHBhc3NlZCA9IHN1bSgxIGZvciB0ciBpbiBzdWJtaXNzaW9uLnRlc3RfcmVzdWx0cyBpZiB0ci5zdGF0dXMgPT0gU3VibWlzc2lvblN0YXR1cy5BQ0NFUFRFRCkKICAgIHRvdGFsID0gdG90YWxfY2FzZXMgb3IgbWF4KHBhc3NlZCwgbGVuKHN1Ym1pc3Npb24udGVzdF9yZXN1bHRzKSkKICAgIHJldHVybiB7CiAgICAgICAgInBhc3NlZCI6IHBhc3NlZCwKICAgICAgICAidG90YWwiOiB0b3RhbCwKICAgICAgICAic3RhdHVzIjogc3VibWlzc2lvbi5zdGF0dXMudmFsdWUgaWYgaGFzYXR0cihzdWJtaXNzaW9uLnN0YXR1cywgInZhbHVlIikgZWxzZSBzdHIoc3VibWlzc2lvbi5zdGF0dXMpLAogICAgfQoKCkBkYXRhY2xhc3MKY2xhc3MgSnVkZ2VTZXJ2ZXJDb25maWc6CiAgICAiIiJKdWRnZS1zZXJ2ZXIgY29uZmlndXJhdGlvbiwgb3ZlcnJpZGFibGUgdmlhIENMSSBvciBlbnZpcm9ubWVudCB2YXJpYWJsZXMuIiIiCgogICAgaG9zdDogc3RyID0gIjAuMC4wLjAiCiAgICBwb3J0OiBpbnQgPSA4MDgxCiAgICBval9lbmRwb2ludDogc3RyID0gImh0dHA6Ly8xMjcuMC4wLjE6ODg4OCIKICAgIGRhdGFzZXRfcGF0aDogT3B0aW9uYWxbc3RyXSA9IE5vbmUKCgpjbGFzcyBKdWRnZVNlcnZpY2U6CiAgICAiIiJXcmFwIGp1ZGdlIG9yY2hlc3RyYXRpb24gYW5kIHByb2JsZW0gbG9hZGluZyB1dGlsaXRpZXMuIiIiCgogICAgZGVmIF9faW5pdF9fKHNlbGYsIGNvbmZpZzogSnVkZ2VTZXJ2ZXJDb25maWcpOgogICAgICAgIHNlbGYuY29uZmlnID0gY29uZmlnCiAgICAgICAgc2VsZi5sb2FkZXIgPSBVU0FDT1Byb2JsZW1Mb2FkZXIoZGF0YV9wYXRoPWNvbmZpZy5kYXRhc2V0X3BhdGgpCiAgICAgICAgc2VsZi5qdWRnZSA9IEp1ZGdlKG9qX2VuZHBvaW50PWNvbmZpZy5val9lbmRwb2ludCkKICAgICAgICBMT0dHRVIuaW5mbygKICAgICAgICAgICAgIkp1ZGdlIHNlcnZpY2UgaW5pdGlhbGl6ZWQgKGh5ZHJvPSVzLCBkYXRhc2V0PSVzKSIsCiAgICAgICAgICAgIHNlbGYuanVkZ2Uub2pfZW5kcG9pbnQsCiAgICAgICAgICAgIHNlbGYubG9hZGVyLmRhdGFfcGF0aCwKICAgICAgICApCgogICAgZGVmIGV2YWx1YXRlKHNlbGYsIHBheWxvYWQ6IERpY3Rbc3RyLCBBbnldKSAtPiBUdXBsZVtTdWJtaXNzaW9uLCBPcHRpb25hbFtpbnRdXToKICAgICAgICAiIiJFdmFsdWF0ZSBhIHN1Ym1pc3Npb24gcmVxdWVzdCBhbmQgcmV0dXJuIHRoZSByZXN1bHQgcGx1cyB0ZXN0LWNvdW50IG1ldGFkYXRhLiIiIgogICAgICAgIHByb2JsZW1faWQgPSAocGF5bG9hZC5nZXQoInByb2JsZW1faWQiKSBvciAiIikuc3RyaXAoKQogICAgICAgIGNvZGUgPSBwYXlsb2FkLmdldCgiY29kZSIpCiAgICAgICAgbGFuZ3VhZ2UgPSAocGF5bG9hZC5nZXQoImxhbmd1YWdlIikgb3IgInB5dGhvbiIpLnN0cmlwKCkKICAgICAgICBpZiBub3QgcHJvYmxlbV9pZDoKICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcigicHJvYmxlbV9pZCBtdXN0IG5vdCBiZSBlbXB0eSIpCiAgICAgICAgaWYgbm90IGNvZGU6CiAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoImNvZGUgbXVzdCBub3QgYmUgZW1wdHkiKQoKICAgICAgICBwcm9ibGVtID0gc2VsZi5sb2FkZXIubG9hZF9wcm9ibGVtKHByb2JsZW1faWQpCiAgICAgICAgaWYgbm90IHByb2JsZW06CiAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoZiJQcm9ibGVtIHtwcm9ibGVtX2lkfSBub3QgZm91bmQiKQoKICAgICAgICBjb21wZXRpdGlvbiA9IE5vbmUKICAgICAgICBjb21wZXRpdGlvbl9kYXRhID0gcGF5bG9hZC5nZXQoImNvbXBldGl0aW9uIikKICAgICAgICBpZiBjb21wZXRpdGlvbl9kYXRhOgogICAgICAgICAgICBjb21wZXRpdGlvbiA9IENvbXBldGl0aW9uKAogICAgICAgICAgICAgICAgaWQ9Y29tcGV0aXRpb25fZGF0YS5nZXQoImlkIiwgIm9mZmxpbmUiKSwKICAgICAgICAgICAgICAgIHRpdGxlPWNvbXBldGl0aW9uX2RhdGEuZ2V0KCJ0aXRsZSIsIGNvbXBldGl0aW9uX2RhdGEuZ2V0KCJuYW1lIiwgImFkLWhvYyIpKSwKICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uPWNvbXBldGl0aW9uX2RhdGEuZ2V0KCJkZXNjcmlwdGlvbiIsICIiKSwKICAgICAgICAgICAgICAgIHN0YXJ0X3RpbWU9ZGF0ZXRpbWUubm93KHRpbWV6b25lLnV0YyksCiAgICAgICAgICAgICAgICBlbmRfdGltZT1Ob25lLAogICAgICAgICAgICAgICAgbWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQ9Y29tcGV0aXRpb25fZGF0YS5nZXQoIm1heF90b2tlbnMiLCAxMDAwMDApLAogICAgICAgICAgICAgICAgcnVsZXM9Y29tcGV0aXRpb25fZGF0YS5nZXQoInJ1bGVzIiksCiAgICAgICAgICAgICAgICBpc19hY3RpdmU9VHJ1ZSwKICAgICAgICAgICAgICAgIHBhcnRpY2lwYW50X2NvdW50PWNvbXBldGl0aW9uX2RhdGEuZ2V0KCJwYXJ0aWNpcGFudF9jb3VudCIsIDApLAogICAgICAgICAgICAgICAgcHJvYmxlbV9jb3VudD1jb21wZXRpdGlvbl9kYXRhLmdldCgicHJvYmxlbV9jb3VudCIsIDApLAogICAgICAgICAgICApCgogICAgICAgIHN1Ym1pc3Npb24gPSBTdWJtaXNzaW9uKAogICAgICAgICAgICBpZD1wYXlsb2FkLmdldCgic3VibWlzc2lvbl9pZCIsIGdlbmVyYXRlX2lkKCkpLAogICAgICAgICAgICBjb21wZXRpdGlvbl9pZD1wYXlsb2FkLmdldCgiY29tcGV0aXRpb25faWQiLCBjb21wZXRpdGlvbi5pZCBpZiBjb21wZXRpdGlvbiBlbHNlICJvZmZsaW5lIiksCiAgICAgICAgICAgIHBhcnRpY2lwYW50X2lkPXBheWxvYWQuZ2V0KCJwYXJ0aWNpcGFudF9pZCIsICJqdWRnZS1zZXJ2ZXIiKSwKICAgICAgICAgICAgcHJvYmxlbV9pZD1wcm9ibGVtX2lkLAogICAgICAgICAgICBjb2RlPWNvZGUsCiAgICAgICAgICAgIGxhbmd1YWdlPWxhbmd1YWdlLAogICAgICAgICAgICBzdWJtaXR0ZWRfYXQ9ZGF0ZXRpbWUubm93KHRpbWV6b25lLnV0YyksCiAgICAgICAgKQoKICAgICAgICBqdWRnZSA9IHNlbGYuanVkZ2UKICAgICAgICBpZiBwYXlsb2FkLmdldCgib2pfZW5kcG9pbnQiKToKICAgICAgICAgICAganVkZ2UgPSBKdWRnZShval9lbmRwb2ludD1wYXlsb2FkWyJval9lbmRwb2ludCJdKQoKICAgICAgICByZXN1bHQgPSBqdWRnZS5ldmFsdWF0ZV9zdWJtaXNzaW9uKAogICAgICAgICAgICBzdWJtaXNzaW9uLAogICAgICAgICAgICBwcm9ibGVtPXByb2JsZW0sCiAgICAgICAgICAgIGNvbXBldGl0aW9uPWNvbXBldGl0aW9uLAogICAgICAgICAgICBmaXJzdF9vbmU9Ym9vbChwYXlsb2FkLmdldCgiZmlyc3Rfb25lIiwgRmFsc2UpKSwKICAgICAgICApCiAgICAgICAgdG90YWxfY2FzZXMgPSBwYXlsb2FkLmdldCgidG90YWxfY2FzZXMiKQogICAgICAgIGlmIHRvdGFsX2Nhc2VzIGlzIE5vbmU6CiAgICAgICAgICAgIHRvdGFsX2Nhc2VzID0gbGVuKHNlbGYubG9hZGVyLmxvYWRfdGVzdF9jYXNlcyhwcm9ibGVtX2lkKSkKICAgICAgICByZXR1cm4gcmVzdWx0LCB0b3RhbF9jYXNlcwoKCmRlZiBjcmVhdGVfYXBwKGNvbmZpZzogSnVkZ2VTZXJ2ZXJDb25maWcpIC0+IEZsYXNrOgogICAgIiIiQ3JlYXRlIGFuZCBjb25maWd1cmUgdGhlIEZsYXNrIGFwcGxpY2F0aW9uLiIiIgogICAgc2VydmljZSA9IEp1ZGdlU2VydmljZShjb25maWcpCiAgICBhcHAgPSBGbGFzayhfX25hbWVfXykKCiAgICBAYXBwLnJvdXRlKCIvaGVhbHRoeiIsIG1ldGhvZHM9WyJHRVQiXSkKICAgIGRlZiBoZWFsdGgoKSAtPiBBbnk6CiAgICAgICAgcmV0dXJuIGpzb25pZnkoeyJvayI6IFRydWUsICJval9lbmRwb2ludCI6IHNlcnZpY2UuanVkZ2Uub2pfZW5kcG9pbnR9KQoKICAgIEBhcHAucm91dGUoIi9hcGkvanVkZ2UvZXZhbHVhdGUiLCBtZXRob2RzPVsiUE9TVCJdKQogICAgZGVmIGV2YWx1YXRlKCkgLT4gQW55OgogICAgICAgIGRhdGEgPSByZXF1ZXN0LmdldF9qc29uKHNpbGVudD1UcnVlKSBvciB7fQogICAgICAgIHRyeToKICAgICAgICAgICAgc3VibWlzc2lvbiwgdG90YWxfY2FzZXMgPSBzZXJ2aWNlLmV2YWx1YXRlKGRhdGEpCiAgICAgICAgICAgIGZlZWRiYWNrID0gX2J1aWxkX2ZlZWRiYWNrKHN1Ym1pc3Npb24sIHRvdGFsX2Nhc2VzKQogICAgICAgICAgICBzdW1tYXJ5ID0gX3N1bW1hcmlzZV9zdWJtaXNzaW9uKHN1Ym1pc3Npb24sIHRvdGFsX2Nhc2VzKQogICAgICAgICAgICByZXNwb25zZSA9IHsKICAgICAgICAgICAgICAgICJvayI6IFRydWUsCiAgICAgICAgICAgICAgICAic3VibWlzc2lvbiI6IHN1Ym1pc3Npb24udG9fZGljdChpbmNsdWRlX2NvZGU9RmFsc2UpLAogICAgICAgICAgICAgICAgInRlc3RfcmVzdWx0cyI6IFt0ci50b19kaWN0KCkgZm9yIHRyIGluIHN1Ym1pc3Npb24udGVzdF9yZXN1bHRzXSwKICAgICAgICAgICAgICAgICJmZWVkYmFjayI6IGZlZWRiYWNrLAogICAgICAgICAgICAgICAgInN1bW1hcnkiOiBzdW1tYXJ5LAogICAgICAgICAgICB9CiAgICAgICAgICAgIHJldHVybiBqc29uaWZ5KHJlc3BvbnNlKQogICAgICAgIGV4Y2VwdCBWYWx1ZUVycm9yIGFzIGV4YzoKICAgICAgICAgICAgTE9HR0VSLndhcm5pbmcoIkludmFsaWQgcmVxdWVzdCBkYXRhOiAlcyIsIGV4YykKICAgICAgICAgICAgcmV0dXJuIGpzb25pZnkoeyJvayI6IEZhbHNlLCAiZXJyb3IiOiBzdHIoZXhjKX0pLCA0MDAKICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGV4YzogICMgcHJhZ21hOiBubyBjb3ZlciAtIGF2b2lkIGxlYWtpbmcgc3RhY2sgdHJhY2VzCiAgICAgICAgICAgIExPR0dFUi5lcnJvcigiRmFpbGVkIHRvIGV2YWx1YXRlIHN1Ym1pc3Npb24iLCBleGNfaW5mbz1UcnVlKQogICAgICAgICAgICByZXR1cm4ganNvbmlmeSh7Im9rIjogRmFsc2UsICJlcnJvciI6IHN0cihleGMpfSksIDUwMAoKICAgIHJldHVybiBhcHAKCgpkZWYgX3BhcnNlX2FyZ3MoKSAtPiBKdWRnZVNlcnZlckNvbmZpZzoKICAgIHBhcnNlciA9IGFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyKGRlc2NyaXB0aW9uPSJTdGFydCB0aGUgSnVkZ2UgSFRUUCBzZXJ2aWNlIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0taG9zdCIsIGRlZmF1bHQ9b3MuZ2V0ZW52KCJKVURHRV9TRVJWRVJfSE9TVCIsICIwLjAuMC4wIikpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLXBvcnQiLCB0eXBlPWludCwgZGVmYXVsdD1pbnQob3MuZ2V0ZW52KCJKVURHRV9TRVJWRVJfUE9SVCIsICI4MDgxIikpKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1vai1lbmRwb2ludCIsCiAgICAgICAgZGVmYXVsdD1vcy5nZXRlbnYoIkpVREdFX1NFUlZFUl9PSl9FTkRQT0lOVCIsICJodHRwOi8vMTI3LjAuMC4xOjg4ODgiKSwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tZGF0YXNldC1wYXRoIiwgZGVmYXVsdD1vcy5nZXRlbnYoIkpVREdFX1NFUlZFUl9EQVRBU0VUX1BBVEgiKSkKICAgIGFyZ3MgPSBwYXJzZXIucGFyc2VfYXJncygpCiAgICByZXR1cm4gSnVkZ2VTZXJ2ZXJDb25maWcoCiAgICAgICAgaG9zdD1hcmdzLmhvc3QsCiAgICAgICAgcG9ydD1hcmdzLnBvcnQsCiAgICAgICAgb2pfZW5kcG9pbnQ9YXJncy5val9lbmRwb2ludCwKICAgICAgICBkYXRhc2V0X3BhdGg9YXJncy5kYXRhc2V0X3BhdGgsCiAgICApCgoKZGVmIG1haW4oKSAtPiBOb25lOgogICAgY29uZmlnID0gX3BhcnNlX2FyZ3MoKQogICAgYXBwID0gY3JlYXRlX2FwcChjb25maWcpCiAgICBMT0dHRVIuaW5mbygiU3RhcnRpbmcgSnVkZ2Ugc2VydmVyIG9uICVzOiVzIiwgY29uZmlnLmhvc3QsIGNvbmZpZy5wb3J0KQogICAgYXBwLnJ1bihob3N0PWNvbmZpZy5ob3N0LCBwb3J0PWNvbmZpZy5wb3J0KQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK
+"""Flask service that exposes HTTP endpoints for remote judging."""
+
+from __future__ import annotations
+
+import argparse
+import os
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from typing import Any, Dict, Optional, Tuple
+
+from flask import Flask, jsonify, request
+
+from usacoarena.engine.judge import Judge
+from usacoarena.models.models import (
+    Competition,
+    Submission,
+    SubmissionStatus,
+    generate_id,
+)
+from usacoarena.utils.logger_config import get_logger
+from usacoarena.utils.problem_loader import USACOProblemLoader
+
+LOGGER = get_logger("judge_server")
+
+
+def _build_feedback(submission: Submission, total_cases: Optional[int]) -> str:
+    """Produce structured textual feedback for the latest submission."""
+    total_available = total_cases or max(len(submission.test_results), 0)
+    passed_count = sum(1 for tr in submission.test_results if tr.status == SubmissionStatus.ACCEPTED)
+    failed_cases = [
+        (idx, tr)
+        for idx, tr in enumerate(submission.test_results, start=1)
+        if tr.status != SubmissionStatus.ACCEPTED
+    ]
+
+    if not failed_cases:
+        return (
+            f"Your most recent submission passed {passed_count}/{total_available or passed_count} test cases. "
+            "All available tests passed."
+        )
+
+    failed_index, failed_case = failed_cases[0]
+    failure_status = failed_case.status.value if hasattr(failed_case.status, "value") else str(failed_case.status)
+    parts = [
+        (
+            f"Your most recent submission passed {passed_count}/{total_available or len(submission.test_results)} "
+            f"test cases. Test case {failed_index} failed with status {failure_status}."
+        ),
+    ]
+    if failed_case.test_case_id:
+        parts.append(f"Failed test case ID: {failed_case.test_case_id}.")
+    if failed_case.error_message:
+        parts.append(f"Error message: {failed_case.error_message.strip()[:500]}")
+    if failed_case.output and isinstance(failed_case.output, str) and failed_case.output.strip():
+        parts.append(f"Program output:\n{failed_case.output.strip()[:500]}")
+    parts.append("Please revise the solution and submit the complete source code again.")
+    return "\n".join(parts)
+
+
+def _summarise_submission(submission: Submission, total_cases: Optional[int]) -> Dict[str, Any]:
+    """Build a summary payload for the submission results."""
+    passed = sum(1 for tr in submission.test_results if tr.status == SubmissionStatus.ACCEPTED)
+    total = total_cases or max(passed, len(submission.test_results))
+    return {
+        "passed": passed,
+        "total": total,
+        "status": submission.status.value if hasattr(submission.status, "value") else str(submission.status),
+    }
+
+
+@dataclass
+class JudgeServerConfig:
+    """Judge-server configuration, overridable via CLI or environment variables."""
+
+    host: str = "0.0.0.0"
+    port: int = 8081
+    oj_endpoint: str = "http://127.0.0.1:8888"
+    dataset_path: Optional[str] = None
+
+
+class JudgeService:
+    """Wrap judge orchestration and problem loading utilities."""
+
+    def __init__(self, config: JudgeServerConfig):
+        self.config = config
+        self.loader = USACOProblemLoader(data_path=config.dataset_path)
+        self.judge = Judge(oj_endpoint=config.oj_endpoint)
+        LOGGER.info(
+            "Judge service initialized (hydro=%s, dataset=%s)",
+            self.judge.oj_endpoint,
+            self.loader.data_path,
+        )
+
+    def evaluate(self, payload: Dict[str, Any]) -> Tuple[Submission, Optional[int]]:
+        """Evaluate a submission request and return the result plus test-count metadata."""
+        problem_id = (payload.get("problem_id") or "").strip()
+        code = payload.get("code")
+        language = (payload.get("language") or "python").strip()
+        if not problem_id:
+            raise ValueError("problem_id must not be empty")
+        if not code:
+            raise ValueError("code must not be empty")
+
+        problem = self.loader.load_problem(problem_id)
+        if not problem:
+            raise ValueError(f"Problem {problem_id} not found")
+
+        competition = None
+        competition_data = payload.get("competition")
+        if competition_data:
+            competition = Competition(
+                id=competition_data.get("id", "offline"),
+                title=competition_data.get("title", competition_data.get("name", "ad-hoc")),
+                description=competition_data.get("description", ""),
+                start_time=datetime.now(timezone.utc),
+                end_time=None,
+                max_tokens_per_participant=competition_data.get("max_tokens", 100000),
+                rules=competition_data.get("rules"),
+                is_active=True,
+                participant_count=competition_data.get("participant_count", 0),
+                problem_count=competition_data.get("problem_count", 0),
+            )
+
+        submission = Submission(
+            id=payload.get("submission_id", generate_id()),
+            competition_id=payload.get("competition_id", competition.id if competition else "offline"),
+            participant_id=payload.get("participant_id", "judge-server"),
+            problem_id=problem_id,
+            code=code,
+            language=language,
+            submitted_at=datetime.now(timezone.utc),
+        )
+
+        judge = self.judge
+        if payload.get("oj_endpoint"):
+            judge = Judge(oj_endpoint=payload["oj_endpoint"])
+
+        result = judge.evaluate_submission(
+            submission,
+            problem=problem,
+            competition=competition,
+            first_one=bool(payload.get("first_one", False)),
+        )
+        total_cases = payload.get("total_cases")
+        if total_cases is None:
+            total_cases = len(self.loader.load_test_cases(problem_id))
+        return result, total_cases
+
+
+def create_app(config: JudgeServerConfig) -> Flask:
+    """Create and configure the Flask application."""
+    service = JudgeService(config)
+    app = Flask(__name__)
+
+    @app.route("/healthz", methods=["GET"])
+    def health() -> Any:
+        return jsonify({"ok": True, "oj_endpoint": service.judge.oj_endpoint})
+
+    @app.route("/api/judge/evaluate", methods=["POST"])
+    def evaluate() -> Any:
+        data = request.get_json(silent=True) or {}
+        try:
+            submission, total_cases = service.evaluate(data)
+            feedback = _build_feedback(submission, total_cases)
+            summary = _summarise_submission(submission, total_cases)
+            response = {
+                "ok": True,
+                "submission": submission.to_dict(include_code=False),
+                "test_results": [tr.to_dict() for tr in submission.test_results],
+                "feedback": feedback,
+                "summary": summary,
+            }
+            return jsonify(response)
+        except ValueError as exc:
+            LOGGER.warning("Invalid request data: %s", exc)
+            return jsonify({"ok": False, "error": str(exc)}), 400
+        except Exception as exc:  # pragma: no cover - avoid leaking stack traces
+            LOGGER.error("Failed to evaluate submission", exc_info=True)
+            return jsonify({"ok": False, "error": str(exc)}), 500
+
+    return app
+
+
+def _parse_args() -> JudgeServerConfig:
+    parser = argparse.ArgumentParser(description="Start the Judge HTTP service")
+    parser.add_argument("--host", default=os.getenv("JUDGE_SERVER_HOST", "0.0.0.0"))
+    parser.add_argument("--port", type=int, default=int(os.getenv("JUDGE_SERVER_PORT", "8081")))
+    parser.add_argument(
+        "--oj-endpoint",
+        default=os.getenv("JUDGE_SERVER_OJ_ENDPOINT", "http://127.0.0.1:8888"),
+    )
+    parser.add_argument("--dataset-path", default=os.getenv("JUDGE_SERVER_DATASET_PATH"))
+    args = parser.parse_args()
+    return JudgeServerConfig(
+        host=args.host,
+        port=args.port,
+        oj_endpoint=args.oj_endpoint,
+        dataset_path=args.dataset_path,
+    )
+
+
+def main() -> None:
+    config = _parse_args()
+    app = create_app(config)
+    LOGGER.info("Starting Judge server on %s:%s", config.host, config.port)
+    app.run(host=config.host, port=config.port)
+
+
+if __name__ == "__main__":
+    main()

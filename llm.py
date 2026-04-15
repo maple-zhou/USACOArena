@@ -1,1 +1,287 @@
-IiIiClNpbXBsZSBkZWJ1Z2dpbmcgdXRpbGl0eSBmb3IgVVNBQ09BcmVuYSBMTE0gY29uZmlndXJhdGlvbnMuCgpVc2FnZSBleGFtcGxlOgogICAgdXYgcnVuIHB5dGhvbiBkZWJ1Z19sbG0ucHkgXAogICAgICAgIC0tY29tcGV0aXRvcnMtY29uZmlnIGNvbmZpZy8xdjMuanNvbiBcCiAgICAgICAgLS1jb21wZXRpdG9yLW5hbWUgZGVlcHNlZWstdjMgXAogICAgICAgIC0tcHJvbXB0ICJXaGF0IGlzIDIrMj8iCgpUbyB0ZXN0IGV2ZXJ5IExMTSBpbiBjb25maWcvOGxsbS5qc29uLCBydW46CiAgICB1diBydW4gcHl0aG9uIGRlYnVnX2xsbS5weSAtLWFsbAoKVGhlIHNjcmlwdCB3aWxsIHJldXNlIHRoZSBzYW1lIHJlcXVlc3QvcmVzcG9uc2UgZm9ybWF0cyBkZWZpbmVkIGZvciB0aGUKY29tcGV0aXRpb24gYWdlbnQsIHNlbmQgYSBzaW5nbGUgcHJvbXB0LCBhbmQgcHJpbnQgdGhlIHJhdyByZXNwb25zZS4KIiIiCgpmcm9tIF9fZnV0dXJlX18gaW1wb3J0IGFubm90YXRpb25zCgppbXBvcnQgYXJncGFyc2UKaW1wb3J0IGpzb24KaW1wb3J0IG9zCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aApmcm9tIHR5cGluZyBpbXBvcnQgQW55LCBEaWN0LCBMaXN0LCBPcHRpb25hbCwgVHVwbGUKCmltcG9ydCByZXF1ZXN0cwoKCmRlZiBwYXJzZV9hcmdzKCkgLT4gYXJncGFyc2UuTmFtZXNwYWNlOgogICAgcGFyc2VyID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoZGVzY3JpcHRpb249IkRlYnVnIGEgc2luZ2xlIExMTSBjb21wZXRpdG9yIGNvbmZpZyIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLWNvbXBldGl0b3JzLWNvbmZpZyIsCiAgICAgICAgZGVmYXVsdD0iY29uZmlnLzF2My5qc29uIiwKICAgICAgICBoZWxwPSJQYXRoIHRvIGNvbXBldGl0b3JzIGNvbmZpZ3VyYXRpb24gSlNPTiIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLWNvbXBldGl0b3ItbmFtZSIsCiAgICAgICAgaGVscD0iTmFtZSBvZiB0aGUgY29tcGV0aXRvciB0byBkZWJ1ZyAoZGVmYXVsdHMgdG8gdGhlIGZpcnN0IGVudHJ5KSIsCiAgICApCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KAogICAgICAgICItLXByb21wdCIsCiAgICAgICAgZGVmYXVsdD0nJyciIyBDb21wZXRpdGlvbiBTdGF0ZVxuXG4jIyBDb21wZXRpdGlvbiBSdWxlc1xuXG4jIyMgQ3JlZGl0IFN5c3RlbTpcbi0gRWFjaCBwYXJ0aWNpcGFudCBzdGFydHMgd2l0aCBhIHRvdGFsIG9mIDQwMDAwMDAwIGNyZWRpdCBsaW1pdFxuLSBDcmVkaXQgaXMgY29uc3VtZWQgYnkgdGhyZWUgbWFpbiBzb3VyY2VzOlxuICAxLiAqKkxMTSBJbmZlcmVuY2UqKjogR2VuZXJhdGluZyB0aG91Z2h0cyBhbmQgYWN0aW9ucyBjb25zdW1lcyBjcmVkaXQgYmFzZWQgb24gdGhlIG51bWJlciBvZiB0b2tlbnMgdXNlZC5cbiAgMi4gKipQdXJjaGFzaW5nIEhpbnRzKio6IEhpbnRzIGNhbiBiZSBib3VnaHQgZm9yIGEgcHJvYmxlbSBhdCBhIHNwZWNpZmllZCBjcmVkaXQgY29zdC5cbiAgMy4gKipUZXN0aW5nIENvZGUqKjogWW91IGNhbiB0ZXN0IHlvdXIgY29kZSBiZWZvcmUgYSBmaW5hbCBzdWJtaXNzaW9uLCB3aGljaCBjb3N0cyBjcmVkaXQgcGVyIHRlc3QgcnVuLlxuLSAqKklNUE9SVEFOVCoqOiBZb3VyIHBhcnRpY2lwYXRpb24gZW5kcyB3aGVuIHlvdXIgKiphY3R1YWwgY29uc3VtZWQgY3JlZGl0KiogcmVhY2hlcyB0aGUgbGltaXQuIFBlbmFsdGllcyBmcm9tIHdyb25nIHN1Ym1pc3Npb25zIGRvIE5PVCBjb3VudCB0b3dhcmQgdGVybWluYXRpb24gLSB0aGV5IG9ubHkgYWZmZWN0IHlvdXIgcmFua2luZ3MuXG5cbiMjIyBTY29yaW5nIFJ1bGVzOlxuLSBZb3VyICoqRmluYWwgU2NvcmUqKiBpcyB0aGUgc3VtIG9mIHBvaW50cyBmcm9tIGFsbCBwcm9ibGVtcyB5b3Ugc29sdmUgY29tcGxldGVseSAoYWNoaWV2ZSAnQWNjZXB0ZWQnIHN0YXR1cykuXG4tIE5vIHBhcnRpYWwgY3JlZGl0IGlzIGF3YXJkZWQgZm9yIHBhc3Npbmcgc29tZSB0ZXN0IGNhc2VzLlxuLSBUaGUgcG9pbnRzIGF3YXJkZWQgZm9yIHNvbHZpbmcgYSBwcm9ibGVtIGFyZSB3ZWlnaHRlZCBieSBpdHMgZGlmZmljdWx0eSBsZXZlbC4gRm9yIGV4YW1wbGUsIGEgc29sdmVkIFNpbHZlciBwcm9ibGVtIGlzIHdvcnRoIG1vcmUgdGhhbiBhIHNvbHZlZCBCcm9uemUgcHJvYmxlbS5cbi0gQnJvbnplIHByb2JsZW1zOiAxMDAgcG9pbnRzIGVhY2hcbi0gR29sZCBwcm9ibGVtczogNTAwIHBvaW50cyBlYWNoXG4tIFBsYXRpbnVtIHByb2JsZW1zOiAxMDAwIHBvaW50cyBlYWNoXG4tIFNpbHZlciBwcm9ibGVtczogMjAwIHBvaW50cyBlYWNoXG5cblBvaW50cyBhcmUgYXdhcmRlZCBwcm9wb3J0aW9uYWxseSB0byB0aGUgbnVtYmVyIG9mIHRlc3QgY2FzZXMgcGFzc2VkLiBGb3IgZXhhbXBsZSwgaWYgeW91IHBhc3MgNyBvdXQgb2YgMTAgdGVzdCBjYXNlcyBmb3IgYSBCcm9uemUgcHJvYmxlbSwgeW91J2xsIHJlY2VpdmUgNzAgcG9pbnRzLlxuXG4jIyMgUGVuYWx0aWVzOlxuRWFjaCBzdWJtaXNzaW9uIHdpdGggdGhlIGZvbGxvd2luZyByZXN1bHRzIHdpbGwgaW5jdXIgYSBwZW5hbHR5OlxuLSBBQzogMCBwb2ludHNcbi0gQ0U6IDEwIHBvaW50c1xuLSBNTEU6IDEwIHBvaW50c1xuLSBSRTogMTAgcG9pbnRzXG4tIFRMRTogMTAgcG9pbnRzXG4tIFdBOiAxMCBwb2ludHNcblxuIyMjIFJhbmtpbmcgYW5kIFRpZS1CcmVha2luZzpcbi0gUGFydGljaXBhbnRzIGFyZSByYW5rZWQgcHJpbWFyaWx5IGJ5IHRoZWlyICoqRmluYWwgU2NvcmUqKiwgd2hpY2ggaXMgdGhlIHdlaWdodGVkIHN1bSBvZiBzb2x2ZWQgcHJvYmxlbXMuXG4tIEluIGNhc2Ugb2YgYSB0aWUgaW4gc2NvcmUsIHRoZSBwYXJ0aWNpcGFudCB3aXRoIHRoZSBsb3dlciAqKihBY3R1YWwgQ29uc3VtZWQgQ3JlZGl0ICsgUGVuYWx0aWVzKSoqIHJhbmtzIGhpZ2hlci5cbi0gUGVuYWx0aWVzIGFmZmVjdCB5b3VyIHJhbmtpbmcgdGllLWJyZWFrZXIgYnV0IE5PVCB5b3VyIHRlcm1pbmF0aW9uIHN0YXR1cy5cblxuIyMjIFByb2dyYW1taW5nIExhbmd1YWdlczpcbkF2YWlsYWJsZSBsYW5ndWFnZXM6IEMrKzE3LCBKYXZhLCBhbmQgUHl0aG9uMy5cblxuSW1wb3J0YW50IE5vdGVzOlxuLSBDKysxNyBzb2x1dGlvbnMgYXJlIGd1YXJhbnRlZWQgdG8gcGFzcyBhbGwgdGVzdCBjYXNlcyB3aXRoaW4gdGltZSBsaW1pdHNcbi0gSmF2YSBhbmQgUHl0aG9uIHNvbHV0aW9ucyBtYXkgbm90IGJlIGFibGUgdG8gcGFzcyBhbGwgdGVzdCBjYXNlcyBkdWUgdG8gdGltZSBjb25zdHJhaW50c1xuLSBDaG9vc2UgeW91ciBwcm9ncmFtbWluZyBsYW5ndWFnZSB3aXNlbHkgYmFzZWQgb24gdGhlIHByb2JsZW0gcmVxdWlyZW1lbnRzXG5cbiMjIFlvdXIgU3RhdHVzXG4tIE5hbWU6IGdlbWluaS0yLjUtcHJvXG4tIENvbnN1bWVkIENyZWRpdDogMTMzMTU3XG4tIFNvbHZlZCBQcm9ibGVtczogMTQ5MV9icm9uemVfcmVmbGVjdGlvblxuLSBDdXJyZW50IFNjb3JlOiAxMDBcbi0gUGVuYWx0eTogMFxuXG4jIyBBdmFpbGFibGUgUHJvYmxlbXNcbi0gcHJvYmxlbV9pZDogMTUwMF9wbGF0aW51bV9taW5fbWF4X3N1YmFycmF5c1xuLSBwcm9ibGVtX2lkOiAxNTAxX3BsYXRpbnVtX3RyYW5zZm9ybWluZ19wYWlyc1xuLSBwcm9ibGVtX2lkOiAxNTAyX3BsYXRpbnVtX3RydWVfb3JfZmFsc2VfdGVzdFxuLSBwcm9ibGVtX2lkOiAxNDk3X2dvbGRfYmVzc2llJ3NfZnVuY3Rpb25cbi0gcHJvYmxlbV9pZDogMTQ5OF9nb2xkX3RoZV9iZXN0X3N1YnNlcXVlbmNlXG4tIHByb2JsZW1faWQ6IDE0OTlfZ29sZF9mcmllbmRzaGlwX2VkaXRpbmdcbi0gcHJvYmxlbV9pZDogMTQ5NF9zaWx2ZXJfdGhlX2Jlc3RfbGluZXVwXG4tIHByb2JsZW1faWQ6IDE0OTVfc2lsdmVyX3ZvY2FidWxhcnlfcXVpelxuLSBwcm9ibGVtX2lkOiAxNDk2X3NpbHZlcl90cmFuc2Zvcm1pbmdfcGFpcnNcbi0gcHJvYmxlbV9pZDogMTQ5MV9icm9uemVfcmVmbGVjdGlvblxuLSBwcm9ibGVtX2lkOiAxNDkyX2Jyb256ZV9tYWtpbmdfbWV4ZXNcbi0gcHJvYmxlbV9pZDogMTQ5M19icm9uemVfcHJpbnRpbmdfc2VxdWVuY2VzXG5cbiMjIEN1cnJlbnQgUmFua2luZ3NcbjEuIGdwdC01LWNvZGV4OiBTY29yZSA0MDAgcG9pbnRzLCBDb25zdW1lZCBDcmVkaXQgKyBQZW5hbHR5OiAxMDk4ODYgW0FDVElWRV1cbjIuIGdsbS00LjU6IFNjb3JlIDEwMCBwb2ludHMsIENvbnN1bWVkIENyZWRpdCArIFBlbmFsdHk6IDI0NzM1IFtBQ1RJVkVdXG4zLiBnZW1pbmktMi41LXBybzogU2NvcmUgMTAwIHBvaW50cywgQ29uc3VtZWQgQ3JlZGl0ICsgUGVuYWx0eTogMTMzMTU3IFtBQ1RJVkVdXG40LiBjbGF1ZGUtc29ubmV0LTQtMjAyNTA1MTQ6IFNjb3JlIDAgcG9pbnRzLCBDb25zdW1lZCBDcmVkaXQgKyBQZW5hbHR5OiAyMjAgW0FDVElWRV1cbjUuIGRlZXBzZWVrLXYzLjE6IFNjb3JlIDAgcG9pbnRzLCBDb25zdW1lZCBDcmVkaXQgKyBQZW5hbHR5OiAxMTgwMiBbQUNUSVZFXVxuNi4gZGVlcHNlZWstdjM6IFNjb3JlIDAgcG9pbnRzLCBDb25zdW1lZCBDcmVkaXQgKyBQZW5hbHR5OiAyMTA1MCBbQUNUSVZFXVxuNy4gcXdlbjMtMjM1YjogU2NvcmUgMCBwb2ludHMsIENvbnN1bWVkIENyZWRpdCArIFBlbmFsdHk6IDI4NDExIFtBQ1RJVkVdXG44LiBraW1pLWsyLTA5MDU6IFNjb3JlIDAgcG9pbnRzLCBDb25zdW1lZCBDcmVkaXQgKyBQZW5hbHR5OiA2MTc3NSBbQUNUSVZFXVxuXG4jIyBBdmFpbGFibGUgQWN0aW9ucyAoT25seSB1c2UgdGhlIGZvbGxvd2luZyBhY3Rpb25zLiBETyBOT1QgdXNlIG90aGVyIGFjdGlvbnMpXG5cbjEuIFZJRVdfUFJPQkxFTVxuICAgLSBBY3Rpb246IFwiVklFV19QUk9CTEVNXCJcbiAgIC0gUGFyYW1ldGVyczogeyBcInByb2JsZW1faWRcIjogXCI8cHJvYmxlbV9pZD5cIiB9XG4gICAtIERlc2NyaXB0aW9uOiBWaWV3IGRldGFpbGVkIGluZm9ybWF0aW9uIGFib3V0IGEgc3BlY2lmaWMgcHJvYmxlbVxuICAgLSBSZXR1cm5zOiBQcm9ibGVtIHRpdGxlLCBkZXNjcmlwdGlvbiwgYW5kIHNhbXBsZSB0ZXN0IGNhc2VzXG5cbjIuIEdFVF9ISU5UXG4gICAtIEFjdGlvbjogXCJHRVRfSElOVFwiXG4gICAtIERlc2NyaXB0aW9uOiBHZXQgYSBoaW50IGZvciBhIHByb2JsZW0gKGNvbnN1bWUgY3JlZGl0KVxuICAgLSBIaW50IExldmVsczpcbiAgICAgMC4gQ29tcGV0aXRpb24gU3RyYXRlZ3kgKDUwMCBjcmVkaXQpOiAgICAgICAgXG4gICAgICAgIC0gTk9USUNFLCB5b3UgTVVTVCBnaXZlIHBhcmFtZXRlcnMgYXMgeyBcImhpbnRfbGV2ZWxcIjogMCB9ICAgXG4gICAgICAgIC0gVGhlbiB5b3Ugd2lsbCBiZSBwcm92aWRlZCB3aXRoIGNvbXBldGl0aXZlIHByb2dyYW1taW5nIHN0cmF0ZWd5IGFuZCB0aXBzLCB3aGljaCBpbmNsdWRlcyBkZWJ1Z2dpbmcgY2hlY2tsaXN0IGFuZCBjb250ZXN0IHN0cmF0ZWd5ICAgICAgICBcblxuICAgICAxLiBQcm9ibGVtIFJlbGV2YW50IFRleHRib29rIEhpbnQgKDEwMDAgY3JlZGl0KTpcbiAgICAgICAgLSBOT1RJQ0UsIHlvdSBNVVNUIGdpdmUgcGFyYW1ldGVycyBhcyB7IFwicHJvYmxlbV9pZFwiOiBcIjxwcm9ibGVtX2lkPlwiLCBcImhpbnRfbGV2ZWxcIjogMSB9XG4gICAgICAgIC0gVGhlbiB5b3Ugd2lsbCBiZSBwcm92aWRlZCB3aXRoIHRleHRib29rIGNvbnRlbnQgcmVsZXZhbnQgdG8gdGhlIHByb2JsZW1faWQgeW91IGdpdmUsIHdoaWNoIGV4cGxhaW5zIHRoZW9yZXRpY2FsIGNvbmNlcHRzIGFuZCBrbm93bGVkZ2VcblxuICAgICAyLiBLbm93bGVkZ2UgUmVsZXZhbnQgVGV4dGJvb2sgSGludCAoMTAwMCBjcmVkaXQpOlxuICAgICAgICAtIE5PVElDRSwgeW91IE1VU1QgZ2l2ZSBwYXJhbWV0ZXJzIGFzIHsgXCJoaW50X2tub3dsZWRnZVwiOiBcIjxoaW50X2tub3dsZWRnZT5cIiwgXCJoaW50X2xldmVsXCI6IDIgfVxuICAgICAgICAtIFRoZW4geW91IHdpbGwgYmUgcHJvdmlkZWQgd2l0aCB0ZXh0Ym9vayBjb250ZW50IHJlbGV2YW50IHRvIHRoZSBoaW50X2tub3dsZWRnZSB5b3UgZ2l2ZSwgd2hpY2ggZXhwbGFpbnMgdGhlb3JldGljYWwgY29uY2VwdHMgYW5kIGtub3dsZWRnZVxuXG4gICAgIDMuIFNpbWlsYXIgUHJvYmxlbSBIaW50ICgxNTAwIGNyZWRpdCk6XG4gICAgICAgIC0gTk9USUNFLCB5b3UgTVVTVCBnaXZlIHBhcmFtZXRlcnMgYXMgeyBcInByb2JsZW1faWRcIjogXCI8cHJvYmxlbV9pZD5cIiwgXCJoaW50X2xldmVsXCI6IDMgfVxuICAgICAgICAtIFRoZW4geW91IHdpbGwgYmUgcHJvdmlkZWQgd2l0aCBwcm9ibGVtcyBhbmQgc29sdXRpb25zIHNpbWlsYXIgdG8gdGhlIHByb2JsZW1faWQgeW91IGdpdmUsIHdoaWNoIGhlbHBzIHVuZGVyc3RhbmQgdGhlIHByb2JsZW0gdHlwZSBhbmQgYmFzaWMgYXBwcm9hY2hcblxuICAgICA0LiBLbm93bGVkZ2UgRXhhbXBsZSBQcm9ibGVtIEhpbnQgKDE1MDAgY3JlZGl0KTpcbiAgICAgICAgLSBOT1RJQ0UsIHlvdSBNVVNUIGdpdmUgcGFyYW1ldGVycyBhcyB7IFwicHJvYmxlbV9kaWZmaWN1bHR5XCI6IFwiPGRpZmZpY3VsdHlfbGV2ZWw+XCIsIFwiaGludF9rbm93bGVkZ2VcIjogXCI8aGludF9rbm93bGVkZ2U+XCIsIFwiaGludF9sZXZlbFwiOiA0IH1cbiAgICAgICAgLSBDaG9vc2UgcHJvYmxlbV9kaWZmaWN1bHR5IGZyb20gQnJvbnplLCBTaWx2ZXIsIEdvbGQsIFBsYXRpbnVtLCBBZHZhbmNlZCBhbmQgZ2l2ZSB0aGUgaGludF9rbm93bGVkZ2UgeW91IHdhbnQgdG8gbG9vayB1cC4gVGhlbiB5b3Ugd2lsbCBiZSBwcm92aWRlZCB3aXRoIGV4YW1wbGUgcHJvYmxlbXMgYW5kIHNvbHV0aW9ucyByZWxhdGVkIHRvIHRoZSBrbm93bGVkZ2UgcG9pbnRzIGFuZCB0aGUgZGlmZmljdWx0eV9sZXZlbC5cblxuMy4gU1VCTUlUX1NPTFVUSU9OXG4gICAtIEFjdGlvbjogXCJTVUJNSVRfU09MVVRJT05cIlxuICAgLSBQYXJhbWV0ZXJzOiB7XG4gICAgIFwicHJvYmxlbV9pZFwiOiBcIjxwcm9ibGVtX2lkPlwiLFxuICAgICBcInNvbHV0aW9uXCI6IFwiPHlvdXJfY29kZT5cIixcbiAgICAgXCJsYW5ndWFnZVwiOiBcIjxjcHB8amF2YXxweXRob24+XCJcbiAgIH1cbiAgIC0gRGVzY3JpcHRpb246IHN1Ym1pc3Npb24gYSBzb2x1dGlvbiBmb3IgYSBwcm9ibGVtIChjb25zdW1lcyBjcmVkaXQpXG4gICAtIENyZWRpdCBDb3N0OlxuICAgICAtIEVhY2ggc3VibWlzc2lvbiBjb25zdW1lcyBjcmVkaXQgYmFzZWQgb24gdGhlIHN1Ym1pc3Npb24gc3RhdHVzXG4gICAgIC0gQ29zdCB2YXJpZXMgZGVwZW5kaW5nIG9uIHdoZXRoZXIgdGhlIHNvbHV0aW9uIGlzIGFjY2VwdGVkIG9yIHJlamVjdGVkXG4gICAtIFJldHVybnM6IFN1Ym1pc3Npb24gc3RhdHVzLCBzY29yZSwgYW5kIHRlc3QgY2FzZSByZXN1bHRzXG5cbjQuIFRFU1RfQ09ERVxuICAgLSBBY3Rpb246IFwiVEVTVF9DT0RFXCJcbiAgIC0gUGFyYW1ldGVyczoge1xuICAgICBcImNvZGVcIjogXCI8eW91cl9jb2RlPlwiLFxuICAgICBcImxhbmd1YWdlXCI6IFwiPGNwcHxqYXZhfHB5dGhvbj5cIixcbiAgICAgXCJ0ZXN0X2Nhc2VzXCI6IFtcbiAgICAgICB7XG4gICAgICAgICBcImlucHV0XCI6IFwiPGlucHV0X2RhdGE+XCIsXG4gICAgICAgICBcImV4cGVjdGVkX291dHB1dFwiOiBcIjxleHBlY3RlZF9vdXRwdXQ+XCJcbiAgICAgICB9XG4gICAgIF0sXG4gICAgIFwidGltZV9saW1pdF9tc1wiOiA8dGltZV9saW1pdF9vcHRpb25hbD4sXG4gICAgIFwibWVtb3J5X2xpbWl0X21iXCI6IDxtZW1vcnlfbGltaXRfb3B0aW9uYWw+XG4gICB9XG4gICAtIERlc2NyaXB0aW9uOiBUZXN0IHlvdXIgY29kZSB3aXRoIGN1c3RvbSB0ZXN0IGNhc2VzIChjb25zdW1lcyBjcmVkaXQpXG4gICAtIENyZWRpdCBDb3N0OiAxMCBjcmVkaXQgcGVyIHRlc3QgcmVxdWVzdFxuICAgLSBGZWF0dXJlczpcbiAgICAgLSBUZXN0IGNvZGUgd2l0aG91dCBhZmZlY3RpbmcgY29tcGV0aXRpb24gc2NvcmVcbiAgICAgLSBVc2UgeW91ciBvd24gdGVzdCBjYXNlcyB0byBkZWJ1ZyBhbmQgdmVyaWZ5IHNvbHV0aW9uc1xuICAgICAtIEdldCBkZXRhaWxlZCBleGVjdXRpb24gcmVzdWx0cyBpbmNsdWRpbmcgY29tcGlsYXRpb24gZXJyb3JzLCBydW50aW1lIGVycm9ycywgZXRjLlxuICAgLSBSZXR1cm5zOiBUZXN0IHJlc3VsdHMsIGV4ZWN1dGlvbiBzdW1tYXJ5LCBhbmQgY3JlZGl0IHVzYWdlXG5cbjUuIFRFUk1JTkFURVxuICAgLSBBY3Rpb246IFwiVEVSTUlOQVRFXCJcbiAgIC0gUGFyYW1ldGVyczogeyBcInJlYXNvblwiOiBcIjxyZWFzb24+XCIgfVxuICAgLSBEZXNjcmlwdGlvbjogRW5kIHlvdXIgcGFydGljaXBhdGlvbiBpbiB0aGUgY29tcGV0aXRpb24gYW5kIGdpdmUgeW91ciByZWFzb24uIEtlZXAgaW4gbWluZCB0aGF0IHZvbHVudGFyeSB0ZXJtaW5hdGlvbiBvbmx5IHN0b3BzIHlvdXIgb3duIHJ1buKAlG90aGVyIHBhcnRpY2lwYW50cyBjYW4gY29udGludWUgcGxheWluZywgc28geW91ciByYW5raW5nIG1heSBzdGlsbCBzaGlmdCBhZnRlcndhcmQuXG4gICAtIFJldHVybnM6IEZpbmFsIHNjb3JlIGFuZCByYW5raW5nXG5cblBsZWFzZSByZXNwb25kIHVzaW5nIHRoZSBmb2xsb3dpbmcgSlNPTiBmb3JtYXQ6XG5gYGBqc29uXG57XG4gIFwiYWN0aW9uXCI6IFwiPGFjdGlvbl9uYW1lPlwiLFxuICBcInBhcmFtZXRlcnNcIjoge1xuICAgIC8vIEZpbGwgaW4gcGFyYW1ldGVycyBhY2NvcmRpbmcgdG8gdGhlIGFjdGlvbiB0eXBlXG4gIH1cbn1cbmBgYFxuXG4jIExhc3QgQWN0aW9uIFJlc3VsdFxuXG4jIyBTdWNjZXNzIHZpZXdfcHJvYmxlbVxuIyMjIFByb2JsZW06IE1ha2luZyBNZXhlc1xuRGVzY3JpcHRpb246XG5cbllvdSBhcmUgZ2l2ZW4gYW4gYXJyYXkgJGEkIG9mICROJCBub24tbmVnYXRpdmUgaW50ZWdlcnMgJGFfMSwgYV8yLCBcXGRvdHMsIGFfTiRcbigkMVxcbGUgTlxcbGUgMlxcY2RvdCAxMF41LCAwXFxsZSBhX2lcXGxlIE4kKS4gSW4gb25lIG9wZXJhdGlvbiwgeW91IGNhbiBjaGFuZ2UgYW55XG5lbGVtZW50IG9mICRhJCB0byBhbnkgbm9uLW5lZ2F0aXZlIGludGVnZXIuXG5cblRoZSBtZXggb2YgYW4gYXJyYXkgaXMgdGhlIG1pbmltdW0gbm9uLW5lZ2F0aXZlIGludGVnZXIgdGhhdCBpdCBkb2VzIG5vdFxuY29udGFpbi4gRm9yIGVhY2ggJGkkIGluIHRoZSByYW5nZSAkMCQgdG8gJE4kIGluY2x1c2l2ZSwgY29tcHV0ZSB0aGUgbWluaW11bVxubnVtYmVyIG9mIG9wZXJhdGlvbnMgeW91IG5lZWQgIGluIG9yZGVyIHRvIG1ha2UgdGhlIG1leCBvZiAkYSQgZXF1YWwgJGkkLlxuXG5cbklOUFVUIEZPUk1BVCAoSU5QVVQgQVJSSVZFUyBGUk9NIFRIRSBURVJNSU5BTCAvIFNURElOKTo6XG5cblRoZSBmaXJzdCBsaW5lIGNvbnRhaW5zICROJC5cblxuVGhlIG5leHQgbGluZSBjb250YWlucyAkYV8xLGFfMixcXGRvdHMsIGFfTiQuXG5cblxuXG5PVVRQVVQgRk9STUFUIChQUklOVCBPVVRQVVQgVE8gVEhFIFRFUk1JTkFMIC8gU1RET1VUKTo6XG5cbkZvciBlYWNoICRpJCBpbiB0aGUgcmFuZ2UgJDAkIHRvICROJCwgb3V0cHV0IHRoZSBtaW5pbXVtIG51bWJlciBvZiBvcGVyYXRpb25zXG5mb3IgJGkkIG9uIGEgbmV3IGxpbmUuIE5vdGUgdGhhdCBpdCBpcyBhbHdheXMgcG9zc2libGUgdG8gbWFrZSB0aGUgbWV4IG9mICRhJFxuZXF1YWwgdG8gYW55ICRpJCBpbiB0aGUgcmFuZ2UgJDAkIHRvICROJC5cblxuXG5TQU1QTEUgSU5QVVQ6OlxuXG40XG4yIDIgMiAwXG5cblNBTVBMRSBPVVRQVVQ6OlxuIFxuMVxuMFxuM1xuMVxuMlxuXG5UbyBtYWtlIHRoZSBtZXggb2YgJGEkIGVxdWFsIHRvICQwJCwgd2UgY2FuIGNoYW5nZSAkYV80JCB0byAkMyQgKG9yIGFueVxucG9zaXRpdmUgaW50ZWdlcikuIEluIHRoZSByZXN1bHRpbmcgYXJyYXksICRbMiwgMiwgMiwgM10kLCAkMCQgaXMgdGhlIHNtYWxsZXN0XG5ub24tbmVnYXRpdmUgaW50ZWdlciB0aGF0IHRoZSBhcnJheSBkb2VzIG5vdCBjb250YWluLCBzbyAkMCQgaXMgdGhlIG1leCBvZiB0aGVcbmFycmF5LlRvIG1ha2UgdGhlIG1leCBvZiAkYSQgZXF1YWwgdG8gJDEkLCB3ZSBkb24ndCBuZWVkIHRvIG1ha2UgYW55IGNoYW5nZXMgc2luY2VcbiQxJCBpcyBhbHJlYWR5IHRoZSBzbWFsbGVzdCBub24tbmVnYXRpdmUgaW50ZWdlciB0aGF0ICRhID0gWzIsIDIsIDIsIDBdJCBkb2VzXG5ub3QgY29udGFpbi5UbyBtYWtlIHRoZSBtZXggb2YgJGEkIGVxdWFsIHRvICQyJCwgd2UgbmVlZCB0byBjaGFuZ2UgdGhlIGZpcnN0IHRocmVlXG5lbGVtZW50cyBvZiAkYSQuIEZvciBleGFtcGxlLCB3ZSBjYW4gY2hhbmdlICRhJCB0byBiZSAkWzMsIDEsIDEsIDBdJC5cblxuU0NPUklORzo6XG5cbklucHV0cyAyLTY6ICROXFxsZSAxMF4zJElucHV0cyA3LTExOiBObyBhZGRpdGlvbmFsIGNvbnN0cmFpbnRzLlxuXG5cblByb2JsZW0gY3JlZGl0czogQmVuamFtaW4gUWlcblxuXG5TYW1wbGUgQ2FzZXM6XG5DYXNlIDE6XG5JbnB1dDpcbjRcbjIgMiAyIDBcbkV4cGVjdGVkIE91dHB1dDpcbjFcbjBcbjNcbjFcbjJcblxuXG5cbkFuYWx5emUgdGhlIGN1cnJlbnQgc2l0dWF0aW9uLCB0aGluayBhYm91dCB5b3VyIHN0cmF0ZWd5LCBhbmQgcGF5IGF0dGVudGlvbiB0byB0aGUgb3V0cHV0IHRva2VuIGxpbWl0LiBUaGVuIHJlc3BvbmQgd2l0aCBhIEpTT04gb2JqZWN0IGNvbnRhaW5pbmcgJ2FjdGlvbicgYW5kICdwYXJhbWV0ZXJzJyBmaWVsZHMuIicnJywKICAgICAgICBoZWxwPSJVc2VyIHByb21wdCB0byBzZW5kIHRvIHRoZSBMTE0iLAogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgKICAgICAgICAiLS1zeXN0ZW0iLAogICAgICAgIGRlZmF1bHQ9IllvdSBhcmUgYSBoZWxwZnVsIGFzc2lzdGFudCBmb3IgZGVidWdnaW5nIExMTSBjb25uZWN0aXZpdHkuIiwKICAgICAgICBoZWxwPSJPcHRpb25hbCBzeXN0ZW0gcHJvbXB0IiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tdGltZW91dCIsCiAgICAgICAgdHlwZT1mbG9hdCwKICAgICAgICBkZWZhdWx0PTYwMC4wLAogICAgICAgIGhlbHA9IkhUVFAgdGltZW91dCBpbiBzZWNvbmRzIiwKICAgICkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoCiAgICAgICAgIi0tYWxsIiwKICAgICAgICBhY3Rpb249InN0b3JlX3RydWUiLAogICAgICAgIGhlbHA9IlRlc3QgYWxsIExMTXMgZGVmaW5lZCBpbiBjb25maWcvOGxsbS5qc29uIChpZ25vcmVzIC0tY29tcGV0aXRvci1uYW1lKSIsCiAgICApCiAgICByZXR1cm4gcGFyc2VyLnBhcnNlX2FyZ3MoKQoKCmRlZiBsb2FkX2NvbXBldGl0b3JzKGNvbmZpZ19wYXRoOiBQYXRoKSAtPiBMaXN0W0RpY3Rbc3RyLCBBbnldXToKICAgIGRhdGEgPSBqc29uLmxvYWRzKGNvbmZpZ19wYXRoLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKSkKICAgIGNvbXBldGl0b3JzOiBMaXN0W0RpY3Rbc3RyLCBBbnldXSA9IGRhdGEuZ2V0KCJjb21wZXRpdG9ycyIsIFtdKQogICAgaWYgbm90IGNvbXBldGl0b3JzOgogICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoZiJObyBjb21wZXRpdG9ycyBkZWZpbmVkIGluIHtjb25maWdfcGF0aH0iKQogICAgZm9yIGNvbXBldGl0b3IgaW4gY29tcGV0aXRvcnM6CiAgICAgICAgaWYgbm90IGlzaW5zdGFuY2UoY29tcGV0aXRvciwgZGljdCk6CiAgICAgICAgICAgIGNvbnRpbnVlCiAgICAgICAgaWYgbm90IHN0cihjb21wZXRpdG9yLmdldCgiYXBpX2Jhc2VfdXJsIikgb3IgIiIpLnN0cmlwKCk6CiAgICAgICAgICAgIGVudl9uYW1lID0gc3RyKGNvbXBldGl0b3IuZ2V0KCJhcGlfYmFzZV91cmxfZW52Iikgb3IgIiIpLnN0cmlwKCkKICAgICAgICAgICAgaWYgZW52X25hbWU6CiAgICAgICAgICAgICAgICBjb21wZXRpdG9yWyJhcGlfYmFzZV91cmwiXSA9IHN0cihvcy5lbnZpcm9uLmdldChlbnZfbmFtZSwgIiIpIG9yICIiKS5zdHJpcCgpCiAgICAgICAgaWYgbm90IHN0cihjb21wZXRpdG9yLmdldCgiYXBpX2tleSIpIG9yICIiKS5zdHJpcCgpOgogICAgICAgICAgICBlbnZfbmFtZSA9IHN0cihjb21wZXRpdG9yLmdldCgiYXBpX2tleV9lbnYiKSBvciAiIikuc3RyaXAoKQogICAgICAgICAgICBpZiBlbnZfbmFtZToKICAgICAgICAgICAgICAgIGNvbXBldGl0b3JbImFwaV9rZXkiXSA9IHN0cihvcy5lbnZpcm9uLmdldChlbnZfbmFtZSwgIiIpIG9yICIiKS5zdHJpcCgpCiAgICByZXR1cm4gY29tcGV0aXRvcnMKCgpkZWYgbG9hZF9jb21wZXRpdG9yKGNvbmZpZ19wYXRoOiBQYXRoLCBuYW1lOiBPcHRpb25hbFtzdHJdKSAtPiBEaWN0W3N0ciwgQW55XToKICAgIGNvbXBldGl0b3JzID0gbG9hZF9jb21wZXRpdG9ycyhjb25maWdfcGF0aCkKCiAgICBpZiBuYW1lOgogICAgICAgIGZvciBjb21wZXRpdG9yIGluIGNvbXBldGl0b3JzOgogICAgICAgICAgICBpZiBjb21wZXRpdG9yLmdldCgibmFtZSIpID09IG5hbWU6CiAgICAgICAgICAgICAgICByZXR1cm4gY29tcGV0aXRvcgogICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoZiJDb21wZXRpdG9yICd7bmFtZX0nIG5vdCBmb3VuZCBpbiB7Y29uZmlnX3BhdGh9IikKCiAgICByZXR1cm4gY29tcGV0aXRvcnNbMF0KCgpkZWYgYnVpbGRfcGF5bG9hZCgKICAgIGNvbXBldGl0b3I6IERpY3Rbc3RyLCBBbnldLAogICAgbWVzc2FnZXM6IExpc3RbRGljdFtzdHIsIHN0cl1dLAopIC0+IERpY3Rbc3RyLCBBbnldOgogICAgcmVxdWVzdF9mb3JtYXQgPSBjb21wZXRpdG9yLmdldCgicmVxdWVzdF9mb3JtYXQiLCB7fSkKICAgIGJvZHlfdGVtcGxhdGUgPSBkaWN0KHJlcXVlc3RfZm9ybWF0LmdldCgiYm9keV90ZW1wbGF0ZSIsIHt9KSkKICAgIGZvcm1hdHRlZDogRGljdFtzdHIsIEFueV0gPSB7fQoKICAgIGZvciBrZXksIHZhbHVlIGluIGJvZHlfdGVtcGxhdGUuaXRlbXMoKToKICAgICAgICBpZiBpc2luc3RhbmNlKHZhbHVlLCBzdHIpOgogICAgICAgICAgICBmb3JtYXR0ZWRba2V5XSA9IHZhbHVlLmZvcm1hdCgKICAgICAgICAgICAgICAgIG1lc3NhZ2VzPWpzb24uZHVtcHMobWVzc2FnZXMsIGVuc3VyZV9hc2NpaT1GYWxzZSksCiAgICAgICAgICAgICAgICBtb2RlbF9pZD1jb21wZXRpdG9yLmdldCgibW9kZWxfaWQiLCAiIiksCiAgICAgICAgICAgICkKICAgICAgICBlbHNlOgogICAgICAgICAgICBmb3JtYXR0ZWRba2V5XSA9IHZhbHVlCgogICAgIyBFbnN1cmUgbWVzc2FnZXMvbW9kZWwgZmllbGRzIGV4aXN0IGFzIHByb3BlciBzdHJ1Y3R1cmVzCiAgICBpZiBpc2luc3RhbmNlKGZvcm1hdHRlZC5nZXQoIm1lc3NhZ2VzIiksIHN0cik6CiAgICAgICAgZm9ybWF0dGVkWyJtZXNzYWdlcyJdID0ganNvbi5sb2Fkcyhmb3JtYXR0ZWRbIm1lc3NhZ2VzIl0pCiAgICBlbHNlOgogICAgICAgIGZvcm1hdHRlZC5zZXRkZWZhdWx0KCJtZXNzYWdlcyIsIG1lc3NhZ2VzKQoKICAgIGZvcm1hdHRlZC5zZXRkZWZhdWx0KCJtb2RlbCIsIGNvbXBldGl0b3IuZ2V0KCJtb2RlbF9pZCIpKQogICAgcmV0dXJuIGZvcm1hdHRlZAoKCmRlZiBmb3JtYXRfZGV0YWlsKHZhbHVlOiBBbnksIGxpbWl0OiBpbnQgPSA0MDApIC0+IHN0cjoKICAgIGlmIGlzaW5zdGFuY2UodmFsdWUsIChkaWN0LCBsaXN0KSk6CiAgICAgICAgdGV4dCA9IGpzb24uZHVtcHModmFsdWUsIGVuc3VyZV9hc2NpaT1GYWxzZSkKICAgIGVsc2U6CiAgICAgICAgdGV4dCA9IHN0cih2YWx1ZSkKICAgIHRleHQgPSB0ZXh0LnN0cmlwKCkKICAgIGlmIGxlbih0ZXh0KSA+IGxpbWl0OgogICAgICAgIHJldHVybiB0ZXh0WzpsaW1pdF0gKyAiLi4uIFt0cnVuY2F0ZWRdIgogICAgcmV0dXJuIHRleHQKCgpkZWYgZGVidWdfY29tcGV0aXRvcigKICAgIGNvbXBldGl0b3I6IERpY3Rbc3RyLCBBbnldLAogICAgbWVzc2FnZXM6IExpc3RbRGljdFtzdHIsIHN0cl1dLAogICAgdGltZW91dDogZmxvYXQsCiAgICB2ZXJib3NlOiBib29sID0gVHJ1ZSwKKSAtPiBUdXBsZVtib29sLCBzdHJdOgogICAgbmFtZSA9IGNvbXBldGl0b3IuZ2V0KCJuYW1lIiwgIjx1bmtub3duPiIpCiAgICBhcGlfYmFzZSA9IGNvbXBldGl0b3IuZ2V0KCJhcGlfYmFzZV91cmwiLCAiIikucnN0cmlwKCIvIikKICAgIHJlcXVlc3RfZm9ybWF0ID0gY29tcGV0aXRvci5nZXQoInJlcXVlc3RfZm9ybWF0Iiwge30pCiAgICB1cmxfcGF0aCA9IHJlcXVlc3RfZm9ybWF0LmdldCgidXJsIiwgIi92MS9jaGF0L2NvbXBsZXRpb25zIikKICAgIHVybCA9IGYie2FwaV9iYXNlfXt1cmxfcGF0aH0iCgogICAgcGF5bG9hZCA9IGJ1aWxkX3BheWxvYWQoY29tcGV0aXRvciwgbWVzc2FnZXMpCgogICAgaGVhZGVycyA9IHt9CiAgICBmb3Iga2V5LCB2YWx1ZSBpbiByZXF1ZXN0X2Zvcm1hdC5nZXQoImhlYWRlcnMiLCB7fSkuaXRlbXMoKToKICAgICAgICBpZiBpc2luc3RhbmNlKHZhbHVlLCBzdHIpOgogICAgICAgICAgICBoZWFkZXJzW2tleV0gPSB2YWx1ZS5mb3JtYXQoYXBpX2tleT1jb21wZXRpdG9yLmdldCgiYXBpX2tleSIsICIiKSkKICAgICAgICBlbHNlOgogICAgICAgICAgICBoZWFkZXJzW2tleV0gPSB2YWx1ZQoKICAgIG1ldGhvZCA9IHJlcXVlc3RfZm9ybWF0LmdldCgibWV0aG9kIiwgIlBPU1QiKS51cHBlcigpCgogICAgaWYgdmVyYm9zZToKICAgICAgICBwcmludChmIlxuPT09IFRlc3Rpbmcge25hbWV9ID09PSIpCiAgICAgICAgcHJpbnQoZiJTZW5kaW5nIHttZXRob2R9IHJlcXVlc3QgdG8ge3VybH0iKQoKICAgIHRyeToKICAgICAgICByZXNwb25zZSA9IHJlcXVlc3RzLnJlcXVlc3QoCiAgICAgICAgICAgIG1ldGhvZD1tZXRob2QsCiAgICAgICAgICAgIHVybD11cmwsCiAgICAgICAgICAgIGhlYWRlcnM9aGVhZGVycywKICAgICAgICAgICAganNvbj1wYXlsb2FkLAogICAgICAgICAgICB0aW1lb3V0PXRpbWVvdXQsCiAgICAgICAgKQogICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBleGM6ICAjIHJlcXVlc3RzIHJhaXNlcyBtYW55IHN1YmNsYXNzZXM7IGtlZXAgaXQgc2ltcGxlCiAgICAgICAgc3VtbWFyeSA9IGYiW0VSUk9SXSB7bmFtZX06IHJlcXVlc3QgZmFpbGVkOiB7ZXhjfSIKICAgICAgICBpZiB2ZXJib3NlOgogICAgICAgICAgICBwcmludChzdW1tYXJ5KQogICAgICAgIHJldHVybiBGYWxzZSwgc3VtbWFyeQoKICAgIGlmIHZlcmJvc2U6CiAgICAgICAgcHJpbnQoZiJTdGF0dXM6IHtyZXNwb25zZS5zdGF0dXNfY29kZX0iKQoKICAgIHRyeToKICAgICAgICByZXNwb25zZV9qc29uID0gcmVzcG9uc2UuanNvbigpCiAgICBleGNlcHQgVmFsdWVFcnJvcjoKICAgICAgICBpZiB2ZXJib3NlOgogICAgICAgICAgICBwcmludCgiUmF3IHJlc3BvbnNlOiIpCiAgICAgICAgICAgIHByaW50KHJlc3BvbnNlLnRleHQpCiAgICAgICAgc25pcHBldCA9IGZvcm1hdF9kZXRhaWwocmVzcG9uc2UudGV4dCwgbGltaXQ9NTAwKQogICAgICAgIHN1bW1hcnkgPSAoCiAgICAgICAgICAgIGYiW0VSUk9SXSB7bmFtZX06IGludmFsaWQgSlNPTiByZXNwb25zZSAoSFRUUCB7cmVzcG9uc2Uuc3RhdHVzX2NvZGV9KS4gIgogICAgICAgICAgICBmIlJhdzoge3NuaXBwZXR9IgogICAgICAgICkKICAgICAgICBpZiB2ZXJib3NlOgogICAgICAgICAgICBwcmludChzdW1tYXJ5KQogICAgICAgIHJldHVybiBGYWxzZSwgc3VtbWFyeQoKICAgIHJlc3BvbnNlX2Zvcm1hdCA9IGNvbXBldGl0b3IuZ2V0KCJyZXNwb25zZV9mb3JtYXQiLCB7fSkKICAgIHJlc3BvbnNlX3BhdGggPSByZXNwb25zZV9mb3JtYXQuZ2V0KCJyZXNwb25zZV9wYXRoIiwgImNob2ljZXNbMF0ubWVzc2FnZS5jb250ZW50IikKICAgIGVycm9yX3BhdGggPSByZXNwb25zZV9mb3JtYXQuZ2V0KCJlcnJvcl9wYXRoIikKICAgIGNvbnRlbnQgPSBkaWdfdmFsdWUocmVzcG9uc2VfanNvbiwgcmVzcG9uc2VfcGF0aCkKICAgIGVycm9yX21lc3NhZ2UgPSBkaWdfdmFsdWUocmVzcG9uc2VfanNvbiwgZXJyb3JfcGF0aCkgaWYgZXJyb3JfcGF0aCBlbHNlIE5vbmUKCiAgICBpZiB2ZXJib3NlOgogICAgICAgIHByaW50KCJSYXcgSlNPTiByZXNwb25zZToiKQogICAgICAgIHByaW50KGpzb24uZHVtcHMocmVzcG9uc2VfanNvbiwgaW5kZW50PTIsIGVuc3VyZV9hc2NpaT1GYWxzZSkpCiAgICAgICAgcHJpbnQoIlxuRXh0cmFjdGVkIGNvbnRlbnQ6IikKICAgICAgICBwcmludChjb250ZW50KQoKICAgIGlzc3VlczogTGlzdFtzdHJdID0gW10KICAgIGlmIHJlc3BvbnNlLnN0YXR1c19jb2RlID49IDQwMDoKICAgICAgICBpc3N1ZXMuYXBwZW5kKGYiSFRUUCB7cmVzcG9uc2Uuc3RhdHVzX2NvZGV9IikKICAgIGlmIGVycm9yX21lc3NhZ2U6CiAgICAgICAgZGV0YWlsID0gZm9ybWF0X2RldGFpbChlcnJvcl9tZXNzYWdlKQogICAgICAgIGlzc3Vlcy5hcHBlbmQoZiJlcnJvciBhdCAne2Vycm9yX3BhdGh9Jzoge2RldGFpbH0iKQogICAgaWYgY29udGVudCBpbiAoTm9uZSwgIiIpOgogICAgICAgIGlzc3Vlcy5hcHBlbmQoZiJubyBjb250ZW50IGF0ICd7cmVzcG9uc2VfcGF0aH0nIikKCiAgICBpZiBpc3N1ZXM6CiAgICAgICAgc3VtbWFyeSA9IGYiW0VSUk9SXSB7bmFtZX06ICIgKyAiOyAiLmpvaW4oaXNzdWVzKQogICAgZWxzZToKICAgICAgICBzdW1tYXJ5ID0gZiJbT0tdIHtuYW1lfTogSFRUUCB7cmVzcG9uc2Uuc3RhdHVzX2NvZGV9IgoKICAgIGlmIHZlcmJvc2U6CiAgICAgICAgcHJpbnQoc3VtbWFyeSkKCiAgICByZXR1cm4gbm90IGlzc3Vlcywgc3VtbWFyeQoKCmRlZiBidWlsZF9tZXNzYWdlcyhzeXN0ZW1fcHJvbXB0OiBzdHIsIHVzZXJfcHJvbXB0OiBzdHIpIC0+IExpc3RbRGljdFtzdHIsIHN0cl1dOgogICAgbWVzc2FnZXM6IExpc3RbRGljdFtzdHIsIHN0cl1dID0gW10KICAgIGlmIHN5c3RlbV9wcm9tcHQ6CiAgICAgICAgbWVzc2FnZXMuYXBwZW5kKHsicm9sZSI6ICJzeXN0ZW0iLCAiY29udGVudCI6IHN5c3RlbV9wcm9tcHR9KQogICAgbWVzc2FnZXMuYXBwZW5kKHsicm9sZSI6ICJ1c2VyIiwgImNvbnRlbnQiOiB1c2VyX3Byb21wdH0pCiAgICByZXR1cm4gbWVzc2FnZXMKCgpkZWYgbWFpbigpIC0+IE5vbmU6CiAgICBhcmdzID0gcGFyc2VfYXJncygpCiAgICBzeXN0ZW1fcHJvbXB0ID0gYXJncy5zeXN0ZW0uc3RyaXAoKQogICAgbWVzc2FnZXMgPSBidWlsZF9tZXNzYWdlcyhzeXN0ZW1fcHJvbXB0LCBhcmdzLnByb21wdCkKCiAgICBpZiBhcmdzLmFsbDoKICAgICAgICBjb25maWdfcGF0aCA9IFBhdGgoImNvbmZpZy84bGxtLmpzb24iKQogICAgICAgIGNvbXBldGl0b3JzID0gbG9hZF9jb21wZXRpdG9ycyhjb25maWdfcGF0aCkKICAgICAgICBzdWNjZXNzZXMgPSAwCiAgICAgICAgZmFpbHVyZXMgPSAwCiAgICAgICAgZm9yIGNvbXBldGl0b3IgaW4gY29tcGV0aXRvcnM6CiAgICAgICAgICAgIHN1Y2Nlc3MsIHN1bW1hcnkgPSBkZWJ1Z19jb21wZXRpdG9yKAogICAgICAgICAgICAgICAgY29tcGV0aXRvciwgbWVzc2FnZXMsIGFyZ3MudGltZW91dCwgdmVyYm9zZT1GYWxzZQogICAgICAgICAgICApCiAgICAgICAgICAgIHByaW50KHN1bW1hcnkpCiAgICAgICAgICAgIGlmIHN1Y2Nlc3M6CiAgICAgICAgICAgICAgICBzdWNjZXNzZXMgKz0gMQogICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgZmFpbHVyZXMgKz0gMQogICAgICAgIHByaW50KAogICAgICAgICAgICBmIlxuRmluaXNoZWQgdGVzdGluZyB7bGVuKGNvbXBldGl0b3JzKX0gY29tcGV0aXRvcnM6ICIKICAgICAgICAgICAgZiJ7c3VjY2Vzc2VzfSBPSywge2ZhaWx1cmVzfSBmYWlsZWQuIgogICAgICAgICkKICAgICAgICByZXR1cm4KCiAgICBjb25maWdfcGF0aCA9IFBhdGgoYXJncy5jb21wZXRpdG9yc19jb25maWcpCiAgICBjb21wZXRpdG9yID0gbG9hZF9jb21wZXRpdG9yKGNvbmZpZ19wYXRoLCBhcmdzLmNvbXBldGl0b3JfbmFtZSkKICAgIGRlYnVnX2NvbXBldGl0b3IoY29tcGV0aXRvciwgbWVzc2FnZXMsIGFyZ3MudGltZW91dCwgdmVyYm9zZT1UcnVlKQoKCmRlZiBkaWdfdmFsdWUoZGF0YTogQW55LCBwYXRoOiBzdHIsIGRlZmF1bHQ6IEFueSA9IE5vbmUpIC0+IEFueToKICAgICIiIlRyYXZlcnNlIGRvdHRlZC9hcnJheSBwYXRocyBsaWtlIGNob2ljZXNbMF0ubWVzc2FnZS5jb250ZW50LiIiIgogICAgY3VycmVudCA9IGRhdGEKICAgIGZvciBzZWdtZW50IGluIHBhdGgucmVwbGFjZSgiLyIsICIuIikuc3BsaXQoIi4iKToKICAgICAgICBpZiBub3Qgc2VnbWVudDoKICAgICAgICAgICAgY29udGludWUKICAgICAgICBpZiAiWyIgaW4gc2VnbWVudCBhbmQgc2VnbWVudC5lbmRzd2l0aCgiXSIpOgogICAgICAgICAgICBrZXksIGluZGV4X3RleHQgPSBzZWdtZW50WzotMV0uc3BsaXQoIlsiLCAxKQogICAgICAgICAgICBpZiBpc2luc3RhbmNlKGN1cnJlbnQsIGRpY3QpOgogICAgICAgICAgICAgICAgY3VycmVudCA9IGN1cnJlbnQuZ2V0KGtleSwgZGVmYXVsdCkKICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIHJldHVybiBkZWZhdWx0CiAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgIGluZGV4ID0gaW50KGluZGV4X3RleHQpCiAgICAgICAgICAgICAgICBjdXJyZW50ID0gY3VycmVudFtpbmRleF0KICAgICAgICAgICAgZXhjZXB0IChWYWx1ZUVycm9yLCBJbmRleEVycm9yLCBUeXBlRXJyb3IpOgogICAgICAgICAgICAgICAgcmV0dXJuIGRlZmF1bHQKICAgICAgICBlbHNlOgogICAgICAgICAgICBpZiBpc2luc3RhbmNlKGN1cnJlbnQsIGRpY3QpOgogICAgICAgICAgICAgICAgY3VycmVudCA9IGN1cnJlbnQuZ2V0KHNlZ21lbnQsIGRlZmF1bHQpCiAgICAgICAgICAgIGVsc2U6CiAgICAgICAgICAgICAgICByZXR1cm4gZGVmYXVsdAogICAgcmV0dXJuIGN1cnJlbnQKCgppZiBfX25hbWVfXyA9PSAiX19tYWluX18iOgogICAgbWFpbigpCg==
+"""
+Simple debugging utility for USACOArena LLM configurations.
+
+Usage example:
+    uv run python debug_llm.py \
+        --competitors-config config/1v3.json \
+        --competitor-name deepseek-v3 \
+        --prompt "What is 2+2?"
+
+To test every LLM in config/8llm.json, run:
+    uv run python debug_llm.py --all
+
+The script will reuse the same request/response formats defined for the
+competition agent, send a single prompt, and print the raw response.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+
+import requests
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Debug a single LLM competitor config")
+    parser.add_argument(
+        "--competitors-config",
+        default="config/1v3.json",
+        help="Path to competitors configuration JSON",
+    )
+    parser.add_argument(
+        "--competitor-name",
+        help="Name of the competitor to debug (defaults to the first entry)",
+    )
+    parser.add_argument(
+        "--prompt",
+        default='''"# Competition State\n\n## Competition Rules\n\n### Credit System:\n- Each participant starts with a total of 40000000 credit limit\n- Credit is consumed by three main sources:\n  1. **LLM Inference**: Generating thoughts and actions consumes credit based on the number of tokens used.\n  2. **Purchasing Hints**: Hints can be bought for a problem at a specified credit cost.\n  3. **Testing Code**: You can test your code before a final submission, which costs credit per test run.\n- **IMPORTANT**: Your participation ends when your **actual consumed credit** reaches the limit. Penalties from wrong submissions do NOT count toward termination - they only affect your rankings.\n\n### Scoring Rules:\n- Your **Final Score** is the sum of points from all problems you solve completely (achieve 'Accepted' status).\n- No partial credit is awarded for passing some test cases.\n- The points awarded for solving a problem are weighted by its difficulty level. For example, a solved Silver problem is worth more than a solved Bronze problem.\n- Bronze problems: 100 points each\n- Gold problems: 500 points each\n- Platinum problems: 1000 points each\n- Silver problems: 200 points each\n\nPoints are awarded proportionally to the number of test cases passed. For example, if you pass 7 out of 10 test cases for a Bronze problem, you'll receive 70 points.\n\n### Penalties:\nEach submission with the following results will incur a penalty:\n- AC: 0 points\n- CE: 10 points\n- MLE: 10 points\n- RE: 10 points\n- TLE: 10 points\n- WA: 10 points\n\n### Ranking and Tie-Breaking:\n- Participants are ranked primarily by their **Final Score**, which is the weighted sum of solved problems.\n- In case of a tie in score, the participant with the lower **(Actual Consumed Credit + Penalties)** ranks higher.\n- Penalties affect your ranking tie-breaker but NOT your termination status.\n\n### Programming Languages:\nAvailable languages: C++17, Java, and Python3.\n\nImportant Notes:\n- C++17 solutions are guaranteed to pass all test cases within time limits\n- Java and Python solutions may not be able to pass all test cases due to time constraints\n- Choose your programming language wisely based on the problem requirements\n\n## Your Status\n- Name: gemini-2.5-pro\n- Consumed Credit: 133157\n- Solved Problems: 1491_bronze_reflection\n- Current Score: 100\n- Penalty: 0\n\n## Available Problems\n- problem_id: 1500_platinum_min_max_subarrays\n- problem_id: 1501_platinum_transforming_pairs\n- problem_id: 1502_platinum_true_or_false_test\n- problem_id: 1497_gold_bessie's_function\n- problem_id: 1498_gold_the_best_subsequence\n- problem_id: 1499_gold_friendship_editing\n- problem_id: 1494_silver_the_best_lineup\n- problem_id: 1495_silver_vocabulary_quiz\n- problem_id: 1496_silver_transforming_pairs\n- problem_id: 1491_bronze_reflection\n- problem_id: 1492_bronze_making_mexes\n- problem_id: 1493_bronze_printing_sequences\n\n## Current Rankings\n1. gpt-5-codex: Score 400 points, Consumed Credit + Penalty: 109886 [ACTIVE]\n2. glm-4.5: Score 100 points, Consumed Credit + Penalty: 24735 [ACTIVE]\n3. gemini-2.5-pro: Score 100 points, Consumed Credit + Penalty: 133157 [ACTIVE]\n4. claude-sonnet-4-20250514: Score 0 points, Consumed Credit + Penalty: 220 [ACTIVE]\n5. deepseek-v3.1: Score 0 points, Consumed Credit + Penalty: 11802 [ACTIVE]\n6. deepseek-v3: Score 0 points, Consumed Credit + Penalty: 21050 [ACTIVE]\n7. qwen3-235b: Score 0 points, Consumed Credit + Penalty: 28411 [ACTIVE]\n8. kimi-k2-0905: Score 0 points, Consumed Credit + Penalty: 61775 [ACTIVE]\n\n## Available Actions (Only use the following actions. DO NOT use other actions)\n\n1. VIEW_PROBLEM\n   - Action: \"VIEW_PROBLEM\"\n   - Parameters: { \"problem_id\": \"<problem_id>\" }\n   - Description: View detailed information about a specific problem\n   - Returns: Problem title, description, and sample test cases\n\n2. GET_HINT\n   - Action: \"GET_HINT\"\n   - Description: Get a hint for a problem (consume credit)\n   - Hint Levels:\n     0. Competition Strategy (500 credit):        \n        - NOTICE, you MUST give parameters as { \"hint_level\": 0 }   \n        - Then you will be provided with competitive programming strategy and tips, which includes debugging checklist and contest strategy        \n\n     1. Problem Relevant Textbook Hint (1000 credit):\n        - NOTICE, you MUST give parameters as { \"problem_id\": \"<problem_id>\", \"hint_level\": 1 }\n        - Then you will be provided with textbook content relevant to the problem_id you give, which explains theoretical concepts and knowledge\n\n     2. Knowledge Relevant Textbook Hint (1000 credit):\n        - NOTICE, you MUST give parameters as { \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 2 }\n        - Then you will be provided with textbook content relevant to the hint_knowledge you give, which explains theoretical concepts and knowledge\n\n     3. Similar Problem Hint (1500 credit):\n        - NOTICE, you MUST give parameters as { \"problem_id\": \"<problem_id>\", \"hint_level\": 3 }\n        - Then you will be provided with problems and solutions similar to the problem_id you give, which helps understand the problem type and basic approach\n\n     4. Knowledge Example Problem Hint (1500 credit):\n        - NOTICE, you MUST give parameters as { \"problem_difficulty\": \"<difficulty_level>\", \"hint_knowledge\": \"<hint_knowledge>\", \"hint_level\": 4 }\n        - Choose problem_difficulty from Bronze, Silver, Gold, Platinum, Advanced and give the hint_knowledge you want to look up. Then you will be provided with example problems and solutions related to the knowledge points and the difficulty_level.\n\n3. SUBMIT_SOLUTION\n   - Action: \"SUBMIT_SOLUTION\"\n   - Parameters: {\n     \"problem_id\": \"<problem_id>\",\n     \"solution\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\"\n   }\n   - Description: submission a solution for a problem (consumes credit)\n   - Credit Cost:\n     - Each submission consumes credit based on the submission status\n     - Cost varies depending on whether the solution is accepted or rejected\n   - Returns: Submission status, score, and test case results\n\n4. TEST_CODE\n   - Action: \"TEST_CODE\"\n   - Parameters: {\n     \"code\": \"<your_code>\",\n     \"language\": \"<cpp|java|python>\",\n     \"test_cases\": [\n       {\n         \"input\": \"<input_data>\",\n         \"expected_output\": \"<expected_output>\"\n       }\n     ],\n     \"time_limit_ms\": <time_limit_optional>,\n     \"memory_limit_mb\": <memory_limit_optional>\n   }\n   - Description: Test your code with custom test cases (consumes credit)\n   - Credit Cost: 10 credit per test request\n   - Features:\n     - Test code without affecting competition score\n     - Use your own test cases to debug and verify solutions\n     - Get detailed execution results including compilation errors, runtime errors, etc.\n   - Returns: Test results, execution summary, and credit usage\n\n5. TERMINATE\n   - Action: \"TERMINATE\"\n   - Parameters: { \"reason\": \"<reason>\" }\n   - Description: End your participation in the competition and give your reason. Keep in mind that voluntary termination only stops your own run—other participants can continue playing, so your ranking may still shift afterward.\n   - Returns: Final score and ranking\n\nPlease respond using the following JSON format:\n```json\n{\n  \"action\": \"<action_name>\",\n  \"parameters\": {\n    // Fill in parameters according to the action type\n  }\n}\n```\n\n# Last Action Result\n\n## Success view_problem\n### Problem: Making Mexes\nDescription:\n\nYou are given an array $a$ of $N$ non-negative integers $a_1, a_2, \\dots, a_N$\n($1\\le N\\le 2\\cdot 10^5, 0\\le a_i\\le N$). In one operation, you can change any\nelement of $a$ to any non-negative integer.\n\nThe mex of an array is the minimum non-negative integer that it does not\ncontain. For each $i$ in the range $0$ to $N$ inclusive, compute the minimum\nnumber of operations you need  in order to make the mex of $a$ equal $i$.\n\n\nINPUT FORMAT (INPUT ARRIVES FROM THE TERMINAL / STDIN)::\n\nThe first line contains $N$.\n\nThe next line contains $a_1,a_2,\\dots, a_N$.\n\n\n\nOUTPUT FORMAT (PRINT OUTPUT TO THE TERMINAL / STDOUT)::\n\nFor each $i$ in the range $0$ to $N$, output the minimum number of operations\nfor $i$ on a new line. Note that it is always possible to make the mex of $a$\nequal to any $i$ in the range $0$ to $N$.\n\n\nSAMPLE INPUT::\n\n4\n2 2 2 0\n\nSAMPLE OUTPUT::\n \n1\n0\n3\n1\n2\n\nTo make the mex of $a$ equal to $0$, we can change $a_4$ to $3$ (or any\npositive integer). In the resulting array, $[2, 2, 2, 3]$, $0$ is the smallest\nnon-negative integer that the array does not contain, so $0$ is the mex of the\narray.To make the mex of $a$ equal to $1$, we don't need to make any changes since\n$1$ is already the smallest non-negative integer that $a = [2, 2, 2, 0]$ does\nnot contain.To make the mex of $a$ equal to $2$, we need to change the first three\nelements of $a$. For example, we can change $a$ to be $[3, 1, 1, 0]$.\n\nSCORING::\n\nInputs 2-6: $N\\le 10^3$Inputs 7-11: No additional constraints.\n\n\nProblem credits: Benjamin Qi\n\n\nSample Cases:\nCase 1:\nInput:\n4\n2 2 2 0\nExpected Output:\n1\n0\n3\n1\n2\n\n\n\nAnalyze the current situation, think about your strategy, and pay attention to the output token limit. Then respond with a JSON object containing 'action' and 'parameters' fields."''',
+        help="User prompt to send to the LLM",
+    )
+    parser.add_argument(
+        "--system",
+        default="You are a helpful assistant for debugging LLM connectivity.",
+        help="Optional system prompt",
+    )
+    parser.add_argument(
+        "--timeout",
+        type=float,
+        default=600.0,
+        help="HTTP timeout in seconds",
+    )
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Test all LLMs defined in config/8llm.json (ignores --competitor-name)",
+    )
+    return parser.parse_args()
+
+
+def load_competitors(config_path: Path) -> List[Dict[str, Any]]:
+    data = json.loads(config_path.read_text(encoding="utf-8"))
+    competitors: List[Dict[str, Any]] = data.get("competitors", [])
+    if not competitors:
+        raise ValueError(f"No competitors defined in {config_path}")
+    for competitor in competitors:
+        if not isinstance(competitor, dict):
+            continue
+        if not str(competitor.get("api_base_url") or "").strip():
+            env_name = str(competitor.get("api_base_url_env") or "").strip()
+            if env_name:
+                competitor["api_base_url"] = str(os.environ.get(env_name, "") or "").strip()
+        if not str(competitor.get("api_key") or "").strip():
+            env_name = str(competitor.get("api_key_env") or "").strip()
+            if env_name:
+                competitor["api_key"] = str(os.environ.get(env_name, "") or "").strip()
+    return competitors
+
+
+def load_competitor(config_path: Path, name: Optional[str]) -> Dict[str, Any]:
+    competitors = load_competitors(config_path)
+
+    if name:
+        for competitor in competitors:
+            if competitor.get("name") == name:
+                return competitor
+        raise ValueError(f"Competitor '{name}' not found in {config_path}")
+
+    return competitors[0]
+
+
+def build_payload(
+    competitor: Dict[str, Any],
+    messages: List[Dict[str, str]],
+) -> Dict[str, Any]:
+    request_format = competitor.get("request_format", {})
+    body_template = dict(request_format.get("body_template", {}))
+    formatted: Dict[str, Any] = {}
+
+    for key, value in body_template.items():
+        if isinstance(value, str):
+            formatted[key] = value.format(
+                messages=json.dumps(messages, ensure_ascii=False),
+                model_id=competitor.get("model_id", ""),
+            )
+        else:
+            formatted[key] = value
+
+    # Ensure messages/model fields exist as proper structures
+    if isinstance(formatted.get("messages"), str):
+        formatted["messages"] = json.loads(formatted["messages"])
+    else:
+        formatted.setdefault("messages", messages)
+
+    formatted.setdefault("model", competitor.get("model_id"))
+    return formatted
+
+
+def format_detail(value: Any, limit: int = 400) -> str:
+    if isinstance(value, (dict, list)):
+        text = json.dumps(value, ensure_ascii=False)
+    else:
+        text = str(value)
+    text = text.strip()
+    if len(text) > limit:
+        return text[:limit] + "... [truncated]"
+    return text
+
+
+def debug_competitor(
+    competitor: Dict[str, Any],
+    messages: List[Dict[str, str]],
+    timeout: float,
+    verbose: bool = True,
+) -> Tuple[bool, str]:
+    name = competitor.get("name", "<unknown>")
+    api_base = competitor.get("api_base_url", "").rstrip("/")
+    request_format = competitor.get("request_format", {})
+    url_path = request_format.get("url", "/v1/chat/completions")
+    url = f"{api_base}{url_path}"
+
+    payload = build_payload(competitor, messages)
+
+    headers = {}
+    for key, value in request_format.get("headers", {}).items():
+        if isinstance(value, str):
+            headers[key] = value.format(api_key=competitor.get("api_key", ""))
+        else:
+            headers[key] = value
+
+    method = request_format.get("method", "POST").upper()
+
+    if verbose:
+        print(f"\n=== Testing {name} ===")
+        print(f"Sending {method} request to {url}")
+
+    try:
+        response = requests.request(
+            method=method,
+            url=url,
+            headers=headers,
+            json=payload,
+            timeout=timeout,
+        )
+    except Exception as exc:  # requests raises many subclasses; keep it simple
+        summary = f"[ERROR] {name}: request failed: {exc}"
+        if verbose:
+            print(summary)
+        return False, summary
+
+    if verbose:
+        print(f"Status: {response.status_code}")
+
+    try:
+        response_json = response.json()
+    except ValueError:
+        if verbose:
+            print("Raw response:")
+            print(response.text)
+        snippet = format_detail(response.text, limit=500)
+        summary = (
+            f"[ERROR] {name}: invalid JSON response (HTTP {response.status_code}). "
+            f"Raw: {snippet}"
+        )
+        if verbose:
+            print(summary)
+        return False, summary
+
+    response_format = competitor.get("response_format", {})
+    response_path = response_format.get("response_path", "choices[0].message.content")
+    error_path = response_format.get("error_path")
+    content = dig_value(response_json, response_path)
+    error_message = dig_value(response_json, error_path) if error_path else None
+
+    if verbose:
+        print("Raw JSON response:")
+        print(json.dumps(response_json, indent=2, ensure_ascii=False))
+        print("\nExtracted content:")
+        print(content)
+
+    issues: List[str] = []
+    if response.status_code >= 400:
+        issues.append(f"HTTP {response.status_code}")
+    if error_message:
+        detail = format_detail(error_message)
+        issues.append(f"error at '{error_path}': {detail}")
+    if content in (None, ""):
+        issues.append(f"no content at '{response_path}'")
+
+    if issues:
+        summary = f"[ERROR] {name}: " + "; ".join(issues)
+    else:
+        summary = f"[OK] {name}: HTTP {response.status_code}"
+
+    if verbose:
+        print(summary)
+
+    return not issues, summary
+
+
+def build_messages(system_prompt: str, user_prompt: str) -> List[Dict[str, str]]:
+    messages: List[Dict[str, str]] = []
+    if system_prompt:
+        messages.append({"role": "system", "content": system_prompt})
+    messages.append({"role": "user", "content": user_prompt})
+    return messages
+
+
+def main() -> None:
+    args = parse_args()
+    system_prompt = args.system.strip()
+    messages = build_messages(system_prompt, args.prompt)
+
+    if args.all:
+        config_path = Path("config/8llm.json")
+        competitors = load_competitors(config_path)
+        successes = 0
+        failures = 0
+        for competitor in competitors:
+            success, summary = debug_competitor(
+                competitor, messages, args.timeout, verbose=False
+            )
+            print(summary)
+            if success:
+                successes += 1
+            else:
+                failures += 1
+        print(
+            f"\nFinished testing {len(competitors)} competitors: "
+            f"{successes} OK, {failures} failed."
+        )
+        return
+
+    config_path = Path(args.competitors_config)
+    competitor = load_competitor(config_path, args.competitor_name)
+    debug_competitor(competitor, messages, args.timeout, verbose=True)
+
+
+def dig_value(data: Any, path: str, default: Any = None) -> Any:
+    """Traverse dotted/array paths like choices[0].message.content."""
+    current = data
+    for segment in path.replace("/", ".").split("."):
+        if not segment:
+            continue
+        if "[" in segment and segment.endswith("]"):
+            key, index_text = segment[:-1].split("[", 1)
+            if isinstance(current, dict):
+                current = current.get(key, default)
+            else:
+                return default
+            try:
+                index = int(index_text)
+                current = current[index]
+            except (ValueError, IndexError, TypeError):
+                return default
+        else:
+            if isinstance(current, dict):
+                current = current.get(segment, default)
+            else:
+                return default
+    return current
+
+
+if __name__ == "__main__":
+    main()

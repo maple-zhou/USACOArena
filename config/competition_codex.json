@@ -1,1 +1,108 @@
-ewogICJhcGlfYmFzZSI6ICJodHRwOi8vbG9jYWxob3N0OjUwMDAiLAogICJjb21wZXRpdGlvbl90aXRsZSI6ICJQcm9ncmFtbWluZyBDb21wZXRpdGlvbiAyMDI1IiwKICAiY29tcGV0aXRpb25fZGVzY3JpcHRpb24iOiAiQSBjb21wZXRpdGlvbiB0byB0ZXN0IGNvZGluZyBhYmlsaXRpZXMgaW4gc29sdmluZyBwcm9ncmFtbWluZyBwcm9ibGVtcyIsCiAgImxvZyI6IHsKICAgICJsZXZlbCI6ICJJTkZPIiwKICAgICJkaXIiOiAibG9ncy9ydW5fbG9ncyIsCiAgICAiZW5hYmxlX2NvbG9ycyI6IHRydWUKICB9LAogICJtYXhfdG9rZW5zX3Blcl9wYXJ0aWNpcGFudCI6IDFlOSwKICAiYXBpX2NvbmZpZyI6IHsKICAgICJtYXhfcmV0cmllcyI6IDIwLAogICAgInJldHJ5X2RlbGF5IjogNjAKICB9LAogICJydWxlcyI6IHsKICAgICJzY29yaW5nIjogewogICAgICAiYnJvbnplIjogMSwKICAgICAgInNpbHZlciI6IDIsCiAgICAgICJnb2xkIjogNSwKICAgICAgInBsYXRpbnVtIjogMTAKICAgIH0sCiAgICAiYm9udXNfZm9yX2ZpcnN0X2FjIjogMCwKICAgICJwZW5hbHRpZXMiOiB7CiAgICAgICJBQyI6IDAsCiAgICAgICJXQSI6IDEwMCwKICAgICAgIlJFIjogMTAwLAogICAgICAiQ0UiOiAxMDAsCiAgICAgICJUTEUiOiAxMDAsCiAgICAgICJNTEUiOiAxMDAKICAgIH0sCiAgICAiaGludF90b2tlbnMiOiB7CiAgICAgICJsZXZlbF8wIjogNTAwLAogICAgICAibGV2ZWxfMSI6IDEwMDAsCiAgICAgICJsZXZlbF8yIjogMTAwMCwKICAgICAgImxldmVsXzMiOiAxNTAwLAogICAgICAibGV2ZWxfNCI6IDE1MDAKICAgIH0sCiAgICAic3VibWlzc2lvbl90b2tlbnMiOiB7CiAgICAgICJBQyI6IDAsCiAgICAgICJXQSI6IDAsCiAgICAgICJSRSI6IDAsCiAgICAgICJDRSI6IDAsCiAgICAgICJUTEUiOiAwLAogICAgICAiTUxFIjogMAogICAgfSwKICAgICJ0ZXN0X3Rva2VucyI6IHsKICAgICAgImRlZmF1bHQiOiAxMCwKICAgICAgInBlcl90ZXN0X2Nhc2UiOiAwLAogICAgICAibGFuZ3VhZ2VfbXVsdGlwbGllcnMiOiB7CiAgICAgICAgImNwcCI6IDEuMCwKICAgICAgICAiamF2YSI6IDEuMCwKICAgICAgICAicHl0aG9uIjogMS4wCiAgICAgIH0KICAgIH0sCiAgICAibGFtYmRhIjogMTAwLAogICAgImRlbGl2ZXJ5X3RpbWVfbXVsdGlwbGllciI6IDEwMDAuMCwKICAgICJlcnJvcl9wcm9wYWdhdGlvbiI6IHsKICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAiZGVzY3JpcHRpb24iOiAiV2hlbiBlbmFibGVkLCBpZiBhbnkgcGFydGljaXBhbnQgZW5jb3VudGVycyBhbiBlcnJvciBhbmQgaXMgdGVybWluYXRlZCwgYWxsIG90aGVyIHBhcnRpY2lwYW50cyB3aWxsIGFsc28gYmUgdGVybWluYXRlZCB3aXRoIHRoZSBlcnJvciByZWFzb24iCiAgICB9LAogICAgImlucHV0X3Rva2VuX211bHRpcGxpZXJzIjogewogICAgICAicXdlbjMtMjM1YiI6IDAuNywKICAgICAgInF3ZW4zLWNvZGVyLTQ4MGIiOiAxLjUsCiAgICAgICJnZW1pbmktMi41LXBybyI6IDEuMjUsCiAgICAgICJnZW1pbmktMi41LWZsYXNoIjogMC4zLAogICAgICAiZGVlcHNlZWstdjMiOiAwLjI3LAogICAgICAiZGVlcHNlZWstdjMuMSI6IDAuMjcsCiAgICAgICJkZWVwc2Vlay1yMSI6IDAuNTUsCiAgICAgICJraW1pLWsyLTA5MDUiOiAxLAogICAgICAiZ3B0LTRvIjogNSwKICAgICAgImdwdC00LjEiOiAyLAogICAgICAiZ3B0LTQuMS1taW5pIjogMC40LAogICAgICAiZ3B0LTQuMS1uYW5vIjogMC4xLAogICAgICAiZ3B0LTUiOiAxLjI1LAogICAgICAiZ3B0LTUtMjAyNS0wOC0wNyI6IDEuMjUsCiAgICAgICJncHQtNS1jb2RleCI6IDEuMjUsCiAgICAgICJncHQtNS4xLWNvZGV4IjogMS4yNSwKICAgICAgImdwdC01LjItY29kZXgiOiAxLjc1LAogICAgICAiZ3B0LTUuMy1jb2RleCI6IDEuNzUsCiAgICAgICJjbGF1ZGUtc29ubmV0LTQtMjAyNTA1MTQiOiAzLAogICAgICAic3RlcC0zIjogMC4yNywKICAgICAgImdsbS00LjUiOiAwLjU5CiAgICB9LAogICAgIm91dHB1dF90b2tlbl9tdWx0aXBsaWVycyI6IHsKICAgICAgInF3ZW4zLTIzNWIiOiAyLjgsCiAgICAgICJxd2VuMy1jb2Rlci00ODBiIjogNy41LAogICAgICAiZ2VtaW5pLTIuNS1wcm8iOiAxMCwKICAgICAgImdlbWluaS0yLjUtZmxhc2giOiAyLjUsCiAgICAgICJkZWVwc2Vlay12MyI6IDEuMSwKICAgICAgImRlZXBzZWVrLXYzLjEiOiAxLjEsCiAgICAgICJkZWVwc2Vlay1yMSI6IDIuMTksCiAgICAgICJraW1pLWsyLTA5MDUiOiAyLjc1LAogICAgICAiZ3B0LTRvIjogMTUsCiAgICAgICJncHQtNC4xIjogOCwKICAgICAgImdwdC00LjEtbWluaSI6IDEuNiwKICAgICAgImdwdC00LjEtbmFubyI6IDAuNCwKICAgICAgImdwdC01IjogMTAsCiAgICAgICJncHQtNS0yMDI1LTA4LTA3IjogMTAsCiAgICAgICJncHQtNS1jb2RleCI6IDEwLAogICAgICAiZ3B0LTUuMS1jb2RleCI6IDEwLAogICAgICAiZ3B0LTUuMi1jb2RleCI6IDE0LAogICAgICAiZ3B0LTUuMy1jb2RleCI6IDE0LAogICAgICAiY2xhdWRlLXNvbm5ldC00LTIwMjUwNTE0IjogMTUsCiAgICAgICJzdGVwLTMiOiAxLAogICAgICAiZ2xtLTQuNSI6IDIuMTkKICAgIH0KICB9Cn0K
+{
+  "api_base": "http://localhost:5000",
+  "competition_title": "Programming Competition 2025",
+  "competition_description": "A competition to test coding abilities in solving programming problems",
+  "log": {
+    "level": "INFO",
+    "dir": "logs/run_logs",
+    "enable_colors": true
+  },
+  "max_tokens_per_participant": 1e9,
+  "api_config": {
+    "max_retries": 20,
+    "retry_delay": 60
+  },
+  "rules": {
+    "scoring": {
+      "bronze": 1,
+      "silver": 2,
+      "gold": 5,
+      "platinum": 10
+    },
+    "bonus_for_first_ac": 0,
+    "penalties": {
+      "AC": 0,
+      "WA": 100,
+      "RE": 100,
+      "CE": 100,
+      "TLE": 100,
+      "MLE": 100
+    },
+    "hint_tokens": {
+      "level_0": 500,
+      "level_1": 1000,
+      "level_2": 1000,
+      "level_3": 1500,
+      "level_4": 1500
+    },
+    "submission_tokens": {
+      "AC": 0,
+      "WA": 0,
+      "RE": 0,
+      "CE": 0,
+      "TLE": 0,
+      "MLE": 0
+    },
+    "test_tokens": {
+      "default": 10,
+      "per_test_case": 0,
+      "language_multipliers": {
+        "cpp": 1.0,
+        "java": 1.0,
+        "python": 1.0
+      }
+    },
+    "lambda": 100,
+    "delivery_time_multiplier": 1000.0,
+    "error_propagation": {
+      "enabled": true,
+      "description": "When enabled, if any participant encounters an error and is terminated, all other participants will also be terminated with the error reason"
+    },
+    "input_token_multipliers": {
+      "qwen3-235b": 0.7,
+      "qwen3-coder-480b": 1.5,
+      "gemini-2.5-pro": 1.25,
+      "gemini-2.5-flash": 0.3,
+      "deepseek-v3": 0.27,
+      "deepseek-v3.1": 0.27,
+      "deepseek-r1": 0.55,
+      "kimi-k2-0905": 1,
+      "gpt-4o": 5,
+      "gpt-4.1": 2,
+      "gpt-4.1-mini": 0.4,
+      "gpt-4.1-nano": 0.1,
+      "gpt-5": 1.25,
+      "gpt-5-2025-08-07": 1.25,
+      "gpt-5-codex": 1.25,
+      "gpt-5.1-codex": 1.25,
+      "gpt-5.2-codex": 1.75,
+      "gpt-5.3-codex": 1.75,
+      "claude-sonnet-4-20250514": 3,
+      "step-3": 0.27,
+      "glm-4.5": 0.59
+    },
+    "output_token_multipliers": {
+      "qwen3-235b": 2.8,
+      "qwen3-coder-480b": 7.5,
+      "gemini-2.5-pro": 10,
+      "gemini-2.5-flash": 2.5,
+      "deepseek-v3": 1.1,
+      "deepseek-v3.1": 1.1,
+      "deepseek-r1": 2.19,
+      "kimi-k2-0905": 2.75,
+      "gpt-4o": 15,
+      "gpt-4.1": 8,
+      "gpt-4.1-mini": 1.6,
+      "gpt-4.1-nano": 0.4,
+      "gpt-5": 10,
+      "gpt-5-2025-08-07": 10,
+      "gpt-5-codex": 10,
+      "gpt-5.1-codex": 10,
+      "gpt-5.2-codex": 14,
+      "gpt-5.3-codex": 14,
+      "claude-sonnet-4-20250514": 15,
+      "step-3": 1,
+      "glm-4.5": 2.19
+    }
+  }
+}

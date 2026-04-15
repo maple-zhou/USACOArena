@@ -1,1 +1,178 @@
-IiIiCkFnZW50IGJhc2UgY2xhc3MgZm9yIFVTQUNPQXJlbmEgcGxhdGZvcm0uCgpUaGlzIG1vZHVsZSBjb250YWlucyB0aGUgQWdlbnQgYWJzdHJhY3QgYmFzZSBjbGFzcyB0aGF0IGRlZmluZXMgdGhlIGludGVyZmFjZQpmb3IgYWxsIExMTSBhZ2VudHMgcGFydGljaXBhdGluZyBpbiBwcm9ncmFtbWluZyBjb21wZXRpdGlvbnMuCiIiIgoKZnJvbSBhYmMgaW1wb3J0IEFCQywgYWJzdHJhY3RtZXRob2QKZnJvbSB0eXBpbmcgaW1wb3J0IERpY3QsIExpc3QsIE9wdGlvbmFsLCBBbnkKaW1wb3J0IGpzb24KaW1wb3J0IG9zCmltcG9ydCB0aW1lCmZyb20gZGF0ZXRpbWUgaW1wb3J0IGRhdGV0aW1lCmZyb20gdXNhY29hcmVuYS51dGlscy5sb2dnZXJfY29uZmlnIGltcG9ydCBnZXRfbG9nZ2VyLCBnZXRfY29udmVyc2F0aW9uX2xvZ2dlcgoKbG9nZ2VyID0gZ2V0X2xvZ2dlcigiYWdlbnQiKQoKCmNsYXNzIEFnZW50KEFCQyk6CiAgICAiIiIKICAgIEFic3RyYWN0IGJhc2UgY2xhc3MgZm9yIExMTSBhZ2VudHMgaW4gcHJvZ3JhbW1pbmcgY29tcGV0aXRpb25zLgogICAgCiAgICBUaGlzIGNsYXNzIHByb3ZpZGVzIHRoZSBmb3VuZGF0aW9uIGZvciBhbGwgYWdlbnQgaW1wbGVtZW50YXRpb25zLCBoYW5kbGluZzoKICAgIC0gQ29udmVyc2F0aW9uIGhpc3RvcnkgbWFuYWdlbWVudAogICAgLSBQcm9tcHQgZ2VuZXJhdGlvbiBhbmQgcmVzcG9uc2UgcGFyc2luZwogICAgLSBMb2dnaW5nIGFuZCBzZXNzaW9uIG1hbmFnZW1lbnQKICAgIC0gQVBJIGNvbmZpZ3VyYXRpb24gbG9hZGluZwogICAgCiAgICBTdWJjbGFzc2VzIG11c3QgaW1wbGVtZW50IHRoZSBnZW5lcmF0ZV9yZXNwb25zZSBtZXRob2QgdG8gaGFuZGxlCiAgICBjb21tdW5pY2F0aW9uIHdpdGggc3BlY2lmaWMgTExNIHByb3ZpZGVycy4KICAgICIiIgogICAgCiAgICBkZWYgX19pbml0X18oCiAgICAgICAgc2VsZiwKICAgICAgICBuYW1lOiBzdHIsCiAgICAgICAgcHJvbXB0X2NvbmZpZ19wYXRoOiBPcHRpb25hbFtzdHJdID0gTm9uZSwKICAgICAgICBsb2dfZGlyOiBzdHIgPSAibG9ncyIsCiAgICAgICAgc2Vzc2lvbl9pZDogT3B0aW9uYWxbc3RyXSA9IE5vbmUKICAgICk6CiAgICAgICAgIiIiCiAgICAgICAgSW5pdGlhbGl6ZSB0aGUgYWdlbnQgYmFzZSBjbGFzcwogICAgICAgIAogICAgICAgIEFyZ3M6CiAgICAgICAgICAgIG5hbWU6IEFnZW50IG5hbWUKICAgICAgICAgICAgcHJvbXB0X2NvbmZpZ19wYXRoOiBQYXRoIHRvIHByb21wdCBjb25maWd1cmF0aW9uIGZpbGUKICAgICAgICAgICAgbG9nX2RpcjogRGlyZWN0b3J5IGZvciBjb252ZXJzYXRpb24gbG9ncwogICAgICAgICAgICBzZXNzaW9uX2lkOiBPcHRpb25hbCBzZXNzaW9uIGlkZW50aWZpZXIKICAgICAgICAiIiIKICAgICAgICBzZWxmLl9uYW1lID0gbmFtZQogICAgICAgIHNlbGYucHJvbXB0X2NvbmZpZ19wYXRoID0gcHJvbXB0X2NvbmZpZ19wYXRoCiAgICAgICAgc2VsZi5sb2dfZGlyID0gbG9nX2RpcgogICAgICAgIHNlbGYuc2Vzc2lvbl9pZCA9IHNlc3Npb25faWQgb3IgZGF0ZXRpbWUubm93KCkuc3RyZnRpbWUoIiVZJW0lZF8lSCVNJVMiKQogICAgICAgIAogICAgICAgICMgSW5pdGlhbGl6ZSBjb252ZXJzYXRpb24gbG9nZ2VyCiAgICAgICAgc2VsZi5jb252ZXJzYXRpb25fbG9nZ2VyID0gZ2V0X2NvbnZlcnNhdGlvbl9sb2dnZXIobG9nX2Rpcj1sb2dfZGlyKQogICAgICAgIAogICAgICAgICMgTG9hZCBwcm9tcHQgc3lzdGVtIGFuZCBhY3Rpb24gcGFyc2VyCiAgICAgICAgaWYgcHJvbXB0X2NvbmZpZ19wYXRoOgogICAgICAgICAgICBmcm9tIGFnZW50cy5zaW5nbGVfYWdlbnQucHJvbXB0cy5wcm9tcHRfbWFuYWdlciBpbXBvcnQgUHJvbXB0U3lzdGVtLCBBY3Rpb25QYXJzZXIKICAgICAgICAgICAgc2VsZi5wcm9tcHRfc3lzdGVtID0gUHJvbXB0U3lzdGVtKHByb21wdF9jb25maWdfcGF0aCkKICAgICAgICAgICAgc2VsZi5hY3Rpb25fcGFyc2VyID0gQWN0aW9uUGFyc2VyKHByb21wdF9jb25maWdfcGF0aCkKICAgICAgICBlbHNlOgogICAgICAgICAgICBzZWxmLnByb21wdF9zeXN0ZW0gPSBOb25lCiAgICAgICAgICAgIHNlbGYuYWN0aW9uX3BhcnNlciA9IE5vbmUKICAgICAgICAKICAgICAgICAjIEFQSSBjb25maWd1cmF0aW9uCiAgICAgICAgc2VsZi5tYXhfcmV0cmllcyA9IDMwMDAwCiAgICAgICAgc2VsZi5yZXRyeV9kZWxheSA9IDE1CiAgICAgICAgCiAgICAgICAgIyBMb2FkIEFQSSBjb25maWd1cmF0aW9uCiAgICAgICAgc2VsZi5tYXhfdG9rZW5zLCBzZWxmLnRva2VuX211bHRpcGxpZXIgPSBzZWxmLl9sb2FkX2FwaV9jb25maWcoKQogICAgICAgIAogICAgICAgICMgQ29udmVyc2F0aW9uIGhpc3RvcnkKICAgICAgICBzZWxmLmNvbnZlcnNhdGlvbl9oaXN0b3J5OiBMaXN0W0RpY3Rbc3RyLCBzdHJdXSA9IFtdCiAgICAgICAgc2VsZi5jb252ZXJzYXRpb25faGlzdG9yeS5hcHBlbmQoeyJyb2xlIjogInN5c3RlbSIsICJjb250ZW50Ijogc2VsZi5wcm9tcHRfc3lzdGVtLnN5c3RlbV9wcm9tcHR9KQogICAgICAgIHNlbGYuc2F2ZV9jb252ZXJzYXRpb24oKQogICAgICAgIAogICAgICAgIGxvZ2dlci5pbmZvKGYiSW5pdGlhbGl6ZWQgYWdlbnQ6IHtuYW1lfSIpCiAgICAKICAgIEBwcm9wZXJ0eQogICAgQGFic3RyYWN0bWV0aG9kCiAgICBkZWYgbmFtZShzZWxmKSAtPiBzdHI6CiAgICAgICAgIiIiR2V0IHRoZSBhZ2VudCBuYW1lIiIiCiAgICAgICAgcGFzcwogICAgCiAgICBAcHJvcGVydHkgCiAgICBAYWJzdHJhY3RtZXRob2QKICAgIGRlZiBhcGlfYmFzZV91cmwoc2VsZikgLT4gc3RyOgogICAgICAgICIiIkdldCB0aGUgQVBJIGJhc2UgVVJMIiIiCiAgICAgICAgcGFzcwogICAgCiAgICBAcHJvcGVydHkKICAgIEBhYnN0cmFjdG1ldGhvZAogICAgZGVmIGFwaV9rZXkoc2VsZikgLT4gc3RyOgogICAgICAgICIiIkdldCB0aGUgQVBJIGtleSIiIgogICAgICAgIHBhc3MKICAgIAogICAgQGFic3RyYWN0bWV0aG9kCiAgICBhc3luYyBkZWYgcHJvY2VzcyhzZWxmLCBzdGF0ZTogRGljdFtzdHIsIEFueV0pIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgICIiIlByb2Nlc3MgdGhlIGN1cnJlbnQgc3RhdGUgYW5kIHJldHVybiBhY3Rpb25zIiIiCiAgICAgICAgcGFzcwogICAgCiAgICBAYWJzdHJhY3RtZXRob2QKICAgIGFzeW5jIGRlZiBnZW5lcmF0ZV9yZXNwb25zZShzZWxmLCBzdGF0ZTogRGljdFtzdHIsIEFueV0sIHByb21wdDogc3RyKSAtPiBzdHI6CiAgICAgICAgIiIiR2VuZXJhdGUgcmVzcG9uc2UgZnJvbSBMTE0iIiIKICAgICAgICBwYXNzCiAgICAKICAgIGRlZiBfbG9hZF9hcGlfY29uZmlnKHNlbGYpIC0+IHR1cGxlW2ludCwgaW50XToKICAgICAgICAiIiJMb2FkIEFQSSBjb25maWd1cmF0aW9uIGZyb20gY29uZmlnIGZpbGUiIiIKICAgICAgICB0cnk6CiAgICAgICAgICAgIGNvbmZpZ19wYXRoID0gImNvbmZpZy9hcGlfY29uZmlnLmpzb24iCiAgICAgICAgICAgIGlmIG9zLnBhdGguZXhpc3RzKGNvbmZpZ19wYXRoKToKICAgICAgICAgICAgICAgIHdpdGggb3Blbihjb25maWdfcGF0aCwgJ3InKSBhcyBmOgogICAgICAgICAgICAgICAgICAgIGNvbmZpZyA9IGpzb24ubG9hZChmKQogICAgICAgICAgICAgICAgcmV0dXJuIGNvbmZpZy5nZXQoIm1heF90b2tlbnMiLCAxMDAwMDApLCBjb25maWcuZ2V0KCJ0b2tlbl9tdWx0aXBsaWVyIiwgMSkKICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIGxvZ2dlci53YXJuaW5nKGYiQVBJIGNvbmZpZyBmaWxlIG5vdCBmb3VuZDoge2NvbmZpZ19wYXRofSIpCiAgICAgICAgICAgICAgICByZXR1cm4gMTAwMDAwLCAxCiAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOgogICAgICAgICAgICBsb2dnZXIuZXJyb3IoZiJFcnJvciBsb2FkaW5nIEFQSSBjb25maWc6IHtlfSIpCiAgICAgICAgICAgIHJldHVybiAxMDAwMDAsIDEKICAgIAogICAgZGVmIHRydW5jYXRlX2NvbnZlcnNhdGlvbl9oaXN0b3J5KHNlbGYsIG1heF90dXJuczogaW50ID0gOCkgLT4gTm9uZToKICAgICAgICAiIiIKICAgICAgICBUcnVuY2F0ZSBjb252ZXJzYXRpb24gaGlzdG9yeSB0byBwcmV2ZW50IHRva2VuIG92ZXJmbG93CiAgICAgICAgCiAgICAgICAgQXJnczoKICAgICAgICAgICAgbWF4X3R1cm5zOiBNYXhpbXVtIG51bWJlciBvZiBjb252ZXJzYXRpb24gdHVybnMgdG8ga2VlcAogICAgICAgICIiIgogICAgICAgIGlmIGxlbihzZWxmLmNvbnZlcnNhdGlvbl9oaXN0b3J5KSA+IG1heF90dXJucyAqIDI6ICAjIEVhY2ggdHVybiBoYXMgdXNlciArIGFzc2lzdGFudAogICAgICAgICAgICAjIEtlZXAgdGhlIGZpcnN0IGFuZCBsYXN0IGZldyB0dXJucwogICAgICAgICAgICBrZWVwX3N0YXJ0ID0gbWF4X3R1cm5zIC8vIDIKICAgICAgICAgICAga2VlcF9lbmQgPSBtYXhfdHVybnMgLy8gMgogICAgICAgICAgICAKICAgICAgICAgICAgc3RhcnRfbWVzc2FnZXMgPSBzZWxmLmNvbnZlcnNhdGlvbl9oaXN0b3J5WzprZWVwX3N0YXJ0XQogICAgICAgICAgICBlbmRfbWVzc2FnZXMgPSBzZWxmLmNvbnZlcnNhdGlvbl9oaXN0b3J5Wy1rZWVwX2VuZDpdCiAgICAgICAgICAgIAogICAgICAgICAgICBzZWxmLmNvbnZlcnNhdGlvbl9oaXN0b3J5ID0gc3RhcnRfbWVzc2FnZXMgKyBlbmRfbWVzc2FnZXMKICAgICAgICAgICAgCiAgICAgICAgICAgIGxvZ2dlci5pbmZvKGYiVHJ1bmNhdGVkIGNvbnZlcnNhdGlvbiBoaXN0b3J5IHRvIHtsZW4oc2VsZi5jb252ZXJzYXRpb25faGlzdG9yeSl9IG1lc3NhZ2VzIikKCiAgICAjIGRlZiB0cnVuY2F0ZV9jb252ZXJzYXRpb25faGlzdG9yeShzZWxmLCBtYXhfdHVybnM6IGludCA9IDEpIC0+IE5vbmU6CiAgICAjICAgICAiIiIKICAgICMgICAgIFRydW5jYXRlIGNvbnZlcnNhdGlvbiBoaXN0b3J5IHRvIGtlZXAgb25seSB0aGUgbGFzdCBOIHR1cm5zLgogICAgICAgIAogICAgIyAgICAgQXJnczoKICAgICMgICAgICAgICBtYXhfdHVybnM6IE1heGltdW0gbnVtYmVyIG9mIGNvbnZlcnNhdGlvbiB0dXJucyB0byBrZWVwIGZyb20gdGhlIGVuZC4gCiAgICAjICAgICAgICAgICAgICAgICBGb3Iga2VlcGluZyBvbmx5IHRoZSBsYXN0IHR1cm4sIHRoaXMgc2hvdWxkIGJlIDEuCiAgICAjICAgICAiIiIKICAgICMgICAgICMg6K6h566X6ZyA6KaB5L+d55WZ55qE5pyA5aSn5raI5oGv5pWw77yIMei9riA9IDLmnaHmtojmga/vvIkKICAgICMgICAgIG1heF9tZXNzYWdlcyA9IDEKICAgICAgICAKICAgICMgICAgICMg5b2T5Y6G5Y+y5raI5oGv5pWw6YeP6LaF6L+H5LqG6K6+5a6a55qE5pyA5aSn5YC85pe2CiAgICAjICAgICBpZiBsZW4oc2VsZi5jb252ZXJzYXRpb25faGlzdG9yeSkgPiBtYXhfbWVzc2FnZXM6CiAgICAjICAgICAgICAgIyDnm7TmjqXmiKrlj5bliJfooajnmoTmnIDlkI4gbWF4X21lc3NhZ2VzIOS4quWFg+e0oAogICAgIyAgICAgICAgIHNlbGYuY29udmVyc2F0aW9uX2hpc3RvcnkgPSBzZWxmLmNvbnZlcnNhdGlvbl9oaXN0b3J5Wy1tYXhfbWVzc2FnZXM6XQogICAgIyAgICAgICAgICMgaW1wb3J0IGlwZGI7IGlwZGIuc2V0X3RyYWNlKCkKICAgICMgICAgICAgICBwcmludChsZW4oc2VsZi5jb252ZXJzYXRpb25faGlzdG9yeSkpCiAgICAjICAgICAgICAgbG9nZ2VyLmluZm8oZiJUcnVuY2F0ZWQgY29udmVyc2F0aW9uIGhpc3RvcnkgdG8ge2xlbihzZWxmLmNvbnZlcnNhdGlvbl9oaXN0b3J5KX0gbWVzc2FnZXMiKQogICAgCgogICAgCiAgICBkZWYgYWRkX3RvX2NvbnZlcnNhdGlvbihzZWxmLCByb2xlOiBzdHIsIGNvbnRlbnQ6IHN0cikgLT4gTm9uZToKICAgICAgICAiIiJBZGQgYSBtZXNzYWdlIHRvIHRoZSBjb252ZXJzYXRpb24gaGlzdG9yeSIiIgogICAgICAgIHNlbGYuY29udmVyc2F0aW9uX2hpc3RvcnkuYXBwZW5kKHsicm9sZSI6IHJvbGUsICJjb250ZW50IjogY29udGVudH0pCiAgICAKICAgIGRlZiBnZXRfY29udmVyc2F0aW9uX2hpc3Rvcnkoc2VsZikgLT4gTGlzdFtEaWN0XToKICAgICAgICAiIiJHZXQgdGhlIGN1cnJlbnQgY29udmVyc2F0aW9uIGhpc3RvcnkiIiIKICAgICAgICByZXR1cm4gc2VsZi5jb252ZXJzYXRpb25faGlzdG9yeS5jb3B5KCkKICAgIAogICAgZGVmIHNhdmVfY29udmVyc2F0aW9uKHNlbGYsIG1ldGFkYXRhOiBPcHRpb25hbFtEaWN0XSA9IE5vbmUpIC0+IHN0cjoKICAgICAgICAiIiJTYXZlIGNvbnZlcnNhdGlvbiB0byBsb2cgZmlsZSIiIgogICAgICAgIHJldHVybiBzZWxmLmNvbnZlcnNhdGlvbl9sb2dnZXIuc2F2ZV9jb252ZXJzYXRpb24oCiAgICAgICAgICAgIGFnZW50X25hbWU9c2VsZi5fbmFtZSwKICAgICAgICAgICAgY29udmVyc2F0aW9uX2hpc3Rvcnk9c2VsZi5jb252ZXJzYXRpb25faGlzdG9yeSwKICAgICAgICAgICAgc2Vzc2lvbl9pZD1zZWxmLnNlc3Npb25faWQsCiAgICAgICAgICAgIG1ldGFkYXRhPW1ldGFkYXRhCiAgICAgICAgKSAK
+"""
+Agent base class for USACOArena platform.
+
+This module contains the Agent abstract base class that defines the interface
+for all LLM agents participating in programming competitions.
+"""
+
+from abc import ABC, abstractmethod
+from typing import Dict, List, Optional, Any
+import json
+import os
+import time
+from datetime import datetime
+from usacoarena.utils.logger_config import get_logger, get_conversation_logger
+
+logger = get_logger("agent")
+
+
+class Agent(ABC):
+    """
+    Abstract base class for LLM agents in programming competitions.
+    
+    This class provides the foundation for all agent implementations, handling:
+    - Conversation history management
+    - Prompt generation and response parsing
+    - Logging and session management
+    - API configuration loading
+    
+    Subclasses must implement the generate_response method to handle
+    communication with specific LLM providers.
+    """
+    
+    def __init__(
+        self,
+        name: str,
+        prompt_config_path: Optional[str] = None,
+        log_dir: str = "logs",
+        session_id: Optional[str] = None
+    ):
+        """
+        Initialize the agent base class
+        
+        Args:
+            name: Agent name
+            prompt_config_path: Path to prompt configuration file
+            log_dir: Directory for conversation logs
+            session_id: Optional session identifier
+        """
+        self._name = name
+        self.prompt_config_path = prompt_config_path
+        self.log_dir = log_dir
+        self.session_id = session_id or datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        # Initialize conversation logger
+        self.conversation_logger = get_conversation_logger(log_dir=log_dir)
+        
+        # Load prompt system and action parser
+        if prompt_config_path:
+            from agents.single_agent.prompts.prompt_manager import PromptSystem, ActionParser
+            self.prompt_system = PromptSystem(prompt_config_path)
+            self.action_parser = ActionParser(prompt_config_path)
+        else:
+            self.prompt_system = None
+            self.action_parser = None
+        
+        # API configuration
+        self.max_retries = 30000
+        self.retry_delay = 15
+        
+        # Load API configuration
+        self.max_tokens, self.token_multiplier = self._load_api_config()
+        
+        # Conversation history
+        self.conversation_history: List[Dict[str, str]] = []
+        self.conversation_history.append({"role": "system", "content": self.prompt_system.system_prompt})
+        self.save_conversation()
+        
+        logger.info(f"Initialized agent: {name}")
+    
+    @property
+    @abstractmethod
+    def name(self) -> str:
+        """Get the agent name"""
+        pass
+    
+    @property 
+    @abstractmethod
+    def api_base_url(self) -> str:
+        """Get the API base URL"""
+        pass
+    
+    @property
+    @abstractmethod
+    def api_key(self) -> str:
+        """Get the API key"""
+        pass
+    
+    @abstractmethod
+    async def process(self, state: Dict[str, Any]) -> Dict[str, Any]:
+        """Process the current state and return actions"""
+        pass
+    
+    @abstractmethod
+    async def generate_response(self, state: Dict[str, Any], prompt: str) -> str:
+        """Generate response from LLM"""
+        pass
+    
+    def _load_api_config(self) -> tuple[int, int]:
+        """Load API configuration from config file"""
+        try:
+            config_path = "config/api_config.json"
+            if os.path.exists(config_path):
+                with open(config_path, 'r') as f:
+                    config = json.load(f)
+                return config.get("max_tokens", 100000), config.get("token_multiplier", 1)
+            else:
+                logger.warning(f"API config file not found: {config_path}")
+                return 100000, 1
+        except Exception as e:
+            logger.error(f"Error loading API config: {e}")
+            return 100000, 1
+    
+    def truncate_conversation_history(self, max_turns: int = 8) -> None:
+        """
+        Truncate conversation history to prevent token overflow
+        
+        Args:
+            max_turns: Maximum number of conversation turns to keep
+        """
+        if len(self.conversation_history) > max_turns * 2:  # Each turn has user + assistant
+            # Keep the first and last few turns
+            keep_start = max_turns // 2
+            keep_end = max_turns // 2
+            
+            start_messages = self.conversation_history[:keep_start]
+            end_messages = self.conversation_history[-keep_end:]
+            
+            self.conversation_history = start_messages + end_messages
+            
+            logger.info(f"Truncated conversation history to {len(self.conversation_history)} messages")
+
+    # def truncate_conversation_history(self, max_turns: int = 1) -> None:
+    #     """
+    #     Truncate conversation history to keep only the last N turns.
+        
+    #     Args:
+    #         max_turns: Maximum number of conversation turns to keep from the end. 
+    #                 For keeping only the last turn, this should be 1.
+    #     """
+    #     # 计算需要保留的最大消息数（1轮 = 2条消息）
+    #     max_messages = 1
+        
+    #     # 当历史消息数量超过了设定的最大值时
+    #     if len(self.conversation_history) > max_messages:
+    #         # 直接截取列表的最后 max_messages 个元素
+    #         self.conversation_history = self.conversation_history[-max_messages:]
+    #         # import ipdb; ipdb.set_trace()
+    #         print(len(self.conversation_history))
+    #         logger.info(f"Truncated conversation history to {len(self.conversation_history)} messages")
+    
+
+    
+    def add_to_conversation(self, role: str, content: str) -> None:
+        """Add a message to the conversation history"""
+        self.conversation_history.append({"role": role, "content": content})
+    
+    def get_conversation_history(self) -> List[Dict]:
+        """Get the current conversation history"""
+        return self.conversation_history.copy()
+    
+    def save_conversation(self, metadata: Optional[Dict] = None) -> str:
+        """Save conversation to log file"""
+        return self.conversation_logger.save_conversation(
+            agent_name=self._name,
+            conversation_history=self.conversation_history,
+            session_id=self.session_id,
+            metadata=metadata
+        ) 

@@ -1,1 +1,22 @@
-IiIiClVTQUNPQXJlbmEgLSBNdWx0aS1BZ2VudCBTeXN0ZW0gQ29tcGV0aXRpb24gRnJhbWV3b3JrCgpBIGhpZ2gtcGVyZm9ybWFuY2UgZnJhbWV3b3JrIGZvciBydW5uaW5nIHByb2dyYW1taW5nIGNvbXBldGl0aW9ucwpiZXR3ZWVuIEFJIGFnZW50cyB3aXRoIGFkdmFuY2VkIGFuYWx5dGljcyBhbmQgZXZhbHVhdGlvbiBjYXBhYmlsaXRpZXMuCiIiIgoKZnJvbSAubW9kZWxzLm1vZGVscyBpbXBvcnQgKAogICAgQ29tcGV0aXRpb24sIFBhcnRpY2lwYW50LCBQcm9ibGVtLCBTdWJtaXNzaW9uLCBDYXNlLCBUZXN0UmVzdWx0LAogICAgU3VibWlzc2lvblN0YXR1cywgTGV2ZWwsIGdlbmVyYXRlX2lkCikKZnJvbSAuZW5naW5lLnN0b3JhZ2UgaW1wb3J0IER1Y2tEQlN0b3JhZ2UKZnJvbSAuZW5naW5lLmp1ZGdlIGltcG9ydCBKdWRnZQpmcm9tIHNjcmlwdHMuY29tcGV0aXRvcnMgaW1wb3J0IENvbXBldGl0b3IKIyBmcm9tIC5lbmdpbmUuYWdlbnRfaW50ZXJmYWNlIGltcG9ydCBBZ2VudEludGVyZmFjZQoKX192ZXJzaW9uX18gPSAiMC4yLjAiCl9fYWxsX18gPSBbCiAgICAiQ29tcGV0aXRpb24iLCAiUGFydGljaXBhbnQiLCAiUHJvYmxlbSIsICJTdWJtaXNzaW9uIiwgIkNhc2UiLCAiVGVzdFJlc3VsdCIsCiAgICAiU3VibWlzc2lvblN0YXR1cyIsICJMZXZlbCIsICJnZW5lcmF0ZV9pZCIsCiAgICAiRHVja0RCU3RvcmFnZSIsICJKdWRnZSIsICJDb21wZXRpdG9yIgpdIAo=
+"""
+USACOArena - Multi-Agent System Competition Framework
+
+A high-performance framework for running programming competitions
+between AI agents with advanced analytics and evaluation capabilities.
+"""
+
+from .models.models import (
+    Competition, Participant, Problem, Submission, Case, TestResult,
+    SubmissionStatus, Level, generate_id
+)
+from .engine.storage import DuckDBStorage
+from .engine.judge import Judge
+from scripts.competitors import Competitor
+# from .engine.agent_interface import AgentInterface
+
+__version__ = "0.2.0"
+__all__ = [
+    "Competition", "Participant", "Problem", "Submission", "Case", "TestResult",
+    "SubmissionStatus", "Level", "generate_id",
+    "DuckDBStorage", "Judge", "Competitor"
+] 

@@ -1,1 +1,10 @@
-IiIiCkN1c3RvbSBwcm9tcHQgdGVtcGxhdGVzIGZvciBVU0FDT0FyZW5hIGFnZW50cy4KIApUaGlzIG1vZHVsZSBjb250YWlucyB1c2VyLWRlZmluZWQgcHJvbXB0IHRlbXBsYXRlcyBhbmQgc3RyYXRlZ2llcwpmb3IgZGlmZmVyZW50IHR5cGVzIG9mIHByb2dyYW1taW5nIHByb2JsZW1zIGFuZCBhZ2VudCBiZWhhdmlvcnMuCiIiIgoKZnJvbSAucHJvbXB0X21hbmFnZXIgaW1wb3J0IFByb21wdFN5c3RlbSwgQWN0aW9uUGFyc2VyCgpfX2FsbF9fID0gWyJQcm9tcHRTeXN0ZW0iLCAiQWN0aW9uUGFyc2VyIl0gCg==
+"""
+Custom prompt templates for USACOArena agents.
+ 
+This module contains user-defined prompt templates and strategies
+for different types of programming problems and agent behaviors.
+"""
+
+from .prompt_manager import PromptSystem, ActionParser
+
+__all__ = ["PromptSystem", "ActionParser"] 

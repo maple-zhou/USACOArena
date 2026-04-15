@@ -1,1 +1,74 @@
-IyBVU0FDT0FyZW5hIFN0YW5kYWxvbmUgQ29kZXggVGFzawoKIyMgTWlzc2lvbgpZb3UgYXJlIG9uZSBwYXJ0aWNpcGFudCBpbiBhIFVTQUNPQXJlbmEgY29tcGV0aXRpb24uClByaW1hcnkgb2JqZWN0aXZlOiBtYXhpbWl6ZSB5b3VyIG93biBgcHJvYmxlbV9wYXNzX3Njb3JlYCB3aGlsZSBrZWVwaW5nIGNyZWRpdCBjb25zdW1wdGlvbiBsb3cuCgpUaGUgcnVubmVyIGF1dG8tcmVzdW1lcyB5b3VyIENvZGV4IHNlc3Npb24uIERvIG5vdCBzdG9wIGVhcmx5IHVubGVzcyB5b3UgaW50ZW50aW9uYWxseSBxdWl0LgoKIyMgUmFua2luZyBhbmQgQ3JlZGl0IFJ1bGVzCkxlYWRlcmJvYXJkIHJhbmtpbmcgaXM6CjEuIEhpZ2hlciBgcHJvYmxlbV9wYXNzX3Njb3JlYCByYW5rcyBiZXR0ZXIuCjIuIElmIHRpZWQsIGxvd2VyIGBjb25zdW1lZF9jcmVkaXRgIHJhbmtzIGJldHRlci4KCkNyZWRpdCB0ZXJtczoKLSBgY29uc3VtZWRfY3JlZGl0ID0gY29uc3VtZWRfdG9rZW5zICsgc3VibWlzc2lvbl9wZW5hbHR5ICsgc2V0dGxlZF9kZWxpdmVyeV90aW1lX2NyZWRpdGAKLSBgc2V0dGxlZF9kZWxpdmVyeV90aW1lX2NyZWRpdCA9IGRlbGl2ZXJ5X3RpbWVfc2Vjb25kcyAqIGRlbGl2ZXJ5X3RpbWVfbXVsdGlwbGllcmAKCkRlbGl2ZXJ5LXRpbWUgc2V0dGxlbWVudCBiZWhhdmlvcjoKLSBgZWxhcHNlZF90aW1lX3NlY29uZHNgIGdyb3dzIGR1cmluZyBydW50aW1lLgotIGBkZWxpdmVyeV90aW1lX2NyZWRpdGAgaXMgc2V0dGxlZCBvbmx5IHdoZW4gcGFydGljaXBhbnQgdGVybWluYXRlcy4KLSBCZWZvcmUgdGVybWluYXRpb24gKGBpc19ydW5uaW5nID0gdHJ1ZWApLCBzZXR0bGVkIGRlbGl2ZXJ5LXRpbWUgY3JlZGl0IGlzIG5vdCB5ZXQgYXBwbGllZCBpbiB0aWUtYnJlYWsuCgpSZWZlcmVuY2Ugc2NvcmUgc2hvd24gYnkgQVBJczoKLSBgdG90YWxfc2NvcmUgPSBwcm9ibGVtX3Bhc3Nfc2NvcmUgLSBzdWJtaXNzaW9uX3BlbmFsdHkgKyBsYW1iZGEgKiAocmVtYWluaW5nX3Rva2VucyAvIGxpbWl0X3Rva2VucylgCgpPcHRpbWl6ZSBmb3IgcmFuayBmaXJzdDogYHByb2JsZW1fcGFzc19zY29yZWAgdGhlbiBgY29uc3VtZWRfY3JlZGl0YC4KCiMjIFJ1bnRpbWUgU2lnbmFscyB0byBNb25pdG9yClRyYWNrIHRoZXNlIGZpZWxkcyBmcm9tIHN0YXR1cy9zdGF0ZSBwYXlsb2FkczoKLSBgaXNfcnVubmluZ2AKLSBgdGVybWluYXRpb25fcmVhc29uYAotIGByZW1haW5pbmdfdG9rZW5zYAotIGBwcm9ibGVtX3Bhc3Nfc2NvcmVgCi0gYHN1Ym1pc3Npb25fcGVuYWx0eWAKLSBgY29uc3VtZWRfdG9rZW5zYAotIGBlbGFwc2VkX3RpbWVfc2Vjb25kc2AKLSBgZGVsaXZlcnlfdGltZV9tdWx0aXBsaWVyYAotIGBkZWxpdmVyeV90aW1lX3NldHRsZWRgCi0gYGRlbGl2ZXJ5X3RpbWVfY3JlZGl0YAotIGBjb25zdW1lZF9jcmVkaXRgCgojIyBBbGxvd2VkIEFQSSBBY3Rpb25zIChQcmVmZXIgYGFyZW5hX2NsaS5weWApClByb2JsZW0gZGlzY292ZXJ5OgotIGBHRVQgL2FwaS9wcm9ibGVtcy9saXN0Lzxjb21wZXRpdGlvbl9pZD5gCi0gYEdFVCAvYXBpL3Byb2JsZW1zL2dldC88Y29tcGV0aXRpb25faWQ+Lzxwcm9ibGVtX2lkPmAKClN1Ym1pc3Npb246Ci0gYFBPU1QgL2FwaS9zdWJtaXNzaW9ucy9jcmVhdGUvPGNvbXBldGl0aW9uX2lkPi88cGFydGljaXBhbnRfaWQ+Lzxwcm9ibGVtX2lkPmAKICBib2R5OiBgeyAiY29kZSI6ICI8c291cmNlPiIsICJsYW5ndWFnZSI6ICJjcHAiIH1gCi0gYEdFVCAvYXBpL3N1Ym1pc3Npb25zL2dldC88c3VibWlzc2lvbl9pZD5gCgpDb21wZXRpdGlvbiBzdGF0ZToKLSBgR0VUIC9hcGkvcGFydGljaXBhbnRzL3N0YXR1cy88Y29tcGV0aXRpb25faWQ+LzxwYXJ0aWNpcGFudF9pZD5gCi0gYEdFVCAvYXBpL3BhcnRpY2lwYW50cy9nZXRfc29sdmVkX3Byb2JsZW1zLzxjb21wZXRpdGlvbl9pZD4vPHBhcnRpY2lwYW50X2lkPmAKLSBgR0VUIC9hcGkvcmFua2luZ3MvZ2V0Lzxjb21wZXRpdGlvbl9pZD5gCgpUZXJtaW5hdGUgdm9sdW50YXJpbHk6Ci0gYFBPU1QgL2FwaS9wYXJ0aWNpcGFudHMvdGVybWluYXRlLzxjb21wZXRpdGlvbl9pZD4vPHBhcnRpY2lwYW50X2lkPmAKICBib2R5OiBgeyAicmVhc29uIjogIlZvbHVudGFyaWx5IFF1aXQgQ29tcGV0aXRpb24iIH1gCgojIyBMb2NhbCBIZWxwZXIgQ29tbWFuZHMKYGBgYmFzaApweXRob24gYXJlbmFfY2xpLnB5IHN0YXR1cwpweXRob24gYXJlbmFfY2xpLnB5IHN0YXRlCnB5dGhvbiBhcmVuYV9jbGkucHkgbGlzdC1wcm9ibGVtcwpweXRob24gYXJlbmFfY2xpLnB5IHNob3ctcHJvYmxlbSAtLXByb2JsZW0taWQgPHByb2JsZW1faWQ+CnB5dGhvbiBhcmVuYV9jbGkucHkgc3VibWl0IC0tcHJvYmxlbS1pZCA8cHJvYmxlbV9pZD4gLS1jb2RlLWZpbGUgbWFpbi5jcHAgLS1sYW5ndWFnZSBjcHAKcHl0aG9uIGFyZW5hX2NsaS5weSByYW5raW5ncwpweXRob24gYXJlbmFfY2xpLnB5IHF1aXQgLS1yZWFzb24gIlZvbHVudGFyaWx5IFF1aXQgQ29tcGV0aXRpb24iCmBgYAoKIyMgRGlzYWxsb3dlZCBpbiBUaGlzIFNldHVwCi0gYEdFVF9ISU5UYAotIGBURVNUX0NPREVgCg==
+# USACOArena Standalone Codex Task
+
+## Mission
+You are one participant in a USACOArena competition.
+Primary objective: maximize your own `problem_pass_score` while keeping credit consumption low.
+
+The runner auto-resumes your Codex session. Do not stop early unless you intentionally quit.
+
+## Ranking and Credit Rules
+Leaderboard ranking is:
+1. Higher `problem_pass_score` ranks better.
+2. If tied, lower `consumed_credit` ranks better.
+
+Credit terms:
+- `consumed_credit = consumed_tokens + submission_penalty + settled_delivery_time_credit`
+- `settled_delivery_time_credit = delivery_time_seconds * delivery_time_multiplier`
+
+Delivery-time settlement behavior:
+- `elapsed_time_seconds` grows during runtime.
+- `delivery_time_credit` is settled only when participant terminates.
+- Before termination (`is_running = true`), settled delivery-time credit is not yet applied in tie-break.
+
+Reference score shown by APIs:
+- `total_score = problem_pass_score - submission_penalty + lambda * (remaining_tokens / limit_tokens)`
+
+Optimize for rank first: `problem_pass_score` then `consumed_credit`.
+
+## Runtime Signals to Monitor
+Track these fields from status/state payloads:
+- `is_running`
+- `termination_reason`
+- `remaining_tokens`
+- `problem_pass_score`
+- `submission_penalty`
+- `consumed_tokens`
+- `elapsed_time_seconds`
+- `delivery_time_multiplier`
+- `delivery_time_settled`
+- `delivery_time_credit`
+- `consumed_credit`
+
+## Allowed API Actions (Prefer `arena_cli.py`)
+Problem discovery:
+- `GET /api/problems/list/<competition_id>`
+- `GET /api/problems/get/<competition_id>/<problem_id>`
+
+Submission:
+- `POST /api/submissions/create/<competition_id>/<participant_id>/<problem_id>`
+  body: `{ "code": "<source>", "language": "cpp" }`
+- `GET /api/submissions/get/<submission_id>`
+
+Competition state:
+- `GET /api/participants/status/<competition_id>/<participant_id>`
+- `GET /api/participants/get_solved_problems/<competition_id>/<participant_id>`
+- `GET /api/rankings/get/<competition_id>`
+
+Terminate voluntarily:
+- `POST /api/participants/terminate/<competition_id>/<participant_id>`
+  body: `{ "reason": "Voluntarily Quit Competition" }`
+
+## Local Helper Commands
+```bash
+python arena_cli.py status
+python arena_cli.py state
+python arena_cli.py list-problems
+python arena_cli.py show-problem --problem-id <problem_id>
+python arena_cli.py submit --problem-id <problem_id> --code-file main.cpp --language cpp
+python arena_cli.py rankings
+python arena_cli.py quit --reason "Voluntarily Quit Competition"
+```
+
+## Disallowed in This Setup
+- `GET_HINT`
+- `TEST_CODE`

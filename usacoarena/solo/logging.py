@@ -1,1 +1,161 @@
-IiIiTG9nZ2luZyB1dGlsaXRpZXMgZm9yIHNpbmdsZS1wcm9ibGVtIExMTSBydW5zLiIiIgoKZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IGpzb24KZnJvbSBkYXRhY2xhc3NlcyBpbXBvcnQgZGF0YWNsYXNzLCBhc2RpY3QKZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gdHlwaW5nIGltcG9ydCBPcHRpb25hbCwgRGljdCwgQW55LCBMaXN0Cgpmcm9tIHVzYWNvYXJlbmEudXRpbHMubG9nZ2VyX2NvbmZpZyBpbXBvcnQgZ2V0X2xvZ2dlcgoKbG9nZ2VyID0gZ2V0X2xvZ2dlcigic29sb19sb2dnZXIiKQoKCl9MQU5HVUFHRV9FWFQgPSB7CiAgICAiY3BwIjogIi5jcHAiLAogICAgImMrKyI6ICIuY3BwIiwKICAgICJweXRob24iOiAiLnB5IiwKICAgICJweSI6ICIucHkiLAogICAgImphdmEiOiAiLmphdmEiLAogICAgInJ1c3QiOiAiLnJzIiwKICAgICJnbyI6ICIuZ28iLAp9CgoKQGRhdGFjbGFzcwpjbGFzcyBBdHRlbXB0TG9nRW50cnk6CiAgICAiIiJEZXNjcmliZSBhIHNpbmdsZSBzdWJtaXNzaW9uIGF0dGVtcHQuIiIiCgogICAgYXR0ZW1wdDogaW50CiAgICBsYW5ndWFnZTogc3RyCiAgICBjb2RlOiBzdHIKICAgIHByb21wdF90b2tlbnM6IE9wdGlvbmFsW2ludF0KICAgIGNvbXBsZXRpb25fdG9rZW5zOiBPcHRpb25hbFtpbnRdCiAgICB0b3RhbF90b2tlbnM6IE9wdGlvbmFsW2ludF0KICAgIGp1ZGdlX3N0YXR1czogc3RyCiAgICBwYXNzZWRfY2FzZXM6IE9wdGlvbmFsW2ludF0KICAgIHRvdGFsX2Nhc2VzOiBPcHRpb25hbFtpbnRdCiAgICBlcnJvcl9tZXNzYWdlOiBPcHRpb25hbFtzdHJdCiAgICBwcm9tcHRfdG9rZW5zX2N1bXVsYXRpdmVfcHJvYmxlbTogaW50CiAgICBjb21wbGV0aW9uX3Rva2Vuc19jdW11bGF0aXZlX3Byb2JsZW06IGludAogICAgdG90YWxfdG9rZW5zX2N1bXVsYXRpdmVfcHJvYmxlbTogaW50CiAgICBwcm9tcHRfdG9rZW5zX2N1bXVsYXRpdmVfcnVuOiBpbnQKICAgIGNvbXBsZXRpb25fdG9rZW5zX2N1bXVsYXRpdmVfcnVuOiBpbnQKICAgIHRvdGFsX3Rva2Vuc19jdW11bGF0aXZlX3J1bjogaW50CiAgICB1c2FnZV9kZXRhaWxzOiBPcHRpb25hbFtEaWN0W3N0ciwgQW55XV0gPSBOb25lCgogICAgZGVmIHRvX2RpY3Qoc2VsZiwgY29kZV9wYXRoOiBzdHIpIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgIHBheWxvYWQgPSBhc2RpY3Qoc2VsZikKICAgICAgICBwYXlsb2FkWyJjb2RlX3BhdGgiXSA9IGNvZGVfcGF0aAogICAgICAgIHJldHVybiBwYXlsb2FkCgoKY2xhc3MgU29sb1J1bkxvZ2dlcjoKICAgICIiIk1hbmFnZSBsb2NhbCBsb2dnaW5nIGFydGlmYWN0cyBmb3IgYSBzaW5nbGUgcnVuLiIiIgoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBiYXNlX2RpcjogUGF0aCkgLT4gTm9uZToKICAgICAgICBzZWxmLmJhc2VfZGlyID0gYmFzZV9kaXIKICAgICAgICBzZWxmLmJhc2VfZGlyLm1rZGlyKHBhcmVudHM9VHJ1ZSwgZXhpc3Rfb2s9VHJ1ZSkKICAgICAgICBzZWxmLmNvZGVfZGlyID0gc2VsZi5iYXNlX2RpciAvICJjb2RlIgogICAgICAgIHNlbGYuY29kZV9kaXIubWtkaXIoZXhpc3Rfb2s9VHJ1ZSkKICAgICAgICBzZWxmLl9qc29ubF9wYXRoID0gc2VsZi5iYXNlX2RpciAvICJhdHRlbXB0cy5qc29ubCIKICAgICAgICBzZWxmLl9tYXJrZG93bl9wYXRoID0gc2VsZi5iYXNlX2RpciAvICJhdHRlbXB0cy5tZCIKICAgICAgICBzZWxmLl9ydW5fbWV0YV9wYXRoID0gc2VsZi5iYXNlX2RpciAvICJydW4uanNvbiIKICAgICAgICBzZWxmLl9jb252ZXJzYXRpb25fZGlyID0gc2VsZi5iYXNlX2RpciAvICJjb252ZXJzYXRpb25zIgogICAgICAgIHNlbGYuX2NvbnZlcnNhdGlvbl9kaXIubWtkaXIoZXhpc3Rfb2s9VHJ1ZSkKICAgICAgICBzZWxmLl9pbml0X21hcmtkb3duKCkKCiAgICBkZWYgX2luaXRfbWFya2Rvd24oc2VsZikgLT4gTm9uZToKICAgICAgICBpZiBub3Qgc2VsZi5fbWFya2Rvd25fcGF0aC5leGlzdHMoKToKICAgICAgICAgICAgaGVhZGVyID0gWwogICAgICAgICAgICAgICAgIiMgTExNIFNpbmdsZS1Qcm9ibGVtIFJ1biBMb2ciLAogICAgICAgICAgICAgICAgZiJHZW5lcmF0ZWQgYXQ6IHtkYXRldGltZS5ub3coKS5pc29mb3JtYXQodGltZXNwZWM9J3NlY29uZHMnKX0iLAogICAgICAgICAgICAgICAgIiIsCiAgICAgICAgICAgIF0KICAgICAgICAgICAgc2VsZi5fbWFya2Rvd25fcGF0aC53cml0ZV90ZXh0KCJcbiIuam9pbihoZWFkZXIpLCBlbmNvZGluZz0idXRmLTgiKQoKICAgIGRlZiBzdGFydF9ydW4oc2VsZiwgbWV0YWRhdGE6IERpY3Rbc3RyLCBBbnldKSAtPiBOb25lOgogICAgICAgICIiIlBlcnNpc3QgcnVuIG1ldGFkYXRhIHRvIGRpc2suIiIiCiAgICAgICAgcGF5bG9hZCA9IHsKICAgICAgICAgICAgInN0YXR1cyI6ICJydW5uaW5nIiwKICAgICAgICAgICAgInN0YXJ0ZWRfYXQiOiBkYXRldGltZS5ub3coKS5pc29mb3JtYXQodGltZXNwZWM9InNlY29uZHMiKSwKICAgICAgICAgICAgKiptZXRhZGF0YSwKICAgICAgICB9CiAgICAgICAgc2VsZi5fcnVuX21ldGFfcGF0aC53cml0ZV90ZXh0KGpzb24uZHVtcHMocGF5bG9hZCwgaW5kZW50PTIsIGVuc3VyZV9hc2NpaT1GYWxzZSksIGVuY29kaW5nPSJ1dGYtOCIpCgogICAgZGVmIF9jb2RlX2V4dGVuc2lvbihzZWxmLCBsYW5ndWFnZTogc3RyKSAtPiBzdHI6CiAgICAgICAgcmV0dXJuIF9MQU5HVUFHRV9FWFQuZ2V0KGxhbmd1YWdlLmxvd2VyKCksICIudHh0IikKCiAgICBkZWYgbG9nX2F0dGVtcHQoCiAgICAgICAgc2VsZiwKICAgICAgICBlbnRyeTogQXR0ZW1wdExvZ0VudHJ5LAogICAgICAgIG1lc3NhZ2VzOiBPcHRpb25hbFtMaXN0W0RpY3Rbc3RyLCBzdHJdXV0gPSBOb25lLAogICAgKSAtPiBQYXRoOgogICAgICAgICIiIlJlY29yZCBhbiBhdHRlbXB0IGFuZCByZXR1cm4gdGhlIGVtaXR0ZWQgY29kZSBwYXRoLiIiIgogICAgICAgIGNvZGVfcGF0aCA9IHNlbGYuY29kZV9kaXIgLyBmImF0dGVtcHRfe2VudHJ5LmF0dGVtcHR9e3NlbGYuX2NvZGVfZXh0ZW5zaW9uKGVudHJ5Lmxhbmd1YWdlKX0iCiAgICAgICAgY29kZV9wYXRoLndyaXRlX3RleHQoZW50cnkuY29kZSwgZW5jb2Rpbmc9InV0Zi04IikKCiAgICAgICAgcmVjb3JkID0gZW50cnkudG9fZGljdChjb2RlX3BhdGg9c3RyKGNvZGVfcGF0aC5yZWxhdGl2ZV90byhzZWxmLmJhc2VfZGlyKSkpCiAgICAgICAgcmVjb3JkWyJ0aW1lc3RhbXAiXSA9IGRhdGV0aW1lLm5vdygpLmlzb2Zvcm1hdCh0aW1lc3BlYz0ic2Vjb25kcyIpCgogICAgICAgIGNvbnZlcnNhdGlvbl9wYXRoOiBPcHRpb25hbFtQYXRoXSA9IE5vbmUKICAgICAgICBpZiBtZXNzYWdlcyBpcyBub3QgTm9uZToKICAgICAgICAgICAgY29udmVyc2F0aW9uX3BhdGggPSBzZWxmLl9jb252ZXJzYXRpb25fZGlyIC8gZiJhdHRlbXB0X3tlbnRyeS5hdHRlbXB0fS5qc29uIgogICAgICAgICAgICBjb252ZXJzYXRpb25fcGF0aC53cml0ZV90ZXh0KAogICAgICAgICAgICAgICAganNvbi5kdW1wcyhtZXNzYWdlcywgaW5kZW50PTIsIGVuc3VyZV9hc2NpaT1GYWxzZSksCiAgICAgICAgICAgICAgICBlbmNvZGluZz0idXRmLTgiLAogICAgICAgICAgICApCiAgICAgICAgICAgIHJlY29yZFsiY29udmVyc2F0aW9uX3BhdGgiXSA9IHN0cihjb252ZXJzYXRpb25fcGF0aC5yZWxhdGl2ZV90byhzZWxmLmJhc2VfZGlyKSkKCiAgICAgICAgd2l0aCBzZWxmLl9qc29ubF9wYXRoLm9wZW4oImEiLCBlbmNvZGluZz0idXRmLTgiKSBhcyBmOgogICAgICAgICAgICBmLndyaXRlKGpzb24uZHVtcHMocmVjb3JkLCBlbnN1cmVfYXNjaWk9RmFsc2UpICsgIlxuIikKCiAgICAgICAgbWRfbGluZXMgPSBbCiAgICAgICAgICAgIGYiIyMgQXR0ZW1wdCB7ZW50cnkuYXR0ZW1wdH0iLAogICAgICAgICAgICBmIi0gTGFuZ3VhZ2U6IHtlbnRyeS5sYW5ndWFnZX0iLAogICAgICAgICAgICBmIi0gSnVkZ2UgcmVzdWx0OiB7ZW50cnkuanVkZ2Vfc3RhdHVzfSIsCiAgICAgICAgICAgIGYiLSBTYW1wbGUgY2FzZXM6IHtlbnRyeS5wYXNzZWRfY2FzZXN9L3tlbnRyeS50b3RhbF9jYXNlcyBpZiBlbnRyeS50b3RhbF9jYXNlcyBpcyBub3QgTm9uZSBlbHNlICc/J30iLAogICAgICAgICAgICBmIi0gVG9rZW5zOiBwcm9tcHQ9e2VudHJ5LnByb21wdF90b2tlbnMgb3IgMH0sIGNvbXBsZXRpb249e2VudHJ5LmNvbXBsZXRpb25fdG9rZW5zIG9yIDB9LCB0b3RhbD17ZW50cnkudG90YWxfdG9rZW5zIG9yIDB9IiwKICAgICAgICAgICAgKAogICAgICAgICAgICAgICAgIi0gQ3VtdWxhdGl2ZSB0b2tlbnMgKHByb2JsZW0pOiAiCiAgICAgICAgICAgICAgICBmInByb21wdD17ZW50cnkucHJvbXB0X3Rva2Vuc19jdW11bGF0aXZlX3Byb2JsZW19LCAiCiAgICAgICAgICAgICAgICBmImNvbXBsZXRpb249e2VudHJ5LmNvbXBsZXRpb25fdG9rZW5zX2N1bXVsYXRpdmVfcHJvYmxlbX0sICIKICAgICAgICAgICAgICAgIGYidG90YWw9e2VudHJ5LnRvdGFsX3Rva2Vuc19jdW11bGF0aXZlX3Byb2JsZW19IgogICAgICAgICAgICApLAogICAgICAgICAgICAoCiAgICAgICAgICAgICAgICAiLSBDdW11bGF0aXZlIHRva2VucyAocnVuKTogIgogICAgICAgICAgICAgICAgZiJwcm9tcHQ9e2VudHJ5LnByb21wdF90b2tlbnNfY3VtdWxhdGl2ZV9ydW59LCAiCiAgICAgICAgICAgICAgICBmImNvbXBsZXRpb249e2VudHJ5LmNvbXBsZXRpb25fdG9rZW5zX2N1bXVsYXRpdmVfcnVufSwgIgogICAgICAgICAgICAgICAgZiJ0b3RhbD17ZW50cnkudG90YWxfdG9rZW5zX2N1bXVsYXRpdmVfcnVufSIKICAgICAgICAgICAgKSwKICAgICAgICBdCiAgICAgICAgaWYgZW50cnkuZXJyb3JfbWVzc2FnZToKICAgICAgICAgICAgbWRfbGluZXMuYXBwZW5kKGYiLSBFcnJvcjoge2VudHJ5LmVycm9yX21lc3NhZ2V9IikKICAgICAgICBpZiBjb252ZXJzYXRpb25fcGF0aCBpcyBub3QgTm9uZToKICAgICAgICAgICAgbWRfbGluZXMuYXBwZW5kKAogICAgICAgICAgICAgICAgZiItIENvbnZlcnNhdGlvbiBsb2c6IHtjb252ZXJzYXRpb25fcGF0aC5yZWxhdGl2ZV90byhzZWxmLmJhc2VfZGlyKX0iCiAgICAgICAgICAgICkKICAgICAgICBtZF9saW5lcy5hcHBlbmQoIiIpCiAgICAgICAgbWRfbGluZXMuYXBwZW5kKCJgYGAiKQogICAgICAgIG1kX2xpbmVzLmFwcGVuZChlbnRyeS5jb2RlLnN0cmlwKCkpCiAgICAgICAgbWRfbGluZXMuYXBwZW5kKCJgYGAiKQogICAgICAgIG1kX2xpbmVzLmFwcGVuZCgiIikKICAgICAgICB3aXRoIHNlbGYuX21hcmtkb3duX3BhdGgub3BlbigiYSIsIGVuY29kaW5nPSJ1dGYtOCIpIGFzIGY6CiAgICAgICAgICAgIGYud3JpdGUoIlxuIi5qb2luKG1kX2xpbmVzKSArICJcbiIpCgogICAgICAgIHJldHVybiBjb2RlX3BhdGgKCiAgICBkZWYgZmluYWxpemUoc2VsZiwgc3RhdHVzOiBzdHIsIGV4dHJhOiBPcHRpb25hbFtEaWN0W3N0ciwgQW55XV0gPSBOb25lKSAtPiBOb25lOgogICAgICAgICIiIkZpbmFsaXplIHRoZSBydW4gYW5kIHVwZGF0ZSB0aGUgbWV0YWRhdGEgZmlsZS4iIiIKICAgICAgICBmaW5hbF9wYXlsb2FkID0gewogICAgICAgICAgICAic3RhdHVzIjogc3RhdHVzLAogICAgICAgICAgICAiZmluaXNoZWRfYXQiOiBkYXRldGltZS5ub3coKS5pc29mb3JtYXQodGltZXNwZWM9InNlY29uZHMiKSwKICAgICAgICB9CiAgICAgICAgaWYgc2VsZi5fcnVuX21ldGFfcGF0aC5leGlzdHMoKToKICAgICAgICAgICAgY3VycmVudCA9IGpzb24ubG9hZHMoc2VsZi5fcnVuX21ldGFfcGF0aC5yZWFkX3RleHQoZW5jb2Rpbmc9InV0Zi04IikpCiAgICAgICAgICAgIGZpbmFsX3BheWxvYWQgPSB7KipjdXJyZW50LCAqKmZpbmFsX3BheWxvYWR9CiAgICAgICAgaWYgZXh0cmE6CiAgICAgICAgICAgIGZpbmFsX3BheWxvYWQudXBkYXRlKGV4dHJhKQogICAgICAgIHNlbGYuX3J1bl9tZXRhX3BhdGgud3JpdGVfdGV4dChqc29uLmR1bXBzKGZpbmFsX3BheWxvYWQsIGluZGVudD0yLCBlbnN1cmVfYXNjaWk9RmFsc2UpLCBlbmNvZGluZz0idXRmLTgiKQo=
+"""Logging utilities for single-problem LLM runs."""
+
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass, asdict
+from datetime import datetime
+from pathlib import Path
+from typing import Optional, Dict, Any, List
+
+from usacoarena.utils.logger_config import get_logger
+
+logger = get_logger("solo_logger")
+
+
+_LANGUAGE_EXT = {
+    "cpp": ".cpp",
+    "c++": ".cpp",
+    "python": ".py",
+    "py": ".py",
+    "java": ".java",
+    "rust": ".rs",
+    "go": ".go",
+}
+
+
+@dataclass
+class AttemptLogEntry:
+    """Describe a single submission attempt."""
+
+    attempt: int
+    language: str
+    code: str
+    prompt_tokens: Optional[int]
+    completion_tokens: Optional[int]
+    total_tokens: Optional[int]
+    judge_status: str
+    passed_cases: Optional[int]
+    total_cases: Optional[int]
+    error_message: Optional[str]
+    prompt_tokens_cumulative_problem: int
+    completion_tokens_cumulative_problem: int
+    total_tokens_cumulative_problem: int
+    prompt_tokens_cumulative_run: int
+    completion_tokens_cumulative_run: int
+    total_tokens_cumulative_run: int
+    usage_details: Optional[Dict[str, Any]] = None
+
+    def to_dict(self, code_path: str) -> Dict[str, Any]:
+        payload = asdict(self)
+        payload["code_path"] = code_path
+        return payload
+
+
+class SoloRunLogger:
+    """Manage local logging artifacts for a single run."""
+
+    def __init__(self, base_dir: Path) -> None:
+        self.base_dir = base_dir
+        self.base_dir.mkdir(parents=True, exist_ok=True)
+        self.code_dir = self.base_dir / "code"
+        self.code_dir.mkdir(exist_ok=True)
+        self._jsonl_path = self.base_dir / "attempts.jsonl"
+        self._markdown_path = self.base_dir / "attempts.md"
+        self._run_meta_path = self.base_dir / "run.json"
+        self._conversation_dir = self.base_dir / "conversations"
+        self._conversation_dir.mkdir(exist_ok=True)
+        self._init_markdown()
+
+    def _init_markdown(self) -> None:
+        if not self._markdown_path.exists():
+            header = [
+                "# LLM Single-Problem Run Log",
+                f"Generated at: {datetime.now().isoformat(timespec='seconds')}",
+                "",
+            ]
+            self._markdown_path.write_text("\n".join(header), encoding="utf-8")
+
+    def start_run(self, metadata: Dict[str, Any]) -> None:
+        """Persist run metadata to disk."""
+        payload = {
+            "status": "running",
+            "started_at": datetime.now().isoformat(timespec="seconds"),
+            **metadata,
+        }
+        self._run_meta_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    def _code_extension(self, language: str) -> str:
+        return _LANGUAGE_EXT.get(language.lower(), ".txt")
+
+    def log_attempt(
+        self,
+        entry: AttemptLogEntry,
+        messages: Optional[List[Dict[str, str]]] = None,
+    ) -> Path:
+        """Record an attempt and return the emitted code path."""
+        code_path = self.code_dir / f"attempt_{entry.attempt}{self._code_extension(entry.language)}"
+        code_path.write_text(entry.code, encoding="utf-8")
+
+        record = entry.to_dict(code_path=str(code_path.relative_to(self.base_dir)))
+        record["timestamp"] = datetime.now().isoformat(timespec="seconds")
+
+        conversation_path: Optional[Path] = None
+        if messages is not None:
+            conversation_path = self._conversation_dir / f"attempt_{entry.attempt}.json"
+            conversation_path.write_text(
+                json.dumps(messages, indent=2, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            record["conversation_path"] = str(conversation_path.relative_to(self.base_dir))
+
+        with self._jsonl_path.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+        md_lines = [
+            f"## Attempt {entry.attempt}",
+            f"- Language: {entry.language}",
+            f"- Judge result: {entry.judge_status}",
+            f"- Sample cases: {entry.passed_cases}/{entry.total_cases if entry.total_cases is not None else '?'}",
+            f"- Tokens: prompt={entry.prompt_tokens or 0}, completion={entry.completion_tokens or 0}, total={entry.total_tokens or 0}",
+            (
+                "- Cumulative tokens (problem): "
+                f"prompt={entry.prompt_tokens_cumulative_problem}, "
+                f"completion={entry.completion_tokens_cumulative_problem}, "
+                f"total={entry.total_tokens_cumulative_problem}"
+            ),
+            (
+                "- Cumulative tokens (run): "
+                f"prompt={entry.prompt_tokens_cumulative_run}, "
+                f"completion={entry.completion_tokens_cumulative_run}, "
+                f"total={entry.total_tokens_cumulative_run}"
+            ),
+        ]
+        if entry.error_message:
+            md_lines.append(f"- Error: {entry.error_message}")
+        if conversation_path is not None:
+            md_lines.append(
+                f"- Conversation log: {conversation_path.relative_to(self.base_dir)}"
+            )
+        md_lines.append("")
+        md_lines.append("```")
+        md_lines.append(entry.code.strip())
+        md_lines.append("```")
+        md_lines.append("")
+        with self._markdown_path.open("a", encoding="utf-8") as f:
+            f.write("\n".join(md_lines) + "\n")
+
+        return code_path
+
+    def finalize(self, status: str, extra: Optional[Dict[str, Any]] = None) -> None:
+        """Finalize the run and update the metadata file."""
+        final_payload = {
+            "status": status,
+            "finished_at": datetime.now().isoformat(timespec="seconds"),
+        }
+        if self._run_meta_path.exists():
+            current = json.loads(self._run_meta_path.read_text(encoding="utf-8"))
+            final_payload = {**current, **final_payload}
+        if extra:
+            final_payload.update(extra)
+        self._run_meta_path.write_text(json.dumps(final_payload, indent=2, ensure_ascii=False), encoding="utf-8")

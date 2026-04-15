@@ -1,1 +1,222 @@
-ewogICJjb21wZXRpdG9ycyI6IFsKICAgIHsKICAgICAgInR5cGUiOiAiZ2VuZXJpYyIsCiAgICAgICJuYW1lIjogImdlbWluaS0yLjUtcHJvIiwKICAgICAgIm1vZGVsX2lkIjogImdlbWluaS0yLjUtcHJvIiwKICAgICAgImFwaV9iYXNlX3VybCI6ICJodHRwczovL2dlbmVyYXRpdmVsYW5ndWFnZS5nb29nbGVhcGlzLmNvbS9vcGVuYWkiLAogICAgICAiYXBpX2tleSI6ICIiLAogICAgICAicHJvbXB0X2NvbmZpZ19wYXRoIjogImFnZW50cy9zaW5nbGVfYWdlbnQvcHJvbXB0cy9wMTEuanNvbiIsCiAgICAgICJyZXF1ZXN0X2Zvcm1hdCI6IHsKICAgICAgICAidXJsIjogIi92MWJldGEvb3BlbmFpL2NoYXQvY29tcGxldGlvbnMiLAogICAgICAgICJtZXRob2QiOiAiUE9TVCIsCiAgICAgICAgImhlYWRlcnMiOiB7CiAgICAgICAgICAiQ29udGVudC1UeXBlIjogImFwcGxpY2F0aW9uL2pzb24iLAogICAgICAgICAgIkF1dGhvcml6YXRpb24iOiAiQmVhcmVyIHthcGlfa2V5fSIKICAgICAgICB9LAogICAgICAgICJib2R5X3RlbXBsYXRlIjogewogICAgICAgICAgIm1lc3NhZ2VzIjogInttZXNzYWdlc30iLAogICAgICAgICAgIm1vZGVsIjogInttb2RlbF9pZH0iLAogICAgICAgICAgInRlbXBlcmF0dXJlIjogMC43CiAgICAgICAgfQogICAgICB9LAogICAgICAicmVzcG9uc2VfZm9ybWF0IjogewogICAgICAgICJyZXNwb25zZV9wYXRoIjogImNob2ljZXNbMF0ubWVzc2FnZS5jb250ZW50IiwKICAgICAgICAiZXJyb3JfcGF0aCI6ICJlcnJvci5tZXNzYWdlIgogICAgICB9LAogICAgICAiYXBpX2Jhc2VfdXJsX2VudiI6ICJHRU1JTklfQkFTRV9VUkwiLAogICAgICAiYXBpX2tleV9lbnYiOiAiR0VNSU5JX0FQSV9LRVkiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJnZW5lcmljIiwKICAgICAgIm5hbWUiOiAiZ3B0LTUtY29kZXgiLAogICAgICAibW9kZWxfaWQiOiAiZ3B0LTUtY29kZXgiLAogICAgICAiYXBpX2Jhc2VfdXJsIjogImh0dHBzOi8vYXBpLm9wZW5haS5jb20iLAogICAgICAiYXBpX2tleSI6ICIiLAogICAgICAicHJvbXB0X2NvbmZpZ19wYXRoIjogImFnZW50cy9zaW5nbGVfYWdlbnQvcHJvbXB0cy9wMTEuanNvbiIsCiAgICAgICJyZXF1ZXN0X2Zvcm1hdCI6IHsKICAgICAgICAidXJsIjogIi92MS9jaGF0L2NvbXBsZXRpb25zIiwKICAgICAgICAibWV0aG9kIjogIlBPU1QiLAogICAgICAgICJoZWFkZXJzIjogewogICAgICAgICAgIkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIiwKICAgICAgICAgICJBdXRob3JpemF0aW9uIjogIkJlYXJlciB7YXBpX2tleX0iCiAgICAgICAgfSwKICAgICAgICAiYm9keV90ZW1wbGF0ZSI6IHsKICAgICAgICAgICJtZXNzYWdlcyI6ICJ7bWVzc2FnZXN9IiwKICAgICAgICAgICJtb2RlbCI6ICJ7bW9kZWxfaWR9IiwKICAgICAgICAgICJ0ZW1wZXJhdHVyZSI6IDAuNwogICAgICAgIH0KICAgICAgfSwKICAgICAgInJlc3BvbnNlX2Zvcm1hdCI6IHsKICAgICAgICAicmVzcG9uc2VfcGF0aCI6ICJjaG9pY2VzWzBdLm1lc3NhZ2UuY29udGVudCIsCiAgICAgICAgImVycm9yX3BhdGgiOiAiZXJyb3IubWVzc2FnZSIKICAgICAgfSwKICAgICAgImFwaV9iYXNlX3VybF9lbnYiOiAiT1BFTkFJX0JBU0VfVVJMIiwKICAgICAgImFwaV9rZXlfZW52IjogIk9QRU5BSV9BUElfS0VZIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAiZ2VuZXJpYyIsCiAgICAgICJuYW1lIjogImNsYXVkZS1zb25uZXQtNC0yMDI1MDUxNCIsCiAgICAgICJtb2RlbF9pZCI6ICJjbGF1ZGUtc29ubmV0LTQtMjAyNTA1MTQiLAogICAgICAiYXBpX2Jhc2VfdXJsIjogImh0dHBzOi8vYXBpLmFudGhyb3BpYy5jb20iLAogICAgICAiYXBpX2tleSI6ICIiLAogICAgICAicHJvbXB0X2NvbmZpZ19wYXRoIjogImFnZW50cy9zaW5nbGVfYWdlbnQvcHJvbXB0cy9wMTEuanNvbiIsCiAgICAgICJyZXF1ZXN0X2Zvcm1hdCI6IHsKICAgICAgICAidXJsIjogIi92MS9tZXNzYWdlcyIsCiAgICAgICAgIm1ldGhvZCI6ICJQT1NUIiwKICAgICAgICAiaGVhZGVycyI6IHsKICAgICAgICAgICJDb250ZW50LVR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsCiAgICAgICAgICAieC1hcGkta2V5IjogInthcGlfa2V5fSIsCiAgICAgICAgICAiYW50aHJvcGljLXZlcnNpb24iOiAiMjAyMy0wNi0wMSIKICAgICAgICB9LAogICAgICAgICJib2R5X3RlbXBsYXRlIjogewogICAgICAgICAgIm1vZGVsIjogInttb2RlbF9pZH0iLAogICAgICAgICAgIm1heF90b2tlbnMiOiA0MDk2LAogICAgICAgICAgIm1lc3NhZ2VzIjogInttZXNzYWdlc30iCiAgICAgICAgfQogICAgICB9LAogICAgICAicmVzcG9uc2VfZm9ybWF0IjogewogICAgICAgICJyZXNwb25zZV9wYXRoIjogImNvbnRlbnRbMF0udGV4dCIsCiAgICAgICAgImVycm9yX3BhdGgiOiAiZXJyb3IubWVzc2FnZSIsCiAgICAgICAgInVzYWdlX3BhdGgiOiAidXNhZ2UiCiAgICAgIH0sCiAgICAgICJhcGlfYmFzZV91cmxfZW52IjogIkFOVEhST1BJQ19CQVNFX1VSTCIsCiAgICAgICJhcGlfa2V5X2VudiI6ICJBTlRIUk9QSUNfQVBJX0tFWSIKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogImdlbmVyaWMiLAogICAgICAibmFtZSI6ICJkZWVwc2Vlay12MyIsCiAgICAgICJtb2RlbF9pZCI6ICJkZWVwc2Vlay12MyIsCiAgICAgICJhcGlfYmFzZV91cmwiOiAiaHR0cHM6Ly9hcGkuZGVlcHNlZWsuY29tIiwKICAgICAgImFwaV9rZXkiOiAiIiwKICAgICAgInByb21wdF9jb25maWdfcGF0aCI6ICJhZ2VudHMvc2luZ2xlX2FnZW50L3Byb21wdHMvcDExLmpzb24iLAogICAgICAicmVxdWVzdF9mb3JtYXQiOiB7CiAgICAgICAgInVybCI6ICIvY2hhdC9jb21wbGV0aW9ucyIsCiAgICAgICAgIm1ldGhvZCI6ICJQT1NUIiwKICAgICAgICAiaGVhZGVycyI6IHsKICAgICAgICAgICJDb250ZW50LVR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsCiAgICAgICAgICAiQXV0aG9yaXphdGlvbiI6ICJCZWFyZXIge2FwaV9rZXl9IgogICAgICAgIH0sCiAgICAgICAgImJvZHlfdGVtcGxhdGUiOiB7CiAgICAgICAgICAibWVzc2FnZXMiOiAie21lc3NhZ2VzfSIsCiAgICAgICAgICAibW9kZWwiOiAie21vZGVsX2lkfSIsCiAgICAgICAgICAidGVtcGVyYXR1cmUiOiAwLjcKICAgICAgICB9CiAgICAgIH0sCiAgICAgICJyZXNwb25zZV9mb3JtYXQiOiB7CiAgICAgICAgInJlc3BvbnNlX3BhdGgiOiAiY2hvaWNlc1swXS5tZXNzYWdlLmNvbnRlbnQiLAogICAgICAgICJlcnJvcl9wYXRoIjogImVycm9yLm1lc3NhZ2UiCiAgICAgIH0sCiAgICAgICJhcGlfYmFzZV91cmxfZW52IjogIkRFRVBTRUVLX0JBU0VfVVJMIiwKICAgICAgImFwaV9rZXlfZW52IjogIkRFRVBTRUVLX0FQSV9LRVkiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJnZW5lcmljIiwKICAgICAgIm5hbWUiOiAiZGVlcHNlZWstdjMuMSIsCiAgICAgICJtb2RlbF9pZCI6ICJkZWVwc2Vlay12My4xIiwKICAgICAgImFwaV9iYXNlX3VybCI6ICJodHRwczovL2FwaS5kZWVwc2Vlay5jb20iLAogICAgICAiYXBpX2tleSI6ICIiLAogICAgICAicHJvbXB0X2NvbmZpZ19wYXRoIjogImFnZW50cy9zaW5nbGVfYWdlbnQvcHJvbXB0cy9wMTEuanNvbiIsCiAgICAgICJyZXF1ZXN0X2Zvcm1hdCI6IHsKICAgICAgICAidXJsIjogIi9jaGF0L2NvbXBsZXRpb25zIiwKICAgICAgICAibWV0aG9kIjogIlBPU1QiLAogICAgICAgICJoZWFkZXJzIjogewogICAgICAgICAgIkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIiwKICAgICAgICAgICJBdXRob3JpemF0aW9uIjogIkJlYXJlciB7YXBpX2tleX0iCiAgICAgICAgfSwKICAgICAgICAiYm9keV90ZW1wbGF0ZSI6IHsKICAgICAgICAgICJtZXNzYWdlcyI6ICJ7bWVzc2FnZXN9IiwKICAgICAgICAgICJtb2RlbCI6ICJ7bW9kZWxfaWR9IiwKICAgICAgICAgICJ0ZW1wZXJhdHVyZSI6IDAuNwogICAgICAgIH0KICAgICAgfSwKICAgICAgInJlc3BvbnNlX2Zvcm1hdCI6IHsKICAgICAgICAicmVzcG9uc2VfcGF0aCI6ICJjaG9pY2VzWzBdLm1lc3NhZ2UuY29udGVudCIsCiAgICAgICAgImVycm9yX3BhdGgiOiAiZXJyb3IubWVzc2FnZSIKICAgICAgfSwKICAgICAgImFwaV9iYXNlX3VybF9lbnYiOiAiREVFUFNFRUtfQkFTRV9VUkwiLAogICAgICAiYXBpX2tleV9lbnYiOiAiREVFUFNFRUtfQVBJX0tFWSIKICAgIH0sCiAgICB7CiAgICAgICJ0eXBlIjogImdlbmVyaWMiLAogICAgICAibmFtZSI6ICJraW1pLWsyLTA5MDUiLAogICAgICAibW9kZWxfaWQiOiAia2ltaS1rMi0wOTA1IiwKICAgICAgImFwaV9iYXNlX3VybCI6ICJodHRwczovL2FwaS5tb29uc2hvdC5haSIsCiAgICAgICJhcGlfa2V5IjogIiIsCiAgICAgICJwcm9tcHRfY29uZmlnX3BhdGgiOiAiYWdlbnRzL3NpbmdsZV9hZ2VudC9wcm9tcHRzL3AxMS5qc29uIiwKICAgICAgInJlcXVlc3RfZm9ybWF0IjogewogICAgICAgICJ1cmwiOiAiL3YxL2NoYXQvY29tcGxldGlvbnMiLAogICAgICAgICJtZXRob2QiOiAiUE9TVCIsCiAgICAgICAgImhlYWRlcnMiOiB7CiAgICAgICAgICAiQ29udGVudC1UeXBlIjogImFwcGxpY2F0aW9uL2pzb24iLAogICAgICAgICAgIkF1dGhvcml6YXRpb24iOiAiQmVhcmVyIHthcGlfa2V5fSIKICAgICAgICB9LAogICAgICAgICJib2R5X3RlbXBsYXRlIjogewogICAgICAgICAgIm1lc3NhZ2VzIjogInttZXNzYWdlc30iLAogICAgICAgICAgIm1vZGVsIjogInttb2RlbF9pZH0iLAogICAgICAgICAgInRlbXBlcmF0dXJlIjogMC43CiAgICAgICAgfQogICAgICB9LAogICAgICAicmVzcG9uc2VfZm9ybWF0IjogewogICAgICAgICJyZXNwb25zZV9wYXRoIjogImNob2ljZXNbMF0ubWVzc2FnZS5jb250ZW50IiwKICAgICAgICAiZXJyb3JfcGF0aCI6ICJlcnJvci5tZXNzYWdlIgogICAgICB9LAogICAgICAiYXBpX2Jhc2VfdXJsX2VudiI6ICJNT09OU0hPVF9CQVNFX1VSTCIsCiAgICAgICJhcGlfa2V5X2VudiI6ICJNT09OU0hPVF9BUElfS0VZIgogICAgfSwKICAgIHsKICAgICAgInR5cGUiOiAiZ2VuZXJpYyIsCiAgICAgICJuYW1lIjogInF3ZW4zLTIzNWIiLAogICAgICAibW9kZWxfaWQiOiAicXdlbjMtMjM1YiIsCiAgICAgICJhcGlfYmFzZV91cmwiOiAiaHR0cHM6Ly9kYXNoc2NvcGUuYWxpeXVuY3MuY29tL2NvbXBhdGlibGUtbW9kZSIsCiAgICAgICJhcGlfa2V5IjogIiIsCiAgICAgICJwcm9tcHRfY29uZmlnX3BhdGgiOiAiYWdlbnRzL3NpbmdsZV9hZ2VudC9wcm9tcHRzL3AxMS5qc29uIiwKICAgICAgInJlcXVlc3RfZm9ybWF0IjogewogICAgICAgICJ1cmwiOiAiL3YxL2NoYXQvY29tcGxldGlvbnMiLAogICAgICAgICJtZXRob2QiOiAiUE9TVCIsCiAgICAgICAgImhlYWRlcnMiOiB7CiAgICAgICAgICAiQ29udGVudC1UeXBlIjogImFwcGxpY2F0aW9uL2pzb24iLAogICAgICAgICAgIkF1dGhvcml6YXRpb24iOiAiQmVhcmVyIHthcGlfa2V5fSIKICAgICAgICB9LAogICAgICAgICJib2R5X3RlbXBsYXRlIjogewogICAgICAgICAgIm1lc3NhZ2VzIjogInttZXNzYWdlc30iLAogICAgICAgICAgIm1vZGVsIjogInttb2RlbF9pZH0iLAogICAgICAgICAgInRlbXBlcmF0dXJlIjogMC43CiAgICAgICAgfQogICAgICB9LAogICAgICAicmVzcG9uc2VfZm9ybWF0IjogewogICAgICAgICJyZXNwb25zZV9wYXRoIjogImNob2ljZXNbMF0ubWVzc2FnZS5jb250ZW50IiwKICAgICAgICAiZXJyb3JfcGF0aCI6ICJlcnJvci5tZXNzYWdlIgogICAgICB9LAogICAgICAiYXBpX2Jhc2VfdXJsX2VudiI6ICJEQVNIU0NPUEVfQkFTRV9VUkwiLAogICAgICAiYXBpX2tleV9lbnYiOiAiREFTSFNDT1BFX0FQSV9LRVkiCiAgICB9LAogICAgewogICAgICAidHlwZSI6ICJnZW5lcmljIiwKICAgICAgIm5hbWUiOiAiZ2xtLTQuNSIsCiAgICAgICJtb2RlbF9pZCI6ICJnbG0tNC41IiwKICAgICAgImFwaV9iYXNlX3VybCI6ICJodHRwczovL29wZW4uYmlnbW9kZWwuY24vYXBpL3BhYXMiLAogICAgICAiYXBpX2tleSI6ICIiLAogICAgICAicHJvbXB0X2NvbmZpZ19wYXRoIjogImFnZW50cy9zaW5nbGVfYWdlbnQvcHJvbXB0cy9wMTEuanNvbiIsCiAgICAgICJyZXF1ZXN0X2Zvcm1hdCI6IHsKICAgICAgICAidXJsIjogIi92NC9jaGF0L2NvbXBsZXRpb25zIiwKICAgICAgICAibWV0aG9kIjogIlBPU1QiLAogICAgICAgICJoZWFkZXJzIjogewogICAgICAgICAgIkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIiwKICAgICAgICAgICJBdXRob3JpemF0aW9uIjogIkJlYXJlciB7YXBpX2tleX0iCiAgICAgICAgfSwKICAgICAgICAiYm9keV90ZW1wbGF0ZSI6IHsKICAgICAgICAgICJtZXNzYWdlcyI6ICJ7bWVzc2FnZXN9IiwKICAgICAgICAgICJtb2RlbCI6ICJ7bW9kZWxfaWR9IiwKICAgICAgICAgICJ0ZW1wZXJhdHVyZSI6IDAuNwogICAgICAgIH0KICAgICAgfSwKICAgICAgInJlc3BvbnNlX2Zvcm1hdCI6IHsKICAgICAgICAicmVzcG9uc2VfcGF0aCI6ICJjaG9pY2VzWzBdLm1lc3NhZ2UuY29udGVudCIsCiAgICAgICAgImVycm9yX3BhdGgiOiAiZXJyb3IubWVzc2FnZSIKICAgICAgfSwKICAgICAgImFwaV9iYXNlX3VybF9lbnYiOiAiR0xNX0JBU0VfVVJMIiwKICAgICAgImFwaV9rZXlfZW52IjogIkdMTV9BUElfS0VZIgogICAgfQogIF0KfQo=
+{
+  "competitors": [
+    {
+      "type": "generic",
+      "name": "gemini-2.5-pro",
+      "model_id": "gemini-2.5-pro",
+      "api_base_url": "https://generativelanguage.googleapis.com/openai",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/p11.json",
+      "request_format": {
+        "url": "/v1beta/openai/chat/completions",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {api_key}"
+        },
+        "body_template": {
+          "messages": "{messages}",
+          "model": "{model_id}",
+          "temperature": 0.7
+        }
+      },
+      "response_format": {
+        "response_path": "choices[0].message.content",
+        "error_path": "error.message"
+      },
+      "api_base_url_env": "GEMINI_BASE_URL",
+      "api_key_env": "GEMINI_API_KEY"
+    },
+    {
+      "type": "generic",
+      "name": "gpt-5-codex",
+      "model_id": "gpt-5-codex",
+      "api_base_url": "https://api.openai.com",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/p11.json",
+      "request_format": {
+        "url": "/v1/chat/completions",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {api_key}"
+        },
+        "body_template": {
+          "messages": "{messages}",
+          "model": "{model_id}",
+          "temperature": 0.7
+        }
+      },
+      "response_format": {
+        "response_path": "choices[0].message.content",
+        "error_path": "error.message"
+      },
+      "api_base_url_env": "OPENAI_BASE_URL",
+      "api_key_env": "OPENAI_API_KEY"
+    },
+    {
+      "type": "generic",
+      "name": "claude-sonnet-4-20250514",
+      "model_id": "claude-sonnet-4-20250514",
+      "api_base_url": "https://api.anthropic.com",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/p11.json",
+      "request_format": {
+        "url": "/v1/messages",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "x-api-key": "{api_key}",
+          "anthropic-version": "2023-06-01"
+        },
+        "body_template": {
+          "model": "{model_id}",
+          "max_tokens": 4096,
+          "messages": "{messages}"
+        }
+      },
+      "response_format": {
+        "response_path": "content[0].text",
+        "error_path": "error.message",
+        "usage_path": "usage"
+      },
+      "api_base_url_env": "ANTHROPIC_BASE_URL",
+      "api_key_env": "ANTHROPIC_API_KEY"
+    },
+    {
+      "type": "generic",
+      "name": "deepseek-v3",
+      "model_id": "deepseek-v3",
+      "api_base_url": "https://api.deepseek.com",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/p11.json",
+      "request_format": {
+        "url": "/chat/completions",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {api_key}"
+        },
+        "body_template": {
+          "messages": "{messages}",
+          "model": "{model_id}",
+          "temperature": 0.7
+        }
+      },
+      "response_format": {
+        "response_path": "choices[0].message.content",
+        "error_path": "error.message"
+      },
+      "api_base_url_env": "DEEPSEEK_BASE_URL",
+      "api_key_env": "DEEPSEEK_API_KEY"
+    },
+    {
+      "type": "generic",
+      "name": "deepseek-v3.1",
+      "model_id": "deepseek-v3.1",
+      "api_base_url": "https://api.deepseek.com",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/p11.json",
+      "request_format": {
+        "url": "/chat/completions",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {api_key}"
+        },
+        "body_template": {
+          "messages": "{messages}",
+          "model": "{model_id}",
+          "temperature": 0.7
+        }
+      },
+      "response_format": {
+        "response_path": "choices[0].message.content",
+        "error_path": "error.message"
+      },
+      "api_base_url_env": "DEEPSEEK_BASE_URL",
+      "api_key_env": "DEEPSEEK_API_KEY"
+    },
+    {
+      "type": "generic",
+      "name": "kimi-k2-0905",
+      "model_id": "kimi-k2-0905",
+      "api_base_url": "https://api.moonshot.ai",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/p11.json",
+      "request_format": {
+        "url": "/v1/chat/completions",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {api_key}"
+        },
+        "body_template": {
+          "messages": "{messages}",
+          "model": "{model_id}",
+          "temperature": 0.7
+        }
+      },
+      "response_format": {
+        "response_path": "choices[0].message.content",
+        "error_path": "error.message"
+      },
+      "api_base_url_env": "MOONSHOT_BASE_URL",
+      "api_key_env": "MOONSHOT_API_KEY"
+    },
+    {
+      "type": "generic",
+      "name": "qwen3-235b",
+      "model_id": "qwen3-235b",
+      "api_base_url": "https://dashscope.aliyuncs.com/compatible-mode",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/p11.json",
+      "request_format": {
+        "url": "/v1/chat/completions",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {api_key}"
+        },
+        "body_template": {
+          "messages": "{messages}",
+          "model": "{model_id}",
+          "temperature": 0.7
+        }
+      },
+      "response_format": {
+        "response_path": "choices[0].message.content",
+        "error_path": "error.message"
+      },
+      "api_base_url_env": "DASHSCOPE_BASE_URL",
+      "api_key_env": "DASHSCOPE_API_KEY"
+    },
+    {
+      "type": "generic",
+      "name": "glm-4.5",
+      "model_id": "glm-4.5",
+      "api_base_url": "https://open.bigmodel.cn/api/paas",
+      "api_key": "",
+      "prompt_config_path": "agents/single_agent/prompts/p11.json",
+      "request_format": {
+        "url": "/v4/chat/completions",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {api_key}"
+        },
+        "body_template": {
+          "messages": "{messages}",
+          "model": "{model_id}",
+          "temperature": 0.7
+        }
+      },
+      "response_format": {
+        "response_path": "choices[0].message.content",
+        "error_path": "error.message"
+      },
+      "api_base_url_env": "GLM_BASE_URL",
+      "api_key_env": "GLM_API_KEY"
+    }
+  ]
+}

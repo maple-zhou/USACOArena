@@ -1,1 +1,30 @@
-ewogICJzZXJ2ZXIiOiB7CiAgICAicG9ydCI6IDUwMDAsCiAgICAiaG9zdCI6ICIwLjAuMC4wIgogIH0sCiAgImxvZyI6IHsKICAgICJsZXZlbCI6ICJJTkZPIiwKICAgICJkaXIiOiAibG9ncy9zZXJ2ZXJfbG9ncyIsCiAgICAiZW5hYmxlX2NvbG9ycyI6IHRydWUKICB9LAogICJoeWRybyI6IHsKICAgICJiYXNlX3VybCI6ICJodHRwOi8vMTI3LjAuMC4xOjg4ODgiLAogICAgImFwaV9iYXNlIjogIi91c2Fjb2FyZW5hL2FwaSIsCiAgICAiYXBpX3Rva2VuIjogIiIsCiAgICAidGltZW91dF9zZWNvbmRzIjogMzAuMCwKICAgICJwb2xsX2ludGVydmFsX3NlY29uZHMiOiAwLjUsCiAgICAic3VibWlzc2lvbl90aW1lb3V0X3NlY29uZHMiOiAxMjAuMAogIH0sCiAgInJhdGVfbGltaXQiOiB7CiAgICAibWluX2ludGVydmFsIjogMC4wNQogIH0sCiAgImRiIjogewogICAgInBhdGgiOiAiZGF0YS9jb21wZXRpdGlvbl81MDAwLmR1Y2tkYiIsCiAgICAiYmFja3VwX2pzb24iOiB0cnVlCiAgfSwKICAiZGF0YSI6IHsKICAgICJwcm9ibGVtX2RhdGFfZGlyIjogIiIsCiAgICAidGV4dGJvb2tfZGF0YV9kaXIiOiAiZGF0YXNldC9jb3JwdXNlcy9jcGJvb2tfdjIuanNvbiIKICB9Cn0gCg==
+{
+  "server": {
+    "port": 5000,
+    "host": "0.0.0.0"
+  },
+  "log": {
+    "level": "INFO",
+    "dir": "logs/server_logs",
+    "enable_colors": true
+  },
+  "hydro": {
+    "base_url": "http://127.0.0.1:8888",
+    "api_base": "/usacoarena/api",
+    "api_token": "",
+    "timeout_seconds": 30.0,
+    "poll_interval_seconds": 0.5,
+    "submission_timeout_seconds": 120.0
+  },
+  "rate_limit": {
+    "min_interval": 0.05
+  },
+  "db": {
+    "path": "data/competition_5000.duckdb",
+    "backup_json": true
+  },
+  "data": {
+    "problem_data_dir": "",
+    "textbook_data_dir": "dataset/corpuses/cpbook_v2.json"
+  }
+} 

@@ -1,1 +1,25 @@
-IiIiQmVuY2htYXJrIHRvb2xraXQgZm9yIFVTQUNPQXJlbmEuIiIiCgpmcm9tIC5hZ2VudF9wcm9maWxlIGltcG9ydCAoCiAgICBBR0VOVF9QUk9GSUxFX1NDSEVNQSwKICAgIGJ1aWxkX2FnZW50X3Byb2ZpbGVfdGVtcGxhdGUsCiAgICBub3JtYWxpemVfYWdlbnRfcHJvZmlsZSwKKQpmcm9tIC5jb25maWcgaW1wb3J0IEJlbmNobWFya0NvbmZpZ0Vycm9yLCBidWlsZF9iZW5jaG1hcmtfdGVtcGxhdGUsIGxvYWRfYmVuY2htYXJrX2NvbmZpZwpmcm9tIC5tZXRyaWNzIGltcG9ydCBJbnRlbGxpZ2VuY2VXZWlnaHRzLCBidWlsZF9pbnRlbGxpZ2VuY2VfcmVwb3J0CmZyb20gLnBhcGVyX2FnZ3JlZ2F0aW9uIGltcG9ydCBhZ2dyZWdhdGVfcGFwZXJfcnVucwpmcm9tIC5yZXBvcnRpbmcgaW1wb3J0IHJlbmRlcl9ieV9mb3JtYXQsIHNhdmVfcmVwb3J0X2J1bmRsZQoKX19hbGxfXyA9IFsKICAgICJBR0VOVF9QUk9GSUxFX1NDSEVNQSIsCiAgICAiYnVpbGRfYWdlbnRfcHJvZmlsZV90ZW1wbGF0ZSIsCiAgICAibm9ybWFsaXplX2FnZW50X3Byb2ZpbGUiLAogICAgIkJlbmNobWFya0NvbmZpZ0Vycm9yIiwKICAgICJidWlsZF9iZW5jaG1hcmtfdGVtcGxhdGUiLAogICAgImxvYWRfYmVuY2htYXJrX2NvbmZpZyIsCiAgICAiSW50ZWxsaWdlbmNlV2VpZ2h0cyIsCiAgICAiYnVpbGRfaW50ZWxsaWdlbmNlX3JlcG9ydCIsCiAgICAiYWdncmVnYXRlX3BhcGVyX3J1bnMiLAogICAgInJlbmRlcl9ieV9mb3JtYXQiLAogICAgInNhdmVfcmVwb3J0X2J1bmRsZSIsCl0K
+"""Benchmark toolkit for USACOArena."""
+
+from .agent_profile import (
+    AGENT_PROFILE_SCHEMA,
+    build_agent_profile_template,
+    normalize_agent_profile,
+)
+from .config import BenchmarkConfigError, build_benchmark_template, load_benchmark_config
+from .metrics import IntelligenceWeights, build_intelligence_report
+from .paper_aggregation import aggregate_paper_runs
+from .reporting import render_by_format, save_report_bundle
+
+__all__ = [
+    "AGENT_PROFILE_SCHEMA",
+    "build_agent_profile_template",
+    "normalize_agent_profile",
+    "BenchmarkConfigError",
+    "build_benchmark_template",
+    "load_benchmark_config",
+    "IntelligenceWeights",
+    "build_intelligence_report",
+    "aggregate_paper_runs",
+    "render_by_format",
+    "save_report_bundle",
+]

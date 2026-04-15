@@ -1,1 +1,147 @@
-IyBNZXRyaWNzIGFuZCBUaW1lbGluZSBJbnNwZWN0aW9uCgpVU0FDT0FyZW5hIGV4cG9zZXMgYm90aCBmaW5hbCBpbnRlbGxpZ2VuY2UgcmVwb3J0cyBhbmQgdHJhamVjdG9yeSBkYXRhIGFjcm9zcyBhIGxpdmUgY29tcGV0aXRpb24uCgojIyAxLiBGaW5hbCBJbnRlbGxpZ2VuY2UgUmVwb3J0CgpFeHBvcnQgdGhlIHJlcG9ydCBidW5kbGU6CgpgYGBiYXNoCnV2IHJ1biBweXRob24gc2NyaXB0cy9iZW5jaG1hcmtfY2xpLnB5IHJlcG9ydCBcCiAgLS1hcGktYmFzZSBodHRwOi8vMTI3LjAuMC4xOjUwMDAgXAogIC0tY29tcGV0aXRpb24taWQgPGNvbXBldGl0aW9uX2lkPiBcCiAgLS1vdXRwdXQtZGlyIHJ1bnMvcmVwb3J0cwpgYGAKCkFydGlmYWN0czoKCi0gYGludGVsbGlnZW5jZS5qc29uYAotIGBpbnRlbGxpZ2VuY2UuY3N2YAotIGBpbnRlbGxpZ2VuY2UubWRgCi0gYGludGVsbGlnZW5jZS5odG1sYAoKIyMgMi4gRGlyZWN0IEFQSSBBY2Nlc3MKClN0cnVjdHVyZWQgSlNPTjoKCmBgYGJhc2gKY3VybCAiaHR0cDovLzEyNy4wLjAuMTo1MDAwL2FwaS9tZXRyaWNzL2ludGVsbGlnZW5jZS88Y29tcGV0aXRpb25faWQ+P2Zvcm1hdD1qc29uIgpgYGAKCkhUTUwgdGFibGU6CgpgYGBiYXNoCmN1cmwgImh0dHA6Ly8xMjcuMC4wLjE6NTAwMC9hcGkvbWV0cmljcy9pbnRlbGxpZ2VuY2UvPGNvbXBldGl0aW9uX2lkPj9mb3JtYXQ9aHRtbCIKYGBgCgpSYW5raW5nczoKCmBgYGJhc2gKY3VybCAiaHR0cDovLzEyNy4wLjAuMTo1MDAwL2FwaS9yYW5raW5ncy9nZXQvPGNvbXBldGl0aW9uX2lkPiIKYGBgCgpTdWJtaXNzaW9uIGxpc3Q6CgpgYGBiYXNoCmN1cmwgImh0dHA6Ly8xMjcuMC4wLjE6NTAwMC9hcGkvc3VibWlzc2lvbnMvbGlzdC88Y29tcGV0aXRpb25faWQ+IgpgYGAKCiMjIDMuIEV4cG9ydCBhIE1ldHJpYyBUaW1lbGluZQoKVXNlIHRoZSBwb2xsaW5nIGV4cG9ydGVyOgoKYGBgYmFzaAp1diBydW4gcHl0aG9uIHNjcmlwdHMvZXhwb3J0X21ldHJpY3NfdGltZWxpbmUucHkgXAogIC0tYXBpLWJhc2UgaHR0cDovLzEyNy4wLjAuMTo1MDAwIFwKICAtLWNvbXBldGl0aW9uLWlkIDxjb21wZXRpdGlvbl9pZD4gXAogIC0taW50ZXJ2YWwgMTUgXAogIC0tb3V0cHV0LWRpciBydW5zL3RpbWVsaW5lCmBgYAoKVGhpcyB3cml0ZXM6CgotIGBwYXJ0aWNpcGFudF9tZXRyaWNzX3RpbWVsaW5lLmpzb25sYAotIGBwYXJ0aWNpcGFudF9tZXRyaWNzX3RpbWVsaW5lLmNzdmAKLSBgcmFua2luZ3NfcmF3Lmpzb25sYAotIGBzdWJtaXNzaW9uc19yYXcuanNvbmxgCi0gYGludGVsbGlnZW5jZV9yZXBvcnRfcmF3Lmpzb25sYAoKIyMgNC4gV2hhdCB0aGUgVGltZWxpbmUgQ29udGFpbnMKClBlciBwYXJ0aWNpcGFudCBzbmFwc2hvdCBmaWVsZHMgaW5jbHVkZToKCi0gYHJhbmtgCi0gYHNjb3JlYAotIGBwcm9ibGVtX3Bhc3Nfc2NvcmVgCi0gYHJlbWFpbmluZ190b2tlbnNgCi0gYGNvbnN1bWVkX3Rva2Vuc2AKLSBgY29uc3VtZWRfY3JlZGl0YAotIGBzdWJtaXNzaW9uX3BlbmFsdHlgCi0gYExMTV90b2tlbnNgCi0gYGhpbnRfdG9rZW5zYAotIGB0ZXN0X3Rva2Vuc2AKLSBgc3VibWlzc2lvbl90b2tlbnNgCi0gYGxsbV9pbmZlcmVuY2VfY291bnRgCi0gYHN1Ym1pc3Npb25fY291bnRgCi0gYGFjY2VwdGVkX2NvdW50YAotIGBlbGFwc2VkX3RpbWVfc2Vjb25kc2AKLSBgZGVsaXZlcnlfdGltZV9zZWNvbmRzYAotIGBkZWxpdmVyeV90aW1lX2NyZWRpdGAKLSBgZGVsaXZlcnlfdGltZV9tdWx0aXBsaWVyYAotIGBpc19ydW5uaW5nYAotIGB0ZXJtaW5hdGlvbl9yZWFzb25gCi0gYHNvbHZlZF9wcm9ibGVtX2NvdW50YAoKIyMgNS4gUmVjb21tZW5kZWQgV29ya2Zsb3cgRHVyaW5nIFBhcGVyIFJlcHJvZHVjdGlvbgoKMS4gc3RhcnQgdGhlIGNvbXBldGl0aW9uCjIuIHNhdmUgdGhlIGNvbXBldGl0aW9uIElEIHdpdGggYC0tY29tcGV0aXRpb24taWQtb3V0cHV0YAozLiBzdGFydCBgZXhwb3J0X21ldHJpY3NfdGltZWxpbmUucHlgIGluIGFub3RoZXIgdGVybWluYWwKNC4gd2FpdCBmb3IgdGhlIHJ1biB0byBmaW5pc2gKNS4gZXhwb3J0IHRoZSBmaW5hbCBpbnRlbGxpZ2VuY2UgcmVwb3J0CjYuIGFyY2hpdmUgdGhlIGxvZyBkaXJlY3RvcnksIHRpbWVsaW5lIGRpcmVjdG9yeSwgYW5kIGZpbmFsIHJlcG9ydCBkaXJlY3RvcnkgdG9nZXRoZXIKCiMjIDYuIEV4YW1wbGUKCmBgYGJhc2gKbWtkaXIgLXAgcnVucy9leGFtcGxlCnV2IHJ1biBweXRob24gc2NyaXB0cy9ydW5fY29tcGV0aXRpb24ucHkgXAogIC0tY29tcGV0aXRpb24tY29uZmlnIGNvbmZpZy9wYXBlci9jb21wZXRpdGlvbi9tYWluX2FscGhhMC5qc29uIFwKICAtLWNvbXBldGl0b3JzLWNvbmZpZyBjb25maWcvcGFwZXIvY29tcGV0aXRvcnMvdGhyZWVfbW9kZWxfc2FuaXR5Lmpzb24gXAogIC0tcHJvYmxlbS1pZHMgY29uZmlnL3BhcGVyL3Byb2JsZW1zL3F1YWxpZmljYXRpb25fZmVicnVhcnlfMjAyNS5qc29uIFwKICAtLWxvZy1kaXIgcnVucy9leGFtcGxlL2xvZ3MgXAogIC0tY29tcGV0aXRpb24taWQtb3V0cHV0IHJ1bnMvZXhhbXBsZS9jb21wZXRpdGlvbl9pZC50eHQKYGBgCgpgYGBiYXNoCkNPTVBFVElUSU9OX0lEPSIkKGNhdCBydW5zL2V4YW1wbGUvY29tcGV0aXRpb25faWQudHh0KSIKdXYgcnVuIHB5dGhvbiBzY3JpcHRzL2V4cG9ydF9tZXRyaWNzX3RpbWVsaW5lLnB5IFwKICAtLWFwaS1iYXNlIGh0dHA6Ly8xMjcuMC4wLjE6NTAwMCBcCiAgLS1jb21wZXRpdGlvbi1pZCAiJENPTVBFVElUSU9OX0lEIiBcCiAgLS1pbnRlcnZhbCAxMCBcCiAgLS1vdXRwdXQtZGlyIHJ1bnMvZXhhbXBsZS90aW1lbGluZQpgYGAKCmBgYGJhc2gKdXYgcnVuIHB5dGhvbiBzY3JpcHRzL2JlbmNobWFya19jbGkucHkgcmVwb3J0IFwKICAtLWFwaS1iYXNlIGh0dHA6Ly8xMjcuMC4wLjE6NTAwMCBcCiAgLS1jb21wZXRpdGlvbi1pZCAiJENPTVBFVElUSU9OX0lEIiBcCiAgLS1vdXRwdXQtZGlyIHJ1bnMvZXhhbXBsZS9yZXBvcnQKYGBgCgojIyA3LiBBZ2dyZWdhdGUgUmVwZWF0ZWQgUGFwZXIgUnVucwoKQWZ0ZXIgcnVubmluZyB0aGUgZnVsbCBwYXBlciByZXByb2R1Y3Rpb24gbGF5b3V0IHVuZGVyIGBydW5zL3BhcGVyLy4uLmAsIGFnZ3JlZ2F0ZSByZXBlYXRlZCBydW5zIGludG8gdGhlIHBhcGVyIHRhYmxlczoKCmBgYGJhc2gKdXYgcnVuIHB5dGhvbiBzY3JpcHRzL2FnZ3JlZ2F0ZV9wYXBlcl9yZXN1bHRzLnB5IFwKICAtLXJ1bnMtcm9vdCBydW5zL3BhcGVyIFwKICAtLW91dHB1dC1kaXIgcnVucy9wYXBlci9hZ2dyZWdhdGVkCmBgYAoKS2V5IG91dHB1dHM6CgotIGB0YWJsZV84X21haW4ubWRgOiBTZWN0aW9uIDQuMiAvIEFwcGVuZGl4IEYgYWdncmVnYXRlZCBtYWluIGJlbmNobWFyawotIGB0YWJsZV8yX2FwcGVuZGl4X2IubWRgOiBBcHBlbmRpeCBCIG1lZ2EtYWJsYXRpb24gbWF0cml4Ci0gYHRhYmxlXzlfYXBwZW5kaXhfZy5tZGA6IEFwcGVuZGl4IEcgR1BULTUgZmFtaWx5IGNhc2Ugc3R1ZHkKLSBgbWFuaWZlc3QuanNvbmA6IG91dHB1dCBpbnZlbnRvcnkgYW5kIG1pc3NpbmctYXJ0aWZhY3Qgd2FybmluZ3MK
+# Metrics and Timeline Inspection
+
+USACOArena exposes both final intelligence reports and trajectory data across a live competition.
+
+## 1. Final Intelligence Report
+
+Export the report bundle:
+
+```bash
+uv run python scripts/benchmark_cli.py report \
+  --api-base http://127.0.0.1:5000 \
+  --competition-id <competition_id> \
+  --output-dir runs/reports
+```
+
+Artifacts:
+
+- `intelligence.json`
+- `intelligence.csv`
+- `intelligence.md`
+- `intelligence.html`
+
+## 2. Direct API Access
+
+Structured JSON:
+
+```bash
+curl "http://127.0.0.1:5000/api/metrics/intelligence/<competition_id>?format=json"
+```
+
+HTML table:
+
+```bash
+curl "http://127.0.0.1:5000/api/metrics/intelligence/<competition_id>?format=html"
+```
+
+Rankings:
+
+```bash
+curl "http://127.0.0.1:5000/api/rankings/get/<competition_id>"
+```
+
+Submission list:
+
+```bash
+curl "http://127.0.0.1:5000/api/submissions/list/<competition_id>"
+```
+
+## 3. Export a Metric Timeline
+
+Use the polling exporter:
+
+```bash
+uv run python scripts/export_metrics_timeline.py \
+  --api-base http://127.0.0.1:5000 \
+  --competition-id <competition_id> \
+  --interval 15 \
+  --output-dir runs/timeline
+```
+
+This writes:
+
+- `participant_metrics_timeline.jsonl`
+- `participant_metrics_timeline.csv`
+- `rankings_raw.jsonl`
+- `submissions_raw.jsonl`
+- `intelligence_report_raw.jsonl`
+
+## 4. What the Timeline Contains
+
+Per participant snapshot fields include:
+
+- `rank`
+- `score`
+- `problem_pass_score`
+- `remaining_tokens`
+- `consumed_tokens`
+- `consumed_credit`
+- `submission_penalty`
+- `LLM_tokens`
+- `hint_tokens`
+- `test_tokens`
+- `submission_tokens`
+- `llm_inference_count`
+- `submission_count`
+- `accepted_count`
+- `elapsed_time_seconds`
+- `delivery_time_seconds`
+- `delivery_time_credit`
+- `delivery_time_multiplier`
+- `is_running`
+- `termination_reason`
+- `solved_problem_count`
+
+## 5. Recommended Workflow During Paper Reproduction
+
+1. start the competition
+2. save the competition ID with `--competition-id-output`
+3. start `export_metrics_timeline.py` in another terminal
+4. wait for the run to finish
+5. export the final intelligence report
+6. archive the log directory, timeline directory, and final report directory together
+
+## 6. Example
+
+```bash
+mkdir -p runs/example
+uv run python scripts/run_competition.py \
+  --competition-config config/paper/competition/main_alpha0.json \
+  --competitors-config config/paper/competitors/three_model_sanity.json \
+  --problem-ids config/paper/problems/qualification_february_2025.json \
+  --log-dir runs/example/logs \
+  --competition-id-output runs/example/competition_id.txt
+```
+
+```bash
+COMPETITION_ID="$(cat runs/example/competition_id.txt)"
+uv run python scripts/export_metrics_timeline.py \
+  --api-base http://127.0.0.1:5000 \
+  --competition-id "$COMPETITION_ID" \
+  --interval 10 \
+  --output-dir runs/example/timeline
+```
+
+```bash
+uv run python scripts/benchmark_cli.py report \
+  --api-base http://127.0.0.1:5000 \
+  --competition-id "$COMPETITION_ID" \
+  --output-dir runs/example/report
+```
+
+## 7. Aggregate Repeated Paper Runs
+
+After running the full paper reproduction layout under `runs/paper/...`, aggregate repeated runs into the paper tables:
+
+```bash
+uv run python scripts/aggregate_paper_results.py \
+  --runs-root runs/paper \
+  --output-dir runs/paper/aggregated
+```
+
+Key outputs:
+
+- `table_8_main.md`: Section 4.2 / Appendix F aggregated main benchmark
+- `table_2_appendix_b.md`: Appendix B mega-ablation matrix
+- `table_9_appendix_g.md`: Appendix G GPT-5 family case study
+- `manifest.json`: output inventory and missing-artifact warnings

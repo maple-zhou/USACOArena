@@ -1,1 +1,248 @@
-IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiIKU2NyaXB0IHRvIHNldCB1cCBhIGNvbXBldGl0aW9uIHNwZWNpZmljYWxseSBmb3IgQ2xhdWRlIENvZGUgcGFydGljaXBhdGlvbi4KVXNlcyBkaXJlY3QgQVBJIGNhbGxzIHdpdGggZnVsbCBjb25maWd1cmF0aW9uIHN1cHBvcnQgKGF2b2lkcyBjb21wbGV4IGRlcGVuZGVuY2llcykuCiIiIgoKaW1wb3J0IGpzb24KaW1wb3J0IHJlcXVlc3RzCmltcG9ydCBhcmdwYXJzZQppbXBvcnQgc3lzCmltcG9ydCBvcwpmcm9tIGRhdGV0aW1lIGltcG9ydCBkYXRldGltZQoKZGVmIGxvYWRfY29uZmlnKGNvbmZpZ19wYXRoOiBzdHIpIC0+IGRpY3Q6CiAgICAiIiJMb2FkIGNvbmZpZ3VyYXRpb24gZnJvbSBKU09OIGZpbGUiIiIKICAgIHRyeToKICAgICAgICB3aXRoIG9wZW4oY29uZmlnX3BhdGgsICdyJykgYXMgZjoKICAgICAgICAgICAgcmV0dXJuIGpzb24ubG9hZChmKQogICAgZXhjZXB0IEZpbGVOb3RGb3VuZEVycm9yOgogICAgICAgIHByaW50KGYi4pyXIENvbmZpZ3VyYXRpb24gZmlsZSBub3QgZm91bmQ6IHtjb25maWdfcGF0aH0iKQogICAgICAgIHN5cy5leGl0KDEpCiAgICBleGNlcHQganNvbi5KU09ORGVjb2RlRXJyb3IgYXMgZToKICAgICAgICBwcmludChmIuKclyBJbnZhbGlkIEpTT04gaW4gY29uZmlndXJhdGlvbiBmaWxlIHtjb25maWdfcGF0aH06IHtzdHIoZSl9IikKICAgICAgICBzeXMuZXhpdCgxKQoKZGVmIGNyZWF0ZV9jb21wZXRpdGlvbl9kaXJlY3QoCiAgICBhcGlfYmFzZTogc3RyLAogICAgY29tcGV0aXRpb25fY29uZmlnOiBkaWN0LAogICAgcHJvYmxlbV9pZHM6IGxpc3QKKSAtPiBzdHI6CiAgICAiIiJDcmVhdGUgY29tcGV0aXRpb24gdXNpbmcgZGlyZWN0IEFQSSBjYWxscyB3aXRoIGZ1bGwgY29uZmlndXJhdGlvbiIiIgogICAgdGl0bGUgPSBjb21wZXRpdGlvbl9jb25maWcuZ2V0KCJjb21wZXRpdGlvbl90aXRsZSIsICJDbGF1ZGUgQ29kZSBDb21wZXRpdGlvbiIpCiAgICBwcmludChmIkNyZWF0aW5nIGNvbXBldGl0aW9uOiB7dGl0bGV9IikKCiAgICAjIFByZXBhcmUgcmVxdWVzdCBkYXRhIHdpdGggZnVsbCBjb25maWd1cmF0aW9uCiAgICBkYXRhID0gewogICAgICAgICJ0aXRsZSI6IHRpdGxlLAogICAgICAgICJkZXNjcmlwdGlvbiI6IGNvbXBldGl0aW9uX2NvbmZpZy5nZXQoImNvbXBldGl0aW9uX2Rlc2NyaXB0aW9uIiwgIlByb2dyYW1taW5nIGNvbXBldGl0aW9uIGZvciBDbGF1ZGUgQ29kZSBhZ2VudCIpLAogICAgICAgICJwcm9ibGVtX2lkcyI6IHByb2JsZW1faWRzLAogICAgICAgICJtYXhfdG9rZW5zX3Blcl9wYXJ0aWNpcGFudCI6IGNvbXBldGl0aW9uX2NvbmZpZy5nZXQoIm1heF90b2tlbnNfcGVyX3BhcnRpY2lwYW50IiwgMTAwMDAwKSwKICAgICAgICAicnVsZXMiOiBjb21wZXRpdGlvbl9jb25maWcuZ2V0KCJydWxlcyIsIHt9KQogICAgfQoKICAgIHRyeToKICAgICAgICByZXNwb25zZSA9IHJlcXVlc3RzLnBvc3QoCiAgICAgICAgICAgIGYie2FwaV9iYXNlfS9hcGkvY29tcGV0aXRpb25zL2NyZWF0ZSIsCiAgICAgICAgICAgIGpzb249ZGF0YSwKICAgICAgICAgICAgaGVhZGVycz17IkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIn0KICAgICAgICApCiAgICAgICAgcmVzcG9uc2UucmFpc2VfZm9yX3N0YXR1cygpCgogICAgICAgIHJlc3VsdCA9IHJlc3BvbnNlLmpzb24oKQogICAgICAgIGlmIHJlc3VsdC5nZXQoInN0YXR1cyIpICE9ICJzdWNjZXNzIjoKICAgICAgICAgICAgcHJpbnQoZiLinJcgQVBJIGVycm9yOiB7cmVzdWx0LmdldCgnbWVzc2FnZScsICdVbmtub3duIGVycm9yJyl9IikKICAgICAgICAgICAgcmV0dXJuIE5vbmUKCiAgICAgICAgY29tcGV0aXRpb25faWQgPSByZXN1bHQuZ2V0KCJkYXRhIiwge30pLmdldCgiY29tcGV0aXRpb24iLCB7fSkuZ2V0KCJpZCIpCiAgICAgICAgaWYgbm90IGNvbXBldGl0aW9uX2lkOgogICAgICAgICAgICBwcmludChmIuKclyBJbnZhbGlkIEFQSSByZXNwb25zZTogbWlzc2luZyBjb21wZXRpdGlvbiBJRCIpCiAgICAgICAgICAgIHJldHVybiBOb25lCgogICAgICAgIHByaW50KGYi4pyTIENvbXBldGl0aW9uIGNyZWF0ZWQgc3VjY2Vzc2Z1bGx5OiB7Y29tcGV0aXRpb25faWR9IikKCiAgICAgICAgIyBMb2cgYW55IHByb2JsZW1zIHRoYXQgd2VyZSBub3QgZm91bmQKICAgICAgICBub3RfZm91bmRfcHJvYmxlbXMgPSByZXN1bHQuZ2V0KCJkYXRhIiwge30pLmdldCgibm90X2ZvdW5kX3Byb2JsZW1zIiwgW10pCiAgICAgICAgaWYgbm90X2ZvdW5kX3Byb2JsZW1zOgogICAgICAgICAgICBwcmludChmIuKaoCBQcm9ibGVtcyBub3QgZm91bmQ6IHsnLCAnLmpvaW4obm90X2ZvdW5kX3Byb2JsZW1zKX0iKQoKICAgICAgICByZXR1cm4gY29tcGV0aXRpb25faWQKCiAgICBleGNlcHQgcmVxdWVzdHMuZXhjZXB0aW9ucy5SZXF1ZXN0RXhjZXB0aW9uIGFzIGU6CiAgICAgICAgcHJpbnQoZiLinJcgQVBJIHJlcXVlc3QgZmFpbGVkOiB7ZX0iKQogICAgICAgIHJldHVybiBOb25lCiAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgcHJpbnQoZiLinJcgRmFpbGVkIHRvIGNyZWF0ZSBjb21wZXRpdGlvbjoge2V9IikKICAgICAgICByZXR1cm4gTm9uZQoKZGVmIGNyZWF0ZV9jbGF1ZGVfcGFydGljaXBhbnQoYXBpX2Jhc2U6IHN0ciwgY29tcGV0aXRpb25faWQ6IHN0ciwgY29uZmlnOiBkaWN0KSAtPiBzdHI6CiAgICAiIiJDcmVhdGUgQ2xhdWRlIENvZGUgcGFydGljaXBhbnQgYW5kIHJldHVybiBwYXJ0aWNpcGFudCBJRCIiIgogICAgcHJpbnQoZiJDcmVhdGluZyBDbGF1ZGUgQ29kZSBwYXJ0aWNpcGFudCBpbiBjb21wZXRpdGlvbiB7Y29tcGV0aXRpb25faWR9IikKCiAgICByZXNwb25zZSA9IHJlcXVlc3RzLnBvc3QoZiJ7YXBpX2Jhc2V9L2FwaS9wYXJ0aWNpcGFudHMvY3JlYXRlL3tjb21wZXRpdGlvbl9pZH0iLCBqc29uPXsKICAgICAgICAibmFtZSI6IGNvbmZpZ1sibmFtZSJdLAogICAgICAgICJhcGlfYmFzZV91cmwiOiAiIiwKICAgICAgICAiYXBpX2tleSI6ICIiLAogICAgICAgICJsaW1pdF90b2tlbnMiOiBjb25maWdbImxpbWl0X3Rva2VucyJdLAogICAgICAgICJsYW1iZGFfdmFsdWUiOiBjb25maWcuZ2V0KCJsYW1iZGFfdmFsdWUiLCAxMDApCiAgICB9KQoKICAgIGlmIHJlc3BvbnNlLnN0YXR1c19jb2RlID09IDIwMDoKICAgICAgICByZXN1bHQgPSByZXNwb25zZS5qc29uKCkKICAgICAgICBpZiByZXN1bHQuZ2V0KCdzdGF0dXMnKSA9PSAnc3VjY2Vzcyc6CiAgICAgICAgICAgIHBhcnRpY2lwYW50X2lkID0gcmVzdWx0WydkYXRhJ11bJ2lkJ10KICAgICAgICAgICAgcHJpbnQoZiLinJMgQ2xhdWRlIENvZGUgcGFydGljaXBhbnQgY3JlYXRlZDoge3BhcnRpY2lwYW50X2lkfSIpCiAgICAgICAgICAgIHJldHVybiBwYXJ0aWNpcGFudF9pZAoKICAgIHByaW50KGYi4pyXIEZhaWxlZCB0byBjcmVhdGUgcGFydGljaXBhbnQ6IHtyZXNwb25zZS50ZXh0fSIpCiAgICByZXR1cm4gTm9uZQoKZGVmIHZlcmlmeV9zZXR1cChhcGlfYmFzZTogc3RyLCBjb21wZXRpdGlvbl9pZDogc3RyKSAtPiBib29sOgogICAgIiIiVmVyaWZ5IHRoZSBjb21wZXRpdGlvbiBzZXR1cCIiIgogICAgcHJpbnQoZiJWZXJpZnlpbmcgY29tcGV0aXRpb24gc2V0dXAuLi4iKQoKICAgIHJlc3BvbnNlID0gcmVxdWVzdHMuZ2V0KGYie2FwaV9iYXNlfS9hcGkvY29tcGV0aXRpb25zL2dldC97Y29tcGV0aXRpb25faWR9P2luY2x1ZGVfZGV0YWlscz10cnVlIikKCiAgICBpZiByZXNwb25zZS5zdGF0dXNfY29kZSA9PSAyMDA6CiAgICAgICAgcmVzdWx0ID0gcmVzcG9uc2UuanNvbigpCiAgICAgICAgaWYgcmVzdWx0LmdldCgnc3RhdHVzJykgPT0gJ3N1Y2Nlc3MnOgogICAgICAgICAgICBkYXRhID0gcmVzdWx0WydkYXRhJ10KICAgICAgICAgICAgcHJpbnQoZiLinJMgQ29tcGV0aXRpb24gdmVyaWZpZWQ6IikKICAgICAgICAgICAgcHJpbnQoZiIgIC0gVGl0bGU6IHtkYXRhWyd0aXRsZSddfSIpCiAgICAgICAgICAgIHByaW50KGYiICAtIFByb2JsZW1zOiB7bGVuKGRhdGEuZ2V0KCdwcm9ibGVtcycsIFtdKSl9IikKICAgICAgICAgICAgcHJpbnQoZiIgIC0gUGFydGljaXBhbnRzOiB7bGVuKGRhdGEuZ2V0KCdwYXJ0aWNpcGFudHMnLCBbXSkpfSIpCiAgICAgICAgICAgIHJldHVybiBUcnVlCgogICAgcHJpbnQoZiLinJcgRmFpbGVkIHRvIHZlcmlmeSBjb21wZXRpdGlvbjoge3Jlc3BvbnNlLnRleHR9IikKICAgIHJldHVybiBGYWxzZQoKZGVmIG1haW4oKToKICAgIHBhcnNlciA9IGFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyKGRlc2NyaXB0aW9uPSdTZXR1cCBjb21wZXRpdGlvbiBmb3IgQ2xhdWRlIENvZGUgdXNpbmcgZnVsbCBjb25maWd1cmF0aW9uJykKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoJy0tYXBpLWJhc2UnLCBkZWZhdWx0PSdodHRwOi8vbG9jYWxob3N0OjUwMDAnLAogICAgICAgICAgICAgICAgICAgICAgIGhlbHA9J0FQSSBiYXNlIFVSTCAoZGVmYXVsdDogaHR0cDovL2xvY2FsaG9zdDo1MDAwKScpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCctLXBvcnQnLCB0eXBlPWludCwgaGVscD0nU2VydmVyIHBvcnQgKG92ZXJyaWRlcyBhcGktYmFzZSBwb3J0KScpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCctLWNvbXBldGl0aW9uLWNvbmZpZycsCiAgICAgICAgICAgICAgICAgICAgICAgZGVmYXVsdD0nY29uZmlnL2NvbXBldGl0aW9uX2NvbmZpZy5qc29uJywKICAgICAgICAgICAgICAgICAgICAgICBoZWxwPSdQYXRoIHRvIGNvbXBldGl0aW9uIGNvbmZpZ3VyYXRpb24gZmlsZScpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCctLXByb2JsZW1zJywKICAgICAgICAgICAgICAgICAgICAgICBkZWZhdWx0PSdjb25maWcvcHJvYmxlbXNfbWFpbi5qc29uJywKICAgICAgICAgICAgICAgICAgICAgICBoZWxwPSdQYXRoIHRvIHByb2JsZW1zIEpTT04gZmlsZScpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCctLXBhcnRpY2lwYW50LW5hbWUnLCBkZWZhdWx0PSdDbGF1ZGUgQ29kZSBBZ2VudCcsCiAgICAgICAgICAgICAgICAgICAgICAgaGVscD0nTmFtZSBmb3IgQ2xhdWRlIENvZGUgcGFydGljaXBhbnQnKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgnLS1vdXRwdXQnLCBkZWZhdWx0PSdjbGF1ZGVfY29tcGV0aXRpb25fc2V0dXAuanNvbicsCiAgICAgICAgICAgICAgICAgICAgICAgaGVscD0nT3V0cHV0IGZpbGUgZm9yIGNvbXBldGl0aW9uIGNyZWRlbnRpYWxzJykKICAgICMgT3ZlcnJpZGUgb3B0aW9ucwogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgnLS10aXRsZScsIGhlbHA9J092ZXJyaWRlIGNvbXBldGl0aW9uIHRpdGxlJykKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoJy0tbWF4LXRva2VucycsIHR5cGU9aW50LCBoZWxwPSdPdmVycmlkZSBtYXhpbXVtIHRva2VucyBwZXIgcGFydGljaXBhbnQnKQoKICAgIGFyZ3MgPSBwYXJzZXIucGFyc2VfYXJncygpCgogICAgIyBBZGp1c3QgQVBJIGJhc2UgaWYgcG9ydCBzcGVjaWZpZWQKICAgIGlmIGFyZ3MucG9ydDoKICAgICAgICBhcmdzLmFwaV9iYXNlID0gZiJodHRwOi8vbG9jYWxob3N0OnthcmdzLnBvcnR9IgoKICAgICMgTG9hZCBjb25maWd1cmF0aW9ucwogICAgcHJpbnQoZiJMb2FkaW5nIGNvbXBldGl0aW9uIGNvbmZpZyBmcm9tOiB7YXJncy5jb21wZXRpdGlvbl9jb25maWd9IikKICAgIGNvbXBldGl0aW9uX2NvbmZpZyA9IGxvYWRfY29uZmlnKGFyZ3MuY29tcGV0aXRpb25fY29uZmlnKQoKICAgIHByaW50KGYiTG9hZGluZyBwcm9ibGVtcyBmcm9tOiB7YXJncy5wcm9ibGVtc30iKQogICAgcHJvYmxlbV9pZHMgPSBsb2FkX2NvbmZpZyhhcmdzLnByb2JsZW1zKQogICAgaWYgbm90IGlzaW5zdGFuY2UocHJvYmxlbV9pZHMsIGxpc3QpOgogICAgICAgIHByaW50KGYi4pyXIFByb2JsZW1zIGZpbGUgbXVzdCBjb250YWluIGEgSlNPTiBhcnJheSwgZ290OiB7dHlwZShwcm9ibGVtX2lkcyl9IikKICAgICAgICBzeXMuZXhpdCgxKQoKICAgICMgQXBwbHkgb3ZlcnJpZGVzCiAgICBpZiBhcmdzLnRpdGxlOgogICAgICAgIGNvbXBldGl0aW9uX2NvbmZpZ1siY29tcGV0aXRpb25fdGl0bGUiXSA9IGFyZ3MudGl0bGUKICAgIGlmIGFyZ3MubWF4X3Rva2VuczoKICAgICAgICBjb21wZXRpdGlvbl9jb25maWdbIm1heF90b2tlbnNfcGVyX3BhcnRpY2lwYW50Il0gPSBhcmdzLm1heF90b2tlbnMKICAgIGlmIGFyZ3MucG9ydDoKICAgICAgICBjb21wZXRpdGlvbl9jb25maWdbImFwaV9iYXNlIl0gPSBhcmdzLmFwaV9iYXNlCgogICAgcHJpbnQoZiJMb2FkZWQge2xlbihwcm9ibGVtX2lkcyl9IHByb2JsZW1zIikKICAgIHByaW50KGYiQ29tcGV0aXRpb24gY29uZmlnOiB7Y29tcGV0aXRpb25fY29uZmlnLmdldCgnY29tcGV0aXRpb25fdGl0bGUnLCAnVW50aXRsZWQnKX0iKQogICAgcHJpbnQoZiJNYXggdG9rZW5zOiB7Y29tcGV0aXRpb25fY29uZmlnLmdldCgnbWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQnLCAnTm90IHNwZWNpZmllZCcpfSIpCgogICAgIyBUZXN0IHNlcnZlciBjb25uZWN0aW9uCiAgICB0cnk6CiAgICAgICAgcmVzcG9uc2UgPSByZXF1ZXN0cy5nZXQoZiJ7YXJncy5hcGlfYmFzZX0vYXBpL3N5c3RlbS9vai1zdGF0dXMiKQogICAgICAgIGlmIHJlc3BvbnNlLnN0YXR1c19jb2RlICE9IDIwMDoKICAgICAgICAgICAgcHJpbnQoZiLimqAgV2FybmluZzogU2VydmVyIGF0IHthcmdzLmFwaV9iYXNlfSBtYXkgbm90IGJlIHJ1bm5pbmcgcHJvcGVybHkiKQogICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOgogICAgICAgIHByaW50KGYi4pyXIENhbm5vdCBjb25uZWN0IHRvIHNlcnZlciBhdCB7YXJncy5hcGlfYmFzZX06IHtlfSIpCiAgICAgICAgc3lzLmV4aXQoMSkKCiAgICBwcmludCgiPSIgKiA2MCkKICAgIHByaW50KGYiU2V0dGluZyB1cCBDbGF1ZGUgQ29kZSBjb21wZXRpdGlvbiBvbiB7YXJncy5hcGlfYmFzZX0iKQoKICAgICMgQ3JlYXRlIGNvbXBldGl0aW9uIHVzaW5nIGRpcmVjdCBBUEkgY2FsbHMgd2l0aCBmdWxsIGNvbmZpZ3VyYXRpb24KICAgIGNvbXBldGl0aW9uX2lkID0gY3JlYXRlX2NvbXBldGl0aW9uX2RpcmVjdCgKICAgICAgICBhcmdzLmFwaV9iYXNlLCBjb21wZXRpdGlvbl9jb25maWcsIHByb2JsZW1faWRzCiAgICApCiAgICBpZiBub3QgY29tcGV0aXRpb25faWQ6CiAgICAgICAgc3lzLmV4aXQoMSkKCiAgICAjIENyZWF0ZSBDbGF1ZGUgQ29kZSBwYXJ0aWNpcGFudCB1c2luZyBBUEkgZGlyZWN0bHkgKHNpbXBsZXIgdGhhbiB1c2luZyBvcmdhbml6ZXIpCiAgICBwYXJ0aWNpcGFudF9jb25maWcgPSB7CiAgICAgICAgIm5hbWUiOiBhcmdzLnBhcnRpY2lwYW50X25hbWUsCiAgICAgICAgImxpbWl0X3Rva2VucyI6IGNvbXBldGl0aW9uX2NvbmZpZy5nZXQoIm1heF90b2tlbnNfcGVyX3BhcnRpY2lwYW50IiwgMTAwMDAwKQogICAgfQoKICAgIHBhcnRpY2lwYW50X2lkID0gY3JlYXRlX2NsYXVkZV9wYXJ0aWNpcGFudChhcmdzLmFwaV9iYXNlLCBjb21wZXRpdGlvbl9pZCwgcGFydGljaXBhbnRfY29uZmlnKQogICAgaWYgbm90IHBhcnRpY2lwYW50X2lkOgogICAgICAgIHN5cy5leGl0KDEpCgogICAgIyBWZXJpZnkgc2V0dXAKICAgIGlmIG5vdCB2ZXJpZnlfc2V0dXAoYXJncy5hcGlfYmFzZSwgY29tcGV0aXRpb25faWQpOgogICAgICAgIHN5cy5leGl0KDEpCgogICAgIyBTYXZlIGNyZWRlbnRpYWxzCiAgICBjcmVkZW50aWFscyA9IHsKICAgICAgICAic2V0dXBfdGltZXN0YW1wIjogZGF0ZXRpbWUubm93KCkuaXNvZm9ybWF0KCksCiAgICAgICAgInNlcnZlcl91cmwiOiBhcmdzLmFwaV9iYXNlLAogICAgICAgICJjb21wZXRpdGlvbl9pZCI6IGNvbXBldGl0aW9uX2lkLAogICAgICAgICJwYXJ0aWNpcGFudF9pZCI6IHBhcnRpY2lwYW50X2lkLAogICAgICAgICJjb21wZXRpdGlvbl9jb25maWdfZmlsZSI6IGFyZ3MuY29tcGV0aXRpb25fY29uZmlnLAogICAgICAgICJwcm9ibGVtc19maWxlIjogYXJncy5wcm9ibGVtcywKICAgICAgICAiY29tcGV0aXRpb25fdGl0bGUiOiBjb21wZXRpdGlvbl9jb25maWcuZ2V0KCJjb21wZXRpdGlvbl90aXRsZSIsICJDbGF1ZGUgQ29kZSBDb21wZXRpdGlvbiIpLAogICAgICAgICJwYXJ0aWNpcGFudF9uYW1lIjogYXJncy5wYXJ0aWNpcGFudF9uYW1lLAogICAgICAgICJtYXhfdG9rZW5zIjogY29tcGV0aXRpb25fY29uZmlnLmdldCgibWF4X3Rva2Vuc19wZXJfcGFydGljaXBhbnQiLCAxMDAwMDApLAogICAgICAgICJwcm9ibGVtX2NvdW50IjogbGVuKHByb2JsZW1faWRzKSwKICAgICAgICAicnVsZXMiOiBjb21wZXRpdGlvbl9jb25maWcuZ2V0KCJydWxlcyIsIHt9KSwKICAgICAgICAiY2xhdWRlX2NvZGVfcHJvbXB0IjogZiIiIkknbSBwYXJ0aWNpcGF0aW5nIGluIGEgVVNBQ09BcmVuYSBwcm9ncmFtbWluZyBjb21wZXRpdGlvbiBpbiBBVVRPTk9NT1VTIE1PREUuIE15IGNyZWRlbnRpYWxzIGFyZToKLSBDb21wZXRpdGlvbiBJRDoge2NvbXBldGl0aW9uX2lkfQotIFBhcnRpY2lwYW50IElEOiB7cGFydGljaXBhbnRfaWR9Ci0gU2VydmVyIFVSTDoge2FyZ3MuYXBpX2Jhc2V9CgpZb3UgYXJlIG5vdyBpbiBhdXRvbm9tb3VzIG1vZGUuIFN0YXJ0IHRoZSBjb21wZXRpdGlvbiBpbW1lZGlhdGVseSB3aXRob3V0IHdhaXRpbmcgZm9yIG15IGlucHV0LiBCZWdpbiBieSBjaGVja2luZyB5b3VyIHN0YXR1cyBhbmQgbGlzdGluZyBhdmFpbGFibGUgcHJvYmxlbXMsIHRoZW4gY29udGludW91c2x5IHNvbHZlIHByb2JsZW1zIHVudGlsIHRoZSBjb21wZXRpdGlvbiBlbmRzIG9yIHlvdSBydW4gb3V0IG9mIHRva2Vucy4KClRha2UgYWN0aW9uIE5PVy4iIiIKICAgIH0KCiAgICB3aXRoIG9wZW4oYXJncy5vdXRwdXQsICd3JykgYXMgZjoKICAgICAgICBqc29uLmR1bXAoY3JlZGVudGlhbHMsIGYsIGluZGVudD0yKQoKICAgIHByaW50KCI9IiAqIDYwKQogICAgcHJpbnQoIuKckyBDb21wZXRpdGlvbiBzZXR1cCBjb21wbGV0ZWQgc3VjY2Vzc2Z1bGx5ISIpCiAgICBwcmludChmIuKckyBDcmVkZW50aWFscyBzYXZlZCB0bzoge2FyZ3Mub3V0cHV0fSIpCiAgICBwcmludCgpCiAgICBwcmludCgiQ29uZmlndXJhdGlvbiB1c2VkOiIpCiAgICBwcmludChmIiAgLSBDb21wZXRpdGlvbiBjb25maWc6IHthcmdzLmNvbXBldGl0aW9uX2NvbmZpZ30iKQogICAgcHJpbnQoZiIgIC0gUHJvYmxlbXMgZmlsZToge2FyZ3MucHJvYmxlbXN9IikKICAgIHByaW50KGYiICAtIFNjb3JpbmcgcnVsZXM6IEJyb256ZSh7Y29tcGV0aXRpb25fY29uZmlnLmdldCgncnVsZXMnLCB7fSkuZ2V0KCdzY29yaW5nJywge30pLmdldCgnYnJvbnplJywgJ04vQScpfSksIFNpbHZlcih7Y29tcGV0aXRpb25fY29uZmlnLmdldCgncnVsZXMnLCB7fSkuZ2V0KCdzY29yaW5nJywge30pLmdldCgnc2lsdmVyJywgJ04vQScpfSksIEdvbGQoe2NvbXBldGl0aW9uX2NvbmZpZy5nZXQoJ3J1bGVzJywge30pLmdldCgnc2NvcmluZycsIHt9KS5nZXQoJ2dvbGQnLCAnTi9BJyl9KSwgUGxhdGludW0oe2NvbXBldGl0aW9uX2NvbmZpZy5nZXQoJ3J1bGVzJywge30pLmdldCgnc2NvcmluZycsIHt9KS5nZXQoJ3BsYXRpbnVtJywgJ04vQScpfSkiKQogICAgcHJpbnQoKQogICAgcHJpbnQoIk5leHQgc3RlcHM6IikKICAgIHByaW50KCIxLiBPcGVuIENsYXVkZSBDb2RlIikKICAgIHByaW50KCIyLiBVc2UgdGhpcyBwcm9tcHQgdG8gc3RhcnQgY29tcGV0aW5nOiIpCiAgICBwcmludCgpCiAgICBwcmludChjcmVkZW50aWFsc1siY2xhdWRlX2NvZGVfcHJvbXB0Il0pCiAgICBwcmludCgpCiAgICBwcmludChmIkNvbXBldGl0aW9uIERldGFpbHM6IikKICAgIHByaW50KGYiICAtIENvbXBldGl0aW9uIElEOiB7Y29tcGV0aXRpb25faWR9IikKICAgIHByaW50KGYiICAtIFBhcnRpY2lwYW50IElEOiB7cGFydGljaXBhbnRfaWR9IikKICAgIHByaW50KGYiICAtIE1heCBUb2tlbnM6IHtjb21wZXRpdGlvbl9jb25maWcuZ2V0KCdtYXhfdG9rZW5zX3Blcl9wYXJ0aWNpcGFudCcsIDEwMDAwMCk6LH0iKQogICAgcHJpbnQoZiIgIC0gUHJvYmxlbXM6IHtsZW4ocHJvYmxlbV9pZHMpfSIpCiAgICBwcmludChmIiAgLSBIaW50IGNvc3RzOiBMMCh7Y29tcGV0aXRpb25fY29uZmlnLmdldCgncnVsZXMnLCB7fSkuZ2V0KCdoaW50X3Rva2VucycsIHt9KS5nZXQoJ2xldmVsXzAnLCAnTi9BJyl9KSwgTDEoe2NvbXBldGl0aW9uX2NvbmZpZy5nZXQoJ3J1bGVzJywge30pLmdldCgnaGludF90b2tlbnMnLCB7fSkuZ2V0KCdsZXZlbF8xJywgJ04vQScpfSksIEwyKHtjb21wZXRpdGlvbl9jb25maWcuZ2V0KCdydWxlcycsIHt9KS5nZXQoJ2hpbnRfdG9rZW5zJywge30pLmdldCgnbGV2ZWxfMicsICdOL0EnKX0pLCBMMyh7Y29tcGV0aXRpb25fY29uZmlnLmdldCgncnVsZXMnLCB7fSkuZ2V0KCdoaW50X3Rva2VucycsIHt9KS5nZXQoJ2xldmVsXzMnLCAnTi9BJyl9KSwgTDQoe2NvbXBldGl0aW9uX2NvbmZpZy5nZXQoJ3J1bGVzJywge30pLmdldCgnaGludF90b2tlbnMnLCB7fSkuZ2V0KCdsZXZlbF80JywgJ04vQScpfSkiKQoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIG1haW4oKQo=
+#!/usr/bin/env python3
+"""
+Script to set up a competition specifically for Claude Code participation.
+Uses direct API calls with full configuration support (avoids complex dependencies).
+"""
+
+import json
+import requests
+import argparse
+import sys
+import os
+from datetime import datetime
+
+def load_config(config_path: str) -> dict:
+    """Load configuration from JSON file"""
+    try:
+        with open(config_path, 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"✗ Configuration file not found: {config_path}")
+        sys.exit(1)
+    except json.JSONDecodeError as e:
+        print(f"✗ Invalid JSON in configuration file {config_path}: {str(e)}")
+        sys.exit(1)
+
+def create_competition_direct(
+    api_base: str,
+    competition_config: dict,
+    problem_ids: list
+) -> str:
+    """Create competition using direct API calls with full configuration"""
+    title = competition_config.get("competition_title", "Claude Code Competition")
+    print(f"Creating competition: {title}")
+
+    # Prepare request data with full configuration
+    data = {
+        "title": title,
+        "description": competition_config.get("competition_description", "Programming competition for Claude Code agent"),
+        "problem_ids": problem_ids,
+        "max_tokens_per_participant": competition_config.get("max_tokens_per_participant", 100000),
+        "rules": competition_config.get("rules", {})
+    }
+
+    try:
+        response = requests.post(
+            f"{api_base}/api/competitions/create",
+            json=data,
+            headers={"Content-Type": "application/json"}
+        )
+        response.raise_for_status()
+
+        result = response.json()
+        if result.get("status") != "success":
+            print(f"✗ API error: {result.get('message', 'Unknown error')}")
+            return None
+
+        competition_id = result.get("data", {}).get("competition", {}).get("id")
+        if not competition_id:
+            print(f"✗ Invalid API response: missing competition ID")
+            return None
+
+        print(f"✓ Competition created successfully: {competition_id}")
+
+        # Log any problems that were not found
+        not_found_problems = result.get("data", {}).get("not_found_problems", [])
+        if not_found_problems:
+            print(f"⚠ Problems not found: {', '.join(not_found_problems)}")
+
+        return competition_id
+
+    except requests.exceptions.RequestException as e:
+        print(f"✗ API request failed: {e}")
+        return None
+    except Exception as e:
+        print(f"✗ Failed to create competition: {e}")
+        return None
+
+def create_claude_participant(api_base: str, competition_id: str, config: dict) -> str:
+    """Create Claude Code participant and return participant ID"""
+    print(f"Creating Claude Code participant in competition {competition_id}")
+
+    response = requests.post(f"{api_base}/api/participants/create/{competition_id}", json={
+        "name": config["name"],
+        "api_base_url": "",
+        "api_key": "",
+        "limit_tokens": config["limit_tokens"],
+        "lambda_value": config.get("lambda_value", 100)
+    })
+
+    if response.status_code == 200:
+        result = response.json()
+        if result.get('status') == 'success':
+            participant_id = result['data']['id']
+            print(f"✓ Claude Code participant created: {participant_id}")
+            return participant_id
+
+    print(f"✗ Failed to create participant: {response.text}")
+    return None
+
+def verify_setup(api_base: str, competition_id: str) -> bool:
+    """Verify the competition setup"""
+    print(f"Verifying competition setup...")
+
+    response = requests.get(f"{api_base}/api/competitions/get/{competition_id}?include_details=true")
+
+    if response.status_code == 200:
+        result = response.json()
+        if result.get('status') == 'success':
+            data = result['data']
+            print(f"✓ Competition verified:")
+            print(f"  - Title: {data['title']}")
+            print(f"  - Problems: {len(data.get('problems', []))}")
+            print(f"  - Participants: {len(data.get('participants', []))}")
+            return True
+
+    print(f"✗ Failed to verify competition: {response.text}")
+    return False
+
+def main():
+    parser = argparse.ArgumentParser(description='Setup competition for Claude Code using full configuration')
+    parser.add_argument('--api-base', default='http://localhost:5000',
+                       help='API base URL (default: http://localhost:5000)')
+    parser.add_argument('--port', type=int, help='Server port (overrides api-base port)')
+    parser.add_argument('--competition-config',
+                       default='config/competition_config.json',
+                       help='Path to competition configuration file')
+    parser.add_argument('--problems',
+                       default='config/problems_main.json',
+                       help='Path to problems JSON file')
+    parser.add_argument('--participant-name', default='Claude Code Agent',
+                       help='Name for Claude Code participant')
+    parser.add_argument('--output', default='claude_competition_setup.json',
+                       help='Output file for competition credentials')
+    # Override options
+    parser.add_argument('--title', help='Override competition title')
+    parser.add_argument('--max-tokens', type=int, help='Override maximum tokens per participant')
+
+    args = parser.parse_args()
+
+    # Adjust API base if port specified
+    if args.port:
+        args.api_base = f"http://localhost:{args.port}"
+
+    # Load configurations
+    print(f"Loading competition config from: {args.competition_config}")
+    competition_config = load_config(args.competition_config)
+
+    print(f"Loading problems from: {args.problems}")
+    problem_ids = load_config(args.problems)
+    if not isinstance(problem_ids, list):
+        print(f"✗ Problems file must contain a JSON array, got: {type(problem_ids)}")
+        sys.exit(1)
+
+    # Apply overrides
+    if args.title:
+        competition_config["competition_title"] = args.title
+    if args.max_tokens:
+        competition_config["max_tokens_per_participant"] = args.max_tokens
+    if args.port:
+        competition_config["api_base"] = args.api_base
+
+    print(f"Loaded {len(problem_ids)} problems")
+    print(f"Competition config: {competition_config.get('competition_title', 'Untitled')}")
+    print(f"Max tokens: {competition_config.get('max_tokens_per_participant', 'Not specified')}")
+
+    # Test server connection
+    try:
+        response = requests.get(f"{args.api_base}/api/system/oj-status")
+        if response.status_code != 200:
+            print(f"⚠ Warning: Server at {args.api_base} may not be running properly")
+    except Exception as e:
+        print(f"✗ Cannot connect to server at {args.api_base}: {e}")
+        sys.exit(1)
+
+    print("=" * 60)
+    print(f"Setting up Claude Code competition on {args.api_base}")
+
+    # Create competition using direct API calls with full configuration
+    competition_id = create_competition_direct(
+        args.api_base, competition_config, problem_ids
+    )
+    if not competition_id:
+        sys.exit(1)
+
+    # Create Claude Code participant using API directly (simpler than using organizer)
+    participant_config = {
+        "name": args.participant_name,
+        "limit_tokens": competition_config.get("max_tokens_per_participant", 100000)
+    }
+
+    participant_id = create_claude_participant(args.api_base, competition_id, participant_config)
+    if not participant_id:
+        sys.exit(1)
+
+    # Verify setup
+    if not verify_setup(args.api_base, competition_id):
+        sys.exit(1)
+
+    # Save credentials
+    credentials = {
+        "setup_timestamp": datetime.now().isoformat(),
+        "server_url": args.api_base,
+        "competition_id": competition_id,
+        "participant_id": participant_id,
+        "competition_config_file": args.competition_config,
+        "problems_file": args.problems,
+        "competition_title": competition_config.get("competition_title", "Claude Code Competition"),
+        "participant_name": args.participant_name,
+        "max_tokens": competition_config.get("max_tokens_per_participant", 100000),
+        "problem_count": len(problem_ids),
+        "rules": competition_config.get("rules", {}),
+        "claude_code_prompt": f"""I'm participating in a USACOArena programming competition in AUTONOMOUS MODE. My credentials are:
+- Competition ID: {competition_id}
+- Participant ID: {participant_id}
+- Server URL: {args.api_base}
+
+You are now in autonomous mode. Start the competition immediately without waiting for my input. Begin by checking your status and listing available problems, then continuously solve problems until the competition ends or you run out of tokens.
+
+Take action NOW."""
+    }
+
+    with open(args.output, 'w') as f:
+        json.dump(credentials, f, indent=2)
+
+    print("=" * 60)
+    print("✓ Competition setup completed successfully!")
+    print(f"✓ Credentials saved to: {args.output}")
+    print()
+    print("Configuration used:")
+    print(f"  - Competition config: {args.competition_config}")
+    print(f"  - Problems file: {args.problems}")
+    print(f"  - Scoring rules: Bronze({competition_config.get('rules', {}).get('scoring', {}).get('bronze', 'N/A')}), Silver({competition_config.get('rules', {}).get('scoring', {}).get('silver', 'N/A')}), Gold({competition_config.get('rules', {}).get('scoring', {}).get('gold', 'N/A')}), Platinum({competition_config.get('rules', {}).get('scoring', {}).get('platinum', 'N/A')})")
+    print()
+    print("Next steps:")
+    print("1. Open Claude Code")
+    print("2. Use this prompt to start competing:")
+    print()
+    print(credentials["claude_code_prompt"])
+    print()
+    print(f"Competition Details:")
+    print(f"  - Competition ID: {competition_id}")
+    print(f"  - Participant ID: {participant_id}")
+    print(f"  - Max Tokens: {competition_config.get('max_tokens_per_participant', 100000):,}")
+    print(f"  - Problems: {len(problem_ids)}")
+    print(f"  - Hint costs: L0({competition_config.get('rules', {}).get('hint_tokens', {}).get('level_0', 'N/A')}), L1({competition_config.get('rules', {}).get('hint_tokens', {}).get('level_1', 'N/A')}), L2({competition_config.get('rules', {}).get('hint_tokens', {}).get('level_2', 'N/A')}), L3({competition_config.get('rules', {}).get('hint_tokens', {}).get('level_3', 'N/A')}), L4({competition_config.get('rules', {}).get('hint_tokens', {}).get('level_4', 'N/A')})")
+
+if __name__ == "__main__":
+    main()

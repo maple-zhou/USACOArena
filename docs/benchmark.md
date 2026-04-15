@@ -1,1 +1,176 @@
-IyBVU0FDT0FyZW5hIEJlbmNobWFyayBHdWlkZQoKVGhpcyBndWlkZSBkb2N1bWVudHMgdGhlIHB1YmxpYyBiZW5jaG1hcmsgY29uZmlndXJhdGlvbiBmbG93IGJ1aWx0IGFyb3VuZCBgc2NyaXB0cy9iZW5jaG1hcmtfY2xpLnB5YC4KCiMjIDEuIEdvYWwKClRoZSBiZW5jaG1hcmsgd29ya2Zsb3cgcHJvdmlkZXM6CgotIGEgc2luZ2xlIHN0cnVjdHVyZWQgY29uZmlnIGZpbGUKLSBhIHN0YWJsZSBgYWdlbnRfcHJvZmlsZWAgY29udHJhY3QKLSBwYXJ0aWNpcGFudCByZWdpc3RyYXRpb24gdGhyb3VnaCB0aGUgcHVibGljIFVTQUNPQXJlbmEgQVBJCi0gZXhwb3J0ZWQgaW50ZWxsaWdlbmNlIHJlcG9ydHMgaW4gYGpzb24vY3N2L21kL2h0bWxgCgojIyAyLiBHZW5lcmF0ZSBhIEZyZXNoIFRlbXBsYXRlCgpgYGBiYXNoCnV2IHJ1biBweXRob24gc2NyaXB0cy9iZW5jaG1hcmtfY2xpLnB5IGluaXQtdGVtcGxhdGUgXAogIC0tb3V0cHV0IGNvbmZpZy9iZW5jaG1hcmtfdGVtcGxhdGUuanNvbiBcCiAgLS1mb3JjZQpgYGAKClRoZSBnZW5lcmF0ZWQgdGVtcGxhdGUgaW5jbHVkZXM6CgotIGBjb21wZXRpdGlvbi5wcm9ibGVtX2lkc2AKLSBgcGFydGljaXBhbnRzWypdLnJlcXVlc3RfZm9ybWF0YAotIGBwYXJ0aWNpcGFudHNbKl0ucmVzcG9uc2VfZm9ybWF0YAotIGBwYXJ0aWNpcGFudHNbKl0uYWdlbnRfcHJvZmlsZWAKLSBgcmVwb3J0Lm91dHB1dF9kaXJgCgojIyAzLiBGaWxsIGluIHRoZSBDb25maWcKClRoZSBiZW5jaG1hcmsgY29uZmlnIHN1cHBvcnRzIGAkRU5WOk5BTUVgIHN1YnN0aXR1dGlvbi4gVGhlIGNoZWNrZWQtaW4gdGVtcGxhdGUgaW50ZW50aW9uYWxseSB1c2VzIGVudmlyb25tZW50IHZhcmlhYmxlcyBmb3IgcHJvdmlkZXIgY3JlZGVudGlhbHMuCgpNaW5pbWFsIGV4YW1wbGU6CgpgYGBqc29uCnsKICAiYXBpX2Jhc2UiOiAiaHR0cDovLzEyNy4wLjAuMTo1MDAwIiwKICAiY29tcGV0aXRpb24iOiB7CiAgICAidGl0bGUiOiAiVVNBQ09BcmVuYSBPcGVuIEJlbmNobWFyayIsCiAgICAiZGVzY3JpcHRpb24iOiAiUmVwcm9kdWNpYmxlIGJlbmNobWFyayBydW4iLAogICAgInByb2JsZW1faWRzIjogWwogICAgICAiMTUxNV9icm9uemVfaG9vZl9wYXBlcl9zY2lzc29yc19taW51c19vbmUiLAogICAgICAiMTUxNl9icm9uemVfbW9yZV9jb3dfcGhvdG9zIgogICAgXSwKICAgICJtYXhfdG9rZW5zX3Blcl9wYXJ0aWNpcGFudCI6IDEwMDAwMCwKICAgICJydWxlcyI6IHsKICAgICAgImxhbWJkYSI6IDEwMAogICAgfQogIH0sCiAgInBhcnRpY2lwYW50cyI6IFsKICAgIHsKICAgICAgIm5hbWUiOiAiY29kZXgtYmFzZWxpbmUiLAogICAgICAiYXBpX2Jhc2VfdXJsIjogIiRFTlY6T1BFTkFJX0JBU0VfVVJMIiwKICAgICAgImFwaV9rZXkiOiAiJEVOVjpPUEVOQUlfQVBJX0tFWSIsCiAgICAgICJsaW1pdF90b2tlbnMiOiAxMDAwMDAsCiAgICAgICJsYW1iZGFfdmFsdWUiOiAxMDAsCiAgICAgICJyZXF1ZXN0X2Zvcm1hdCI6IHsKICAgICAgICAidXJsIjogIi92MS9jaGF0L2NvbXBsZXRpb25zIiwKICAgICAgICAibWV0aG9kIjogIlBPU1QiLAogICAgICAgICJoZWFkZXJzIjogewogICAgICAgICAgIkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIiwKICAgICAgICAgICJBdXRob3JpemF0aW9uIjogIkJlYXJlciB7YXBpX2tleX0iCiAgICAgICAgfSwKICAgICAgICAiYm9keV90ZW1wbGF0ZSI6IHsKICAgICAgICAgICJtZXNzYWdlcyI6ICJ7bWVzc2FnZXN9IiwKICAgICAgICAgICJtb2RlbCI6ICJ7bW9kZWxfaWR9IgogICAgICAgIH0KICAgICAgfSwKICAgICAgInJlc3BvbnNlX2Zvcm1hdCI6IHsKICAgICAgICAicmVzcG9uc2VfcGF0aCI6ICJjaG9pY2VzWzBdLm1lc3NhZ2UuY29udGVudCIsCiAgICAgICAgImVycm9yX3BhdGgiOiAiZXJyb3IubWVzc2FnZSIKICAgICAgfSwKICAgICAgImFnZW50X3Byb2ZpbGUiOiB7CiAgICAgICAgImFnZW50X3R5cGUiOiAiY29kZXgiLAogICAgICAgICJ0cmFuc3BvcnQiOiAib3BlbmFpX2NvbXBhdGlibGVfaHR0cCIKICAgICAgfQogICAgfQogIF0sCiAgInJlcG9ydCI6IHsKICAgICJvdXRwdXRfZGlyIjogInJlcG9ydHMvaW50ZWxsaWdlbmNlIgogIH0KfQpgYGAKCiMjIDQuIEFnZW50IFByb2ZpbGUgQ29udHJhY3QKCkZldGNoIHRoZSBBUEkgc2NoZW1hOgoKYGBgYmFzaApjdXJsIGh0dHA6Ly8xMjcuMC4wLjE6NTAwMC9hcGkvYWdlbnQtcHJvZmlsZXMvc2NoZW1hCmBgYAoKVGhlIG5vcm1hbGl6ZWQgcGFydGljaXBhbnQgcGF5bG9hZCBwcmVzZXJ2ZXM6CgotIGBhZ2VudF9wcm9maWxlLmFnZW50X3R5cGVgCi0gYGFnZW50X3Byb2ZpbGUudHJhbnNwb3J0YAotIGBhZ2VudF9wcm9maWxlLmNhcGFiaWxpdGllc2AKLSBgYWdlbnRfcHJvZmlsZS5tY3BgCi0gYGFnZW50X3Byb2ZpbGUucmVxdWVzdF9mb3JtYXRgCi0gYGFnZW50X3Byb2ZpbGUucmVzcG9uc2VfZm9ybWF0YAotIGBhZ2VudF9wcm9maWxlLm1ldGFkYXRhYAoKVGhpcyBpcyB0aGUgcHVibGljIGNvbnRyYWN0IHVzZWQgYnkgdGhlIHJlbGVhc2UgY29uZmlncyB1bmRlciBgY29uZmlnL3BhcGVyL2AuCgojIyA1LiBDcmVhdGUgdGhlIENvbXBldGl0aW9uIGFuZCBQYXJ0aWNpcGFudHMKCmBgYGJhc2gKdXYgcnVuIHB5dGhvbiBzY3JpcHRzL2JlbmNobWFya19jbGkucHkgc2V0dXAgXAogIC0tY29uZmlnIGNvbmZpZy9iZW5jaG1hcmtfdGVtcGxhdGUuanNvbiBcCiAgLS1vdXRwdXQtZGlyIHJ1bnMvYmVuY2htYXJrX3NldHVwCmBgYAoKVGhlIGNvbW1hbmQgcHJpbnRzOgoKLSBgY29tcGV0aXRpb25faWQ9PGlkPmAKLSBgcGFydGljaXBhbnRzX2NyZWF0ZWQ9PG4+YAotIGBtYW5pZmVzdD08cGF0aD5gCgpUaGUgbWFuaWZlc3QgaXMgd3JpdHRlbiB0bzoKCmBgYHRleHQKcnVucy9iZW5jaG1hcmtfc2V0dXAvc2V0dXBfbWFuaWZlc3RfPGNvbXBldGl0aW9uX2lkPi5qc29uCmBgYAoKIyMgNi4gRXhwb3J0IHRoZSBGaW5hbCBJbnRlbGxpZ2VuY2UgUmVwb3J0CgpgYGBiYXNoCnV2IHJ1biBweXRob24gc2NyaXB0cy9iZW5jaG1hcmtfY2xpLnB5IHJlcG9ydCBcCiAgLS1hcGktYmFzZSBodHRwOi8vMTI3LjAuMC4xOjUwMDAgXAogIC0tY29tcGV0aXRpb24taWQgPGNvbXBldGl0aW9uX2lkPiBcCiAgLS1vdXRwdXQtZGlyIHJ1bnMvYmVuY2htYXJrX3JlcG9ydApgYGAKCkdlbmVyYXRlZCBmaWxlczoKCi0gYGludGVsbGlnZW5jZS5qc29uYAotIGBpbnRlbGxpZ2VuY2UuY3N2YAotIGBpbnRlbGxpZ2VuY2UubWRgCi0gYGludGVsbGlnZW5jZS5odG1sYAoKIyMgNy4gU21va2UgVGVzdCB0aGUgQVBJIFN1cmZhY2UKCmBgYGJhc2gKdXYgcnVuIHB5dGhvbiBzY3JpcHRzL2JlbmNobWFya19jbGkucHkgc21va2UgXAogIC0tYXBpLWJhc2UgaHR0cDovLzEyNy4wLjAuMTo1MDAwCmBgYAoKSWYgeW91IGFscmVhZHkgaGF2ZSBhIGNvbXBldGl0aW9uIElEOgoKYGBgYmFzaAp1diBydW4gcHl0aG9uIHNjcmlwdHMvYmVuY2htYXJrX2NsaS5weSBzbW9rZSBcCiAgLS1hcGktYmFzZSBodHRwOi8vMTI3LjAuMC4xOjUwMDAgXAogIC0tY29tcGV0aXRpb24taWQgPGNvbXBldGl0aW9uX2lkPgpgYGAKCiMjIDguIEV4cG9ydCBhIE1ldHJpYyBUaW1lbGluZQoKYGJlbmNobWFya19jbGlgIGV4cG9ydHMgZmluYWwgcmVwb3J0cy4gRm9yIHRyYWplY3RvcnkgYW5hbHlzaXMgb3ZlciB0aW1lLCB1c2U6CgpgYGBiYXNoCnV2IHJ1biBweXRob24gc2NyaXB0cy9leHBvcnRfbWV0cmljc190aW1lbGluZS5weSBcCiAgLS1hcGktYmFzZSBodHRwOi8vMTI3LjAuMC4xOjUwMDAgXAogIC0tY29tcGV0aXRpb24taWQgPGNvbXBldGl0aW9uX2lkPiBcCiAgLS1pbnRlcnZhbCAxNSBcCiAgLS1vdXRwdXQtZGlyIHJ1bnMvYmVuY2htYXJrX3RpbWVsaW5lCmBgYAoKIyMgOS4gUmVjb21tZW5kZWQgUHVibGljIENvbmZpZ3MKCi0gTWFpbiBwYXBlciBiZW5jaG1hcms6IGBjb25maWcvcGFwZXIvY29tcGV0aXRpb24vbWFpbl9hbHBoYTAuanNvbmAKLSBNYWluIHBhcGVyIGNvbXBldGl0b3JzOiBgY29uZmlnL3BhcGVyL2NvbXBldGl0b3JzL21haW5fOF9tb2RlbHMuanNvbmAKLSBQcm9tcHQgdmFyaWFudHM6IGBjb25maWcvcGFwZXIvY29tcGV0aXRvcnMvcHJvbXB0X3AxMS5qc29uYCwgYHByb21wdF9wMTIuanNvbmAsIGBwcm9tcHRfcDIxLmpzb25gLCBgcHJvbXB0X3AyMi5qc29uYAotIFNlbGYtcGxheTogYGNvbmZpZy9wYXBlci9jb21wZXRpdG9ycy9zZWxmX3BsYXlfZ2VtaW5pLmpzb25gLCBgc2VsZl9wbGF5X2dlbWluaV9kdWVsX3Byb21wdC5qc29uYAoKRm9yIGZ1bGwgZXhwZXJpbWVudCBzZXF1ZW5jZXMsIHVzZSBgZG9jcy9wYXBlcl9yZXByb2R1Y3Rpb24ubWRgLgo=
+# USACOArena Benchmark Guide
+
+This guide documents the public benchmark configuration flow built around `scripts/benchmark_cli.py`.
+
+## 1. Goal
+
+The benchmark workflow provides:
+
+- a single structured config file
+- a stable `agent_profile` contract
+- participant registration through the public USACOArena API
+- exported intelligence reports in `json/csv/md/html`
+
+## 2. Generate a Fresh Template
+
+```bash
+uv run python scripts/benchmark_cli.py init-template \
+  --output config/benchmark_template.json \
+  --force
+```
+
+The generated template includes:
+
+- `competition.problem_ids`
+- `participants[*].request_format`
+- `participants[*].response_format`
+- `participants[*].agent_profile`
+- `report.output_dir`
+
+## 3. Fill in the Config
+
+The benchmark config supports `$ENV:NAME` substitution. The checked-in template intentionally uses environment variables for provider credentials.
+
+Minimal example:
+
+```json
+{
+  "api_base": "http://127.0.0.1:5000",
+  "competition": {
+    "title": "USACOArena Open Benchmark",
+    "description": "Reproducible benchmark run",
+    "problem_ids": [
+      "1515_bronze_hoof_paper_scissors_minus_one",
+      "1516_bronze_more_cow_photos"
+    ],
+    "max_tokens_per_participant": 100000,
+    "rules": {
+      "lambda": 100
+    }
+  },
+  "participants": [
+    {
+      "name": "codex-baseline",
+      "api_base_url": "$ENV:OPENAI_BASE_URL",
+      "api_key": "$ENV:OPENAI_API_KEY",
+      "limit_tokens": 100000,
+      "lambda_value": 100,
+      "request_format": {
+        "url": "/v1/chat/completions",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {api_key}"
+        },
+        "body_template": {
+          "messages": "{messages}",
+          "model": "{model_id}"
+        }
+      },
+      "response_format": {
+        "response_path": "choices[0].message.content",
+        "error_path": "error.message"
+      },
+      "agent_profile": {
+        "agent_type": "codex",
+        "transport": "openai_compatible_http"
+      }
+    }
+  ],
+  "report": {
+    "output_dir": "reports/intelligence"
+  }
+}
+```
+
+## 4. Agent Profile Contract
+
+Fetch the API schema:
+
+```bash
+curl http://127.0.0.1:5000/api/agent-profiles/schema
+```
+
+The normalized participant payload preserves:
+
+- `agent_profile.agent_type`
+- `agent_profile.transport`
+- `agent_profile.capabilities`
+- `agent_profile.mcp`
+- `agent_profile.request_format`
+- `agent_profile.response_format`
+- `agent_profile.metadata`
+
+This is the public contract used by the release configs under `config/paper/`.
+
+## 5. Create the Competition and Participants
+
+```bash
+uv run python scripts/benchmark_cli.py setup \
+  --config config/benchmark_template.json \
+  --output-dir runs/benchmark_setup
+```
+
+The command prints:
+
+- `competition_id=<id>`
+- `participants_created=<n>`
+- `manifest=<path>`
+
+The manifest is written to:
+
+```text
+runs/benchmark_setup/setup_manifest_<competition_id>.json
+```
+
+## 6. Export the Final Intelligence Report
+
+```bash
+uv run python scripts/benchmark_cli.py report \
+  --api-base http://127.0.0.1:5000 \
+  --competition-id <competition_id> \
+  --output-dir runs/benchmark_report
+```
+
+Generated files:
+
+- `intelligence.json`
+- `intelligence.csv`
+- `intelligence.md`
+- `intelligence.html`
+
+## 7. Smoke Test the API Surface
+
+```bash
+uv run python scripts/benchmark_cli.py smoke \
+  --api-base http://127.0.0.1:5000
+```
+
+If you already have a competition ID:
+
+```bash
+uv run python scripts/benchmark_cli.py smoke \
+  --api-base http://127.0.0.1:5000 \
+  --competition-id <competition_id>
+```
+
+## 8. Export a Metric Timeline
+
+`benchmark_cli` exports final reports. For trajectory analysis over time, use:
+
+```bash
+uv run python scripts/export_metrics_timeline.py \
+  --api-base http://127.0.0.1:5000 \
+  --competition-id <competition_id> \
+  --interval 15 \
+  --output-dir runs/benchmark_timeline
+```
+
+## 9. Recommended Public Configs
+
+- Main paper benchmark: `config/paper/competition/main_alpha0.json`
+- Main paper competitors: `config/paper/competitors/main_8_models.json`
+- Prompt variants: `config/paper/competitors/prompt_p11.json`, `prompt_p12.json`, `prompt_p21.json`, `prompt_p22.json`
+- Self-play: `config/paper/competitors/self_play_gemini.json`, `self_play_gemini_duel_prompt.json`
+
+For full experiment sequences, use `docs/paper_reproduction.md`.

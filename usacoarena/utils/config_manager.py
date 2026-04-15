@@ -1,1 +1,259 @@
-IiIiCkNvbmZpZ3VyYXRpb24gbWFuYWdlbWVudCBmb3IgVVNBQ09BcmVuYSBzZXJ2ZXIuCgpUaGlzIG1vZHVsZSBwcm92aWRlcyBhIGNlbnRyYWxpemVkIGNvbmZpZ3VyYXRpb24gbWFuYWdlbWVudCBzeXN0ZW0KdGhhdCBzdXBwb3J0cyBmaWxlLWJhc2VkIGNvbmZpZ3VyYXRpb24sIGVudmlyb25tZW50IHZhcmlhYmxlcywgYW5kCmNvbW1hbmQtbGluZSBhcmd1bWVudHMgd2l0aCBwcm9wZXIgcHJlY2VkZW5jZSBoYW5kbGluZy4KIiIiCgppbXBvcnQganNvbgppbXBvcnQgb3MKZnJvbSB0eXBpbmcgaW1wb3J0IERpY3QsIEFueSwgT3B0aW9uYWwKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gdXNhY29hcmVuYS51dGlscy5sb2dnZXJfY29uZmlnIGltcG9ydCBnZXRfbG9nZ2VyCgpsb2dnZXIgPSBnZXRfbG9nZ2VyKCJjb25maWdfbWFuYWdlciIpCgoKY2xhc3MgQ29uZmlnTWFuYWdlcjoKICAgICIiIkNlbnRyYWxpemVkIGNvbmZpZ3VyYXRpb24gbWFuYWdlbWVudCBmb3IgVVNBQ09BcmVuYSBzZXJ2ZXIiIiIKICAgIAogICAgZGVmIF9faW5pdF9fKHNlbGYsIGNvbmZpZ19wYXRoOiBPcHRpb25hbFtzdHJdID0gTm9uZSk6CiAgICAgICAgIiIiCiAgICAgICAgSW5pdGlhbGl6ZSBjb25maWd1cmF0aW9uIG1hbmFnZXIKICAgICAgICAKICAgICAgICBBcmdzOgogICAgICAgICAgICBjb25maWdfcGF0aDogUGF0aCB0byBjb25maWd1cmF0aW9uIGZpbGUgKG9wdGlvbmFsKQogICAgICAgICIiIgogICAgICAgIHNlbGYuY29uZmlnX3BhdGggPSBjb25maWdfcGF0aCBvciAiY29uZmlnL3NlcnZlcl9jb25maWcuanNvbiIKICAgICAgICBzZWxmLl9jb25maWcgPSB7fQogICAgICAgIHNlbGYuX2xvYWRfY29uZmlnKCkKICAgIAogICAgZGVmIF9sb2FkX2NvbmZpZyhzZWxmKSAtPiBOb25lOgogICAgICAgICIiIkxvYWQgY29uZmlndXJhdGlvbiBmcm9tIGZpbGUgYW5kIGVudmlyb25tZW50IHZhcmlhYmxlcyIiIgogICAgICAgICMgTG9hZCBkZWZhdWx0IGNvbmZpZ3VyYXRpb24KICAgICAgICBzZWxmLl9jb25maWcgPSBzZWxmLl9nZXRfZGVmYXVsdF9jb25maWcoKQogICAgICAgIAogICAgICAgICMgTG9hZCBmcm9tIGZpbGUgaWYgZXhpc3RzCiAgICAgICAgaWYgb3MucGF0aC5leGlzdHMoc2VsZi5jb25maWdfcGF0aCk6CiAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgIHdpdGggb3BlbihzZWxmLmNvbmZpZ19wYXRoLCAncicsIGVuY29kaW5nPSd1dGYtOCcpIGFzIGY6CiAgICAgICAgICAgICAgICAgICAgZmlsZV9jb25maWcgPSBqc29uLmxvYWQoZikKICAgICAgICAgICAgICAgIHNlbGYuX21lcmdlX2NvbmZpZyhmaWxlX2NvbmZpZykKICAgICAgICAgICAgICAgIGxvZ2dlci5pbmZvKGYiTG9hZGVkIGNvbmZpZ3VyYXRpb24gZnJvbSB7c2VsZi5jb25maWdfcGF0aH0iKQogICAgICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgICAgICBsb2dnZXIud2FybmluZyhmIkZhaWxlZCB0byBsb2FkIGNvbmZpZyBmaWxlIHtzZWxmLmNvbmZpZ19wYXRofToge2V9IikKICAgICAgICAKICAgICAgICAjIE92ZXJyaWRlIHdpdGggZW52aXJvbm1lbnQgdmFyaWFibGVzCiAgICAgICAgc2VsZi5fbG9hZF9mcm9tX2VudigpCiAgICAgICAgCiAgICAgICAgbG9nZ2VyLmluZm8oIkNvbmZpZ3VyYXRpb24gbG9hZGVkIHN1Y2Nlc3NmdWxseSIpCiAgICAKICAgIGRlZiBfZ2V0X2RlZmF1bHRfY29uZmlnKHNlbGYpIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgICIiIkdldCBkZWZhdWx0IGNvbmZpZ3VyYXRpb24gdmFsdWVzIiIiCiAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgInNlcnZlciI6IHsKICAgICAgICAgICAgICAgICJwb3J0IjogNTAwMCwKICAgICAgICAgICAgICAgICJob3N0IjogIjAuMC4wLjAiCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJsb2ciOiB7CiAgICAgICAgICAgICAgICAibGV2ZWwiOiAiSU5GTyIsCiAgICAgICAgICAgICAgICAiZGlyIjogImxvZ3Mvc2VydmVyX2xvZ3MiLAogICAgICAgICAgICAgICAgImVuYWJsZV9jb2xvcnMiOiBUcnVlCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJoeWRybyI6IHsKICAgICAgICAgICAgICAgICJiYXNlX3VybCI6ICJodHRwOi8vMTI3LjAuMC4xOjg4ODgiLAogICAgICAgICAgICAgICAgImFwaV9iYXNlIjogIi91c2Fjb2FyZW5hL2FwaSIsCiAgICAgICAgICAgICAgICAiYXBpX3Rva2VuIjogIiIsCiAgICAgICAgICAgICAgICAidGltZW91dF9zZWNvbmRzIjogMzAuMCwKICAgICAgICAgICAgICAgICJwb2xsX2ludGVydmFsX3NlY29uZHMiOiAwLjUsCiAgICAgICAgICAgICAgICAic3VibWlzc2lvbl90aW1lb3V0X3NlY29uZHMiOiAxMjAuMAogICAgICAgICAgICB9LAogICAgICAgICAgICAicmF0ZV9saW1pdCI6IHsKICAgICAgICAgICAgICAgICJtaW5faW50ZXJ2YWwiOiAwLjA1CiAgICAgICAgICAgIH0sCiAgICAgICAgICAgICJkYiI6IHsKICAgICAgICAgICAgICAgICJwYXRoIjogImRhdGEvY29tcGV0aXRpb25fNTAwMC5kdWNrZGIiLAogICAgICAgICAgICAgICAgImJhY2t1cF9qc29uIjogVHJ1ZQogICAgICAgICAgICB9LAogICAgICAgICAgICAiZGF0YSI6IHsKICAgICAgICAgICAgICAgICJwcm9ibGVtX2RhdGFfZGlyIjogIiIsCiAgICAgICAgICAgICAgICAidGV4dGJvb2tfZGF0YV9kaXIiOiAiZGF0YXNldC90ZXh0Ym9va3MiCiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAKICAgIGRlZiBfbWVyZ2VfY29uZmlnKHNlbGYsIG5ld19jb25maWc6IERpY3Rbc3RyLCBBbnldKSAtPiBOb25lOgogICAgICAgICIiIk1lcmdlIG5ldyBjb25maWd1cmF0aW9uIGludG8gZXhpc3RpbmcgY29uZmlnIiIiCiAgICAgICAgZGVmIG1lcmdlX2RpY3QodGFyZ2V0OiBEaWN0W3N0ciwgQW55XSwgc291cmNlOiBEaWN0W3N0ciwgQW55XSkgLT4gTm9uZToKICAgICAgICAgICAgZm9yIGtleSwgdmFsdWUgaW4gc291cmNlLml0ZW1zKCk6CiAgICAgICAgICAgICAgICBpZiBrZXkgaW4gdGFyZ2V0IGFuZCBpc2luc3RhbmNlKHRhcmdldFtrZXldLCBkaWN0KSBhbmQgaXNpbnN0YW5jZSh2YWx1ZSwgZGljdCk6CiAgICAgICAgICAgICAgICAgICAgbWVyZ2VfZGljdCh0YXJnZXRba2V5XSwgdmFsdWUpCiAgICAgICAgICAgICAgICBlbHNlOgogICAgICAgICAgICAgICAgICAgIHRhcmdldFtrZXldID0gdmFsdWUKICAgICAgICAKICAgICAgICBtZXJnZV9kaWN0KHNlbGYuX2NvbmZpZywgbmV3X2NvbmZpZykKICAgIAogICAgZGVmIF9sb2FkX2Zyb21fZW52KHNlbGYpIC0+IE5vbmU6CiAgICAgICAgIiIiTG9hZCBjb25maWd1cmF0aW9uIGZyb20gZW52aXJvbm1lbnQgdmFyaWFibGVzIiIiCiAgICAgICAgZW52X21hcHBpbmdzID0gewogICAgICAgICAgICAiQ09NUEVURU1BU19TRVJWRVJfSE9TVCI6ICgic2VydmVyIiwgImhvc3QiKSwKICAgICAgICAgICAgIkNPTVBFVEVNQVNfU0VSVkVSX1BPUlQiOiAoInNlcnZlciIsICJwb3J0IiksCiAgICAgICAgICAgICJDT01QRVRFTUFTX0xPR19MRVZFTCI6ICgibG9nIiwgImxldmVsIiksCiAgICAgICAgICAgICJDT01QRVRFTUFTX0xPR19ESVIiOiAoImxvZyIsICJkaXIiKSwKICAgICAgICAgICAgIkNPTVBFVEVNQVNfTE9HX0VOQUJMRV9DT0xPUlMiOiAoImxvZyIsICJlbmFibGVfY29sb3JzIiksCiAgICAgICAgICAgICJDT01QRVRFTUFTX09KX0VORFBPSU5UIjogKCJoeWRybyIsICJiYXNlX3VybCIpLAogICAgICAgICAgICAiQ09NUEVURU1BU19SQVRFX0xJTUlUX0lOVEVSVkFMIjogKCJyYXRlX2xpbWl0IiwgIm1pbl9pbnRlcnZhbCIpLAogICAgICAgICAgICAiQ09NUEVURU1BU19EQl9QQVRIIjogKCJkYiIsICJwYXRoIiksCiAgICAgICAgICAgICJDT01QRVRFTUFTX0RCX0JBQ0tVUF9KU09OIjogKCJkYiIsICJiYWNrdXBfanNvbiIpLAogICAgICAgICAgICAiQ09NUEVURU1BU19QUk9CTEVNX0RBVEFfRElSIjogKCJkYXRhIiwgInByb2JsZW1fZGF0YV9kaXIiKSwKICAgICAgICAgICAgIkNPTVBFVEVNQVNfVEVYVEJPT0tfREFUQV9ESVIiOiAoImRhdGEiLCAidGV4dGJvb2tfZGF0YV9kaXIiKSwKICAgICAgICAgICAgIlVTQUNPQVJFTkFfSFlEUk9fQkFTRV9VUkwiOiAoImh5ZHJvIiwgImJhc2VfdXJsIiksCiAgICAgICAgICAgICJVU0FDT0FSRU5BX0hZRFJPX0FQSV9CQVNFIjogKCJoeWRybyIsICJhcGlfYmFzZSIpLAogICAgICAgICAgICAiVVNBQ09BUkVOQV9IWURST19BUElfVE9LRU4iOiAoImh5ZHJvIiwgImFwaV90b2tlbiIpLAogICAgICAgICAgICAiVVNBQ09BUkVOQV9IWURST19USU1FT1VUX1NFQ09ORFMiOiAoImh5ZHJvIiwgInRpbWVvdXRfc2Vjb25kcyIpLAogICAgICAgICAgICAiVVNBQ09BUkVOQV9IWURST19QT0xMX0lOVEVSVkFMX1NFQ09ORFMiOiAoImh5ZHJvIiwgInBvbGxfaW50ZXJ2YWxfc2Vjb25kcyIpLAogICAgICAgICAgICAiVVNBQ09BUkVOQV9IWURST19TVUJNSVNTSU9OX1RJTUVPVVRfU0VDT05EUyI6ICgiaHlkcm8iLCAic3VibWlzc2lvbl90aW1lb3V0X3NlY29uZHMiKSwKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgZm9yIGVudl92YXIsIGNvbmZpZ19wYXRoIGluIGVudl9tYXBwaW5ncy5pdGVtcygpOgogICAgICAgICAgICB2YWx1ZSA9IG9zLmdldGVudihlbnZfdmFyKQogICAgICAgICAgICBpZiB2YWx1ZSBpcyBub3QgTm9uZToKICAgICAgICAgICAgICAgIHNlbGYuX3NldF9uZXN0ZWRfdmFsdWUoY29uZmlnX3BhdGgsIHNlbGYuX3BhcnNlX2Vudl92YWx1ZSh2YWx1ZSkpCiAgICAKICAgIGRlZiBfc2V0X25lc3RlZF92YWx1ZShzZWxmLCBwYXRoOiB0dXBsZSwgdmFsdWU6IEFueSkgLT4gTm9uZToKICAgICAgICAiIiJTZXQgYSBuZXN0ZWQgY29uZmlndXJhdGlvbiB2YWx1ZSIiIgogICAgICAgIGN1cnJlbnQgPSBzZWxmLl9jb25maWcKICAgICAgICBmb3Iga2V5IGluIHBhdGhbOi0xXToKICAgICAgICAgICAgaWYga2V5IG5vdCBpbiBjdXJyZW50OgogICAgICAgICAgICAgICAgY3VycmVudFtrZXldID0ge30KICAgICAgICAgICAgY3VycmVudCA9IGN1cnJlbnRba2V5XQogICAgICAgIGN1cnJlbnRbcGF0aFstMV1dID0gdmFsdWUKICAgIAogICAgZGVmIF9wYXJzZV9lbnZfdmFsdWUoc2VsZiwgdmFsdWU6IHN0cikgLT4gQW55OgogICAgICAgICIiIlBhcnNlIGVudmlyb25tZW50IHZhcmlhYmxlIHZhbHVlIHRvIGFwcHJvcHJpYXRlIHR5cGUiIiIKICAgICAgICAjIEJvb2xlYW4gdmFsdWVzCiAgICAgICAgaWYgdmFsdWUubG93ZXIoKSBpbiAoJ3RydWUnLCAnMScsICd5ZXMnLCAnb24nKToKICAgICAgICAgICAgcmV0dXJuIFRydWUKICAgICAgICBpZiB2YWx1ZS5sb3dlcigpIGluICgnZmFsc2UnLCAnMCcsICdubycsICdvZmYnKToKICAgICAgICAgICAgcmV0dXJuIEZhbHNlCiAgICAgICAgCiAgICAgICAgIyBJbnRlZ2VyIHZhbHVlcwogICAgICAgIHRyeToKICAgICAgICAgICAgcmV0dXJuIGludCh2YWx1ZSkKICAgICAgICBleGNlcHQgVmFsdWVFcnJvcjoKICAgICAgICAgICAgcGFzcwogICAgICAgIAogICAgICAgICMgRmxvYXQgdmFsdWVzCiAgICAgICAgdHJ5OgogICAgICAgICAgICByZXR1cm4gZmxvYXQodmFsdWUpCiAgICAgICAgZXhjZXB0IFZhbHVlRXJyb3I6CiAgICAgICAgICAgIHBhc3MKICAgICAgICAKICAgICAgICAjIExpc3QgdmFsdWVzIChjb21tYS1zZXBhcmF0ZWQpCiAgICAgICAgaWYgJywnIGluIHZhbHVlOgogICAgICAgICAgICByZXR1cm4gW2l0ZW0uc3RyaXAoKSBmb3IgaXRlbSBpbiB2YWx1ZS5zcGxpdCgnLCcpXQogICAgICAgIAogICAgICAgICMgU3RyaW5nIHZhbHVlcwogICAgICAgIHJldHVybiB2YWx1ZQogICAgCiAgICBkZWYgZ2V0KHNlbGYsIGtleTogc3RyLCBkZWZhdWx0OiBBbnkgPSBOb25lKSAtPiBBbnk6CiAgICAgICAgIiIiCiAgICAgICAgR2V0IGNvbmZpZ3VyYXRpb24gdmFsdWUgdXNpbmcgZG90IG5vdGF0aW9uCiAgICAgICAgCiAgICAgICAgQXJnczoKICAgICAgICAgICAga2V5OiBDb25maWd1cmF0aW9uIGtleSAoZS5nLiwgImxvZy5sZXZlbCIpCiAgICAgICAgICAgIGRlZmF1bHQ6IERlZmF1bHQgdmFsdWUgaWYga2V5IG5vdCBmb3VuZAogICAgICAgICAgICAKICAgICAgICBSZXR1cm5zOgogICAgICAgICAgICBDb25maWd1cmF0aW9uIHZhbHVlIG9yIGRlZmF1bHQKICAgICAgICAiIiIKICAgICAgICBrZXlzID0ga2V5LnNwbGl0KCcuJykKICAgICAgICBjdXJyZW50ID0gc2VsZi5fY29uZmlnCiAgICAgICAgCiAgICAgICAgZm9yIGsgaW4ga2V5czoKICAgICAgICAgICAgaWYgaXNpbnN0YW5jZShjdXJyZW50LCBkaWN0KSBhbmQgayBpbiBjdXJyZW50OgogICAgICAgICAgICAgICAgY3VycmVudCA9IGN1cnJlbnRba10KICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIHJldHVybiBkZWZhdWx0CiAgICAgICAgCiAgICAgICAgcmV0dXJuIGN1cnJlbnQKICAgIAogICAgZGVmIHNldChzZWxmLCBrZXk6IHN0ciwgdmFsdWU6IEFueSkgLT4gTm9uZToKICAgICAgICAiIiIKICAgICAgICBTZXQgY29uZmlndXJhdGlvbiB2YWx1ZSB1c2luZyBkb3Qgbm90YXRpb24KICAgICAgICAKICAgICAgICBBcmdzOgogICAgICAgICAgICBrZXk6IENvbmZpZ3VyYXRpb24ga2V5IChlLmcuLCAibG9nLmxldmVsIikKICAgICAgICAgICAgdmFsdWU6IFZhbHVlIHRvIHNldAogICAgICAgICIiIgogICAgICAgIGtleXMgPSBrZXkuc3BsaXQoJy4nKQogICAgICAgIGN1cnJlbnQgPSBzZWxmLl9jb25maWcKICAgICAgICAKICAgICAgICBmb3IgayBpbiBrZXlzWzotMV06CiAgICAgICAgICAgIGlmIGsgbm90IGluIGN1cnJlbnQ6CiAgICAgICAgICAgICAgICBjdXJyZW50W2tdID0ge30KICAgICAgICAgICAgY3VycmVudCA9IGN1cnJlbnRba10KICAgICAgICAKICAgICAgICBjdXJyZW50W2tleXNbLTFdXSA9IHZhbHVlCiAgICAKICAgIGRlZiBnZXRfc2VjdGlvbihzZWxmLCBzZWN0aW9uOiBzdHIpIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgICIiIgogICAgICAgIEdldCBlbnRpcmUgY29uZmlndXJhdGlvbiBzZWN0aW9uCiAgICAgICAgCiAgICAgICAgQXJnczoKICAgICAgICAgICAgc2VjdGlvbjogU2VjdGlvbiBuYW1lIChlLmcuLCAibG9nZ2luZyIpCiAgICAgICAgICAgIAogICAgICAgIFJldHVybnM6CiAgICAgICAgICAgIENvbmZpZ3VyYXRpb24gc2VjdGlvbiBhcyBkaWN0aW9uYXJ5CiAgICAgICAgIiIiCiAgICAgICAgcmV0dXJuIHNlbGYuX2NvbmZpZy5nZXQoc2VjdGlvbiwge30pCiAgICAKICAgIGRlZiB0b19kaWN0KHNlbGYpIC0+IERpY3Rbc3RyLCBBbnldOgogICAgICAgICIiIkdldCBjb21wbGV0ZSBjb25maWd1cmF0aW9uIGFzIGRpY3Rpb25hcnkiIiIKICAgICAgICByZXR1cm4gc2VsZi5fY29uZmlnLmNvcHkoKQogICAgCiAgICBkZWYgc2F2ZShzZWxmLCBwYXRoOiBPcHRpb25hbFtzdHJdID0gTm9uZSkgLT4gTm9uZToKICAgICAgICAiIiIKICAgICAgICBTYXZlIGN1cnJlbnQgY29uZmlndXJhdGlvbiB0byBmaWxlCiAgICAgICAgCiAgICAgICAgQXJnczoKICAgICAgICAgICAgcGF0aDogRmlsZSBwYXRoIHRvIHNhdmUgdG8gKHVzZXMgZGVmYXVsdCBpZiBub3Qgc3BlY2lmaWVkKQogICAgICAgICIiIgogICAgICAgIHNhdmVfcGF0aCA9IHBhdGggb3Igc2VsZi5jb25maWdfcGF0aAogICAgICAgIG9zLm1ha2VkaXJzKG9zLnBhdGguZGlybmFtZShzYXZlX3BhdGgpLCBleGlzdF9vaz1UcnVlKQogICAgICAgIAogICAgICAgIHdpdGggb3BlbihzYXZlX3BhdGgsICd3JywgZW5jb2Rpbmc9J3V0Zi04JykgYXMgZjoKICAgICAgICAgICAganNvbi5kdW1wKHNlbGYuX2NvbmZpZywgZiwgaW5kZW50PTIsIGVuc3VyZV9hc2NpaT1GYWxzZSkKICAgICAgICAKICAgICAgICBsb2dnZXIuaW5mbyhmIkNvbmZpZ3VyYXRpb24gc2F2ZWQgdG8ge3NhdmVfcGF0aH0iKQoKCiMgR2xvYmFsIGNvbmZpZ3VyYXRpb24gaW5zdGFuY2UKX2dsb2JhbF9jb25maWc6IE9wdGlvbmFsW0NvbmZpZ01hbmFnZXJdID0gTm9uZQoKCmRlZiBnZXRfY29uZmlnKGNvbmZpZ19wYXRoOiBPcHRpb25hbFtzdHJdID0gTm9uZSkgLT4gQ29uZmlnTWFuYWdlcjoKICAgICIiIgogICAgR2V0IG9yIGNyZWF0ZSBnbG9iYWwgY29uZmlndXJhdGlvbiBpbnN0YW5jZQogICAgCiAgICBBcmdzOgogICAgICAgIGNvbmZpZ19wYXRoOiBDb25maWd1cmF0aW9uIGZpbGUgcGF0aCAob3B0aW9uYWwpCiAgICAgICAgCiAgICBSZXR1cm5zOgogICAgICAgIEdsb2JhbCBjb25maWd1cmF0aW9uIG1hbmFnZXIgaW5zdGFuY2UKICAgICIiIgogICAgZ2xvYmFsIF9nbG9iYWxfY29uZmlnCiAgICBpZiBfZ2xvYmFsX2NvbmZpZyBpcyBOb25lOgogICAgICAgIF9nbG9iYWxfY29uZmlnID0gQ29uZmlnTWFuYWdlcihjb25maWdfcGF0aCkKICAgIHJldHVybiBfZ2xvYmFsX2NvbmZpZwoKCmRlZiBzZXRfY29uZmlnKGNvbmZpZ19tYW5hZ2VyOiBDb25maWdNYW5hZ2VyKSAtPiBOb25lOgogICAgIiIiCiAgICBTZXQgZ2xvYmFsIGNvbmZpZ3VyYXRpb24gaW5zdGFuY2UKICAgIAogICAgQXJnczoKICAgICAgICBjb25maWdfbWFuYWdlcjogQ29uZmlndXJhdGlvbiBtYW5hZ2VyIGluc3RhbmNlCiAgICAiIiIKICAgIGdsb2JhbCBfZ2xvYmFsX2NvbmZpZwogICAgX2dsb2JhbF9jb25maWcgPSBjb25maWdfbWFuYWdlciAK
+"""
+Configuration management for USACOArena server.
+
+This module provides a centralized configuration management system
+that supports file-based configuration, environment variables, and
+command-line arguments with proper precedence handling.
+"""
+
+import json
+import os
+from typing import Dict, Any, Optional
+from pathlib import Path
+from usacoarena.utils.logger_config import get_logger
+
+logger = get_logger("config_manager")
+
+
+class ConfigManager:
+    """Centralized configuration management for USACOArena server"""
+    
+    def __init__(self, config_path: Optional[str] = None):
+        """
+        Initialize configuration manager
+        
+        Args:
+            config_path: Path to configuration file (optional)
+        """
+        self.config_path = config_path or "config/server_config.json"
+        self._config = {}
+        self._load_config()
+    
+    def _load_config(self) -> None:
+        """Load configuration from file and environment variables"""
+        # Load default configuration
+        self._config = self._get_default_config()
+        
+        # Load from file if exists
+        if os.path.exists(self.config_path):
+            try:
+                with open(self.config_path, 'r', encoding='utf-8') as f:
+                    file_config = json.load(f)
+                self._merge_config(file_config)
+                logger.info(f"Loaded configuration from {self.config_path}")
+            except Exception as e:
+                logger.warning(f"Failed to load config file {self.config_path}: {e}")
+        
+        # Override with environment variables
+        self._load_from_env()
+        
+        logger.info("Configuration loaded successfully")
+    
+    def _get_default_config(self) -> Dict[str, Any]:
+        """Get default configuration values"""
+        return {
+            "server": {
+                "port": 5000,
+                "host": "0.0.0.0"
+            },
+            "log": {
+                "level": "INFO",
+                "dir": "logs/server_logs",
+                "enable_colors": True
+            },
+            "hydro": {
+                "base_url": "http://127.0.0.1:8888",
+                "api_base": "/usacoarena/api",
+                "api_token": "",
+                "timeout_seconds": 30.0,
+                "poll_interval_seconds": 0.5,
+                "submission_timeout_seconds": 120.0
+            },
+            "rate_limit": {
+                "min_interval": 0.05
+            },
+            "db": {
+                "path": "data/competition_5000.duckdb",
+                "backup_json": True
+            },
+            "data": {
+                "problem_data_dir": "",
+                "textbook_data_dir": "dataset/textbooks"
+            }
+        }
+    
+    def _merge_config(self, new_config: Dict[str, Any]) -> None:
+        """Merge new configuration into existing config"""
+        def merge_dict(target: Dict[str, Any], source: Dict[str, Any]) -> None:
+            for key, value in source.items():
+                if key in target and isinstance(target[key], dict) and isinstance(value, dict):
+                    merge_dict(target[key], value)
+                else:
+                    target[key] = value
+        
+        merge_dict(self._config, new_config)
+    
+    def _load_from_env(self) -> None:
+        """Load configuration from environment variables"""
+        env_mappings = {
+            "COMPETEMAS_SERVER_HOST": ("server", "host"),
+            "COMPETEMAS_SERVER_PORT": ("server", "port"),
+            "COMPETEMAS_LOG_LEVEL": ("log", "level"),
+            "COMPETEMAS_LOG_DIR": ("log", "dir"),
+            "COMPETEMAS_LOG_ENABLE_COLORS": ("log", "enable_colors"),
+            "COMPETEMAS_OJ_ENDPOINT": ("hydro", "base_url"),
+            "COMPETEMAS_RATE_LIMIT_INTERVAL": ("rate_limit", "min_interval"),
+            "COMPETEMAS_DB_PATH": ("db", "path"),
+            "COMPETEMAS_DB_BACKUP_JSON": ("db", "backup_json"),
+            "COMPETEMAS_PROBLEM_DATA_DIR": ("data", "problem_data_dir"),
+            "COMPETEMAS_TEXTBOOK_DATA_DIR": ("data", "textbook_data_dir"),
+            "USACOARENA_HYDRO_BASE_URL": ("hydro", "base_url"),
+            "USACOARENA_HYDRO_API_BASE": ("hydro", "api_base"),
+            "USACOARENA_HYDRO_API_TOKEN": ("hydro", "api_token"),
+            "USACOARENA_HYDRO_TIMEOUT_SECONDS": ("hydro", "timeout_seconds"),
+            "USACOARENA_HYDRO_POLL_INTERVAL_SECONDS": ("hydro", "poll_interval_seconds"),
+            "USACOARENA_HYDRO_SUBMISSION_TIMEOUT_SECONDS": ("hydro", "submission_timeout_seconds"),
+        }
+        
+        for env_var, config_path in env_mappings.items():
+            value = os.getenv(env_var)
+            if value is not None:
+                self._set_nested_value(config_path, self._parse_env_value(value))
+    
+    def _set_nested_value(self, path: tuple, value: Any) -> None:
+        """Set a nested configuration value"""
+        current = self._config
+        for key in path[:-1]:
+            if key not in current:
+                current[key] = {}
+            current = current[key]
+        current[path[-1]] = value
+    
+    def _parse_env_value(self, value: str) -> Any:
+        """Parse environment variable value to appropriate type"""
+        # Boolean values
+        if value.lower() in ('true', '1', 'yes', 'on'):
+            return True
+        if value.lower() in ('false', '0', 'no', 'off'):
+            return False
+        
+        # Integer values
+        try:
+            return int(value)
+        except ValueError:
+            pass
+        
+        # Float values
+        try:
+            return float(value)
+        except ValueError:
+            pass
+        
+        # List values (comma-separated)
+        if ',' in value:
+            return [item.strip() for item in value.split(',')]
+        
+        # String values
+        return value
+    
+    def get(self, key: str, default: Any = None) -> Any:
+        """
+        Get configuration value using dot notation
+        
+        Args:
+            key: Configuration key (e.g., "log.level")
+            default: Default value if key not found
+            
+        Returns:
+            Configuration value or default
+        """
+        keys = key.split('.')
+        current = self._config
+        
+        for k in keys:
+            if isinstance(current, dict) and k in current:
+                current = current[k]
+            else:
+                return default
+        
+        return current
+    
+    def set(self, key: str, value: Any) -> None:
+        """
+        Set configuration value using dot notation
+        
+        Args:
+            key: Configuration key (e.g., "log.level")
+            value: Value to set
+        """
+        keys = key.split('.')
+        current = self._config
+        
+        for k in keys[:-1]:
+            if k not in current:
+                current[k] = {}
+            current = current[k]
+        
+        current[keys[-1]] = value
+    
+    def get_section(self, section: str) -> Dict[str, Any]:
+        """
+        Get entire configuration section
+        
+        Args:
+            section: Section name (e.g., "logging")
+            
+        Returns:
+            Configuration section as dictionary
+        """
+        return self._config.get(section, {})
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """Get complete configuration as dictionary"""
+        return self._config.copy()
+    
+    def save(self, path: Optional[str] = None) -> None:
+        """
+        Save current configuration to file
+        
+        Args:
+            path: File path to save to (uses default if not specified)
+        """
+        save_path = path or self.config_path
+        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        
+        with open(save_path, 'w', encoding='utf-8') as f:
+            json.dump(self._config, f, indent=2, ensure_ascii=False)
+        
+        logger.info(f"Configuration saved to {save_path}")
+
+
+# Global configuration instance
+_global_config: Optional[ConfigManager] = None
+
+
+def get_config(config_path: Optional[str] = None) -> ConfigManager:
+    """
+    Get or create global configuration instance
+    
+    Args:
+        config_path: Configuration file path (optional)
+        
+    Returns:
+        Global configuration manager instance
+    """
+    global _global_config
+    if _global_config is None:
+        _global_config = ConfigManager(config_path)
+    return _global_config
+
+
+def set_config(config_manager: ConfigManager) -> None:
+    """
+    Set global configuration instance
+    
+    Args:
+        config_manager: Configuration manager instance
+    """
+    global _global_config
+    _global_config = config_manager 

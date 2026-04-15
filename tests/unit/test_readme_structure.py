@@ -1,1 +1,8 @@
-ZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKZnJvbSB1c2Fjb2FyZW5hLnRvb2xzIGltcG9ydCByZWFkbWVfY2hlY2tzCgoKZGVmIHRlc3RfcmVhZG1lX2hhc19yZWxlYXNlX3JlYWR5X3N0cnVjdHVyZSgpIC0+IE5vbmU6CiAgICBlcnJvcnMgPSByZWFkbWVfY2hlY2tzLnZhbGlkYXRlX3JlYWRtZSgpCiAgICBhc3NlcnQgbm90IGVycm9ycywgZiJSRUFETUUgdmFsaWRhdGlvbiBmYWlsZWQ6IHsnOyAnLmpvaW4oZXJyb3JzKX0iCg==
+from __future__ import annotations
+
+from usacoarena.tools import readme_checks
+
+
+def test_readme_has_release_ready_structure() -> None:
+    errors = readme_checks.validate_readme()
+    assert not errors, f"README validation failed: {'; '.join(errors)}"

@@ -1,1 +1,9 @@
-ewogICJjb21wZXRpdGlvbiI6IHsiaWQiOiAiYWItcDIxIiwgInRpdGxlIjogIlByb21wdCBQMi4xIiwgImRlc2NyaXB0aW9uIjogImZpeHR1cmUiLCAicHJvYmxlbV9jb3VudCI6IDR9LAogICJnZW5lcmF0ZWRfYXQiOiAiMjAyNi0wNC0xNFQwMjoyNDowMFoiLAogICJzdW1tYXJ5IjogeyJwYXJ0aWNpcGFudF9jb3VudCI6IDIsICJ0ZXJtaW5hdGVkX2NvdW50IjogMiwgImF2Z19pbnRlbGxpZ2VuY2Vfc2NvcmUiOiA1OC4wLCAidG9wX3BhcnRpY2lwYW50IjogImdlbWluaS0yLjUtcHJvIn0sCiAgInJvd3MiOiBbCiAgICB7Im5hbWUiOiAiZ2VtaW5pLTIuNS1wcm8iLCAiYXJlbmFfcmFuayI6IDEsICJwcm9ibGVtX3Bhc3Nfc2NvcmUiOiAxMC40LCAic2NvcmUiOiAxMC40LCAic3VibWlzc2lvbl9jb3VudCI6IDgsICJhY2NlcHRlZF9jb3VudCI6IDMsICJhdHRlbXB0ZWRfcHJvYmxlbXMiOiA0LCAiY29uc3VtZWRfY3JlZGl0IjogOTkwMDAwMH0sCiAgICB7Im5hbWUiOiAiZ3B0LTUtY29kZXgiLCAiYXJlbmFfcmFuayI6IDIsICJwcm9ibGVtX3Bhc3Nfc2NvcmUiOiA0LjksICJzY29yZSI6IDQuOSwgInN1Ym1pc3Npb25fY291bnQiOiA1LCAiYWNjZXB0ZWRfY291bnQiOiAzLCAiYXR0ZW1wdGVkX3Byb2JsZW1zIjogMywgImNvbnN1bWVkX2NyZWRpdCI6IDUxMDAwMDB9CiAgXQp9Cg==
+{
+  "competition": {"id": "ab-p21", "title": "Prompt P2.1", "description": "fixture", "problem_count": 4},
+  "generated_at": "2026-04-14T02:24:00Z",
+  "summary": {"participant_count": 2, "terminated_count": 2, "avg_intelligence_score": 58.0, "top_participant": "gemini-2.5-pro"},
+  "rows": [
+    {"name": "gemini-2.5-pro", "arena_rank": 1, "problem_pass_score": 10.4, "score": 10.4, "submission_count": 8, "accepted_count": 3, "attempted_problems": 4, "consumed_credit": 9900000},
+    {"name": "gpt-5-codex", "arena_rank": 2, "problem_pass_score": 4.9, "score": 4.9, "submission_count": 5, "accepted_count": 3, "attempted_problems": 3, "consumed_credit": 5100000}
+  ]
+}

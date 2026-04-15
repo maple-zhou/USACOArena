@@ -1,1 +1,53 @@
-ZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCgpmcm9tIHVzYWNvYXJlbmEuYmVuY2htYXJrLnBhcGVyX2FnZ3JlZ2F0aW9uIGltcG9ydCBhZ2dyZWdhdGVfcGFwZXJfcnVucwoKCmRlZiB0ZXN0X2FnZ3JlZ2F0ZV9wYXBlcl9ydW5zX2J1aWxkc19leHBlY3RlZF90YWJsZXModG1wX3BhdGg6IFBhdGgpIC0+IE5vbmU6CiAgICByZXBvX3Jvb3QgPSBQYXRoKF9fZmlsZV9fKS5yZXNvbHZlKCkucGFyZW50c1syXQogICAgcnVuc19yb290ID0gcmVwb19yb290IC8gInRlc3RzIiAvICJmaXh0dXJlcyIgLyAicGFwZXJfcnVucyIKICAgIG91dHB1dF9kaXIgPSB0bXBfcGF0aCAvICJhZ2dyZWdhdGVkIgoKICAgIG1hbmlmZXN0ID0gYWdncmVnYXRlX3BhcGVyX3J1bnMocnVuc19yb290LCBvdXRwdXRfZGlyKQoKICAgIHRhYmxlXzggPSBvdXRwdXRfZGlyIC8gInRhYmxlXzhfbWFpbi5qc29uIgogICAgdGFibGVfMiA9IG91dHB1dF9kaXIgLyAidGFibGVfMl9hcHBlbmRpeF9iLmpzb24iCiAgICB0YWJsZV85ID0gb3V0cHV0X2RpciAvICJ0YWJsZV85X2FwcGVuZGl4X2cuanNvbiIKICAgIGFwcGVuZGl4X2JfZXh0ZW5kZWQgPSBvdXRwdXRfZGlyIC8gImFwcGVuZGl4X2JfZXh0ZW5kZWQuanNvbiIKICAgIGFzc2VydCB0YWJsZV84LmV4aXN0cygpCiAgICBhc3NlcnQgdGFibGVfMi5leGlzdHMoKQogICAgYXNzZXJ0IHRhYmxlXzkuZXhpc3RzKCkKICAgIGFzc2VydCBhcHBlbmRpeF9iX2V4dGVuZGVkLmV4aXN0cygpCiAgICBhc3NlcnQgUGF0aChtYW5pZmVzdFsibWFuaWZlc3QiXSkuZXhpc3RzKCkKCiAgICB0YWJsZV84X3BheWxvYWQgPSBfX2ltcG9ydF9fKCJqc29uIikubG9hZHModGFibGVfOC5yZWFkX3RleHQoZW5jb2Rpbmc9InV0Zi04IikpCiAgICBnZW1pbmkgPSBuZXh0KHJvdyBmb3Igcm93IGluIHRhYmxlXzhfcGF5bG9hZFsicm93cyJdIGlmIHJvd1sibW9kZWwiXSA9PSAiR2VtaW5pLTIuNS1wcm8iKQogICAgY29kZXggPSBuZXh0KHJvdyBmb3Igcm93IGluIHRhYmxlXzhfcGF5bG9hZFsicm93cyJdIGlmIHJvd1sibW9kZWwiXSA9PSAiR1BULTUtQ29kZXgiKQogICAgYXNzZXJ0IHJvdW5kKGdlbWluaVsiYXZnX3Njb3JlIl1bIm1lYW4iXSwgMikgPT0gMTUuMDAKICAgIGFzc2VydCByb3VuZChnZW1pbmlbImF2Z19yYW5rIl1bIm1lYW4iXSwgMikgPT0gMS4wMAogICAgYXNzZXJ0IHJvdW5kKGNvZGV4WyJhdmdfY29uc3VtZWRfY3JlZGl0Il1bIm1lYW4iXSwgMikgPT0gNDUwMDAwMC4wMAogICAgYXNzZXJ0IHJvdW5kKGNvZGV4WyJoaW50X2NyZWRpdCJdWyJtZWFuIl0sIDIpID09IDgwMC4wMAoKICAgIHRhYmxlXzJfcGF5bG9hZCA9IF9faW1wb3J0X18oImpzb24iKS5sb2Fkcyh0YWJsZV8yLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKSkKICAgIGdlbWluaV9yb3cgPSBuZXh0KHJvdyBmb3Igcm93IGluIHRhYmxlXzJfcGF5bG9hZFsicm93cyJdIGlmIHJvd1sibW9kZWwiXSA9PSAiR2VtaW5pLTIuNS1wcm8iKQogICAgY29kZXhfcm93ID0gbmV4dChyb3cgZm9yIHJvdyBpbiB0YWJsZV8yX3BheWxvYWRbInJvd3MiXSBpZiByb3dbIm1vZGVsIl0gPT0gIkdQVC01LUNvZGV4IikKICAgIGFzc2VydCBnZW1pbmlfcm93WyJtYWluX3Jlc3VsdCJdID09IDEzLjIKICAgIGFzc2VydCBnZW1pbmlfcm93WyJsb3dfY3JlZGl0XzEwbSJdID09IDguMwogICAgYXNzZXJ0IGNvZGV4X3Jvd1siZXhwX3Njb3JlIl0gPT0gNC4zCgogICAgZXh0ZW5kZWRfcGF5bG9hZCA9IF9faW1wb3J0X18oImpzb24iKS5sb2FkcyhhcHBlbmRpeF9iX2V4dGVuZGVkLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKSkKICAgIGdlbWluaV9leHRlbmRlZCA9IG5leHQocm93IGZvciByb3cgaW4gZXh0ZW5kZWRfcGF5bG9hZFsicm93cyJdIGlmIHJvd1sibW9kZWwiXSA9PSAiR2VtaW5pLTIuNS1wcm8iKQogICAgYXNzZXJ0IGdlbWluaV9leHRlbmRlZFsiZnJlZV9wZW5hbHR5Il0gPT0gMTAuNwogICAgYXNzZXJ0IGdlbWluaV9leHRlbmRlZFsicHJvbXB0X3AyMSJdID09IDEwLjQKCiAgICB0YWJsZV85X3BheWxvYWQgPSBfX2ltcG9ydF9fKCJqc29uIikubG9hZHModGFibGVfOS5yZWFkX3RleHQoZW5jb2Rpbmc9InV0Zi04IikpCiAgICBiYXNlX3JvdyA9IG5leHQocm93IGZvciByb3cgaW4gdGFibGVfOV9wYXlsb2FkWyJyb3dzIl0gaWYgcm93WyJhZ2VudCJdID09ICJHUFQtNSAoQmFzZSkiKQogICAgY2xpX3JvdyA9IG5leHQocm93IGZvciByb3cgaW4gdGFibGVfOV9wYXlsb2FkWyJyb3dzIl0gaWYgcm93WyJhZ2VudCJdID09ICJDb2RleC1DTEkiKQogICAgYXNzZXJ0IHJvdW5kKGJhc2Vfcm93WyJ3aW5fcmF0ZSJdLCAyKSA9PSAxMDAuMDAKICAgIGFzc2VydCByb3VuZChjbGlfcm93WyJ3aW5fcmF0ZSJdLCAyKSA9PSAxMDAuMDAKICAgIGFzc2VydCByb3VuZChjbGlfcm93WyJhdmdfc2NvcmUiXVsibWVhbiJdLCAyKSA9PSA5LjUwCgogICAgd2FybmluZ3MgPSBtYW5pZmVzdFsid2FybmluZ3MiXQogICAgYXNzZXJ0IGFueSgibWlzc2luZ19jb21wZXRpdGlvbl9yZXN1bHRzIiBpbiB3YXJuaW5nIGZvciB3YXJuaW5nIGluIHdhcm5pbmdzKQo=
+from __future__ import annotations
+
+from pathlib import Path
+
+from usacoarena.benchmark.paper_aggregation import aggregate_paper_runs
+
+
+def test_aggregate_paper_runs_builds_expected_tables(tmp_path: Path) -> None:
+    repo_root = Path(__file__).resolve().parents[2]
+    runs_root = repo_root / "tests" / "fixtures" / "paper_runs"
+    output_dir = tmp_path / "aggregated"
+
+    manifest = aggregate_paper_runs(runs_root, output_dir)
+
+    table_8 = output_dir / "table_8_main.json"
+    table_2 = output_dir / "table_2_appendix_b.json"
+    table_9 = output_dir / "table_9_appendix_g.json"
+    appendix_b_extended = output_dir / "appendix_b_extended.json"
+    assert table_8.exists()
+    assert table_2.exists()
+    assert table_9.exists()
+    assert appendix_b_extended.exists()
+    assert Path(manifest["manifest"]).exists()
+
+    table_8_payload = __import__("json").loads(table_8.read_text(encoding="utf-8"))
+    gemini = next(row for row in table_8_payload["rows"] if row["model"] == "Gemini-2.5-pro")
+    codex = next(row for row in table_8_payload["rows"] if row["model"] == "GPT-5-Codex")
+    assert round(gemini["avg_score"]["mean"], 2) == 15.00
+    assert round(gemini["avg_rank"]["mean"], 2) == 1.00
+    assert round(codex["avg_consumed_credit"]["mean"], 2) == 4500000.00
+    assert round(codex["hint_credit"]["mean"], 2) == 800.00
+
+    table_2_payload = __import__("json").loads(table_2.read_text(encoding="utf-8"))
+    gemini_row = next(row for row in table_2_payload["rows"] if row["model"] == "Gemini-2.5-pro")
+    codex_row = next(row for row in table_2_payload["rows"] if row["model"] == "GPT-5-Codex")
+    assert gemini_row["main_result"] == 13.2
+    assert gemini_row["low_credit_10m"] == 8.3
+    assert codex_row["exp_score"] == 4.3
+
+    extended_payload = __import__("json").loads(appendix_b_extended.read_text(encoding="utf-8"))
+    gemini_extended = next(row for row in extended_payload["rows"] if row["model"] == "Gemini-2.5-pro")
+    assert gemini_extended["free_penalty"] == 10.7
+    assert gemini_extended["prompt_p21"] == 10.4
+
+    table_9_payload = __import__("json").loads(table_9.read_text(encoding="utf-8"))
+    base_row = next(row for row in table_9_payload["rows"] if row["agent"] == "GPT-5 (Base)")
+    cli_row = next(row for row in table_9_payload["rows"] if row["agent"] == "Codex-CLI")
+    assert round(base_row["win_rate"], 2) == 100.00
+    assert round(cli_row["win_rate"], 2) == 100.00
+    assert round(cli_row["avg_score"]["mean"], 2) == 9.50
+
+    warnings = manifest["warnings"]
+    assert any("missing_competition_results" in warning for warning in warnings)

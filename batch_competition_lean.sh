@@ -1,1 +1,316 @@
-IyEvYmluL2Jhc2gKCiMgTGlnaHR3ZWlnaHQgYmF0Y2ggY29tcGV0aXRpb24gc2NyaXB0IOKAkyBydW4gZXhwZXJpbWVudHMgYWdhaW5zdCBleGlzdGluZyBzZXJ2aWNlcwpzZXQgLWUKCiMgRGVmYXVsdCBwYXJhbWV0ZXJzCkNPTkNVUlJFTkNZPTEwCkNPTVBFVElUT1JTX0NPTkZJRz0iY29uZmlnLzFwcm8uanNvbiIKUFJPQkxFTV9JRFNfTElTVD0iIgpTRVJWSUNFX0RJU0NPVkVSWV9SRVRSSUVTPTMKTUFOVUFMX1BPUlRTPSIiCgpzaG93X3VzYWdlKCkgewogICAgZWNobyAiVXNhZ2U6ICQwIFtPUFRJT05TXSIKICAgIGVjaG8gIiIKICAgIGVjaG8gIlRoaXMgc2NyaXB0IHJ1bnMgY29tcGV0aXRpb25zIGJ5IGNvbm5lY3RpbmcgdG8gZXhpc3RpbmcgT0ogYW5kIFNlcnZlciBpbnN0YW5jZXMuIgogICAgZWNobyAiVXNlIHNlcnZpY2VfbWFuYWdlci5zaCB0byBzdGFydC9zdG9wIHRoZSB1bmRlcmx5aW5nIHNlcnZpY2VzLiIKICAgIGVjaG8gIiIKICAgIGVjaG8gIk9wdGlvbnM6IgogICAgZWNobyAiICAtLWNvbmN1cnJlbmN5IE4gICAgICAgICAgICAgTnVtYmVyIG9mIGNvbmN1cnJlbnQgcnVucyAoZGVmYXVsdDogMTApIgogICAgZWNobyAiICAtLWNvbXBldGl0b3JzLWNvbmZpZyBGSUxFICAgQ29tcGV0aXRvcnMgY29uZmlnIGZpbGUgKGRlZmF1bHQ6IGNvbmZpZy8xcHJvLmpzb24pIgogICAgZWNobyAiICAtLXByb2JsZW0taWRzLWxpc3QgRklMRVMgICAgQ29tbWEtc2VwYXJhdGVkIGxpc3Qgb2YgcHJvYmxlbSBJRCBmaWxlcyIKICAgIGVjaG8gIiAgLS1wcm9ibGVtLXBhdHRlcm4gUEFUVEVSTiAgIFBhdHRlcm4gdG8gZmluZCBwcm9ibGVtIGZpbGVzIChlLmcuLCAnY29uZmlnL3Byb2JsZW1fKi5qc29uJykiCiAgICBlY2hvICIgIC0tc2VydmljZS1yZXRyaWVzIE4gICAgICAgICBTZXJ2aWNlIGRpc2NvdmVyeSByZXRyaWVzIChkZWZhdWx0OiAzKSIKICAgIGVjaG8gIiAgLS1tYW51YWwtcG9ydHMgUE9SVFMgICAgICAgIE1hbnVhbGx5IHNwZWNpZnkgc2VydmVyIHBvcnRzIChjb21tYS1zZXBhcmF0ZWQsIGUuZy4sICc1MDAwLDUwMDEsNTAwMicpIgogICAgZWNobyAiICAtaCwgLS1oZWxwICAgICAgICAgICAgICAgICAgU2hvdyB0aGlzIGhlbHAgbWVzc2FnZSIKICAgIGVjaG8gIiIKICAgIGVjaG8gIkV4YW1wbGVzOiIKICAgIGVjaG8gIiAgIyBTdGVwIDE6IFN0YXJ0IHNlcnZpY2VzIgogICAgZWNobyAiICAuL3NlcnZpY2VfbWFuYWdlci5zaCBzdGFydCAtLWluc3RhbmNlcyAzIgogICAgZWNobyAiIgogICAgZWNobyAiICAjIFN0ZXAgMjogUnVuIGV4cGVyaW1lbnRzIHdpdGggYXV0by1kaXNjb3ZlcnkiCiAgICBlY2hvICIgICQwIC0tcHJvYmxlbS1wYXR0ZXJuICdjb25maWcvcHJvYmxlbV8qLmpzb24nIC0tY29uY3VycmVuY3kgMTAiCiAgICBlY2hvICIiCiAgICBlY2hvICIgICMgU3RlcCAyIChBbHRlcm5hdGl2ZSk6IFJ1biBleHBlcmltZW50cyB3aXRoIG1hbnVhbCBwb3J0cyIKICAgIGVjaG8gIiAgJDAgLS1wcm9ibGVtLXBhdHRlcm4gJ2NvbmZpZy9wcm9ibGVtXyouanNvbicgLS1tYW51YWwtcG9ydHMgJzUwMDAsNTAwMSw1MDAyJyAtLWNvbmN1cnJlbmN5IDEwIgogICAgZWNobyAiIgogICAgZWNobyAiICAjIFN0ZXAgMzogU3RvcCBzZXJ2aWNlcyB3aGVuIGRvbmUiCiAgICBlY2hvICIgIC4vc2VydmljZV9tYW5hZ2VyLnNoIHN0b3AiCn0KCiMgUGFyc2UgY29tbWFuZC1saW5lIGFyZ3VtZW50cwp3aGlsZSBbWyAkIyAtZ3QgMCBdXTsgZG8KICAgIGNhc2UgJDEgaW4KICAgICAgICAtLWNvbmN1cnJlbmN5KQogICAgICAgICAgICBDT05DVVJSRU5DWT0iJDIiCiAgICAgICAgICAgIHNoaWZ0IDIKICAgICAgICAgICAgOzsKICAgICAgICAtLWNvbXBldGl0b3JzLWNvbmZpZykKICAgICAgICAgICAgQ09NUEVUSVRPUlNfQ09ORklHPSIkMiIKICAgICAgICAgICAgc2hpZnQgMgogICAgICAgICAgICA7OwogICAgICAgIC0tcHJvYmxlbS1pZHMtbGlzdCkKICAgICAgICAgICAgUFJPQkxFTV9JRFNfTElTVD0iJDIiCiAgICAgICAgICAgIHNoaWZ0IDIKICAgICAgICAgICAgOzsKICAgICAgICAtLXByb2JsZW0tcGF0dGVybikKICAgICAgICAgICAgUFJPQkxFTV9QQVRURVJOPSIkMiIKICAgICAgICAgICAgc2hpZnQgMgogICAgICAgICAgICA7OwogICAgICAgIC0tc2VydmljZS1yZXRyaWVzKQogICAgICAgICAgICBTRVJWSUNFX0RJU0NPVkVSWV9SRVRSSUVTPSIkMiIKICAgICAgICAgICAgc2hpZnQgMgogICAgICAgICAgICA7OwogICAgICAgIC0tbWFudWFsLXBvcnRzKQogICAgICAgICAgICBNQU5VQUxfUE9SVFM9IiQyIgogICAgICAgICAgICBzaGlmdCAyCiAgICAgICAgICAgIDs7CiAgICAgICAgLWh8LS1oZWxwKQogICAgICAgICAgICBzaG93X3VzYWdlCiAgICAgICAgICAgIGV4aXQgMAogICAgICAgICAgICA7OwogICAgICAgICopCiAgICAgICAgICAgIGVjaG8gIlVua25vd24gb3B0aW9uOiAkMSIKICAgICAgICAgICAgc2hvd191c2FnZQogICAgICAgICAgICBleGl0IDEKICAgICAgICAgICAgOzsKICAgIGVzYWMKZG9uZQoKIyBCdWlsZCBsaXN0IG9mIHByb2JsZW0gZmlsZXMKaWYgW1sgLW4gIiRQUk9CTEVNX1BBVFRFUk4iIF1dOyB0aGVuCiAgICBlY2hvICJGaW5kaW5nIHByb2JsZW0gZmlsZXMgd2l0aCBwYXR0ZXJuOiAkUFJPQkxFTV9QQVRURVJOIgogICAgUFJPQkxFTV9GSUxFUz0oJChscyAkUFJPQkxFTV9QQVRURVJOIDI+L2Rldi9udWxsIHwgc29ydCkpCmVsaWYgW1sgLW4gIiRQUk9CTEVNX0lEU19MSVNUIiBdXTsgdGhlbgogICAgZWNobyAiVXNpbmcgcHJvdmlkZWQgcHJvYmxlbSBmaWxlcyBsaXN0IgogICAgSUZTPScsJyByZWFkIC1yYSBQUk9CTEVNX0ZJTEVTIDw8PCAiJFBST0JMRU1fSURTX0xJU1QiCmVsc2UKICAgIGVjaG8gIkF1dG8tZGlzY292ZXJpbmcgcHJvYmxlbSBmaWxlcyBpbiBjb25maWcvIGRpcmVjdG9yeS4uLiIKICAgIFBST0JMRU1fRklMRVM9KCQobHMgY29uZmlnL3Byb2JsZW1fKi5qc29uIDI+L2Rldi9udWxsIHwgc29ydCkpCmZpCgojIEVuc3VyZSBhdCBsZWFzdCBvbmUgcHJvYmxlbSBmaWxlIGlzIGZvdW5kCmlmIFtbICR7I1BST0JMRU1fRklMRVNbQF19IC1lcSAwIF1dOyB0aGVuCiAgICBlY2hvICJFcnJvcjogTm8gcHJvYmxlbSBmaWxlcyBmb3VuZCEiCiAgICBlY2hvICJQbGVhc2UgdXNlIC0tcHJvYmxlbS1pZHMtbGlzdCBvciAtLXByb2JsZW0tcGF0dGVybiB0byBzcGVjaWZ5IHByb2JsZW0gZmlsZXMuIgogICAgZXhpdCAxCmZpCgpUT1RBTF9SVU5TPSR7I1BST0JMRU1fRklMRVNbQF19CgojIERpc2NvdmVyIHNlcnZpY2VzIG9yIHVzZSBtYW51YWxseSBzdXBwbGllZCBwb3J0cwpzZXR1cF9zZXJ2aWNlcygpIHsKICAgIGlmIFtbIC1uICIkTUFOVUFMX1BPUlRTIiBdXTsgdGhlbgogICAgICAgIGVjaG8gIlVzaW5nIG1hbnVhbGx5IHNwZWNpZmllZCBwb3J0czogJE1BTlVBTF9QT1JUUyIKICAgICAgICBJRlM9JywnIHJlYWQgLXJhIEFWQUlMQUJMRV9TRVJWSUNFUyA8PDwgIiRNQU5VQUxfUE9SVFMiCgogICAgICAgICMgVmFsaWRhdGUgcG9ydCBmb3JtYXR0aW5nIGFuZCBhdmFpbGFiaWxpdHkKICAgICAgICBmb3IgcG9ydCBpbiAiJHtBVkFJTEFCTEVfU0VSVklDRVNbQF19IjsgZG8KICAgICAgICAgICAgIyBTdHJpcCB3aGl0ZXNwYWNlIGFyb3VuZCB0aGUgcG9ydAogICAgICAgICAgICBwb3J0PSQoZWNobyAiJHBvcnQiIHwgeGFyZ3MpCgogICAgICAgICAgICAjIFZlcmlmeSB0aGUgcG9ydCBpcyBudW1lcmljCiAgICAgICAgICAgIGlmICEgW1sgIiRwb3J0IiA9fiBeWzAtOV0rJCBdXTsgdGhlbgogICAgICAgICAgICAgICAgZWNobyAiRXJyb3I6IEludmFsaWQgcG9ydCBudW1iZXIgJyRwb3J0JyIKICAgICAgICAgICAgICAgIGV4aXQgMQogICAgICAgICAgICBmaQoKICAgICAgICAgICAgIyBPcHRpb25hbDogdmVyaWZ5IHRoZSBwb3J0IGlzIGxpc3RlbmluZyBpZiBkZXNpcmVkCiAgICAgICAgICAgICMgaWYgISBuYyAteiBsb2NhbGhvc3QgIiRwb3J0IiAyPi9kZXYvbnVsbDsgdGhlbgogICAgICAgICAgICAjICAgICBlY2hvICJXYXJuaW5nOiBQb3J0ICRwb3J0IG1heSBub3QgYmUgYXZhaWxhYmxlIgogICAgICAgICAgICAjIGZpCiAgICAgICAgZG9uZQoKICAgICAgICBlY2hvICJNYW51YWxseSBjb25maWd1cmVkICR7I0FWQUlMQUJMRV9TRVJWSUNFU1tAXX0gc2VydmljZXM6ICR7QVZBSUxBQkxFX1NFUlZJQ0VTWypdfSIKICAgIGVsc2UKICAgICAgICBlY2hvICJBdXRvLWRpc2NvdmVyaW5nIHNlcnZpY2VzLi4uIgogICAgICAgIGRpc2NvdmVyX3NlcnZpY2VzCiAgICBmaQoKICAgICMgQWRqdXN0IGNvbmN1cnJlbmN5IHRvIGF2YWlsYWJsZSBwb3J0cwogICAgYWRqdXN0X2NvbmN1cnJlbmN5Cn0KCiMgU2VydmljZSBkaXNjb3ZlcnkgLSBvYnRhaW4gYXZhaWxhYmxlIHNlcnZlciBwb3J0cwpkaXNjb3Zlcl9zZXJ2aWNlcygpIHsKICAgIGVjaG8gIkRpc2NvdmVyaW5nIGF2YWlsYWJsZSBzZXJ2aWNlcy4uLiIKCiAgICBpZiBbWyAhIC1mICJwaWRzL3NlcnZpY2Vfc3RhdHVzLmpzb24iIF1dOyB0aGVuCiAgICAgICAgZWNobyAiRXJyb3I6IE5vIHNlcnZpY2VzIGZvdW5kISBQbGVhc2Ugc3RhcnQgc2VydmljZXMgZmlyc3Q6IgogICAgICAgIGVjaG8gIiAgLi9zZXJ2aWNlX21hbmFnZXIuc2ggc3RhcnQiCiAgICAgICAgZXhpdCAxCiAgICBmaQoKICAgICMgUmV0cmlldmUgYXZhaWxhYmxlIHNlcnZpY2UgZW5kcG9pbnRzCiAgICBBVkFJTEFCTEVfU0VSVklDRVM9KCkKICAgIGxvY2FsIHJldHJ5X2NvdW50PTAKCiAgICB3aGlsZSBbWyAkeyNBVkFJTEFCTEVfU0VSVklDRVNbQF19IC1lcSAwICYmICRyZXRyeV9jb3VudCAtbHQgJFNFUlZJQ0VfRElTQ09WRVJZX1JFVFJJRVMgXV07IGRvCiAgICAgICAgZWNobyAiU2VydmljZSBkaXNjb3ZlcnkgYXR0ZW1wdCAkKChyZXRyeV9jb3VudCArIDEpKS8kU0VSVklDRV9ESVNDT1ZFUllfUkVUUklFUyIKCiAgICAgICAgIyBRdWVyeSBzZXJ2aWNlX21hbmFnZXIgZm9yIGF2YWlsYWJsZSBlbmRwb2ludHMKICAgICAgICBsb2NhbCBzZXJ2aWNlX291dHB1dD0kKC4vc2VydmljZV9tYW5hZ2VyLnNoIGxpc3QtcG9ydHMgMj4vZGV2L251bGwgfCBncmVwICJJbnN0YW5jZSIgfHwgdHJ1ZSkKCiAgICAgICAgaWYgW1sgLW4gIiRzZXJ2aWNlX291dHB1dCIgXV07IHRoZW4KICAgICAgICAgICAgd2hpbGUgSUZTPSByZWFkIC1yIGxpbmU7IGRvCiAgICAgICAgICAgICAgICBpZiBbWyAkbGluZSA9fiBJbnN0YW5jZVwgKFswLTldKyk6XCBodHRwOi8vbG9jYWxob3N0OihbMC05XSspIF1dOyB0aGVuCiAgICAgICAgICAgICAgICAgICAgbG9jYWwgaW5zdGFuY2VfaWQ9IiR7QkFTSF9SRU1BVENIWzFdfSIKICAgICAgICAgICAgICAgICAgICBsb2NhbCBzZXJ2ZXJfcG9ydD0iJHtCQVNIX1JFTUFUQ0hbMl19IgogICAgICAgICAgICAgICAgICAgIEFWQUlMQUJMRV9TRVJWSUNFUys9KCIkc2VydmVyX3BvcnQiKQogICAgICAgICAgICAgICAgZmkKICAgICAgICAgICAgZG9uZSA8PDwgIiRzZXJ2aWNlX291dHB1dCIKICAgICAgICBmaQoKICAgICAgICBpZiBbWyAkeyNBVkFJTEFCTEVfU0VSVklDRVNbQF19IC1lcSAwIF1dOyB0aGVuCiAgICAgICAgICAgIGVjaG8gIk5vIGhlYWx0aHkgc2VydmljZXMgZm91bmQsIHJldHJ5aW5nIGluIDUgc2Vjb25kcy4uLiIKICAgICAgICAgICAgc2xlZXAgNQogICAgICAgICAgICByZXRyeV9jb3VudD0kKChyZXRyeV9jb3VudCArIDEpKQogICAgICAgIGZpCiAgICBkb25lCgogICAgaWYgW1sgJHsjQVZBSUxBQkxFX1NFUlZJQ0VTW0BdfSAtZXEgMCBdXTsgdGhlbgogICAgICAgIGVjaG8gIkVycm9yOiBObyBoZWFsdGh5IHNlcnZpY2VzIGF2YWlsYWJsZSBhZnRlciAkU0VSVklDRV9ESVNDT1ZFUllfUkVUUklFUyBhdHRlbXB0cyIKICAgICAgICBlY2hvICJQbGVhc2UgY2hlY2sgc2VydmljZSBzdGF0dXM6IC4vc2VydmljZV9tYW5hZ2VyLnNoIHN0YXR1cyIKICAgICAgICBleGl0IDEKICAgIGZpCgogICAgZWNobyAiRm91bmQgJHsjQVZBSUxBQkxFX1NFUlZJQ0VTW0BdfSBhdmFpbGFibGUgc2VydmljZXM6ICR7QVZBSUxBQkxFX1NFUlZJQ0VTWypdfSIKfQoKIyBBZGp1c3QgY29uY3VycmVuY3kgdG8gYXZhaWxhYmxlIHBvcnRzCmFkanVzdF9jb25jdXJyZW5jeSgpIHsKICAgIGxvY2FsIGF2YWlsYWJsZV9wb3J0cz0keyNBVkFJTEFCTEVfU0VSVklDRVNbQF19CiAgICBsb2NhbCBvcmlnaW5hbF9jb25jdXJyZW5jeT0kQ09OQ1VSUkVOQ1kKCiAgICBpZiBbICRhdmFpbGFibGVfcG9ydHMgLWVxIDAgXTsgdGhlbgogICAgICAgIGVjaG8gIkVycm9yOiBObyBhdmFpbGFibGUgc2VydmljZXMgZm91bmQiCiAgICAgICAgZXhpdCAxCiAgICBmaQoKICAgICMgQ2xhbXAgY29uY3VycmVuY3kgdG8gYXZhaWxhYmxlIHBvcnQgY291bnQgd2hlbiBuZWNlc3NhcnkKICAgIGlmIFsgJENPTkNVUlJFTkNZIC1ndCAkYXZhaWxhYmxlX3BvcnRzIF07IHRoZW4KICAgICAgICBDT05DVVJSRU5DWT0kYXZhaWxhYmxlX3BvcnRzCiAgICAgICAgZWNobyAiV2FybmluZzogQ29uY3VycmVuY3kgKCRvcmlnaW5hbF9jb25jdXJyZW5jeSkgZXhjZWVkcyBhdmFpbGFibGUgcG9ydHMgKCRhdmFpbGFibGVfcG9ydHMpIgogICAgICAgIGVjaG8gIkF1dG9tYXRpY2FsbHkgYWRqdXN0ZWQgY29uY3VycmVuY3kgdG8gJENPTkNVUlJFTkNZIgogICAgZWxzZQogICAgICAgIGVjaG8gIkNvbmN1cnJlbmN5ICgkQ09OQ1VSUkVOQ1kpIGlzIHdpdGhpbiBhdmFpbGFibGUgcG9ydHMgbGltaXQgKCRhdmFpbGFibGVfcG9ydHMpIgogICAgZmkKCiAgICAjIFByb3ZpZGUgYSBoaW50IHdoZW4gY29uY3VycmVuY3kgaXMgbXVjaCBsb3dlciB0aGFuIGF2YWlsYWJsZSBwb3J0cwogICAgaWYgWyAkQ09OQ1VSUkVOQ1kgLWx0ICRhdmFpbGFibGVfcG9ydHMgXSAmJiBbICQoKGF2YWlsYWJsZV9wb3J0cyAtIENPTkNVUlJFTkNZKSkgLWdlIDIgXTsgdGhlbgogICAgICAgIGVjaG8gIkluZm86IFlvdSBoYXZlICRhdmFpbGFibGVfcG9ydHMgcG9ydHMgYXZhaWxhYmxlIGJ1dCBvbmx5IHVzaW5nICRDT05DVVJSRU5DWSBjb25jdXJyZW50IGpvYnMiCiAgICAgICAgZWNobyAiQ29uc2lkZXIgaW5jcmVhc2luZyAtLWNvbmN1cnJlbmN5IHRvIG1heGltaXplIHBvcnQgdXRpbGl6YXRpb24iCiAgICBmaQp9CgplY2hvICJTdGFydGluZyBsZWFuIGJhdGNoIGNvbXBldGl0aW9uIGV4ZWN1dGlvbi4uLiIKZWNobyAiSW5pdGlhbCBjb25maWd1cmF0aW9uOiIKZWNobyAiICBSZXF1ZXN0ZWQgY29uY3VycmVuY3k6ICRDT05DVVJSRU5DWSIKZWNobyAiICBUb3RhbCBydW5zOiAkVE9UQUxfUlVOUyIKZWNobyAiICBDb21wZXRpdG9ycyBjb25maWc6ICRDT01QRVRJVE9SU19DT05GSUciCmVjaG8gIiIKZWNobyAiUHJvYmxlbSBmaWxlcyB0byBydW46Igpmb3IgaSBpbiAiJHshUFJPQkxFTV9GSUxFU1tAXX0iOyBkbwogICAgZWNobyAiICBDb21wZXRpdGlvbiAkaTogJHtQUk9CTEVNX0ZJTEVTWyRpXX0iCmRvbmUKZWNobyAiIgoKIyBEaXNjb3ZlciBvciBjb25maWd1cmUgYXZhaWxhYmxlIHNlcnZpY2VzCnNldHVwX3NlcnZpY2VzCgplY2hvICIiCmVjaG8gIkZpbmFsIGNvbmZpZ3VyYXRpb246IgplY2hvICIgIEFjdHVhbCBjb25jdXJyZW5jeTogJENPTkNVUlJFTkNZIgoKIyBDcmVhdGUgbG9nIGRpcmVjdG9yeQpMT0dfRElSPSJsb2dzL2JhdGNoX2xlYW5fJChkYXRlICslWSVtJWRfJUglTSVTKSIKbWtkaXIgLXAgIiRMT0dfRElSIgoKZWNobyAiTG9ncyB3aWxsIGJlIHNhdmVkIHRvOiAkTE9HX0RJUiIKZWNobyAiIgoKIyBGdW5jdGlvbiB0byBydW4gYSBzaW5nbGUgY29tcGV0aXRpb24KcnVuX2NvbXBldGl0aW9uX2xlYW4oKSB7CiAgICBsb2NhbCBydW5faWQ9JDEKICAgIGxvY2FsIHByb2JsZW1fZmlsZT0kMgoKICAgICMgUmVidWlsZCBhdmFpbGFibGUgc2VydmljZXMgKGFycmF5cyBjYW5ub3QgYmUgZXhwb3J0ZWQgdG8gY2hpbGQgcHJvY2Vzc2VzKQogICAgbG9jYWwgc2VydmljZXNfbGlzdD0oJHtBVkFJTEFCTEVfU0VSVklDRVNfU1RSfSkKICAgIGxvY2FsIHNlcnZpY2VfY291bnQ9JHsjc2VydmljZXNfbGlzdFtAXX0KCiAgICBpZiBbICRzZXJ2aWNlX2NvdW50IC1lcSAwIF07IHRoZW4KICAgICAgICBlY2hvICJFcnJvcjogTm8gYXZhaWxhYmxlIHNlcnZpY2VzIGZvdW5kIGluIHN1YnByb2Nlc3MiCiAgICAgICAgcmV0dXJuIDEKICAgIGZpCgogICAgbG9jYWwgc2VydmVyX3BvcnQ9JHtzZXJ2aWNlc19saXN0WyQoKHJ1bl9pZCAlIHNlcnZpY2VfY291bnQpKV19CiAgICBsb2NhbCBsb2dfZmlsZT0iJExPR19ESVIvY29tcGV0aXRpb25fJHtydW5faWR9LmxvZyIKCiAgICBlY2hvICJTdGFydGluZyBjb21wZXRpdGlvbiAkcnVuX2lkIChTZXJ2ZXI6JHNlcnZlcl9wb3J0LCBQcm9ibGVtOiRwcm9ibGVtX2ZpbGUpLi4uIgogICAgZWNobyAiU3RhcnRpbmcgY29tcGV0aXRpb24gJHJ1bl9pZCAoU2VydmVyOiRzZXJ2ZXJfcG9ydCwgUHJvYmxlbTokcHJvYmxlbV9maWxlKS4uLiIgPj4gIiRsb2dfZmlsZSIKCiAgICAjIFJ1biBvbmx5IHRoZSBjb21wZXRpdGlvbiBjbGllbnQsIGNvbm5lY3RpbmcgdG8gZXhpc3Rpbmcgc2VydmljZXMKICAgIGNvbXBldGl0aW9uX3J1biBcCiAgICAgICAgLS1jb21wZXRpdGlvbi1jb25maWcgY29uZmlnL2NvbXBldGl0aW9uX2NvbmZpZy5qc29uIFwKICAgICAgICAtLWNvbXBldGl0b3JzLWNvbmZpZyAiJENPTVBFVElUT1JTX0NPTkZJRyIgXAogICAgICAgIC0tcG9ydCAiJHNlcnZlcl9wb3J0IiBcCiAgICAgICAgLS1wcm9ibGVtLWlkcyAiJHByb2JsZW1fZmlsZSIgXAogICAgICAgID4+ICIkbG9nX2ZpbGUiIDI+JjEKCiAgICBsb2NhbCBleGl0X2NvZGU9JD8KICAgIGlmIFsgJGV4aXRfY29kZSAtZXEgMCBdOyB0aGVuCiAgICAgICAgZWNobyAiQ29tcGV0aXRpb24gJHJ1bl9pZCAoJHByb2JsZW1fZmlsZSkgY29tcGxldGVkIHN1Y2Nlc3NmdWxseSIKICAgICAgICBlY2hvICJDb21wZXRpdGlvbiAkcnVuX2lkICgkcHJvYmxlbV9maWxlKSBjb21wbGV0ZWQgc3VjY2Vzc2Z1bGx5IiA+PiAiJGxvZ19maWxlIgogICAgZWxzZQogICAgICAgIGVjaG8gIkNvbXBldGl0aW9uICRydW5faWQgKCRwcm9ibGVtX2ZpbGUpIGZhaWxlZCB3aXRoIGV4aXQgY29kZSAkZXhpdF9jb2RlIgogICAgICAgIGVjaG8gIkNvbXBldGl0aW9uICRydW5faWQgKCRwcm9ibGVtX2ZpbGUpIGZhaWxlZCB3aXRoIGV4aXQgY29kZSAkZXhpdF9jb2RlIiA+PiAiJGxvZ19maWxlIgogICAgZmkKCiAgICByZXR1cm4gJGV4aXRfY29kZQp9CgojIENvbmN1cnJlbmN5IGNvbnRyb2wg4oCTIGNvbnZlcnQgYXJyYXlzIHRvIHN0cmluZ3MgZm9yIGV4cG9ydApBVkFJTEFCTEVfU0VSVklDRVNfU1RSPSIke0FWQUlMQUJMRV9TRVJWSUNFU1sqXX0iCmV4cG9ydCAtZiBydW5fY29tcGV0aXRpb25fbGVhbgpleHBvcnQgTE9HX0RJUiBDT01QRVRJVE9SU19DT05GSUcgQVZBSUxBQkxFX1NFUlZJQ0VTX1NUUgoKIyBCdWlsZCB0YXNrIGxpc3QgaW4gdGhlIGZvcm1hdDogcnVuX2lkIHByb2JsZW1fZmlsZQpUQVNLX0xJU1Q9IiIKZm9yIGkgaW4gJChzZXEgMCAkKChUT1RBTF9SVU5TLTEpKSk7IGRvCiAgICBUQVNLX0xJU1Q9IiRUQVNLX0xJU1QkaSAke1BST0JMRU1fRklMRVNbJGldfVxuIgpkb25lCgojIFVzZSBHTlUgcGFyYWxsZWwgb3IgeGFyZ3MgZm9yIGNvbmN1cnJlbnQgZXhlY3V0aW9uCmlmIGNvbW1hbmQgLXYgcGFyYWxsZWwgPi9kZXYvbnVsbCAyPiYxOyB0aGVuCiAgICBlY2hvICJVc2luZyBHTlUgcGFyYWxsZWwgZm9yIGNvbmN1cnJlbnQgZXhlY3V0aW9uLi4uIgogICAgZWNobyAtZSAiJFRBU0tfTElTVCIgfCBwYXJhbGxlbCAtaiAiJENPTkNVUlJFTkNZIiAtLWNvbHNlcCAnICcgcnVuX2NvbXBldGl0aW9uX2xlYW4gezF9IHsyfQplbHNlCiAgICBlY2hvICJVc2luZyB4YXJncyBmb3IgY29uY3VycmVudCBleGVjdXRpb24uLi4iCiAgICBlY2hvIC1lICIkVEFTS19MSVNUIiB8IHhhcmdzIC1uIDIgLVAgIiRDT05DVVJSRU5DWSIgYmFzaCAtYyAncnVuX2NvbXBldGl0aW9uX2xlYW4gIiQxIiAiJDIiJyBfCmZpCgplY2hvICIiCmVjaG8gIkFsbCBjb21wZXRpdGlvbnMgY29tcGxldGVkISIKZWNobyAiQ2hlY2sgbG9ncyBpbjogJExPR19ESVIiCgojIEdlbmVyYXRlIHN1bW1hcnkgcmVwb3J0CmVjaG8gIiIKZWNobyAiPT09IENvbXBldGl0aW9uIFN1bW1hcnkgPT09Igpmb3IgaSBpbiAkKHNlcSAwICQoKFRPVEFMX1JVTlMtMSkpKTsgZG8KICAgIGxvZ19maWxlPSIkTE9HX0RJUi9jb21wZXRpdGlvbl8ke2l9LmxvZyIKICAgIHByb2JsZW1fZmlsZT0iJHtQUk9CTEVNX0ZJTEVTWyRpXX0iCiAgICBpZiBncmVwIC1xICJjb21wbGV0ZWQgc3VjY2Vzc2Z1bGx5IiAiJGxvZ19maWxlIiAyPi9kZXYvbnVsbDsgdGhlbgogICAgICAgIGVjaG8gIkNvbXBldGl0aW9uICRpICgkcHJvYmxlbV9maWxlKTogU1VDQ0VTUyIKICAgIGVsc2UKICAgICAgICBlY2hvICJDb21wZXRpdGlvbiAkaSAoJHByb2JsZW1fZmlsZSk6IEZBSUxFRCIKICAgIGZpCmRvbmUKCmVjaG8gIiIKZWNobyAiU2VydmljZSB1dGlsaXphdGlvbjoiCmVjaG8gIj09PT09PT09PT09PT09PT09PT0iCmZvciBzZXJ2aWNlX3BvcnQgaW4gIiR7QVZBSUxBQkxFX1NFUlZJQ0VTW0BdfSI7IGRvCiAgICBsb2NhbCBjb3VudD0kKGdyZXAgLWwgIlNlcnZlcjokc2VydmljZV9wb3J0IiAiJExPR19ESVIiLyoubG9nIDI+L2Rldi9udWxsIHwgd2MgLWwpCiAgICBlY2hvICJTZXJ2ZXIgcG9ydCAkc2VydmljZV9wb3J0OiAkY291bnQgY29tcGV0aXRpb25zIgpkb25l
+#!/bin/bash
+
+# Lightweight batch competition script – run experiments against existing services
+set -e
+
+# Default parameters
+CONCURRENCY=10
+COMPETITORS_CONFIG="config/1pro.json"
+PROBLEM_IDS_LIST=""
+SERVICE_DISCOVERY_RETRIES=3
+MANUAL_PORTS=""
+
+show_usage() {
+    echo "Usage: $0 [OPTIONS]"
+    echo ""
+    echo "This script runs competitions by connecting to existing OJ and Server instances."
+    echo "Use service_manager.sh to start/stop the underlying services."
+    echo ""
+    echo "Options:"
+    echo "  --concurrency N             Number of concurrent runs (default: 10)"
+    echo "  --competitors-config FILE   Competitors config file (default: config/1pro.json)"
+    echo "  --problem-ids-list FILES    Comma-separated list of problem ID files"
+    echo "  --problem-pattern PATTERN   Pattern to find problem files (e.g., 'config/problem_*.json')"
+    echo "  --service-retries N         Service discovery retries (default: 3)"
+    echo "  --manual-ports PORTS        Manually specify server ports (comma-separated, e.g., '5000,5001,5002')"
+    echo "  -h, --help                  Show this help message"
+    echo ""
+    echo "Examples:"
+    echo "  # Step 1: Start services"
+    echo "  ./service_manager.sh start --instances 3"
+    echo ""
+    echo "  # Step 2: Run experiments with auto-discovery"
+    echo "  $0 --problem-pattern 'config/problem_*.json' --concurrency 10"
+    echo ""
+    echo "  # Step 2 (Alternative): Run experiments with manual ports"
+    echo "  $0 --problem-pattern 'config/problem_*.json' --manual-ports '5000,5001,5002' --concurrency 10"
+    echo ""
+    echo "  # Step 3: Stop services when done"
+    echo "  ./service_manager.sh stop"
+}
+
+# Parse command-line arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --concurrency)
+            CONCURRENCY="$2"
+            shift 2
+            ;;
+        --competitors-config)
+            COMPETITORS_CONFIG="$2"
+            shift 2
+            ;;
+        --problem-ids-list)
+            PROBLEM_IDS_LIST="$2"
+            shift 2
+            ;;
+        --problem-pattern)
+            PROBLEM_PATTERN="$2"
+            shift 2
+            ;;
+        --service-retries)
+            SERVICE_DISCOVERY_RETRIES="$2"
+            shift 2
+            ;;
+        --manual-ports)
+            MANUAL_PORTS="$2"
+            shift 2
+            ;;
+        -h|--help)
+            show_usage
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            show_usage
+            exit 1
+            ;;
+    esac
+done
+
+# Build list of problem files
+if [[ -n "$PROBLEM_PATTERN" ]]; then
+    echo "Finding problem files with pattern: $PROBLEM_PATTERN"
+    PROBLEM_FILES=($(ls $PROBLEM_PATTERN 2>/dev/null | sort))
+elif [[ -n "$PROBLEM_IDS_LIST" ]]; then
+    echo "Using provided problem files list"
+    IFS=',' read -ra PROBLEM_FILES <<< "$PROBLEM_IDS_LIST"
+else
+    echo "Auto-discovering problem files in config/ directory..."
+    PROBLEM_FILES=($(ls config/problem_*.json 2>/dev/null | sort))
+fi
+
+# Ensure at least one problem file is found
+if [[ ${#PROBLEM_FILES[@]} -eq 0 ]]; then
+    echo "Error: No problem files found!"
+    echo "Please use --problem-ids-list or --problem-pattern to specify problem files."
+    exit 1
+fi
+
+TOTAL_RUNS=${#PROBLEM_FILES[@]}
+
+# Discover services or use manually supplied ports
+setup_services() {
+    if [[ -n "$MANUAL_PORTS" ]]; then
+        echo "Using manually specified ports: $MANUAL_PORTS"
+        IFS=',' read -ra AVAILABLE_SERVICES <<< "$MANUAL_PORTS"
+
+        # Validate port formatting and availability
+        for port in "${AVAILABLE_SERVICES[@]}"; do
+            # Strip whitespace around the port
+            port=$(echo "$port" | xargs)
+
+            # Verify the port is numeric
+            if ! [[ "$port" =~ ^[0-9]+$ ]]; then
+                echo "Error: Invalid port number '$port'"
+                exit 1
+            fi
+
+            # Optional: verify the port is listening if desired
+            # if ! nc -z localhost "$port" 2>/dev/null; then
+            #     echo "Warning: Port $port may not be available"
+            # fi
+        done
+
+        echo "Manually configured ${#AVAILABLE_SERVICES[@]} services: ${AVAILABLE_SERVICES[*]}"
+    else
+        echo "Auto-discovering services..."
+        discover_services
+    fi
+
+    # Adjust concurrency to available ports
+    adjust_concurrency
+}
+
+# Service discovery - obtain available server ports
+discover_services() {
+    echo "Discovering available services..."
+
+    if [[ ! -f "pids/service_status.json" ]]; then
+        echo "Error: No services found! Please start services first:"
+        echo "  ./service_manager.sh start"
+        exit 1
+    fi
+
+    # Retrieve available service endpoints
+    AVAILABLE_SERVICES=()
+    local retry_count=0
+
+    while [[ ${#AVAILABLE_SERVICES[@]} -eq 0 && $retry_count -lt $SERVICE_DISCOVERY_RETRIES ]]; do
+        echo "Service discovery attempt $((retry_count + 1))/$SERVICE_DISCOVERY_RETRIES"
+
+        # Query service_manager for available endpoints
+        local service_output=$(./service_manager.sh list-ports 2>/dev/null | grep "Instance" || true)
+
+        if [[ -n "$service_output" ]]; then
+            while IFS= read -r line; do
+                if [[ $line =~ Instance\ ([0-9]+):\ http://localhost:([0-9]+) ]]; then
+                    local instance_id="${BASH_REMATCH[1]}"
+                    local server_port="${BASH_REMATCH[2]}"
+                    AVAILABLE_SERVICES+=("$server_port")
+                fi
+            done <<< "$service_output"
+        fi
+
+        if [[ ${#AVAILABLE_SERVICES[@]} -eq 0 ]]; then
+            echo "No healthy services found, retrying in 5 seconds..."
+            sleep 5
+            retry_count=$((retry_count + 1))
+        fi
+    done
+
+    if [[ ${#AVAILABLE_SERVICES[@]} -eq 0 ]]; then
+        echo "Error: No healthy services available after $SERVICE_DISCOVERY_RETRIES attempts"
+        echo "Please check service status: ./service_manager.sh status"
+        exit 1
+    fi
+
+    echo "Found ${#AVAILABLE_SERVICES[@]} available services: ${AVAILABLE_SERVICES[*]}"
+}
+
+# Adjust concurrency to available ports
+adjust_concurrency() {
+    local available_ports=${#AVAILABLE_SERVICES[@]}
+    local original_concurrency=$CONCURRENCY
+
+    if [ $available_ports -eq 0 ]; then
+        echo "Error: No available services found"
+        exit 1
+    fi
+
+    # Clamp concurrency to available port count when necessary
+    if [ $CONCURRENCY -gt $available_ports ]; then
+        CONCURRENCY=$available_ports
+        echo "Warning: Concurrency ($original_concurrency) exceeds available ports ($available_ports)"
+        echo "Automatically adjusted concurrency to $CONCURRENCY"
+    else
+        echo "Concurrency ($CONCURRENCY) is within available ports limit ($available_ports)"
+    fi
+
+    # Provide a hint when concurrency is much lower than available ports
+    if [ $CONCURRENCY -lt $available_ports ] && [ $((available_ports - CONCURRENCY)) -ge 2 ]; then
+        echo "Info: You have $available_ports ports available but only using $CONCURRENCY concurrent jobs"
+        echo "Consider increasing --concurrency to maximize port utilization"
+    fi
+}
+
+echo "Starting lean batch competition execution..."
+echo "Initial configuration:"
+echo "  Requested concurrency: $CONCURRENCY"
+echo "  Total runs: $TOTAL_RUNS"
+echo "  Competitors config: $COMPETITORS_CONFIG"
+echo ""
+echo "Problem files to run:"
+for i in "${!PROBLEM_FILES[@]}"; do
+    echo "  Competition $i: ${PROBLEM_FILES[$i]}"
+done
+echo ""
+
+# Discover or configure available services
+setup_services
+
+echo ""
+echo "Final configuration:"
+echo "  Actual concurrency: $CONCURRENCY"
+
+# Create log directory
+LOG_DIR="logs/batch_lean_$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$LOG_DIR"
+
+echo "Logs will be saved to: $LOG_DIR"
+echo ""
+
+# Function to run a single competition
+run_competition_lean() {
+    local run_id=$1
+    local problem_file=$2
+
+    # Rebuild available services (arrays cannot be exported to child processes)
+    local services_list=(${AVAILABLE_SERVICES_STR})
+    local service_count=${#services_list[@]}
+
+    if [ $service_count -eq 0 ]; then
+        echo "Error: No available services found in subprocess"
+        return 1
+    fi
+
+    local server_port=${services_list[$((run_id % service_count))]}
+    local log_file="$LOG_DIR/competition_${run_id}.log"
+
+    echo "Starting competition $run_id (Server:$server_port, Problem:$problem_file)..."
+    echo "Starting competition $run_id (Server:$server_port, Problem:$problem_file)..." >> "$log_file"
+
+    # Run only the competition client, connecting to existing services
+    competition_run \
+        --competition-config config/competition_config.json \
+        --competitors-config "$COMPETITORS_CONFIG" \
+        --port "$server_port" \
+        --problem-ids "$problem_file" \
+        >> "$log_file" 2>&1
+
+    local exit_code=$?
+    if [ $exit_code -eq 0 ]; then
+        echo "Competition $run_id ($problem_file) completed successfully"
+        echo "Competition $run_id ($problem_file) completed successfully" >> "$log_file"
+    else
+        echo "Competition $run_id ($problem_file) failed with exit code $exit_code"
+        echo "Competition $run_id ($problem_file) failed with exit code $exit_code" >> "$log_file"
+    fi
+
+    return $exit_code
+}
+
+# Concurrency control – convert arrays to strings for export
+AVAILABLE_SERVICES_STR="${AVAILABLE_SERVICES[*]}"
+export -f run_competition_lean
+export LOG_DIR COMPETITORS_CONFIG AVAILABLE_SERVICES_STR
+
+# Build task list in the format: run_id problem_file
+TASK_LIST=""
+for i in $(seq 0 $((TOTAL_RUNS-1))); do
+    TASK_LIST="$TASK_LIST$i ${PROBLEM_FILES[$i]}\n"
+done
+
+# Use GNU parallel or xargs for concurrent execution
+if command -v parallel >/dev/null 2>&1; then
+    echo "Using GNU parallel for concurrent execution..."
+    echo -e "$TASK_LIST" | parallel -j "$CONCURRENCY" --colsep ' ' run_competition_lean {1} {2}
+else
+    echo "Using xargs for concurrent execution..."
+    echo -e "$TASK_LIST" | xargs -n 2 -P "$CONCURRENCY" bash -c 'run_competition_lean "$1" "$2"' _
+fi
+
+echo ""
+echo "All competitions completed!"
+echo "Check logs in: $LOG_DIR"
+
+# Generate summary report
+echo ""
+echo "=== Competition Summary ==="
+for i in $(seq 0 $((TOTAL_RUNS-1))); do
+    log_file="$LOG_DIR/competition_${i}.log"
+    problem_file="${PROBLEM_FILES[$i]}"
+    if grep -q "completed successfully" "$log_file" 2>/dev/null; then
+        echo "Competition $i ($problem_file): SUCCESS"
+    else
+        echo "Competition $i ($problem_file): FAILED"
+    fi
+done
+
+echo ""
+echo "Service utilization:"
+echo "==================="
+for service_port in "${AVAILABLE_SERVICES[@]}"; do
+    local count=$(grep -l "Server:$service_port" "$LOG_DIR"/*.log 2>/dev/null | wc -l)
+    echo "Server port $service_port: $count competitions"
+done

@@ -1,1 +1,43 @@
-ZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwoKaW1wb3J0IGNzdgpmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKCgpDSEVDS0xJU1RfUEFUSCA9IFBhdGgoX19maWxlX18pLnJlc29sdmUoKS5wYXJlbnRzWzJdIC8gImRvY3MiIC8gInJlbGVhc2UiIC8gInJlbGVhc2UtY2hlY2tsaXN0Lm1kIgpBUlRJRkFDVFNfUEFUSCA9IFBhdGgoX19maWxlX18pLnJlc29sdmUoKS5wYXJlbnRzWzJdIC8gImRvY3MiIC8gInJlbGVhc2UiIC8gImFydGlmYWN0cy5jc3YiCgoKZGVmIHRlc3RfcmVsZWFzZV9jaGVja2xpc3RfaGFzX3JlcXVpcmVkX3NlY3Rpb25zKCkgLT4gTm9uZToKICAgIGNvbnRlbnQgPSBDSEVDS0xJU1RfUEFUSC5yZWFkX3RleHQoZW5jb2Rpbmc9InV0Zi04IikKCiAgICBjYXRlZ29yaWVzID0gKAogICAgICAgICIjIyBEb2N1bWVudGF0aW9uIiwKICAgICAgICAiIyMgVGVzdGluZyIsCiAgICAgICAgIiMjIFNlY3VyaXR5IiwKICAgICAgICAiIyMgUGFja2FnaW5nIiwKICAgICAgICAiIyMgQ29tbXVuaWNhdGlvbiIsCiAgICApCgogICAgZm9yIGNhdGVnb3J5IGluIGNhdGVnb3JpZXM6CiAgICAgICAgYXNzZXJ0ICgKICAgICAgICAgICAgY2F0ZWdvcnkgaW4gY29udGVudAogICAgICAgICksIGYicmVsZWFzZS1jaGVja2xpc3QubWQgaXMgbWlzc2luZyByZXF1aXJlZCBzZWN0aW9uOiB7Y2F0ZWdvcnl9IgoKICAgIGNoZWNrYm94X2NvdW50ID0gY29udGVudC5jb3VudCgiLSBbIF0iKQogICAgYXNzZXJ0ICgKICAgICAgICBjaGVja2JveF9jb3VudCA+PSBsZW4oY2F0ZWdvcmllcykKICAgICksICJFYWNoIGNhdGVnb3J5IG11c3QgY29udGFpbiBhdCBsZWFzdCBvbmUgY2hlY2tsaXN0IGl0ZW0iCgogICAgYXNzZXJ0ICgKICAgICAgICAiYXJ0aWZhY3RzLmNzdiIgaW4gY29udGVudAogICAgKSwgIkNoZWNrbGlzdCBtdXN0IHJlZmVyZW5jZSBhcnRpZmFjdHMuY3N2IHRvIHRyYWNrIGZpbGUgY2hhbmdlcyIKCgpkZWYgdGVzdF9hcnRpZmFjdHNfY3N2X2hhc19leHBlY3RlZF9oZWFkZXJzKCkgLT4gTm9uZToKICAgIHdpdGggQVJUSUZBQ1RTX1BBVEgub3BlbihlbmNvZGluZz0idXRmLTgiKSBhcyBjc3ZmaWxlOgogICAgICAgIHJlYWRlciA9IGNzdi5yZWFkZXIoY3N2ZmlsZSkKICAgICAgICBoZWFkZXIgPSBuZXh0KHJlYWRlcikKICAgICAgICBhc3NlcnQgaGVhZGVyID09IFsicGF0aCIsICJhY3Rpb24iLCAicmVhc29uIiwgInJlcGxhY2VtZW50IiwgInJldmlld2VyIl0sICJhcnRpZmFjdHMuY3N2IGhlYWRlciBtdXN0IG1hdGNoIHRoZSBleHBlY3RlZCBmb3JtYXQiCiAgICAgICAgcm93cyA9IGxpc3QocmVhZGVyKQogICAgICAgIGFzc2VydCByb3dzLCAiYXJ0aWZhY3RzLmNzdiBtdXN0IHJlY29yZCBhdCBsZWFzdCBvbmUgcm93IHRvIGRvY3VtZW50IGNoYW5nZXMiCg==
+from __future__ import annotations
+
+import csv
+from pathlib import Path
+
+
+CHECKLIST_PATH = Path(__file__).resolve().parents[2] / "docs" / "release" / "release-checklist.md"
+ARTIFACTS_PATH = Path(__file__).resolve().parents[2] / "docs" / "release" / "artifacts.csv"
+
+
+def test_release_checklist_has_required_sections() -> None:
+    content = CHECKLIST_PATH.read_text(encoding="utf-8")
+
+    categories = (
+        "## Documentation",
+        "## Testing",
+        "## Security",
+        "## Packaging",
+        "## Communication",
+    )
+
+    for category in categories:
+        assert (
+            category in content
+        ), f"release-checklist.md is missing required section: {category}"
+
+    checkbox_count = content.count("- [ ]")
+    assert (
+        checkbox_count >= len(categories)
+    ), "Each category must contain at least one checklist item"
+
+    assert (
+        "artifacts.csv" in content
+    ), "Checklist must reference artifacts.csv to track file changes"
+
+
+def test_artifacts_csv_has_expected_headers() -> None:
+    with ARTIFACTS_PATH.open(encoding="utf-8") as csvfile:
+        reader = csv.reader(csvfile)
+        header = next(reader)
+        assert header == ["path", "action", "reason", "replacement", "reviewer"], "artifacts.csv header must match the expected format"
+        rows = list(reader)
+        assert rows, "artifacts.csv must record at least one row to document changes"

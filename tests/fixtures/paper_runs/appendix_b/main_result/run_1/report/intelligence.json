@@ -1,1 +1,37 @@
-ewogICJjb21wZXRpdGlvbiI6IHsKICAgICJpZCI6ICJhYi1tYWluLXJ1bjEiLAogICAgInRpdGxlIjogIkFwcGVuZGl4IEIgTWFpbiBSZXN1bHQiLAogICAgImRlc2NyaXB0aW9uIjogImZpeHR1cmUiLAogICAgInByb2JsZW1fY291bnQiOiA0CiAgfSwKICAiZ2VuZXJhdGVkX2F0IjogIjIwMjYtMDQtMTRUMDI6MDA6MDBaIiwKICAic3VtbWFyeSI6IHsKICAgICJwYXJ0aWNpcGFudF9jb3VudCI6IDIsCiAgICAidGVybWluYXRlZF9jb3VudCI6IDIsCiAgICAiYXZnX2ludGVsbGlnZW5jZV9zY29yZSI6IDYzLjAsCiAgICAidG9wX3BhcnRpY2lwYW50IjogImdlbWluaS0yLjUtcHJvIgogIH0sCiAgInJvd3MiOiBbCiAgICB7CiAgICAgICJuYW1lIjogImdlbWluaS0yLjUtcHJvIiwKICAgICAgImFyZW5hX3JhbmsiOiAxLAogICAgICAicHJvYmxlbV9wYXNzX3Njb3JlIjogMTMuMiwKICAgICAgInNjb3JlIjogMTMuMiwKICAgICAgInN1Ym1pc3Npb25fY291bnQiOiA4LAogICAgICAiYWNjZXB0ZWRfY291bnQiOiAzLAogICAgICAiYXR0ZW1wdGVkX3Byb2JsZW1zIjogNCwKICAgICAgImNvbnN1bWVkX2NyZWRpdCI6IDEwMDAwMDAwCiAgICB9LAogICAgewogICAgICAibmFtZSI6ICJncHQtNS1jb2RleCIsCiAgICAgICJhcmVuYV9yYW5rIjogMiwKICAgICAgInByb2JsZW1fcGFzc19zY29yZSI6IDEyLjAsCiAgICAgICJzY29yZSI6IDEyLjAsCiAgICAgICJzdWJtaXNzaW9uX2NvdW50IjogNSwKICAgICAgImFjY2VwdGVkX2NvdW50IjogMywKICAgICAgImF0dGVtcHRlZF9wcm9ibGVtcyI6IDMsCiAgICAgICJjb25zdW1lZF9jcmVkaXQiOiA1MDAwMDAwCiAgICB9CiAgXQp9Cg==
+{
+  "competition": {
+    "id": "ab-main-run1",
+    "title": "Appendix B Main Result",
+    "description": "fixture",
+    "problem_count": 4
+  },
+  "generated_at": "2026-04-14T02:00:00Z",
+  "summary": {
+    "participant_count": 2,
+    "terminated_count": 2,
+    "avg_intelligence_score": 63.0,
+    "top_participant": "gemini-2.5-pro"
+  },
+  "rows": [
+    {
+      "name": "gemini-2.5-pro",
+      "arena_rank": 1,
+      "problem_pass_score": 13.2,
+      "score": 13.2,
+      "submission_count": 8,
+      "accepted_count": 3,
+      "attempted_problems": 4,
+      "consumed_credit": 10000000
+    },
+    {
+      "name": "gpt-5-codex",
+      "arena_rank": 2,
+      "problem_pass_score": 12.0,
+      "score": 12.0,
+      "submission_count": 5,
+      "accepted_count": 3,
+      "attempted_problems": 3,
+      "consumed_credit": 5000000
+    }
+  ]
+}

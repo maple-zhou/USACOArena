@@ -1,1 +1,19 @@
-IyBVU0FDT0FyZW5hIFJlbGVhc2UgRG9jdW1lbnRhdGlvbgoKVGhpcyBkaXJlY3RvcnkgdHJhY2tzIHRoZSBwdWJsaWMgb3Blbi1zb3VyY2UgcmVsZWFzZSBwcm9jZXNzIGZvciB0aGUgSUNMUiAyMDI2IGNvbXBhbmlvbiBjb2RlYmFzZS4KCiMjIFN0cnVjdHVyZSBPdmVydmlldwoKLSBgcmVsZWFzZS1jaGVja2xpc3QubWRgOiBwcmUtcmVsZWFzZSBjaGVja2xpc3QgZm9yIGRvY3MsIHRlc3RpbmcsIHNlY3VyaXR5LCBwYWNrYWdpbmcsIGFuZCBjb21tdW5pY2F0aW9uCi0gYGFydGlmYWN0cy5jc3ZgOiBpbnZlbnRvcnkgb2YgcmVtb3ZlZCBvciBpbnRlbnRpb25hbGx5IHJldGFpbmVkIHJlbGVhc2UgYXJ0aWZhY3RzCi0gYC4uL3NlY3VyaXR5L2A6IHNlY3JldC1zY2FuIGFuZCByZWxlYXNlLWF1ZGl0IG91dHB1dHMKCiMjIFJlbGVhc2UgRXhwZWN0YXRpb25zCgpCZWZvcmUgcHVibGlzaGluZzoKCjEuIHZlcmlmeSB0aGUgUkVBRE1FIGFuZCBgZG9jcy9wYXBlcl9yZXByb2R1Y3Rpb24ubWRgCjIuIHZlcmlmeSB0aGUgZGF0YXNldCBndWlkZSBhbmQgSHlkcm8gZGVwbG95bWVudCAvIGFkZG9uIGluc3RhbGxhdGlvbiBndWlkZQozLiBydW4gdGhlIHJlbGVhc2UgYXVkaXQgYW5kIHRlc3RzCjQuIGNvbmZpcm0gbm8gcHJpdmF0ZSBBUEkgZW5kcG9pbnQgb3Iga2V5IHJlbWFpbnMgaW4gdHJhY2tlZCBmaWxlcwo1LiB2ZXJpZnkgdGhhdCB0aGUgcHVibGlzaGVkIEh5ZHJvIGFkZG9uIHBhY2thZ2UsIEh5ZHJvIHByb2JsZW1zZXQgemlwLCBhbmQgbG9jYWwgcmVzb3VyY2UgZGF0YXNldCBsaW5rcyBpbiB0aGUgZG9jcyBzdGlsbCByZXNvbHZlIHRvIHRoZSBpbnRlbmRlZCByZWxlYXNlIGFydGlmYWN0cwo=
+# USACOArena Release Documentation
+
+This directory tracks the public open-source release process for the ICLR 2026 companion codebase.
+
+## Structure Overview
+
+- `release-checklist.md`: pre-release checklist for docs, testing, security, packaging, and communication
+- `artifacts.csv`: inventory of removed or intentionally retained release artifacts
+- `../security/`: secret-scan and release-audit outputs
+
+## Release Expectations
+
+Before publishing:
+
+1. verify the README and `docs/paper_reproduction.md`
+2. verify the dataset guide and Hydro deployment / addon installation guide
+3. run the release audit and tests
+4. confirm no private API endpoint or key remains in tracked files
+5. verify that the published Hydro addon package, Hydro problemset zip, and local resource dataset links in the docs still resolve to the intended release artifacts

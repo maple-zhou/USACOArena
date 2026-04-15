@@ -1,1 +1,32 @@
-IyBVU0FDT0FyZW5hIFJlbGVhc2UgQ2hlY2tsaXN0Cgo+IENvbXBsZXRlIGVhY2ggaXRlbSBiZWZvcmUgcHVibGlzaGluZyBhbmQgbG9nIGZpbGUgYWRqdXN0bWVudHMgaW4gYGRvY3MvcmVsZWFzZS9hcnRpZmFjdHMuY3N2YC4KCiMjIERvY3VtZW50YXRpb24KLSBbIF0gUkVBRE1FIGNsZWFybHkgc3RhdGVzIHRoaXMgcmVwb3NpdG9yeSBpcyB0aGUgY29tcGFuaW9uIGNvZGViYXNlIGZvciB0aGUgYWNjZXB0ZWQgSUNMUiAyMDI2IHBhcGVyIGFuZCBpbmNsdWRlcyBhIEJpYlRlWCBjaXRhdGlvbi4KLSBbIF0gYGRvY3MvcGFwZXJfcmVwcm9kdWN0aW9uLm1kYCBjb3ZlcnMgYWxsIGV4cGVyaW1lbnRzIGluIHRoZSBtYWluIHBhcGVyIGFuZCBhcHBlbmRpeCB3aXRoIGNvcHktcGFzdGVhYmxlIGNvbW1hbmRzLgotIFsgXSBgZG9jcy9kYXRhc2V0Lm1kYCwgYGRvY3Mvb2oubWRgLCBhbmQgYGRvY3MvbWV0cmljcy5tZGAgbWF0Y2ggdGhlIHJlbGVhc2VkIGRhdGFzZXQgYXJjaGl2ZSwgSHlkcm8gYWRkb24gd29ya2Zsb3csIGFuZCBjdXJyZW50IHJlcG9ydGluZyBzY3JpcHRzLgotIFsgXSBSRUFETUUgYW5kIGRvY3MgcG9pbnQgdG8gdGhlIGN1cnJlbnQgcHVibGljIGRvd25sb2FkIGxpbmtzIGZvciB0aGUgSHlkcm8gYWRkb24gcGFja2FnZSwgSHlkcm8gcHJvYmxlbXNldCB6aXAsIGFuZCBsb2NhbCByZXNvdXJjZSBkYXRhc2V0LgotIFsgXSBgZG9jcy9yZWxlYXNlL2FydGlmYWN0cy5jc3ZgIGxpc3RzIGV2ZXJ5IGFkZGVkL3JlbW92ZWQgZmlsZSB3aXRoIGp1c3RpZmljYXRpb24gYW5kIGFyY2hpdmUgbG9jYXRpb24uCgojIyBUZXN0aW5nCi0gWyBdIEV4ZWN1dGUgdGhlIHF1aWNrIHN0YXJ0IGVuZCB0byBlbmQgYWdhaW5zdCB0aGUgcmVsZWFzZWQgZGF0YXNldCBsYXlvdXQsIGEgbG9jYWwgSHlkcm8gZGVwbG95bWVudCwgdGhlIFVTQUNPQXJlbmEgYWRkb24sIGFuZCB0aGUgbm9ybWFsaXplZCBwcm9ibGVtc2V0IHppcC4KLSBbIF0gUnVuIGB1diBydW4gcHl0ZXN0YCBhbmQgc3RvcmUgdGhlIG91dHB1dC4KLSBbIF0gUnVuIGBweXRob24gLW0gdXNhY29hcmVuYS5tYWluIC0taGVscGAsIGBweXRob24gLW0gdXNhY29hcmVuYS51aS5hcHAgLS1oZWxwYCwgYHB5dGhvbiBzY3JpcHRzL2JlbmNobWFya19jbGkucHkgLS1oZWxwYCwgYW5kIGBweXRob24gc2NyaXB0cy9leHBvcnRfbWV0cmljc190aW1lbGluZS5weSAtLWhlbHBgLgotIFsgXSBBZGQgb3IgdXBkYXRlIHJlZ3Jlc3Npb24gdGVzdHMgd2hlbiBjb25maWcgbm9ybWFsaXphdGlvbiwgUkVBRE1FIHZhbGlkYXRpb24sIEh5ZHJvIGludGVncmF0aW9uLCBvciByZWxlYXNlIGF1ZGl0IGJlaGF2aW9yIGNoYW5nZXMuCgojIyBTZWN1cml0eQotIFsgXSBSdW4gYC4vc2NyaXB0cy9yZWxlYXNlX2F1ZGl0LnNoIC0tb3V0cHV0IGRvY3Mvc2VjdXJpdHkvc2Nhbi1sYXRlc3QuanNvbmAgYW5kIHJldmlldyB0aGUgZ2VuZXJhdGVkIHJlcG9ydC4KLSBbIF0gQ29uZmlybSBhbGwgcHVibGljIGNvbmZpZ3MgdXNlIG9mZmljaWFsIEFQSSBiYXNlIFVSTHMgYW5kIGJsYW5rIGNoZWNrZWQtaW4gQVBJIGtleXMuCi0gWyBdIENvbmZpcm0gbm8gcHJpdmF0ZSByZWxheSBVUkxzLCBhY3RpdmUgY3JlZGVudGlhbHMsIHBlcnNvbmFsIGRhdGEsIG9yIHVuYXV0aG9yaXplZCBhcnRpZmFjdHMgcmVtYWluIGluIHRyYWNrZWQgZmlsZXMuCgojIyBQYWNrYWdpbmcKLSBbIF0gQ29uZmlybSB0aGUgcHVibGljIHJlbGVhc2UgZXhjbHVkZXMgZ2VuZXJhdGVkIGxvZ3MsIGxvY2FsIHJ1biBvdXRwdXRzLCBhbmQgZGVsZXRlZCBwcml2YXRlIGNvbmZpZyBhcnRpZmFjdHMuCi0gWyBdIEVuc3VyZSB0aGUgcmVsZWFzZWQgZGF0YXNldCBhcmNoaXZlIGV4cGFuZHMgaW50byB0aGUgZG9jdW1lbnRlZCBkaXJlY3Rvcnkgc3RydWN0dXJlIHdpdGhvdXQgY29kZSBjaGFuZ2VzLgotIFsgXSBFbnN1cmUgdGhlIEh5ZHJvIGFkZG9uIHBhY2thZ2UgYW5kIG5vcm1hbGl6ZWQgSHlkcm8gcHJvYmxlbXNldCB6aXAgYXJlIHByb2R1Y2VkIGFuZCBzdG9yZWQgYXQgdGhlIGRvY3VtZW50ZWQgZXh0ZXJuYWwgcmVsZWFzZSBsb2NhdGlvbnMuCi0gWyBdIEVuc3VyZSB0aGUgcHVibGlzaGVkIGV4dGVybmFsIGxpbmtzIHN0aWxsIHNlcnZlIHRoZSBleHBlY3RlZCBhZGRvbiBwYWNrYWdlLCBwcm9ibGVtc2V0IHppcCwgYW5kIGxvY2FsIHJlc291cmNlIGRhdGFzZXQuCi0gWyBdIEVuc3VyZSBIeWRybyB1cHN0cmVhbSBwbHVzIHRoaXMgcmVwb3NpdG9yeSBjYW4gYmUgZGVwbG95ZWQgdG9nZXRoZXIgdXNpbmcgdGhlIHB1Ymxpc2hlZCBpbnN0cnVjdGlvbnMuCgojIyBDb21tdW5pY2F0aW9uCi0gWyBdIFByZXBhcmUgcmVsZWFzZSBub3RlcyBzdW1tYXJpemluZyB0aGUgb3Blbi1zb3VyY2UgcmVsZWFzZSBzY29wZSwgSHlkcm8gZGVwZW5kZW5jeSBib3VuZGFyeSwgZXhwZXJpbWVudCBjb3ZlcmFnZSwgYW5kIGNyZWRlbnRpYWwgaGFuZGxpbmcgcG9saWN5LgotIFsgXSBQb2ludCB1c2VycyB0byBgZG9jcy9wYXBlcl9yZXByb2R1Y3Rpb24ubWRgIGZvciBleGFjdCBleHBlcmltZW50IGNvbW1hbmRzIGFuZCB0byBgZG9jcy9vai5tZGAgZm9yIEh5ZHJvIGRlcGxveW1lbnQgYW5kIGFkZG9uIGluc3RhbGxhdGlvbi4K
+# USACOArena Release Checklist
+
+> Complete each item before publishing and log file adjustments in `docs/release/artifacts.csv`.
+
+## Documentation
+- [ ] README clearly states this repository is the companion codebase for the accepted ICLR 2026 paper and includes a BibTeX citation.
+- [ ] `docs/paper_reproduction.md` covers all experiments in the main paper and appendix with copy-pasteable commands.
+- [ ] `docs/dataset.md`, `docs/oj.md`, and `docs/metrics.md` match the released dataset archive, Hydro addon workflow, and current reporting scripts.
+- [ ] README and docs point to the current public download links for the Hydro addon package, Hydro problemset zip, and local resource dataset.
+- [ ] `docs/release/artifacts.csv` lists every added/removed file with justification and archive location.
+
+## Testing
+- [ ] Execute the quick start end to end against the released dataset layout, a local Hydro deployment, the USACOArena addon, and the normalized problemset zip.
+- [ ] Run `uv run pytest` and store the output.
+- [ ] Run `python -m usacoarena.main --help`, `python -m usacoarena.ui.app --help`, `python scripts/benchmark_cli.py --help`, and `python scripts/export_metrics_timeline.py --help`.
+- [ ] Add or update regression tests when config normalization, README validation, Hydro integration, or release audit behavior changes.
+
+## Security
+- [ ] Run `./scripts/release_audit.sh --output docs/security/scan-latest.json` and review the generated report.
+- [ ] Confirm all public configs use official API base URLs and blank checked-in API keys.
+- [ ] Confirm no private relay URLs, active credentials, personal data, or unauthorized artifacts remain in tracked files.
+
+## Packaging
+- [ ] Confirm the public release excludes generated logs, local run outputs, and deleted private config artifacts.
+- [ ] Ensure the released dataset archive expands into the documented directory structure without code changes.
+- [ ] Ensure the Hydro addon package and normalized Hydro problemset zip are produced and stored at the documented external release locations.
+- [ ] Ensure the published external links still serve the expected addon package, problemset zip, and local resource dataset.
+- [ ] Ensure Hydro upstream plus this repository can be deployed together using the published instructions.
+
+## Communication
+- [ ] Prepare release notes summarizing the open-source release scope, Hydro dependency boundary, experiment coverage, and credential handling policy.
+- [ ] Point users to `docs/paper_reproduction.md` for exact experiment commands and to `docs/oj.md` for Hydro deployment and addon installation.

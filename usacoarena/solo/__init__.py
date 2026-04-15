@@ -1,1 +1,14 @@
-IiIiTGlnaHR3ZWlnaHQgdXRpbGl0aWVzIGZvciBzaW5nbGUtcHJvYmxlbSBMTE0gZXhlY3V0aW9uLiIiIgoKZnJvbSAucHJvbXB0aW5nIGltcG9ydCBTb2xvUHJvbXB0QnVpbGRlcgpmcm9tIC5sbG0gaW1wb3J0IExMTUNsaWVudCwgTExNQ29uZmlnLCBMTE1Vc2FnZQpmcm9tIC5sb2dnaW5nIGltcG9ydCBTb2xvUnVuTG9nZ2VyLCBBdHRlbXB0TG9nRW50cnkKCl9fYWxsX18gPSBbCiAgICAiU29sb1Byb21wdEJ1aWxkZXIiLAogICAgIkxMTUNsaWVudCIsCiAgICAiTExNQ29uZmlnIiwKICAgICJMTE1Vc2FnZSIsCiAgICAiU29sb1J1bkxvZ2dlciIsCiAgICAiQXR0ZW1wdExvZ0VudHJ5IiwKXQo=
+"""Lightweight utilities for single-problem LLM execution."""
+
+from .prompting import SoloPromptBuilder
+from .llm import LLMClient, LLMConfig, LLMUsage
+from .logging import SoloRunLogger, AttemptLogEntry
+
+__all__ = [
+    "SoloPromptBuilder",
+    "LLMClient",
+    "LLMConfig",
+    "LLMUsage",
+    "SoloRunLogger",
+    "AttemptLogEntry",
+]

@@ -1,1 +1,144 @@
-IyBTdGFuZGFsb25lIENvZGV4IExvb3AgQWdlbnQKClRoaXMgZ3VpZGUgY292ZXJzIHRoZSBwdWJsaWMgc3RhbmRhbG9uZSBDb2RleCBydW5uZXIgdXNlZCBmb3IgdGhlIHN3YXJtIGNhc2Ugc3R1ZHkgaW4gU2VjdGlvbiA0LjUuCgojIyAxLiBTdGFydCB0aGUgU2hhcmVkIFNlcnZpY2VzCgpJbiB0ZXJtaW5hbCAxLCBzdGFydCBIeWRybywgaW5zdGFsbCB0aGUgYWRkb24sIGFuZCBpbXBvcnQgdGhlIG5vcm1hbGl6ZWQgcHJvYmxlbXNldCBhcyBkZXNjcmliZWQgaW4gYGRvY3Mvb2oubWRgLgoKSW4gdGVybWluYWwgMiwgc3RhcnQgdGhlIFVTQUNPQXJlbmEgQVBJIHNlcnZlcjoKCmBgYGJhc2gKdXYgcnVuIHB5dGhvbiAtbSB1c2Fjb2FyZW5hLm1haW4gXAogIC0tY29uZmlnIGNvbmZpZy9zZXJ2ZXJfY29uZmlnLmpzb24gXAogIC0taG9zdCAwLjAuMC4wIFwKICAtLXBvcnQgNTAwMCBcCiAgLS1oeWRyby1iYXNlLXVybCBodHRwOi8vMTI3LjAuMC4xOjg4ODggXAogIC0taHlkcm8tYXBpLXRva2VuICI8dG9rZW4+IgpgYGAKCiMjIDIuIFJlZ2lzdGVyIGEgQ29kZXggQ29tcGV0aXRpb24KClRoZSBoZWxwZXIgYmVsb3cgY3JlYXRlcyBhIGNvbXBldGl0aW9uLCByZWdpc3RlcnMgYmFzZWxpbmUgcGFydGljaXBhbnRzLCBhbmQgYWxzbyByZWdpc3RlcnMgb25lIENvZGV4IHBhcnRpY2lwYW50IHdpdGhvdXQgc3RhcnRpbmcgdGhlIENvZGV4IHByb2Nlc3MgeWV0LgoKYGBgYmFzaApta2RpciAtcCBydW5zL2NvZGV4X3N3YXJtCnV2IHJ1biBweXRob24gc2NyaXB0cy9ydW5fY29tcGV0aXRpb25fZm9yX2NvZGV4LnB5IFwKICAtLWNvbXBldGl0aW9uLWNvbmZpZyBjb25maWcvcGFwZXIvY29tcGV0aXRpb24vY29kZXhfc3dhcm0uanNvbiBcCiAgLS1jb21wZXRpdG9ycy1jb25maWcgY29uZmlnL3BhcGVyL2NvbXBldGl0b3JzL3RocmVlX21vZGVsX3Nhbml0eS5qc29uIFwKICAtLXByb2JsZW0taWRzIGNvbmZpZy9wYXBlci9wcm9ibGVtcy9tYWluX3VzX29wZW5fMjAyNS5qc29uIFwKICAtLWxvZy1kaXIgcnVucy9jb2RleF9zd2FybS9zZXR1cF9sb2dzIFwKICAtLWNvbXBldGl0aW9uLWlkLW91dHB1dCBydW5zL2NvZGV4X3N3YXJtL2NvbXBldGl0aW9uX2lkLnR4dCBcCiAgLS1jb2RleC1uYW1lICJDb2RleCBTd2FybSBBZ2VudCIgXAogIC0tY29kZXgtZW52LW91dHB1dCBydW5zL2NvZGV4X3N3YXJtL2NvZGV4X2Vudi50eHQKYGBgCgpUaGUgaGVscGVyIHdyaXRlczoKCi0gYHJ1bnMvY29kZXhfc3dhcm0vY29tcGV0aXRpb25faWQudHh0YAotIGBydW5zL2NvZGV4X3N3YXJtL2NvZGV4X2Vudi50eHRgCgpMb2FkIHRoZSBnZW5lcmF0ZWQgZW52aXJvbm1lbnQgZmlsZToKCmBgYGJhc2gKc291cmNlIHJ1bnMvY29kZXhfc3dhcm0vY29kZXhfZW52LnR4dApleHBvcnQgVVNBQ09BUkVOQV9CQVNFX1VSTD0iJFNFUlZFUl9CQVNFX1VSTCIKZXhwb3J0IFVTQUNPQVJFTkFfQ09NUEVUSVRJT05fSUQ9IiRDT01QRVRJVElPTl9JRCIKZXhwb3J0IFVTQUNPQVJFTkFfUEFSVElDSVBBTlRfSUQ9IiRQQVJUSUNJUEFOVF9JRCIKYGBgCgojIyAzLiBSdW4gdGhlIERlZmF1bHQgQ29kZXggTG9vcAoKYGBgYmFzaAp1diBydW4gcHl0aG9uIHNjcmlwdHMvcnVuX2NvZGV4X2xvb3BfYWdlbnQucHkgXAogIC0tYXBpLWJhc2UgIiRVU0FDT0FSRU5BX0JBU0VfVVJMIiBcCiAgLS1jb21wZXRpdGlvbi1pZCAiJFVTQUNPQVJFTkFfQ09NUEVUSVRJT05fSUQiIFwKICAtLXBhcnRpY2lwYW50LWlkICIkVVNBQ09BUkVOQV9QQVJUSUNJUEFOVF9JRCIgXAogIC0td29ya3NwYWNlIHJ1bnMvY29kZXhfc3dhcm0vd29ya3NwYWNlcy9kZWZhdWx0IFwKICAtLXRlbXBsYXRlLWRpciBjb25maWcvY29kZXhfYWdlbnQvdXNhY29hcmVuYSBcCiAgLS1sbG0taXNvbGF0ZQpgYGAKCiMjIDQuIFJ1biB0aGUgVGhyZWUgU3dhcm0gU3RyYXRlZ3kgUHJvZmlsZXMKClNwZWVkeSBTcGVuZHRocmlmdDoKCmBgYGJhc2gKdXYgcnVuIHB5dGhvbiBzY3JpcHRzL3J1bl9jb2RleF9sb29wX2FnZW50LnB5IFwKICAtLWFwaS1iYXNlICIkVVNBQ09BUkVOQV9CQVNFX1VSTCIgXAogIC0tY29tcGV0aXRpb24taWQgIiRVU0FDT0FSRU5BX0NPTVBFVElUSU9OX0lEIiBcCiAgLS1wYXJ0aWNpcGFudC1pZCAiJFVTQUNPQVJFTkFfUEFSVElDSVBBTlRfSUQiIFwKICAtLXdvcmtzcGFjZSBydW5zL2NvZGV4X3N3YXJtL3dvcmtzcGFjZXMvc3BlZWR5IFwKICAtLXRlbXBsYXRlLWRpciBjb25maWcvY29kZXhfYWdlbnQvc3dhcm1fZmFzdF83IFwKICAtLWxsbS1pc29sYXRlCmBgYAoKQ29zdC1Bd2FyZSBTdHJhdGVnaXN0OgoKYGBgYmFzaAp1diBydW4gcHl0aG9uIHNjcmlwdHMvcnVuX2NvZGV4X2xvb3BfYWdlbnQucHkgXAogIC0tYXBpLWJhc2UgIiRVU0FDT0FSRU5BX0JBU0VfVVJMIiBcCiAgLS1jb21wZXRpdGlvbi1pZCAiJFVTQUNPQVJFTkFfQ09NUEVUSVRJT05fSUQiIFwKICAtLXBhcnRpY2lwYW50LWlkICIkVVNBQ09BUkVOQV9QQVJUSUNJUEFOVF9JRCIgXAogIC0td29ya3NwYWNlIHJ1bnMvY29kZXhfc3dhcm0vd29ya3NwYWNlcy9iYWxhbmNlZCBcCiAgLS10ZW1wbGF0ZS1kaXIgY29uZmlnL2NvZGV4X2FnZW50L3N3YXJtX2JhbGFuY2VkXzQgXAogIC0tbGxtLWlzb2xhdGUKYGBgCgpGcnVnYWwgUGVyZmVjdGlvbmlzdDoKCmBgYGJhc2gKdXYgcnVuIHB5dGhvbiBzY3JpcHRzL3J1bl9jb2RleF9sb29wX2FnZW50LnB5IFwKICAtLWFwaS1iYXNlICIkVVNBQ09BUkVOQV9CQVNFX1VSTCIgXAogIC0tY29tcGV0aXRpb24taWQgIiRVU0FDT0FSRU5BX0NPTVBFVElUSU9OX0lEIiBcCiAgLS1wYXJ0aWNpcGFudC1pZCAiJFVTQUNPQVJFTkFfUEFSVElDSVBBTlRfSUQiIFwKICAtLXdvcmtzcGFjZSBydW5zL2NvZGV4X3N3YXJtL3dvcmtzcGFjZXMvZnJ1Z2FsIFwKICAtLXRlbXBsYXRlLWRpciBjb25maWcvY29kZXhfYWdlbnQvc3dhcm1fbGVhbl8yIFwKICAtLWxsbS1pc29sYXRlCmBgYAoKIyMgNS4gTWFudWFsIENvbnRyb2wgZnJvbSB0aGUgUnVubmVyIFdvcmtzcGFjZQoKRnJvbSB0aGUgYWN0aXZlIHdvcmtzcGFjZSBkaXJlY3Rvcnk6CgpgYGBiYXNoCnB5dGhvbiBhcmVuYV9jbGkucHkgc3RhdHVzCnB5dGhvbiBhcmVuYV9jbGkucHkgc3RhdGUKcHl0aG9uIGFyZW5hX2NsaS5weSBsaXN0LXByb2JsZW1zCnB5dGhvbiBhcmVuYV9jbGkucHkgcmFua2luZ3MKcHl0aG9uIGFyZW5hX2NsaS5weSBxdWl0IC0tcmVhc29uICJWb2x1bnRhcmlseSBRdWl0IENvbXBldGl0aW9uIgpgYGAKCiMjIDYuIEV4cG9ydCBSZXBvcnRzIGFuZCBUaW1lbGluZXMKCmBgYGJhc2gKQ09NUEVUSVRJT05fSUQ9IiQoY2F0IHJ1bnMvY29kZXhfc3dhcm0vY29tcGV0aXRpb25faWQudHh0KSIKdXYgcnVuIHB5dGhvbiBzY3JpcHRzL2JlbmNobWFya19jbGkucHkgcmVwb3J0IFwKICAtLWFwaS1iYXNlIGh0dHA6Ly8xMjcuMC4wLjE6NTAwMCBcCiAgLS1jb21wZXRpdGlvbi1pZCAiJENPTVBFVElUSU9OX0lEIiBcCiAgLS1vdXRwdXQtZGlyIHJ1bnMvY29kZXhfc3dhcm0vcmVwb3J0cwpgYGAKCmBgYGJhc2gKdXYgcnVuIHB5dGhvbiBzY3JpcHRzL2V4cG9ydF9tZXRyaWNzX3RpbWVsaW5lLnB5IFwKICAtLWFwaS1iYXNlIGh0dHA6Ly8xMjcuMC4wLjE6NTAwMCBcCiAgLS1jb21wZXRpdGlvbi1pZCAiJENPTVBFVElUSU9OX0lEIiBcCiAgLS1pbnRlcnZhbCAxMCBcCiAgLS1vdXRwdXQtZGlyIHJ1bnMvY29kZXhfc3dhcm0vdGltZWxpbmUKYGBgCgojIyA3LiBXb3Jrc3BhY2UgQXJ0aWZhY3RzCgpFYWNoIHJ1bm5lciB3b3Jrc3BhY2UgY29udGFpbnM6CgotIGBydW5uZXJfc3RhdGUuanNvbmAKLSBgcnVudGltZV9zdGF0dXMuanNvbmAKLSBgcnVucy88dGltZXN0YW1wPi9ldmVudHMuanNvbmxgCi0gYHJ1bnMvPHRpbWVzdGFtcD4vcnVuX3N1bW1hcnkubWRgCi0gYGZpbmFsX21ldHJpY3MuanNvbmAKLSBgZmluYWxfcmFua2luZ3MuanNvbmAKLSBgQUdFTlRTLm1kYAotIGBwcm9ibGVtLm1kYAotIGBhcmVuYV9jbGkucHlgCgpUaGVzZSBhcmUgdGhlIHByaW1hcnkgYXJ0aWZhY3RzIGZvciByZXByb2R1Y2luZyB0aGUgU2VjdGlvbiA0LjUgc3dhcm0gYW5hbHlzaXMuCg==
+# Standalone Codex Loop Agent
+
+This guide covers the public standalone Codex runner used for the swarm case study in Section 4.5.
+
+## 1. Start the Shared Services
+
+In terminal 1, start Hydro, install the addon, and import the normalized problemset as described in `docs/oj.md`.
+
+In terminal 2, start the USACOArena API server:
+
+```bash
+uv run python -m usacoarena.main \
+  --config config/server_config.json \
+  --host 0.0.0.0 \
+  --port 5000 \
+  --hydro-base-url http://127.0.0.1:8888 \
+  --hydro-api-token "<token>"
+```
+
+## 2. Register a Codex Competition
+
+The helper below creates a competition, registers baseline participants, and also registers one Codex participant without starting the Codex process yet.
+
+```bash
+mkdir -p runs/codex_swarm
+uv run python scripts/run_competition_for_codex.py \
+  --competition-config config/paper/competition/codex_swarm.json \
+  --competitors-config config/paper/competitors/three_model_sanity.json \
+  --problem-ids config/paper/problems/main_us_open_2025.json \
+  --log-dir runs/codex_swarm/setup_logs \
+  --competition-id-output runs/codex_swarm/competition_id.txt \
+  --codex-name "Codex Swarm Agent" \
+  --codex-env-output runs/codex_swarm/codex_env.txt
+```
+
+The helper writes:
+
+- `runs/codex_swarm/competition_id.txt`
+- `runs/codex_swarm/codex_env.txt`
+
+Load the generated environment file:
+
+```bash
+source runs/codex_swarm/codex_env.txt
+export USACOARENA_BASE_URL="$SERVER_BASE_URL"
+export USACOARENA_COMPETITION_ID="$COMPETITION_ID"
+export USACOARENA_PARTICIPANT_ID="$PARTICIPANT_ID"
+```
+
+## 3. Run the Default Codex Loop
+
+```bash
+uv run python scripts/run_codex_loop_agent.py \
+  --api-base "$USACOARENA_BASE_URL" \
+  --competition-id "$USACOARENA_COMPETITION_ID" \
+  --participant-id "$USACOARENA_PARTICIPANT_ID" \
+  --workspace runs/codex_swarm/workspaces/default \
+  --template-dir config/codex_agent/usacoarena \
+  --llm-isolate
+```
+
+## 4. Run the Three Swarm Strategy Profiles
+
+Speedy Spendthrift:
+
+```bash
+uv run python scripts/run_codex_loop_agent.py \
+  --api-base "$USACOARENA_BASE_URL" \
+  --competition-id "$USACOARENA_COMPETITION_ID" \
+  --participant-id "$USACOARENA_PARTICIPANT_ID" \
+  --workspace runs/codex_swarm/workspaces/speedy \
+  --template-dir config/codex_agent/swarm_fast_7 \
+  --llm-isolate
+```
+
+Cost-Aware Strategist:
+
+```bash
+uv run python scripts/run_codex_loop_agent.py \
+  --api-base "$USACOARENA_BASE_URL" \
+  --competition-id "$USACOARENA_COMPETITION_ID" \
+  --participant-id "$USACOARENA_PARTICIPANT_ID" \
+  --workspace runs/codex_swarm/workspaces/balanced \
+  --template-dir config/codex_agent/swarm_balanced_4 \
+  --llm-isolate
+```
+
+Frugal Perfectionist:
+
+```bash
+uv run python scripts/run_codex_loop_agent.py \
+  --api-base "$USACOARENA_BASE_URL" \
+  --competition-id "$USACOARENA_COMPETITION_ID" \
+  --participant-id "$USACOARENA_PARTICIPANT_ID" \
+  --workspace runs/codex_swarm/workspaces/frugal \
+  --template-dir config/codex_agent/swarm_lean_2 \
+  --llm-isolate
+```
+
+## 5. Manual Control from the Runner Workspace
+
+From the active workspace directory:
+
+```bash
+python arena_cli.py status
+python arena_cli.py state
+python arena_cli.py list-problems
+python arena_cli.py rankings
+python arena_cli.py quit --reason "Voluntarily Quit Competition"
+```
+
+## 6. Export Reports and Timelines
+
+```bash
+COMPETITION_ID="$(cat runs/codex_swarm/competition_id.txt)"
+uv run python scripts/benchmark_cli.py report \
+  --api-base http://127.0.0.1:5000 \
+  --competition-id "$COMPETITION_ID" \
+  --output-dir runs/codex_swarm/reports
+```
+
+```bash
+uv run python scripts/export_metrics_timeline.py \
+  --api-base http://127.0.0.1:5000 \
+  --competition-id "$COMPETITION_ID" \
+  --interval 10 \
+  --output-dir runs/codex_swarm/timeline
+```
+
+## 7. Workspace Artifacts
+
+Each runner workspace contains:
+
+- `runner_state.json`
+- `runtime_status.json`
+- `runs/<timestamp>/events.jsonl`
+- `runs/<timestamp>/run_summary.md`
+- `final_metrics.json`
+- `final_rankings.json`
+- `AGENTS.md`
+- `problem.md`
+- `arena_cli.py`
+
+These are the primary artifacts for reproducing the Section 4.5 swarm analysis.

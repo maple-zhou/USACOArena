@@ -1,1 +1,12 @@
-IiIiU3RhbmRhbG9uZSBDb2RleCBsb29wIGFnZW50IGZvciBVU0FDT0FyZW5hLgoKVGhpcyBwYWNrYWdlIGlzIGludGVudGlvbmFsbHkgaXNvbGF0ZWQgZnJvbSBleGlzdGluZyBvcmdhbml6ZXIvY29tcGV0aXRvciBmbG93cy4KIiIiCgpmcm9tIC5ydW5uZXIgaW1wb3J0IENvZGV4TG9vcFJ1bm5lciwgUnVubmVyQ29uZmlnCgpfX2FsbF9fID0gWwogICAgIkNvZGV4TG9vcFJ1bm5lciIsCiAgICAiUnVubmVyQ29uZmlnIiwKXQoK
+"""Standalone Codex loop agent for USACOArena.
+
+This package is intentionally isolated from existing organizer/competitor flows.
+"""
+
+from .runner import CodexLoopRunner, RunnerConfig
+
+__all__ = [
+    "CodexLoopRunner",
+    "RunnerConfig",
+]
+

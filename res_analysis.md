@@ -1,1 +1,89 @@
-IyBDb2RleCBTd2FybSDkuqfnianlpI3moLjvvIhzeW50aGVzaXPvvIkKCiMjIDEpIOaVsOaNruiMg+WbtOS4juaYoOWwhAotIOS7heS9v+eUqOebruW9le+8mmBsb2dzL2NvZGV4X2xvb3BfYWdlbnRzL2FuYWx5c2lzL3N5bnRoZXNpc2AKLSAzIOS4quetlueVpeS4jiB3b3Jrc3BhY2Ug5pig5bCE77yaCgp8IOetlueVpSB8IHdvcmtzcGFjZSB8IGNvbXBldGl0aW9uX2lkIHwgcGFydGljaXBhbnRfaWQgfAp8LS0tfC0tLXwtLS18LS0tfAp8IFNwZWVkeSBTcGVuZHRocmlmdCB8IGAyMDI2MDIyOF8xMjEwMjFfMDJgIHwgYGEzNWUwYmY3LTRlMzAtNDQ3ZC04YzIyLWJhNzE1YWFmYmEzM2AgfCBgMzgyNjY1MDktMjIyNC00YmMzLTg3NTgtYjQxYzU4OWU5NmY1YCB8CnwgRnJ1Z2FsIFBlcmZlY3Rpb25pc3QgfCBgMjAyNjAyMjhfMTIxMDIxYCB8IGBhMzVlMGJmNy00ZTMwLTQ0N2QtOGMyMi1iYTcxNWFhZmJhMzNgIHwgYGFkNDQ2MmJmLTc1NTEtNDBkMy1iYmIxLWFjNjExNWMwNmViNmAgfAp8IENvc3QtQXdhcmUgU3RyYXRlZ2lzdCB8IGAyMDI2MDIyOF8yMzUyMDNfMDFgIHwgYDYzNDRiOTk1LWE5MzctNGZlYy05MzBjLWE2M2M2Mjg2MWMyMGAgfCBgYjI1ZWZjZjYtZGExZi00MTM5LWI2YWYtNDBhMTBiYWRkMWU3YCB8Cgror7TmmI7vvJpDb3N0LUF3YXJlIOadpeiHquS4jeWQjCBgY29tcGV0aXRpb25faWRg77yM5qiq5ZCR5q+U6L6D6ZyA5Zyo6K665paH5Lit5rOo5piO6K+l5p2h5Lu25beu5byC44CCCgojIyAyKSDmjIfmoIflj6PlvoTvvIjkuLvlj6PlvoTvvJpUcmFjZe+8jOiHqua0veeUqOS6juWbvuS4juihqO+8iQotIGBGaW5hbCBTY29yZWDvvJpgZmluYWxfbWV0cmljcy5qc29uIC0+IHBhcnRpY2lwYW50X21ldHJpY3MucHJvYmxlbV9wYXNzX3Njb3JlYAotIGBEZWxpdmVyeSBUaW1lIChtaW5zKWDvvJpgc3VtKHJ1bl9zdW1tYXJ5Lm1kIOS4rSBUb3RhbCBBYnNvbHV0ZSBUaW1lIChtcykpIC8gNjAwMDBgCi0gYFRvdGFsIFRva2VucyAoTSlg77yaYHN1bShydW5fc3VtbWFyeS5tZCDkuK0gVG90YWwgVG9rZW4gQ29zdCkgLyAxZTZgCi0gYENvbW0uIFJhdGlvYO+8mmBzdW0oZXZlbnRzLmpzb25sIHRva2Vuc19jb21tdW5pY2F0aW9uKSAvIHN1bSh0b2tlbnNfdGhpbmtpbmcgKyB0b2tlbnNfY29kaW5nICsgdG9rZW5zX2NvbW11bmljYXRpb24pYAotIGBFdmFsIE92ZXJoZWFkIChSdW5zKWDvvJpgc3VtKHJ1bl9zdW1tYXJ5Lm1kIOS4rSBUb3RhbCBFdmFsdWF0aW9uIFJ1bnMpYAoKIyMgMykgTGFUZVgg6KGo5qC85Y+v55So5pWw5o2u77yI5Li75Y+j5b6E77yJCgp8IFN3YXJtIFN0cmF0ZWd5IFByb2ZpbGUgfCBGaW5hbCBTY29yZSB8IERlbGl2ZXJ5IFRpbWUgKG1pbnMpIHwgVG90YWwgVG9rZW5zIChNKSB8IENvbW0uIFJhdGlvIHwgRXZhbCBPdmVyaGVhZCAoUnVucykgfAp8LS0tfC0tLTp8LS0tOnwtLS06fC0tLTp8LS0tOnwKfCBTcGVlZHkgU3BlbmR0aHJpZnQgfCAzIHwgNjYuOTgzMyB8IDE1Ljc3NTAgfCAxNy42MjI4JSB8IDcwIHwKfCBGcnVnYWwgUGVyZmVjdGlvbmlzdCB8IDggfCAyOTkuMTA1MyB8IDAuMDMyNyB8IDI5LjEyODQlIHwgOCB8CnwgQ29zdC1Bd2FyZSBTdHJhdGVnaXN0IHwgOCB8IDIxOS45ODQxIHwgMjMuNTI0NyB8IDY1LjUyNDElIHwgMjQgfAoK5Y+v55u05o6l5aGr6KGo55qE5Zub6IiN5LqU5YWl54mI5pys77yIMSDkvY3lsI/mlbDvvIkKLSBTcGVlZHk6IGAzLjAsIDY3LjAsIDE1LjgsIDE3LjZcJSwgNzBgCi0gRnJ1Z2FsOiBgOC4wLCAyOTkuMSwgMC4wMywgMjkuMVwlLCA4YAotIENvc3QtQXdhcmU6IGA4LjAsIDIyMC4wLCAyMy41LCA2NS41XCUsIDI0YAoKIyMgNCkg5L2c5Zu+5pWw5o2u77yI5a+55bqUIGBVU0FDT19jYW1lcmFfcmVhZHkucHlg77yJCuiEmuacrOS4reeahOetlueVpemhuuW6j+aYr++8mmBbJ1NwZWVkeSBTcGVuZHRocmlmdCcsICdDb3N0LUF3YXJlIFN0cmF0ZWdpc3QnLCAnRnJ1Z2FsIFBlcmZlY3Rpb25pc3QnXWDjgIIKCuaMieivpemhuuW6j+WPr+ebtOaOpeabv+aNoueahOaVsOe7hO+8iOS4u+WPo+W+hO+8ie+8mgoKYGBgcHl0aG9uCnN0cmF0ZWdpZXMgPSBbJ1NwZWVkeSBTcGVuZHRocmlmdCcsICdDb3N0LUF3YXJlIFN0cmF0ZWdpc3QnLCAnRnJ1Z2FsIFBlcmZlY3Rpb25pc3QnXQoKZGVsaXZlcnlfdGltZSA9IFs2Ni45ODMzLCAyMTkuOTg0MSwgMjk5LjEwNTNdICAgIyBtaW51dGVzCnRvdGFsX3Rva2VucyA9IFsxNS43NzUwLCAyMy41MjQ3LCAwLjAzMjddICAgICAgICMgbWlsbGlvbnMKc2NvcmVzID0gWzMsIDgsIDhdCgp0aGlua2luZ190b2tlbnMgPSBucC5hcnJheShbNy4yNDQ2LCA2LjYxMzIsIDAuMDE2M10pCmNvZGluZ190b2tlbnMgPSBucC5hcnJheShbNS43NTA1LCAxLjQ5NzEsIDAuMDA2OV0pCmNvbW1fdG9rZW5zID0gbnAuYXJyYXkoWzIuNzgwMCwgMTUuNDE0MywgMC4wMDk1XSkKYGBgCgrms6jmhI/vvJrlvZPliY3ohJrmnKzlhpnmrbvkuoYgYGF4MS5zZXRfeGxpbSgwLCA3MClg77yM5Lya5oiq5patIENvc3QtQXdhcmUg5LiOIEZydWdhbO+8m+W7uuiuruaUueS4uuS+i+WmgiBgYXgxLnNldF94bGltKDAsIDMyMClg44CCCgojIyA1KSDlpIfpgInlj6PlvoTvvIjnu5Pnrpflj6PlvoTvvIzmnaXoh6ogZmluYWxfbWV0cmljc++8iQrlpoLmnpzkvaDluIzmnJsgYFRvdGFsIFRva2Vuc2Ag5L2/55So5bmz5Y+w57uT566X5YC877yI6ICM5LiN5pivIHRyYWNlIHRva2Vu77yJ77yaCgotIGBGaW5hbCBTY29yZWDvvJpgcHJvYmxlbV9wYXNzX3Njb3JlYAotIGBEZWxpdmVyeSBUaW1lIChtaW5zKWDvvJpgZGVsaXZlcnlfdGltZV9zZWNvbmRzIC8gNjBgCi0gYFRvdGFsIFRva2VucyAoTSlg77yaYGNvbnN1bWVkX3Rva2VucyAvIDFlNmAKCue7k+aenOS4uu+8mgotIFNwZWVkeTogYHNjb3JlPTMsIGRlbGl2ZXJ5PTI0Ni41MTY3LCB0b3RhbF90b2tlbnM9NDMuMzI2NE1gCi0gQ29zdC1Bd2FyZTogYHNjb3JlPTgsIGRlbGl2ZXJ5PTQyMC4yNTAwLCB0b3RhbF90b2tlbnM9NzEuNzc2M01gCi0gRnJ1Z2FsOiBgc2NvcmU9OCwgZGVsaXZlcnk9MzA2LjczMzMsIHRvdGFsX3Rva2Vucz00Ny4zNTQ5TWAKCuivpeWPo+W+hOS4i+WPs+WbvuWIhuino+ayoeacieWOn+eUn+Wtl+aute+8m+WPr+WwhiB0cmFjZSDliIbop6Pmr5TkvovmjIkgYGNvbnN1bWVkX3Rva2Vuc2Ag57yp5pS+77yI5o6o5a+85YC877yJ44CCCgojIyA2KSDor4Hmja7ot6/lvoQKLSDnrZbnlaUvcGFydGljaXBhbnQg5pig5bCE77yaCiAgLSBgX2xhdW5jaGVyX2xvZ3MvbGF1bmNoX21hbmlmZXN0XzIwMjYwMjI4XzEyMTAyMS5qc29uYO+8iGBzdW1tYXJ5LnBhcnRpY2lwYW50c2DvvIkKICAtIOWQhCB3b3Jrc3BhY2Ug55qEIGBjb21wZXRpdGlvbl9jb250ZXh0Lm1kYOOAgWBBR0VOVFMubWRgCi0gRmluYWwgc2NvcmUv57uT566XIHRva2VuL+e7k+eul+aXtumXtO+8mgogIC0gYDIwMjYwMjI4XzEyMTAyMS9maW5hbF9tZXRyaWNzLmpzb25gCiAgLSBgMjAyNjAyMjhfMTIxMDIxXzAyL2ZpbmFsX21ldHJpY3MuanNvbmAKICAtIGAyMDI2MDIyOF8yMzUyMDNfMDEvZmluYWxfbWV0cmljcy5qc29uYAotIFRyYWNlIHRva2VuIOWIhuino+S4jiBDb21tIFJhdGlv77yaCiAgLSDlkIQgd29ya3NwYWNlIGBydW5zLyovZXZlbnRzLmpzb25sYAotIERlbGl2ZXJ5IFRpbWUodHJhY2UpIOS4jiBFdmFsIE92ZXJoZWFkKHRyYWNlKe+8mgogIC0g5ZCEIHdvcmtzcGFjZSBgcnVucy8qL3J1bl9zdW1tYXJ5Lm1kYAotIFJ1bm5lciDnuqflpIfpgInor4TmtYvlvIDplIDvvJoKICAtIOWQhCB3b3Jrc3BhY2UgYGFnZW50X2V4ZWNfc3VtbWFyeS5qc29ubGDvvIhgZXZhbHVhdGlvbl9ydW5zYO+8iQoKIyMgNykg5aSN566X5Lqn54mpCi0g5oiR5bey5bCG5a6M5pW06IGa5ZCI57uT5p6c6JC955uY5Yiw77yaYC5jb2RleC9waGFzZTMxX21ldHJpY3MuanNvbmAKLSDor6Xmlofku7bljIXlkKvvvJoKICAtIOS4u+WPo+W+hOe7k+aenAogIC0g57uT566X5Y+j5b6E57uT5p6cCiAgLSB0b2tlbiDliIbop6PnvKnmlL7nu5PmnpwKICAtIOavj+S4quetlueVpeWvueW6lOeahOivgeaNruaWh+S7tuWIl+ihqAo=
+# Codex Swarm 产物复核（synthesis）
+
+## 1) 数据范围与映射
+- 仅使用目录：`logs/codex_loop_agents/analysis/synthesis`
+- 3 个策略与 workspace 映射：
+
+| 策略 | workspace | competition_id | participant_id |
+|---|---|---|---|
+| Speedy Spendthrift | `20260228_121021_02` | `a35e0bf7-4e30-447d-8c22-ba715aafba33` | `38266509-2224-4bc3-8758-b41c589e96f5` |
+| Frugal Perfectionist | `20260228_121021` | `a35e0bf7-4e30-447d-8c22-ba715aafba33` | `ad4462bf-7551-40d3-bbb1-ac6115c06eb6` |
+| Cost-Aware Strategist | `20260228_235203_01` | `6344b995-a937-4fec-930c-a63c62861c20` | `b25efcf6-da1f-4139-b6af-40a10badd1e7` |
+
+说明：Cost-Aware 来自不同 `competition_id`，横向比较需在论文中注明该条件差异。
+
+## 2) 指标口径（主口径：Trace，自洽用于图与表）
+- `Final Score`：`final_metrics.json -> participant_metrics.problem_pass_score`
+- `Delivery Time (mins)`：`sum(run_summary.md 中 Total Absolute Time (ms)) / 60000`
+- `Total Tokens (M)`：`sum(run_summary.md 中 Total Token Cost) / 1e6`
+- `Comm. Ratio`：`sum(events.jsonl tokens_communication) / sum(tokens_thinking + tokens_coding + tokens_communication)`
+- `Eval Overhead (Runs)`：`sum(run_summary.md 中 Total Evaluation Runs)`
+
+## 3) LaTeX 表格可用数据（主口径）
+
+| Swarm Strategy Profile | Final Score | Delivery Time (mins) | Total Tokens (M) | Comm. Ratio | Eval Overhead (Runs) |
+|---|---:|---:|---:|---:|---:|
+| Speedy Spendthrift | 3 | 66.9833 | 15.7750 | 17.6228% | 70 |
+| Frugal Perfectionist | 8 | 299.1053 | 0.0327 | 29.1284% | 8 |
+| Cost-Aware Strategist | 8 | 219.9841 | 23.5247 | 65.5241% | 24 |
+
+可直接填表的四舍五入版本（1 位小数）
+- Speedy: `3.0, 67.0, 15.8, 17.6\%, 70`
+- Frugal: `8.0, 299.1, 0.03, 29.1\%, 8`
+- Cost-Aware: `8.0, 220.0, 23.5, 65.5\%, 24`
+
+## 4) 作图数据（对应 `USACO_camera_ready.py`）
+脚本中的策略顺序是：`['Speedy Spendthrift', 'Cost-Aware Strategist', 'Frugal Perfectionist']`。
+
+按该顺序可直接替换的数组（主口径）：
+
+```python
+strategies = ['Speedy Spendthrift', 'Cost-Aware Strategist', 'Frugal Perfectionist']
+
+delivery_time = [66.9833, 219.9841, 299.1053]   # minutes
+total_tokens = [15.7750, 23.5247, 0.0327]       # millions
+scores = [3, 8, 8]
+
+thinking_tokens = np.array([7.2446, 6.6132, 0.0163])
+coding_tokens = np.array([5.7505, 1.4971, 0.0069])
+comm_tokens = np.array([2.7800, 15.4143, 0.0095])
+```
+
+注意：当前脚本写死了 `ax1.set_xlim(0, 70)`，会截断 Cost-Aware 与 Frugal；建议改为例如 `ax1.set_xlim(0, 320)`。
+
+## 5) 备选口径（结算口径，来自 final_metrics）
+如果你希望 `Total Tokens` 使用平台结算值（而不是 trace token）：
+
+- `Final Score`：`problem_pass_score`
+- `Delivery Time (mins)`：`delivery_time_seconds / 60`
+- `Total Tokens (M)`：`consumed_tokens / 1e6`
+
+结果为：
+- Speedy: `score=3, delivery=246.5167, total_tokens=43.3264M`
+- Cost-Aware: `score=8, delivery=420.2500, total_tokens=71.7763M`
+- Frugal: `score=8, delivery=306.7333, total_tokens=47.3549M`
+
+该口径下右图分解没有原生字段；可将 trace 分解比例按 `consumed_tokens` 缩放（推导值）。
+
+## 6) 证据路径
+- 策略/participant 映射：
+  - `_launcher_logs/launch_manifest_20260228_121021.json`（`summary.participants`）
+  - 各 workspace 的 `competition_context.md`、`AGENTS.md`
+- Final score/结算 token/结算时间：
+  - `20260228_121021/final_metrics.json`
+  - `20260228_121021_02/final_metrics.json`
+  - `20260228_235203_01/final_metrics.json`
+- Trace token 分解与 Comm Ratio：
+  - 各 workspace `runs/*/events.jsonl`
+- Delivery Time(trace) 与 Eval Overhead(trace)：
+  - 各 workspace `runs/*/run_summary.md`
+- Runner 级备选评测开销：
+  - 各 workspace `agent_exec_summary.jsonl`（`evaluation_runs`）
+
+## 7) 复算产物
+- 我已将完整聚合结果落盘到：`.codex/phase31_metrics.json`
+- 该文件包含：
+  - 主口径结果
+  - 结算口径结果
+  - token 分解缩放结果
+  - 每个策略对应的证据文件列表
