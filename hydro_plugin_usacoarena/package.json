@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Hydro addon exposing machine-facing APIs for USACOArena.",
   "main": "index.ts",
-  "repository": "https://github.com/maple-zhou/USACOArena_hydro",
+  "repository": "https://github.com/maple-zhou/USACOArena",
   "license": "MIT",
   "keywords": [
     "hydrooj",

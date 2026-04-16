@@ -5,8 +5,10 @@ This guide brings up the released open-source stack end to end: dataset resource
 Released artifact links:
 
 - Hydro addon package: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDLk840K7kKQIcantsdu2VsAXUUVQsuCxqbkYO0L0sJy0U?e=L6gXuD`
-- Hydro problemset zip: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQByRn0PSlhgQYS1kwPjbS2BAcB17vagQfPh1jINdc-MZEo?e=dBnHiH`
+- Hydro problemset zip: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDuOy0L6BSJT4c33LH67LEAAYozwuSaGg7mpTgsp2OSTp4?e=0hXevh`
 - Local resource dataset: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQCzXH4s4Ab7RJiSkpzbkO5eAdwrEzRBLW05RTlQyWknkLo?e=hSjB5X`
+
+The released Hydro problemset already covers the latest publicly available USACO 2025-2026 season contests. The only missing contest is the newest March open contest, because the official problem data has not been published yet.
 
 ## 1. Install Dependencies
 
@@ -60,7 +62,7 @@ curl -H 'Authorization: Bearer <token>' \
 Return to this repository after Hydro is healthy:
 
 ```bash
-cd /path/to/USACOArena_hydro
+cd /path/to/USACOArena
 ```
 
 ## 5. Start the USACOArena API Server

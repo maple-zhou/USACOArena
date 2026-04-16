@@ -8,7 +8,7 @@ Paper status: Published as a conference paper at ICLR 2026.
 
 - Paper: [*Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision*](https://arxiv.org/abs/2604.10182)
 - Authors: Lingfeng Zhou, Junhao Shi, Jin Gao, Dequan Wang
-- Repository: `https://github.com/maple-zhou/USACOArena_hydro`
+- Repository: `https://github.com/maple-zhou/USACOArena`
 - Judge infrastructure: [Hydro](https://github.com/hydro-dev/Hydro)
 
 ## Installation
@@ -16,8 +16,8 @@ Paper status: Published as a conference paper at ICLR 2026.
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/maple-zhou/USACOArena_hydro.git
-cd USACOArena_hydro
+git clone https://github.com/maple-zhou/USACOArena.git
+cd USACOArena
 ```
 
 2. Install `uv` and sync Python dependencies:
@@ -30,8 +30,10 @@ uv sync --dev
 3. Download the released artifacts:
 
 - Hydro addon package: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDLk840K7kKQIcantsdu2VsAXUUVQsuCxqbkYO0L0sJy0U?e=L6gXuD`
-- Hydro problemset zip: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQByRn0PSlhgQYS1kwPjbS2BAcB17vagQfPh1jINdc-MZEo?e=dBnHiH`
+- Hydro problemset zip: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDuOy0L6BSJT4c33LH67LEAAYozwuSaGg7mpTgsp2OSTp4?e=0hXevh`
 - Local resource dataset: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQCzXH4s4Ab7RJiSkpzbkO5eAdwrEzRBLW05RTlQyWknkLo?e=hSjB5X`
+
+The released Hydro problemset has already been refreshed to include the latest publicly available USACO 2025-2026 season contests as well. At the moment, the only missing piece is the newest March open contest, because the official problem data has not been published yet.
 
 4. Extract the local resource dataset into the repository root. This archive is for hint corpora, textbook resources, and guide content. It is not the Hydro problemset zip used for judging:
 
@@ -160,7 +162,7 @@ If you use USACOArena or its public experiment configs, please cite:
   eprint    = {2604.10182},
   archivePrefix = {arXiv},
   primaryClass = {cs.AI},
-  url       = {https://github.com/maple-zhou/USACOArena_hydro}
+  url       = {https://github.com/maple-zhou/USACOArena}
 }
 ```
 

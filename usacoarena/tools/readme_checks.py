@@ -41,15 +41,15 @@ def _check_keywords(content: str) -> List[str]:
             "README must point readers to the full paper reproduction guide.",
         ),
         (
-            "https://github.com/maple-zhou/USACOArena_hydro",
-            "README must reference the public USACOArena_hydro repository URL.",
+            "https://github.com/maple-zhou/USACOArena",
+            "README must reference the public USACOArena repository URL.",
         ),
         (
             "https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDLk840K7kKQIcantsdu2VsAXUUVQsuCxqbkYO0L0sJy0U?e=L6gXuD",
             "README must include the released Hydro addon package link.",
         ),
         (
-            "https://1drv.ms/u/c/1ef7b7bac0da57e6/IQByRn0PSlhgQYS1kwPjbS2BAcB17vagQfPh1jINdc-MZEo?e=dBnHiH",
+            "https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDuOy0L6BSJT4c33LH67LEAAYozwuSaGg7mpTgsp2OSTp4?e=0hXevh",
             "README must include the released Hydro problemset zip link.",
         ),
         (

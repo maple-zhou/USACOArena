@@ -11,8 +11,8 @@ Complete these steps once before running any experiment.
 ### 1.1 Clone the Repository
 
 ```bash
-git clone https://github.com/maple-zhou/USACOArena_hydro.git
-cd USACOArena_hydro
+git clone https://github.com/maple-zhou/USACOArena.git
+cd USACOArena
 ```
 
 ### 1.2 Install Dependencies
@@ -27,8 +27,10 @@ uv sync --dev
 Download the released artifacts first:
 
 - Hydro addon package: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDLk840K7kKQIcantsdu2VsAXUUVQsuCxqbkYO0L0sJy0U?e=L6gXuD`
-- Hydro problemset zip: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQByRn0PSlhgQYS1kwPjbS2BAcB17vagQfPh1jINdc-MZEo?e=dBnHiH`
+- Hydro problemset zip: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDuOy0L6BSJT4c33LH67LEAAYozwuSaGg7mpTgsp2OSTp4?e=0hXevh`
 - Local resource dataset: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQCzXH4s4Ab7RJiSkpzbkO5eAdwrEzRBLW05RTlQyWknkLo?e=hSjB5X`
+
+The released Hydro problemset already includes the latest publicly available USACO 2025-2026 season contests. The only remaining gap is the newest March open contest, because the official problem data is not public yet.
 
 Extract the local resource dataset into the repository root. This is the local hint/textbook/guide resource bundle, not the Hydro problemset zip. Then validate it:
 
@@ -65,7 +67,7 @@ Import the released `usacoarena_hydro_problemset_normalized.zip` through the Hyd
 In terminal B:
 
 ```bash
-cd /path/to/USACOArena_hydro
+cd /path/to/USACOArena
 uv run python -m usacoarena.main \
   --config config/server_config.json \
   --host 0.0.0.0 \
@@ -79,7 +81,7 @@ uv run python -m usacoarena.main \
 In terminal C:
 
 ```bash
-cd /path/to/USACOArena_hydro
+cd /path/to/USACOArena
 uv run python -m usacoarena.ui.app \
   --host 127.0.0.1 \
   --port 5500

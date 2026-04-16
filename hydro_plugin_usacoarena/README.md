@@ -18,7 +18,7 @@ The addon adds a machine-facing API layer on top of Hydro so that USACOArena can
 From the Hydro host:
 
 ```bash
-hydrooj addon add /path/to/USACOArena_hydro/hydro_plugin_usacoarena
+hydrooj addon add /path/to/USACOArena/hydro_plugin_usacoarena
 ```
 
 Then restart Hydro.

@@ -5,9 +5,11 @@ USACOArena now uses [Hydro](https://github.com/hydro-dev/Hydro) as the judge, pr
 ## Released Artifacts
 
 - Hydro addon package: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDLk840K7kKQIcantsdu2VsAXUUVQsuCxqbkYO0L0sJy0U?e=L6gXuD`
-- Hydro problemset zip: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQByRn0PSlhgQYS1kwPjbS2BAcB17vagQfPh1jINdc-MZEo?e=dBnHiH`
+- Hydro problemset zip: `https://1drv.ms/u/c/1ef7b7bac0da57e6/IQDuOy0L6BSJT4c33LH67LEAAYozwuSaGg7mpTgsp2OSTp4?e=0hXevh`
 
 The recommended open-source deployment path is to download these two artifacts directly instead of rebuilding them locally.
+
+The published Hydro problemset already includes the latest publicly available USACO 2025-2026 season contests. The only exception is the newest March open contest, whose official problem data has not been released yet.
 
 ## 1. Clone and Install Hydro
 
@@ -109,7 +111,7 @@ You should receive JSON that includes the resolved Hydro problem doc.
 Start the USACOArena server against Hydro:
 
 ```bash
-cd /path/to/USACOArena_hydro
+cd /path/to/USACOArena
 uv run python -m usacoarena.main \
   --config config/server_config.json \
   --host 0.0.0.0 \
@@ -144,7 +146,7 @@ In this Hydro-based release, `--oj-endpoint` is retained only as a compatibility
 
 The intended open-source release boundary is:
 
-- `USACOArena_hydro` repository: competition framework, docs, addon source, normalization tooling
+- `USACOArena` repository: competition framework, docs, addon source, normalization tooling
 - external addon package: released `usacoarena_hydro_plugin_v0.1.0.tar.gz`
 - external Hydro problemset zip: released `usacoarena_hydro_problemset_normalized.zip`
 - Hydro core: cloned separately from the official upstream repository
