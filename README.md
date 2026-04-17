@@ -1,4 +1,30 @@
+<div align="center">
+
 # USACOArena
+
+### Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision
+
+<p><em>Official codebase, Hydro integration, and released artifacts for the ICLR 2026 paper.</em></p>
+
+[![Paper](https://img.shields.io/badge/Paper-arXiv%202604.10182-b31b1b?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2604.10182)
+[![Code](https://img.shields.io/badge/Code-GitHub-111827?style=for-the-badge&logo=github)](https://github.com/maple-zhou/USACOArena)
+[![Judge](https://img.shields.io/badge/Judge-Hydro-0ea5e9?style=for-the-badge)](https://github.com/hydro-dev/Hydro)
+[![License](https://img.shields.io/badge/License-MIT-059669?style=for-the-badge)](./LICENSE)
+
+<p>
+  <a href="#paper-companion">Paper</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#quick-start">Quick Start</a> •
+  <a href="docs/oj.md">Hydro Guide</a> •
+  <a href="docs/paper_reproduction.md">Reproduction</a> •
+  <a href="#citation">Citation</a>
+</p>
+
+</div>
+
+<p align="center">
+  <img src="assets/usacoarena_teaser.svg" alt="Teaser figure showing cost-unaware agents colliding with a budget limit while cost-aware agents remain deployable under unified credit feedback." width="1100">
+</p>
 
 USACOArena is the official open-source companion codebase for the ICLR 2026 paper *Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision*. This release keeps the original competition server, agent integration layer, paper configs, reporting utilities, and reproduction scripts, while replacing the legacy self-maintained OJ stack with a Hydro-based judging and problem-management workflow.
 
@@ -153,16 +179,11 @@ uv run python scripts/export_metrics_timeline.py \
 If you use USACOArena or its public experiment configs, please cite:
 
 ```bibtex
-@inproceedings{zhou2026creditbudgeted,
-  title     = {Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision},
-  author    = {Lingfeng Zhou and Junhao Shi and Jin Gao and Dequan Wang},
-  booktitle = {The Fourteenth International Conference on Learning Representations},
-  year      = {2026},
-  note      = {Published as a conference paper at ICLR 2026},
-  eprint    = {2604.10182},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.AI},
-  url       = {https://github.com/maple-zhou/USACOArena}
+@article{zhou2026credit,
+  title={Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision},
+  author={Zhou, Lingfeng and Shi, Junhao and Gao, Jin and Wang, Dequan},
+  journal={arXiv preprint arXiv:2604.10182},
+  year={2026}
 }
 ```
 

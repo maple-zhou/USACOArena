@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 760" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1400" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f7f6f2"/>
+      <stop offset="1" stop-color="#fdfdfd"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="140" y1="620" x2="1120" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#eef4fb"/>
+      <stop offset="1" stop-color="#dfe9f7"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#475569" flood-opacity="0.18"/>
+    </filter>
+    <g id="coin">
+      <circle cx="0" cy="0" r="12" fill="#f7d264" stroke="#8a5b16" stroke-width="3"/>
+      <path d="M-4 -1c0-3 2-5 5-5 3 0 5 1 5 4 0 5-8 3-8 7 0 2 2 3 4 3 2 0 4-1 5-3" stroke="#8a5b16" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <g id="spark">
+      <path d="M0 -17 6 -6 18 -9 10 2 17 13 5 10 0 21-5 10-17 13-10 2-18-9-6-6Z" fill="#ffdd6c" stroke="#1f2937" stroke-width="2.5" stroke-linejoin="round"/>
+    </g>
+    <g id="robot">
+      <circle cx="0" cy="-47" r="4" fill="#1f2937"/>
+      <line x1="0" y1="-43" x2="0" y2="-30" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+      <rect x="-28" y="-30" width="56" height="42" rx="14" fill="#dce7fb" stroke="#1f2937" stroke-width="3"/>
+      <rect x="-20" y="-20" width="40" height="24" rx="8" fill="#c4f1ff" stroke="#5b6470" stroke-width="2"/>
+      <circle cx="-10" cy="-8" r="3" fill="#1f2937"/>
+      <circle cx="10" cy="-8" r="3" fill="#1f2937"/>
+      <path d="M-12 2c4 4 20 4 24 0" stroke="#1f2937" stroke-width="2.5" stroke-linecap="round"/>
+      <rect x="-22" y="12" width="44" height="48" rx="12" fill="#e6ebf7" stroke="#1f2937" stroke-width="3"/>
+      <rect x="-12" y="26" width="24" height="12" rx="4" fill="#f5c766" stroke="#9a6a16" stroke-width="2"/>
+      <line x1="-28" y1="24" x2="-46" y2="10" stroke="#1f2937" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="28" y1="24" x2="46" y2="10" stroke="#1f2937" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="-18" y1="60" x2="-30" y2="82" stroke="#1f2937" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="18" y1="60" x2="30" y2="82" stroke="#1f2937" stroke-width="3.5" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <rect width="1400" height="760" rx="28" fill="url(#bg)"/>
+
+  <g opacity="0.36">
+    <circle cx="1070" cy="92" r="180" fill="#f2ebe0"/>
+    <circle cx="1250" cy="208" r="120" fill="#f8f1e7"/>
+  </g>
+
+  <path d="M140 625H1190" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/>
+  <path d="M140 625V88" stroke="#1f2937" stroke-width="6" stroke-linecap="round"/>
+  <path d="m140 88-15 19m15-19 15 19" stroke="#1f2937" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m1190 625-19-15m19 15-19 15" stroke="#1f2937" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="108" y="392" transform="rotate(-90 108 392)" fill="#111827" font-size="30" font-family="Arial, Helvetica, sans-serif" font-weight="700">Compute Cost</text>
+  <text x="476" y="699" fill="#111827" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Time</text>
+  <text x="118" y="699" fill="#111827" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700">Unified credit feedback</text>
+
+  <g filter="url(#shadow)">
+    <path d="M170 618H1040C1080 618 1108 616 1132 610L1068 545H230L170 618Z" fill="url(#floor)"/>
+  </g>
+
+  <path d="M182 585C268 448 400 420 520 390C674 352 797 315 958 286C1054 269 1118 267 1172 270" stroke="#ea5b4d" stroke-width="9" stroke-linecap="round" stroke-dasharray="18 18"/>
+  <path d="M302 596C402 480 540 445 655 441C768 437 873 451 972 485C1030 505 1076 536 1112 577" stroke="#7cc7ec" stroke-width="8" stroke-linecap="round"/>
+  <path d="M305 594C406 479 543 445 655 441C767 437 871 450 969 483C1028 503 1075 533 1111 576" stroke="#1f2937" stroke-width="3.2" stroke-linecap="round" opacity="0.95"/>
+
+  <g opacity="0.9">
+    <circle cx="280" cy="612" r="54" fill="none" stroke="#94a3b8" stroke-width="3"/>
+    <path d="M226 612h108M280 558v108M244 576l72 72M316 576l-72 72" stroke="#c7d2e1" stroke-width="2"/>
+    <circle cx="400" cy="612" r="54" fill="none" stroke="#94a3b8" stroke-width="3"/>
+    <path d="M346 612h108M400 558v108M364 576l72 72M436 576l-72 72" stroke="#c7d2e1" stroke-width="2"/>
+    <circle cx="520" cy="612" r="54" fill="none" stroke="#94a3b8" stroke-width="3"/>
+    <path d="M466 612h108M520 558v108M484 576l72 72M556 576l-72 72" stroke="#c7d2e1" stroke-width="2"/>
+    <circle cx="640" cy="612" r="54" fill="none" stroke="#94a3b8" stroke-width="3"/>
+    <path d="M586 612h108M640 558v108M604 576l72 72M676 576l-72 72" stroke="#c7d2e1" stroke-width="2"/>
+    <circle cx="760" cy="612" r="54" fill="none" stroke="#94a3b8" stroke-width="3"/>
+    <path d="M706 612h108M760 558v108M724 576l72 72M796 576l-72 72" stroke="#c7d2e1" stroke-width="2"/>
+    <circle cx="880" cy="612" r="54" fill="none" stroke="#94a3b8" stroke-width="3"/>
+    <path d="M826 612h108M880 558v108M844 576l72 72M916 576l-72 72" stroke="#c7d2e1" stroke-width="2"/>
+    <circle cx="1000" cy="612" r="54" fill="none" stroke="#94a3b8" stroke-width="3"/>
+    <path d="M946 612h108M1000 558v108M964 576l72 72M1036 576l-72 72" stroke="#c7d2e1" stroke-width="2"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <use href="#robot" transform="translate(396 208) rotate(-18) scale(0.95)"/>
+    <use href="#robot" transform="translate(482 178) rotate(12) scale(0.9)"/>
+    <use href="#robot" transform="translate(565 214) rotate(-10) scale(0.88)"/>
+    <use href="#robot" transform="translate(649 170) rotate(11) scale(0.9)"/>
+    <use href="#robot" transform="translate(720 224) rotate(-14) scale(0.92)"/>
+    <use href="#robot" transform="translate(515 270) rotate(8) scale(0.86)"/>
+    <use href="#robot" transform="translate(610 276) rotate(-7) scale(0.84)"/>
+    <use href="#robot" transform="translate(735 292) rotate(19) scale(0.88)"/>
+
+    <use href="#coin" transform="translate(324 149)"/>
+    <use href="#coin" transform="translate(434 117) scale(0.92)"/>
+    <use href="#coin" transform="translate(778 153) scale(0.9)"/>
+    <use href="#coin" transform="translate(667 118) scale(0.88)"/>
+    <use href="#coin" transform="translate(565 322) scale(0.88)"/>
+
+    <path d="M330 126c11-19 18-33 16-46 12 12 15 25 9 39 18-8 27-4 31 14-10-4-20-1-29 9-10 10-20 8-31-6-7-9-5-20 4-30Z" fill="#ff9a4a" stroke="#1f2937" stroke-width="2.8"/>
+    <path d="M758 132c10-17 17-28 15-39 10 9 13 21 8 33 14-6 23-3 26 12-9-3-17 0-24 9-8 9-17 7-27-4-7-8-5-18 2-28Z" fill="#ff9a4a" stroke="#1f2937" stroke-width="2.8"/>
+    <path d="M353 325c11-19 18-33 16-46 12 12 15 25 9 39 18-8 27-4 31 14-10-4-20-1-29 9-10 10-20 8-31-6-7-9-5-20 4-30Z" fill="#ff9a4a" stroke="#1f2937" stroke-width="2.8"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <use href="#spark" transform="translate(822 322) scale(1.95)"/>
+    <path d="M789 321h66" stroke="#ea5b4d" stroke-width="5" stroke-linecap="round"/>
+    <path d="M810 293 833 349" stroke="#ea5b4d" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <use href="#robot" transform="translate(760 487) rotate(-3) scale(0.76)"/>
+    <use href="#robot" transform="translate(878 470) rotate(2) scale(0.9)"/>
+    <use href="#robot" transform="translate(1010 496) rotate(8) scale(0.78)"/>
+    <rect x="868" y="466" width="20" height="42" rx="5" fill="#f8f3d7" stroke="#1f2937" stroke-width="2.5"/>
+    <rect x="872" y="471" width="12" height="10" rx="2" fill="#8de072"/>
+    <rect x="872" y="484" width="12" height="10" rx="2" fill="#f8dc6d"/>
+    <rect x="872" y="497" width="12" height="7" rx="2" fill="#fb7d6d"/>
+    <path d="M874 461h8" stroke="#7ee787" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <use href="#spark" transform="translate(1076 588) scale(1.55)"/>
+  </g>
+
+  <text x="852" y="152" fill="#111827" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700">Ignorant</text>
+  <text x="852" y="192" fill="#111827" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700">of Cost</text>
+  <text x="1098" y="337" fill="#ea5b4d" font-size="30" font-family="Arial, Helvetica, sans-serif" font-weight="700">Budget Limit</text>
+  <text x="1146" y="470" fill="#111827" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700">Cost-Aware</text>
+  <text x="1146" y="510" fill="#111827" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700">Autonomy</text>
+  <text x="1200" y="585" fill="#111827" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700">Deployed</text>
+</svg>
