@@ -23,7 +23,7 @@
 </div>
 
 <p align="center">
-  <img src="assets/usacoarena_teaser.svg" alt="Teaser figure showing cost-unaware agents colliding with a budget limit while cost-aware agents remain deployable under unified credit feedback." width="1100">
+  <img src="assets/usacoarena_teaser.png" alt="Teaser figure showing cost-unaware agents colliding with a budget limit while cost-aware agents remain deployable under unified credit feedback." width="1100">
 </p>
 
 USACOArena is the official open-source companion codebase for the ICLR 2026 paper *Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision*. This release keeps the original competition server, agent integration layer, paper configs, reporting utilities, and reproduction scripts, while replacing the legacy self-maintained OJ stack with a Hydro-based judging and problem-management workflow.
