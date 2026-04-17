@@ -12,7 +12,6 @@
 [![License](https://img.shields.io/badge/License-MIT-059669?style=for-the-badge)](./LICENSE)
 
 <p>
-  <a href="#paper-companion">Paper</a> •
   <a href="#installation">Installation</a> •
   <a href="#quick-start">Quick Start</a> •
   <a href="docs/oj.md">Hydro Guide</a> •
@@ -29,13 +28,6 @@
 USACOArena is the official open-source companion codebase for the ICLR 2026 paper *Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision*. This release keeps the original competition server, agent integration layer, paper configs, reporting utilities, and reproduction scripts, while replacing the legacy self-maintained OJ stack with a Hydro-based judging and problem-management workflow.
 
 Paper status: Published as a conference paper at ICLR 2026.
-
-## Paper Companion
-
-- Paper: [*Credit-Budgeted ICPC-Style Coding: When Agents Must Pay for Every Decision*](https://arxiv.org/abs/2604.10182)
-- Authors: Lingfeng Zhou, Junhao Shi, Jin Gao, Dequan Wang
-- Repository: `https://github.com/maple-zhou/USACOArena`
-- Judge infrastructure: [Hydro](https://github.com/hydro-dev/Hydro)
 
 ## Installation
 

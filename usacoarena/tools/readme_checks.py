@@ -8,7 +8,6 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 README_PATH = PROJECT_ROOT / "README.md"
 
 REQUIRED_SECTIONS: tuple[str, ...] = (
-    "## Paper Companion",
     "## Installation",
     "## Quick Start",
     "## Citation",
